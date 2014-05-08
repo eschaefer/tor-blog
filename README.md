@@ -1,5 +1,5 @@
-Frontmatter-formatted blog posts from Tor Project's current Drupal site.
+Frontmatter-formatted blog posts from [https://blog.torproject.org/](https://blog.torproject.org).
 
-Scraped and rendered into markdown files for use with a static site generator.
+Scraped via Ruby magic and rendered into markdown files for use with a static site generator.
 
 Linked with issue [10479](https://trac.torproject.org/projects/tor/ticket/10479)
