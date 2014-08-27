@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.1.27 is released.</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.1.27 is released.</h2>
+<p class="meta">26 Nov 2010</p>
+
+<div class="post">
+<p>Tor 0.2.1.27 makes relays work with OpenSSL 0.9.8p and 1.0.0.b --yet another OpenSSL security patch broke its compatibility with Tor. We also took this opportunity to fix several crash bugs, integrate a new directory authority, and update the bundled GeoIP database.</p>
+
+<p>If you operate a relay, please upgrade.</p>
+
+<p><a href="https://www.torproject.org/download/download" title="https://www.torproject.org/download/download">https://www.torproject.org/download/download</a></p>
+
+<p>The original release announcement is at<br>
+ <a href="http://archives.seul.org/or/announce/Nov-2010/msg00000.html" title="http://archives.seul.org/or/announce/Nov-2010/msg00000.html">http://archives.seul.org/or/announce/Nov-2010/msg00000.html</a></p>
+
+<p>Changes in version 0.2.1.27 - 2010-11-23<br>
+<strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Resolve an incompatibility with OpenSSL 0.9.8p and OpenSSL 1.0.0b: No longer set the tlsext_host_name extension on server SSL objects; but continue to set it on client SSL objects. Our goal in setting<br>
+it was to imitate a browser, not a vhosting server. Fixes bug 2204; bugfix on 0.2.1.1-alpha.</li>
+<li>Do not log messages to the controller while shrinking buffer freelists. Doing so would sometimes make the controller connection try to allocate a buffer chunk, which would mess up the internals<br>
+of the freelist and cause an assertion failure. Fixes bug 1125; fixed by Robert Ransom. Bugfix on 0.2.0.16-alpha.</li>
+<li>Learn our external IP address when we&#39;re a relay or bridge, even if we set PublishServerDescriptor to 0. Bugfix on 0.2.0.3-alpha,<br>
+where we introduced bridge relays that don&#39;t need to publish to be useful. Fixes bug 2050.</li>
+<li>Do even more to reject (and not just ignore) annotations on router descriptors received anywhere but from the cache. Previously<br>
+we would ignore such annotations at first, but cache them to disk anyway. Bugfix on 0.2.0.8-alpha. Found by piebeer.</li>
+<li>When you&#39;re using bridges and your network goes away and your bridges get marked as down, recover when you attempt a new socks<br>
+connection (if the network is back), rather than waiting up to an hour to try fetching new descriptors for your bridges. Bugfix on<br>
+0.2.0.3-alpha; fixes bug 1981.</li>
+</ul>
+
+<p><strong>Major features:</strong></p>
+
+<ul>
+<li>Move to the November 2010 Maxmind GeoLite country db (rather than the June 2009 ip-to-country GeoIP db) for our statistics that<br>
+count how many users relays are seeing from each country. Now we&#39;ll have more accurate data, especially for many African countries.</li>
+</ul>
+
+<p><strong>New directory authorities:</strong></p>
+
+<ul>
+<li>Set up maatuska (run by Linus Nordberg) as the eighth v3 directory authority.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Fix an assertion failure that could occur in directory caches or bridge users when using a very short voting interval on a testing network. Diagnosed by Robert Hogan. Fixes bug 1141; bugfix on 0.2.0.8-alpha.</li>
+<li>Enforce multiplicity rules when parsing annotations. Bugfix on 0.2.0.8-alpha. Found by piebeer.</li>
+<li>Allow handshaking OR connections to take a full KeepalivePeriod seconds to handshake. Previously, we would close them after IDLE_OR_CONN_TIMEOUT (180) seconds, the same timeout as if they were open. Bugfix on 0.2.1.26; fixes bug 1840. Thanks to mingw-san for analysis help.</li>
+<li>When building with --enable-gcc-warnings on OpenBSD, disable warnings in system headers. This makes --enable-gcc-warnings pass on OpenBSD 4.8.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Exit nodes didn&#39;t recognize EHOSTUNREACH as a plausible error code, and so sent back END_STREAM_REASON_MISC. Clients now recognize a new stream ending reason for this case: END_STREAM_REASON_NOROUTE. Servers can start sending this code when enough clients recognize it. Bugfix on 0.1.0.1-rc; fixes part of bug 1793.</li>
+<li>Build correctly on mingw with more recent versions of OpenSSL 0.9.8. Patch from mingw-san.</li>
+</ul>
+
+<p><strong>Removed files:</strong></p>
+
+<ul>
+<li>Remove the old debian/ directory from the main Tor distribution. The official Tor-for-debian git repository lives at the URL <a href="https://git.torproject.org/debian/tor.git" title="https://git.torproject.org/debian/tor.git">https://git.torproject.org/debian/tor.git</a></li>
+<li>Stop shipping the old doc/website/ directory in the tarball. We changed the website format in late 2010, and what we shipped in 0.2.1.26 really wasn&#39;t that useful anyway.</li>
+</ul>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

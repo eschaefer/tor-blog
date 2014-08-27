@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Firefox Private Browsing Mode, Torbutton, and Fingerprinting</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Firefox Private Browsing Mode, Torbutton, and Fingerprinting</h2>
+<p class="meta">30 Jun 2010</p>
+
+<div class="post">
+<p>Last week, <a href="http://www.eff.org/about/staff/peter-eckersley">Peter Eckersley</a> and I met with the Mozilla team in Mountain view to discuss web fingerprinting, privacy and Torbutton. I gave <a href="https://www.torproject.org/torbutton/design/MozillaBrownBag.pdf">an updated version of my Torbutton Design talk</a>, and Peter discussed <a href="http://panopticlick.eff.org/">Panopticlick</a>. Mozilla was primarily interested in hearing about these projects in the context of their <a href="https://support.mozilla.com/en-us/kb/private+browsing">Private Browsing Mode</a>, which they unveiled in Firefox 3.5.</p>
+
+<p>The <a href="https://wiki.mozilla.org/PrivateBrowsing">primary goal</a> of their Private Browsing Mode is to protect against a local after-the-fact attacker - an attacker that has local access to a user&#39;s filesystem after browsing has taken place. They offer some limited protections against a network adversary, but this was not their initial goal, and is primarily a side effect of trying to protect against &quot;helpful&quot; web services, such as Google Search History, which record your activity somewhere other than your PC.</p>
+
+<p>This is a significantly weaker adversary model than <a href="https://www.torproject.org/torbutton/design/#adversary">the one used in the Torbutton design.</a> As a result, from the point of view of Tor usage, Firefox Private Browsing mode suffers from a number of weaknesses that Torbutton does not.</p>
+
+<p>In particular, Firefox does not presently concern itself with plugins, form and password autocompletion, SSL state, Live Bookmarks, external protocols and applications, or browser fingerprinting. The Applied Crypto research group at Stanford recently published a <a href="http://crypto.stanford.edu/%7Edabo/pubs/abstracts/privatebrowsing.html">comparison of the four major browser&#39;s private browsing modes</a> against a dedicated local and remote adversary which details some of these issues.</p>
+
+<p>It turns out there is some developer interest inside Mozilla in <a href="https://wiki.mozilla.org/Fingerprinting">improving resistance to fingerprinting</a>, <a href="https://wiki.mozilla.org/Thirdparty">improving privacy against third party content</a>, and hardening their Private Browsing Mode in general, despite most of these issues being outside of their original model. The current plan is to investigate what would be necessary to develop an <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing">Anonymous Browsing Mode</a> that would either take the form of a privacy setting, an enhancement to Private Browsing Mode, or an entirely independent browsing mode. The trick now is to transform this developer interest into something that motivates the Firefox Product Management team to get fully behind the proposed improvements.</p>
+
+<p>As such, Peter and I have been spending some time updating the <a href="https://wiki.mozilla.org/Fingerprinting">Fingerprinting</a> and <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing">Anonymous Browsing</a> wiki pages to describe <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing#Use_Cases">who would want such privacy features</a>, and <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing#Behavior">how they would behave</a>, as well as updating and adding relevant Mozilla Bugzilla entries. I&#39;ve also updated the list of <a href="https://www.torproject.org/torbutton/design/#FirefoxBugs">Torbutton Firefox Bugs</a> to reflect some of the more sophisticated unsolved fingerprinting issues that were brought up during our meeting.</p>
+
+<p>This July, the two of us will be doing the same thing with the Google Chrome Privacy Team in Berlin while at the <a href="https://blog.torproject.org/events/tor-privacy-enhancing-technologies-symposium-berlin-germany">Privacy Enhancing Technologies Symposium</a>. This is primarily to follow up on a meeting we had with Google in December, where we discussed <a href="https://groups.google.com/group/chromium-extensions/browse_thread/thread/ceba26ca9e2f6a78?hl=en">the barriers to the development of a Torbutton for Google Chrome</a>, and to discuss relevant fingerprinting issues and similar shortcomings of the <a href="http://www.google.com/support/chrome/bin/answer.py?answer=95464">Google Chrome Incognito Mode</a>.</p>
+
+<p>Look for a future blog post in August detailing the results of that discussion.</p>
+
+</div>
+<p>- mikeperry</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

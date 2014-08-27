@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.2.4-alpha released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.2.4-alpha released</h2>
+<p class="meta">12 Oct 2009</p>
+
+<div class="post">
+<p>On October 10, we released Tor version 0.2.2.4-alpha.</p>
+
+<p>This release can be found at <a href="https://www.torproject.org/download/" title="https://www.torproject.org/download/">https://www.torproject.org/download/</a></p>
+
+<p>It contains the following:<br>
+<strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Fix several more asserts in the circuit_build_times code, for<br>
+example one that causes Tor to fail to start once we have<br>
+accumulated 5000 build times in the state file. Bugfixes on<br>
+0.2.2.2-alpha; fixes bug 1108.</li>
+</ul>
+
+<p><strong>New directory authorities:</strong></p>
+
+<ul>
+<li>Move moria1 and Tonga to alternate IP addresses.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Log SSL state transitions at debug level during handshake, and<br>
+include SSL states in error messages. This may help debug future<br>
+SSL handshake issues.</li>
+<li>Add a new &quot;Handshake&quot; log domain for activities that happen<br>
+during the TLS handshake.</li>
+<li>Revert to the &quot;June 3 2009&quot; ip-to-country file. The September one<br>
+seems to have removed most US IP addresses.</li>
+<li>Directory authorities now reject Tor relays with versions less than<br>
+0.1.2.14. This step cuts out four relays from the current network,<br>
+none of which are very big.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Fix a couple of smaller issues with gathering statistics. Bugfixes<br>
+on 0.2.2.1-alpha.</li>
+<li>Fix two memory leaks in the error case of<br>
+circuit_build_times_parse_state. Bugfix on 0.2.2.2-alpha.</li>
+<li>Don&#39;t count one-hop circuits when we&#39;re estimating how long it<br>
+takes circuits to build on average. Otherwise we&#39;ll set our circuit<br>
+build timeout lower than we should. Bugfix on 0.2.2.2-alpha.</li>
+<li>Directory authorities no longer change their opinion of, or vote on,<br>
+whether a router is Running, unless they have themselves been<br>
+online long enough to have some idea. Bugfix on 0.2.0.6-alpha.<br>
+Fixes bug 1023.</li>
+</ul>
+
+<p><strong>Code simplifications and refactoring:</strong></p>
+
+<ul>
+<li>Revise our unit tests to use the &quot;tinytest&quot; framework, so we<br>
+can run tests in their own processes, have smarter setup/teardown<br>
+code, and so on. The unit test code has moved to its own<br>
+subdirectory, and has been split into multiple modules.</li>
+</ul>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

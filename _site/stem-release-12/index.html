@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Stem Release 1.2</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Stem Release 1.2</h2>
+<p class="meta">01 Jun 2014</p>
+
+<div class="post">
+<p>Hi all. After months of work I&#39;m please to announce the release of Stem 1.2.0!</p>
+
+<p>For those who aren&#39;t familiar with it, Stem is a Python library for interacting with Tor. With it you can script against your relay, descriptor data, or even write applications similar to arm and Vidalia.</p>
+
+<p><strong><a href="https://stem.torproject.org/">https://stem.torproject.org/</a></strong></p>
+
+<p>So what&#39;s new in this release?</p>
+
+<hr>
+
+<h2>Interactive Tor Interpreter</h2>
+
+<p>The control interpreter is a new method for interacting with Tor&#39;s control interface that combines an interactive python interpreter with raw access similar to telnet. This adds several usability features, such as...</p>
+
+<ul>
+<li>Irc-style commands like &#39;/help&#39;.</li>
+<li>Tab completion for Tor&#39;s controller commands.</li>
+<li>History scrollback by pressing up/down.</li>
+<li>Transparently handles Tor authentication at startup.</li>
+<li>Colorized output for improved readability.</li>
+</ul>
+
+<p>For a tutorial to get you started see...</p>
+
+<p><strong><a href="https://stem.torproject.org/tutorials/down_the_rabbit_hole.html">Down the Rabbit Hole</a></strong></p>
+
+<hr>
+
+<h2>New connect() Function</h2>
+
+<p>This release of Stem provides a new, even easier method for establishing controllers. Connecting to Tor can now be as easy as...</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">import sys
+
+
+from stem.connection import connect
+
+
+if __name__ == &#39; __main__ &#39;:
+  controller = connect()
+
+
+  if not controller:
+    sys.exit(1) # unable to get a connection
+
+
+  print &#39;Tor is running version %s&#39; % controller.get_version()
+  controller.close()
+</code></pre></div>
+<hr>
+
+<p>For a rundown on the myriad of improvements and fixes in this release see...</p>
+
+<p><strong><a href="https://stem.torproject.org/change_log.html#version-1-2">https://stem.torproject.org/change_log.html#version-1-2</a></strong></p>
+
+<p>Cheers! -Damian</p>
+
+</div>
+<p>- atagar</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

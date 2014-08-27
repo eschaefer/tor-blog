@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Vidalia 0.2.3 released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Vidalia 0.2.3 released</h2>
+<p class="meta">03 Sep 2009</p>
+
+<div class="post">
+<p>On August 27th, we released Vidalia 0.2.3. This fixes some more bugs with &quot;Who has used by bridge&quot; functionality and switches to Qt signals for event handling.</p>
+
+<p>The updated Vidalia packages can be found at <a href="https://www.torproject.org/vidalia" title="https://www.torproject.org/vidalia">https://www.torproject.org/vidalia</a></p>
+
+<p>The changes are:</p>
+
+<ul>
+<li>Create the data directory before trying to copy over the default<br>
+Vidalia configuration file from inside the application bundle on Mac<br>
+OS X. Affects only OS X drag-and-drop installer users without a<br>
+previous Vidalia installation.</li>
+<li>Change all Tor event handling to use Qt&#39;s signals and slots mechanism<br>
+instead of custom QEvent subclasses.</li>
+<li>Fix another bug that resulted in the &quot;Who has used my bridge?&quot; link<br>
+initially being visible when the user clicks &quot;Setup Relaying&quot; from<br>
+the control panel if they are running a non-bridge relay.<br>
+(Ticket #509, reported by &quot;vrapp&quot;)</li>
+<li>Always hide the &quot;Who has used my bridge?&quot; link when Tor isn&#39;t running,<br>
+since clicking it won&#39;t return useful information until Tor actually<br>
+is running.</li>
+</ul>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

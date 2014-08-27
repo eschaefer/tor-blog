@@ -1,0 +1,59 @@
+---
+layout: post
+title: "Tails 0.13 is out!"
+permalink: tails-013-out
+date: 2012-09-19
+author: tails
+category: blog
+tags: ["anonymous operating system", "tails"]
+---
+
+Tails 0.13 brings its lot of small but useful improvements and fixes a few security issues.
+
+[Download it now.](https://tails.boum.org/download/)
+
+**Changes**
+
+Notable user-visible changes include:
+
+- **Use white-list** /principle of least privilege **approach for local services** .  
+Only users that need a certain local (i.e. hosted on loopback) service  
+(according to our use cases) are granted access to it by our firewall;  
+all other users are denied access.
+- Allow to modify language and layout in the "Advanced options" screen  
+of the greeter.
+- Enable four workspaces in the Windows XP camouflage. This allows  
+users to quickly switch to a more innocent looking workspace in case  
+they are working on sensitive data and attract unwanted attention.  
+The workspace switcher applet isn't there, though, since there's no  
+such thing in Windows XP, so switching is only possible via keyboard  
+shortcuts.
+- Claws Mail now saves local/POP emails in its dot-directory by default  
+instead of the non-persistent `~/Mail` directory. _Users who are already  
+using persistence for Claws will have to perform this change manually._
+- Add support for wireless regulation.
+- Hide the _TailsData_ partition in desktop applications.
+- **Tor**
+  - Upgrade to 0.2.2.39.
+
+- **Iceweasel**
+  - Upgrade iceweasel to 10.0.7esr-2 (Extended Support Release).
+
+- **Hardware support**
+  - Upgrade Linux to 3.2.23-1.
+
+- **Software**
+  - Upgrade I2P to version 0.9.1.
+  - Install GNOME System Monitor.
+  - Upgrade WhisperBack to 1.6, with many UI improvements and new translations.
+
+- Ship a **first version of the incremental update system** . Updates are not  
+currently triggered automatically, but this will allow tests to be done  
+on larger scales.
+
+Plus the usual bunch of minor bug reports and improvements.
+
+See the [online Changelog](http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.13) for technical details.
+
+Don't hesitate to [get in touch with us](https://tails.boum.org/support/).
+

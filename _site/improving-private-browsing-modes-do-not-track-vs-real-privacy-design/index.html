@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Improving Private Browsing Modes: "Do-Not-Track" vs Real Privacy by Design</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Improving Private Browsing Modes: "Do-Not-Track" vs Real Privacy by Design</h2>
+<p class="meta">13 Jun 2011</p>
+
+<div class="post">
+<p><strong>Updated 06/16/2011</strong> : Break off window.name into its own linkability issue. While ultimately it should be handled identically to the referer, that was not clear in the original text.
+<strong>Updated 07/01/2011</strong> : Add link to article about 81% consumer polling rate in favor of some form of Do Not Track...</p>
+
+<p>As I said in my <a href="https://blog.torproject.org/blog/toggle-or-not-toggle-end-torbutton">previous post</a>, the Tor Project hopes to work on <a href="https://trac.torproject.org/projects/tor/ticket/2871">a set of patches</a> that effectively improves the Private Browsing Mode of Firefox. Long term, we&#39;d love to merge these patches upstream, and/or see them obsoleted by better implementations.</p>
+
+<p>To help keep everyone on the same page with respect to this effort, I&#39;ve decided to take some time to describe what we envision as our ideal private browsing mode.</p>
+
+<p>Hopefully, such a mode would be useful for more than just Tor users. Indeed, there are many ways to obtain varying levels of IP address privacy once you have solid browser support for privacy by design. The average user is quite capable of going to a cafe and enabling private mode, and this ability can be explained to them in a single sentence by the UI. Arguably they can also obtain low-grade IP privacy simply by tethering to their cell phone, whose IP typically changes regularly. I am told that frequent IP rotation is also the norm for residential connections in Germany and much of the EU to deter services and malware. This is not to mention all of the commercial single-hop VPN and proxy privacy services out there that fail to provide actual browser privacy in their tools.</p>
+
+<p>We believe that the <a href="http://thehill.com/blogs/hillicon-valley/technology/168871-survey-shows-consumers-want-government-to-protect-their-privacy-online">attention surrounding the &quot;Do-Not-Track&quot; header</a> also indicates that network privacy is an important feature. However, we believe that it must be provided by design, as opposed to via a humble request to the adversary that is impossible to audit or enforce, especially outside of the United States. In his <a href="http://w2spconf.com/2011/papers/balaSlides.pdf">presentation</a> at <a href="http://w2spconf.com/2011/">W2SP</a>, <a href="http://www.research.att.com/%7Ebala/papers/">Balachander Krishnamurthy</a> compared the &quot;Do-Not-Track&quot; request header to the real-world equivalent of leaving your door unlocked with a posted notice that reads &quot;Do-Not-Rob&quot;. While many people actually do post &quot;No Trespassing&quot; and similar signs, no one expects these signs to replace actual security measures.</p>
+
+<p>Unfortunately, right now the only usable and effective web privacy option for the average user is to install an <a href="http://adblockplus.org/">ad-blocker</a> or <a href="http://www.ghostery.com/">similar software</a>. Personally, I see the need for an ad-blocker to achieve privacy as a huge failure of the web itself. If web tracking, profiling, and behavioral targeting is so extreme that it cannot be avoided except by blocking all ads, then the prevailing revenue model of the web is unsustainable. We must figure out a way to do non-intrusive, content-relevant advertising while still providing privacy, without relying on regulatory action that is unlikely to be enforceable.</p>
+
+<p>Ok, so enough preaching. What does privacy by design look like? I&#39;m going to describe a list of 7 key properties, some of which the major browser vendors already have or are working towards, but so far are not uniformly deployed in any browser, including even our own Tor Browser.</p>
+
+<ol>
+<li><strong>Make local privacy optional</strong></li>
+<li><strong>Avoid Linkability: Minimize privacy options, plugins and addons</strong></li>
+<li><strong>Avoid Linkability: Isolate all non-private mode identifiers and state</strong></li>
+<li><strong>Avoid Linkability: Isolate state per top-level domain</strong></li>
+<li><strong>Avoid Linkability: Reduce fingerprintable attributes</strong></li>
+<li><strong>Avoid Linkability: Reduce default referer information</strong></li>
+<li><strong>Avoid Linkability: Restrict window.name to referer policy</strong></li>
+</ol>
+
+<h1>Make local privacy optional</h1>
+
+<p>The browser vendors got it half right the first time around. There are many users who consider local storage privacy to be the primary feature they want from private browsing mode. However, we believe that local privacy is actually an orthogonal feature to network privacy: some users want both, but some only want one or the other.</p>
+
+<p>Therefore, we believe that users should be given the option in private browsing mode to choose if they want to record browsing history or not. Many users will want to use private mode regularly, and will only be concerned about ad network tracking as opposed to local storage (ie similar to the &quot;Do-Not-Track&quot; header&#39;s use case). These users will still want history and &quot;awesome bar&quot; functionality to work for them. Almost all users will want to maintain access to their bookmarks and previously stored history from within the mode.</p>
+
+<h1>Avoid Linkability: Minimize privacy options, plugins, and addons</h1>
+
+<p>Beyond the choice to store history and activity on disk, there <a href="https://trac.torproject.org/projects/tor/ticket/3100">should not be</a> numerous global options provided to private browsing modes.</p>
+
+<p>Each option that detectably alters browser behavior can be used as a fingerprinting tool on the part of ad networks. Similarly, <a href="http://blog.chromium.org/2010/06/extensions-in-incognito.html">all extensions should be disabled in the mode except as an opt-in basis</a>.</p>
+
+<p>Instead of global browser privacy options, <a href="https://wiki.mozilla.org/Privacy/Features/Site-based_data_management_UI">privacy decisions should be made per top-level url-bar domain</a> to eliminate the possibility of linkability between domains. For example, when a plugin object (or a JavaScript access of window.plugins) is present in a page, the user should be given the choice of allowing that plugin object <strong>for that top-level url-bar domain only</strong> . The same goes for exemptions to third party cookie policy, geo-location, and any other privacy permissions.</p>
+
+<p>If the user has indicated they do not care about local history storage, these permissions can be written to disk. Otherwise, they should remain memory-only.</p>
+
+<h1>Avoid Linkability: Isolate all non-private identifiers and state</h1>
+
+<p>All major browsers already make some effort to isolate explicit identifier state between non-private and private browsing (despite protest that their threat model does not actually require it). Obviously, privacy by design requires that this effort be continued.</p>
+
+<p>The ability to link users between private and non-private browsing modes via explicit identifiers, browser state, or TLS state should be considered a flaw in the mode. After all, the user may have gone to a wifi cafe to obtain IP address privacy, expecting identifier privacy from their browser. It is not fair to <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing#Use_Cases">the user</a> to abjectly fail to protect them in this case.</p>
+
+<h1>Avoid Linkability: Isolate state to top-level domain</h1>
+
+<p>However, users who want continuous &quot;Do-Not-Track&quot;-style privacy will likely use the mode regularly, possibly even exclusively, to avoid behavior advertising and associated tracking. <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing#The_Paranoid">These users</a> will also want to reduce the linkability between arbitrary sites they visit.</p>
+
+<p>This is a particular concern for Tor as many activists use web-based email, social networking sites, and other web services for organizing. Their activity in Tor Browser on one site should not trivially de-anonymize their activity on another site to ad networks and exits.</p>
+
+<p>To provide this property, all identifiers and state must be isolated to the top-level url bar domain, <a href="https://wiki.mozilla.org/Thirdparty">starting with cookies</a>, but extending to <a href="http://www.safecache.com/">the cache</a>, DOM Storage, client certificates, and HTTP auth.</p>
+
+<p>The benefit of this approach comes not only in the form of reduced linkability, but also in terms of simplified privacy UI. If all stored browser state and permissions become associated with the top-level url-bar domain, the six or seven different pieces of privacy UI governing these identifiers and permissions can become just <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=565965#c21">one piece of UI</a>, possibly with a context-menu option to drill down into specific types of state.</p>
+
+<p>We also believe that such an identifier model makes privacy relationships much more clear to the average user. Instead of having various disjoint relationships with and permissions for hundreds of omnipresent third-party domains, users will have one relationship with each of the top-level url-bar domains that they choose to interact with and authenticate to.</p>
+
+<p>Obviously, the downside of this enhanced protection against identifier linkability is that third party services that rely on third party cookie transmission may be impeded by this model. Long term, the hope is for standardized, in-browser support for services federated login and &quot;Like&quot; buttons. Google Chrome has actually implemented a feature called <a href="http://web-send.org/">Web-Send</a> that provides this functionality in a <a href="http://web-send.org/features.html">privacy preserving way</a>. They have even written a legacy HTML5 version that provides the same privacy properties, save for the need to trust <a href="http://webintroducer.net" title="http://webintroducer.net">http://webintroducer.net</a> for DOM Storage.</p>
+
+<p>We are also trying to introduce the notion of &quot;protected cookies&quot; in the alpha Tor Browser series, to allow users to specify they want to maintain a relationship with certain sites but not with others. To simplify this experience, we&#39;ve currently entirely disabled Third Party Cookies in Tor Browser, but we believe that this may end up breaking mashup and federated login sites that might still be able to function under the more lenient double-keyed cookie model.</p>
+
+<p>Several other interim steps are possible in the meantime. One could imagine iframe attributes that cause the browser chrome to request that a site be granted permission to set top-level cookies, or even a fully automated client-side mechanism that performs this promotion automatically for selected sites on mouse-click (such a mechanism is actually being prototyped by researchers right now).</p>
+
+<h1>Avoid Linkability: Reduce fingerprintable attributes</h1>
+
+<p>Once the linkability via explicit identifiers is eliminated, it becomes important to address the linkability that is possible through <a href="https://wiki.mozilla.org/Fingerprinting">browser fingerprinting</a>.</p>
+
+<p>Fingerprinting is a difficult issue to address, but that difficulty does not preclude a best-effort from being made at eliminating or mitigating the major culprits.</p>
+
+<p>Luckily, <a href="https://wiki.mozilla.org/Fingerprinting#Data">the major culprit</a> is plugin-provided information. Once plugins are restricted to only permitted top-level domains, fingerprinting linkability gets effectively reduced to the information available via CSS, Javascript, and HTTP headers.</p>
+
+<p>The largest culprits in CSS and Javascript are <a href="https://trac.torproject.org/projects/tor/ticket/2875">resolution and media information</a> (especially those properties that also provide information about the device and display as opposed to limiting information to the properties of the rendering window itself), the <a href="https://trac.torproject.org/projects/tor/ticket/2872">number of fonts that can be loaded per origin</a>, <a href="https://trac.torproject.org/projects/tor/ticket/3059">time-based fingerprints</a>, and <a href="https://trac.torproject.org/projects/tor/ticket/3323">WebGL device information</a>.</p>
+
+<p>It is likely that we need another Panopticlick-style study that focuses exclusively on CSS and Javascript to determine the relative importance of these components, but most of them can be addressed without serious breakage of functionality.</p>
+
+<h1>Avoid Linkability: Reduce default referer information</h1>
+
+<p>So far, the Tor Project has refrained from restricting referer primarily because we believe that restricting referer actually becomes less necessary if identifiers are isolated and linkability has been reduced.</p>
+
+<p>However, non-Tor users do have one important element of linkability: IP address. Even those that have an alternate Internet connection may still be bound to a single alternate IP. These users probably actually benefit in a real way from a restricted referer. It turns out a lot of <a href="http://w2spconf.com/2011/papers/privacyVsProtection.pdf">information is already smuggled or leaked via referrer</a> and URL parameters to third party sites, either deliberately or accidentally.</p>
+
+<p>Referer restriction could take multiple forms, but we believe more site flexibility is key. Sites actually have no way to restrict referer for most element types currently, and conversely, sites will always be able to subvert referer restrictions by smuggling the same data in POST or URL parameters.</p>
+
+<p>Therefore, we believe that referers should be restricted by default in private browsing mode using a same-origin policy where sites from different origins get either no referer, or a referer that is truncated to the top-level domain. However, sites should also be allowed to request an exemption to this rule on a per-site basis using an html attribute, which could trigger a chrome permissions request, or simply be granted automatically (on the assumption that they could just URL smuggle the data).</p>
+
+<p>While this may not seem like much of a protection, at least it allows us to differentiate negligence from deliberate information sharing, and to restrict information leakage in the default scenario. Again, because this data can always be transmitted between elements either directly or via a back-channel, it is better it be visible and apparent than covert.</p>
+
+<h1>Avoid Linkability: Restrict window.name to referer policy</h1>
+
+<p>Window.name poses many of the same conflicts as referer information. It gives sites a way to pass data between pages in the navigation lifespan of a tab. Sites can <a href="http://www.thomasfrank.se/sessionvars.html">use window.name to store data</a>, but are given no way to clear it easily. Hence it becomes very hard to differentiate deliberate data exchange from accidental leakage.</p>
+
+<p>Just like referer, it is obvious that window.name should be empty whenever the URL bar is rewritten by the user. There should be no legitimate, functional need for data exchange between two arbitrary random user-typed URL bar domains in any situation. Window.name on user-entered URLs should be cleared regardless of any changes to existing referer policy.</p>
+
+<p>Similarly, sites could be given the option to allow transmission of window.name to third party iframe elements, but the default should be to isolate window.name to the same origin policy. We do not believe this second step is required for Tor usage, but it may be helpful to non-Tor users, for similar reasons as the referer leakage.</p>
+
+<p>As such, <a href="https://trac.torproject.org/projects/tor/ticket/3414">our current plan</a> is to bind window.name&#39;s lifespan to the Referer header contents in our addon implementations.</p>
+
+<h1>Conclusion</h1>
+
+<p>We believe that privacy can be a differentiating feature for browsers. Even <a href="http://crypto.stanford.edu/%7Edabo/pubs/abstracts/privatebrowsing.html">early studies</a> revealed that many users immediately began using private browsing modes regularly, either by mistake or deliberately.</p>
+
+<p>We believe that <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing#Use_Cases">many of these users</a> deliberately use private browsing in cafes and on other alternate Internet connections assuming that they are being protected from ad tracking and behavioral analysis. We welcome user studies to determine what users actually expect and want from private browsing modes for the definitive answer, but obviously we&#39;re pretty convinced what the outcome will be.</p>
+
+<p>Privacy by design represents the technical realization of &quot;Do-Not-Track&quot;: the ability to actually opt-out (prevent) a complete behavior profile from being built to record and model your specific web viewing habits.</p>
+
+<p>In order for a private browsing mode to succeed in actually providing privacy by design, it must reduce activity linkability in all forms. Six out of the seven items mentioned above are really linkability issues at their core. Reducing the ability of the adversary to link private activity to non-private activity and also to other private activity is what privacy by design is all about. This reduction in linkability is what prevents a behavioral profile from being constructed.</p>
+
+<p>The Tor Project looks forward to a day where privacy by design becomes a key feature of major browsers. We would love to be able to ship a vastly simplified browser extension that contains only a compiled Tor binary and some minimal addon code that simply &quot;upgrades&quot; the user&#39;s private browsing mode into a fully functional anonymous mode. The ability to do this would vastly simplify our package offerings, and make it significantly easier to get our software into censored and oppressed regions.</p>
+
+<p>However, until then, we must do our best to attempt to provide software that we believe will provide the privacy and security that users have come to expect from us. For now, this means shipping our own browser.</p>
+
+</div>
+<p>- mikeperry</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

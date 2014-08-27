@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor Weekly News — January 29th, 2014</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor Weekly News — January 29th, 2014</h2>
+<p class="meta">29 Jan 2014</p>
+
+<div class="post">
+<p>Welcome to the fourth issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+
+<h1>Tor Browser Bundle 3.5.1 is released</h1>
+
+<p>An update to the Tor Browser Bundle <a href="https://blog.torproject.org/blog/tor-browser-351-released">has been released</a> on January 27th. The new release contains Tor 0.2.4.20 which fixes <a href="https://bugs.torproject.org/10456">a bug creating useless extra circuits</a>. It also fixes a denial of service condition in OpenSSL and removes “addons.mozilla.org” from the NoScript whitelist.</p>
+
+<p>Arabic bundles are back after a short hiatus. Support for screen readers is also enabled again and has been <a href="https://lists.torproject.org/pipermail/tor-talk/2014-January/031575.html">confirmed working</a>.</p>
+
+<p>HTTPS Everywhere has been updated to version 3.4.5. It contains a new rule to secure connections to Stack Exchange and its <a href="https://tor.stackexchange.com/">Tor corner</a>.</p>
+
+<p>Look at the blog post for a more detailed changelog. And now, head over to the <a href="https://www.torproject.org/download/download-easy.html">download page</a> and upgrade!</p>
+
+<h1>New Tor denial of service attacks and defenses</h1>
+
+<p>Rob Jansen, Florian Tschorsch, Aaron Johnson, and Björn Scheuermann have been working on a new paper entitled <a href="https://www-users.cs.umn.edu/%7Ejansen/publications/sniper-ndss2014.pdf">The Sniper Attack: Anonymously Deanonymizing and Disabling the Tor Network</a>. As research papers are sometimes hard to fully understand, Rob Jansen has published a new <a href="https://blog.torproject.org/blog/new-tor-denial-service-attacks-and-defenses">blog post</a> giving an overview of the attacks, the defenses, what has been modified in Tor so far, and what open questions remain.</p>
+
+<p>“We found a new vulnerability in the design of Tor’s flow control algorithm that can be exploited to remotely crash Tor relays. The attack is an extremely low resource attack in which an adversary’s bandwidth may be traded for a target relay’s memory (RAM) at an amplification rate of one to two orders of magnitude” explains Rob.</p>
+
+<p>The authors have been working with Tor developers on integrating defenses before publishing: “Due to our devastating findings, we also<br>
+designed three defenses that mitigate our attacks, one of which provably renders the attack ineffective. Defenses have been implemented and deployed into the Tor software to ensure that the Tor network is no longer vulnerable as of Tor version 0.2.4.18-rc and later.”</p>
+
+<p>Be sure to read the blog post and the paper in full if you want to know more.</p>
+
+<h1>Good times at Real World Crypto 2014</h1>
+
+<p>On the second week of January, a bunch of Tor developers attended the <a href="https://realworldcrypto.wordpress.com/">Real World Crypto workshop</a> in New York City.</p>
+
+<p>The workshop featured a nice blend of industry and academic crypto talks and a fruitful hallway track. Many researchers involved with Tor and privacy technologies were also present.</p>
+
+<p>As far as talks were concerned, Tom Shrimpton presented the <a href="https://fteproxy.org/">Format-Transforming Encryption (FTE) traffic obfuscation tool</a> which is currently being developed to <a href="https://bugs.torproject.org/10362">work as a Tor pluggable transport</a>. The Tor developers present also worked with Kevin Dyer, one of the paper authors and developers of FTE, towards including FTE in the Pluggable Transport Tor bundles.</p>
+
+<p>On the censorship circumvention front, I2P developers showed interest in using pluggable transports. Work has been done to identify various problems with the current PT spec that need to be fixed so that other projects can <a href="https://bugs.torproject.org/10629">use pluggable transports more smoothly</a>.</p>
+
+<p>Furthermore, there were talks with the developers of <a href="https://uproxy.org/">UProxy</a> (a censorship circumvention tool made by Google) and helped them understand how pluggable transports work and what they would need to do if they wanted to use them in UProxy. They seemed interested and motivated to work on this.</p>
+
+<p>The Tor developers also worked on the <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/224-rend-spec-ng.txt">Next Generation Hidden Services</a> project, and sketched out some ways to move forward even though there are some <a href="https://lists.torproject.org/pipermail/tor-dev/2014-January/006099.html">open research questions</a> with the current design.</p>
+
+<p>Nick Mathewson commented on IRC: “I think the hallway track to main conference utility ratio was higher than usual, since the conference actually sticks practitioners and cryptographers in the same room pretty reliably.” Let’s hope for next year!</p>
+
+<h1>The media and some terminology</h1>
+
+<p>BusinessWeek published <a href="http://www.businessweek.com/articles/2014-01-23/tor-anonymity-software-vs-dot-the-national-security-agency">The inside story of Tor, the best Internet anonymity tool the government ever built</a>. Better that what one can usually read about Tor in the press, the piece — courtesy of Dune Lawrence — still sparkled a discussion on the tor-talk mailing list <a href="https://lists.torproject.org/pipermail/tor-talk/2014-January/031863.html">about terminology</a>.</p>
+
+<p>Katya Titov quoted a misleading part of the article: “In addition to facilitating anonymous communication online, Tor is an access point to the ‘dark Web’, vast reaches of the Internet that are intentionally kept hidden and don’t show up in Google or other search engines, […].”</p>
+
+<p>As references to the “dark web”, the “deep web”, or the “dark deep shady Knockturn Alley of the Internet” have been popping up more and more in the media over the past months, Katya wanted to come up with proper definitions of commonly misunderstood terms to reduce misinformation and <a href="http://en.wikipedia.org/wiki/Fear,_uncertainty_and_doubt">FUD</a>.</p>
+
+<p>She summarized the result of the discussion in a new <a href="https://trac.torproject.org/projects/tor/wiki/doc/HowBigIsTheDarkWeb">HowBigIsTheDarkWeb</a> wiki page. Be sure to point it to your fellow journalists!</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>To follow up on last week’s Tor Weekly News coverage, Philipp Winter wrote a blog post to explain <a href="https://blog.torproject.org/blog/what-spoiled-onions-paper-means-tor-users">what the “Spoiled Onions” paper means for Tor users</a>.</p>
+
+<p>Thanks to Sukhbir Singh, users with @outlook.com email addresses can now <a href="https://bugs.torproject.org/6591#comment:4">request bridges and bundles via email</a>.</p>
+
+<p>Karsten Loesing <a href="https://bugs.torproject.org/10699#comment:3">dug some statistics</a> about the Tor Weather service. There are currently 1846 different email addresses subscribed for 2349 Tor relays.</p>
+
+<p>Tor developers will be <a href="https://twitter.com/torproject/status/427922491948818432">present</a> at the Mozilla booth during FOSDEM’14 . Drop by if you have questions or want to get involved in Tor!</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>Users repeatedly contact Tor help desk about unreachable hidden services. If that happens, please first make sure the system clock is accurate and try to visit the <a href="http://idnxcnkne4qt76tg.onion/">hidden service for the Tor Project’s website</a> (<code>idnxcnkne4qt76tg.onion</code>). If it works, it means that Tor is working as it should and there’s nothing more the Tor Project can do. Hidden services are solely under the responsibility of their operators and they are the only one that can do something when a hidden service goes offline.</p>
+
+<h1>News from Tor StackExchange</h1>
+
+<p>Alex Ryan has been experiencing <a href="https://tor.stackexchange.com/q/1302/88">crashes of his relay running on a Raspberry Pi</a> due to circuit creation storms. He found out that the problem disappeared after upgrading to the new 0.2.4 series of Tor. There are currently no official Raspbian packages, so users will have to build the package manually from source.</p>
+
+<p>User cypherpunks wanted to know <a href="https://tor.stackexchange.com/q/1339/88">how to report security issues to the Tor Project</a>. Until <a href="https://bugs.torproject.org/9186">a proper process is decided</a>, the best way at the moment is to contact Nick Mathewson, Andrea Shepard, or Roger Dingledine privately using their GnuPG keys.</p>
+
+<p><a href="https://tor.stackexchange.com/q/1337/88">How many hidden services can be served from a single Tor instance?</a> Syrian Watermelon is looking to know if there is a hard limit and how memory usage will go. The question is still open and has attracted some interest from other users.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, George Kadianakis, qbi, Karsten Loesing and dope457.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+</div>
+<p>- lunar</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

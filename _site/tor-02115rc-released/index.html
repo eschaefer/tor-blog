@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.1.15-rc released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.1.15-rc released</h2>
+<p class="meta">01 Jun 2009</p>
+
+<div class="post">
+<p>Tor 0.2.1.15-rc marks the second release candidate for the 0.2.1.x<br>
+series. It fixes a major bug on fast exit relays, as well as a variety<br>
+of more minor bugs.</p>
+
+<p>This is a release candidate! That means that we don&#39;t know of any<br>
+remaining show-stopping bugs, and this will become the new stable if<br>
+there are no problems. Please test it, and tell us about any problems<br>
+that you find.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p>Changes in version 0.2.1.15-rc - 2009-05-25</p>
+
+<p><strong>Major bugfixes (on 0.2.0.x):</strong> - Fix a timing-dependent, allocator-dependent, DNS-related crash bug that would occur on some exit nodes when DNS failures and timeouts occurred in certain patterns. Fix for bug 957.</p>
+
+<p><strong>Minor bugfixes (on 0.2.0.x):</strong> - Actually return -1 in the error case for read_bandwidth_usage().<br>
+ Harmless bug, since we currently don&#39;t care about the return value<br>
+ anywhere. Bugfix on 0.2.0.9-alpha.
+- Provide a more useful log message if bug 977 (related to buffer<br>
+ freelists) ever reappears, and do not crash right away.
+- Fix an assertion failure on 64-bit platforms when we allocated<br>
+ memory right up to the end of a memarea, then realigned the memory<br>
+ one step beyond the end. Fixes a possible cause of bug 930.
+- Protect the count of open sockets with a mutex, so we can&#39;t<br>
+ corrupt it when two threads are closing or opening sockets at once.<br>
+ Fix for bug 939. Bugfix on 0.2.0.1-alpha.
+- Don&#39;t allow a bridge to publish its router descriptor to a<br>
+ non-bridge directory authority. Fixes part of bug 932.
+- When we change to or from being a bridge, reset our counts of<br>
+ client usage by country. Fixes bug 932.
+- Fix a bug that made stream bandwidth get misreported to the<br>
+ controller.
+- Stop using malloc_usable_size() to use more area than we had<br>
+ actually allocated: it was safe, but made valgrind really unhappy.
+- Fix a memory leak when v3 directory authorities load their keys<br>
+ and cert from disk. Bugfix on 0.2.0.1-alpha.</p>
+
+<p><strong>Minor bugfixes (on 0.2.1.x):</strong> - Fix use of freed memory when deciding to mark a non-addable<br>
+ descriptor as never-downloadable. Bugfix on 0.2.1.9-alpha.</p>
+
+<p>The original release announcement can be found at <a href="http://archives.seul.org/or/talk/May-2009/msg00133.html" title="http://archives.seul.org/or/talk/May-2009/msg00133.html">http://archives.seul.org/or/talk/May-2009/msg00133.html</a></p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

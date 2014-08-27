@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.3.5-alpha is out</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.3.5-alpha is out</h2>
+<p class="meta">01 Oct 2011</p>
+
+<div class="post">
+<p>Tor 0.2.3.5-alpha fixes two bugs that make it possible to enumerate<br>
+ bridge relays; fixes an assertion error that many users started hitting<br>
+ today; and adds the ability to refill token buckets more often than<br>
+ once per second, allowing significant performance improvements.</p>
+
+<p><strong>Security fixes:</strong></p>
+
+<ul>
+<li>Bridge relays now do their directory fetches inside Tor TLS<br>
+connections, like all the other clients do, rather than connecting<br>
+directly to the DirPort like public relays do. Removes another<br>
+avenue for enumerating bridges. Fixes bug 4115; bugfix on 0.2.0.35.</li>
+<li>Bridges relays now build circuits for themselves in a more similar<br>
+way to how clients build them. Removes another avenue for<br>
+enumerating bridges. Fixes bug 4124; bugfix on 0.2.0.3-alpha,<br>
+when bridges were introduced.</li>
+</ul>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Fix an &quot;Assertion md-&gt;held_by_node == 1 failed&quot; error that could<br>
+occur when the same microdescriptor was referenced by two node_t<br>
+objects at once. Fix for bug 4118; bugfix on Tor 0.2.3.1-alpha.</li>
+</ul>
+
+<p><strong>Major features (networking):</strong></p>
+
+<ul>
+<li>Add a new TokenBucketRefillInterval option to refill token buckets<br>
+more frequently than once per second. This should improve network<br>
+performance, alleviate queueing problems, and make traffic less<br>
+bursty. Implements proposal 183; closes ticket 3630. Design by<br>
+Florian Tschorsch and Bj√∂rn Scheuermann; implementation by<br>
+Florian Tschorsch.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Change an integer overflow check in the OpenBSD_Malloc code so<br>
+that GCC is less likely to eliminate it as impossible. Patch<br>
+from Mansour Moufid. Fixes bug 4059.</li>
+</ul>
+
+<p><strong>Minor bugfixes (usability):</strong></p>
+
+<ul>
+<li>Downgrade log messages about circuit timeout calibration from<br>
+&quot;notice&quot; to &quot;info&quot;: they don&#39;t require or suggest any human<br>
+intervention. Patch from Tom Lowenthal. Fixes bug 4063;<br>
+bugfix on 0.2.2.14-alpha.</li>
+</ul>
+
+<p><strong>Minor features (diagnostics):</strong></p>
+
+<ul>
+<li>When the system call to create a listener socket fails, log the<br>
+error message explaining why. This may help diagnose bug 4027.</li>
+</ul>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

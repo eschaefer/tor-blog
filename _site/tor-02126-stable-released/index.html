@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.1.26-stable released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.1.26-stable released</h2>
+<p class="meta">10 Jun 2010</p>
+
+<div class="post">
+<p>Tor 0.2.1.26 addresses the recent connection and memory overload problems we&#39;ve been seeing on relays, especially relays with their DirPort open. If your relay has been crashing, or you turned it off because it used too many resources, give this release a try.</p>
+
+<p>This release also fixes yet another instance of broken OpenSSL libraries that was causing some relays to drop out of the consensus.</p>
+
+<p>Available for download at <a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a></p>
+
+<p>Changes in version 0.2.1.26<br>
+<strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Teach relays to defend themselves from connection overload. Relays<br>
+now close idle circuits early if it looks like they were intended<br>
+for directory fetches. Relays are also more aggressive about closing<br>
+TLS connections that have no circuits on them. Such circuits are<br>
+unlikely to be re-used, and tens of thousands of them were piling<br>
+up at the fast relays, causing the relays to run out of sockets<br>
+and memory. Bugfix on 0.2.0.22-rc (where clients started tunneling<br>
+their directory fetches over TLS).</li>
+<li>Fix SSL renegotiation behavior on OpenSSL versions like on Centos<br>
+that claim to be earlier than 0.9.8m, but which have in reality<br>
+backported huge swaths of 0.9.8m or 0.9.8n renegotiation<br>
+behavior. Possible fix for some cases of bug 1346.</li>
+<li>Directory mirrors were fetching relay descriptors only from v2<br>
+directory authorities, rather than v3 authorities like they should.<br>
+Only 2 v2 authorities remain (compared to 7 v3 authorities), leading<br>
+to a serious bottleneck. Bugfix on 0.2.0.9-alpha. Fixes bug 1324.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Finally get rid of the deprecated and now harmful notion of &quot;clique<br>
+mode&quot;, where directory authorities maintain TLS connections to<br>
+every other relay.</li>
+</ul>
+
+<p><strong>Testsuite fixes:</strong></p>
+
+<ul>
+<li>In the util/threads test, no longer free the test_mutex before all<br>
+worker threads have finished. Bugfix on 0.2.1.6-alpha.</li>
+<li>The master thread could starve the worker threads quite badly on<br>
+certain systems, causing them to run only partially in the allowed<br>
+window. This resulted in test failures. Now the master thread sleeps<br>
+occasionally for a few microseconds while the two worker-threads<br>
+compete for the mutex. Bugfix on 0.2.0.1-alpha.</li>
+</ul>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

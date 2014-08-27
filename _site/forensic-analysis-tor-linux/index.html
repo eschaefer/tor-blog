@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Forensic Analysis of Tor on Linux</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Forensic Analysis of Tor on Linux</h2>
+<p class="meta">13 Apr 2013</p>
+
+<div class="post">
+<p>As part of a deliverable for two of our sponsors ( <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorJ">Sponsor J,</a> <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorL">Sponsor L</a>), I have been working on a forensic analysis of the Tor Browser Bundle. In this three part series, I will summarize the most interesting or significant traces left behind after using the bundle. This post will cover Debian Linux ( <a href="https://trac.torproject.org/projects/tor/ticket/8166">#8166</a>), part two will cover Windows 7, and part three will cover OS X 10.8.</p>
+
+<h3>Process</h3>
+
+<p>I set up a virtual machine with a fresh install of Debian 6.0 Squeeze, logged in once and shut it down cleanly. I then connected the virtual drive to another virtual machine and used <em>dd</em> to create an image of the drive. I also used <em>hashdeep</em> to compute hashes for every file on the drive, and <em>rsync</em> to copy all the files over to an external drive.</p>
+
+<p>After having secured a copy of the clean virtual machine, I rebooted the system, connected an external drive, and copied the Tor Browser Bundle (version 2.3.25-6, 64-bit) from the external drive to my Debian home directory. I extracted the package archive and started the Tor Browser Bundle by running ./start-tor-browser inside the Tor Browser directory.</p>
+
+<p>Once the Tor Browser was up and running, I browsed to a few pages, read a few paragraphs here and there, clicked on a few links, and then shut it down by closing the Tor Browser and clicking on the <em>Exit</em>-button in Vidalia. The Tor Browser did not crash and I did not see any error messages. I deleted the Tor Browser directory and the tarball using <em>rm -rf</em>.</p>
+
+<p>I repeated the steps with <em>dd</em>, <em>hashdeep</em>, and <em>rsync</em> to create a copy of the tainted virtual machine.</p>
+
+<h3>Results</h3>
+
+<p>Using <em>hashdeep</em>, I compared the hashes from the tainted virtual machine against the hashes from the clean virtual machine: <a href="https://trac.torproject.org/projects/tor/attachment/ticket/8166/debian_changed_files.txt">68 files</a> had a hash that did not match any of the hashes in the clean set. The most interesting files are:</p>
+
+<p><strong>~/.local/share/gvfs-metadata/home</strong> : contains the filename of the Tor Browser Bundle tarball: <em>tor-browser-gnu-linux-x86\</em>64-2.3.25-5-dev-en-US.tar.gz_. GVFS is the virtual filesystem for the GNOME desktop, so this result will probably vary depending on the window manager used. I have created <a href="https://trac.torproject.org/projects/tor/ticket/8695">#8695</a> for this issue.</p>
+
+<p><strong>~/.xsession-errors</strong> : contains the following string: <em>“Window manager warning: Buggy client sent a \</em>NET_ACTIVE_WINDOW message with a timestamp of 0 for 0x3800089 (Tor Browse)”<em>. It is worth noting that a file named _.xsession-errors.old</em> could also exist. I have created <a href="https://trac.torproject.org/projects/tor/ticket/8696">#8696</a> for this issue.</p>
+
+<p><strong>~/.bash_history</strong> : contains a record of commands typed into the terminal. I started the Tor Browser Bundle from the command line, so this file contains lines such as <em>./start-tor-browser</em>. I have created <a href="https://trac.torproject.org/projects/tor/ticket/8697">#8697</a> for this issue.</p>
+
+<p><strong>/var/log/daemon.log</strong> , <strong>/var/log/syslog</strong> , <strong>/var/log/kern.log</strong> , <strong>/var/log/messages</strong> : contains information about attached devices. I had an external drive attached to the virtual machine, so these files contain lines such as <em>“Mounted /dev/sdb1 (Read-Write, label “THA”, NTFS 3.1)”</em> and <em>“Initializing USB Mass Storage driver…”</em>.</p>
+
+</div>
+<p>- Runa</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

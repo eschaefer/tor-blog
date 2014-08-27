@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.2.18-alpha available</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.2.18-alpha available</h2>
+<p class="meta">17 Nov 2010</p>
+
+<div class="post">
+<p>Tor 0.2.2.18-alpha fixes several crash bugs that have been nagging us lately, makes unpublished bridge relays able to detect their IP address, and fixes a wide variety of other bugs to get us much closer to a stable release.</p>
+
+<p><a href="https://www.torproject.org/download/download" title="https://www.torproject.org/download/download">https://www.torproject.org/download/download</a></p>
+
+<p>Packages will be appearing over the next few days. The original version of this announcement is at <a href="http://archives.seul.org/or/talk/Nov-2010/msg00082.html" title="http://archives.seul.org/or/talk/Nov-2010/msg00082.html">http://archives.seul.org/or/talk/Nov-2010/msg00082.html</a>.</p>
+
+<p>Changes in version 0.2.2.18-alpha - 2010-11-16<br>
+ o Major bugfixes:<br>
+ - Do even more to reject (and not just ignore) annotations on<br>
+ router descriptors received anywhere but from the cache. Previously<br>
+ we would ignore such annotations at first, but cache them to disk<br>
+ anyway. Bugfix on 0.2.0.8-alpha. Found by piebeer.<br>
+ - Do not log messages to the controller while shrinking buffer<br>
+ freelists. Doing so would sometimes make the controller connection<br>
+ try to allocate a buffer chunk, which would mess up the internals<br>
+ of the freelist and cause an assertion failure. Fixes bug 1125;<br>
+ fixed by Robert Ransom. Bugfix on 0.2.0.16-alpha.<br>
+ - Learn our external IP address when we&#39;re a relay or bridge, even if<br>
+ we set PublishServerDescriptor to 0. Bugfix on 0.2.0.3-alpha,<br>
+ where we introduced bridge relays that don&#39;t need to publish to<br>
+ be useful. Fixes bug 2050.<br>
+ - Maintain separate TLS contexts and certificates for incoming and<br>
+ outgoing connections in bridge relays. Previously we would use the<br>
+ same TLS contexts and certs for incoming and outgoing connections.<br>
+ Bugfix on 0.2.0.3-alpha; addresses bug 988.<br>
+ - Maintain separate identity keys for incoming and outgoing TLS<br>
+ contexts in bridge relays. Previously we would use the same<br>
+ identity keys for incoming and outgoing TLS contexts. Bugfix on<br>
+ 0.2.0.3-alpha; addresses the other half of bug 988.<br>
+ - Avoid an assertion failure when we as an authority receive a<br>
+ duplicate upload of a router descriptor that we already have,<br>
+ but which we previously considered an obsolete descriptor.<br>
+ Fixes another case of bug 1776. Bugfix on 0.2.2.16-alpha.<br>
+ - Avoid a crash bug triggered by looking at a dangling pointer while<br>
+ setting the network status consensus. Found by Robert Ransom.<br>
+ Bugfix on 0.2.2.17-alpha. Fixes bug 2097.<br>
+ - Fix a logic error where servers that _didn&#39;t_ act as exits would<br>
+ try to keep their server lists more aggressively up to date than<br>
+ exits, when it was supposed to be the other way around. Bugfix<br>
+ on 0.2.2.17-alpha.</p>
+
+<p>o Minor bugfixes (on Tor 0.2.1.x and earlier):<br>
+ - When we&#39;re trying to guess whether we know our IP address as<br>
+ a relay, we would log various ways that we failed to guess<br>
+ our address, but never log that we ended up guessing it<br>
+ successfully. Now add a log line to help confused and anxious<br>
+ relay operators. Bugfix on 0.1.2.1-alpha; fixes bug 1534.<br>
+ - Bring the logic that gathers routerinfos and assesses the<br>
+ acceptability of circuits into line. This prevents a Tor OP from<br>
+ getting locked in a cycle of choosing its local OR as an exit for a<br>
+ path (due to a .exit request) and then rejecting the circuit because<br>
+ its OR is not listed yet. It also prevents Tor clients from using an<br>
+ OR running in the same instance as an exit (due to a .exit request)<br>
+ if the OR does not meet the same requirements expected of an OR<br>
+ running elsewhere. Fixes bug 1859; bugfix on 0.1.0.1-rc.<br>
+ - Correctly describe errors that occur when generating a TLS object.<br>
+ Previously we would attribute them to a failure while generating a<br>
+ TLS context. Patch by Robert Ransom. Bugfix on 0.1.0.4-rc; fixes<br>
+ bug 1994.<br>
+ - Enforce multiplicity rules when parsing annotations. Bugfix on<br>
+ 0.2.0.8-alpha. Found by piebeer.<br>
+ - Fix warnings that newer versions of autoconf produced during<br>
+ ./autogen.sh. These warnings appear to be harmless in our case,<br>
+ but they were extremely verbose. Fixes bug 2020.</p>
+
+<p>o Minor bugfixes (on Tor 0.2.2.x):<br>
+ - Enable protection of small arrays whenever we build with gcc<br>
+ hardening features, not only when also building with warnings<br>
+ enabled. Fixes bug 2031; bugfix on 0.2.2.14-alpha. Reported by keb.</p>
+
+<p>o Minor features:<br>
+ - Make hidden services work better in private Tor networks by not<br>
+ requiring any uptime to join the hidden service descriptor<br>
+ DHT. Implements ticket 2088.<br>
+ - Rate-limit the &quot;your application is giving Tor only an IP address&quot;<br>
+ warning. Addresses bug 2000; bugfix on 0.0.8pre2.<br>
+ - When AllowSingleHopExits is set, print a warning to explain to the<br>
+ relay operator why most clients are avoiding her relay.<br>
+ - Update to the November 1 2010 Maxmind GeoLite Country database.</p>
+
+<p>o Code simplifications and refactoring:<br>
+ - When we fixed bug 1038 we had to put in a restriction not to send<br>
+ RELAY_EARLY cells on rend circuits. This was necessary as long<br>
+ as relays using Tor 0.2.1.3-alpha through 0.2.1.18-alpha were<br>
+ active. Now remove this obsolete check. Resolves bug 2081.<br>
+ - Some options used different conventions for uppercasing of acronyms<br>
+ when comparing manpage and source. Fix those in favor of the<br>
+ manpage, as it makes sense to capitalize acronyms.<br>
+ - Remove the torrc.complete file. It hasn&#39;t been kept up to date<br>
+ and users will have better luck checking out the manpage.<br>
+ - Remove the obsolete &quot;NoPublish&quot; option; it has been flagged<br>
+ as obsolete and has produced a warning since 0.1.1.18-rc.<br>
+ - Remove everything related to building the expert bundle for OS X.<br>
+ It has confused many users, doesn&#39;t work right on OS X 10.6,<br>
+ and is hard to get rid of once installed. Resolves bug 1274.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

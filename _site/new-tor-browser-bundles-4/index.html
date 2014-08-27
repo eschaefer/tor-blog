@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>New Tor Browser Bundles</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>New Tor Browser Bundles</h2>
+<p class="meta">01 Sep 2011</p>
+
+<div class="post">
+<p>We have updated the stable Tor Browser Bundles to Firefox 6.</p>
+
+<p><strong>There are no longer any stable Tor Browser Bundles with the 3.6.x series of Firefox.</strong> We were using pre-built binaries on some platforms and owing to the recent <a href="https://blog.torproject.org/blog/diginotar-debacle-and-what-you-should-do-about-it">DigiNotar debacle</a>, we no longer felt comfortable shipping versions of Firefox that we were unable to patch. We build all Firefox 6 binaries from source, with our own <a href="https://gitweb.torproject.org/torbrowser.git/tree/refs/heads/maint-2.2:/src/current-patches">set of patches</a>, including some <a href="https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f603a3bf3716f6165caa1">specific to the DigiNotar issue</a>.</p>
+
+<p>We&#39;d originally planned to drop support for Firefox 3.6 bundles on September 10th, but this moved up the date a bit. The new Tor Browser Bundles are much more feature-rich than the previous bundles, but users may still experience unexpected behavior. Please report all bugs to <a href="https://trac.torproject.org/" title="https://trac.torproject.org/">https://trac.torproject.org/</a>.</p>
+
+<p>Windows users will see the biggest difference between the old stable bundle and the new stable bundle. In addition to upgrading Firefox, it includes the latest stable release of <a href="http://blog.torproject.org/blog/tor-02232-released">Tor 0.2.2.32</a>, <a href="http://blog.torproject.org/blog/vidalia-0214-out">Vidalia 0.2.14</a> and <a href="http://blog.torproject.org/blog/torbutton-141-released">Torbutton 1.4.1</a>. These three upgrades together allow you to run the Tor Browser Bundle at the same time as a system Tor, or even multiple copies of the Tor Browser Bundle in different directories, by <a href="https://trac.torproject.org/projects/tor/ticket/2264">dynamically choosing available ports</a>.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Tor Browser Bundle (2.2.32-2)</strong></p>
+
+<ul>
+<li>Update Firefox to 6.0.1, with an additional patch to exclude DigiNotar completely
+
+<ul>
+<li><a href="https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f603a3bf3716f6165caa1" title="https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f603a3bf3716f6165caa1">https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f...</a></li>
+</ul></li>
+</ul>
+
+<p>For the full saga, read:</p>
+
+<ul>
+<li><a href="http://blog.mozilla.com/security/2011/08/29/fraudulent-google-com-certificate/" title="http://blog.mozilla.com/security/2011/08/29/fraudulent-google-com-certificate/">http://blog.mozilla.com/security/2011/08/29/fraudulent-google-com-certif...</a></li>
+<li><p><a href="http://googleonlinesecurity.blogspot.com/2011/08/update-on-attempted-man-in-middle.html" title="http://googleonlinesecurity.blogspot.com/2011/08/update-on-attempted-man-in-middle.html">http://googleonlinesecurity.blogspot.com/2011/08/update-on-attempted-man...</a></p>
+
+<ul>
+<li><strong>OS X specific:</strong> Rebuild 32-bit binaries with backwards compatibility options so TBB works on OSX 10.5 (closes: #3671)</li>
+<li>Update Libevent to 2.0.14-stable</li>
+<li>Update torbrowser.version string in prefs.js to have more information (see #3504)</li>
+<li>Enable internationalized bundles by adding and changing the<br>
+general.useragent.locale pref in prefs.js</li>
+</ul></li>
+</ul>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

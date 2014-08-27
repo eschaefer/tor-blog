@@ -1,0 +1,41 @@
+---
+layout: post
+title: "Tor 0.2.2.30-rc is out"
+permalink: tor-02230-rc-out
+date: 2011-07-14
+author: erinn
+category: blog
+tags: ["release candidate", "tor"]
+---
+
+Tor 0.2.2.30-rc is the first release candidate for the Tor 0.2.2.x  
+series. It fixes a few smaller bugs, but generally appears stable.  
+Please test it and let us know whether it is!
+
+[https://www.torproject.org/download](https://www.torproject.org/download "https://www.torproject.org/download")
+
+**Changes in version 0.2.2.30-rc - 2011-07-07**  
+**Minor bugfixes:**
+
+- Send a SUCCEEDED stream event to the controller when a reverse  
+resolve succeeded. Fixes bug 3536; bugfix on 0.0.8pre1. Issue  
+discovered by katmagic.
+- Always NUL-terminate the sun\_path field of a sockaddr\_un before  
+passing it to the kernel. (Not a security issue: kernels are  
+smart enough to reject bad sockaddr\_uns.) Found by Coverity;  
+CID #428. Bugfix on Tor 0.2.0.3-alpha.
+- Don't stack-allocate the list of supplementary GIDs when we're  
+about to log them. Stack-allocating NGROUPS\_MAX gid\_t elements  
+could take up to 256K, which is way too much stack. Found by  
+Coverity; CID #450. Bugfix on 0.2.1.7-alpha.
+- Add BUILDTIMEOUT\_SET to the list returned by the 'GETINFO  
+events/names' control-port command. Bugfix on 0.2.2.9-alpha;  
+fixes part of bug 3465.
+- Fix a memory leak when receiving a descriptor for a hidden  
+service we didn't ask for. Found by Coverity; CID #30. Bugfix  
+on 0.2.2.26-beta.
+
+**Minor features:**
+
+- Update to the July 1 2011 Maxmind GeoLite Country database.
+

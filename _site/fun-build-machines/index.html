@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Fun with build machines</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Fun with build machines</h2>
+<p class="meta">06 Aug 2008</p>
+
+<div class="post">
+<p>Perhaps you&#39;ve noticed that the packages for CentOS 4 and OSX Tiger/10.4 haven&#39;t been updated lately. Welcome to dead hard drives.</p>
+
+<p>For a long while, I used <a href="http://www.vmware.com/products/server/">VMware Server</a> for guest OSes to build the various rpm and windows packages. This mostly worked well. And then both drives in the physical server I used to host the vmware instance failed. A two-drive RAID 1 array doesn&#39;t like it when both drives fail. I replaced the drives, re-installed Debian, and attempted to install vmware server again. The vmware kernel module refused to load. I tried the old tricks to get it to work, nothing. I finally looked at some script/patch that I found via Google, and got the module to load. Then my license key didn&#39;t work anymore.</p>
+
+<p>In frustration, I gave up and installed <a href="http://www.virtualbox.org/">VirtualBox</a>. CentOS 4 defaults to using an SMP kernel on install, which Virtualbox (aka qemu) doesn&#39;t like at all. CentOS 4 installs just fine, it just won&#39;t boot after install. I haven&#39;t had time to further fix the problem. For the time being, there&#39;s no CentOS 4 (Redhat 4 rpms) for Tor.</p>
+
+<p>As for OSX, well, there was no raid array of any kind, just a single drive in a mac mini. It died in a fit of 0xE0030005 (Undefined) errors and now won&#39;t boot at all. A new drive is on the way. I expect to have OSX Tiger/10.4 packages in a week or so. The good news is that the <a href="http://www.everymac.com/systems/apple/imac/stats/imac_se_dv_400.html">Panther Mac</a> continues to work just fine.</p>
+
+<p>Perhaps it&#39;s time to start using Amazon&#39;s EC2 or something similar instead of messing with all this hardware and virtualization software. Or maybe I should work on hacking OSX 10.4 and 10.5 into virtualbox.</p>
+
+<p>** Update 2008-08-06: new drive was DOA. And it appears the logic board on the mac mini is fried. Ugh.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

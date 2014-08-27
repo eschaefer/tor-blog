@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Run Tor as a bridge in the Amazon Cloud</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Run Tor as a bridge in the Amazon Cloud</h2>
+<p class="meta">21 Nov 2011</p>
+
+<div class="post">
+<p>The Tor Cloud project gives you a user-friendly way of deploying bridges to help users access an uncensored Internet. By setting up a bridge, you donate bandwidth to the Tor network and help improve the safety and speed at which users can access the Internet.</p>
+
+<p>Bridges are Tor relays that aren&#39;t listed in the main directory. This means that to use a bridge, you&#39;ll need to locate one first. And because there is no complete public list of all the bridges, they are also harder to block. A bridge will act as the first hop in a circuit, and will only forward traffic on to other relays in the Tor network.</p>
+
+<p>Setting up a Tor bridge on Amazon EC2 is simple and will only take you a couple of minutes. The images have been configured with automatic package updates and port forwarding, so you do not have to worry about Tor not working or the server not getting security updates.</p>
+
+<p>You should not have to do anything once the instance is up and running. Tor will start up as a bridge, confirm that it is reachable from the outside, and then tell the bridge authority that it exists. After that, the address for your bridge will be given out to users.</p>
+
+<p>To help new customers get started in the cloud, Amazon is introducing a free usage tier. The Tor Cloud images are all micro instances, and new customers will be able to run a free micro instance for a whole year. The Tor Cloud images have been configured with a bandwidth limit, so customers who don&#39;t qualify for the free usage tier should only have to pay an estimated $30 a month.</p>
+
+<p>For more information, see the <a href="https://cloud.torproject.org/">Tor Cloud</a> website.</p>
+
+<p><strong>UPDATE</strong> : Some users have asked about the AWS free usage tier and pointed out that it only includes 15 GB of bandwidth out per month. I have updated the Tor Cloud website (changes should go live soon) with the following:<br>
+_<br>
+The Tor Cloud images have been configured to use no more than 40 GB of bandwidth out per month. We have estimated that customers who do not qualify for the free usage tier will pay up to $30 a month. Customers who qualify for the free usage tier, but who run bridges that use more than 15 GB of bandwidth out per month, will pay up to $3 per month.<br>
+_<br>
+I hope that this better clarifies the cost of running a bridge in the Amazon cloud, let me know if you have any questions.</p>
+
+</div>
+<p>- Runa</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

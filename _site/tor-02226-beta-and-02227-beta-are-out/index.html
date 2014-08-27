@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.2.26-beta and 0.2.2.27-beta are out</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.2.26-beta and 0.2.2.27-beta are out</h2>
+<p class="meta">24 May 2011</p>
+
+<div class="post">
+<p><strong>Changes in version 0.2.2.27-beta - 2011-05-18</strong><br>
+ Tor 0.2.2.27-beta fixes a bridge-related stability bug in the previous<br>
+ release, and also adds a few more general bugfixes.</p>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Fix a crash bug when changing bridges in a running Tor process.<br>
+Fixes bug 3213; bugfix on 0.2.2.26-beta.</li>
+<li>When the controller configures a new bridge, don&#39;t wait 10 to 60<br>
+seconds before trying to fetch its descriptor. Bugfix on<br>
+0.2.0.3-alpha; fixes bug 3198 (suggested by 2355).</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Require that onion keys have exponent 65537 in microdescriptors too.<br>
+Fixes more of bug 3207; bugfix on 0.2.2.26-beta.</li>
+<li>Tor used to limit HttpProxyAuthenticator values to 48 characters.<br>
+Changed the limit to 512 characters by removing base64 newlines.<br>
+Fixes bug 2752. Fix by Michael Yakubovich.</li>
+<li>When a client starts or stops using bridges, never use a circuit<br>
+that was built before the configuration change. This behavior could<br>
+put at risk a user who uses bridges to ensure that her traffic<br>
+only goes to the chosen addresses. Bugfix on 0.2.0.3-alpha; fixes<br>
+bug 3200.</li>
+</ul>
+
+<p><strong>Changes in version 0.2.2.26-beta - 2011-05-17</strong><br>
+ Tor 0.2.2.26-beta fixes a variety of potential privacy problems. It<br>
+ also introduces a new &quot;socksport auto&quot; approach that should make it<br>
+ easier to run multiple Tors on the same system, and does a lot of<br>
+ cleanup to get us closer to a release candidate.</p>
+
+<p><strong>Security/privacy fixes:</strong></p>
+
+<ul>
+<li>Replace all potentially sensitive memory comparison operations<br>
+with versions whose runtime does not depend on the data being<br>
+compared. This will help resist a class of attacks where an<br>
+adversary can use variations in timing information to learn<br>
+sensitive data. Fix for one case of bug 3122. (Safe memcmp<br>
+implementation by Robert Ransom based partially on code by DJB.)</li>
+<li>When receiving a hidden service descriptor, check that it is for<br>
+the hidden service we wanted. Previously, Tor would store any<br>
+hidden service descriptors that a directory gave it, whether it<br>
+wanted them or not. This wouldn&#39;t have let an attacker impersonate<br>
+a hidden service, but it did let directories pre-seed a client<br>
+with descriptors that it didn&#39;t want. Bugfix on 0.0.6.</li>
+<li>On SIGHUP, do not clear out all TrackHostExits mappings, client<br>
+DNS cache entries, and virtual address mappings: that&#39;s what<br>
+NEWNYM is for. Fixes bug 1345; bugfix on 0.1.0.1-rc.</li>
+</ul>
+
+<p><strong>Major features:</strong></p>
+
+<ul>
+<li>The options SocksPort, ControlPort, and so on now all accept a<br>
+value &quot;auto&quot; that opens a socket on an OS-selected port. A<br>
+new ControlPortWriteToFile option tells Tor to write its<br>
+actual control port or ports to a chosen file. If the option<br>
+ControlPortFileGroupReadable is set, the file is created as<br>
+group-readable. Now users can run two Tor clients on the same<br>
+system without needing to manually mess with parameters. Resolves<br>
+part of ticket 3076.</li>
+<li>Set SO_REUSEADDR on all sockets, not just listeners. This should<br>
+help busy exit nodes avoid running out of useable ports just<br>
+because all the ports have been used in the near past. Resolves<br>
+issue 2850.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>New &quot;GETINFO net/listeners/(type)&quot; controller command to return<br>
+a list of addresses and ports that are bound for listeners for a<br>
+given connection type. This is useful when the user has configured<br>
+&quot;SocksPort auto&quot; and the controller needs to know which port got<br>
+chosen. Resolves another part of ticket 3076.</li>
+<li>Add a new ControlSocketsGroupWritable configuration option: when<br>
+it is turned on, ControlSockets are group-writeable by the default<br>
+group of the current user. Patch by Jérémy Bobbio; implements<br>
+ticket 2972.</li>
+<li>Tor now refuses to create a ControlSocket in a directory that is<br>
+world-readable (or group-readable if ControlSocketsGroupWritable<br>
+is 0). This is necessary because some operating systems do not<br>
+enforce permissions on an AF_UNIX sockets. Permissions on the<br>
+directory holding the socket, however, seems to work everywhere.</li>
+<li>Rate-limit a warning about failures to download v2 networkstatus<br>
+documents. Resolves part of bug 1352.</li>
+<li>Backport code from 0.2.3.x that allows directory authorities to<br>
+clean their microdescriptor caches. Needed to resolve bug 2230.</li>
+<li>When an HTTPS proxy reports &quot;403 Forbidden&quot;, we now explain<br>
+what it means rather than calling it an unexpected status code.<br>
+Closes bug 2503. Patch from Michael Yakubovich.</li>
+<li>Update to the May 1 2011 Maxmind GeoLite Country database.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Authorities now clean their microdesc cache periodically and when<br>
+reading from disk initially, not only when adding new descriptors.<br>
+This prevents a bug where we could lose microdescriptors. Bugfix<br>
+on 0.2.2.6-alpha. 2230</li>
+<li>Do not crash when our configuration file becomes unreadable, for<br>
+example due to a permissions change, between when we start up<br>
+and when a controller calls SAVECONF. Fixes bug 3135; bugfix<br>
+on 0.0.9pre6.</li>
+<li>Avoid a bug that would keep us from replacing a microdescriptor<br>
+cache on Windows. (We would try to replace the file while still<br>
+holding it open. That&#39;s fine on Unix, but Windows doesn&#39;t let us<br>
+do that.) Bugfix on 0.2.2.6-alpha; bug found by wanoskarnet.</li>
+<li>Add missing explanations for the authority-related torrc options<br>
+RephistTrackTime, BridgePassword, and V3AuthUseLegacyKey in the<br>
+man page. Resolves issue 2379.</li>
+<li>As an authority, do not upload our own vote or signature set to<br>
+ourself. It would tell us nothing new, and as of 0.2.2.24-alpha,<br>
+it would get flagged as a duplicate. Resolves bug 3026.</li>
+<li>Accept hidden service descriptors if we think we might be a hidden<br>
+service directory, regardless of what our consensus says. This<br>
+helps robustness, since clients and hidden services can sometimes<br>
+have a more up-to-date view of the network consensus than we do,<br>
+and if they think that the directory authorities list us a HSDir,<br>
+we might actually be one. Related to bug 2732; bugfix on<br>
+0.2.0.10-alpha.</li>
+<li>When a controller changes TrackHostExits, remove mappings for<br>
+hosts that should no longer have their exits tracked. Bugfix on<br>
+0.1.0.1-rc.</li>
+<li>When a controller changes VirtualAddrNetwork, remove any mappings<br>
+for hosts that were automapped to the old network. Bugfix on<br>
+0.1.1.19-rc.</li>
+<li>When a controller changes one of the AutomapHosts* options, remove<br>
+any mappings for hosts that should no longer be automapped. Bugfix<br>
+on 0.2.0.1-alpha.</li>
+<li>Do not reset the bridge descriptor download status every time we<br>
+re-parse our configuration or get a configuration change. Fixes<br>
+bug 3019; bugfix on 0.2.0.3-alpha.</li>
+</ul>
+
+<p><strong>Minor bugfixes (code cleanup):</strong></p>
+
+<ul>
+<li>When loading the microdesc journal, remember its current size.<br>
+In 0.2.2, this helps prevent the microdesc journal from growing<br>
+without limit on authorities (who are the only ones to use it in<br>
+0.2.2). Fixes a part of bug 2230; bugfix on 0.2.2.6-alpha.<br>
+Fix posted by &quot;cypherpunks.&quot;</li>
+<li>The microdesc journal is supposed to get rebuilt only if it is<br>
+at least _half_ the length of the store, not _twice_ the length<br>
+of the store. Bugfix on 0.2.2.6-alpha; fixes part of bug 2230.</li>
+<li>Fix a potential null-pointer dereference while computing a<br>
+consensus. Bugfix on tor-0.2.0.3-alpha, found with the help of<br>
+clang&#39;s analyzer.</li>
+<li>Avoid a possible null-pointer dereference when rebuilding the mdesc<br>
+cache without actually having any descriptors to cache. Bugfix on<br>
+0.2.2.6-alpha. Issue discovered using clang&#39;s static analyzer.</li>
+<li>If we fail to compute the identity digest of a v3 legacy keypair,<br>
+warn, and don&#39;t use a buffer-full of junk instead. Bugfix on<br>
+0.2.1.1-alpha; fixes bug 3106.</li>
+<li>Resolve an untriggerable issue in smartlist_string_num_isin(),<br>
+where if the function had ever in the future been used to check<br>
+for the presence of a too-large number, it would have given an<br>
+incorrect result. (Fortunately, we only used it for 16-bit<br>
+values.) Fixes bug 3175; bugfix on 0.1.0.1-rc.</li>
+<li>Require that introduction point keys and onion handshake keys<br>
+have a public exponent of 65537. Starts to fix bug 3207; bugfix<br>
+on 0.2.0.10-alpha.</li>
+</ul>
+
+<p><strong>Removed features:</strong></p>
+
+<ul>
+<li>Caches no longer download and serve v2 networkstatus documents<br>
+unless FetchV2Networkstatus flag is set: these documents haven&#39;t<br>
+haven&#39;t been used by clients or relays since 0.2.0.x. Resolves<br>
+bug 3022.</li>
+</ul>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

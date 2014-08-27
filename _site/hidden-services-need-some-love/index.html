@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Hidden Services need some love</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Hidden Services need some love</h2>
+<p class="meta">23 Apr 2013</p>
+
+<div class="post">
+<p>Hidden Services are in a peculiar situation. While they see a loyal fan-base, there are no dedicated Tor developers to take care of them. This results in a big pile of features that need to be researched, implemented and deployed to make Hidden Services more secure and effective.</p>
+
+<p>The purpose of this blog post is threefold:</p>
+
+<ol>
+<li>Introduce Hidden Service operators to various shortcomings of the Hidden Service architecture.</li>
+<li>Introduce researchers to various research questions regarding Hidden Services.</li>
+<li>Introduce developers to the plethora of coding tasks left to be done in the hidden Service ecosystem.</li>
+</ol>
+
+<p>Note that not every idea listed in the blog post is going to turn out to be a great idea. This post is more of a brain-dump than a solid fully-analyzed agenda.</p>
+
+<p>In any case, let&#39;s get down to the issues:</p>
+
+<hr>
+
+<h3>Hidden Service Scaling</h3>
+
+<p>The current Hidden Services architecture does not scale well. Ideally, big websites should have the option to completely migrate to Tor Hidden Services, but this is not possible with their current architecture.</p>
+
+<p>One of the main problems with a busy Hidden Service is that its Introduction Points will get hammered by clients. Since Introduction Points are regular Tor relays, they are not intended to handle such load.</p>
+
+<p>Therefore, one of the first steps for improving Hidden Services scalability is increasing the durability of its Introduction Points. Currently, a Hidden Service selects the number of its Introduction Points (between one and ten) based on a self-estimation of its own popularity. Whether <a href="https://gitweb.torproject.org/tor.git/blob/ab3d5c049032651a9c9164262f9a8f81de9709d4:/src/or/rendservice.c#l1001">the formula currently used</a> is the best such formula is an open research question.</p>
+
+<p>Another problem with Hidden Services is the lack of load balancing options. While you can load-balance a Hidden Service using TCP/HTTP load balancers (like <a href="https://en.wikipedia.org/wiki/HAProxy">HAProxy</a>), there is no load-balancing option similar to DNS round-robin, where load balancing happens by sending clients to different server IP addresses. Such load-balancing could be achieved by allowing a Hidden Service to have multiple &quot;subservices&quot;. Such an architecture, although appealing, introduces multiple problems, like the intercommunication between subservices, where the long-term keypair is stored, how introduction points are assigned, etc.</p>
+
+<h3>Defense against Denial of Service of Introduction Points</h3>
+
+<p>The adversarial version of the previous section involves attackers intentionally hammering the Introduction Points of a Hidden Service to make it unreachable by honest clients. This means that an attacker can temporarily bring down a Hidden Service by DoSing a small number of Tor relays.</p>
+
+<p>To defend against such attacks, Syverson and Øverlier introduced <em>Valet nodes</em> in their PETS 2006 paper: <a href="http://freehaven.net/anonbib/#valet:pet2006"><em>&quot;Valet Services: Improving Hidden Servers with a Personal Touch&quot;</em></a>. <em>Valet nodes</em> stand in front of Introduction Points and act as a protection layer. This allows Hidden Services to maintain a limited number of Introduction Points, but many more contact points, without clients learning the actual addresses of the Introduction Points.</p>
+
+<p>Valet nodes are not implemented yet, mainly because of the big implementation and deployment effort they require.</p>
+
+<h3>Key Length</h3>
+
+<p>The long-term keypair of a Hidden Service is an RSA-1024 keypair which nowadays is considered weak. This means that in the future, Hidden Services will need to migrate to a different keysize and/or asymmetric cryptographic algorithm.</p>
+
+<p>A side effect of such migration is that Hidden Services will get a different onion address, which might be troublesome for Hidden Services that have a well-established onion address. To make the transition smoother, Hidden Services should be able to use both old and new keypairs for a while to be able to point their clients to the new address.</p>
+
+<p>Unfortunately, while design work has started on <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/ideas/xxx-crypto-migration.txt">strengthening some</a> <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/ideas/xxx-new-crypto-sketch.txt">parts of Tor&#39;s cryptography</a>, there are no proposals on improving the cryptography of Hidden Services yet.</p>
+
+<h3>Attacks by Hidden Service Directory Servers</h3>
+
+<p>Hidden Services upload their descriptor to Tor nodes called <em>Hidden Service Directory Servers</em> (HSDirs). Clients then fetch that descriptor and use it to connect to the Hidden Service.</p>
+
+<p>In the current system, HSDirs are in an interesting position which allows them to perform the following actions:</p>
+
+<ul>
+<li>Learn the .onion address of a Hidden Service and connect to it</li>
+<li>Evaluate the popularity of a Hidden Service by tracking the number of clients who do a lookup for that Hidden Service</li>
+<li>Refuse to answer a client, and if enough HSDirs do this then the Hidden Service is temporarily unreachable</li>
+</ul>
+
+<p>These scenarios are explored in the upcoming IEEE S&amp;P paper titled <em>&quot;Trawling for Tor Hidden Services: Detection, Measurement, Deanonymization&quot;</em> from Alex Biryukov, Ivan Pustogarov and Ralf-Philipp Weinmann. Be sure to check it out (once they publish it)!</p>
+
+<p>Let&#39;s look at some suggested fixes for the attacks that Hidden Service Directory Servers can perform:</p>
+
+<h4>Defences against enumeration of onion addresses</h4>
+
+<p>Hidden Services use a <a href="http://www.martinbroadhurst.com/Consistent-Hash-Ring.html">hash ring</a> to choose which HSDirs will host their descriptor; this means that HSDirs can just wait to get picked by Hidden Services and then collect their descriptors and onion addresses. Also, since the hash ring is rotating, HSDirs get new Hidden Service descriptors in every rotation period.</p>
+
+<p>One possible solution to this issue would be to append a symmetric key to the onion address and use it to encrypt the descriptor before sending it to HSDirs (similar to how <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/121-hidden-service-authentication.txt">descriptor-cookie authentication</a> works currently). A client that knows the onion address can decrypt the descriptor, but an HSDir who doesn&#39;t know the onion address can&#39;t derive the Hidden Service name. The drawback of this scheme is that the size of onion addresses will increase without increasing the security of their <a href="https://trac.torproject.org/projects/tor/wiki/doc/HiddenServiceNames#Whyare.onionnamescreatedthatway">self-authentication property</a>. Furthermore, HSDirs will still be able to extract the Hidden Service public key from the descriptor, which allows HSDirs to track the descriptors of specific Hidden Services.</p>
+
+<p>A <a href="https://trac.torproject.org/projects/tor/ticket/8106#comment:1">different solution</a> was proposed by Robert Ransom:</p>
+
+<p>Robert&#39;s scheme uses the long-term keypair of a Hidden Service to derive (in a one-way fashion) a second keypair, which is used to encrypt and sign the descriptor that is uploaded to the HSDirs. This construction allows the HSDir, without knowing the long-term keypair of the Hidden Service or the contents of its descriptor, to validate that the entity who uploaded the descriptor had possession of the long-term private key of the Hidden Service. A client who knows the long-term public key of the Hidden Service can fetch the descriptor from the HSDir and verify that it was created by the Hidden Service itself. See the <a href="https://trac.torproject.org/projects/tor/ticket/8106">relevant trac ticket</a> for a more robust analysis of the idea.</p>
+
+<p>Robert&#39;s idea increases the size of onion addresses, but also makes them more resistant to impersonation attacks (the current 80-bit security of onion addresses does not inspire confidence against impresonation attacks). Furthermore, his idea does not allow HSDirs to track Hidden Service descriptors across time.</p>
+
+<p>While Robert&#39;s scheme is fairly straightforward, a proper security evaluation is in order and a Tor proposal needs to be written. For extra fun, his idea requires the long-term keypair of the Hidden Service to use a discrete-log cryptosystem, which means that a keypair migration will be needed if we want to proceed with this plan.</p>
+
+<h4>Block tracking of popularity of Hidden Services</h4>
+
+<p>HSDirs can track the number of users who do a lookup for a Hidden Service, thereby learning how popular they are. We can make it harder for HSDirs to track the popularity of a Hidden Service, by utilizing a <a href="https://en.wikipedia.org/wiki/Private_information_retrieval">Private Information Retrieval (PIR) protocol</a> for Hidden Service descriptor fetches. Of course, this won&#39;t stop the Introduction Points of a Hidden Service from doing the tracking, but since the Introduction Points were picked by the Hidden Service itself, the threat is smaller.</p>
+
+<p>If we wanted to block Introduction Points from tracking the popularity of Hidden Services, we could attempt hiding the identity of the Hidden Service from its Introduction Points by using a cookie scheme, similar to how the Rendezvous is currently done, or by using Robert&#39;s keypair derivation trick and signing the introduction establishment with the new keypair. A careful security evaluation of these ideas is required.</p>
+
+<h4>Make it harder to become an adversarial HSDir</h4>
+
+<p>Because of the security implications that HSDirs have for a Hidden Services, <a href="https://trac.torproject.org/projects/tor/ticket/8243">we started working</a> on making it harder for a Tor relay to become an HSDir node.</p>
+
+<p>Also, currently, an adversary can predict the identity keys it will need in the future to target a <em>specific</em> Hidden Service. <a href="https://trac.torproject.org/projects/tor/ticket/8244">We started thinking of ways</a> to avoid this attack.</p>
+
+<h3>Performance improvements</h3>
+
+<p>Hidden services are slooooowwww and we don&#39;t even understand why. They might be slow because of the expensive setup process of creating a Hidden Service circuit, or because Hidden Service circuits have 6 hops, or because of something else. Many suggestions have been proposed to reduce the latency of Hidden Services, ranging from <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/155-four-hidden-service-improvements.txt">Hidden Service protocol hacks</a> to <a href="https://github.com/hellais/latenza.js">Javascript hacks</a>, and to radically changing how the Hidden Service circuit is formed.</p>
+
+<p>Let&#39;s investigate some of these proposals:</p>
+
+<h4>Reducing Hidden Service Circuit Setup complexity</h4>
+
+<p>During PETS 2007 Syverson and Øverlier presented &quot;<em>Improving Efficiency and Simplicity of Tor circuit establishment and hidden services</em>&quot; which simplifies Hidden Service circuit establishmentby eliminating the need of a separate rendezvous connection.</p>
+
+<p>They noticed that by using <em>Valet nodes</em>, the concept of Rendezvous Points is redundant and that a Hidden Service circuit can be formed by just using <em>Valet nodes</em> and Introduction Points. Karsten Loesing <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/142-combine-intro-and-rend-points.txt">wrote a Tor proposal</a> for a variant of this idea.</p>
+
+<p>The reason this scheme is not implemented is that the security trade-offs introduced are not well understood, and there are also some technical obstacles (like the fact that sharing of circuits between multiple clients is not currently supported).</p>
+
+<h4>Analyze Hidden Service Circuit Establishment Timing With Torperf</h4>
+
+<p>Establishing a connection to a hidden service currently involves two Tor relays, the introduction and rendezvous point, and 10 more relays distributed over four circuits to connect to them. No one has really researched how much time Tor spends in each step of that complicated process. It wouldn&#39;t be surprising if a large amount of time is spent in an unexpected part of the process.</p>
+
+<p>To investigate this properly, one should use <a href="https://gitweb.torproject.org/torperf.git">Torperf</a> to analyze the timing delta between the steps of the process. Unfortunately, Torperf uses controller events to distinguish between Tor protocol phases but not all steps of the Hidden Service circuit setup have controller events assigned to them. Implementing this involves <a href="https://trac.torproject.org/projects/tor/ticket/8510">adding the control port triggers</a> to the Tor codebase, running Torperf and then collecting and analyzing the results.</p>
+
+<h4>Hidden Services should reuse old Introduction Points</h4>
+
+<p>Currently, Hidden Services stop establishing circuits to old Introduction Points after they break. While this behavior makes sense, it means that clients who have old hidden service descriptors will keep introducing themselves to the wrong introduction points. This is especially painful in roaming situations where users frequently change networks (and lose existing circuits).</p>
+
+<p><a href="https://trac.torproject.org/projects/tor/ticket/8239">A solution to this</a> would be for Hidden Services to reestablish failed circuits to old Introduction Points (if the circuits were destroyed because of network failures). We should explore the security consequences of such a move, and also what&#39;s the exact time period that Introduction Points are considered &quot;old&quot; but still &quot;worth reestablishing circuits to&quot;.</p>
+
+<h3>Encrypted Services</h3>
+
+<p><a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/ideas/xxx-encrypted-services.txt">Encrypted Services</a> is the correct way of implementing the now-defunct <a href="https://trac.torproject.org/projects/tor/wiki/doc/ExitEnclave">Exit Enclaves</a>.</p>
+
+<p>Encrypted Services allow you to run a non-anonymous Hidden Service where the server-side rendezvous circuit is only one hop. This makes sense in scenarios where the Hidden Service doesn&#39;t care about its anonymity, but still wants to allow its clients to access it anonymously (and with all the other features that self-authenticating names provide). See Roger&#39;s <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/ideas/xxx-encrypted-services.txt">original proposal</a> for more use cases and information.</p>
+
+<p>On this topic, <a href="https://lists.torproject.org/pipermail/tor-dev/2012-March/003434.html">Robert Ransom proposed</a> to implement Encrypted Services as a program separate from Tor, since it serves a quite different threat model. Furthermore, if done this way, its users won&#39;t overload the Tor network and it will also allow greater versatility and easier deployment.</p>
+
+<h3>Human Memorable onion addresses</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/Zooko%27s_triangle">Zooko&#39;s triangle</a> characterizes onion addresses as <em>secure</em> and <em>global</em>, but not <em>human memorable</em>. By now <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/ideas/xxx-onion-nyms.txt">a couple</a> <a href="http://archives.seul.org/or/dev/Dec-2011/msg00034.html">of schemes</a> have been proposed to make hidden services addresses memorable, but for <a href="https://lists.torproject.org/pipermail/tor-dev/2012-March/003434.html">various reasons</a> none of them has been particularly successful.</p>
+
+<hr>
+
+<p>These were just some of the things that must be done in the Hidden Services realm. If you are interested in helping around, please read the links and trac tickets, and hit us back with <a href="https://gitweb.torproject.org/torspec.git?a=blob_plain;hb=HEAD;f=proposals/001-process.txt">proposals</a>, patches and suggestions. Use the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-dev/">[tor-dev] mailing list</a>, or our <a href="https://www.torproject.org/about/contact.html.en#irc">IRC channels</a> for development-related communication.</p>
+
+<p>Finally, note that this blog post only touched issues that involve Tor&#39;s codebase or the Hidden Service protocol and its cryptography. However, if we want Hidden Services to be truly successful and influential, it&#39;s also important to build a vibrant ecosystem around them. For example, we need privacy-preserving archiving systems and search engines (and technologies and rules on how they should work), we need easy-to-use publishing platforms, Internet service daemons and protocols optimized for high-latency connections, anonymous file sharing, chat systems and social networks.</p>
+
+<p>Thanks go to Roger, Robert and other people for the helpful comments and suggestions on this blog post.</p>
+
+<p>PS: Don&#39;t forget to use <a href="http://freehaven.net/anonbib/">anonbib</a> to find and download any research papers mentioned in this blog post.</p>
+
+</div>
+<p>- asn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

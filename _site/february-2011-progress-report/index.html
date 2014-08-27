@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>February 2011 Progress Report</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>February 2011 Progress Report</h2>
+<p class="meta">15 Mar 2011</p>
+
+<div class="post">
+<p><strong>New hires</strong><br>
+We contracted Runa Sandvik to work on moving the torouter project forward, <a href="https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/Torouter" title="https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/Torouter">https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/Torouter</a>, translations, and integration of tor web server log analysis and publication.</p>
+
+<p><strong>New Releases</strong><br>
+On February 23rd, we released an updated Tor -stable. Tor 0.2.1.30 fixes a<br>
+variety of less critical bugs. The main other change is a slight tweak to Tor&#39;s TLS handshake that makes relays and bridges that run this new version reachable from Iran again. We don&#39;t expect this tweak will win the arms race long-term, but it<br>
+buys us time until we roll out a better solution. Full announcement at<br>
+ <a href="https://lists.torproject.org/pipermail/tor-announce/2011-February/000000.html" title="https://lists.torproject.org/pipermail/tor-announce/2011-February/000000.html">https://lists.torproject.org/pipermail/tor-announce/2011-February/000000...</a></p>
+
+<p><strong>Censorship resistance</strong></p>
+
+<ul>
+<li>Arm development has stayed relatively on track, with the revised<br>
+connection panel very nearly achieving parity with its predecessor<br>
+(and in most respects surpassing it). Most of what remains are<br>
+refinements and tasty new features. Arm has also been added to Debian<br>
+(Sid) and Ubuntu (Natty) with backports pending. Many thanks to Peter<br>
+for his help.</li>
+<li>Tom spent some time assisting Jacob with a satellite test. The test wound<br>
+up breaking due to flaky hardware, however they were able to collect some usable<br>
+data.</li>
+<li>Created the trac ticket around hidden service improvements,<br>
+<a href="https://trac.torproject.org/projects/tor/ticket/2552" title="https://trac.torproject.org/projects/tor/ticket/2552">https://trac.torproject.org/projects/tor/ticket/2552</a>. We need to focus on<br>
+improving hidden services and fixing some of the performance and reliability<br>
+issues within.</li>
+<li>Mike fixed a bunch of torbutton bugs. His summary iteration results are<br>
+at <a href="https://trac.torproject.org/projects/tor/ticket/2591" title="https://trac.torproject.org/projects/tor/ticket/2591">https://trac.torproject.org/projects/tor/ticket/2591</a>.</li>
+<li>Mike helped fix the bandwidth authority on salsa that exploded due to a<br>
+reinstall.</li>
+</ul>
+
+<p><strong>Architecture and Design Docs for better censorship resistance</strong></p>
+
+<ul>
+<li>Karsten and Sebastian tried to improve the database schema in metrics-db<br>
+to speed up relay search performance. Unfortunately, the required updates<br>
+from the old schema took forever, so we don&#39;t just need a better schema, but<br>
+also a better migration strategy to go from one schema to the next. </li>
+<li>Karsten started moving code from metrics-db to metrics-web to make the<br>
+metrics website a self-contained unit that&#39;s independent of<br>
+aggregating descriptors. The idea is that people can take the metrics-web<br>
+code and improve it or replace it with a better metrics website written in<br>
+the web language of their choice.</li>
+<li>Karsten started working on better visualizations of Tor data using the<br>
+Thematic Mapping API together with Rachel Binx. </li>
+</ul>
+
+<p><strong>Hide Tor&#39;s network signature.</strong></p>
+
+<ul>
+<li>Collaborated with George K on obfsproxy, a generic protocol<br>
+obfuscator. It seems to work ok but needs more testing.</li>
+<li>Nick worked on improving the pluggable-transport design.</li>
+<li>Jacob did another revision on what is now prop 179,<br>
+<a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/179-TLS-cert-and-parameter-normalization.txt" title="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/179-TLS-cert-and-parameter-normalization.txt">https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/179-TLS-c...</a></li>
+<li>Jacob looked at the EFF SSL data and have some improvements for how we can<br>
+get better data for future research questions.</li>
+</ul>
+
+<p><strong>Outreach and Advocacy</strong></p>
+
+<ul>
+<li>Jacob continued working on Egypt related issues.</li>
+<li>Jacob did a training for people in Bahrain.</li>
+<li>Tor, the ACLU and the OPC launched our privacy challenge:<br>
+<a href="http://www.develop4privacy.org/" title="http://www.develop4privacy.org/">http://www.develop4privacy.org/</a>.</li>
+<li>Jacob did a bit of looking at the Libyan Internet.</li>
+<li>Jacob gave the keynote speech at the Ctrl-X-Ethics Workshop in Toronto on<br>
+ethics of security research.</li>
+<li>We ran a successful hackfest with the help of MITs Center for Future Civic<br>
+Media, <a href="https://blog.torproject.org/blog/tor-open-hackfest-february-19-2011" title="https://blog.torproject.org/blog/tor-open-hackfest-february-19-2011">https://blog.torproject.org/blog/tor-open-hackfest-february-19-2011</a><br>
+and the followup at <a href="https://blog.torproject.org/blog/hackfest-thanks" title="https://blog.torproject.org/blog/hackfest-thanks">https://blog.torproject.org/blog/hackfest-thanks</a>.</li>
+<li>Roger was the keynote speaker for Workshop on Free and Open Communication<br>
+on the Internet (FOCI), <a href="http://www.gtisc.gatech.edu/foci.html" title="http://www.gtisc.gatech.edu/foci.html">http://www.gtisc.gatech.edu/foci.html</a>.</li>
+<li>Andrew talked to the Wesleyan HFOSS team about Tor and classwork for their<br>
+Summer 2011 session. <a href="http://hfoss.org/" title="http://hfoss.org/">http://hfoss.org/</a>.</li>
+<li>Roger and Steven presented at Financial Crypto and the Workshop on the<br>
+Ethics of Computer Security Research.</li>
+<li>Andrew spoke at a few panels under Chatham House Rules. He published his<br>
+speech notes as a blog post,<br>
+<a href="https://blog.torproject.org/blog/five-minutes-speak" title="https://blog.torproject.org/blog/five-minutes-speak">https://blog.torproject.org/blog/five-minutes-speak</a>.</li>
+<li>Roger wrote a blog post about using our data archive as input to new<br>
+safety metrics:<br>
+<a href="https://blog.torproject.org/blog/research-problem-measuring-safety-tor-" title="https://blog.torproject.org/blog/research-problem-measuring-safety-tor-">https://blog.torproject.org/blog/research-problem-measuring-safety-tor-</a><br>
+network.</li>
+<li>Roger talked to the Philly FBI for the Philadelphia Infragard chapter<br>
+about Tor and anonymity online.</li>
+<li>Roger taught a Tor lecture for Drexel&#39;s security class.</li>
+<li>Andrew was interviewed by Discovery News about Tor&#39;s role in the unrest in<br>
+Tunisia and Egypt,<br>
+<a href="http://news.discovery.com/tech/egypt-internet-online-protesters-110201.html" title="http://news.discovery.com/tech/egypt-internet-online-protesters-110201.html">http://news.discovery.com/tech/egypt-internet-online-protesters-110201.h...</a></li>
+<li>Andrew was interviewed by the Walpole Times about Tor and what we do,<br>
+<a href="http://www.wickedlocal.com/walpole/news/x95296113/Tor-Project-a-Walpole-" title="http://www.wickedlocal.com/walpole/news/x95296113/Tor-Project-a-Walpole-">http://www.wickedlocal.com/walpole/news/x95296113/Tor-Project-a-Walpole-</a><br>
+based-company-helps-Egyptians-avoid-Internet-censorship-during-protests. </li>
+</ul>
+
+<p><strong>Preconfigured privacy bundles</strong></p>
+
+<ul>
+<li>Jacob did some testing of Gibberbot&#39;s Tor and OTR integration. Gibberbot<br>
+is an XMPP chat client for Android designed to work over Tor.</li>
+<li>Jacob did a bunch of work on ttdnsd - some important (but not critical)<br>
+bug fixes and he&#39;s planning on pushing out a release in the future. Jacob and<br>
+Robert did some work on torsocks integration and in the process hammered out a<br>
+reasonable torsocks API for people who want to have auto-magically Torified<br>
+sockets without understanding Tor internals.</li>
+<li>Jacob worked on OpenWRT packaging issues - as well as other work on the<br>
+Torouter project.</li>
+<li>Jacob worked on Tahoe ( <a href="http://tahoe-lafs.org/trac/tahoe-lafs" title="http://tahoe-lafs.org/trac/tahoe-lafs">http://tahoe-lafs.org/trac/tahoe-lafs</a>) and<br>
+Tor related Hidden Service documentation; after moderate amount of Tor testing<br>
+with Tahoe now and it seems to be partially functional.</li>
+</ul>
+
+<p><strong>Bridge work</strong></p>
+
+<ul>
+<li>Karsten prepared a patch for BridgeDB to export bridge pool assignments to<br>
+a local file. This patch needs some cleanup before being deployed on<br>
+BridgeDB.</li>
+<li>Karsten wrote a first draft of a BridgeDB specification that Nick<br>
+commented on. The next step is to include Nick&#39;s comments and change the<br>
+writing style, so that the specification describes what the current BridgeDB<br>
+code does, not what a generic BridgeDB implemention should do.</li>
+<li>Karsten extended the bridge descriptor sanitizing algorithm to include IP<br>
+address hashes in the sanitized descriptors. Sanitized all existing<br>
+bridge descriptors using this new algorithm. Instead of 127.0.0.1,<br>
+bridges now have 10.x.y.z addresses with x.y.z being stable for a given<br>
+bridge fingerprint in a given month. This allows analyses of how often<br>
+bridges change their IP addresses in a given month.</li>
+<li>Christian deployed a new version of BridgeDB, the one that&#39;s i18n enabled<br>
+(#1613) and also can dump bridge pool assignments to files. We can now<br>
+assign an amount of unassigned bridges to someone/something and dump<br>
+them to file buckets. See #1612 for more infos. In theory, we can now<br>
+have an amount of Twitter assigned bridges that we pump out over<br>
+Twitter. </li>
+<li>Christian also started writing a python script that is able to dump<br>
+stuff to Twitter.</li>
+<li>After deployment of the new BridgeDB, some issues came up that were fixed<br>
+(#2556 and others). It seems to run smoothly now. We&#39;ll be even more<br>
+happy about it when we have important (read: Chinese and Farsi)<br>
+translations ready and deployed.</li>
+<li>Christian and Karsten discussed about whether his planned &quot;dump bridge<br>
+pool<br>
+assignments to files&quot; feature can use the bucket mechanism of #1612.<br>
+Turns out it can&#39;t since both have a different set of goals and would<br>
+be to painful to sync with every change.</li>
+<li>Mike helped Karsten with improving the output of Torperf for future<br>
+experiments involving circuit build timeouts.</li>
+</ul>
+
+<p><strong>Scalability</strong></p>
+
+<ul>
+<li>Improved Torperf and finally deployed it to collect data about used<br>
+paths and to measure performance with custom guard node selections.<br>
+This is still work in progress together with Mike and Tom as part of<br>
+our first Scrum iteration that ends on March 5.</li>
+<li>Worked on Florian&#39;s and Björn&#39;s token bucket patch some more together<br>
+with Sebastian. The current state of the patch is that it needs some<br>
+more love before it can be merged into 0.2.3.x.</li>
+<li>Nick collaborated a little with two volunteers on what we<br>
+think at this point must be the 5th generation of a &quot;launch a private<br>
+network&quot; tool. This one is called &quot;chutney&quot;. </li>
+<li>Nick reviewed a bunch of patches, reviewed a bunch of bugs, fixed a<br>
+bunch of bugs, merged many people&#39;s code, got 0.2.2.x closer to done.</li>
+<li>Sebastian wrote a proposal for a safer voting process for consensus<br>
+parameters, and wrote an implementation for it.<br>
+<a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/178-param-" title="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/178-param-">https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/178-param...</a><br>
+voting.txt</li>
+<li>Damian started thinking about our various projects in a more streamlined<br>
+and easy-to-understand way. The results are at<br>
+<a href="https://www.torproject.org/getinvolved/volunteer.html.en#Projects" title="https://www.torproject.org/getinvolved/volunteer.html.en#Projects">https://www.torproject.org/getinvolved/volunteer.html.en#Projects</a>.</li>
+</ul>
+
+<p><strong>Incentives</strong></p>
+
+<ul>
+<li>Christian cleaned up the rather hackish installation of Weather on bahri.<br>
+The stable installation now lives under <code>/home/weather/opt/current&#39; and actually  
+is update-able through</code>git pull&#39;. There&#39;s also a testing installation to test<br>
+stuff and play around at <a href="https://weather2.torproject.org/" title="https://weather2.torproject.org/">https://weather2.torproject.org/</a>. He&#39;s tried to<br>
+update the documentation with all the stuff that is necessary to install and run<br>
+Weather.</li>
+<li>Christian tried looking into #2467. Some people complained that Weather<br>
+didn&#39;t know their relay fingerprint. On Sebastian&#39;s and Mike&#39;s idea, Christian<br>
+changed the torrc to include <code>FetchDirInfoEarly 1&#39; and</code>FetchUselessDescriptors<br>
+1&#39;. Since that no one complained again about Weather not knowing a certain relay<br>
+(except for one time, when the Weather process had silently crashed and<br>
+therefore the database wasn&#39;t updated for a day). </li>
+<li>After Tor 0.2.1.30 was tagged and made it to the recommended versions&#39;,<br>
+people running 0.2.1.29 started complaining about getting &quot;Node out of date!&quot;<br>
+emails from Weather. It turned out that Weather was actually doing the right<br>
+thing, namely mailing them that they were not running the latest recommended<br>
+stable version anymore. No one seemed to have read the text near the checkbox in<br>
+the signup process. After discussing this intensely with Sebastian, we decided<br>
+to go for a more simple solution: People now get email when they don&#39;t run one<br>
+of the recommended versions or a more recent dev version of Tor.</li>
+</ul>
+
+<p><strong>More reliable downloads</strong></p>
+
+<ul>
+<li>Christian did a rather large GetTor overhaul. The way GetTor manages its<br>
+packages is now much easier to understand and enhance. GetTor moved from a<br>
+ini-style configuration file and parser to a more BridgeDB-like configuration<br>
+management. Also, packages are now configured rather than hard coded. In<br>
+addition, he cleaned up the i18n management of GetTor to something similar to<br>
+what we use in BridgeDB. Not only are the translation strings cleaner now, but<br>
+the translation and installation is smoother. Also, the logging was simplified<br>
+because it had too many features that no one used and generally was polluting<br>
+the log file with too much useless information. Furthermore, the MakeStat.py<br>
+script that<br>
+creates GetTor&#39;s package statistics was simplified a lot.</li>
+<li>Christian fixed #1586, users requesting non-existent split packages now<br>
+are informed about that fact.</li>
+<li>Nick worked on a thandy packaging spec with Erinn.</li>
+</ul>
+
+<p><strong>Translations</strong></p>
+
+<ul>
+<li>Sebastian Started figuring out a way how translations can be pulled from<br>
+transifex and used in their respective products in a more automated<br>
+fashion.</li>
+<li>New or updated website translations in French, Russian, Italian, Japanese,<br>
+Spanish, Mandarin Chinese, and Greek.</li>
+</ul>
+
+<p><thead><tr>
+<th>Attachment</th>
+<th>Size</th> </tr></thead><tbody>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/2011-February-Monthly-Report.pdf">2011-February-Monthly-Report.pdf</a></td>
+<td>367.07 KB</td> </tr>
+</tbody></p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

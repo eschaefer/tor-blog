@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.1.16-rc Release Candidate now available</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.1.16-rc Release Candidate now available</h2>
+<p class="meta">24 Jun 2009</p>
+
+<div class="post">
+<p>Tor 0.2.1.16-rc speeds up performance for fast exit relays, and fixes<br>
+a bunch of minor bugs.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p>Changes in version 0.2.1.16-rc - 2009-06-20<br>
+<strong>Security fixes:</strong></p>
+
+<ul>
+<li>Fix an edge case where a malicious exit relay could convince a<br>
+controller that the client&#39;s DNS question resolves to an internal IP<br>
+address. Bug found and fixed by &quot;optimist&quot;; bugfix on 0.1.2.8-beta.</li>
+</ul>
+
+<p><strong>Major performance improvements (on 0.2.0.x):</strong></p>
+
+<ul>
+<li>Disable and refactor some debugging checks that forced a linear scan<br>
+over the whole server-side DNS cache. These accounted for over 50%<br>
+of CPU time on a relatively busy exit node&#39;s gprof profile. Found<br>
+by Jacob.</li>
+<li>Disable some debugging checks that appeared in exit node profile<br>
+data.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Update to the &quot;June 3 2009&quot; ip-to-country file.</li>
+<li>Do not have tor-resolve automatically refuse all .onion addresses;<br>
+if AutomapHostsOnResolve is set in your torrc, this will work fine.</li>
+</ul>
+
+<p><strong>Minor bugfixes (on 0.2.0.x):</strong></p>
+
+<ul>
+<li>Log correct error messages for DNS-related network errors on<br>
+Windows.</li>
+<li>Fix a race condition that could cause crashes or memory corruption<br>
+when running as a server with a controller listening for log<br>
+messages.</li>
+<li>Avoid crashing when we have a policy specified in a DirPolicy or<br>
+SocksPolicy or ReachableAddresses option with ports set on it,<br>
+and we re-load the policy. May fix bug 996.</li>
+<li>Hidden service clients didn&#39;t use a cached service descriptor that<br>
+was older than 15 minutes, but wouldn&#39;t fetch a new one either,<br>
+because there was already one in the cache. Now, fetch a v2<br>
+descriptor unless the same descriptor was added to the cache within<br>
+the last 15 minutes. Fixes bug 997; reported by Marcus Griep.</li>
+</ul>
+
+<p><strong>Minor bugfixes (on 0.2.1.x):</strong></p>
+
+<ul>
+<li>Don&#39;t warn users about low port and hibernation mix when they<br>
+provide a *ListenAddress directive to fix that. Bugfix on<br>
+0.2.1.15-rc.</li>
+<li>When switching back and forth between bridge mode, do not start<br>
+gathering GeoIP data until two hours have passed.</li>
+<li>Do not complain that the user has requested an excluded node as<br>
+an exit when the node is not really an exit. This could happen<br>
+because the circuit was for testing, or an introduction point.<br>
+Fix for bug 984.</li>
+</ul>
+
+<p>The original announcement can be found at <a href="http://archives.seul.org/or/talk/Jun-2009/msg00288.html" title="http://archives.seul.org/or/talk/Jun-2009/msg00288.html">http://archives.seul.org/or/talk/Jun-2009/msg00288.html</a></p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

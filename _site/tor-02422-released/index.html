@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>tor 0.2.4.22 released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>tor 0.2.4.22 released</h2>
+<p class="meta">04 Jun 2014</p>
+
+<div class="post">
+<p>This is a slightly belated announcement for the release of tor 0.2.4.22. Going into the future, we&#39;re planning to publish this information on the blog shortly after it is sent to <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-announce">tor-announce</a>.</p>
+
+<p>Release information is always published first on <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-talk">tor-talk</a>.</p>
+
+<p>Tor 0.2.4.22 backports numerous high-priority fixes from the Tor 0.2.5 alpha release series. These include blocking all authority signing keys that may have been affected by the OpenSSL &quot;heartbleed&quot; bug, choosing a far more secure set of TLS ciphersuites by default, closing a couple of memory leaks that could be used to run a target relay out of RAM, and several others.</p>
+
+<p>Here is the complete changelog:  </p>
+
+<p>Changes in version 0.2.4.22 - 2014-05-16:</p>
+
+<ul>
+<li><p>Major features (security, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Block authority signing keys that were used on authorities<br>
+vulnerable to the &quot;heartbleed&quot; bug in OpenSSL (CVE-2014-0160). (We<br>
+don&#39;t have any evidence that these keys _were_ compromised; we&#39;re<br>
+doing this to be prudent.) Resolves ticket 11464. </li>
+</ul></li>
+<li><p>Major bugfixes (security, OOM):</p>
+
+<ul>
+<li>Fix a memory leak that could occur if a microdescriptor parse<br>
+fails during the tokenizing step. This bug could enable a memory<br>
+exhaustion attack by directory servers. Fixes bug 11649; bugfix<br>
+on 0.2.2.6-alpha. </li>
+</ul></li>
+<li><p>Major bugfixes (TLS cipher selection, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>The relay ciphersuite list is now generated automatically based on<br>
+uniform criteria, and includes all OpenSSL ciphersuites with<br>
+acceptable strength and forward secrecy. Previously, we had left<br>
+some perfectly fine ciphersuites unsupported due to omission or<br>
+typo. Resolves bugs 11513, 11492, 11498, 11499. Bugs reported by<br>
+&#39;cypherpunks&#39;. Bugfix on 0.2.4.8-alpha.</li>
+<li>Relays now trust themselves to have a better view than clients of<br>
+which TLS ciphersuites are better than others. (Thanks to bug<br>
+11513, the relay list is now well-considered, whereas the client<br>
+list has been chosen mainly for anti-fingerprinting purposes.)<br>
+Relays prefer: AES over 3DES; then ECDHE over DHE; then GCM over<br>
+CBC; then SHA384 over SHA256 over SHA1; and last, AES256 over<br>
+AES128. Resolves ticket 11528.</li>
+<li>Clients now try to advertise the same list of ciphersuites as<br>
+Firefox 28. This change enables selection of (fast) GCM<br>
+ciphersuites, disables some strange old ciphers, and stops<br>
+advertising the ECDH (not to be confused with ECDHE) ciphersuites.<br>
+Resolves ticket 11438. </li>
+</ul></li>
+<li><p>Minor bugfixes (configuration, security):</p>
+
+<ul>
+<li>When running a hidden service, do not allow TunneledDirConns 0:<br>
+trying to set that option together with a hidden service would<br>
+otherwise prevent the hidden service from running, and also make<br>
+it publish its descriptors directly over HTTP. Fixes bug 10849;<br>
+bugfix on 0.2.1.1-alpha. </li>
+</ul></li>
+<li><p>Minor bugfixes (controller, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Avoid sending a garbage value to the controller when a circuit is<br>
+cannibalized. Fixes bug 11519; bugfix on 0.2.3.11-alpha. </li>
+</ul></li>
+<li><p>Minor bugfixes (exit relay, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Stop leaking memory when we successfully resolve a PTR record.<br>
+Fixes bug 11437; bugfix on 0.2.4.7-alpha. </li>
+</ul></li>
+<li><p>Minor bugfixes (bridge client, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Avoid 60-second delays in the bootstrapping process when Tor is<br>
+launching for a second time while using bridges. Fixes bug 9229;<br>
+bugfix on 0.2.0.3-alpha. </li>
+</ul></li>
+<li><p>Minor bugfixes (relays and bridges, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Give the correct URL in the warning message when trying to run a<br>
+relay on an ancient version of Windows. Fixes bug 9393. </li>
+</ul></li>
+<li><p>Minor bugfixes (compilation):</p>
+
+<ul>
+<li>Fix a compilation error when compiling with --disable-curve25519.<br>
+Fixes bug 9700; bugfix on 0.2.4.17-rc. </li>
+</ul></li>
+<li><p>Minor bugfixes:</p>
+
+<ul>
+<li>Downgrade the warning severity for the the &quot;md was still<br>
+referenced 1 node(s)&quot; warning. Tor 0.2.5.4-alpha has better code<br>
+for trying to diagnose this bug, and the current warning in<br>
+earlier versions of tor achieves nothing useful. Addresses warning<br>
+from bug 7164. </li>
+</ul></li>
+<li><p>Minor features (log verbosity, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>When we run out of usable circuit IDs on a channel, log only one<br>
+warning for the whole channel, and describe how many circuits<br>
+there were on the channel. Fixes part of ticket 11553. </li>
+</ul></li>
+<li><p>Minor features (security, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Decrease the lower limit of MaxMemInCellQueues to 256 MBytes (but<br>
+leave the default at 8GBytes), to better support Raspberry Pi<br>
+users. Fixes bug 9686; bugfix on 0.2.4.14-alpha. </li>
+</ul></li>
+<li><p>Documentation (backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Correctly document that we search for a system torrc file before<br>
+looking in ~/.torrc. Fixes documentation side of 9213; bugfix on<br>
+0.2.3.18-rc. </li>
+</ul></li>
+</ul>
+
+</div>
+<p>- phoul</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

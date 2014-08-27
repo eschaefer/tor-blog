@@ -1,0 +1,100 @@
+---
+layout: post
+title: "Tor 0.2.1.7-alpha released"
+permalink: tor-0.2.1.7-alpha-released
+date: 2008-11-21
+author: phobos
+category: blog
+tags: ["alpha release", "bugfix", "bugs"]
+---
+
+Tor 0.2.1.7-alpha fixes a major security problem in Debian and Ubuntu  
+packages (and maybe other packages) noticed by Theo de Raadt, fixes  
+a smaller security flaw that might allow an attacker to access local  
+services, adds better defense against DNS poisoning attacks on exit  
+relays, further improves hidden service performance, and fixes a variety  
+of other issues.
+
+[https://www.torproject.org/download](https://www.torproject.org/download "https://www.torproject.org/download")
+
+Changes in version 0.2.1.7-alpha - 2008-11-08
+
+**Security fixes:**
+
+- The "ClientDNSRejectInternalAddresses" config option wasn't being  
+ consistently obeyed: if an exit relay refuses a stream because its  
+ exit policy doesn't allow it, we would remember what IP address  
+ the relay said the destination address resolves to, even if it's  
+ an internal IP address. Bugfix on 0.2.0.7-alpha; patch by rovv.
+- The "User" and "Group" config options did not clear the  
+ supplementary group entries for the Tor process. The "User" option  
+ is now more robust, and we now set the groups to the specified  
+ user's primary group. The "Group" option is now ignored. For more  
+ detailed logging on credential switching, set CREDENTIAL\_LOG\_LEVEL  
+ in common/compat.c to LOG\_NOTICE or higher. Patch by Jacob Appelbaum  
+ and Steven Murdoch. Bugfix on 0.0.2pre14. Fixes bug 848.
+- Do not use or believe expired v3 authority certificates. Patch  
+ from Karsten. Bugfix in 0.2.0.x. Fixes bug 851.
+
+**Minor features:**
+
+- Now NodeFamily and MyFamily config options allow spaces in  
+ identity fingerprints, so it's easier to paste them in.  
+ Suggested by Lucky Green.
+- Implement the 0x20 hack to better resist DNS poisoning: set the  
+ case on outgoing DNS requests randomly, and reject responses that do  
+ not match the case correctly. This logic can be disabled with the  
+ ServerDNSRamdomizeCase setting, if you are using one of the 0.3%  
+ of servers that do not reliably preserve case in replies. See  
+ "Increased DNS Forgery Resistance through 0x20-Bit Encoding"  
+ for more info.
+- Preserve case in replies to DNSPort requests in order to support  
+ the 0x20 hack for resisting DNS poisoning attacks.
+
+**Hidden service performance improvements:**
+
+- When the client launches an introduction circuit, retry with a  
+ new circuit after 30 seconds rather than 60 seconds.
+- Launch a second client-side introduction circuit in parallel  
+ after a delay of 15 seconds (based on work by Christian Wilms).
+- Hidden services start out building five intro circuits rather  
+ than three, and when the first three finish they publish a service  
+ descriptor using those. Now we publish our service descriptor much  
+ faster after restart.
+
+**Minor bugfixes:**
+
+- Minor fix in the warning messages when you're having problems  
+ bootstrapping; also, be more forgiving of bootstrap problems when  
+ we're still making incremental progress on a given bootstrap phase.
+- When we're choosing an exit node for a circuit, and we have  
+ no pending streams, choose a good general exit rather than one that  
+ supports "all the pending streams". Bugfix on 0.1.1.x. Fix by rovv.
+- Send a valid END cell back when a client tries to connect to a  
+ nonexistent hidden service port. Bugfix on 0.1.2.15. Fixes bug  
+ 840. Patch from rovv.
+- If a broken client asks a non-exit router to connect somewhere,  
+ do not even do the DNS lookup before rejecting the connection.  
+ Fixes another case of bug 619. Patch from rovv.
+- Fix another case of assuming, when a specific exit is requested,  
+ that we know more than the user about what hosts it allows.  
+ Fixes another case of bug 752. Patch from rovv.
+- Check which hops rendezvous stream cells are associated with to  
+ prevent possible guess-the-streamid injection attacks from  
+ intermediate hops. Fixes another case of bug 446. Based on patch  
+ from rovv.
+- Avoid using a negative right-shift when comparing 32-bit  
+ addresses. Possible fix for bug 845 and bug 811.
+- Make the assert\_circuit\_ok() function work correctly on circuits that  
+ have already been marked for close.
+- Fix read-off-the-end-of-string error in unit tests when decoding  
+ introduction points.
+- Fix uninitialized size field for memory area allocation: may improve  
+ memory performance during directory parsing.
+- Treat duplicate certificate fetches as failures, so that we do  
+ not try to re-fetch an expired certificate over and over and over.
+- Do not say we're fetching a certificate when we'll in fact skip it  
+ because of a pending download.
+
+The original announcement can be found at [http://archives.seul.org/or/talk/Nov-2008/msg00229.html](http://archives.seul.org/or/talk/Nov-2008/msg00229.html "http://archives.seul.org/or/talk/Nov-2008/msg00229.html")
+

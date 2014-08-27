@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor Weekly News — August, 28th 2013</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor Weekly News — August, 28th 2013</h2>
+<p class="meta">28 Aug 2013</p>
+
+<div class="post">
+<p>Welcome to the ninth issue of Tor Weekly News, the weekly newsletter that covers what is happening in the determined Tor community.</p>
+
+<h1>Orweb Security Advisory</h1>
+
+<p>On August 21st, Nathan Freitas from the Guardian Project issued security advisory regarding a <a href="https://lists.torproject.org/pipermail/tor-talk/2013-August/029503.html">possible anonymity flaw affecting Orweb</a>:</p>
+
+<p>“The Orweb browser app is vulnerable to leak the actual IP of the device it is on, if it loads a page with HTML5 video or audio tags on them, and those tags are set to auto-start or display a poster frame. On some versions of Android, the video and audio player start/load events happen without the user requesting anything, and the request to the URL for the media src or through image poster is made outside of the proxy settings”, wrote Nathan.</p>
+
+<p>Users who use the root mode with transparent proxying, as that handles proxying the entire traffic of the entire device or a particular app are NOT affected by this flaw.</p>
+
+<p>Unfortunately, the problem mentioned above hasn&#39;t been fixed yet, as there is <a href="https://lists.torproject.org/pipermail/news-team/2013-August/000019.html">no patch developers are happy with</a>. According to Nathan the temporary solution is ”switch to Firefox, with the appropriate set of add-ons.” The Guardian Project has updated its website with a <a href="https://guardianproject.info/apps/proxymob-firefox-add-on/">step by step guide</a> on how to set this up.</p>
+
+<h1>“Why would anyone want a deterministic build process?”</h1>
+
+<p>In a blog post published last week, <a href="https://blog.torproject.org/blog/deterministic-builds-part-one-cyberwar-and-global-compromise">Mike Perry explained the motivations</a> behind his three months long effort to make “deterministic builds” for the <a href="https://blog.torproject.org/category/tags/tbb-30">3.0 series</a> of the Tor Browser Bundle.</p>
+
+<p>“The short answer is: to protect against targeted attacks” introduced Mike. With automatic remote updates becoming the norm, it becomes very interesting for a malware to “distribute copies of itself to tens or even hundreds of millions of machines in a single, officially signed, instantaneous update.” The attack shifts from attacking a millions of machines to attacking the few that are involved in “software development and build processes”.</p>
+
+<p>Be sure to read Mike&#39;s post to get the full picture.</p>
+
+<p>Mike concludes with how deterministic builds can mitigate the issue: “in [Tor] case, any individual can use our anonymity network to privately download our source code, verify it against public signed, audited, and mirrored git repositories, and reproduce our builds exactly, without being subject to such targeted attacks. If they notice any differences, they can alert the public builders/signers, hopefully using a pseudonym or our anonymous trac account.”</p>
+
+<p>Even if “it is important for Tor to set an example on this point”, Mike hopes that Linux distributions will follow in making deterministic packaging the norm.” It looks like at least <a href="http://lists.science.uu.nl/pipermail/nix-dev/2013-June/011357.html">NixOS</a> and now <a href="https://wiki.debian.org/ReproducibleBuilds">Debian</a> have started working on this.</p>
+
+<h1>Filters and the default Tor Browser search engine</h1>
+
+<p>Four months ago, an anonymous reporter complained that the search engine<br>
+used by default by the Tor Browser, Startpage, had a <a href="https://bugs.torproject.org/8839">“family filter” enabled by default</a>. The reporter pointed out that it was pretty funny “for a browser that people use to evade censorship and filters”. Another anonymous contributor quickly pointed out that the filter could be deactivated in a few clicks in Startpage preferences.</p>
+
+<p>The issue got some more attention a few days ago as Nick Mathewson mentioned hearing reports that the filter was blocking “LGBT stuff, which is of course serious”. Nick further identified that the filter was blocking — among several other things — search for “ <a href="https://en.wikipedia.org/wiki/The_Owl_and_the_Pussycat">The Owl and the Pussy-Cat</a>”, “ <a href="https://en.wikipedia.org/wiki/Pussy_Riot">Pussy Riot</a>”, “ <a href="https://en.wikipedia.org/wiki/Dick_Cheney">Dick Cheney</a>”, “ <a href="https://en.wikipedia.org/wiki/Cock_Robin_%28band%29">Cock Robin</a>”, ” <a href="https://en.wikipedia.org/wiki/Gerald_Cock">Gerald Cock</a>”.</p>
+
+<p>Censoring 19th century poetry and repressed Russian punk bands was enough to make Nick conclude by an euphemism: “let&#39;s kill this filter hard”.</p>
+
+<p>Mike Perry had some insights: “What we&#39;re seeing here is actually a change in Google&#39;s Safesearch. It used to be on by default and quite a bit smarter about differentiating porn from non-porn.” Mike mailed Startpage people to explain the problem and suggests that they leave the filter off by default.</p>
+
+<p>In the case they would leave it on, both Nick and Mike agreed that a technical workaround should be implemented to automatically deactivate the filters when using the Tor Browser.</p>
+
+<h1>Sudden rise in direct Tor users</h1>
+
+<p>On Tuesday 27th, <a href="https://lists.torproject.org/pipermail/tor-talk/2013-August/029582.html">Roger Dingledine drew attention</a> to the huge increase of Tor clients running. It seems that their number has doubled since August 19th according to the count of <a href="https://metrics.torproject.org/users.html?graph=direct-users&amp;start=2013-05-29&amp;end=2013-08-27&amp;country=all&amp;events=off#direct-users">directly connecting users</a>.</p>
+
+<p>According to Roger this is not just a fluke in the metrics data. The extra <a href="https://metrics.torproject.org/network.html#dirbytes">load on the directory authorities</a> is clearly visible, but it does not look that the <a href="https://metrics.torproject.org/performance.html">overall network performance</a> are affected so far.</p>
+
+<p>The cause is still unknown, but there are already speculations about the <a href="https://lists.torproject.org/pipermail/tor-talk/2013-August/029584.html">Pirate Browser or the</a> <a href="https://lists.torproject.org/pipermail/tor-talk/2013-August/029583.html">new “anti-piracy” law in Russia</a> which is in force since August 1<sup>st</sup>. As Roger pointed out, “some good solid facts would sure be useful.”</p>
+
+<h1>Help Desk Roundup</h1>
+
+<p>Users continue to have trouble verifying package signatures. One user was confused when the signature was automatically saved as a “.txt” file. Other problems included not being running the command from the correct directory, and downloading a signature that did not correspond with the downloaded file.</p>
+
+<p>Users sometimes write the help desk seeking clarification about misconceptions about Tor. Examples of such misconceptions include “Is it true that Tor is illegal in the United States?” and “Is it true that Tor has been compromised by the NSA?”. Using Tor is not currently illegal anywhere. For information about the recent vulnerability, users are advised to read the <a href="https://blog.torproject.org/blog/hidden-services-current-events-and-freedom-hosting">recent blog post on the subject</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>David Goulet <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005319.html">announced the first release candidate</a> of <a href="https://github.com/dgoulet/torsocks">his rewrite of torsocks</a>. Several bug reports have since been fixed from early testers. Expect a new release soon.</p>
+
+<p>Not all computers currently have their clock synchronized. This means that any timestamps in the Tor protocol can unfortunately be used to fingerprint Tor users. Nick Mathewson would like to improve the situation and has <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005302.html">sent proposal 222</a>, aiming to eliminate “passive timestamp exposure”, for reviews.</p>
+
+<p>Karsten Loesing has made <a href="https://bugs.torproject.org/9166#comment:25">further progress</a> on “experimenting with a client and private bridge connected over uTP”. Reduced time for client to bootstrap over uTP from 2 minutes to 6 seconds and more.</p>
+
+<p>Orbot&#39;s new version 12.0.5 brings identity switching-by-swiping along with a few bugfixes. It can be <a href="https://play.google.com/store/apps/details?id=org.torproject.android">downloaded from Google Play</a> or from the Guardian Project&#39;s channels.</p>
+
+<p>GSoC students sent another wave of bi-weekly reports: Kostas Jakeliunas on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005310.html">Searchable Metrics Archive</a>, Johannes Fürmann on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005317.html">EvilGenius</a>, Hareesan on the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005320.html">Steganography Browser Extension</a>, Robert on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005323.html">Stream-RTT</a>, and Cristian-Matei Toader on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005327.html">Tor capabilities</a>.</p>
+
+<p>The Torservers.net crowdfunding campaign for Tor exit bandwidth ended on August 26th, yielding “3771,84 Euro to be spread equally across our current seven organizations” <a href="https://lists.torproject.org/pipermail/tor-relays/2013-August/002544.html">anounnced Moritz Bartl</a>.</p>
+
+<p>Kostas Jakeliunas answered George&#39;s <a href="https://lists.torproject.org/pipermail/tor-relays/2013-August/002477.html">call for help</a> to gather more accurate bridge statistics by writing <a href="https://lists.torproject.org/pipermail/tor-relays/2013-August/002500.html">step by step instructions</a> on how to upgrade a bridge running on a Rasberry Pi to use the tor master branch. Lunar also pointed out that — thanks to Peter Palfrader&#39;s work on setting up continuous integration — Debian packages for the tor master branch were also available and <a href="https://lists.torproject.org/pipermail/tor-relays/2013-August/002503.html">ready to be used</a>.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, dope457, mttp and Karsten Loesing.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing-list</a> if you want to get involved!</p>
+
+</div>
+<p>- lunar</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

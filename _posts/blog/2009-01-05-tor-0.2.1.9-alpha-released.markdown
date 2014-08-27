@@ -1,0 +1,141 @@
+---
+layout: post
+title: "Tor 0.2.1.9-alpha released"
+permalink: tor-0.2.1.9-alpha-released
+date: 2009-01-05
+author: phobos
+category: blog
+tags: ["alpha release", "bug fixes", "deprecated features", "security fixes"]
+---
+
+Tor 0.2.1.9-alpha fixes many more bugs, some of them security-related.
+
+[https://www.torproject.org/download.html.en](https://www.torproject.org/download.html.en "https://www.torproject.org/download.html.en")
+
+Changes in version 0.2.1.9-alpha - 2008-12-25  
+**New directory authorities:**
+
+- gabelmoo (the authority run by Karsten Loesing) now has a new  
+ IP address.
+
+**Security fixes:**
+
+- Never use a connection with a mismatched address to extend a  
+ circuit, unless that connection is canonical. A canonical  
+ connection is one whose address is authenticated by the router's  
+ identity key, either in a NETINFO cell or in a router descriptor.
+- Avoid a possible memory corruption bug when receiving hidden service  
+ descriptors. Bugfix on 0.2.1.6-alpha.
+
+**Major bugfixes:**
+
+- Fix a logic error that would automatically reject all but the first  
+ configured DNS server. Bugfix on 0.2.1.5-alpha. Possible fix for  
+ part of bug 813/868. Bug spotted by coderman.
+- When a stream at an exit relay is in state "resolving" or  
+ "connecting" and it receives an "end" relay cell, the exit relay  
+ would silently ignore the end cell and not close the stream. If  
+ the client never closes the circuit, then the exit relay never  
+ closes the TCP connection. Bug introduced in 0.1.2.1-alpha;  
+ reported by "wood".
+- When we can't initialize DNS because the network is down, do not  
+ automatically stop Tor from starting. Instead, retry failed  
+ dns\_inits() every 10 minutes, and change the exit policy to reject  
+ \*:\* until one succeeds. Fixes bug 691.
+
+**Minor features:**
+
+- Give a better error message when an overzealous init script says  
+ "sudo -u username tor --user username". Makes Bug 882 easier for  
+ users to diagnose.
+- When a directory authority gives us a new guess for our IP address,  
+ log which authority we used. Hopefully this will help us debug  
+ the recent complaints about bad IP address guesses.
+- Detect svn revision properly when we're using git-svn.
+- Try not to open more than one descriptor-downloading connection  
+ to an authority at once. This should reduce load on directory  
+ authorities. Fixes bug 366.
+- Add cross-certification to newly generated certificates, so that  
+ a signing key is enough information to look up a certificate.  
+ Partial implementation of proposal 157.
+- Start serving certificates by (identity digest, signing key digest)  
+ pairs. Partial implementation of proposal 157.
+- Clients now never report any stream end reason except 'MISC'.  
+ Implements proposal 148.
+- On platforms with a maximum syslog string length, truncate syslog  
+ messages to that length ourselves, rather than relying on the  
+ system to do it for us.
+- Optimize out calls to time(NULL) that occur for every IO operation,  
+ or for every cell. On systems where time() is a slow syscall,  
+ this fix will be slightly helpful.
+- Exit servers can now answer resolve requests for ip6.arpa addresses.
+- When we download a descriptor that we then immediately (as  
+ a directory authority) reject, do not retry downloading it right  
+ away. Should save some bandwidth on authorities. Fix for bug  
+ 888. Patch by Sebastian Hahn.
+- When a download gets us zero good descriptors, do not notify  
+ Tor that new directory information has arrived.
+- Avoid some nasty corner cases in the logic for marking connections  
+ as too old or obsolete or noncanonical for circuits.
+
+**Minor features (controller):**
+
+- New CONSENSUS\_ARRIVED event to note when a new consensus has  
+ been fetched and validated.
+- When we realize that another process has modified our cached  
+ descriptors file, print out a more useful error message rather  
+ than triggering an assertion. Fixes bug 885. Patch from Karsten.
+- Add an internal-use-only \_\_ReloadTorrcOnSIGHUP option for  
+ controllers to prevent SIGHUP from reloading the  
+ configuration. Fixes bug 856.
+
+**Minor bugfixes:**
+
+- Resume using the correct "REASON=" stream when telling the  
+ controller why we closed a stream. Bugfix in 0.2.1.1-alpha.
+- When a canonical connection appears later in our internal list  
+ than a noncanonical one for a given OR ID, always use the  
+ canonical one. Bugfix on 0.2.0.12-alpha. Fixes bug 805.  
+ Spotted by rovv.
+- Clip the MaxCircuitDirtiness config option to a minimum of 10  
+ seconds. Warn the user if lower values are given in the  
+ configuration. Bugfix on 0.1.0.1-rc. Patch by Sebastian.
+- Clip the CircuitBuildTimeout to a minimum of 30 seconds. Warn the  
+ user if lower values are given in the configuration. Bugfix on  
+ 0.1.1.17-rc. Patch by Sebastian.
+- Fix a race condition when freeing keys shared between main thread  
+ and CPU workers that could result in a memory leak. Bugfix on  
+ 0.1.0.1-rc. Fixes bug 889.
+
+**Minor bugfixes (hidden services):**
+
+- Do not throw away existing introduction points on SIGHUP (bugfix on  
+ 0.0.6pre1); also, do not stall hidden services because we're  
+ throwing away introduction points; bugfix on 0.2.1.7-alpha. Spotted  
+ by John Brooks. Patch by Karsten. Fixes bug 874.
+- Fix a memory leak when we decline to add a v2 rendezvous  
+ descriptor to the cache because we already had a v0 descriptor  
+ with the same ID. Bugfix on 0.2.0.18-alpha.
+
+**Deprecated and removed features:**
+
+- RedirectExits has been removed. It was deprecated since  
+ 0.2.0.3-alpha.
+- Finally remove deprecated "EXTENDED\_FORMAT" controller feature. It  
+ has been called EXTENDED\_EVENTS since 0.1.2.4-alpha.
+- Cell pools are now always enabled; --disable-cell-pools is ignored.
+
+**Code simplifications and refactoring:**
+
+- Rename the confusing or\_is\_obsolete field to the more appropriate  
+ is\_bad\_for\_new\_circs, and move it to or\_connection\_t where it  
+ belongs.
+- Move edge-only flags from connection\_t to edge\_connection\_t: not  
+ only is this better coding, but on machines of plausible alignment,  
+ it should save 4-8 bytes per connection\_t. "Every little bit helps."
+- Rename ServerDNSAllowBrokenResolvConf to ServerDNSAllowBrokenConfig  
+ for consistency; keep old option working for backward compatibility.
+- Simplify the code for finding connections to use for a circuit.
+
+Original signed announcement at [http://archives.seul.org/or/talk/Jan-2009/msg00029.html](http://archives.seul.org/or/talk/Jan-2009/msg00029.html "http://archives.seul.org/or/talk/Jan-2009/msg00029.html")
+

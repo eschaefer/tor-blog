@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.2.7-alpha released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.2.7-alpha released</h2>
+<p class="meta">23 Jan 2010</p>
+
+<div class="post">
+<p>alpha fixes a huge client-side performance bug, as well<br>
+as laying the groundwork for further relay-side performance fixes. It<br>
+also starts cleaning up client behavior with respect to the EntryNodes,<br>
+ExitNodes, and StrictNodes config options.</p>
+
+<p>This release also rotates two directory authority keys, due to a security<br>
+breach of some of the Torproject servers:<br>
+ <a href="http://archives.seul.org/or/talk/Jan-2010/msg00161.html" title="http://archives.seul.org/or/talk/Jan-2010/msg00161.html">http://archives.seul.org/or/talk/Jan-2010/msg00161.html</a></p>
+
+<p>Everybody should upgrade:<br>
+ <a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+
+<p>Changes in version 0.2.2.7-alpha - 2010-01-19<br>
+ o Directory authority changes:<br>
+ - Rotate keys (both v3 identity and relay identity) for moria1<br>
+ and gabelmoo.</p>
+
+<p>o Major features (performance):<br>
+ - We were selecting our guards uniformly at random, and then weighting<br>
+ which of our guards we&#39;d use uniformly at random. This imbalance<br>
+ meant that Tor clients were severely limited on throughput (and<br>
+ probably latency too) by the first hop in their circuit. Now we<br>
+ select guards weighted by currently advertised bandwidth. We also<br>
+ automatically discard guards picked using the old algorithm. Fixes<br>
+ bug 1217; bugfix on 0.2.1.3-alpha. Found by Mike Perry.<br>
+ - When choosing which cells to relay first, relays can now favor<br>
+ circuits that have been quiet recently, to provide lower latency<br>
+ for low-volume circuits. By default, relays enable or disable this<br>
+ feature based on a setting in the consensus. You can override<br>
+ this default by using the new &quot;CircuitPriorityHalflife&quot; config<br>
+ option. Design and code by Ian Goldberg, Can Tang, and Chris<br>
+ Alexander.<br>
+ - Add separate per-conn write limiting to go with the per-conn read<br>
+ limiting. We added a global write limit in Tor 0.1.2.5-alpha,<br>
+ but never per-conn write limits.<br>
+ - New consensus params &quot;bwconnrate&quot; and &quot;bwconnburst&quot; to let us<br>
+ rate-limit client connections as they enter the network. It&#39;s<br>
+ controlled in the consensus so we can turn it on and off for<br>
+ experiments. It&#39;s starting out off. Based on proposal 163.</p>
+
+<p>o Major features (relay selection options):<br>
+ - Switch to a StrictNodes config option, rather than the previous<br>
+ &quot;StrictEntryNodes&quot; / &quot;StrictExitNodes&quot; separation that was missing a<br>
+ &quot;StrictExcludeNodes&quot; option.<br>
+ - If EntryNodes, ExitNodes, ExcludeNodes, or ExcludeExitNodes<br>
+ change during a config reload, mark and discard all our origin<br>
+ circuits. This fix should address edge cases where we change the<br>
+ config options and but then choose a circuit that we created before<br>
+ the change.<br>
+ - If EntryNodes or ExitNodes are set, be more willing to use an<br>
+ unsuitable (e.g. slow or unstable) circuit. The user asked for it,<br>
+ they get it.<br>
+ - Make EntryNodes config option much more aggressive even when<br>
+ StrictNodes is not set. Before it would prepend your requested<br>
+ entrynodes to your list of guard nodes, but feel free to use others<br>
+ after that. Now it chooses only from your EntryNodes if any of<br>
+ those are available, and only falls back to others if a) they&#39;re<br>
+ all down and b) StrictNodes is not set.<br>
+ - Now we refresh your entry guards from EntryNodes at each consensus<br>
+ fetch -- rather than just at startup and then they slowly rot as<br>
+ the network changes.</p>
+
+<p>o Major bugfixes:<br>
+ - Stop bridge directory authorities from answering dbg-stability.txt<br>
+ directory queries, which would let people fetch a list of all<br>
+ bridge identities they track. Bugfix on 0.2.1.6-alpha.</p>
+
+<p>o Minor features:<br>
+ - Log a notice when we get a new control connection. Now it&#39;s easier<br>
+ for security-conscious users to recognize when a local application<br>
+ is knocking on their controller door. Suggested by bug 1196.<br>
+ - New config option &quot;CircuitStreamTimeout&quot; to override our internal<br>
+ timeout schedule for how many seconds until we detach a stream from<br>
+ a circuit and try a new circuit. If your network is particularly<br>
+ slow, you might want to set this to a number like 60.<br>
+ - New controller command &quot;getinfo config-text&quot;. It returns the<br>
+ contents that Tor would write if you send it a SAVECONF command,<br>
+ so the controller can write the file to disk itself.<br>
+ - New options for SafeLogging to allow scrubbing only log messages<br>
+ generated while acting as a relay.<br>
+ - Ship the bridges spec file in the tarball too.<br>
+ - Avoid a mad rush at the beginning of each month when each client<br>
+ rotates half of its guards. Instead we spread the rotation out<br>
+ throughout the month, but we still avoid leaving a precise timestamp<br>
+ in the state file about when we first picked the guard. Improves<br>
+ over the behavior introduced in 0.1.2.17.</p>
+
+<p>o Minor bugfixes (compiling):<br>
+ - Fix compilation on OS X 10.3, which has a stub mlockall() but<br>
+ hides it. Bugfix on 0.2.2.6-alpha.<br>
+ - Fix compilation on Solaris by removing support for the<br>
+ DisableAllSwap config option. Solaris doesn&#39;t have an rlimit for<br>
+ mlockall, so we cannot use it safely. Fixes bug 1198; bugfix on<br>
+ 0.2.2.6-alpha.</p>
+
+<p>o Minor bugfixes (crashes):<br>
+ - Do not segfault when writing buffer stats when we haven&#39;t observed<br>
+ a single circuit to report about. Found by Fabian Lanze. Bugfix on<br>
+ 0.2.2.1-alpha.<br>
+ - If we&#39;re in the pathological case where there&#39;s no exit bandwidth<br>
+ but there is non-exit bandwidth, or no guard bandwidth but there<br>
+ is non-guard bandwidth, don&#39;t crash during path selection. Bugfix<br>
+ on 0.2.0.3-alpha.<br>
+ - Fix an impossible-to-actually-trigger buffer overflow in relay<br>
+ descriptor generation. Bugfix on 0.1.0.15.</p>
+
+<p>o Minor bugfixes (privacy):<br>
+ - Fix an instance where a Tor directory mirror might accidentally<br>
+ log the IP address of a misbehaving Tor client. Bugfix on<br>
+ 0.1.0.1-rc.<br>
+ - Don&#39;t list Windows capabilities in relay descriptors. We never made<br>
+ use of them, and maybe it&#39;s a bad idea to publish them. Bugfix<br>
+ on 0.1.1.8-alpha.</p>
+
+<p>o Minor bugfixes (other):<br>
+ - Resolve an edge case in path weighting that could make us misweight<br>
+ our relay selection. Fixes bug 1203; bugfix on 0.0.8rc1.<br>
+ - Fix statistics on client numbers by country as seen by bridges that<br>
+ were broken in 0.2.2.1-alpha. Also switch to reporting full 24-hour<br>
+ intervals instead of variable 12-to-48-hour intervals.<br>
+ - After we free an internal connection structure, overwrite it<br>
+ with a different memory value than we use for overwriting a freed<br>
+ internal circuit structure. Should help with debugging. Suggested<br>
+ by bug 1055.<br>
+ - Update our OpenSSL 0.9.8l fix so that it works with OpenSSL 0.9.8m<br>
+ too.</p>
+
+<p>o Removed features:<br>
+ - Remove the HSAuthorityRecordStats option that version 0 hidden<br>
+ service authorities could have used to track statistics of overall<br>
+ hidden service usage.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

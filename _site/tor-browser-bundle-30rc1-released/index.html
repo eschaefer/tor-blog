@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor Browser Bundle 3.0rc1 Released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor Browser Bundle 3.0rc1 Released</h2>
+<p class="meta">22 Nov 2013</p>
+
+<div class="post">
+<p>The first release candidate in the <a href="https://blog.torproject.org/category/tags/tbb-30">3.0 series</a> of the Tor Browser Bundle is now available from the Tor Package Archive:<br>
+ <a href="https://archive.torproject.org/tor-package-archive/torbrowser/3.0rc1/">https://archive.torproject.org/tor-package-archive/torbrowser/3.0rc1/</a>.</p>
+
+<p>This release includes important <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.11">security updates to Firefox</a>.</p>
+
+<p>Unfortunately, we have decided to remove the PDF.JS addon from this bundle, as the version available for Firefox 17 has stopped receiving updates. Built-in PDF support should return when we transition to Firefox 24 in the coming weeks.</p>
+
+<p>This release should also fix a <a href="https://trac.torproject.org/projects/tor/ticket/10102">build reproducibility</a> issue on Windows. All platform binaries should once again be identically <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build">reproducible from source by anyone</a> using git tag tbb-3.0rc1-release.</p>
+
+<ul>
+<li><p>All Platforms:</p>
+
+<ul>
+<li>Update Firefox to 17.0.11esr</li>
+<li>Update Tor to 0.2.4.18-rc</li>
+<li>Remove unsupported PDF.JS addon from the bundle</li>
+<li>Bug #7277: TBB&#39;s Tor client will now omit its timestamp in the TLS handshake.</li>
+<li>Update Torbutton to 1.6.4.1</li>
+<li>Bug #10002: Make the TBB3.0 blog tag our update download URL for now </li>
+</ul></li>
+<li><p>Windows</p>
+
+<ul>
+<li>Bug #10102: Patch binutils to remove nondeterministic bytes in compiled binaries </li>
+</ul></li>
+<li><p>Linux</p>
+
+<ul>
+<li>Bug #10049: Fix architecture check to work from outside TBB&#39;s directory</li>
+<li>Bug #10126: Remove libz and firefox-bin, and strip unstripped binaries</li>
+<li>Misc: Disable Firefox updater during compile time (in addition to pref) </li>
+</ul></li>
+</ul>
+
+</div>
+<p>- mikeperry</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

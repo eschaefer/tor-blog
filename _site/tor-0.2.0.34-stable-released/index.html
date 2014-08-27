@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.0.34-stable released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.0.34-stable released</h2>
+<p class="meta">10 Feb 2009</p>
+
+<div class="post">
+<p>Tor 0.2.0.34 features several more security-related fixes. You<br>
+should upgrade, especially if you run an exit relay (remote crash) or<br>
+a directory authority (remote infinite loop), or you&#39;re on an older<br>
+(pre-XP) or not-recently-patched Windows (remote exploit).</p>
+
+<p>This release marks end-of-life for Tor 0.1.2.x. Those Tor versions have<br>
+many known flaws, and nobody should be using them. You should upgrade. If<br>
+you&#39;re using a Linux or BSD and its packages are obsolete, stop using<br>
+those packages and upgrade anyway.</p>
+
+<p><a href="https://www.torproject.org/download.html" title="https://www.torproject.org/download.html">https://www.torproject.org/download.html</a></p>
+
+<p>Changes in version 0.2.0.34 - 2009-02-08<br>
+<strong>Security fixes:</strong></p>
+
+<ul>
+<li>Fix an infinite-loop bug on handling corrupt votes under certain<br>
+      circumstances. Bugfix on 0.2.0.8-alpha.</li>
+<li>Fix a temporary DoS vulnerability that could be performed by<br>
+      a directory mirror. Bugfix on 0.2.0.9-alpha; reported by lark.</li>
+<li>Avoid a potential crash on exit nodes when processing malformed<br>
+      input. Remote DoS opportunity. Bugfix on 0.2.0.33.</li>
+<li>Do not accept incomplete ipv4 addresses (like 192.168.0) as valid.<br>
+      Spec conformance issue. Bugfix on Tor 0.0.2pre27.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Fix compilation on systems where time_t is a 64-bit integer.<br>
+      Patch from Matthias Drochner.</li>
+<li>Don&#39;t consider expiring already-closed client connections. Fixes<br>
+      bug 893. Bugfix on 0.0.2pre20.</li>
+</ul>
+
+<p>The original announcement can be found at <a href="http://archives.seul.org/or/announce/Feb-2009/msg00000.html" title="http://archives.seul.org/or/announce/Feb-2009/msg00000.html">http://archives.seul.org/or/announce/Feb-2009/msg00000.html</a></p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

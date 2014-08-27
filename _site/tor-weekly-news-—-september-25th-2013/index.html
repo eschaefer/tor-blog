@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor Weekly News — September 25th, 2013</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor Weekly News — September 25th, 2013</h2>
+<p class="meta">25 Sep 2013</p>
+
+<div class="post">
+<p>Welcome to the thirteenth issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what&#39;s happening in the well-heeled Tor community.</p>
+
+<h1>Reimbursement of exit operators</h1>
+
+<p>In July 2012, Roger Dingledine wrote <a href="https://blog.torproject.org/blog/turning-funding-more-exit-relays">a post on the Tor blog</a> in which he raised the prospect of offering funding to organizations running fast Tor exit nodes. In so doing, Roger wrote, “we will improve the network&#39;s diversity as well as being able to handle more users.” He also announced that donors were already interested in financing such a scheme. Then, in April this year, Moritz Bartl <a href="https://lists.torproject.org/pipermail/tor-relays/2013-April/001996.html">stated</a> that torservers.net was looking to move away from establishing additional exit nodes, in favor of providing support of various kinds to partner organizations running their own exits.</p>
+
+<p>These plans, and the discussion they provoked, are now about to bear fruit in the form of a financial reimbursement scheme directed at torservers.net&#39;s partner organizations. Moritz <a href="https://lists.torproject.org/pipermail/tor-relays/2013-September/002824.html">wrote again</a> on the the tor-relays list to announce that reimbursements are scheduled to begin at the end of this month, drawn from a one-time donation by the U.S. Government&#39;s Broadcasting Board of Governors.</p>
+
+<p>The ensuing debate focused both on the technical aspects of reimbursement — that is, how best to <a href="https://lists.torproject.org/pipermail/tor-relays/2013-September/002825.html">determine the division of funds based on information harvested from the network metrics</a> — and the question of the <a href="https://lists.torproject.org/pipermail/tor-relays/2013-September/002831.html">security issues that could potentially arise from such a scheme</a>.</p>
+
+<p>Moritz specified that currently the only organizations to qualify for reimbursements are those that he personally knows: “so, if you’re interested in becoming a partner, start social interaction with me”, he wrote. Questions or comments regarding these proposals are welcome on the tor-relays list, and further announcements and discussion about the reimbursement system will be published on its <a href="https://lists.torproject.org/pipermail/tor-relays/2013-May/002138.html">dedicated mailing lists</a>.</p>
+
+<h1>Tails 0.20.1 is out</h1>
+
+<p>Tails saw its <a href="https://tails.boum.org/news/version_0.20.1/">33<sup>rd</sup> release</a> on September 19th. The most visible change might be the upgrade of tor to version 0.2.4.17-rc, which should result in faster and more reliable access to the network after the <a href="https://blog.torproject.org/blog/how-to-handle-millions-new-tor-clients">sudden bump in Tor clients</a>.</p>
+
+<p>Among other minor bugfixes and improvements, persistence volumes are now properly unmounted on shutdown. This should prevent data loss in some situations, and avoid a sometimes lengthy pause upon activation.</p>
+
+<p>It also fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_0.20/">several important security issues</a>. It is recommended that <a href="https://tails.boum.org/news/version_0.20.1/">all users upgrade as soon as possible</a>.</p>
+
+<h1>New Tor Browser Bundles released</h1>
+
+<p>A <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-firefox-1709esr">new set of stable and beta Tor Browser Bundles was released</a> on September 20th. The Tor Browser is now based on Firefox 17.0.9esr and fixes <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.9">several important security issues</a>.</p>
+
+<p>Queries for the default search engine, Startpage, are no longer subject to its <a href="https://bugs.torproject.org/8839">invasive “family filter”</a>. The beta branch also include an updated version of HTTPS Everywhere that no longer causes a storm of requests to clients1.google.com, an <a href="https://bugs.torproject.org/9713">issue</a> reported by many users after the last release.</p>
+
+<p>Once again, it is recommended that all users upgrade as soon as possible.</p>
+
+<h1>Tor mini-hackathon at GNU 30th Anniversary Celebration</h1>
+
+<p>Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/030154.html">sent an invitation</a> encouraging everyone to attend the <a href="https://gnu.org/gnu30/celebration">GNU 30th Anniversary Celebration</a> on September 28th and 29th at MIT, Cambridge, MA, USA. Part of the event is a hackathon, and Tor is featured alongside a few other projects. If you want to spend some of the weekend helping the Tor community, <a href="https://crm.fsf.org/civicrm/event/register?id=10">sign up on the webpage</a> and come along!</p>
+
+<h1>Clock skew: false alarm</h1>
+
+<p>Small offsets in system time offer an attractive opportunity for fingerprinting Tor clients. In order to eliminate unnecessary exposure, Nick Mathewson has been working on <a href="https://gitweb.torproject.org/torspec.git/blob_plain/refs/heads/master:/proposals/222-remove-client-timestamps.txt">proposal 222</a>.</p>
+
+<p>Unfortunately, this process introduced a bug into the tor daemon which became apparent after the directory authority named “turtles” was upgraded. The result was that relays started to <a href="https://lists.torproject.org/pipermail/tor-relays/2013-September/002888.html">warn their operators</a> of an implausible clock skew. This was, of course, a false alarm.</p>
+
+<p>The issue was quickly worked around, and <a href="https://bugs.torproject.org/9798">fixed properly</a> a few hours later.</p>
+
+<h1>Tor Help Desk Roundup</h1>
+
+<p>One user contacted the help desk for assistance running <em>torbrowser</em>, an application not affiliated with the Tor Project that attempts to mimic the Tor Browser Bundle. The <em>torbrowser</em> application violates the Tor Project’s trademark, and the Tor Project encourages users to avoid it. Multiple Tor Project developers have contacted SourceForge, which hosts this application’s website, attempting to get the project removed. Andrew Lewman <a href="https://lists.torproject.org/pipermail/tor-talk/2013-August/029614.html">has said that lawyers have now been engaged</a>.</p>
+
+<p>A number of University students continued to contact the help desk to report difficulties circumventing their University’s Cyberoam firewall. These students report being unable to access the Tor network even when using the Pluggable Transports Browser with obfs3 bridges. One person reported success circumventing the firewall when using an obfsproxy bridge on port 443. This issue is ongoing, but a <a href="https://bugs.torproject.org/9601">bug report has been filed</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Jacob Appelbaum <a href="http://storify.com/fredericjacobs/discussion-between-tor-s-ioerror-and-vupen-s-chaou">inquired with VUPEN</a> about the Tor Project having the right of first refusal for Tor Browser bugs, in order to protect users.</p>
+
+<p>The <a href="http://area51.stackexchange.com/proposals/56447/tor">proposed Tor page on Stack Exchange</a> has now reached 100% commitment, and will soon be launching as a live beta. Thanks to everyone who signed up!.</p>
+
+<p>sajolida <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003703.html">reported on the latest Tails “low-hanging fruits session”</a>. The <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003696.html">date and a tentative agenda</a> for the next online contributors meeting have also been set.</p>
+
+<p>As GSoC entered its final phase, Kostas Jakeliunas reported on the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005483.html">searchable metrics archive</a>, Johannes Fürmann on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005484.html">EvilGenius</a>, and Cristian-Matei Toader on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005490.html">Tor capabilities</a>.</p>
+
+<p>How can we provide Tor users an easy way to verify the signatures on Tor software? Sherief Alaa raised this question on the tor-dev mailing list when <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005491.html">asking for comments</a> on plans to write a “small” GUI tool.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by harmony, Lunar, dope457, Matt Pagan, and Jacob Appelbaum.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+</div>
+<p>- lunar</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

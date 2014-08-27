@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.2.30-rc is out</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.2.30-rc is out</h2>
+<p class="meta">14 Jul 2011</p>
+
+<div class="post">
+<p>Tor 0.2.2.30-rc is the first release candidate for the Tor 0.2.2.x<br>
+series. It fixes a few smaller bugs, but generally appears stable.<br>
+Please test it and let us know whether it is!</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Changes in version 0.2.2.30-rc - 2011-07-07</strong><br>
+<strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Send a SUCCEEDED stream event to the controller when a reverse<br>
+resolve succeeded. Fixes bug 3536; bugfix on 0.0.8pre1. Issue<br>
+discovered by katmagic.</li>
+<li>Always NUL-terminate the sun_path field of a sockaddr_un before<br>
+passing it to the kernel. (Not a security issue: kernels are<br>
+smart enough to reject bad sockaddr_uns.) Found by Coverity;<br>
+CID #428. Bugfix on Tor 0.2.0.3-alpha.</li>
+<li>Don&#39;t stack-allocate the list of supplementary GIDs when we&#39;re<br>
+about to log them. Stack-allocating NGROUPS_MAX gid_t elements<br>
+could take up to 256K, which is way too much stack. Found by<br>
+Coverity; CID #450. Bugfix on 0.2.1.7-alpha.</li>
+<li>Add BUILDTIMEOUT_SET to the list returned by the &#39;GETINFO<br>
+events/names&#39; control-port command. Bugfix on 0.2.2.9-alpha;<br>
+fixes part of bug 3465.</li>
+<li>Fix a memory leak when receiving a descriptor for a hidden<br>
+service we didn&#39;t ask for. Found by Coverity; CID #30. Bugfix<br>
+on 0.2.2.26-beta.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Update to the July 1 2011 Maxmind GeoLite Country database.</li>
+</ul>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

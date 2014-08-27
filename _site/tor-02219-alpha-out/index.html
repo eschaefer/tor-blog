@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.2.19-alpha is out</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.2.19-alpha is out</h2>
+<p class="meta">26 Nov 2010</p>
+
+<div class="post">
+<p>Yet another OpenSSL security patch broke its compatibility with Tor:<br>
+Tor 0.2.2.19-alpha makes relays work with OpenSSL 0.9.8p and 1.0.0.b.</p>
+
+<p><a href="https://www.torproject.org/download/download" title="https://www.torproject.org/download/download">https://www.torproject.org/download/download</a></p>
+
+<p>The original announcement is at <a href="http://archives.seul.org/or/talk/Nov-2010/msg00172.html" title="http://archives.seul.org/or/talk/Nov-2010/msg00172.html">http://archives.seul.org/or/talk/Nov-2010/msg00172.html</a></p>
+
+<p>Changes in version 0.2.2.19-alpha - 2010-11-21<br>
+<strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Resolve an incompatibility with openssl 0.9.8p and openssl 1.0.0b:<br>
+No longer set the tlsext_host_name extension on server SSL objects;<br>
+but continue to set it on client SSL objects. Our goal in setting<br>
+it was to imitate a browser, not a vhosting server. Fixes bug 2204;<br>
+bugfix on 0.2.1.1-alpha.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Try harder not to exceed the maximum length of 50 KB when writing<br>
+statistics to extra-info descriptors. This bug was triggered by very<br>
+fast relays reporting exit-port, entry, and dirreq statistics.<br>
+Reported by Olaf Selke. Bugfix on 0.2.2.1-alpha. Fixes bug 2183.</li>
+<li>Publish a router descriptor even if generating an extra-info<br>
+descriptor fails. Previously we would not publish a router<br>
+descriptor without an extra-info descriptor; this can cause fast<br>
+exit relays collecting exit-port statistics to drop from the<br>
+consensus. Bugfix on 0.1.2.9-rc; fixes bug 2195.</li>
+</ul>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

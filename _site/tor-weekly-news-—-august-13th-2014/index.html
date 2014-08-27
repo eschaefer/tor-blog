@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor Weekly News — August 13th, 2014</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor Weekly News — August 13th, 2014</h2>
+<p class="meta">13 Aug 2014</p>
+
+<div class="post">
+<p>Welcome to the thirty-second issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+
+<h1>Torsocks 2.0 is now considered stable</h1>
+
+<p><a href="https://gitweb.torproject.org/torsocks.git/blob/HEAD:/README.md">Torsocks</a> is a wrapper program that will force an application’s network connections to go through the Tor network. David Goulet <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007330.html">released</a> version 2.0.0, blessing the new codebase as stable after <a href="https://lists.torproject.org/pipermail/tor-dev/2013-June/004959.html">more than a year of efforts</a>.</p>
+
+<p>David’s original email highlighted several reasons for a complete rewrite of torsocks. Among the issues were maintainability, error handling, thread safety, and a lack of proper compatibility layer for multiple architectures. The new implementation addresses all these issues while staying about the same size as the previous version (4,000 lines of C according to sloccount), and test coverage has been vastly extended.</p>
+
+<p>Torsocks comes in handy when a piece of software does not natively support the use of a SOCKS proxy. In most cases, the new version may be safer, as torsocks will prevent DNS requests and non-torified connections from happening.</p>
+
+<p>Integrators and power users should watch their steps while migrating to the new version. The configuration file format has changed, and some applications might behave differently as more system calls are now restricted.</p>
+
+<h1>Next generation Hidden Services and Introduction Points</h1>
+
+<p>When Tor clients need to connect to a Hidden Service, the first step is to create a circuit to its “Introduction Point”. There, the Tor client serving the Hidden Service will be waiting through another circuit to agree on a “Rendezvous Point” and pursue the communication through circuits connecting to this freshly selected Tor node.</p>
+
+<p>This general design is not subject to any changes in the <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/224-rend-spec-ng.txt">revision of hidden services</a> currently being worked on. But there are still some questions left unanswered regarding the best way to select Introduction Points. George Kadianakis <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007335.html">summarized</a> them as: “How many IPs should an HS have? Which relays can be IPs? What’s the lifetime of an IP?”</p>
+
+<p>For each of these questions, George collected possible answers and assessed whether or not they could respond to several attacks identified in the past. Anyone interested should help with the research needed and join the discussion.</p>
+
+<p>In the meantime, Michael Rogers is also trying to <a href="https://fulpool.org/pipermail/hidden-services/2014-August/000019.html">find ways</a> to improve hidden service performance in mobile contexts. One way to do so would be to “keep the set of introduction points as stable as possible”. However, a naive approach to doing so would ease the job of attackers trying to locate a hidden service. The idea would be to always use the same guard and middle node for a given introduction point, but this might also open the doors to new attacks. Michael suggests experimenting with the recently published <a href="https://github.com/drgowen/tor-research-framework">Java research framework</a> to gain a better understanding of the implications.</p>
+
+<h1>More status reports for July 2014</h1>
+
+<p>The wave of regular monthly reports from Tor project members for the month of July continued, with submissions from <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000615.html">Andrew Lewman</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000616.html">Colin C.</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000617.html">Damian Johnson</a>.</p>
+
+<p>Roger Dingledine sent out the report for <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000619.html">SponsorF</a>. Arturo Filastò described what the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000621.html">OONI team</a> was up to. The <a href="https://tails.boum.org/news/report_2014_06-07/">Tails team</a> covered their activity for June and July.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Two Tor Browser releases are at QA stage: <a href="https://lists.torproject.org/pipermail/tor-qa/2014-August/000436.html">4.0-alpha-1</a> including meek and a new directory layout, and <a href="https://lists.torproject.org/pipermail/tor-qa/2014-August/000439.html">3.6.4</a> for security fixes.</p>
+
+<p>The recent serious <a href="https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">attack against Tor hidden services</a> was also a Sybil attack: a large number of malicious nodes joined the network at once. This led to a renewal of interest in detecting Sybil attacks against the Tor network more quickly. Karsten Loesing published <a href="https://github.com/kloesing/SAD">some code</a> computing similarity metrics, and David Fifield has explored <a href="https://bugs.torproject.org/12813">visualizations</a> of the consensus that made the recent attack visible.</p>
+
+<p>Gareth Owen sent out an <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007328.html">update</a> about the Java Tor Research Framework. This prompted a discussion with George Kadianakis and Tim about the best way to perform <a href="https://en.wikipedia.org/wiki/Fuzz_testing">fuzz testing</a> on Tor. Have a look if you want to comment on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007334.html">Tim’s approaches</a>.</p>
+
+<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-August/000651.html">Daniel Thill</a> for running a mirror of the Tor Project website!</p>
+
+<p>ban <a href="https://lists.torproject.org/pipermail/tor-relays/2014-August/005073.html">mentioned</a> a new service collecting donations for the Tor network. <a href="https://oniontip.com/">OnionTip</a>, set up by Donncha O’Cearbhaill, will collect bitcoins and redistribute them to relay operators who put a bitcoin address in their contact information. As the redistribution is currently done according to the consensus weight, Sebastian Hahn <a href="https://lists.torproject.org/pipermail/tor-relays/2014-August/005077.html">warned</a> that this might encourage people to “cheat the consensus weight” because that now means “more money from oniontip”.</p>
+
+<p>Juha Nurmi sent <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000620.html">another update</a> on the ahmia.fi GSoC project.</p>
+
+<h1>News from Tor StackExchange</h1>
+
+<p>arvee wants to <a href="https://tor.stackexchange.com/q/3802/88">redirect some TCP connections through Tor on OS X</a>; <a href="http://darkk.net.ru/redsocks/">Redsocks</a> should help to route packets for port 443 over Tor . mirimir explained that given the user&#39;s pf configuration, the setting “SocksPort 8888” was probably missing.</p>
+
+<p>meee asked a question and offered a bounty for an answer: the circuit handshake entry in Tor’s log file contains some numbers, and meee wants to <a href="https://tor.stackexchange.com/q/3213/88">know what their meaning is</a>: “Circuit handshake stats since last time: 1833867/1833868 TAP, 159257/159257 NTor.”</p>
+
+<h1>Easy development tasks to get involved with</h1>
+
+<p>The bridge distributor <a href="https://bridges.torproject.org/">BridgeDB</a> usually gives out bridges by responding to user requests via HTTPS and email. A while ago, BridgeDB also gave out bridges to a very small number of people who would then redistribute bridges using their social network. We would like to resume sending bridges to these people, but only if BridgeDB can be <a href="https://bugs.torproject.org/9332">made to send them via GnuPG-encrypted emails</a>. If you’d like to dive into the BridgeDB code and add support for GnuPG-encrypted emails, please take a look at the ticket and give it a try.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, qbi, Karsten Loesing, harmony, and Philipp Winter.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+</div>
+<p>- lunar</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

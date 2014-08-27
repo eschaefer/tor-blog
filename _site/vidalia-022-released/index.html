@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Vidalia 0.2.2 Released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Vidalia 0.2.2 Released</h2>
+<p class="meta">15 Aug 2009</p>
+
+<div class="post">
+<p>Vidalia 0.2.2 is released. It addresses an issue with openssl which causes the geoip lookups to fail on various versions of Windows. It also switches from the Nullsoft Installer to the Microsoft System Installer for better compatibility with Microsoft Windows.</p>
+
+<p>There are now separate Apple OS X builds, one for PowerPC architectures and one for i386 architectures. No more Universal binary bloat to download.</p>
+
+<p>The changes are:</p>
+
+<ul>
+<li>When the user clicks &quot;Browse&quot; in the Advanced settings page to locate<br>
+a new torrc, set the initial directory shown in the file dialog to the<br>
+current location of the user&#39;s torrc. (Ticket #505)</li>
+<li>Use &#39;ditto&#39; to strip the architectures we don&#39;t want from the Qt<br>
+frameworks installed into the app bundle with the dist-osx,<br>
+dist-osx-bundle and dist-osx-split-bundle build targets.</li>
+<li>Fix a bug in the CMakeLists.txt files for ts2po and po2ts that caused<br>
+build errors on Panther for those two tools.</li>
+<li>Include rebuilt OpenSSL libraries in the Windows packages that are<br>
+built with the static (/MT) version of the Microsoft Visual C++<br>
+Runtime. Otherwise, we would require users to install the MSVC<br>
+Redistributable, which doesn&#39;t work for portable installations such as<br>
+the Tor Browser Bundle.</li>
+<li>Remove the NSIS file for the Vidalia installer since we now ship<br>
+MSI-based installers on Windows.</li>
+</ul>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

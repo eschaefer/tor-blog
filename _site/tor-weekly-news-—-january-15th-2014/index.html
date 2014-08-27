@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor Weekly News — January 15th, 2014</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor Weekly News — January 15th, 2014</h2>
+<p class="meta">15 Jan 2014</p>
+
+<div class="post">
+<p>Welcome to the second issue in 2014 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+
+<h1>Orbot 13 is out</h1>
+
+<p><a href="https://guardianproject.info/apps/orbot/">Orbot</a> — the Guardian Project’s port of Tor on Android platforms — has received a <a href="https://lists.mayfirst.org/pipermail/guardian-dev/2014-January/002973.html">major update</a>. Version 13 includes “all the latest bling across the board” meaning Tor 0.2.4.20 and updated versions of OpenSSL and XTables. Nathan also mentions “some important fixes to the Orbot service, to ensure it remains running in the background, and the active notification keeps working, as well. Finally, we’ve changed the way the native binaries are installed, making it more reliable and clean across devices.”</p>
+
+<p>After the initial release candidates, <a href="https://lists.mayfirst.org/pipermail/guardian-dev/2014-January/003016.html">13.0.1</a>, 13.0.2 and then 13.0.3 were quickly made available to fix various reported issues.</p>
+
+<p>The new release is available from the <a href="https://guardianproject.info/releases/">Guardian Project’s website</a>, F-Droid repository or Google Play.</p>
+
+<h1>Who are the Tor Project’s website visitors?</h1>
+
+<p>Last week’s <a href="https://blog.torproject.org/blog/tor-website-needs-your-help">call for help regarding the Tor Project’s website</a> has seen a pretty impressive response. Discussions then quickly sparkled on the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/www-team">newly created mailing list</a>.</p>
+
+<p>As one of the first concrete outcomes, Rey Dhuny contributed an initial set of “personas”, later improved by Max Jakob Maass, Silviu Riley with suggestions from others. <a href="https://en.wikipedia.org/wiki/Persona_%28user_experience%29">Quoting Wikipedia</a>: “personas are fictional characters created to represent the different user types within a targeted demographic, attitude and/or behavior set that might use a site, brand or product in a similar way.”</p>
+
+<p>One can have a look at <a href="https://trac.torproject.org/projects/tor/wiki/Website#Personas">the wiki page</a> to learn more about the seven different users of the Tor website that have been currently identified: The Student, The Journalist, The Researcher, The Donor, The Engineer, The Activist, The Dissident. These personas should probably be further refined, but are already a very useful tool to think about how to structure a new website.</p>
+
+<p>For anyone interested in following the effort, Andrew Lewman has spent time triaging <a href="https://trac.torproject.org/projects/tor/report/45">all website related tickets</a> and setting up <a href="https://trac.torproject.org/projects/tor/milestone/Tor%20Website%203.0">a new milestone</a> to keep tabs on tasks and issues.</p>
+
+<h1>Let’s save Tor Weather!</h1>
+
+<p>The Tor network would not exist without all its volunteers — currently more than 3,000 all around the world — who run the 5,000+ relays anonymizing our connections.</p>
+
+<p>Tor Weather is one of these small services run by the Tor Project that is meant to make the life of relay operators easier. It can warn them when their relay is down or when a new version of tor is available… and when they can receive the <a href="https://www.torproject.org/getinvolved/tshirt.html">rewarding t-shirt</a>. Unfortunately, Tor Weather has been unmaintained for quite a while, and <a href="https://trac.torproject.org/projects/tor/query?component=Tor+Weather&amp;order=status">issues have accumulated</a> over time.</p>
+
+<p>Karsten Loesing has sent a <a href="https://lists.torproject.org/pipermail/tor-dev/2014-January/006039.html">call for help</a> with suggestions on how the code can be simplified and improved. Abhiram Chintangal and Norbert Kurz have already stated their interests. Coordination is done through the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-dev">tor-dev mailing list </a> and a <a href="https://trac.torproject.org/projects/tor/wiki/doc/weather-in-2014">design wiki page</a>. Join them if you are up to some Python hacking or spiffing up the web interface!</p>
+
+<h1>More monthly status reports for December 2013</h1>
+
+<p>The wave of regular monthly reports from Tor project members for the month of December 2013 continued this week as well with the <a href="https://tails.boum.org/news/report_2013_12/">extended report form the Tails team</a> followed by reports from <a href="https://lists.torproject.org/pipermail/tor-reports/2014-January/000427.html">George Kadianakis</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-January/000428.html">Kevin P Dyer</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2014-January/000430.html">Andrew Lewman</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>The Tails team has put out a <a href="https://tails.boum.org/news/test_0.22.1-rc1/">call for testing the first release candidate for Tails 0.22.1</a>. The new version will bring several bugfixes, an updated kernel, and many improvements to the upgrader application.</p>
+
+<p>Directory authorities are in <a href="https://bugs.torproject.org/10324">the process</a> of upgrading their directory signing key to RSA 2048. This has been done for <a href="https://people.torproject.org/%7Elinus/sign2048.html">five out of nine authorities</a>. The changes might result in some temporary error messages in logs of Tor relays, <a href="https://lists.torproject.org/pipermail/tor-relays/2014-January/003592.html">as it did</a> when <a href="https://atlas.torproject.org/#details/F2044413DAC2E02E3D6BCF4735A19BCA1DE97281">gabelmoo</a> changed its key on January 11th.</p>
+
+<p>Nicolas Vigier has sent <a href="https://lists.torproject.org/pipermail/tor-dev/2014-January/006047.html">a proposal</a> about replacing the current Gitian-based build system for the Tor Browser Bundle by a system based on <a href="http://burps.boklm.eu/">burps</a>. Nicolas also worked on <a href="https://github.com/boklm/burps-tor">a prototype</a> to go with his proposal.</p>
+
+<p>Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-dev/2014-January/006038.html">mentioned</a> that the <a href="http://www-users.cs.umn.edu/%7Ejansen/papers/sniper-ndss2014.pdf">“Sniper Attack” paper</a> by Rob Jansen, Florian Tschorsch, Aaron Johnson, and Björn Scheuermann was now available. This paper describes serious Denial of Service attacks through memory exhaustion. The issue is fixed “thanks to advice from the paper’s authors, in Tor 0.2.4.x and later”.</p>
+
+<p>In order to <a href="https://bugs.torproject.org/8244">prevent attacks</a> on hidden services based on predicting which directory will be used, directory authorities need to periodically produce shared unpredictable random strings. To address the issue, Nicholas Hopper has sent <a href="https://lists.torproject.org/pipermail/tor-dev/2014-January/006053.html">a threshold signature-based proposal for a shared RNG</a>, now up for reviews.</p>
+
+<p>The next session of low-hanging fruits for Tails <a href="https://tails.boum.org/contribute/meetings/201401/">will happen</a> on February 8th in the #tails IRC channel OFTC at 10:00 CET.</p>
+
+<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-January/000439.html">stalkr.net</a>, <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-January/000442.html">Maki Hoshisawa</a> and <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-January/000443.html">cYbergueRrilLa AnonyMous NeXus</a> for running new mirrors of the Tor Project website.</p>
+
+<p>Jaromil <a href="https://lists.torproject.org/pipermail/tor-talk/2014-January/031632.html">announced</a> the release of <a href="http://dyne.org/software/dowse">Dowse</a>, “a transparent proxy setup supporting Tor”. One feature is that it detects “all URLs whose domain ends in .onion, routing them directly to Tor, effectively making the onion network accessible without any plugin or software installed.” The transport proxy approach has <a href="https://lists.torproject.org/pipermail/tor-talk/2013-July/028833.html">known issues</a> but can still be of interest to some users. Jaromil is seeking feedback and opinions from the community.</p>
+
+<p>Microsoft’s Geoff McDonald wrote a <a href="https://blogs.technet.com/b/mmpc/archive/2014/01/09/tackling-the-sefnit-botnet-tor-hazard.aspx">blog post</a> describing how they have helped remove half of the estimated <a href="https://blog.torproject.org/blog/how-to-handle-millions-new-tor-clients">four millions of Tor clients</a> installed by the Sefnit botnet without the computer owner’s knowledge.</p>
+
+<p>Koumbit has been working on <a href="https://redmine.koumbit.net/projects/torride">Torride</a>, a live distribution to run Tor relays — not unlike <a href="http://opensource.dyc.edu/tor-ramdisk/">Tor-ramdisk</a> — but based on Debian. Version 1.1.0 has been <a href="https://redmine.koumbit.net/news/17">released</a> on January 10th.</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>Many users have been emailing for clarification on the Tor Browser’s interface. The first time Tor Browser is started, users are asked if their network is free of obstacles. Many users do not know if their network is free of obstacles or not. A network is free of obstacles if it does not censor connections to the Tor network. Ticket <a href="https://bugs.torproject.org/10610">#10610</a> has been opened to discuss possible improvements.</p>
+
+<p>A number of users have reported problems using the Tor Browser in Backtrack Linux. Backtrack is unusual among Linux distributions in that the user can only log in as root; there are no other user accounts. The Tor Browser cannot be run as root. One solution for Backtrack users is to create a new account with the <code>useradd</code> command and then run the Tor Browser as that user with the <code>sudo</code> command.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, Matt Pagan, dope457, Sandeep, Karsten Loesing, Nicolas Vigier, Philipp Winter and the Tails developers.</p>
+
+<p>Tor Weekly News needs reviewers! 24 hours before being published, the content of the next newsletter is frozen so there is time to improve the language. We are really missing native or good English speakers who could spend just about 20 minutes each week. See the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+</div>
+<p>- lunar</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

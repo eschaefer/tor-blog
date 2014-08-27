@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Website translation support for translation.torproject.org</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Website translation support for translation.torproject.org</h2>
+<p class="meta">20 Sep 2009</p>
+
+<div class="post">
+<p>This summer I was working on a set of scripts that would make it possible to translate the <a href="https://www.torproject.org/">Tor Project website</a> via <a href="http://translate.sourceforge.net/wiki/pootle">Pootle</a> on <a href="http://translation.torproject.org">translation.torproject.org</a>. The website is based on a set of .wml files, but Pootle only takes files in the .pot and po format. The goal was to find a solution that would make it easy to not only translate from .wml to .po and back, but enable us to convert and keep the already translated documents.</p>
+
+<p>The solution that I chose was to use the <a href="http://po4a.alioth.debian.org/">po4a framework</a> in a set of scripts. The first script, <a href="https://tor-svn.freehaven.net/svn/website/trunk/wml2po.sh">wml2po.sh</a>, converts from .wml to .po and adds the correct charset, encoding and copyright holder. The script also checks to see which .po files need to be updated and which don&#39;t. The second script, <a href="https://tor-svn.freehaven.net/svn/website/trunk/po2wml.sh">po2wml.sh</a> writes the translated documents, i.e. converts from .po back to .wml. I also documented the things one would need to know before using the scripts, as well as the process of converting already translated documents. See the <a href="https://tor-svn.freehaven.net/svn/translation/trunk/tools/gsoc09/HOWTO">howto</a> and the <a href="https://tor-svn.freehaven.net/svn/translation/trunk/tools/gsoc09/README">readme</a>.</p>
+
+<p>The project did not come without its challenges, and it took time before I got on the right track and found a solution that everyone was happy with. I looked at different scripts and SVN hooks before I settled on having two scripts that can be run at any time by anyone. In addition to that, my mentor was travelling a lot and communication was not very frequent. However, I do feel that I learned a lot and, at the same time, the communication with other GSoC students was a great help.</p>
+
+<p>Overall, I&#39;m pleased with how GSoC turned out. I am looking forward to seeing my code be put to use and to start working on other projects for Tor.</p>
+
+</div>
+<p>- Runa</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.1.13-alpha released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.1.13-alpha released</h2>
+<p class="meta">13 Mar 2009</p>
+
+<div class="post">
+<p>Tor 0.2.1.13-alpha includes another big pile of minor bugfixes and<br>
+cleanups. We&#39;re finally getting close to a release candidate.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p>Changes in version 0.2.1.13-alpha - 2009-03-09<br>
+<strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Correctly update the list of which countries we exclude as<br>
+exits, when the GeoIP file is loaded or reloaded. Diagnosed by<br>
+lark. Bugfix on 0.2.1.6-alpha.</li>
+</ul>
+
+<p><strong>Minor bugfixes (on 0.2.0.x and earlier):</strong></p>
+
+<ul>
+<li>Automatically detect MacOSX versions earlier than 10.4.0, and<br>
+disable kqueue from inside Tor when running with these versions.<br>
+We previously did this from the startup script, but that was no<br>
+help to people who didn&#39;t use the startup script. Resolves bug 863.</li>
+<li>When we had picked an exit node for a connection, but marked it as<br>
+&quot;optional&quot;, and it turned out we had no onion key for the exit,<br>
+stop wanting that exit and try again. This situation may not<br>
+be possible now, but will probably become feasible with proposal<br>
+
+<ol>
+<li>Spotted by rovv. Fixes another case of bug 752.</li>
+</ol></li>
+<li>Clients no longer cache certificates for authorities they do not<br>
+recognize. Bugfix on 0.2.0.9-alpha.</li>
+<li>When we can&#39;t transmit a DNS request due to a network error, retry<br>
+it after a while, and eventually transmit a failing response to<br>
+the RESOLVED cell. Bugfix on 0.1.2.5-alpha.</li>
+<li>If the controller claimed responsibility for a stream, but that<br>
+stream never finished making its connection, it would live<br>
+forever in circuit_wait state. Now we close it after SocksTimeout<br>
+seconds. Bugfix on 0.1.2.7-alpha; reported by Mike Perry.</li>
+<li>Drop begin cells to a hidden service if they come from the middle<br>
+of a circuit. Patch from lark.</li>
+<li>When we erroneously receive two EXTEND cells for the same circuit<br>
+ID on the same connection, drop the second. Patch from lark.</li>
+<li>Fix a crash that occurs on exit nodes when a nameserver request<br>
+timed out. Bugfix on 0.1.2.1-alpha; our CLEAR debugging code had<br>
+been suppressing the bug since 0.1.2.10-alpha. Partial fix for<br>
+bug 929.</li>
+<li>Do not assume that a stack-allocated character array will be<br>
+64-bit aligned on platforms that demand that uint64_t access is<br>
+aligned. Possible fix for bug 604.</li>
+<li>Parse dates and IPv4 addresses in a locale- and libc-independent<br>
+manner, to avoid platform-dependent behavior on malformed input.</li>
+<li>Build correctly when configured to build outside the main source<br>
+path. Patch from Michael Gold.</li>
+<li>We were already rejecting relay begin cells with destination port<br>
+of 0. Now also reject extend cells with destination port or address<br>
+of 0. Suggested by lark.</li>
+</ul>
+
+<p><strong>Minor bugfixes (on 0.2.1.x):</strong></p>
+
+<ul>
+<li>Don&#39;t re-extend introduction circuits if we ran out of RELAY_EARLY<br>
+cells. Bugfix on 0.2.1.3-alpha. Fixes more of bug 878.</li>
+<li>If we&#39;re an exit node, scrub the IP address to which we are exiting<br>
+in the logs. Bugfix on 0.2.1.8-alpha.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>On Linux, use the prctl call to re-enable core dumps when the user<br>
+is option is set.</li>
+<li>New controller event NEWCONSENSUS that lists the networkstatus<br>
+lines for every recommended relay. Now controllers like Torflow<br>
+can keep up-to-date on which relays they should be using.</li>
+<li>Update to the &quot;February 26 2009&quot; ip-to-country file.</li>
+</ul>
+
+<p>The original notice can be found at <a href="http://archives.seul.org/or/talk/Mar-2009/msg00047.html" title="http://archives.seul.org/or/talk/Mar-2009/msg00047.html">http://archives.seul.org/or/talk/Mar-2009/msg00047.html</a></p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

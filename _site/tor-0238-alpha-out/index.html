@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.3.8-alpha is out</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.3.8-alpha is out</h2>
+<p class="meta">24 Nov 2011</p>
+
+<div class="post">
+<p>Tor 0.2.3.8-alpha fixes some crash and assert bugs, including a<br>
+ socketpair-related bug that has been bothering Windows users. It adds<br>
+ support to serve microdescriptors to controllers, so Vidalia&#39;s network<br>
+ map can resume listing relays (once Vidalia implements its side),<br>
+ and adds better support for hardware AES acceleration. Finally, it<br>
+ starts the process of adjusting the bandwidth cutoff for getting the<br>
+ &quot;Fast&quot; flag from 20KB to (currently) 32KB -- preliminary results show<br>
+ that tiny relays harm performance more than they help network capacity.</p>
+
+<p><strong>Changes in version 0.2.3.8-alpha - 2011-11-22</strong><br>
+<strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Initialize Libevent with the EVENT_BASE_FLAG_NOLOCK flag enabled, so<br>
+that it doesn&#39;t attempt to allocate a socketpair. This could cause<br>
+some problems on Windows systems with overzealous firewalls. Fix for<br>
+bug 4457; workaround for Libevent versions 2.0.1-alpha through<br>
+2.0.15-stable.</li>
+<li>Correctly sanity-check that we don&#39;t underflow on a memory<br>
+allocation (and then assert) for hidden service introduction<br>
+point decryption. Bug discovered by Dan Rosenberg. Fixes bug 4410;<br>
+bugfix on 0.2.1.5-alpha.</li>
+<li>Remove the artificially low cutoff of 20KB to guarantee the Fast<br>
+flag. In the past few years the average relay speed has picked<br>
+up, and while the &quot;top 7/8 of the network get the Fast flag&quot; and<br>
+&quot;all relays with 20KB or more of capacity get the Fast flag&quot; rules<br>
+used to have the same result, now the top 7/8 of the network has<br>
+a capacity more like 32KB. Bugfix on 0.2.1.14-rc. Fixes bug 4489.</li>
+<li>Fix a rare assertion failure when checking whether a v0 hidden<br>
+service descriptor has any usable introduction points left, and<br>
+we don&#39;t have enough information to build a circuit to the first<br>
+intro point named in the descriptor. The HS client code in<br>
+0.2.3.x no longer uses v0 HS descriptors, but this assertion can<br>
+trigger on (and crash) v0 HS authorities. Fixes bug 4411.<br>
+Bugfix on 0.2.3.1-alpha; diagnosed by frosty_un.</li>
+<li>Make bridge authorities not crash when they are asked for their own<br>
+descriptor. Bugfix on 0.2.3.7-alpha, reported by Lucky Green.</li>
+<li>When running as a client, do not print a misleading (and plain<br>
+wrong) log message that we&#39;re collecting &quot;directory request&quot;<br>
+statistics: clients don&#39;t collect statistics. Also don&#39;t create a<br>
+useless (because empty) stats file in the stats/ directory. Fixes<br>
+bug 4353; bugfix on 0.2.2.34 and 0.2.3.7-alpha.</li>
+</ul>
+
+<p><strong>Major features:</strong></p>
+
+<ul>
+<li>Allow Tor controllers like Vidalia to obtain the microdescriptor<br>
+for a relay by identity digest or nickname. Previously,<br>
+microdescriptors were only available by their own digests, so a<br>
+controller would have to ask for and parse the whole microdescriptor<br>
+consensus in order to look up a single relay&#39;s microdesc. Fixes<br>
+bug 3832; bugfix on 0.2.3.1-alpha.</li>
+<li>Use OpenSSL&#39;s EVP interface for AES encryption, so that all AES<br>
+operations can use hardware acceleration (if present). Resolves<br>
+ticket 4442.</li>
+</ul>
+
+<p><strong>Minor bugfixes (on 0.2.2.x and earlier):</strong></p>
+
+<ul>
+<li>Detect failure to initialize Libevent. This fix provides better<br>
+detection for future instances of bug 4457.</li>
+<li>Avoid frequent calls to the fairly expensive cull_wedged_cpuworkers<br>
+function. This was eating up hideously large amounts of time on some<br>
+busy servers. Fixes bug 4518; bugfix on 0.0.9.8.</li>
+<li>Don&#39;t warn about unused log_mutex in log.c when building with<br>
+--disable-threads using a recent GCC. Fixes bug 4437; bugfix on<br>
+0.1.0.6-rc which introduced --disable-threads.</li>
+<li>Allow manual &#39;authenticate&#39; commands to the controller interface<br>
+from netcat (nc) as well as telnet. We were rejecting them because<br>
+they didn&#39;t come with the expected whitespace at the end of the<br>
+command. Bugfix on 0.1.1.1-alpha; fixes bug 2893.</li>
+<li>Fix some (not actually triggerable) buffer size checks in usage of<br>
+tor_inet_ntop. Fixes bug 4434; bugfix on Tor 0.2.0.1-alpha. Patch<br>
+by Anders Sundman.</li>
+<li>Fix parsing of some corner-cases with tor_inet_pton(). Fixes<br>
+bug 4515; bugfix on 0.2.0.1-alpha; fix by Anders Sundman.</li>
+<li>When configuring, starting, or stopping an NT service, stop<br>
+immediately after the service configuration attempt has succeeded<br>
+or failed. Fixes bug 3963; bugfix on 0.2.0.7-alpha.</li>
+<li>When sending a NETINFO cell, include the original address<br>
+received for the other side, not its canonical address. Found<br>
+by &quot;troll_un&quot;; fixes bug 4349; bugfix on 0.2.0.10-alpha.</li>
+<li>Rename the bench_{aes,dmap} functions to test_*, so that tinytest<br>
+can pick them up when the tests aren&#39;t disabled. Bugfix on<br>
+0.2.2.4-alpha which introduced tinytest.</li>
+<li>Fix a memory leak when we check whether a hidden service<br>
+descriptor has any usable introduction points left. Fixes bug<br>
+
+<ol>
+<li>Bugfix on 0.2.2.25-alpha.</li>
+</ol></li>
+<li>Fix a memory leak in launch_direct_bridge_descriptor_fetch() that<br>
+occurred when a client tried to fetch a descriptor for a bridge<br>
+in ExcludeNodes. Fixes bug 4383; bugfix on 0.2.2.25-alpha.</li>
+</ul>
+
+<p><strong>Minor bugfixes (on 0.2.3.x):</strong></p>
+
+<ul>
+<li>Make util unit tests build correctly with MSVC. Bugfix on<br>
+0.2.3.3-alpha. Patch by Gisle Vanem.</li>
+<li>Successfully detect AUTH_CHALLENGE cells with no recognized<br>
+authentication type listed. Fixes bug 4367; bugfix on 0.2.3.6-alpha.<br>
+Found by frosty_un.</li>
+<li>If a relay receives an AUTH_CHALLENGE cell it can&#39;t answer,<br>
+it should still send a NETINFO cell to allow the connection to<br>
+become open. Fixes bug 4368; fix on 0.2.3.6-alpha; bug found by<br>
+&quot;frosty&quot;.</li>
+<li>Log less loudly when we get an invalid authentication certificate<br>
+from a source other than a directory authority: it&#39;s not unusual<br>
+to see invalid certs because of clock skew. Fixes bug 4370; bugfix<br>
+on 0.2.3.4-alpha and 0.2.3.6-alpha.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Add two new config options for directory authorities:<br>
+AuthDirFastGuarantee sets a bandwidth threshold for guaranteeing the<br>
+Fast flag, and AuthDirGuardBWGuarantee sets a bandwidth threshold<br>
+that is always sufficient to satisfy the bandwidth requirement for<br>
+the Guard flag. Now it will be easier for researchers to simulate<br>
+Tor networks with different values. Resolves ticket 4484.</li>
+<li>When Tor ignores a hidden service specified in its configuration,<br>
+include the hidden service&#39;s directory in the warning message.<br>
+Previously, we would only tell the user that some hidden service<br>
+was ignored. Bugfix on 0.0.6; fixes bug 4426.</li>
+<li>When we fail to initialize Libevent, retry with IOCP disabled so we<br>
+don&#39;t need to turn on multi-threading support in Libevent, which in<br>
+turn requires a working socketpair(). This is a workaround for bug<br>
+4457, which affects Libevent versions from 2.0.1-alpha through<br>
+2.0.15-stable.</li>
+<li>Detect when we try to build on a platform that doesn&#39;t define<br>
+AF_UNSPEC to 0. We don&#39;t work there, so refuse to compile.</li>
+<li>Update to the November 1 2011 Maxmind GeoLite Country database.</li>
+</ul>
+
+<p><strong>Packaging changes:</strong></p>
+
+<ul>
+<li>Make it easier to automate expert package builds on Windows,<br>
+by removing an absolute path from makensis.exe command.</li>
+</ul>
+
+<p><strong>Code simplifications and refactoring:</strong></p>
+
+<ul>
+<li>Remove some redundant #include directives throughout the code.<br>
+Patch from Andrea Gelmini.</li>
+<li>Unconditionally use OpenSSL&#39;s AES implementation instead of our<br>
+old built-in one. OpenSSL&#39;s AES has been better for a while, and<br>
+relatively few servers should still be on any version of OpenSSL<br>
+that doesn&#39;t have good optimized assembly AES.</li>
+<li>Use the name &quot;CERTS&quot; consistently to refer to the new cell type;<br>
+we were calling it CERT in some places and CERTS in others.</li>
+</ul>
+
+<p><strong>Testing:</strong></p>
+
+<ul>
+<li>Numerous new unit tests for functions in util.c and address.c by<br>
+Anders Sundman.</li>
+<li>The long-disabled benchmark tests are now split into their own<br>
+./src/test/bench binary.</li>
+<li>The benchmark tests can now use more accurate timers than<br>
+gettimeofday() when such timers are available.</li>
+</ul>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

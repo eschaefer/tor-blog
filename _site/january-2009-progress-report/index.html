@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>January 2009 Progress Report</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>January 2009 Progress Report</h2>
+<p class="meta">23 Feb 2009</p>
+
+<div class="post">
+<p><strong>New releases, new hires, new funding</strong></p>
+
+<p>Tor 0.2.1.10-alpha (released January 6) fixes two major bugs in bridge<br>
+relays (one that would make the bridge relay not so useful if it had<br>
+DirPort set to 0, and one that could let an attacker learn a little bit<br>
+of information about the bridge&#39;s users), and a bug that would cause your<br>
+Tor relay to ignore a circuit create request it can&#39;t decrypt (rather<br>
+than reply with an error). It also fixes a wide variety of other bugs.<br>
+ <a href="http://archives.seul.org/or/talk/Jan-2009/msg00078.html" title="http://archives.seul.org/or/talk/Jan-2009/msg00078.html">http://archives.seul.org/or/talk/Jan-2009/msg00078.html</a></p>
+
+<p>Tor 0.2.1.11-alpha (released Jan 20) finishes fixing the &quot;if your Tor is<br>
+off for a week it will take a long time to bootstrap again&quot; bug. It also<br>
+fixes an important security-related bug reported by Ilja van Sprundel. You<br>
+should upgrade. (We&#39;ll send out more details about the bug once people<br>
+have had some time to upgrade.)<br>
+ <a href="http://archives.seul.org/or/talk/Jan-2009/msg00171.html" title="http://archives.seul.org/or/talk/Jan-2009/msg00171.html">http://archives.seul.org/or/talk/Jan-2009/msg00171.html</a></p>
+
+<p>Tor 0.2.0.33 (released Jan 21) fixes a variety of bugs that were making<br>
+relays less useful to users. It also finally fixes a bug where a relay or<br>
+client that&#39;s been off for many days would take a long time to bootstrap.<br>
+ <a href="http://archives.seul.org/or/announce/Jan-2009/msg00000.html" title="http://archives.seul.org/or/announce/Jan-2009/msg00000.html">http://archives.seul.org/or/announce/Jan-2009/msg00000.html</a></p>
+
+<p>Tor Browser Bundle 1.1.8 (released Jan 22) updates Tor to 0.2.1.11-alpha<br>
+(security update), updates OpenSSL to 0.9.8j (security update), updates<br>
+Firefox to 3.0.5, updates Pidgin to 2.5.4, and updates libevent to 1.4.9.<br>
+ <a href="https://svn.torproject.org/svn/torbrowser/trunk/README" title="https://svn.torproject.org/svn/torbrowser/trunk/README">https://svn.torproject.org/svn/torbrowser/trunk/README</a></p>
+
+<p>This month we also hired three new people: Martin Peck is working on<br>
+Tor VM, a new way of packaging Tor on Windows that will let people use<br>
+Youtube safely again; Mike Perry is working on Torbutton maintenance<br>
+and development and on Torflow, a set of scripts to do measurements on<br>
+the Tor network; and Andrew Lewman is our new executive director.</p>
+
+<p><strong>Enhancements</strong><br>
+Major bugfixes in the Tor 0.2.1.10-alpha and 0.2.0.33 releases:<br>
+- If the cached networkstatus consensus is more than five days old,<br>
+ discard it rather than trying to use it. In theory it could be useful<br>
+ because it lists alternate directory mirrors, but in practice it just<br>
+ means we spend many minutes trying directory mirrors that are long<br>
+ gone from the network. Helps bug 887 a bit; bugfix on 0.2.0.x.</p>
+
+<p>Tor 0.2.1.10-alpha contains cleanups that let Tor build on Google&#39;s<br>
+Android phone:<br>
+- Change our header file guard macros to be less likely to conflict<br>
+ with system headers. Adam Langley noticed that we were conflicting<br>
+ with log.h on Android.</p>
+
+<p>Major bugfixes in the Tor 0.2.1.11-alpha and 0.2.0.33 releases:<br>
+- Discard router descriptors as we load them if they are more than<br>
+ five days old. Otherwise if Tor is off for a long time and then<br>
+ starts with cached descriptors, it will try to use the onion<br>
+ keys in those obsolete descriptors when building circuits. Bugfix<br>
+ on 0.2.0.x. Fixes bug 887.</p>
+
+<p>Security bugfixes in the Tor 0.2.1.11-alpha and 0.2.0.33 releases:<br>
+- Fix a heap-corruption bug that may be remotely triggerable on<br>
+ some platforms. Reported by Ilja van Sprundel.</p>
+
+<p>Circuit-building speedups in Tor 0.2.1.10-alpha:<br>
+- When a relay gets a create cell it can&#39;t decrypt (e.g. because it&#39;s<br>
+ using the wrong onion key), we were dropping it and letting the<br>
+ client time out. Now actually answer with a destroy cell. Fixes<br>
+ bug 904. Bugfix on 0.0.2pre8.</p>
+
+<p>Scalability fixes from the Tor 0.2.0.33 ChangeLog:<br>
+- Clip the MaxCircuitDirtiness config option to a minimum of 10 seconds,<br>
+ and the CircuitBuildTimeout to a minimum of 30 seconds. Warn the user if<br>
+ lower values are given in the configuration. These fixes prevent a user<br>
+ from rebuilding circuits too often, which can be a denial-of-service<br>
+ attack on the network.<br>
+- When a stream at an exit relay is in state &quot;resolving&quot; or<br>
+ &quot;connecting&quot; and it receives an &quot;end&quot; relay cell, the exit relay<br>
+ would silently ignore the end cell and not close the stream. If<br>
+ the client never closes the circuit, then the exit relay never<br>
+ closes the TCP connection. Bug introduced in Tor 0.1.2.1-alpha;<br>
+ reported by &quot;wood&quot;.<br>
+- When sending CREATED cells back for a given circuit, use a 64-bit<br>
+ connection ID to find the right connection, rather than an addr:port<br>
+ combination. Now that we can have multiple OR connections between<br>
+ the same ORs, it is no longer possible to use addr:port to uniquely<br>
+ identify a connection.</p>
+
+<p>Bootstrapping speedups in Tor 0.2.1.11-alpha:<br>
+- When our circuit fails at the first hop (e.g. we get a destroy<br>
+ cell back), avoid using that OR connection anymore, and also<br>
+ tell all the one-hop directory requests waiting for it that they<br>
+ should fail. Bugfix on 0.2.1.3-alpha.</p>
+
+<p><strong>Architecture</strong><br>
+Proposal 158 (&quot;Clients download consensus + microdescriptors&quot;) suggests a<br>
+new way forward for reducing directory overhead for clients, and replaced<br>
+part of proposal 141. Rather than modifying the circuit-building protocol<br>
+to fetch a server descriptor inline at each circuit extend, we instead put<br>
+all of the information that clients need either into the consensus itself,<br>
+or into a new set of data about each relay called a microdescriptor.<br>
+ <a href="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/158-microdescriptors.txt" title="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/158-microdescriptors.txt">https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/158-microdes...</a></p>
+
+<p>From the 0.2.0.33 ChangeLog:<br>
+- Never use OpenSSL compression: it wastes RAM and CPU trying to compress<br>
+ cells, which are basically all encrypted, compressed, or both. It also<br>
+ made us stand out from other applications on the wire.</p>
+
+<p><strong>Advocacy</strong><br>
+Jillian York continued blogging for us about the good uses of Tor:<br>
+ <a href="http://www.knightpulse.org/blog/tor" title="http://www.knightpulse.org/blog/tor">http://www.knightpulse.org/blog/tor</a></p>
+
+<p>&quot;Federico Heinz advocates anonymous browsing in Argentina&quot;, Jan 8<br>
+ <a href="http://www.knightpulse.org/blog/09/01/08/federico-heinz-advocates-anonymous-browsing-argentina" title="http://www.knightpulse.org/blog/09/01/08/federico-heinz-advocates-anonymous-browsing-argentina">http://www.knightpulse.org/blog/09/01/08/federico-heinz-advocates-anonym...</a></p>
+
+<p>&quot;Human Rights Organizations in Argentina welcome anonymous browsing&quot;, Jan 25<br>
+ <a href="http://www.knightpulse.org/blog/09/01/25/human-rights-organizations-argentina-welcome-anonymous-browsing" title="http://www.knightpulse.org/blog/09/01/25/human-rights-organizations-argentina-welcome-anonymous-browsing">http://www.knightpulse.org/blog/09/01/25/human-rights-organizations-arge...</a></p>
+
+<p>&quot;Watch how you get around&quot;, Jan 30<br>
+ <a href="http://www.knightpulse.org/blog/09/01/30/watch-how-you-get-around" title="http://www.knightpulse.org/blog/09/01/30/watch-how-you-get-around">http://www.knightpulse.org/blog/09/01/30/watch-how-you-get-around</a></p>
+
+<p><strong>Pre-configured bundles</strong><br>
+Tor Browser Bundle 1.1.8 (released Jan 22) updates Tor to 0.2.1.11-alpha<br>
+(security update), updates OpenSSL to 0.9.8j (security update), updates<br>
+Firefox to 3.0.5, updates Pidgin to 2.5.4, and updates libevent to 1.4.9.<br>
+ <a href="https://svn.torproject.org/svn/torbrowser/trunk/README" title="https://svn.torproject.org/svn/torbrowser/trunk/README">https://svn.torproject.org/svn/torbrowser/trunk/README</a></p>
+
+<p>We continued work on Vidalia features to support where we want Tor<br>
+Browser Bundle to go. In particular, we&#39;re changing it to be able to<br>
+launch Firefox natively, rather than use the &quot;PortableFirefox&quot; pile of<br>
+complex scripts. We hope this change will also let users run a normal<br>
+Firefox alongside TBB. More on that in February.</p>
+
+<p>We also continued work on Tor VM, a new way of packaging Tor on<br>
+Windows that will (among other things) let people use Youtube safely<br>
+again. Hopefully we&#39;ll have some simple instructions up about that in<br>
+February too.</p>
+
+<p><strong>Bridges</strong><br>
+Major bugfixes in the Tor 0.2.1.10-alpha and 0.2.0.33 releases:<br>
+- Bridge relays that had DirPort set to 0 would stop fetching<br>
+ descriptors shortly after startup, and then briefly resume<br>
+ after a new bandwidth test and/or after publishing a new bridge<br>
+ descriptor. Bridge users that try to bootstrap from them would<br>
+ get a recent networkstatus but would get descriptors from up to<br>
+ 18 hours earlier, meaning most of the descriptors were obsolete<br>
+ already. Reported by Tas; bugfix on 0.2.0.13-alpha.<br>
+- Prevent bridge relays from serving their &#39;extrainfo&#39; document<br>
+ to anybody who asks, now that extrainfo docs include potentially<br>
+ sensitive aggregated client geoip summaries. Bugfix on<br>
+ 0.2.0.13-alpha.</p>
+
+<p>Bugfixes in the Tor 0.2.1.10-alpha release:<br>
+- When we made bridge authorities stop serving bridge descriptors over<br>
+ unencrypted links, we also broke DirPort reachability testing for<br>
+ bridges. So bridges with a non-zero DirPort were printing spurious<br>
+ warns to their logs. Bugfix on 0.2.0.16-alpha. Fixes bug 709.</p>
+
+<p>New feature in Tor 0.2.1.10-alpha:<br>
+- New controller event &quot;clients_seen&quot; to report a geoip-based summary<br>
+ of which countries we&#39;ve seen clients from recently. Now controllers<br>
+ like Vidalia can show bridge operators that they&#39;re actually making<br>
+ a difference.<br>
+Vidalia will add support for this feature in February.</p>
+
+<p><strong>Alternate download methods</strong><br>
+Our &quot;gettor&quot; email auto-responder is up and working:<br>
+ <a href="https://svn.torproject.org/svn/projects/gettor/README" title="https://svn.torproject.org/svn/projects/gettor/README">https://svn.torproject.org/svn/projects/gettor/README</a><br>
+ <a href="https://www.torproject.org/finding-tor#Mail" title="https://www.torproject.org/finding-tor#Mail">https://www.torproject.org/finding-tor#Mail</a></p>
+
+<p>Thandy itself is working smoothly at this point too -- it can contact<br>
+the central repository, check all the keys, look in the registry and<br>
+compare the currently installed version to the new choices, fetch the<br>
+right packages, check all the signatures, and launch the install.</p>
+
+<p>As of December we only had a new MSI-based installer for Tor, but not for<br>
+Vidalia, Torbutton, or Polipo. Now we do, though it&#39;s still in testing:<br>
+ <a href="https://data.peertech.org/torbld" title="https://data.peertech.org/torbld">https://data.peertech.org/torbld</a></p>
+
+<p><strong>Translations</strong><br>
+Our translation server is up and online:<br>
+ <a href="https://translation.torproject.org/" title="https://translation.torproject.org/">https://translation.torproject.org/</a><br>
+ <a href="https://www.torproject.org/translation-portal" title="https://www.torproject.org/translation-portal">https://www.torproject.org/translation-portal</a></p>
+
+<p>We continued enhancements to the Chinese and Russian Tor website<br>
+translations. Our Farsi translation from this summer is slowly becoming<br>
+obsolete; we should solve that at some point.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

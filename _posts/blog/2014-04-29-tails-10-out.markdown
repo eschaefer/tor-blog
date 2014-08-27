@@ -1,0 +1,68 @@
+---
+layout: post
+title: "Tails 1.0 is out"
+permalink: tails-10-out
+date: 2014-04-29
+author: tails
+category: blog
+tags: ["anonymous operating system", "tails", "tails releases"]
+---
+
+Tails, The Amnesic Incognito Live System, version 1.0, is out.
+
+All users must [upgrade](https://tails.boum.org/doc/first_steps/upgrade/) as soon as possible: this release fixes [numerous security issues](https://tails.boum.org/security/Numerous_security_holes_in_0.23/).
+
+For more information about what the 1.0 release means for Tails, and about its future, see the [full announcement](https://tails.boum.org/news/version_1.0/).
+
+**Changes**
+
+Notable user-visible changes include:
+
+- Security fixes
+  - Upgrade the web browser to 24.5.0esr-0+tails1~bpo60+1 (Firefox 24.5.0esr + Iceweasel patches + Torbrowser patches).
+  - Upgrade Tor to 0.2.4.21-1+tails1~d60.squeeze+1:
+    - Based on 0.2.4.21-1~d60.squeeze+1.
+    - Backport the fix for [bug #11464 on Tor Project's Trac](https://trac.torproject.org/projects/tor/ticket/11464). It adds client-side blacklists for all Tor directory authority keys that was vulnerable to Heartbleed. This protects clients in case attackers were able to compromise a majority of the authority signing and identity keys.
+
+- Bugfixes
+  - Disable inbound I2P connections. Tails already restricts incoming connections, but this change tells I2P about it.
+  - Fix link to the system requirements documentation page in the Tails Upgrader error shown when too little RAM is available.
+
+- Minor improvements
+  - Upgrade I2P to 0.9.12-2~deb6u+1.
+  - Import TorBrowser profile. This was forgotten in Tails 0.23 and even though we didn't explicitly set those preferences in that release they defaulted to the same values. This future-proofs us in case the defaults would ever change.
+  - Import new custom version of Tor Launcher:
+    - Based on upstream Tor Launcher 0.2.5.3.
+    - Improve how Tor Launcher handles incomplete translation. ( [bug #11483 on Tor Project's Trac](https://trac.torproject.org/projects/tor/ticket/11483); more future-proof fix for [ticket #6885](https://labs.riseup.net/code/issues/6885))
+    - Remove the bridge settings prompt. ( [bug #11482 on Tor Project's Trac](https://trac.torproject.org/projects/tor/ticket/11482); closes [ticket #6934](https://labs.riseup.net/code/issues/6934))
+    - Always show bridge help button. ( [bug #11484 on Tor Project's Trac](https://trac.torproject.org/projects/tor/ticket/11484))
+
+  - Integrate the new Tails logo into various places:
+    - The website
+    - The boot splash
+    - The "About Tails" dialog
+
+See the [online Changelog](https://git-tails.immerda.ch/tails/plain/debian/changelog) for technical details.
+
+**Known issues**
+
+- [Longstanding](https://tails.boum.org/support/known_issues/) known issues.
+
+**I want to try it or to upgrade!**
+
+Go to the [download](https://tails.boum.org/download/) page.
+
+As no software is ever perfect, we maintain a list of [problems that affects the last release of Tails](https://tails.boum.org/support/known_issues/).
+
+**What's coming up?**
+
+The next Tails release is [scheduled](https://tails.boum.org/contribute/calendar/) for June 10.
+
+Have a look to our [roadmap](https://labs.riseup.net/code/projects/tails/roadmap/) to see where we are heading to.
+
+Would you want to help? There are many ways [**you** can contribute to Tails](https://tails.boum.org/contribute/). If you want to help, come talk to us!
+
+**Support and feedback**
+
+For support and feedback, visit the [Support section](https://tails.boum.org/support/) on the Tails website.
+

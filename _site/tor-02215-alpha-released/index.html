@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.2.15-alpha released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.2.15-alpha released</h2>
+<p class="meta">23 Aug 2010</p>
+
+<div class="post">
+<p>Tor 0.2.2.15-alpha fixes a big bug in hidden service availability, fixes a variety of other bugs that were preventing performance experiments from moving forward, fixes several bothersome memory leaks, and generally closes a lot of smaller bugs that have been filling up trac lately.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><a href="https://gitweb.torproject.org/tor.git/blob_plain/eba3f37f17a2af4ff628dd5cbc653441e6dce6eb:/ChangeLog">Changes in version 0.2.2.15-alpha - 2010-08-18</a><br>
+ o Major bugfixes:<br>
+ - Stop assigning the HSDir flag to relays that disable their<br>
+ DirPort (and thus will refuse to answer directory requests). This<br>
+ fix should dramatically improve the reachability of hidden services:<br>
+ hidden services and hidden service clients pick six HSDir relays<br>
+ to store and retrieve the hidden service descriptor, and currently<br>
+ about half of the HSDir relays will refuse to work. Bugfix on<br>
+ 0.2.0.10-alpha; fixes part of bug 1693.<br>
+ - The PerConnBWRate and Burst config options, along with the<br>
+ bwconnrate and bwconnburst consensus params, initialized each conn&#39;s<br>
+ token bucket values only when the connection is established. Now we<br>
+ update them if the config options change, and update them every time<br>
+ we get a new consensus. Otherwise we can encounter an ugly edge<br>
+ case where we initialize an OR conn to client-level bandwidth,<br>
+ but then later the relay joins the consensus and we leave it<br>
+ throttled. Bugfix on 0.2.2.7-alpha; fixes bug 1830.<br>
+ - Fix a regression that caused Tor to rebind its ports if it receives<br>
+ SIGHUP while hibernating. Bugfix in 0.1.1.6-alpha; closes bug 919.</p>
+
+<p>o Major features:<br>
+ - Lower the maximum weighted-fractional-uptime cutoff to 98%. This<br>
+ should give us approximately 40-50% more Guard-flagged nodes,<br>
+ improving the anonymity the Tor network can provide and also<br>
+ decreasing the dropoff in throughput that relays experience when<br>
+ they first get the Guard flag.<br>
+ - Allow enabling or disabling the *Statistics config options while<br>
+ Tor is running.</p>
+
+<p>o Minor features:<br>
+ - Update to the August 1 2010 Maxmind GeoLite Country database.<br>
+ - Have the controller interface give a more useful message than<br>
+ &quot;Internal Error&quot; in response to failed GETINFO requests.<br>
+ - Warn when the same option is provided more than once in a torrc<br>
+ file, on the command line, or in a single SETCONF statement, and<br>
+ the option is one that only accepts a single line. Closes bug 1384.<br>
+ - Build correctly on mingw with more recent versions of OpenSSL 0.9.8.<br>
+ Patch from mingw-san.<br>
+ - Add support for the country code &quot;{??}&quot; in torrc options like<br>
+ ExcludeNodes, to indicate all routers of unknown country. Closes<br>
+ bug 1094.<br>
+ - Relays report the number of bytes spent on answering directory<br>
+ requests in extra-info descriptors similar to {read,write}-history.<br>
+ Implements enhancement 1790.</p>
+
+<p>o Minor bugfixes (on 0.2.1.x and earlier):<br>
+ - Complain if PublishServerDescriptor is given multiple arguments that<br>
+ include 0 or 1. This configuration will be rejected in the future.<br>
+ Bugfix on 0.2.0.1-alpha; closes bug 1107.<br>
+ - Disallow BridgeRelay 1 and ORPort 0 at once in the configuration.<br>
+ Bugfix on 0.2.0.13-alpha; closes bug 928.<br>
+ - Change &quot;Application request when we&#39;re believed to be offline.&quot;<br>
+ notice to &quot;Application request when we haven&#39;t used client<br>
+ functionality lately.&quot;, to clarify that it&#39;s not an error. Bugfix<br>
+ on 0.0.9.3; fixes bug 1222.<br>
+ - Fix a bug in the controller interface where &quot;GETINFO ns/asdaskljkl&quot;<br>
+ would return &quot;551 Internal error&quot; rather than &quot;552 Unrecognized key<br>
+ ns/asdaskljkl&quot;. Bugfix on 0.1.2.3-alpha.<br>
+ - Users can&#39;t configure a regular relay to be their bridge. It didn&#39;t<br>
+ work because when Tor fetched the bridge descriptor, it found<br>
+ that it already had it, and didn&#39;t realize that the purpose of the<br>
+ descriptor had changed. Now we replace routers with a purpose other<br>
+ than bridge with bridge descriptors when fetching them. Bugfix on<br>
+ 0.1.1.9-alpha. Bug 1776 not yet fixed because now we immediately<br>
+ refetch the descriptor with router purpose &#39;general&#39;, disabling<br>
+ it as a bridge.<br>
+ - Fix a rare bug in rend_fn unit tests: we would fail a test when<br>
+ a randomly generated port is 0. Diagnosed by Matt Edman. Bugfix<br>
+ on 0.2.0.10-alpha; fixes bug 1808.<br>
+ - Exit nodes didn&#39;t recognize EHOSTUNREACH as a plausible error code,<br>
+ and so sent back END_STREAM_REASON_MISC. Clients now recognize a new<br>
+ stream ending reason for this case: END_STREAM_REASON_NOROUTE.<br>
+ Servers can start sending this code when enough clients recognize<br>
+ it. Also update the spec to reflect this new reason. Bugfix on<br>
+ 0.1.0.1-rc; fixes part of bug 1793.<br>
+ - Delay geoip stats collection by bridges for 6 hours, not 2 hours,<br>
+ when we switch from being a public relay to a bridge. Otherwise<br>
+ there will still be clients that see the relay in their consensus,<br>
+ and the stats will end up wrong. Bugfix on 0.2.1.15-rc; fixes bug<br>
+ 932 even more.<br>
+ - Instead of giving an assertion failure on an internal mismatch<br>
+ on estimated freelist size, just log a BUG warning and try later.<br>
+ Mitigates but does not fix bug 1125.<br>
+ - Fix an assertion failure that could occur in caches or bridge users<br>
+ when using a very short voting interval on a testing network.<br>
+ Diagnosed by Robert Hogan. Fixes bug 1141; bugfix on 0.2.0.8-alpha.</p>
+
+<p>o Minor bugfixes (on 0.2.2.x):<br>
+ - Alter directory authorities to always consider Exit-flagged nodes<br>
+ as potential Guard nodes in their votes. The actual decision to<br>
+ use Exits as Guards is done in the consensus bandwidth weights.<br>
+ Fixes bug 1294; bugfix on 0.2.2.10-alpha.<br>
+ - When the controller is reporting the purpose of circuits that<br>
+ didn&#39;t finish building before the circuit build timeout, it was<br>
+ printing UNKNOWN_13. Now print EXPIRED. Bugfix on 0.2.2.14-alpha.<br>
+ - Our libevent version parsing code couldn&#39;t handle versions like<br>
+ 1.4.14b-stable and incorrectly warned the user about using an<br>
+ old and broken version of libevent. Treat 1.4.14b-stable like<br>
+ 1.4.14-stable when parsing the version. Fixes bug 1731; bugfix<br>
+ on 0.2.2.1-alpha.<br>
+ - Don&#39;t use substitution references like $(VAR:MOD) when<br>
+ $(asciidoc_files) is empty -- make(1) on NetBSD transforms<br>
+ &#39;$(:x)&#39; to &#39;x&#39; rather than the empty string. This bites us in<br>
+ doc/ when configured with --disable-asciidoc. Bugfix on<br>
+ 0.2.2.9-alpha; fixes bug 1773.<br>
+ - Remove a spurious hidden service server-side log notice about<br>
+ &quot;Ancient non-dirty circuits&quot;. Bugfix on 0.2.2.14-alpha; fixes<br>
+ bug 1741.<br>
+ - Fix compilation with --with-dmalloc set. Bugfix on 0.2.2.6-alpha;<br>
+ fixes bug 1832.<br>
+ - Correctly report written bytes on linked connections. Found while<br>
+ implementing 1790. Bugfix on 0.2.2.4-alpha.<br>
+ - Fix three memory leaks: one in circuit_build_times_parse_state(),<br>
+ one in dirvote_add_signatures_to_pending_consensus(), and one every<br>
+ time we parse a v3 network consensus. Bugfixes on 0.2.2.14-alpha,<br>
+ 0.2.2.6-alpha, and 0.2.2.10-alpha respectively; fixes bug 1831.</p>
+
+<p>o Code simplifications and refactoring:<br>
+ - Take a first step towards making or.h smaller by splitting out<br>
+ function definitions for all source files in src/or/. Leave<br>
+ structures and defines in or.h for now.<br>
+ - Remove a bunch of unused function declarations as well as a block of<br>
+ #if 0&#39;d code from the unit tests. Closes bug 1824.<br>
+ - New unit tests for exit-port history statistics; refactored exit<br>
+ statistics code to be more easily tested.<br>
+ - Remove the old debian/ directory from the main Tor distribution.<br>
+ The official Tor-for-debian git repository lives at the URL<br>
+ <a href="https://git.torproject.org/debian/tor.git" title="https://git.torproject.org/debian/tor.git">https://git.torproject.org/debian/tor.git</a></p>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

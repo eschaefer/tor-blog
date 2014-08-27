@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>PRISM vs Tor</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>PRISM vs Tor</h2>
+<p class="meta">09 Jun 2013</p>
+
+<div class="post">
+<p>By now, just about everybody has heard about the <a href="https://en.wikipedia.org/wiki/PRISM_%28surveillance_program%29">PRISM surveillance program</a>, and many are beginning to speculate on its impact on Tor.</p>
+
+<p>Unfortunately, there still are a lot of gaps to fill in terms of understanding what is really going on, especially in the face of conflicting information between the <a href="http://www.washingtonpost.com/wp-srv/special/politics/prism-collection-documents/">primary source material</a> and Google, Facebook, and Apple&#39;s claims of non-involvement.</p>
+
+<p>This apparent conflict means that it is still hard to pin down exactly how the program impacts Tor, and is leading many to assume worst-case scenarios.</p>
+
+<p>For example, some of the worst-case scenarios include the NSA using <a href="http://www.reuters.com/article/2013/05/10/us-usa-cyberweapons-specialreport-idUSBRE9490EL20130510">weaponized exploits</a> to compromise datacenter equipment at these firms. Less severe, but still extremely worrying possibilities include issuing gag orders to mid or low-level datacenter staff to install backdoors or monitoring equipment without any interaction what-so-ever with the legal and executive staff of the firms themselves.</p>
+
+<p>We&#39;re going to save analysis of those speculative and invasive scenarios for when more information becomes available (though we may independently write a future blog post on <a href="http://www.thebulletin.org/web-edition/op-eds/cyberweapons-bold-steps-digital-darkness">the dangers</a> of the government use of weaponized exploits).</p>
+
+<p>For now, let&#39;s review what Tor can do, what tools go well with Tor to give you defense-in-depth for your communications, and what work needs to be done so we can make it easier to protect communications from instances where the existing centralized communications infrastructure is compromised by the NSA, China, Iran, or by anyone else who manages to get ahold of the keys to the kingdom.</p>
+
+<p>The core Tor software&#39;s job is to conceal your identity from your recipient, and to conceal your recipient and your content from observers on your end. By itself, Tor does not protect the actual communications content once it leaves the Tor network. This can make it useful against some forms of metadata analysis, but this also means Tor is best used in combination with other tools.</p>
+
+<p>Through the use of <a href="https://www.eff.org/https-everywhere">HTTPS-Everywhere</a> in <a href="https://www.torproject.org/download/download-easy.html">Tor Browser</a>, in many cases we can protect your communications content where parts of the Tor network and/or your recipients&#39; infrastructure are compromised or under surveillance. The EFF has created an <a href="https://www.eff.org/pages/tor-and-https">excellent interactive graphic</a> to help illustrate and clarify these combined properties.</p>
+
+<p>Through the use of combinations of additional software like <a href="https://addons.mozilla.org/en-us/thunderbird/addon/torbirdy/">TorBirdy</a> and <a href="http://www.enigmail.net/home/index.php">Enigmail</a>, <a href="https://en.wikipedia.org/wiki/Off-the-Record_Messaging#Client_support">OTR</a>, and <a href="https://joindiaspora.com/">Diaspora</a>, Tor can also protect your communications content in cases where the communications infrastructure (Google/Facebook) is compromised.</p>
+
+<p>However, the real interesting use cases for Tor in the face of dragnet surveillance like this is not that Tor can protect your gmail/facebook accounts from analysis (in fact, Tor could never really protect account usage metadata), but that Tor and hidden services are actually a key building block to build systems where it is no longer possible to go to a single party and obtain the full metadata, communications frequency, *or* contents.</p>
+
+<p>Tor hidden services are arbitrary communications endpoints that are resistant to both metadata analysis and surveillance.</p>
+
+<p>A simple (to deploy) example of a hidden service based mechanism to significantly hinder exactly this type of surveillance is an <a href="https://en.wikipedia.org/wiki/Xmpp">XMPP</a> client that also ships with an XMPP server and a Tor hidden service. Such a P2P communication system (where the clients are themselves the servers) is both end-to-end secure, and does *not* have a single central server where metadata is available. This communication is private, pseudonymous, and does not have involve any single central party or intermediary.</p>
+
+<p>More complex examples would include the use of <a href="https://en.wikipedia.org/wiki/Diaspora_%28software%29">Diaspora</a> and other <a href="https://en.wikipedia.org/wiki/Comparison_of_software_and_protocols_for_distributed_social_networking">decentralized social network protocols</a> with hidden service endpoints.</p>
+
+<p>Despite these compelling use cases and powerful tool combination possibilities, the Tor Project is under no illusion that these more sophisticated configurations are easy, usable, or accessible by the general public.</p>
+
+<p>We recognize that a lot of work needs to be done even for the basic tools like Tor Browser, TorBirdy, EnigMail, and OTR to work seamlessly and securely for most users, let alone complex combinations like XMPP or Diaspora with Hidden Services.</p>
+
+<p>Additionally, hidden services themselves are in need of <a href="https://blog.torproject.org/blog/hidden-services-need-some-love">quite a bit of development assistance</a> just to maintain their originally designed level of security, let alone scaling to support large numbers of endpoints.</p>
+
+<p>Being an Open Source project with limited resources, we welcome contributions from the community to make any of this software work better with Tor, or to help improve the Tor software itself.</p>
+
+<p>If you&#39;re not a developer, but you would still like to help us succeed in our mission of securing the world&#39;s communications, <a href="https://www.torproject.org/donate/donate.html.en">please donate!</a> It is a rather big job, after all.</p>
+
+<p>We will keep you updated as we learn more about the exact capabilities of this program.</p>
+
+</div>
+<p>- mikeperry</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Vidalia 0.2.1 released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Vidalia 0.2.1 released</h2>
+<p class="meta">12 Aug 2009</p>
+
+<div class="post">
+<p>Vidalia 0.2.1 is now available. This is a test release of the 0.2.x branch, which we hope to soon make the mainline version; replacing the 0.1.x branch.</p>
+
+<p>Vidalia can be downloaded at <a href="https://www.torproject.org/vidalia/" title="https://www.torproject.org/vidalia/">https://www.torproject.org/vidalia/</a>.</p>
+
+<p>Changelog:</p>
+
+<ul>
+<li>Add a &quot;Find Bridges Now&quot; button that will attempt to automatically<br>
+download a set of bridge addresses and add them to the list of bridges<br>
+in the Network settings page.</li>
+<li>Add support for building with Google&#39;s Breakpad crash reporting<br>
+library (currently disabled by default).</li>
+<li>Show or hide the &quot;Who has used my bridge recently?&quot; link along with<br>
+the other bridge-related widgets when the user toggles the relay mode<br>
+in the Network settings page. (Ticket #480)</li>
+<li>Tolerate bridge addresses that do not specify a port number, since Tor<br>
+now defaults to using port 443 in such cases.</li>
+<li>Add support for viewing the map as a full screen widget when built<br>
+with KDE Marble support.</li>
+<li>Compute the salted hash of the control password ourself when starting<br>
+Tor, rather than launching Tor once to hash the password, parsing the<br>
+output, and then again to actually start Tor.</li>
+<li>Add a signal handler that allows Vidalia to clean up and exit normally<br>
+when it catches a SIGINT or SIGTERM signal. (Ticket #481)</li>
+<li>If the user chooses to ignore further warnings for a particular port,<br>
+remove it from the WarnPlaintextPorts and RejectPlaintextPorts<br>
+settings immediately. Also remember their preferences and reapply them<br>
+later, even if Tor is unable to writes to its torrc.(Ticket #493)</li>
+<li>Don&#39;t display additional plaintext port warning message boxes until<br>
+the first visible message box is dismissed. (Ticket #493)</li>
+<li>Renamed the &#39;make win32-installer&#39; CMake target to &#39;make dist-win32&#39;<br>
+for consistency with our &#39;make dist-osx&#39; target.</li>
+<li>Fix a couple bugs in the WiX-based Windows installer related to building<br>
+a Marble-enabled Vidalia installer.</li>
+<li>Write the list of source files containing translatable strings to a<br>
+.pro file and supply just the .pro file as an argument to lupdate, rather<br>
+than supplying all of the source file names themselves.</li>
+</ul>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

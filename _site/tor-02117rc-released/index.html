@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.1.17-rc released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.1.17-rc released</h2>
+<p class="meta">13 Jul 2009</p>
+
+<div class="post">
+<p>Tor 0.2.1.17-rc marks the fourth -- and hopefully last -- release<br>
+candidate for the 0.2.1.x series. It lays the groundwork for further<br>
+client performance improvements, and also fixes a big bug with directory<br>
+authorities that were causing them to assign Guard and Stable flags<br>
+poorly.</p>
+
+<p>The Windows bundles also finally include the geoip database that we<br>
+thought we&#39;d been shipping since 0.2.0.x (oops), and the OS X bundles<br>
+should actually install Torbutton rather than giving you a cryptic<br>
+failure message (oops).</p>
+
+<p>This is a release candidate! That means that we don&#39;t know of any<br>
+remaining show-stopping bugs, and 0.2.1.18 will be the new stable if<br>
+there are no problems. Please test it, and tell us about any problems<br>
+that you find.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p>Changes in version 0.2.1.17-rc - 2009-07-02<br>
+<strong>Major features:</strong></p>
+
+<ul>
+<li>Clients now use the bandwidth values in the consensus, rather than<br>
+the bandwidth values in each relay descriptor. This approach opens<br>
+the door to more accurate bandwidth estimates once the directory<br>
+authorities start doing active measurements. Implements more of<br>
+proposal 141.</li>
+</ul>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>When Tor clients restart after 1-5 days, they discard all their<br>
+cached descriptors as too old, but they still use the cached<br>
+consensus document. This approach is good for robustness, but<br>
+bad for performance: since they don&#39;t know any bandwidths, they<br>
+end up choosing at random rather than weighting their choice by<br>
+speed. Fixed by the above feature of putting bandwidths in the<br>
+consensus. Bugfix on 0.2.0.x.</li>
+<li>Directory authorities were neglecting to mark relays down in their<br>
+internal histories if the relays fall off the routerlist without<br>
+ever being found unreachable. So there were relays in the histories<br>
+that haven&#39;t been seen for eight months, and are listed as being<br>
+up for eight months. This wreaked havoc on the &quot;median wfu&quot;<br>
+and &quot;median mtbf&quot; calculations, in turn making Guard and Stable<br>
+flags very wrong, hurting network performance. Fixes bugs 696 and<br>
+
+<ol>
+<li>Bugfix on 0.2.0.6-alpha.</li>
+</ol></li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Serve the DirPortFrontPage page even when we have been approaching<br>
+our quotas recently. Fixes bug 1013; bugfix on 0.2.1.8-alpha.</li>
+<li>The control port would close the connection before flushing long<br>
+replies, such as the network consensus, if a QUIT command was issued<br>
+before the reply had completed. Now, the control port flushes all<br>
+pending replies before closing the connection. Also fixed a spurious<br>
+warning when a QUIT command is issued after a malformed or rejected<br>
+AUTHENTICATE command, but before the connection was closed. Patch<br>
+by Marcus Griep. Bugfix on 0.2.0.x; fixes bugs 1015 and 1016.</li>
+<li>When we can&#39;t find an intro key for a v2 hidden service descriptor,<br>
+fall back to the v0 hidden service descriptor and log a bug message.<br>
+Workaround for bug 1024.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>If we&#39;re a relay and we change our IP address, be more verbose<br>
+about the reason that made us change. Should help track down<br>
+further bugs for relays on dynamic IP addresses.</li>
+</ul>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor Weekly News — November 27th, 2013</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor Weekly News — November 27th, 2013</h2>
+<p class="meta">27 Nov 2013</p>
+
+<div class="post">
+<p>Welcome to the twenty-second issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+
+<h1>Round of updated Tor Browser Bundles</h1>
+
+<p>Mozilla put out an <a href="https://www.mozilla.org/en-US/firefox/17.0.11/releasenotes/">urgent security release</a> of the stable Firefox branch with version 17.0.11esr. The <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-firefox-17011esr-and-tor-02418-rc">stable version of the Tor Browser Bundle has been updated</a> accordingly. The 2.4 release candidate also received an update, together with the latest incarnation of tor 0.2.4.18-rc. Both were then given <a href="https://blog.torproject.org/blog/64-bit-gnulinux-tor-browser-bundles-updated">a further update</a> due to an issue on 64 bit GNU/Linux systems.</p>
+
+<p>The 3.0 branch saw the <a href="https://blog.torproject.org/blog/tor-browser-bundle-30rc1-released">release of 3.0rc1</a> which — on top of updating its base software — fixed a build reproducibility issue on Windows, and a few other small fixes.</p>
+
+<p>An <a href="https://mailman.boum.org/pipermail/tails-dev/2013-November/004152.html">updated version of Tails</a> and the pluggable transport bundle are still in the making at the time of writing.</p>
+
+<h1>Tor is looking for a Browser Hacker and an Extension Developer!</h1>
+
+<p>Mike Perry <a href="https://blog.torproject.org/blog/tor-looking-browser-hacker-and-extension-developer">wrote a blog post</a> to announce two new positions available at the Tor Project: “We are looking for a <a href="https://www.torproject.org/about/jobs-browserhacker.html">C++ browser developer</a> to work on our Firefox-based browser, and a <a href="https://www.torproject.org/about/jobs-extdev.html.en">Firefox extension developer</a> to work on our growing number of Firefox extensions. Our ideal candidates would be comfortable in both roles, but we are also interested in hearing from people with either skillset.”</p>
+
+<p>Look at the job descriptions for more details and how to apply for these exciting opportunities to make Tor software even better.</p>
+
+<h1>“Safeplug”</h1>
+
+<p>Roman Mamedov <a href="https://lists.torproject.org/pipermail/tor-talk/2013-November/031199.html">reported</a> that the Californian company Cloud Engines is now shipping a device called the “Safeplug”. Exactly how the device works is unclear, but according to their FAQ, it looks like a router which transparently directs its client connections through Tor.</p>
+
+<p>Such an approach is known to be flawed. <a href="https://lists.torproject.org/pipermail/tor-talk/2013-November/031200.html">Sean Alexandre</a> was prompt in reminding everyone that “application protocols can still reveal your identity”, and quoted the <a href="https://www.torproject.org/download/download-easy.html#warning">warning on Tor’s download page</a>: “To avoid problems with Tor configuration, we strongly recommend you use the Tor Browser Bundle. It is pre-configured to protect your privacy and anonymity on the web as long as you’re browsing with the Tor Browser itself. Almost any other web browser configuration is likely to be unsafe to use with Tor.”</p>
+
+<p>Aaron Gibson <a href="https://lists.torproject.org/pipermail/tor-talk/2013-November/031215.html">detailed other concerns</a>, namely the absence of source code or design documents, the mandatory router registration procedure, issues with the automatic update system, and the terms of service. He also criticized the “torified everything” approach and outlined an alternative which he had discussed with Roger Dingledine: “providing a captive portal that would instruct a user to download a copy of TBB and use the local router device as a first hop into the Tor network, perhaps by configuring the device as a bridge.”</p>
+
+<p>On the upside, Andrew Lewman <a href="https://lists.torproject.org/pipermail/tor-talk/2013-November/031204.html">views the product</a> as “a fine test case for consumer-level torouter market analysis. It would be great to learn 6 months from now how many they sold and a summary of customer feedback.” Despite having “ <a href="https://lists.torproject.org/pipermail/tor-talk/2013-November/031235.html">lots of concerns</a>”, Andrew is “trying to discuss them with Cloud Engines” and praised the community for “doing a fine job of raising questions”.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-dev/2013-November/005836.html">gave the number 223</a> to Esfandiar Mohammadi’s proposal titled “ <a href="https://gitweb.torproject.org/torspec.git/blob_plain/HEAD:/proposals/223-ace-handshake.txt">Ace: Improved circuit-creation key exchange</a>”.</p>
+
+<p>Matt Pagan <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000385.html">reported</a> on his trip to Washington, D.C., USA for the Rally Against Mass Surveillance. He gave an account of his talk during the cryptoparty and the march that happened the next day.</p>
+
+<p>Arturo Filastò sent his <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000386.html">report</a> about his activities in October.</p>
+
+<p>Nathan Freitas reported on his <a href="https://lists.torproject.org/pipermail/tor-dev/2013-November/005857.html">efforts to use GeckoView on Android 4.4</a>, which can be seen as the “first step towards Tor Browser on Android”.</p>
+
+<p>Kevin Dyer <a href="https://lists.torproject.org/pipermail/tor-dev/2013-November/005861.html">announced</a> a new release of a <a href="https://fteproxy.org/">pluggable transport powered by Format-Transforming Encryption</a>. Cross-platform builds of the pluggable transport Tor Browser Bundle are available for download for the adventurous.</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>Echoing the tor-talk thread summarized above, multiple people asked whether or not the Tor Project could recommend the Safeplug device.</p>
+
+<p>An OS X user asked if it was always necessary to open the Tor Browser folder in order to start the Tor Browser Bundle. It is possible to create an alias in Mac OS or a shortcut in Windows to the “Start Tor Browser” script and place that alias or shortcut in a convenient place,<br>
+such as the Desktop.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, Matt Pagan, harmony, Philipp Winter, and dope457.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+</div>
+<p>- lunar</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Updated Tor Cloud images with fix for Tor upgrades</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Updated Tor Cloud images with fix for Tor upgrades</h2>
+<p class="meta">10 Aug 2012</p>
+
+<div class="post">
+<p><a href="https://cloud.torproject.org/">The Tor Cloud</a> images for all the seven regions have been updated to include the latest cloud image for stable Ubuntu release 10.04 LTS (Lucid Lynx). These new images are available on the Tor Cloud website.</p>
+
+<p>The new images include a fix to allow Tor to upgrade automatically without requiring user intervention ( <a href="https://trac.torproject.org/projects/tor/ticket/6511">#6511</a>).</p>
+
+<p>If you are already running a Tor Cloud bridge, you will need to either manually update your image, or set up a new Tor Cloud bridge and terminate the old one. If you decide not to take action, your image will fail to upgrade Tor correctly and will not be running as a bridge.</p>
+
+<p>To manually update your image, do the following:</p>
+
+<ol>
+<li>Log on with SSH<br></li>
+<li>Open /etc/apt/apt.conf.d/50unattended-upgrades<br></li>
+<li>Add the line: Dpkg::Options { --force-confold; }<br></li>
+<li>Save and exit</li>
+</ol>
+
+</div>
+<p>- Runa</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

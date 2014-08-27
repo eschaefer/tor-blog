@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Whither website translations</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Whither website translations</h2>
+<p class="meta">28 Sep 2011</p>
+
+<div class="post">
+<p>As of <a href="https://lists.torproject.org/pipermail/tor-commits/2011-September/035605.html">svn commit 25130</a> we no longer have our web pages translated. We continue to translate tor, vidalia, aurora/firefox, our manual pages, and other documentation included with the various bundles. We&#39;re also going to create a new, simplified user manual that can be translated and included in our various packages.</p>
+
+<p>I thank our translators, both past and current, and continue to be impressed at the community we&#39;ve built up around translating all things Tor. We appreciate it, our users appreciate, and I appreciate it.</p>
+
+<p>Why did we do this?</p>
+
+<ul>
+<li>We spend a lot of time managing the translated pages on the website.</li>
+<li>The English pages are frequently updated, thereby invalidating all of the other languages.</li>
+<li>The switch to <a href="https://www.transifex.net/start/">Transifex</a> hasn&#39;t made more translators appear, especially for the languages we may care about the most.</li>
+<li>The translators for many languages that have a right-to-left orientation complain that the transifex interface is a nightmare to use and refuse to update.</li>
+<li>Lots of users simply use google translate, or read English anyway.</li>
+<li>Getting translated software into the hands of people is more important than them reading our web pages (especially if the documentation is translated and available locally)</li>
+<li>Our translations for right to left languages, such as Arabic and Farsi, were growing out of date and required far more technical skill to do than more translators are capable of handling. This involved editing the raw perl templating system we used.</li>
+<li>And, according to our webserver logs, our translated website traffic is less than 2% of total GET requests, nevermind page views.</li>
+</ul>
+
+<p>We may go back to the old model, which was svn or git commits directly to the repository for translations. It seemed this model attracted a few dedicated translators for some interesting languages. These languages were always kept current with the English pages. Another option is automated translation, such as something Bayesian that understands the difference between the snack cookie and a web browser cookie.</p>
+
+<p>If you have suggestions or other ideas how to improve our translations, feel free to respond to <a href="https://trac.torproject.org/projects/tor/ticket/4082">ticket 4082</a>.</p>
+
+<p>I still look forward to universal translators, helping me to understand the <a href="http://www.ethanzuckerman.com/blog/the-polyglot-internet/">polyglot Internet</a>. There is so much content out there that isn&#39;t in languages I understand. I hope universal translators can greatly improve in a short time.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

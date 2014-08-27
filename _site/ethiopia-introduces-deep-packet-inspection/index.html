@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Ethiopia Introduces Deep Packet Inspection</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Ethiopia Introduces Deep Packet Inspection</h2>
+<p class="meta">31 May 2012</p>
+
+<div class="post">
+<p>The Ethiopian Telecommunication Corporation, which happens to be the sole telecommunication service provider in Ethiopia, has deployed or begun testing Deep Packet Inspection (DPI) of all Internet traffic. We have previously analyzed the same kind of censorship in <a href="https://blog.torproject.org/blog/knock-knock-knockin-bridges-doors">China</a>, <a href="https://blog.torproject.org/blog/iran-partially-blocks-encrypted-network-traffic">Iran</a>, and <a href="https://blog.torproject.org/blog/kazakhstan-upgrades-censorship-deep-packet-inspection">Kazakhstan</a>.</p>
+
+<p>Reports show that Tor stopped working a week ago -- even with bridges configured. Websites such as <a href="https://gmail.com/">https://gmail.com/</a>, <a href="https://facebook.com/">https://facebook.com/</a>, <a href="https://twitter.com/">https://twitter.com/</a>, and even <a href="https://torproject.org/">https://torproject.org/</a> continue to work. The graphs below show the effects of this deployment of censorship based on Deep Packet Inspection:</p>
+
+<p><img src="https://media.torproject.org/image/blog-images/direct-users-off-2012-03-02-off-72-2012-05-31-et.png" alt=""></p>
+
+<p><img src="https://media.torproject.org/image/blog-images/bridge-users-2012-03-02-72-2012-05-31-et.png" alt=""></p>
+
+<p>An analysis of data collected by a volunteer shows that they are doing some sort of TLS fingerprinting. The TLS server hello, which is sent by the Tor bridge after the TLS client hello, never reaches the client. We don&#39;t know exactly what they are fingerprinting on, but our guess is that it is either the client hello or the server hello. An illustration can be found in this <a href="https://media.torproject.org/image/blog-images/2012-05-31-ethiopia-dpi-blocking-of-tor.png">network flow diagram</a>.</p>
+
+<p>Thanks to Philipp Winter and George Kadianakis for helping me analyze the data. If you have more information about the censorship in Ethiopia, please email <a href="mailto:help@rt.torproject.org">help@rt.torproject.org</a>.</p>
+
+</div>
+<p>- Runa</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

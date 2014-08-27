@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Different Ways to Use a Bridge</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Different Ways to Use a Bridge</h2>
+<p class="meta">29 Nov 2011</p>
+
+<div class="post">
+<p><strong>Different Ways to Use a Bridge</strong></p>
+
+<p>When some adversary prevents users from reaching the Tor network, our most popular answer is using bridge relays (or bridges for short). Those are hidden relays, not listed along with all the other relays in the networkstatus documents. Currently, we have about 600 of them, and censors are having different luck learning and blocking them — see <a href="https://blog.torproject.org/blog/research-problems-ten-ways-discover-tor-bridges">the 10 ways to discover Tor bridges blog post</a> for more on how discovery approaches may work. China appears to be the only place able to successfully block most bridges consistently, whereas other places occasionally manage to block Tor&#39;s handshake and as a byproduct block all bridges too.</p>
+
+<p>Bridge users can be broadly grouped in three camps:</p>
+
+<ul>
+<li>Tor is blocked, and some way — any way — to reach the network has to be found. The adversary is not very dangerous, but very annoying.</li>
+<li>Tor may or may not be blocked, but the user is trying to hide the fact they&#39;re hiding Tor. The adversary may be extremely dangerous.</li>
+<li>Other bridge users: Testing whether the bridge works (automated or manual), probing, people using bridges without their knowledge because they came pre-configured in their bundle.</li>
+</ul>
+
+<p>Here we examine the first two use cases more closely. Specifically, we want to look at properties of a bridge that must exist for it to be useful to a user.</p>
+
+<p><strong>Bridges — building blocks</strong></p>
+
+<p>First off, it is helpful to understand some basics about bridges and how they are used by normal users.</p>
+
+<p>Bridges are very similar to ordinary relays, in that they are operated by volunteers who made the decision to help people reach the Tor network. The difference to a normal relay is where the information about the bridge is published to — bridges can choose to either publish to the Bridge Authority (a special relay collecting all bridge addresses that it receives), or to not publish their information anywhere. The former are called public bridges, the latter private bridges.</p>
+
+<p>We don&#39;t have any information about the number of private bridges, but since the Bridge Authority collects data about the public bridges, we do know that bridges are used in the real world. See <a href="https://metrics.torproject.org/users.html#bridge-users">the bridge users</a> and <a href="https://metrics.torproject.org/network.html#networksize">networksize</a> graphs for some examples. Not having data about private bridges or their users means some of the analysis below is based on discussions with users of private bridges and our best estimates, and it can&#39;t be backed up by statistical data.</p>
+
+<p>The reason we&#39;re using a Bridge Authority and collecting information about bridges is that we want to give out bridges to people who aren&#39;t in a position to learn about a private bridge themselves.</p>
+
+<p>&quot;Learning about a bridge&quot; generally means learning about the bridge&#39;s IP address and port, so that a connection can be made. Optionally, the bridge identity fingerprint is included, too — this helps the client to verify that it is actually talking to the bridge, and not someone that is intercepting the network communication. For a private bridge, the operator has to pass on that information; public bridges wrap up some information about themselves in what is called their bridge descriptor and send that to the bridge authority. The bridge descriptor includes some statistical information, like aggregated user counts and countries of origin of traffic. Our analysis here focuses solely on the data provided by public bridges.</p>
+
+<p>Once a user has learned about some bridges, she configures her Tor client to use them, typically by entering them into the appropriate field in Vidalia. Alternatively, she might use a different controller or put the data into tor&#39;s configuration file directly.</p>
+
+<p><strong>Learning from bridge descriptor fetches</strong></p>
+
+<p>We&#39;ve been collecting bridge descriptor fetch statistics on the bridge authority, and are using this data to pose some questions and propose some changes. The statistics collected are how many bridge descriptors were served in total, and how many unique descriptors were served, as well as the 0, 25, 50, 75 and 100 percentiles of fetches per descriptor. Every 24 hours, the current statistics are written to disk and the counters reset. The current statistics are attached to this post, for closer inspection. We&#39;ve also prepared two graphs to easily see the data at a glance:</p>
+
+<p><img src="https://blog.torproject.org/files/bridge-total-downloads.png" alt="Total bridge downloads"></p>
+
+<p><img src="https://blog.torproject.org/files/bridge-downloads-per-desc.png" alt="Bridge downloads per descriptor"></p>
+
+<p>The first thing to note is that there aren&#39;t very many bridge descriptor fetches at all, which isn&#39;t a big surprise: The current Tor bundles don&#39;t fetch them when they&#39;re used in the typical way, that is by adding some bridges via Vidalia&#39;s interface after bridges were discovered via one of our bridge distribution channels. Over the past month, there have been between 3900 and 6600 fetches per day, with a median of 8 fetches per bridge. The most fetched descriptor is fetched up to 350 times per day, indicating that it does indeed belong to a bridge that was given out with a fingerprint and being used by Tor clients. We have gotten some reports that a bundle circulated with pre-configured bridges, and this could account for the many fetches.</p>
+
+<p>Secondly, most bridge descriptors are not even fetched from the authority. This is a clear indication that we can improve our odds of updating bridge clients with current bridge info if we can get them to request the information better.</p>
+
+<p><strong>Improving Tor&#39;s behaviour for the two user groups</strong></p>
+
+<p>The first group (&quot;Tor is blocked, and some way to reach the network has to be found&quot;) is mostly concerned about circumvention, without necessarily hiding that they&#39;re using Tor from someone. Typically, access to the Internet is filtered, but circumventing a filter isn&#39;t too risky and people are more concerned with access than hiding their tracks from a data-collecting adversary. Speed, bootstrapping performance, and little intervention/maintenance of a setup are the biggest goals.</p>
+
+<p>Adding auto-discovery mechanisms for bridges that changed their IP address will help this group gain a lot more robustness when it comes to maintaining connectivity against an adversary that blocks public relays, but isn&#39;t very quick in blocking all bridges. As far as we know, this is currently true for the majority of our bridge userbase.</p>
+
+<p>For the second group (&quot;Tor may or may not be blocked, but the user is trying to hide the fact they&#39;re hiding Tor&quot;), precise control over Tor&#39;s actions is much more important than constant connectivity, and private bridges might be utilized to that end as well. A user in this group wants to keep the bridges he&#39;s using secret, and puts up with frequent updates to the configuration for the added safety of only connecting to a pre-specified IP address:port combination. We can&#39;t do very much for a user belonging to this group with regard to bridges, but he will very much benefit from improvements made to our general fingerprintability resistance. Also options like the <a href="https://trac.torproject.org/projects/tor/ticket/3644">DisableNetwork</a> option (prevent touching the network in any kind of way until this option is changed) that was recently introduced to Tor help him.</p>
+
+<p>Another interesting point here is that we can indirectly improve the behaviour for the first group by not making it too easy to learn about bridges, because censors can use the same data to more effectively block them. This means that we shouldn&#39;t, for example, start giving out significantly more bridges to a single user.</p>
+
+<p>We&#39;ve written a <a href="https://lists.torproject.org/pipermail/tor-dev/2011-November/003097.html">proposal</a> to implement some changes in Tor, to better facilitate the needs of the first group of bridge users.</p>
+
+<p><thead><tr>
+<th>Attachment</th>
+<th>Size</th> </tr></thead><tbody>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/bridge_desc_fetches_stats.txt">bridge<em>desc</em>fetches_stats.txt</a></td>
+<td>2.87 KB</td> </tr>
+ <tr class="even">
+<td><a href="https://blog.torproject.org/files/bridge-downloads-per-desc.png">bridge-downloads-per-desc.png</a></td>
+<td>52.87 KB</td> </tr>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/bridge-total-downloads.png">bridge-total-downloads.png</a></td>
+<td>42.33 KB</td> </tr>
+</tbody></p>
+
+</div>
+<p>- Sebastian</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

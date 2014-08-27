@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor Project infrastructure updates</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor Project infrastructure updates</h2>
+<p class="meta">22 Jan 2010</p>
+
+<div class="post">
+<p>You should upgrade to Tor 0.2.1.22 or 0.2.2.7-alpha:<br>
+ <a href="https://www.torproject.org/easy-download.html.en" title="https://www.torproject.org/easy-download.html.en">https://www.torproject.org/easy-download.html.en</a></p>
+
+<p>In early January we discovered that two of the seven servers that run directory<br>
+authorities were compromised (moria1 and gabelmoo), along with<br>
+metrics.torproject.org, a new server we&#39;d recently set up to serve<br>
+metrics data and graphs. The three servers have since been reinstalled<br>
+with service migrated to other servers.</p>
+
+<p>We made fresh identity keys for the two directory authorities, which is<br>
+why you need to upgrade.</p>
+
+<p>Moria also hosted our git repository and svn repository. We took the<br>
+services offline as soon as we learned of the breach. It appears the<br>
+attackers didn&#39;t realize what they broke into -- just that they had<br>
+found some servers with lots of bandwidth. The attackers set up some ssh<br>
+keys and proceeded to use the three servers for launching other attacks.<br>
+We&#39;ve done some preliminary comparisons, and it looks like git and svn<br>
+were not touched in any way.</p>
+
+<p>We&#39;ve been very lucky the past few years regarding security. It still<br>
+seems this breach is unrelated to Tor itself. To be clear, it doesn&#39;t<br>
+seem that anyone specifically attacked our servers to get at Tor. It<br>
+seems we were attacked for the cpu capacity and bandwidth of the servers,<br>
+and the servers just happened to also carry out functions for Tor.</p>
+
+<p>We&#39;ve tried to address the most common questions below.</p>
+
+<p><strong>I read that Tor&#39;s encryption keys were compromised, is this true?</strong></p>
+
+<p>No. The operating systems were compromised, not tor. The tor source, and running Tor Directory Authorities were left untouched. It appears the<br>
+attackers didn&#39;t realize what they broke into -- just that they had<br>
+found some servers with lots of bandwidth. We&#39;ve generated new Directory Authority keys out of an abundance of caution.</p>
+
+<p><strong>Does this mean someone could have matched users up to their<br>
+destinations?</strong></p>
+
+<p>No. By design, Tor requires a majority of directory authorities (four<br>
+in this case) to generate a consensus; and like other relays in the<br>
+Tor network, directory authorities don&#39;t know enough to match a user<br>
+and traffic or destination.</p>
+
+<p><strong>Does this mean somebody could have changed the Tor source?</strong></p>
+
+<p>No, we&#39;ve checked the source. It does mean you should upgrade so your<br>
+client knows about all the currently valid directory authorities.</p>
+
+<p>** Does this mean someone could have learned more about Tor than an<br>
+ordinary user?**</p>
+
+<p>Since our software and specifications are open, everyone already has<br>
+access to almost everything on these machines... except some old bridge<br>
+descriptors, which we give out only in small batches as entry points for<br>
+blocked clients.</p>
+
+<p><strong>Can I trust Tor&#39;s security?</strong></p>
+
+<p>We&#39;ve taken steps to fix the weaknesses identified and to harden our<br>
+systems further. Tor has a track record of openness and transparency,<br>
+with its source code and specifications and also with its operations.<br>
+Moreover, we&#39;re disclosing breaches such as this so you can monitor our<br>
+status. You shouldn&#39;t assume those who don&#39;t disclose security breaches<br>
+never have any!</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Kazakhstan upgrades censorship to deep packet inspection</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Kazakhstan upgrades censorship to deep packet inspection</h2>
+<p class="meta">16 Feb 2012</p>
+
+<div class="post">
+<p>In December 2011 we were aware of Kazakhstan <a href="http://www.hrw.org/news/2011/12/17/kazakhstan-investigate-violence-oil-rich-western-region">increasing Internet censorship</a> in response to some unrest and protests in Zhanaozen in the west. The censorship was then deployed around the country, in many cases with the <a href="http://www.washingtontimes.com/news/2011/dec/30/kazakhstan-social-networking-ban-censorship-debate/">full support of the populace</a>. The initial invesitgation showed simple IP address blocking coupled with basic dns censorship. Tor continued to work without incident until this week.</p>
+
+<p>JSC KazTransCom, <a href="http://bgp.he.net/AS35104#_asinfo">AS35104</a>, has deployed or begun testing deep packet inspection (dpi) of all Internet traffic. They specifically target SSL-based protocols for blocking. This includes Tor, IPsec, and PPTP-based technologies, as well as some SSL-based VPNs. Business and private users of these technologies are equally affected.</p>
+
+<p>An example of the censorship, as recorded by volunteers in country, can be found in this <a href="https://media.torproject.org/misc/2012-02-14-kazakhstan-dpi-blocking-of-tor.txt">network flow diagram</a>. Kazakhstan is identifying and blocking the SSL client key exchange during the setup of an SSL connection. <a href="https://metrics.torproject.org/users.html?graph=direct-users&amp;start=2011-11-18&amp;end=2012-02-16&amp;country=kz&amp;events=on&amp;dpi=72#direct-users">This graph</a> shows the effects of this deployment of censorship based on dpi.</p>
+
+<p>Luckily, due to our <a href="https://blog.torproject.org/blog/obfsproxy-next-step-censorship-arms-race">recent experience with Iran</a> we have an answer for people: <a href="https://www.torproject.org/projects/obfsproxy.html.en">use obfsproxy</a>. Obfsproxy continues to work in Kazakhstan, as well as Iran. In fact, it works in any country where dpi is used to censor citizens&#39; access to the Internet.</p>
+
+<p>Thank you to the volunteers for spending their Valentine&#39;s Day collecting and analyzing data.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

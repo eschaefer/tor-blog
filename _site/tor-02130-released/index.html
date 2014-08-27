@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.1.30 is released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.1.30 is released</h2>
+<p class="meta">05 Mar 2011</p>
+
+<div class="post">
+<p>Tor 0.2.1.30 fixes a variety of less critical bugs. The main other change is a slight tweak to Tor&#39;s TLS handshake that makes relays and bridges that run this new version reachable from Iran again. We don&#39;t expect this tweak will win the arms race long-term, but it buys us time until we roll out a better solution.</p>
+
+<p><a href="https://www.torproject.org/download/download" title="https://www.torproject.org/download/download">https://www.torproject.org/download/download</a></p>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Stop sending a CLOCK_SKEW controller status event whenever<br>
+we fetch directory information from a relay that has a wrong clock.<br>
+Instead, only inform the controller when it&#39;s a trusted authority<br>
+that claims our clock is wrong. Bugfix on 0.1.2.6-alpha; fixes<br>
+the rest of bug 1074.</li>
+<li>Fix a bounds-checking error that could allow an attacker to<br>
+remotely crash a directory authority. Bugfix on 0.2.1.5-alpha.<br>
+Found by &quot;piebeer&quot;.</li>
+<li>If relays set RelayBandwidthBurst but not RelayBandwidthRate,<br>
+Tor would ignore their RelayBandwidthBurst setting,<br>
+potentially using more bandwidth than expected. Bugfix on<br>
+0.2.0.1-alpha. Reported by Paul Wouters. Fixes bug 2470.</li>
+<li>Ignore and warn if the user mistakenly sets &quot;PublishServerDescriptor<br>
+hidserv&quot; in her torrc. The &#39;hidserv&#39; argument never controlled<br>
+publication of hidden service descriptors. Bugfix on 0.2.0.1-alpha.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Adjust our TLS Diffie-Hellman parameters to match those used by<br>
+Apache&#39;s mod_ssl.</li>
+<li>Update to the February 1 2011 Maxmind GeoLite Country database.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Check for and reject overly long directory certificates and<br>
+directory tokens before they have a chance to hit any assertions.<br>
+Bugfix on 0.2.1.28. Found by &quot;doorss&quot;.</li>
+<li>Bring the logic that gathers routerinfos and assesses the<br>
+acceptability of circuits into line. This prevents a Tor OP from<br>
+getting locked in a cycle of choosing its local OR as an exit for a<br>
+path (due to a .exit request) and then rejecting the circuit because<br>
+its OR is not listed yet. It also prevents Tor clients from using an<br>
+OR running in the same instance as an exit (due to a .exit request)<br>
+if the OR does not meet the same requirements expected of an OR<br>
+running elsewhere. Fixes bug 1859; bugfix on 0.1.0.1-rc.</li>
+</ul>
+
+<p><strong>Packaging changes:</strong></p>
+
+<ul>
+<li>Stop shipping the Tor specs files and development proposal documents<br>
+in the tarball. They are now in a separate git repository at<br>
+git://git.torproject.org/torspec.git</li>
+<li>Do not include Git version tags as though they are SVN tags when<br>
+generating a tarball from inside a repository that has switched<br>
+between branches. Bugfix on 0.2.1.15-rc; fixes bug 2402.</li>
+</ul>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

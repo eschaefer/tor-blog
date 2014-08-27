@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.1.20 Released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.1.20 Released</h2>
+<p class="meta">13 Nov 2009</p>
+
+<div class="post">
+<p>Tor 0.2.1.20 fixes a crash bug when you&#39;re accessing many hidden services<br>
+at once, prepares for more performance improvements, and fixes a bunch<br>
+of smaller bugs.</p>
+
+<p>The Windows and OS X bundles also include a more recent Vidalia, and<br>
+switch from Privoxy to Polipo.</p>
+
+<p>The OS X installers are now drag and drop. It&#39;s best to un-install<br>
+Tor/Vidalia and then install this new bundle, rather than upgrade. If<br>
+you want to upgrade, you&#39;ll need to update the paths for Tor and Polipo<br>
+in the Vidalia Settings window.</p>
+
+<p><a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a></p>
+
+<p>Changes in version 0.2.1.20 - 2009-10-15<br>
+ o Major bugfixes:</p>
+
+<ul>
+<li>Send circuit or stream sendme cells when our window has decreased<br>
+by 100 cells, not when it has decreased by 101 cells. Bug uncovered<br>
+by Karsten when testing the &quot;reduce circuit window&quot; performance<br>
+patch. Bugfix on the 54th commit on Tor -- from July 2002,<br>
+before the release of Tor 0.0.0. This is the new winner of the<br>
+oldest-bug prize.<br>
+
+<ul>
+<li>Fix a remotely triggerable memory leak when a consensus document<br>
+contains more than one signature from the same voter. Bugfix on<br>
+0.2.0.3-alpha.<br></li>
+<li>Avoid segfault in rare cases when finishing an introduction circuit<br>
+as a client and finding out that we don&#39;t have an introduction key<br>
+for it. Fixes bug 1073. Reported by Aaron Swartz.</li>
+</ul></li>
+</ul>
+
+<p>o Major features:</p>
+
+<ul>
+<li>Tor now reads the &quot;circwindow&quot; parameter out of the consensus,<br>
+and uses that value for its circuit package window rather than the<br>
+default of 1000 cells. Begins the implementation of proposal 168.</li>
+</ul>
+
+<p>o New directory authorities:</p>
+
+<ul>
+<li>Set up urras (run by Jacob Appelbaum) as the seventh v3 directory<br>
+authority.<br>
+
+<ul>
+<li>Move moria1 and tonga to alternate IP addresses.</li>
+</ul></li>
+</ul>
+
+<p>o Minor bugfixes:</p>
+
+<ul>
+<li>Fix a signed/unsigned compile warning in 0.2.1.19.<br>
+
+<ul>
+<li>Fix possible segmentation fault on directory authorities. Bugfix on<br>
+0.2.1.14-rc.<br></li>
+<li>Fix an extremely rare infinite recursion bug that could occur if<br>
+we tried to log a message after shutting down the log subsystem.<br>
+Found by Matt Edman. Bugfix on 0.2.0.16-alpha.<br></li>
+<li>Fix an obscure bug where hidden services on 64-bit big-endian<br>
+systems might mis-read the timestamp in v3 introduce cells, and<br>
+refuse to connect back to the client. Discovered by &quot;rotor&quot;.<br>
+Bugfix on 0.2.1.6-alpha.<br></li>
+<li>We were triggering a CLOCK_SKEW controller status event whenever<br>
+we connect via the v2 connection protocol to any relay that has<br>
+a wrong clock. Instead, we should only inform the controller when<br>
+it&#39;s a trusted authority that claims our clock is wrong. Bugfix<br>
+on 0.2.0.20-rc; starts to fix bug 1074. Reported by SwissTorExit.<br></li>
+<li>We were telling the controller about CHECKING_REACHABILITY and<br>
+REACHABILITY_FAILED status events whenever we launch a testing<br>
+circuit or notice that one has failed. Instead, only tell the<br>
+controller when we want to inform the user of overall success or<br>
+overall failure. Bugfix on 0.1.2.6-alpha. Fixes bug 1075. Reported<br>
+by SwissTorExit.<br></li>
+<li>Don&#39;t warn when we&#39;re using a circuit that ends with a node<br>
+excluded in ExcludeExitNodes, but the circuit is not used to access<br>
+the outside world. This should help fix bug 1090. Bugfix on<br>
+0.2.1.6-alpha.<br></li>
+<li>Work around a small memory leak in some versions of OpenSSL that<br>
+stopped the memory used by the hostname TLS extension from being<br>
+freed.</li>
+</ul></li>
+</ul>
+
+<p>o Minor features:</p>
+
+<ul>
+<li>Add a &quot;getinfo status/accepted-server-descriptor&quot; controller<br>
+command, which is the recommended way for controllers to learn<br>
+whether our server descriptor has been successfully received by at<br>
+least on directory authority. Un-recommend good-server-descriptor<br>
+getinfo and status events until we have a better design for them.</li>
+</ul>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

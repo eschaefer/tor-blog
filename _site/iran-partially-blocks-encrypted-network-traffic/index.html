@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Iran partially blocks encrypted network traffic</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Iran partially blocks encrypted network traffic</h2>
+<p class="meta">10 Feb 2012</p>
+
+<div class="post">
+<p>Over the past two days we&#39;ve been hearing from, and working with, a number of Iranians having difficulty using Tor from inside Iran. It seems the Iranian government has ramped up censorship in three ways: deep packet inspection (dpi) of SSL traffic, selective blocking of IP Address and TCP port combinations, and some keyword filtering. For instance, they have partially blocked access to Tor&#39;s website, torproject.org, via IP address (such as 86.59.30.36) and port 443 (which is the HTTPS port). The third level of blocking is by keywords, such as searching for the word &#39;tor&#39; via regular, non-encrypted search engine websites.</p>
+
+<p>The blocks on SSL are not complete and not nationwide. Where blocking is in place, initial investigations show they are identifying the beginning of the SSL handshake and simply interrupting the handshake. We continue to research and investigate solutions with the assumption that SSL will eventually be blocked nationwide inside Iran. Our goal is to defeat their dpi signatures and allow tor to work by default.</p>
+
+<p>The Iran Media Program has <a href="http://iranmediaresearch.com/en/blog/101/12/02/09/840">posted their thoughts</a> on what is happening from a journalist&#39;s perspective.</p>
+
+<p>So far, it seems the majority of Tor users are not affected by these blocks. Iran is still the #2 country based on direct usage, <a href="https://metrics.torproject.org/users.html?graph=direct-users&amp;country=ir#direct-users" title="https://metrics.torproject.org/users.html?graph=direct-users&amp;country=ir#direct-users">https://metrics.torproject.org/users.html?graph=direct-users&amp;country=ir#...</a>. This number is on the decline, however.</p>
+
+<p>More details to follow as we have them.</p>
+
+<p><strong>Update</strong> 2011-02-10 18:05 UTC: We are working on making our obfuscating proxy more stable and easier to deploy. If you can compile code, following <a href="https://lists.torproject.org/pipermail/tor-talk/2012-February/023070.html">these directions</a> will help. We&#39;re also working on Amazon EC2 instances of obfsproxy for point and click deployment.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

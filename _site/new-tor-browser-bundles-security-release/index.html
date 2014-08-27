@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>New Tor Browser Bundles (security release)</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>New Tor Browser Bundles (security release)</h2>
+<p class="meta">04 May 2012</p>
+
+<div class="post">
+<p>The Tor Browser Bundles have been updated with a very important security fix. As explained in the previous blog post, <a href="https://blog.torproject.org/blog/firefox-security-bug-proxy-bypass-current-tbbs">a user discovered a severe security bug in Firefox related to websockets bypassing the SOCKS proxy DNS configuration</a>. This is now fixed and we <strong>strongly encourage</strong> all users to update. There are a few other bugfixes in this release, including really fixing (for real this time!) the problem with the Mac OS X bundles crashing.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Tor Browser Bundle (2.2.35-11)</strong></p>
+
+<ul>
+<li>Security release to stop TorBrowser from bypassing SOCKS proxy DNS configuration</li>
+<li><p>New Firefox patches:</p>
+
+<ul>
+<li>Prevent WebSocket DNS leak (closes: <a href="https://trac.torproject.org/projects/tor/ticket/5741">#5741</a>)</li>
+<li>Fix a race condition that could be used to link browsing sessions together when using new identity from Tor Browser (closes: <a href="https://trac.torproject.org/projects/tor/ticket/5715">#5715</a>)</li>
+</ul></li>
+<li><p>Remove extraneous BetterPrivacy settings from prefs.js (closes: <a href="https://trac.torproject.org/projects/tor/ticket/">#5722</a>)</p></li>
+<li><p>Fix the mozconfig options for OS X so that it really builds everything with clang instead of llvm-gcc (closes: <a href="https://trac.torproject.org/projects/tor/ticket/">#5740</a>)</p></li>
+</ul>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>July 2009 Progress Report</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>July 2009 Progress Report</h2>
+<p class="meta">10 Aug 2009</p>
+
+<div class="post">
+<p><strong>New releases</strong></p>
+
+<p>On July 8th, we released <a href="https://blog.torproject.org/blog/vidalia-0115-released">Vidalia 0.1.15.</a>.</p>
+
+<p>On July 8th, we updated the Tor 0.2.0.35-stable bundles with the new Vidalia to fix an ssl issue and the Firefox Torbutton extension installation for OS X users.</p>
+
+<p>On July 8th, we released <a href="https://blog.torproject.org/blog/tor-02117rc-released">Tor 0.2.1.17-rc</a>.</p>
+
+<p><a href="https://blog.torproject.org/blog/tor-browser-bundle-123-and-124-released">Tor Browser Bundle 1.2.3</a> was released on July 8, 2009.<br>
+ <a href="https://blog.torproject.org/blog/tor-browser-bundle-123-and-124-released">TBB 1.2.3</a> was replaced by 1.2.4 on July 11, 2009<br>
+ <a href="https://blog.torproject.org/blog/tor-browser-bundle-125-and-126-released">TBB 1.2.5</a> was released on July 25th. It solely included an update to Tor 0.2.1.18 .<br>
+ <a href="https://blog.torproject.org/blog/tor-browser-bundle-125-and-126-released">TBB 1.2.6</a> was released on July 28th. It solely included an update to Tor 0.2.1.19.</p>
+
+<p>On July 24th, we released <a href="https://blog.torproject.org/blog/tor-02118-and-02119-released-stable">Tor 0.2.1.18</a>.</p>
+
+<p>On July 28th, we released <a href="https://blog.torproject.org/blog/tor-02118-and-02119-released-stable">Tor 0.2.1.19</a>.</p>
+
+<p><strong>Make Tor a better tool for users in censored countries</strong></p>
+
+<p>Tor 0.2.1.18 is our new stable. That is, this is the first stable release<br>
+of the 0.2.1.x branch. The 0.2.0.x branch went stable in July of 2008.<br>
+From the 0.2.1.18 release:</p>
+
+<p>If the bridge config line doesn&#39;t specify a port, assume 443.<br>
+This makes bridge lines a bit smaller and easier for users to<br>
+understand.</p>
+
+<p>If we&#39;re using bridges and our network goes away, be more willing<br>
+to forgive our bridges and try again when we get an application<br>
+request.</p>
+
+<p><strong>Architecture and technical design docs for Tor enhancements related to blocking-resistance.</strong></p>
+
+<p>Proposal 166 details four steps we&#39;re taking to safely collect data<br>
+about Tor&#39;s network performance and network usage: 1) directory client<br>
+counts by country, 2) entry guard client counts by country, 3) relay<br>
+cell statistics, and 4) exit traffic by port and volume.<br>
+ <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/166-statistics-extra-info-docs.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/166-statistics-extra-info-docs.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/166-st...</a></p>
+
+<p><strong>Hide Tor&#39;s network signature</strong></p>
+
+<p>Part of the reason why Tor might be especially slow in Iran could<br>
+be that they&#39;re doing deep packet inspection (DPI) to throttle SSL<br>
+connections. Tor&#39;s strategy of looking like SSL might turn out to be a<br>
+bad move in this case. It&#39;s hard to tell whether the SSL throttling is<br>
+actually happening, of course, because we get plenty of mixed information<br>
+from our sources in Iran. But if it *is* happening, we should start<br>
+investigating traffic obfuscation approaches that a) don&#39;t look like SSL,<br>
+but b) don&#39;t look recognizably like any other protocol.</p>
+
+<p>Some other Iran circumvention developers have come up with a patch to<br>
+obfuscate ssh traffic:<br>
+ <a href="http://github.com/brl/obfuscated-openssh/tree/master" title="http://github.com/brl/obfuscated-openssh/tree/master">http://github.com/brl/obfuscated-openssh/tree/master</a><br>
+ <a href="http://c-skills.blogspot.com/2008/12/sshv2-trickery.html" title="http://c-skills.blogspot.com/2008/12/sshv2-trickery.html">http://c-skills.blogspot.com/2008/12/sshv2-trickery.html</a></p>
+
+<p>Sometime soon we should start looking at designs to super-encrypt the<br>
+Tor link traffic in this way.</p>
+
+<p><strong>Grow the Tor network and user base. Outreach</strong></p>
+
+<p>On July 1st, Andrew gave a detailed Tor talk at the National Cyber Forensics and Training Alliance. Andrew&#39;s blog about the event is at <a href="https://blog.torproject.org/blog/visit-ncfta" title="https://blog.torproject.org/blog/visit-ncfta">https://blog.torproject.org/blog/visit-ncfta</a>.</p>
+
+<p>On July 7th, Andrew was a panelist for the CIMA/NED discussion on Iran and the Role of New Media, <a href="http://cima.ned.org/events/new-media-in-iran.html" title="http://cima.ned.org/events/new-media-in-iran.html">http://cima.ned.org/events/new-media-in-iran.html</a>. Andrew&#39;s blog about the event is at <a href="https://blog.torproject.org/blog/cimaned-panel-iran-and-new-media" title="https://blog.torproject.org/blog/cimaned-panel-iran-and-new-media">https://blog.torproject.org/blog/cimaned-panel-iran-and-new-media</a>.</p>
+
+<p>On July 15th, Andrew presented Tor at Webinno22, <a href="http://www.webinnovatorsgroup.com/2009/07/06/the-webinno22-demo-companies/" title="http://www.webinnovatorsgroup.com/2009/07/06/the-webinno22-demo-companies/">http://www.webinnovatorsgroup.com/2009/07/06/the-webinno22-demo-companie...</a>. Further discussions about online privacy startups and business deals with various investors and their seed companies are continuing since this event.</p>
+
+<p>More press interviews and articles:</p>
+
+<p>Iran activists work to elude crackdown on Internet, <a href="http://www.google.com/hostednews/ap/article/ALeqM5hTf-p6Iy3sWHK8BRR58npGosLC3AD99L01QO0" title="http://www.google.com/hostednews/ap/article/ALeqM5hTf-p6Iy3sWHK8BRR58npGosLC3AD99L01QO0">http://www.google.com/hostednews/ap/article/ALeqM5hTf-p6Iy3sWHK8BRR58npG...</a></p>
+
+<p><a href="http://blog.taragana.com/n/iran-government-builds-internet-walls-but-activists-still-slip-around-in-political-turmoil-119968/" title="http://blog.taragana.com/n/iran-government-builds-internet-walls-but-activists-still-slip-around-in-political-turmoil-119968/">http://blog.taragana.com/n/iran-government-builds-internet-walls-but-act...</a></p>
+
+<p>Twitter and Facebook Help Protestors Connect, <a href="http://www.outloud.com/2009/issue96/protest.html" title="http://www.outloud.com/2009/issue96/protest.html">http://www.outloud.com/2009/issue96/protest.html</a></p>
+
+<p>US set to hike aid aimed at Iranians, <a href="http://www.boston.com/news/nation/washington/articles/2009/07/26/us_to_increase_funding_for_hackivists_aiding_iranians/" title="http://www.boston.com/news/nation/washington/articles/2009/07/26/us\_to\_increase\_funding\_for\_hackivists\_aiding\_iranians/">http://www.boston.com/news/nation/washington/articles/2009/07/26/us_to_i...</a></p>
+
+<p>Senate OKs funds to thwart Iran Web censors , <a href="http://www.washingtontimes.com/news/2009/jul/26/senate-help-iran-dodge-internet-censorship/" title="http://www.washingtontimes.com/news/2009/jul/26/senate-help-iran-dodge-internet-censorship/">http://www.washingtontimes.com/news/2009/jul/26/senate-help-iran-dodge-i...</a></p>
+
+<p>We wrote a follow-up blog post about the number of people using Tor<br>
+from Iran and China in June:<br>
+ <a href="https://blog.torproject.org/blog/measuring-tor-and-iran-part-two" title="https://blog.torproject.org/blog/measuring-tor-and-iran-part-two">https://blog.torproject.org/blog/measuring-tor-and-iran-part-two</a></p>
+
+<p>On July 1-5, Roger, Jake, Mike, and Damian attended Toorcamp in rural<br>
+Washington State. Roger did a talk on current attacks and vulnerabilities<br>
+in Tor.<br>
+ <a href="http://www.toorcamp.org/content/B4" title="http://www.toorcamp.org/content/B4">http://www.toorcamp.org/content/B4</a></p>
+
+<p>On July 21-23, Roger attended a workshop in DC at the National Academy of<br>
+Sciences. The workshop focused on the combination of Usability, Privacy,<br>
+and Security, and where future funding should concentrate.</p>
+
+<p>On July 31, Roger gave a Defcon talk on the current state of Tor&#39;s<br>
+performance challenges and how we&#39;re addressing them:<br>
+ <a href="http://defcon.org/html/defcon-17/dc-17-speakers.html#Dingledine" title="http://defcon.org/html/defcon-17/dc-17-speakers.html#Dingledine">http://defcon.org/html/defcon-17/dc-17-speakers.html#Dingledine</a><br>
+ <a href="http://freehaven.net/%7Earma/slides-dc09.pdf" title="http://freehaven.net/~arma/slides-dc09.pdf">http://freehaven.net/~arma/slides-dc09.pdf</a></p>
+
+<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong></p>
+
+<p><a href="https://blog.torproject.org/blog/tor-browser-bundle-123-and-124-released">Tor Browser Bundle 1.2.3</a> was released on July 8, 2009.<br>
+ <a href="https://blog.torproject.org/blog/tor-browser-bundle-123-and-124-released">TBB 1.2.3</a> was replaced by 1.2.4 on July 11, 2009<br>
+ <a href="https://blog.torproject.org/blog/tor-browser-bundle-125-and-126-released">TBB 1.2.5</a> was released on July 25th. It solely included an update to Tor 0.2.1.18 .<br>
+ <a href="https://blog.torproject.org/blog/tor-browser-bundle-125-and-126-released">TBB 1.2.6</a> was released on July 28th. It solely included an update to Tor 0.2.1.19.</p>
+
+<p>Upgraded many programs in Incognito to address security concerns and general bugfixes.</p>
+
+<p><strong>Bridges</strong></p>
+
+<p>Updated geoip database. From the 0.2.1.18 release:</p>
+
+<p>If the bridge config line doesn&#39;t specify a port, assume 443.<br>
+This makes bridge lines a bit smaller and easier for users to<br>
+understand.</p>
+
+<p>If we&#39;re using bridges and our network goes away, be more willing<br>
+to forgive our bridges and try again when we get an application<br>
+request.</p>
+
+<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong></p>
+
+<p>From the 0.2.1.18 release:<br>
+Network status consensus documents and votes now contain bandwidth<br>
+information for each relay. Clients use the bandwidth values<br>
+in the consensus, rather than the bandwidth values in each<br>
+relay descriptor. This approach opens the door to more accurate<br>
+bandwidth estimates once the directory authorities start doing<br>
+active measurements. Implements part of proposal 141.</p>
+
+<p>When building a consensus, do not include routers that are down.<br>
+This cuts down 30% to 40% on consensus size. Implements proposal<br>
+138.</p>
+
+<p>Authorities now vote for the Stable flag for any router whose<br>
+weighted mean time between failure (MTBF) is at least 5 days, regardless of the mean MTBF.</p>
+
+<p>The main 2009 remaining performance changes are, in order of importance:<br>
+- Get the bwauthority scripts into place so authorities are voting on<br>
+ more accurate bandwidths.<br>
+- Write a proposal for capping the circuit window much lower, and<br>
+ implement it, and backport it to 0.2.1.x.<br>
+- Proposal 151: Mike&#39;s plan to track circuit build times and give up on<br>
+ the slow ones.<br>
+- Write a proposal for refilling our bandwidth buckets intra-second.<br>
+ Consider deploying in 0.2.2.x.<br>
+- Figure out what we can do for a less fair round-robin between active<br>
+ circuits. My intuition is heading towards &quot;we don&#39;t know what effect<br>
+ each possible change will make, and our other changes are going to<br>
+ have big effects, so we shouldn&#39;t deploy anything here quite yet.&quot;<br>
+- Get enough authorities upgraded that our bug 969 fixes (&quot;voting wrong<br>
+ on wfu and mtbf&quot;) take effect.</p>
+
+<p><strong>More reliable (e.g. split) download mechanism.</strong></p>
+
+<p>We have a new Volunteer, Jon, working on maintaining and expanding the list of tor mirrors. Jon has contacted all mirror maintainers and updated the mirrors list. Three were removed, two added, and seven updated with new information. There are 39 active mirrors.</p>
+
+<p><strong>Translations</strong></p>
+
+<p>10 Polish website updates<br>
+7 French website updates<br>
+1 Chinese website updates<br>
+German torbutton translations updated<br>
+Finnish torbutton translations updated<br>
+Generate translation infrastructure for our email auto-responder.<br>
+Ukrainian torbutton translation started<br>
+Start of a Thai torbutton translation<br>
+Spanish torbutton translation<br>
+Ukrainian check.torproject.org translation<br>
+Thai check.torproject.org translation</p>
+
+<p>Our Google Summer of Code student, Runa, created a set of scripts to allow translators to translate our website content through the translation web portal. This will greatly simplify the process used to translate the website.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

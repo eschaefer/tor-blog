@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Vidalia 0.2.9 Released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Vidalia 0.2.9 Released</h2>
+<p class="meta">27 May 2010</p>
+
+<div class="post">
+<p>On May 20, we released Vidalia 0.2.9. Fixes include Qt 4.6.2 compatibility, new cert, and some new translations.</p>
+
+<p>You can download it at <a href="https://www.torproject.org/vidalia/" title="https://www.torproject.org/vidalia/">https://www.torproject.org/vidalia/</a>. Packages are slowly being updated to include this version of Vidalia.</p>
+
+<p>The full changelog is:</p>
+
+<ul>
+<li>Remove the GoDaddy CA certificate bundle since we changed the certificate used to authenticate connections to geoips.vidalia-project.net for downloading GeoIP information from a commercial GoDaddy certificate to a free CACert certificate.</li>
+<li>Define -D_WIN32_WINNT=0x0501 on Windows builds so that MiniUPnPc will build with the latest versions of MinGW.</li>
+<li>Modify miniupnpc.c from MiniUPnPc&#39;s source so that it will build on Mac OS X 10.4.</li>
+<li>Work around Qt&#39;s new behavior for the QT_WA macro so that Vidalia will<br>
+work correctly again on Windows with Qt &gt;= 4.6.</li>
+<li>Force CMake to include the *_RELEASE versions of Qt libraries when building a .dmg on Mac OS X, so that it will work with CMake &gt;= 2.8 as well.</li>
+<li>Explicitly link zlib into src/common to avoid link errors on some older versions of Mac OS X.</li>
+<li>Add Danish, Brazilian Portguese and Vietnamese translations.</li>
+</ul>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.3.7-alpha is out</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.3.7-alpha is out</h2>
+<p class="meta">31 Oct 2011</p>
+
+<div class="post">
+<p>Tor 0.2.3.7-alpha fixes a crash bug in 0.2.3.6-alpha introduced by the new v3 handshake. It also resolves yet another bridge address enumeration issue.</p>
+
+<p>All packages are updated, with the exception of the OS X PPC packages. The build machine is down and packages will be built as soon as it is back online.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p>Changes in version 0.2.3.7-alpha - 2011-10-30<br>
+<strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>If we mark an OR connection for close based on a cell we process,<br>
+don&#39;t process any further cells on it. We already avoid further<br>
+reads on marked-for-close connections, but now we also discard the<br>
+cells we&#39;d already read. Fixes bug 4299; bugfix on 0.2.0.10-alpha,<br>
+which was the first version where we might mark a connection for<br>
+close based on processing a cell on it.</li>
+<li>Fix a double-free bug that would occur when we received an invalid<br>
+certificate in a CERT cell in the new v3 handshake. Fixes bug 4343;<br>
+bugfix on 0.2.3.6-alpha.</li>
+<li>Bridges no longer include their address in NETINFO cells on outgoing<br>
+OR connections, to allow them to blend in better with clients.<br>
+Removes another avenue for enumerating bridges. Reported by<br>
+&quot;troll_un&quot;. Fixes bug 4348; bugfix on 0.2.0.10-alpha, when NETINFO<br>
+cells were introduced.</li>
+</ul>
+
+<p><strong>Trivial fixes:</strong></p>
+
+<ul>
+<li>Fixed a typo in a hibernation-related log message. Fixes bug 4331;<br>
+bugfix on 0.2.2.23-alpha; found by &quot;tmpname0901&quot;.</li>
+</ul>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

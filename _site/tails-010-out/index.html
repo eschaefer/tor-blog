@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tails 0.10 is out</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tails 0.10 is out</h2>
+<p class="meta">11 Jan 2012</p>
+
+<div class="post">
+<p><a href="https://tails.boum.org/">The Amnesic Incognito Live System (Tails)</a>, version 0.10, is out.</p>
+
+<p><strong>Changes</strong></p>
+
+<p>Notable user-visible changes include:</p>
+
+<ul>
+<li>Tor: upgrade to 0.2.2.35-1.</li>
+<li><p>Iceweasel</p>
+
+<ul>
+<li>Install Iceweasel 9.0 from the Debian Mozilla team&#39;s APT repository.</li>
+<li>Update Torbutton to 1.4.5.1-1.</li>
+<li>Support viewing any YouTube video that is available in HTML5 format.</li>
+<li>Use Scroogle (any languages) instead of Scroogle (English only) when booted in English. Many users choose English because their own language is not supported yet; let&#39;s not hide them search results in their own language.</li>
+<li>Install the NoScript Firefox extension; configure it the same way as the TBB does.</li>
+<li>Disable third-party cookies. They can be used to track users, which is bad. Besides, this is what TBB has been doing for years.</li>
+</ul></li>
+<li><p>Do not transparently proxy outgoing Internet connections through Tor. Instead drop all non-Torified Internet traffic. Hence applications has to be explicitly configured to use Tor in order to reach the Internet from now on.</p></li>
+<li><p>Software</p>
+
+<ul>
+<li>Upgrade Vidalia to 0.2.15-1+tails1. This version will not warn about new Tor versions (this is handled by Tails security check instead).</li>
+<li>Upgrade MAT to 0.2.2-1~bpo60+1.</li>
+<li>Upgrade VirtualBox guest software to 4.1.6-dfsg-2~bpo60+1, built against the ABI of X.Org backports.</li>
+<li>Upgrade I2P to 0.8.11; the start script (which was broken in Tails 0.9) is now fixed.</li>
+<li>Install unar (The Unarchiver) instead of the non-free unrar.</li>
+<li><a href="https://tails.boum.org/doc/encryption_and_privacy/secure_deletion/">Install Nautilus Wipe</a> instead of custom Nautilus scripts.</li>
+</ul></li>
+<li><p>Hardware support</p>
+
+<ul>
+<li>Upgrade Linux kernel to 3.1.6-1.</li>
+<li>Upgrade to X.Org from squeeze-backports.</li>
+<li>Install more, and more recent b43 firmwares.</li>
+<li>Upgrade barry to 0.15-1.2~bpo60+1.</li>
+</ul></li>
+<li><p>Internationalization</p>
+
+<ul>
+<li>Add basic language support for Russian, Farsi and Vietnamese.</li>
+<li>Install some Indic fonts.</li>
+<li>Install some Russian fonts.</li>
+<li>Add Alt+Shift shortcut to switch keyboard layout.</li>
+</ul></li>
+<li><p>Miscellaneous</p>
+
+<ul>
+<li>Support booting in &quot; <a href="https://tails.boum.org/doc/first_steps/windows_theme/">Windows XP-like camouflage mode</a>&quot;.</li>
+<li>Do not fetch APT translation files. Running apt-get update is heavy enough.</li>
+<li>Add MSN support thanks to msn-pecan.</li>
+<li>Add custom SSH client configuration:</li>
+<li>Prefer strong ciphers and MACs.</li>
+<li>Enable maximum compression level.</li>
+<li>Explicitly disable X11 forwarding.</li>
+<li>Connect as root by default, to prevent fingerprinting when username was not specified.</li>
+<li>Replace flawed FireGPG with a home-made GnuPG encryption applet; install a feature-stripped FireGPG that redirects users to <a href="https://tails.boum.org/doc/encryption_and_privacy/FireGPG_susceptible_to_devastating_attacks/">the documentation</a>, and don&#39;t run Seahorse applet anymore.</li>
+<li>Blank screen when lid is closed, rather than shutting down the system. The shutdown &quot;feature&quot; has caused data losses for too many people, it seems. There are many other ways a Tails system can be shut down in a hurry these days.</li>
+<li>Fix bug in the Pidgin nick generation that resulted in the nick &quot;XXX_NICK_XXX&quot; once out of twenty.</li>
+<li>Pre-configure the #tor IRC discussion channel in Pidgin.</li>
+<li>Reintroduce the htpdate notification, telling users when it&#39;s safe to use Tor Hidden Services.</li>
+<li>Various htpdate improvements.</li>
+</ul></li>
+</ul>
+
+<p>Plus the usual bunch of minor bug reports and improvements.</p>
+
+<p>See the <a href="http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.10">online Changelog</a> for technical details.</p>
+
+<p><strong>I want to try it / to upgrade!</strong></p>
+
+<p>See the <a href="https://tails.boum.org/getting_started/">Getting started</a> page.</p>
+
+<p><strong>Known issue</strong></p>
+
+<p>The memory erasure on Tails shutdown cannot guarantee that all memory in the 2 GB to 4 GB region is wiped. The improvements made in Tails 0.10 should at least make the situation better than previously.</p>
+
+</div>
+<p>- tails</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

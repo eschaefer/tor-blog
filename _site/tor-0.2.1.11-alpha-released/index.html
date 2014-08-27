@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.1.11-alpha released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.1.11-alpha released</h2>
+<p class="meta">22 Jan 2009</p>
+
+<div class="post">
+<p>Tor 0.2.1.11-alpha finishes fixing the &quot;if your Tor is off for a week it<br>
+will take a long time to bootstrap again&quot; bug. It also fixes an important<br>
+security-related bug reported by Ilja van Sprundel. You should upgrade.<br>
+(We&#39;ll send out more details about the bug once people have had some<br>
+time to upgrade.)</p>
+
+<p><a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+
+<p>Changes in version 0.2.1.11-alpha - 2009-01-20<br>
+<strong>Security fixes:</strong></p>
+
+<ul>
+<li>Fix a heap-corruption bug that may be remotely triggerable on<br>
+some platforms. Reported by Ilja van Sprundel.</li>
+</ul>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Discard router descriptors as we load them if they are more than<br>
+five days old. Otherwise if Tor is off for a long time and then<br>
+starts with cached descriptors, it will try to use the onion<br>
+keys in those obsolete descriptors when building circuits. Bugfix<br>
+on 0.2.0.x. Fixes bug 887.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Try to make sure that the version of Libevent we&#39;re running with<br>
+is binary-compatible with the one we built with. May address bug<br>
+897 and others.</li>
+<li>Make setting ServerDNSRandomizeCase to 0 actually work. Bugfix<br>
+for bug 905. Bugfix on 0.2.1.7-alpha.</li>
+<li>Add a new --enable-local-appdata configuration switch to change<br>
+the default location of the datadir on win32 from APPDATA to<br>
+LOCAL_APPDATA. In the future, we should migrate to LOCAL_APPDATA<br>
+entirely. Patch from coderman.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Make outbound DNS packets respect the OutboundBindAddress setting.<br>
+Fixes the bug part of bug 798. Bugfix on 0.1.2.2-alpha.</li>
+<li>When our circuit fails at the first hop (e.g. we get a destroy<br>
+cell back), avoid using that OR connection anymore, and also<br>
+tell all the one-hop directory requests waiting for it that they<br>
+should fail. Bugfix on 0.2.1.3-alpha.</li>
+<li>In the torify(1) manpage, mention that tsocks will leak your<br>
+DNS requests.</li>
+</ul>
+
+<p>Original announcement can be found at <a href="http://archives.seul.org/or/talk/Jan-2009/msg00171.html" title="http://archives.seul.org/or/talk/Jan-2009/msg00171.html">http://archives.seul.org/or/talk/Jan-2009/msg00171.html</a></p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

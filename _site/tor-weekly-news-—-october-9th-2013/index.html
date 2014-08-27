@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor Weekly News — October 9th, 2013</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor Weekly News — October 9th, 2013</h2>
+<p class="meta">09 Oct 2013</p>
+
+<div class="post">
+<p>Welcome to the fifteenth issue of Tor Weekly News, the <a href="https://lists.torprojet.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what&#39;s happening in the world of Tor — <a href="http://www.theguardian.com/world/interactive/2013/oct/04/tor-high-secure-internet-anonymity">“king of high-secure, low-latency anonymity”</a>.</p>
+
+<h1>New tranche of NSA/GCHQ Tor documents released</h1>
+
+<p>After a cameo appearance in <a href="https://blog.torproject.org/blog/tor-nsa-gchq-and-quick-ant-speculation">previous leaked intelligence documents</a>, Tor found itself at the center of attention in the latest installment of the ongoing Snowden disclosures after a series of stories were published in the Guardian and the Washington Post that detailed alleged attempts by NSA, GCHQ, and their allies to defeat or circumvent the protection that Tor offers its users. A number of source materials, redacted by the newspapers, were published to accompany the articles.</p>
+
+<p>The <a href="http://media.encrypted.cc/files/nsa">documents in question</a> offer, alongside characteristically <a href="https://twitter.com/EFF/status/386291345301581825">entertaining illustrations</a>, an overview of the Tor network from the point of view of the intelligence agencies, as well as a summary of attacks against Tor users and the network as a whole that they have considered or carried out.</p>
+
+<p>Despite the understandable concern provoked among users by these disclosures, Tor developers themselves were encouraged by the often relatively basic or out-of-date nature of the attacks described. In response to one journalist&#39;s request for comment, Roger Dingledine <a href="https://blog.torproject.org/blog/yes-we-know-about-guardian-article#comment-35793">wrote</a> that “we still have a lot of work to do to make Tor both safe and usable, but we don&#39;t have any new work based on these slides”.</p>
+
+<p>Have a look at the documents yourself, and feel free to raise any questions with the community on the mailing lists or IRC channels.</p>
+
+<h1>tor 0.2.5.1-alpha is out</h1>
+
+<p>Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030269.html">announced</a> the first alpha release in the tor 0.2.5.x series, which among many other improvements introduces experimental support for syscall sandboxing on Linux, as well as statistics reporting for pluggable transports usage on compatible bridges.</p>
+
+<p>Roger warned that “this is the first alpha release in a new series, so expect there to be bugs. Users who would rather test out a more stable branch should stay with 0.2.4.x for now.” 0.2.5.1-alpha will not immediately appear on the main download pages, in order to avoid having too many versions listed at once. Please feel free to test the <a href="https://www.torproject.org/dist/">new release</a>, and report any bugs you find!</p>
+
+<h1>How did Tor achieve reproducible builds?</h1>
+
+<p>At the end of June, Mike Perry <a href="https://blog.torproject.org/blog/tor-browser-bundle-30alpha2-released">announced</a> the first release of the Tor Browser Bundle 3.0 alpha series, featuring release binaries “exactly reproducible from the source code by anyone”. In a subsequent <a href="https://blog.torproject.org/blog/deterministic-builds-part-one-cyberwar-and-global-compromise">blog post</a> published in August, he explained why it mattered.</p>
+
+<p>Mike has just published the <a href="https://blog.torproject.org/blog/deterministic-builds-part-two-technical-details">promised follow-up piece</a> describing how this feat was achieved in the new Tor Browser Bundle build process.</p>
+
+<p>He explains how <a href="http://gitian.org/howto.html">Gitian</a> is used to create a reproducible build environment, the tools used to produce cross-platform binaries for Windows and OS X from a Linux environment, and several issues that prevented the builds from being entirely deterministic. The latter range from timestamps to file ordering differences when looking up a directory, with an added 3 bytes of pure mystery.</p>
+
+<p>There is more work to be done to “prevent the adversary from compromising the (substantially weaker) Ubuntu build and packaging processes” currently used for the toolchain. Mike also wrote about making the build of the compiler and toolchain part of the build process, cross-compilation between multiple architectures, and the work being done by Linux distributions to produce deterministic builds from their packages.</p>
+
+<p>If you are interested in helping, or working on your own software project, there is a lot to be learned by reading the blog post in full.</p>
+
+<h1>Toward a new Tor Instant Messaging Bundle</h1>
+
+<p>A first meeting last week kicked-off the “ <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/Otter/Attentive">Attentive Otter project</a>” which aims to come up with a new bundle for instant messaging. The first meeting mainly consisted in trying to enumerate the various options.</p>
+
+<p>In the end, people volunteered to research three different implementation ideas. Thijs Alkemade and Jurre van Bergen explored the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005544.html">possibilty of using Pidgin/libpurple</a> as the core component. Jurre also prepared an <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005546.html">analysis of xmpp-client</a>, together with David Goulet, Nick Mathewson, Arlo Breault, and George Kadianakis. As a third option, Mike Perry took a <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005555.html">closer look at Instantbird/Thunderbird</a> with Sukhbir Singh.</p>
+
+<p>All the options have their pros and cons, and they will probably be discussed on the tor-dev mailing list and at the next “Attentive Otter” meeting.</p>
+
+<h1>More monthly status reports for September 2013</h1>
+
+<p>The wave of regular monthly reports from Tor project members continued this week with submissions from <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000346.html">George Kadianakis</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000347.html">Lunar</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000348.html">Sathyanarayanan Gunasekaran</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000349.html">Ximin Luo</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000350.html">Matt Pagan</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000351.html">Pearl Crescent</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000352.html">Colin C.</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000353.html">Arlo Breault</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000354.html">Karsten Loesing</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000355.html">Jason Tsai</a>, the <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000356.html">Tor help desk</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000357.html">Sukhbir Singh</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000358.html">Nick Mathewson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000359.html">Mike Perry</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000360.html">Andrew Lewman</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000361.html">Aaron G</a>, and the <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000362.html">Tails folks</a>.</p>
+
+<h1>Tor Help Desk Roundup</h1>
+
+<p>A number of users wanted to know if Tor was still safe to use given the recent news that Tor users have been targeted by the NSA. We directed these users to the Tor Project&#39;s <a href="https://blog.torproject.org/blog/yes-we-know-about-guardian-article">official statement on the subject</a>.</p>
+
+<p>One of the most popular questions the help desk receives continues to be whether or not Tor is available on iOS devices. Currently there is no officially supported solution, although more than one project has been presented ( <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005542.html">1</a>, <a href="https://trac.torproject.org/projects/tor/ticket/8933">2</a>).</p>
+
+<p>The United Kingdom is now one of the countries where citizens request assistance circumventing a <a href="https://lists.torproject.org/pipermail/tor-talk/2013-July/029054.html">national firewall</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-September/000366.html">Grozdan</a>, <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-September/000370.html">Simon Gattner from Netzkonstrukt Berlin</a>, <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-October/000374.html">Wollomatic</a>, and <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-October/000375.html">Haskell</a> for setting up new mirrors of the Tor project website.</p>
+
+<p>Arlo Breault sent out a <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030253.html">request for comments</a> on a possible new version of the check.torproject.org page.</p>
+
+<p>Runa Sandvik <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030269.html">announced</a> that the Tor Stack Exchange page has moved from private beta to public beta. If you&#39;d like to help answer Tor-related questions (or ask them), <a href="http://tor.stackexchange.com/">get involved now</a>!</p>
+
+<p>Philipp Winter sent out a <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030252.html">call for testing</a> (and installation instructions) for the ScrambleSuit pluggable transports protocol.</p>
+
+<p>Not strictly Tor-related, but Mike Perry started an <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/030235.html">interesting discussion</a> about the “web of trust” system, as found in OpenPGP. The discussion was also held on the MonkeySphere mailing list, which prompted Daniel Kahn Gilmor to reply with many clarifications regarding the various properties and processes of the current implementation. To sum it up, Ximin Luo <a href="https://lists.riseup.net/www/arc/monkeysphere/2013-10/msg00000.html">started</a> a <a href="https://github.com/infinity0/idsec/">new documentation project</a> “to describe and explain security issues relating to identity, in (hopefully) simple and non-implementation-specific language”.</p>
+
+<p>The <em>listmaster</em> role has been <a href="https://trac.torproject.org/projects/tor/wiki/org/operations/Infrastructure/lists.torproject.org">better defined</a> and is now performed by a team consisting of Andrew Lewman, Damian Johnson, and Karsten Loesing. Thanks to them!</p>
+
+<p>Roger Dingledine released an <a href="https://blog.torproject.org/blog/tor-and-silk-road-takedown">official statement</a> on the Tor project blog regarding the takedown of the Silk Road hidden service and the arrest of its alleged operator.</p>
+
+<p>Fabio Pietrosanti <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030405.html">asked</a> for reviews of “experimental Tor performance tuning for a Tor2web node.” Feel free to <a href="https://github.com/globaleaks/Tor2web-3.0/wiki/Performance-tuning">have a look</a> and provide feedback.</p>
+
+<p>Claudiu-Vlad Ursache <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005545.html">announced</a> the initial release of <a href="https://github.com/ursachec/CPAProxy">CPAProxy</a>, “a thin Objective-C wrapper around Tor”. This is the first component of a project to “release a free open-source browser on the App Store that uses this wrapper and Tor to anonymize requests.” Claudiu-Vlad left several questions open, and solicited opinions on the larger goal.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, harmony, dope457 and Matt Pagan.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+</div>
+<p>- lunar</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

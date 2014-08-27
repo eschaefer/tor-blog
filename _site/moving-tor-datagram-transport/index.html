@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Moving Tor to a datagram transport</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Moving Tor to a datagram transport</h2>
+<p class="meta">07 Nov 2011</p>
+
+<div class="post">
+<p>Tor currently transports data over encrypted TLS tunnels between nodes, in turn carried by TCP. This has worked reasonably well, but recent research has shown that it might not be the best option, particularly for performance.</p>
+
+<p>For example, when a packet gets dropped or corrupted on a link between two Tor nodes, TCP will cause the packet to be retransmitted eventually. However, in the meantime, all circuits passing through this pair of nodes will be stalled, not only the circuit corresponding to the packet which was dropped.</p>
+
+<p>Also, Tor uses two levels of congestion control; TCP for hop-by-hop links, and a custom scheme for circuits. This might not be the right approach -- maybe these schemes aren&#39;t the right ones to use or maybe there should only be one level of congestion control.</p>
+
+<p>There have been a variety of solutions proposed to fix one or both of these problems, Most end up sending data as datagrams in UDP packets, and Tor is responsible for managing congestion and recovering from packet loss, and so can (hopefully) do so in a more intelligent way. However, there are many options for what architecture to use, what building blocks to build these schemes from, and how to tweak the many parameters that result.</p>
+
+<p>To help clarify the various options, I&#39;ve written a summary of both Tor&#39;s current network stack architecture and various proposals for how it can be improved. The document discusses various tradeoffs between the approaches, including performance, security, and engineering difficulties in deploying the solution. It ends with some provisional conclusions about which options are most promising.</p>
+
+<p>The document, “ <a href="http://www.cl.cam.ac.uk/%7Esjm217/papers/tor11datagramcomparison.pdf">Comparison of Tor Datagram Designs</a>”, is now available (with source in <a href="https://gitweb.torproject.org/sjm217/torspec.git/tree/datagram_comparison:/proposals/ideas/xxx-datagram-comparison">git</a>), and I would welcome comments. Over the next few months I&#39;ll be working on building and evaluating prototypes for these schemes, and I will be incorporating feedback from the Tor community into the process.</p>
+
+</div>
+<p>- sjmurdoch</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

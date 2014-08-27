@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>New Tor Browser Bundles</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>New Tor Browser Bundles</h2>
+<p class="meta">10 Sep 2011</p>
+
+<div class="post">
+<p>The Tor Browser Bundles have been updated with a bunch of bug fixes.</p>
+
+<p><strong>Important note to Windows users:</strong> in the last release we enabled automatic port selection for Tor and this had very unexpected side effects on many Windows machines. It turns out that there are a number of consumer firewalls that don&#39;t like things connecting on high ports, which was the default. We&#39;re looking into <a href="https://trac.torproject.org/projects/tor/ticket/3943">smarter</a> <a href="https://trac.torproject.org/projects/tor/ticket/3948">ways</a> to handle this failure mode, but until we find one, we have reverted the behavior to using the previous static port. We&#39;re very sorry for the huge inconvenience this caused and hope you will find these bundles more bug-free! As ever, if you don&#39;t, please <a href="https://trac.torproject.org/">let us know</a>.<br>
+ <a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Tor Browser Bundle (2.2.32-4)</strong></p>
+
+<p><strong>Windows fixes</strong>
+  - Disable automatic port selection to accommodate Windows users with<br>
+ firewalls that don&#39;t allow connections or traffic on high ports (closes: #3952, #3945)</p>
+
+<p><strong>Linux fixes</strong></p>
+
+<ul>
+<li>Fix Makefile to allow for automatic retrieval of Qt and libpng (closes: #2255)</li>
+<li>Remove symlinks from tarball (closes: #2312)</li>
+</ul>
+
+<p><strong>General fixes and updates</strong></p>
+
+<ul>
+<li><p>New Firefox patches</p>
+
+<ul>
+<li>Prevent Firefox from loading all system plugins besides Flash (closes: #2826, #3547)</li>
+<li>Prevent content-preferences service from writing website urls and their settings to disk (closes: #3229)</li>
+</ul></li>
+<li><p>Update Torbutton to 1.4.3</p>
+
+<ul>
+<li>Don&#39;t let Torbutton inadvertently enable automatic updating in Firefox (closes: #3933)</li>
+<li>Fix auto-scroll on Twitter (closes: #3960)</li>
+<li>Allow site zoom information to be stored (closes: #3928)</li>
+<li>Make permissions and disk errors human-readable (closes: #3649)</li>
+</ul></li>
+</ul>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

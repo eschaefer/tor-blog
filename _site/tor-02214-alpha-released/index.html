@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.2.14-alpha released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.2.14-alpha released</h2>
+<p class="meta">19 Jul 2010</p>
+
+<div class="post">
+<p>Tor 0.2.2.14-alpha greatly improves client-side handling of circuit build<br>
+timeouts, which are used to estimate speed and improve performance. We<br>
+also move to a much better GeoIP database, port Tor to Windows CE,<br>
+introduce new compile flags that improve code security, add an eighth<br>
+v3 directory authority, and address a lot of more minor issues.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p>Packages will be appearing over the next few days or weeks. (We&#39;ve decided<br>
+to start announcing alpha versions when they&#39;re released, rather than<br>
+waiting for all the packages first.)</p>
+
+<p>Changes in version 0.2.2.14-alpha - 2010-07-12<br>
+ o Major bugfixes:<br>
+ - Tor directory authorities no longer crash when started with a<br>
+ cached-microdesc-consensus file in their data directory. Bugfix<br>
+ on 0.2.2.6-alpha; fixes bug 1532.<br>
+ - Treat an unset $HOME like an empty $HOME rather than triggering an<br>
+ assert. Bugfix on 0.0.8pre1; fixes bug 1522.<br>
+ - Ignore negative and large circuit build timeout values that can<br>
+ happen during a suspend or hibernate. These values caused various<br>
+ asserts to fire. Bugfix on 0.2.2.2-alpha; fixes bug 1245.<br>
+ - Alter calculation of Pareto distribution parameter &#39;Xm&#39; for<br>
+ Circuit Build Timeout learning to use the weighted average of the<br>
+ top N=3 modes (because we have three entry guards). Considering<br>
+ multiple modes should improve the timeout calculation in some cases,<br>
+ and prevent extremely high timeout values. Bugfix on 0.2.2.2-alpha;<br>
+ fixes bug 1335.<br>
+ - Alter calculation of Pareto distribution parameter &#39;Alpha&#39; to use a<br>
+ right censored distribution model. This approach improves over the<br>
+ synthetic timeout generation approach that was producing insanely<br>
+ high timeout values. Now we calculate build timeouts using truncated<br>
+ times. Bugfix on 0.2.2.2-alpha; fixes bugs 1245 and 1335.<br>
+ - Do not close circuits that are under construction when they reach<br>
+ the circuit build timeout. Instead, leave them building (but do not<br>
+ use them) for up until the time corresponding to the 95th percentile<br>
+ on the Pareto CDF or 60 seconds, whichever is greater. This is done<br>
+ to provide better data for the new Pareto model. This percentile<br>
+ can be controlled by the consensus.</p>
+
+<p>o Major features:<br>
+ - Move to the June 2010 Maxmind GeoLite country db (rather than the<br>
+ June 2009 ip-to-country GeoIP db) for our statistics that count<br>
+ how many users relays are seeing from each country. Now we have<br>
+ more accurate data for many African countries.<br>
+ - Port Tor to build and run correctly on Windows CE systems, using<br>
+ the wcecompat library. Contributed by Valerio Lupi.<br>
+ - New &quot;--enable-gcc-hardening&quot; ./configure flag (off by default)<br>
+ to turn on gcc compile time hardening options. It ensures<br>
+ that signed ints have defined behavior (-fwrapv), enables<br>
+ -D_FORTIFY_SOURCE=2 (requiring -O2), adds stack smashing protection<br>
+ with canaries (-fstack-protector-all), turns on ASLR protection if<br>
+ supported by the kernel (-fPIE, -pie), and adds additional security<br>
+ related warnings. Verified to work on Mac OS X and Debian Lenny.<br>
+ - New &quot;--enable-linker-hardening&quot; ./configure flag (off by default)<br>
+ to turn on ELF specific hardening features (relro, now). This does<br>
+ not work with Mac OS X or any other non-ELF binary format.</p>
+
+<p>o New directory authorities:<br>
+ - Set up maatuska (run by Linus Nordberg) as the eighth v3 directory<br>
+ authority.</p>
+
+<p>o Minor features:<br>
+ - New config option &quot;WarnUnsafeSocks 0&quot; disables the warning that<br>
+ occurs whenever Tor receives only an IP address instead of a<br>
+ hostname. Setups that do DNS locally over Tor are fine, and we<br>
+ shouldn&#39;t spam the logs in that case.<br>
+ - Convert the HACKING file to asciidoc, and add a few new sections<br>
+ to it, explaining how we use Git, how we make changelogs, and<br>
+ what should go in a patch.<br>
+ - Add a TIMEOUT_RATE keyword to the BUILDTIMEOUT_SET control port<br>
+ event, to give information on the current rate of circuit timeouts<br>
+ over our stored history.<br>
+ - Add ability to disable circuit build time learning via consensus<br>
+ parameter and via a LearnCircuitBuildTimeout config option. Also<br>
+ automatically disable circuit build time calculation if we are<br>
+ either a AuthoritativeDirectory, or if we fail to write our state<br>
+ file. Fixes bug 1296.<br>
+ - More gracefully handle corrupt state files, removing asserts<br>
+ in favor of saving a backup and resetting state.<br>
+ - Rename the &quot;log.h&quot; header to &quot;torlog.h&quot; so as to conflict with fewer<br>
+ system headers.</p>
+
+<p>o Minor bugfixes:<br>
+ - Build correctly on OSX with zlib 1.2.4 and higher with all warnings<br>
+ enabled.<br>
+ - When a2x fails, mention that the user could disable manpages instead<br>
+ of trying to fix their asciidoc installation.<br>
+ - Where available, use Libevent 2.0&#39;s periodic timers so that our<br>
+ once-per-second cleanup code gets called even more closely to<br>
+ once per second than it would otherwise. Fixes bug 943.<br>
+ - If you run a bridge that listens on multiple IP addresses, and<br>
+ some user configures a bridge address that uses a different IP<br>
+ address than your bridge writes in its router descriptor, and the<br>
+ user doesn&#39;t specify an identity key, their Tor would discard the<br>
+ descriptor because &quot;it isn&#39;t one of our configured bridges&quot;, and<br>
+ fail to bootstrap. Now believe the descriptor and bootstrap anyway.<br>
+ Bugfix on 0.2.0.3-alpha.<br>
+ - If OpenSSL fails to make a duplicate of a private or public key, log<br>
+ an error message and try to exit cleanly. May help with debugging<br>
+ if bug 1209 ever remanifests.<br>
+ - Save a couple bytes in memory allocation every time we escape<br>
+ certain characters in a string. Patch from Florian Zumbiehl.<br>
+ - Make it explicit that we don&#39;t cannibalize one-hop circuits. This<br>
+ happens in the wild, but doesn&#39;t turn out to be a problem because<br>
+ we fortunately don&#39;t use those circuits. Many thanks to outofwords<br>
+ for the initial analysis and to swissknife who confirmed that<br>
+ two-hop circuits are actually created.<br>
+ - Make directory mirrors report non-zero dirreq-v[23]-shares again.<br>
+ Fixes bug 1564; bugfix on 0.2.2.9-alpha.<br>
+ - Eliminate a case where a circuit build time warning was displayed<br>
+ after network connectivity resumed. Bugfix on 0.2.2.2-alpha.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

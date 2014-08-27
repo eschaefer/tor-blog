@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Life without a CA</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Life without a CA</h2>
+<p class="meta">26 Mar 2010</p>
+
+<div class="post">
+<p>At <a href="http://libreplanet.org/">Libreplanet 2010</a>, I was in a discussion with the <a href="https://web.monkeysphere.info/">MonkeySphere</a> and <a href="https://www.eff.org/">EFF</a> folks about how to encourage every website to offer ssl by default. The general idea is to stop local traffic snooping and provide more security by default. During the discussion, it came up that I disable all of the <a href="http://en.wikipedia.org/wiki/Certificate_authority">Certificate Authorities</a> in my systems and selectively trust the ssl certificates from individual websites. I&#39;ve been doing this for years. Apparently my admission was a shocking statement to many. The group asked me to document my Firefox setup and what life is like without any trusted CAs. Seth from the EFF has a <a href="https://www.eff.org/deeplinks/2010/03/researchers-reveal-likelihood-governments-fake-ssl">quick post</a> about possible concerns over the CAs in your browser. I used to rely on the <a href="https://addons.mozilla.org/en-US/firefox/addon/6415">Certificate Patrol</a> Firefox Extension to monitor changing certs.</p>
+
+<p>I generally use FreeBSD and Debian-based linux distributions for my operating systems. After I install firefox, I rename libnssckbi.so to something else (like libnssckbi.so.saved). Restart Firefox (see below for option two). Firefox should no longer validate ssl certs automatically.</p>
+
+<p>Browse to a secure website, like <a href="https://torproject.org/" title="https://torproject.org/">https://torproject.org/</a>. You should get the intentionally scary &quot;This Connection is Untrusted&quot; certificate error page. However, you should expect this error as there are no more CAs to validate against. Click &quot;I Understand the Risks&quot;. Click &quot;Add Exception&quot;. Firefox should retrieve the certificate. Click &quot;View&quot;. This is where it gets interesting.</p>
+
+<p>How do you validate the certificate? It depends on the other end. For sites I worry about, like my bank or favorite shopping stores, I call support and ask for the SSL fingerprint and serial number. Sometimes the support person even knows what I&#39;m talking about. I suspect they just open their browser, click on the lock icon and read me the information. Generally, it takes some work to get the information. Further, I&#39;ll compare the cert received through Tor and through non-Tor ssh tunnels on disparate hosts. However, you only have to do this checking once per cert. Once you have it, Firefox stores it as an exception and, if the cert doesn&#39;t change between visits, doesn&#39;t interrupt you with the cert error page.</p>
+
+<p>Am I too paranoid or dis-trusting of CAs? Probably. I have a few concerns about this process, too. Does the list of certs in my browser open me up to unique fingerprinting in some way? Would I notice if a <a href="http://www.wired.com/threatlevel/2010/03/packet-forensics/">Packet Forensics</a> device was used? Unless someone screwed up, I doubt it. And a seldom asked question is, have I ever caught ssl certs being faked or changed by a man-in-the-middle? Yes I have.</p>
+
+<p>What would I like to see rather than implicitly trusting centralized CAs? I very much like the model used by gpg and <a href="http://en.wikipedia.org/wiki/Web_of_trust">the web of trust</a>. I think it&#39;s completely infeasible right now for the vast majority of people using the Internet today. However, using computers was infeasible for the vast majority of people merely a decade ago. Progress happens quickly.</p>
+
+<p>(option two)<br>
+ I generally remove all of the CAs as well, even though I think it&#39;s just a display issue at this point. To do so, go into Preferences, Advanced, Encryption tab, click View Certificates. Then just manually cycle through the remaining CAs and delete them all. I started writing a script to do this automatically, but it seems to change in each version of Firefox. If someone has a better/more automatic way to do this, I&#39;d like to hear about it. Now you have no CAs.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>New Tor Browser Bundles with Firefox 17.0.3esr</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>New Tor Browser Bundles with Firefox 17.0.3esr</h2>
+<p class="meta">22 Feb 2013</p>
+
+<div class="post">
+<p>We&#39;ve updated all of the bundles with Firefox 17.0.3esr. This includes significant changes to Torbutton and its interaction with Firefox, in addition to many new patches being added to Firefox, which are outlined below.</p>
+
+<p><strong>Very important</strong> : if you&#39;ve been using the Tor Browser Bundles with Firefox 10.0.x, you must not attempt to overwrite it with the new bundle. Open these into their own directory and do not copy any profile material from older TBB versions.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Tor Browser Bundle (2.3.25-4)</strong></p>
+
+<ul>
+<li>Update Firefox to 17.0.3esr</li>
+<li>Downgrade OpenSSL to 1.0.0k</li>
+<li>Update libpng to 1.5.14</li>
+<li>Update NoScript to 2.6.5.7</li>
+<li><p>Firefox patch changes:</p>
+
+<ul>
+<li>Exempt remote @font-face fonts from font limits (and prefer them).<br>
+(closes: <a href="https://trac.torproject.org/projects/tor/ticket/8270">#8270</a>)</li>
+<li>Remote fonts (aka &quot;User Fonts&quot;) are not a fingerprinting threat, so<br>
+they should not count towards our CSS font count limits. Moreover,<br>
+if a CSS font-family rule lists any remote fonts, those fonts are<br>
+preferred over the local fonts, so we do not reduce the font count<br>
+for that rule.</li>
+<li>This vastly improves rendering and typography for many websites.</li>
+<li>Disable WebRTC in Firefox build options. (closes: <a href="https://trac.torproject.org/projects/tor/ticket/8178">#8178</a>)</li>
+<li>WebRTC isn&#39;t slated to be enabled until Firefox 18, but the code<br>
+was getting compiled in already and is capable of creating UDP Sockets<br>
+and bypassing Tor. We disable it from build as a safety measure. </li>
+<li>Move prefs.js into omni.ja and extension-overrides. (closes: <a href="https://trac.torproject.org/projects/tor/ticket/3944">#3944</a>)</li>
+<li>This causes our browser pref changes to appear as defaults. It also<br>
+means that future updates of TBB should preserve user pref settings.</li>
+<li>Fix a use-after-free that caused crashing on MacOS (closes: <a href="https://trac.torproject.org/projects/tor/ticket/8234">#8234</a>)</li>
+<li>Eliminate several redundant, useless, and deprecated Firefox pref settings</li>
+<li>Report Firefox 17.0 as the Tor Browser user agent</li>
+<li>Use Firefox&#39;s click-to-play barrier for plugins instead of NoScript</li>
+<li>Set the Tor SOCKS+Control ports to 9150, 9151 respectively on all platforms</li>
+<li>This fixes a SOCKS race condition with our SOCKS autoport configuration<br>
+and HTTPS-Everywhere&#39;s Tor test. Firefox 17 appears to cache proxy<br>
+settings per URL now, which resulted in a proxy error for<br>
+check.torproject.org if we lost the race.</li>
+</ul></li>
+<li><p>Torbutton was updated to 1.5.0. The following issues were fixed:</p>
+
+<ul>
+<li>Remove old toggle observers and related code (closes: <a href="https://trac.torproject.org/projects/tor/ticket/5279">#5279</a>)</li>
+<li>Simplify Security Preference UI and associated pref updates (closes: <a href="https://trac.torproject.org/projects/tor/ticket/3100">#3100</a>)</li>
+<li>Eliminate redundancy in our Flash/plugin disabling code (closes: <a href="https://trac.torproject.org/projects/tor/ticket/1305">#1305</a>)</li>
+<li>Leave most preferences under Tor Browser&#39;s control (closes: <a href="https://trac.torproject.org/projects/tor/ticket/3944">#3944</a>)</li>
+<li>Disable toggle-on-startup and crash detection logic (closes: <a href="https://trac.torproject.org/projects/tor/ticket/7974">#7974</a>)</li>
+<li>Disable/remove toggle-mode code and related observers (closes: <a href="https://trac.torproject.org/projects/tor/ticket/5279">#5279</a>)</li>
+<li>Add menu hint to Torbutton icon (closes: <a href="https://trac.torproject.org/projects/tor/ticket/6431">#6431</a>)</li>
+<li>Make Torbutton icon flash a warning symbol if TBB is out of date (closes: <a href="https://trac.torproject.org/projects/tor/ticket/7495">#7495</a>)</li>
+<li>Perform version check every time there&#39;s a new tab. (closes: <a href="https://trac.torproject.org/projects/tor/ticket/6096">#6096</a>)</li>
+<li>Rate limit version check queries to once every 1.5hrs max. (closes: <a href="https://trac.torproject.org/projects/tor/ticket/6156">#6156</a>)</li>
+<li>misc: Allow WebGL and DOM storage.</li>
+<li>misc: Disable independent Torbutton updates</li>
+<li>misc: Change the recommended SOCKSPort to 9150 (to match TBB)</li>
+</ul></li>
+</ul>
+
+<p>The following Firefox patch changes are also included in this release:</p>
+
+<ul>
+<li>Isolate image cache to url bar domain (closes: <a href="https://trac.torproject.org/projects/tor/ticket/5742">#5742</a> and <a href="https://trac.torproject.org/projects/tor/ticket/6539">#6539</a>)</li>
+<li>Enable DOM storage and isolate it to url bar domain (closes: <a href="https://trac.torproject.org/projects/tor/ticket/6564">#6564</a>)</li>
+<li>Include nsIHttpChannel.redirectTo API for HTTPS-Everywhere (closes: <a href="https://trac.torproject.org/projects/tor/ticket/5477">#5477</a>)</li>
+<li><p>Misc preference changes:</p>
+
+<ul>
+<li>Disable DOM performance timers (dom.enable_performance) (closes: <a href="https://trac.torproject.org/projects/tor/ticket/6204">#6204</a>)</li>
+<li>Disable HTTP connection retry timeout (network.http.connection-retry-timeout) (closes: <a href="https://trac.torproject.org/projects/tor/ticket/7656">#7656</a>)</li>
+<li>Disable full path information for plugins (plugin.expose_full_path) (closes: <a href="https://trac.torproject.org/projects/tor/ticket/6210">#6210</a>)</li>
+<li>Disable NoScript&#39;s block of remote WebFonts (noscript.forbidFonts) (closes: <a href="https://trac.torproject.org/projects/tor/ticket/7937">#7937</a>)</li>
+</ul></li>
+</ul>
+
+<p><strong>Tor Browser Bundle (2.4.10-alpha-2)</strong></p>
+
+<ul>
+<li>Update Firefox to 17.0.3esr</li>
+<li>Downgrade OpenSSL to 1.0.0k</li>
+<li>Update libpng to 1.5.14</li>
+<li>Update NoScript to 2.6.5.7</li>
+<li><p>Firefox patch changes:</p>
+
+<ul>
+<li>Exempt remote @font-face fonts from font limits (and prefer them).<br>
+(closes: <a href="https://trac.torproject.org/projects/tor/ticket/">#8270</a>)</li>
+<li>Remote fonts (aka &quot;User Fonts&quot;) are not a fingerprinting threat, so<br>
+they should not count towards our CSS font count limits. Moreover,<br>
+if a CSS font-family rule lists any remote fonts, those fonts are<br>
+preferred over the local fonts, so we do not reduce the font count<br>
+for that rule.</li>
+<li>This vastly improves rendering and typography for many websites.</li>
+<li>Disable WebRTC in Firefox build options. (closes: <a href="https://trac.torproject.org/projects/tor/ticket/8178">#8178</a>)</li>
+<li>WebRTC isn&#39;t slated to be enabled until Firefox 18, but the code<br>
+was getting compiled in already and is capable of creating UDP Sockets<br>
+and bypassing Tor. We disable it from build as a safety measure. </li>
+<li>Move prefs.js into omni.ja and extension-overrides. (closes: <a href="https://trac.torproject.org/projects/tor/ticket/3944">#3944</a>)</li>
+<li>This causes our browser pref changes to appear as defaults. It also<br>
+means that future updates of TBB should preserve user pref settings.</li>
+<li>Fix a use-after-free that caused crashing on MacOS (closes: <a href="https://trac.torproject.org/projects/tor/ticket/8234">#8234</a>)</li>
+<li>Eliminate several redundant, useless, and deprecated Firefox pref settings</li>
+<li>Report Firefox 17.0 as the Tor Browser user agent</li>
+<li>Use Firefox&#39;s click-to-play barrier for plugins instead of NoScript</li>
+<li>Set the Tor SOCKS+Control ports to 9150, 9151 respectively on all platforms</li>
+<li>This fixes a SOCKS race condition with our SOCKS autoport configuration<br>
+and HTTPS-Everywhere&#39;s Tor test. Firefox 17 appears to cache proxy<br>
+settings per URL now, which resulted in a proxy error for<br>
+check.torproject.org if we lost the race.</li>
+</ul></li>
+<li><p>Torbutton was updated to 1.5.0. The following issues were fixed:</p>
+
+<ul>
+<li>Remove old toggle observers and related code (closes: <a href="https://trac.torproject.org/projects/tor/ticket/5279">#5279</a>)</li>
+<li>Simplify Security Preference UI and associated pref updates (closes: <a href="https://trac.torproject.org/projects/tor/ticket/3100">#3100</a>)</li>
+<li>Eliminate redundancy in our Flash/plugin disabling code (closes: <a href="https://trac.torproject.org/projects/tor/ticket/1305">#1305</a>)</li>
+<li>Leave most preferences under Tor Browser&#39;s control (closes: <a href="https://trac.torproject.org/projects/tor/ticket/3944">#3944</a>)</li>
+<li>Disable toggle-on-startup and crash detection logic (closes: <a href="https://trac.torproject.org/projects/tor/ticket/7974">#7974</a>)</li>
+<li>Disable/remove toggle-mode code and related observers (closes: <a href="https://trac.torproject.org/projects/tor/ticket/5279">#5279</a>)</li>
+<li>Add menu hint to Torbutton icon (closes: <a href="https://trac.torproject.org/projects/tor/ticket/6431">#6431</a>)</li>
+<li>Make Torbutton icon flash a warning symbol if TBB is out of date (closes: <a href="https://trac.torproject.org/projects/tor/ticket/7495">#7495</a>)</li>
+<li>Perform version check every time there&#39;s a new tab. (closes: <a href="https://trac.torproject.org/projects/tor/ticket/6096">#6096</a>)</li>
+<li>Rate limit version check queries to once every 1.5hrs max. (closes: <a href="https://trac.torproject.org/projects/tor/ticket/6156">#6156</a>)</li>
+<li>misc: Allow WebGL and DOM storage.</li>
+<li>misc: Disable independent Torbutton updates</li>
+<li>misc: Change the recommended SOCKSPort to 9150 (to match TBB)</li>
+</ul></li>
+</ul>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

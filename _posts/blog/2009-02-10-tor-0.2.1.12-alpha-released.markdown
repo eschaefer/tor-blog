@@ -1,0 +1,75 @@
+---
+layout: post
+title: "Tor 0.2.1.12-alpha is released"
+permalink: tor-0.2.1.12-alpha-released
+date: 2009-02-10
+author: phobos
+category: blog
+tags: ["alpha release", "bug fixes", "improvements", "security fixes"]
+---
+
+Tor 0.2.1.12-alpha features several more security-related fixes. You  
+should upgrade, especially if you run an exit relay (remote crash) or  
+a directory authority (remote infinite loop), or you're on an older  
+(pre-XP) or not-recently-patched Windows (remote exploit). It also  
+includes a big pile of minor bugfixes and cleanups.
+
+[https://www.torproject.org/download.html.en](https://www.torproject.org/download.html.en "https://www.torproject.org/download.html.en")
+
+Changes in version 0.2.1.12-alpha - 2009-02-08  
+**Security fixes:**
+
+- Fix an infinite-loop bug on handling corrupt votes under certain  
+ circumstances. Bugfix on 0.2.0.8-alpha.
+- Fix a temporary DoS vulnerability that could be performed by  
+ a directory mirror. Bugfix on 0.2.0.9-alpha; reported by lark.
+- Avoid a potential crash on exit nodes when processing malformed  
+ input. Remote DoS opportunity. Bugfix on 0.2.1.7-alpha.
+
+**Minor bugfixes:**
+
+- Let controllers actually ask for the "clients\_seen" event for  
+ getting usage summaries on bridge relays. Bugfix on 0.2.1.10-alpha;  
+ reported by Matt Edman.
+- Fix a compile warning on OSX Panther. Fixes bug 913; bugfix against  
+ 0.2.1.11-alpha.
+- Fix a bug in address parsing that was preventing bridges or hidden  
+ service targets from being at IPv6 addresses.
+- Solve a bug that kept hardware crypto acceleration from getting  
+ enabled when accounting was turned on. Fixes bug 907. Bugfix on  
+ 0.0.9pre6.
+- Remove a bash-ism from configure.in to build properly on non-Linux  
+ platforms. Bugfix on 0.2.1.1-alpha.
+- Fix code so authorities \_actually\_ send back X-Descriptor-Not-New  
+ headers. Bugfix on 0.2.0.10-alpha.
+- Don't consider expiring already-closed client connections. Fixes  
+ bug 893. Bugfix on 0.0.2pre20.
+- Fix another interesting corner-case of bug 891 spotted by rovv:  
+ Previously, if two hosts had different amounts of clock drift, and  
+ one of them created a new connection with just the wrong timing,  
+ the other might decide to deprecate the new connection erroneously.  
+ Bugfix on 0.1.1.13-alpha.
+- Resolve a very rare crash bug that could occur when the user forced  
+ a nameserver reconfiguration during the middle of a nameserver  
+ probe. Fixes bug 526. Bugfix on 0.1.2.1-alpha.
+- Support changing value of ServerDNSRandomizeCase during SIGHUP.  
+ Bugfix on 0.2.1.7-alpha.
+- If we're using bridges and our network goes away, be more willing  
+ to forgive our bridges and try again when we get an application  
+ request. Bugfix on 0.2.0.x.
+
+**Minor features:**
+
+- Support platforms where time\_t is 64 bits long. (Congratulations,  
+ NetBSD!) Patch from Matthias Drochner.
+- Add a 'getinfo status/clients-seen' controller command, in case  
+ controllers want to hear clients\_seen events but connect late.
+
+**Build changes:**
+
+- Disable GCC's strict alias optimization by default, to avoid the  
+ likelihood of its introducing subtle bugs whenever our code violates  
+ the letter of C99's alias rules.
+
+The original announcement can be found at [http://archives.seul.org/or/talk/Feb-2009/msg00054.html](http://archives.seul.org/or/talk/Feb-2009/msg00054.html "http://archives.seul.org/or/talk/Feb-2009/msg00054.html")
+

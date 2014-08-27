@@ -1,0 +1,67 @@
+---
+layout: post
+title: "Vidalia 0.2.14 is out!"
+permalink: vidalia-0214-out
+date: 2011-08-28
+author: chiiph
+category: blog
+tags: ["autoport", "bug fixes", "feature enhancements", "new features", "tor browser bundle", "vidalia", "vidalia release"]
+---
+
+Hi everybody,
+
+I'm happy to announce that Vidalia-0.2.14 is out, and yes 0.2.13 is too  
+(the changelog will clarify why two releases).
+
+If you find any bugs or have ideas on how to improve Vidalia, please  
+remember to go to [https://trac.torproject.org/](https://trac.torproject.org/ "https://trac.torproject.org/") and file a ticket for it!
+
+You can find the tarball for this release here:  
+ [https://archive.torproject.org/tor-package-archive/vidalia/vidalia-0.2.1...](https://archive.torproject.org/tor-package-archive/vidalia/vidalia-0.2.14.tar.gz "https://archive.torproject.org/tor-package-archive/vidalia/vidalia-0.2.14.tar.gz")  
+ [https://archive.torproject.org/tor-package-archive/vidalia/vidalia-0.2.1...](https://archive.torproject.org/tor-package-archive/vidalia/vidalia-0.2.14.tar.gz.asc "https://archive.torproject.org/tor-package-archive/vidalia/vidalia-0.2.14.tar.gz.asc")
+
+Here's what's new:
+
+**0.2.14 26-Aug-2011**
+
+- Make the AutoPort setting default to false, so that it doesn't  
+ break backwards compatibility for people that aren't using Vidalia  
+ inside Tor Browser Bundle.
+
+**0.2.13 10-Aug-2011**
+
+- Add a way to bootstrap Tor's torrc file (copy the torrc to a given  
+ directory before Vidalia starts) so that packages such as  
+ Bridge-by-default portable bundles for OSX don't violate the directory  
+ structure of the operating system. Fixes bug 2821.
+- Add the proper CA Certificates so that the "Find Bridges" button works  
+ again. Fixes bug 2835. 
+- Update the useful links help page. Fixes bug 2809. 
+- Reintegrate Breakpad, and make it available in platforms other than  
+ Windows. Resolves bug 2105. 
+- Fix bandwidth assigned to relays on the Network Map. A lot of relays are  
+ displaying an erroneous bandwidth and since they are ordered by that  
+ value in the Network Map, it leads to confusion. Vidalia now specifies  
+ the bandwidth as the minimum of the three possible values (burst,  
+ average and observed). Fixes bug 2744. 
+- Fix layouts in the configuration panel to make them look seamlessly  
+ across all platforms. 
+- Add -no-remote parameter to Firefox so it allows another instance of  
+ non-TBB Firefox. Fixes bug 2254. 
+- Add the possibility of changing the torrc path while Tor hasn't  
+ started. Fixes bug 3109. 
+- Make the fact that bridges don't need a DirPort setting more clear by  
+ removing the content of the field when disabling it. Fixes bug 3119. 
+- Improve command line parameter handling. Resolves bug 2965. 
+- Fix layout in BandwidthGraph to display labels correctly in every  
+ language. Fixes bug 2500. 
+- Updates README.debs to reflect the change in the packaging now that  
+ Vidalia uses Git. Fixes bug 3668. 
+- Add a way to use the autoconfiguration for ControlPort and SocksPort.  
+ Tor can now autoconfigure Control and Socks Ports when the default ones  
+ are in use. This makes it easier to run several different instances of  
+ TBB at the same time. Resolves bug 3077. 
+- Provide the necessary fields (Control password, ControlPort) to let  
+ TorButton NEWNYM. Vidalia provides these in env vars when it launches  
+ the Firefox instance. Resolves bug 2659.
+

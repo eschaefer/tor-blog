@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.2.6-alpha released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.2.6-alpha released</h2>
+<p class="meta">03 Dec 2009</p>
+
+<div class="post">
+<p>On November 19, we released the latest in the Tor alpha series, version 0.2.2.6-alpha. This release lays the groundwork for many upcoming features:<br>
+support for the new lower-footprint &quot;microdescriptor&quot; directory design,<br>
+future-proofing our consensus format against new hash functions or<br>
+other changes, and an Android port. It also makes Tor compatible with<br>
+the upcoming OpenSSL 0.9.8l release, and fixes a variety of bugs.</p>
+
+<p>It can be downloaded at <a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+
+<p><strong>Major features:</strong></p>
+
+<ul>
+<li>Directory authorities can now create, vote on, and serve multiple<br>
+parallel formats of directory data as part of their voting process.<br>
+Partially implements Proposal 162: &quot;Publish the consensus in<br>
+multiple flavors&quot;.</li>
+<li>Directory authorities can now agree on and publish small summaries<br>
+of router information that clients can use in place of regular<br>
+server descriptors. This transition will eventually allow clients<br>
+to use far less bandwidth for downloading information about the<br>
+network. Begins the implementation of Proposal 158: &quot;Clients<br>
+download consensus + microdescriptors&quot;.</li>
+<li>The directory voting system is now extensible to use multiple hash<br>
+algorithms for signatures and resource selection. Newer formats<br>
+are signed with SHA256, with a possibility for moving to a better<br>
+hash algorithm in the future.</li>
+<li>New DisableAllSwap option. If set to 1, Tor will attempt to lock all<br>
+current and future memory pages via mlockall(). On supported<br>
+platforms (modern Linux and probably BSD but not Windows or OS X),<br>
+this should effectively disable any and all attempts to page out<br>
+memory. This option requires that you start your Tor as root --<br>
+if you use DisableAllSwap, please consider using the User option<br>
+to properly reduce the privileges of your Tor.</li>
+<li>Numerous changes, bugfixes, and workarounds from Nathan Freitas<br>
+to help Tor build correctly for Android phones.</li>
+</ul>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Work around a security feature in OpenSSL 0.9.8l that prevents our<br>
+handshake from working unless we explicitly tell OpenSSL that we<br>
+are using SSL renegotiation safely. We are, but OpenSSL 0.9.8l<br>
+won&#39;t work unless we say we are.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Fix a crash bug when trying to initialize the evdns module in<br>
+Libevent 2. Bugfix on 0.2.1.16-rc.</li>
+<li>Stop logging at severity &#39;warn&#39; when some other Tor client tries<br>
+to establish a circuit with us using weak DH keys. It&#39;s a protocol<br>
+violation, but that doesn&#39;t mean ordinary users need to hear about<br>
+it. Fixes the bug part of bug 1114. Bugfix on 0.1.0.13.</li>
+<li>Do not refuse to learn about authority certs and v2 networkstatus<br>
+documents that are older than the latest consensus. This bug might<br>
+have degraded client bootstrapping. Bugfix on 0.2.0.10-alpha.<br>
+Spotted and fixed by xmux.</li>
+<li>Fix numerous small code-flaws found by Coverity Scan Rung 3.</li>
+<li>If all authorities restart at once right before a consensus vote,<br>
+nobody will vote about &quot;Running&quot;, and clients will get a consensus<br>
+with no usable relays. Instead, authorities refuse to build a<br>
+consensus if this happens. Bugfix on 0.2.0.10-alpha; fixes bug 1066.</li>
+<li>If your relay can&#39;t keep up with the number of incoming create<br>
+cells, it would log one warning per failure into your logs. Limit<br>
+warnings to 1 per minute. Bugfix on 0.0.2pre10; fixes bug 1042.</li>
+<li>Bridges now use &quot;reject *:*&quot; as their default exit policy. Bugfix<br>
+on 0.2.0.3-alpha; fixes bug 1113.</li>
+<li>Fix a memory leak on directory authorities during voting that was<br>
+introduced in 0.2.2.1-alpha. Found via valgrind.</li>
+</ul>
+
+<p>The original announcement can be found at <a href="http://archives.seul.org/or/talk/Nov-2009/msg00106.html" title="http://archives.seul.org/or/talk/Nov-2009/msg00106.html">http://archives.seul.org/or/talk/Nov-2009/msg00106.html</a></p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.1.14-rc released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.1.14-rc released</h2>
+<p class="meta">14 Apr 2009</p>
+
+<div class="post">
+<p>Changes in version 0.2.1.14-rc - 2009-04-12<br>
+<strong>Major features:</strong></p>
+
+<ul>
+<li>Clients replace entry guards that were chosen more than a few months ago. This change should significantly improve client performance, especially once more people upgrade, since relays that have been a guard for a long time are currently overloaded.</li>
+</ul>
+
+<p><strong>Major bugfixes (on 0.2.0):</strong></p>
+
+<ul>
+<li>Finally fix the bug where dynamic-IP relays disappear when their IP address changes: directory mirrors were mistakenly telling them their old address if they asked via begin_dir, so they never got an accurate answer about their new address, so they just vanished after a day. For belt-and-suspenders, relays that don&#39;t set Address in their config now avoid using begin_dir for all direct connections. Should fix bugs 827, 883, and 900.</li>
+<li>Relays were falling out of the networkstatus consensus for part of a day if they changed their local config but the authorities discarded their new descriptor as &quot;not sufficiently different&quot;. Now directory authorities accept a descriptor as changed if bandwidthrate or bandwidthburst changed. Partial fix for bug 962; patch by Sebastian.</li>
+<li>Avoid crashing in the presence of certain malformed descriptors. Found by lark, and by automated fuzzing.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>When generating circuit events with verbose nicknames for controllers, try harder to look up nicknames for routers on a circuit. (Previously, we would look in the router descriptors we had for nicknames, but not in the consensus.) Partial fix for bug 941.</li>
+<li>If the bridge config line doesn&#39;t specify a port, assume 443. This makes bridge lines a bit smaller and easier for users to understand.</li>
+<li>Raise the minimum bandwidth to be a relay from 20000 bytes to 20480 bytes (aka 20KB/s), to match our documentation. Also update directory authorities so they always assign the Fast flag to relays with 20KB/s of capacity. Now people running relays won&#39;t suddenly find themselves not seeing any use, if the network gets faster on average.</li>
+<li>Update to the &quot;April 3 2009&quot; ip-to-country file.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Avoid trying to print raw memory to the logs when we decide to give up on downloading a given relay descriptor. Bugfix on 0.2.1.9-alpha.</li>
+<li>In tor-resolve, when the Tor client to use is specified by :, actually use the specified port rather than defaulting to 9050. Bugfix on 0.2.1.6-alpha.</li>
+<li>Make directory usage recording work again. Bugfix on 0.2.1.6-alpha.</li>
+<li>When starting with a cache over a few days old, do not leak memory for the obsolete router descriptors in it. Bugfix on 0.2.0.33.</li>
+<li>Avoid double-free on list of successfully uploaded hidden service discriptors. Fix for bug 948. Bugfix on 0.2.1.6-alpha.</li>
+<li>Change memarea_strndup() implementation to work even when duplicating a string at the end of a page. This bug was harmless for now, but could have meant crashes later. Fix by lark. Bugfix on 0.2.1.1-alpha.</li>
+<li>Limit uploaded directory documents to be 16M rather than 500K. The directory authorities were refusing v3 consensus votes from other authorities, since the votes are now 504K. Fixes bug 959; bugfix on 0.0.2pre17 (where we raised it from 50K to 500K ;).</li>
+<li>Directory authorities should never send a 503 &quot;busy&quot; response to requests for votes or keys. Bugfix on 0.2.0.8-alpha; exposed by bug 959.</li>
+</ul>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

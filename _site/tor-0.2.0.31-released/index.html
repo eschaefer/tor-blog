@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.0.31 Released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.0.31 Released</h2>
+<p class="meta">09 Sep 2008</p>
+
+<div class="post">
+<p>A better formatted version of this can be found at the <a href="http://archives.seul.org/or/announce/Sep-2008/msg00000.html">OR-Announce Archives</a>.</p>
+
+<p>Tor 0.2.0.31 addresses two potential anonymity issues, starts to fix<br>
+a big bug we&#39;re seeing where in rare cases traffic from one Tor stream<br>
+gets mixed into another stream, and fixes a variety of smaller issues.</p>
+
+<p><a href="https://www.torproject.org/download.html" title="https://www.torproject.org/download.html">https://www.torproject.org/download.html</a></p>
+
+<p>Changes in version 0.2.0.31 - 2008-09-03<br>
+ o Major bugfixes:<br>
+ - Make sure that two circuits can never exist on the same connection<br>
+ with the same circuit ID, even if one is marked for close. This<br>
+ is conceivably a bugfix for bug 779. Bugfix on 0.1.0.4-rc.<br>
+ - Relays now reject risky extend cells: if the extend cell includes<br>
+ a digest of all zeroes, or asks to extend back to the relay that<br>
+ sent the extend cell, tear down the circuit. Ideas suggested<br>
+ by rovv.<br>
+ - If not enough of our entry guards are available so we add a new<br>
+ one, we might use the new one even if it overlapped with the<br>
+ current circuit&#39;s exit relay (or its family). Anonymity bugfix<br>
+ pointed out by rovv.</p>
+
+<p>o Minor bugfixes:<br>
+ - Recover 3-7 bytes that were wasted per memory chunk. Fixes bug<br>
+ 794; bug spotted by rovv. Bugfix on 0.2.0.1-alpha.<br>
+ - Correctly detect the presence of the linux/netfilter_ipv4.h header<br>
+ when building against recent kernels. Bugfix on 0.1.2.1-alpha.<br>
+ - Pick size of default geoip filename string correctly on windows.<br>
+ Fixes bug 806. Bugfix on 0.2.0.30.<br>
+ - Make the autoconf script accept the obsolete --with-ssl-dir<br>
+ option as an alias for the actually-working --with-openssl-dir<br>
+ option. Fix the help documentation to recommend --with-openssl-dir.<br>
+ Based on a patch by &quot;Dave&quot;. Bugfix on 0.2.0.1-alpha.<br>
+ - Disallow session resumption attempts during the renegotiation<br>
+ stage of the v2 handshake protocol. Clients should never be trying<br>
+ session resumption at this point, but apparently some did, in<br>
+ ways that caused the handshake to fail. Bug found by Geoff Goodell.<br>
+ Bugfix on 0.2.0.20-rc.<br>
+ - When using the TransPort option on OpenBSD, and using the User<br>
+ option to change UID and drop privileges, make sure to open<br>
+ /dev/pf before dropping privileges. Fixes bug 782. Patch from<br>
+ Christopher Davis. Bugfix on 0.1.2.1-alpha.<br>
+ - Try to attach connections immediately upon receiving a RENDEZVOUS2<br>
+ or RENDEZVOUS_ESTABLISHED cell. This can save a second or two<br>
+ on the client side when connecting to a hidden service. Bugfix<br>
+ on 0.0.6pre1. Found and fixed by Christian Wilms; resolves bug 743.<br>
+ - When closing an application-side connection because its circuit is<br>
+ getting torn down, generate the stream event correctly. Bugfix on<br>
+ 0.1.2.x. Anonymous patch.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

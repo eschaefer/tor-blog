@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Trip report, NSF data workshop</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Trip report, NSF data workshop</h2>
+<p class="meta">30 Aug 2010</p>
+
+<div class="post">
+<p>On Friday (Aug 27), I attended the &quot;Workshop on Cyber Security Data for Experimentation&quot; organized by the National Science Foundation (NSF). The premise of the <a href="http://www.gtisc.gatech.edu/nsf_workshop10_agenda.html">workshop</a> was that many academics need real-world data sets to solve problems, whereas industry is the place with the real-world data sets and they don&#39;t have any real reason to share. By getting the academics and the industry people talking, with government funders nearby, they hoped to better understand the problems and maybe move things forward.</p>
+
+<p>I was there (and on the first panel) because of Tor&#39;s work on <a href="https://metrics.torproject.org/">gathering Tor network snapshots, performance data, and user statistics</a>. Tor&#39;s approach represents one way out of the trap where researchers never quite get the data they want, or if they do it isn&#39;t open enough (which hinders whether anybody else can reproduce their results).</p>
+
+<p>They also asked me to do the wrapup for the workshop. Here are the eight insights that I presented there (with a little bit of commentary from me) -- each of them is a topic that came up during the workshop that I thought warranted more attention.</p>
+
+<p>1) Researchers already have data, it&#39;s just not the data they think they want. Either they need to clean / understand / better analyze what they already have, or they need to figure out where they can gather the data themselves (universities sure have lots of users), or they can turn to organizations like PREDICT (or Tor) that are aggregating data sets for the purpose of making them available for researchers.</p>
+
+<p>Too many data sets from industry come with restrictions. At best you&#39;ll get your data under some sort of bilateral agreement. Whatever happened to public open data that everybody can look at? After all, often you won&#39;t know what you want to look for until you&#39;ve had some time with the data.</p>
+
+<p>We need to better investigate the intersection of &quot;what we can safely gather in an open way&quot; (i.e. without gathering too many personal details) and &quot;what questions we can answer with it&quot; (if you sanitize the data too far, there&#39;s nothing interesting left). I guess the streetlights are brighter over the data sets from antivirus companies, networking companies, etc, so everybody wants to look there. But if it takes multiple years of workshops and everybody&#39;s still frustrated, maybe it&#39;s time to look at other options?</p>
+
+<p>2) Data preservation questions. When a student moves on, it&#39;s common that nobody knows how to continue using what gets left behind. The industry side similarly finds internships too short to be a reliable investment: interns disappear right about the time they start to provide value.</p>
+
+<p>3) Standardized data sets vs specialized data sets. On the one hand, we want standardized public open data sets (think traces for voice recognition), so everybody is doing research from the same starting point. On the other hand, many researchers want to develop specialized data sets to answer new questions -- they find that gathering new data in response to a specific question is a much better strategy. How should we reconcile these conflicting scientific goals?</p>
+
+<p>4) Existing databases need labelling -- for example, if you&#39;re looking at a traffic flow and you want to identify what protocols were in use, you need somebody to annotate it with the ground truth (what protocols actually were in use) or you&#39;ll never know if your algorithms are producing useful answers. Metadata is critical, but it&#39;s expensive to build and maintain. Corporations tend to regard the labelling work as their competitive advantage and keep it to themselves.</p>
+
+<p>5) &quot;Building individual relationships is the only way to get your data.&quot; That was a quote from several people on the academia side, and nobody on the industry side disputed it. If you have to spend a few years interacting with the person who controls the data before you have a chance of seeing it, that sure doesn&#39;t seem to scale well.</p>
+
+<p>6) &quot;The goal of research is not to write papers. It&#39;s to solve problems.&quot; That&#39;s a quote from the industry side. They regard research that&#39;s intellectually interesting as often unrelated to the real-world problems that their company needs to solve. The incentives in academia are structured around publication, and we shouldn&#39;t confuse that with actually solving problems.</p>
+
+<p>7) Internal Review Boards (IRBs) are uniformly not equipped to evaluate this sort of research. They ask questions like whether you&#39;re going to draw blood from your users (and get answers like &quot;not intentionally, ha ha&quot;). At the same time, there are serious legal, ethical, and technical questions that need to be considered for a lot of these data sets -- both in terms of gathering data and in terms of using data. Academics looking at these issues should check out the <a href="http://www.cs.stevens.edu/%7Espock/wecsr2011/">Workshop on the Ethics of Computer Security Research</a>.</p>
+
+<p>8) Both sides took the opportunity to ask NSF for money. Some of the academics suggested that NSF could help to cover the cost of interns (one of the most successful ways to get industry data these days is to send one of your students as a &quot;data envoy&quot; for the summer; but as industry research groups tighten their budgets, competition for the remaining slots is increasingly fierce). The industry representatives on the other hand reiterated several times how much more cooperative they could be if somebody gave their shareholders a reason to look at sharing data as anything more than a risk.</p>
+
+<p>Going back to the Tor perspective, there were also some good lessons to be learned from Doug Maughan&#39;s lunchtime talk. (Doug was the program manager for the DARPA program that funded Tor back in 2002-2003.) Doug has been coordinating a group called <a href="https://www.predict.org/">PREDICT</a>, which aggregates network operations data sets for security researchers. Despite having many terabytes of data, they&#39;re not getting much traction in the research world. Is it because they haven&#39;t done a good job marketing what they can offer? Do they need forums to build a community around their data? Do they not have the right data yet? Tor&#39;s <a href="https://metrics.torproject.org/">metrics and data</a> project will be re-encountering these lessons in the coming years, so we should keep an eye on PREDICT.</p>
+
+<p>As a final note, one of the NSF program managers found me afterwards and said that NSF should fund an EAGER (a small two-year grant) to combine a data-mining expert with the Tor data and see what insights can be extracted from it. If you are that data-mining expert, please contact us.</p>
+
+</div>
+<p>- arma</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

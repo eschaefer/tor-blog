@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.2.22-alpha is out</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.2.22-alpha is out</h2>
+<p class="meta">27 Jan 2011</p>
+
+<div class="post">
+<p><a href="https://www.torproject.org/download/download" title="https://www.torproject.org/download/download">https://www.torproject.org/download/download</a></p>
+
+<p>Changes in version 0.2.2.22-alpha - 2011-01-25<br>
+<strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Fix a bounds-checking error that could allow an attacker to<br>
+remotely crash a directory authority. Bugfix on 0.2.1.5-alpha.<br>
+Found by &quot;piebeer&quot;.</li>
+<li>Don&#39;t assert when changing from bridge to relay or vice versa<br>
+via the controller. The assert happened because we didn&#39;t properly<br>
+initialize our keys in this case. Bugfix on 0.2.2.18-alpha; fixes<br>
+bug 2433. Reported by bastik.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Adjust our TLS Diffie-Hellman parameters to match those used by<br>
+Apache&#39;s mod_ssl.</li>
+<li>Provide a log message stating which geoip file we&#39;re parsing<br>
+instead of just stating that we&#39;re parsing the geoip file.<br>
+Implements ticket 2432.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Check for and reject overly long directory certificates and<br>
+directory tokens before they have a chance to hit any assertions.<br>
+Bugfix on 0.2.1.28 / 0.2.2.20-alpha. Found by &quot;doorss&quot;.</li>
+</ul>
+
+</div>
+<p>- erinn</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

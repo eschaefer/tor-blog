@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Testing Tor Browser Bundle 1.2.7-dev</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Testing Tor Browser Bundle 1.2.7-dev</h2>
+<p class="meta">16 Aug 2009</p>
+
+<div class="post">
+<p>I&#39;ve updated the Tor Browser Bundle with torbutton 1.2.2, the <a href="//blog.torproject.org/blog/vidalia-022-released">new Vidalia 0.2.2</a>, and openssl 0.9.8k compiled with Microsoft Visual C to handle ssl compatibility issues with various versions of Windows.</p>
+
+<p>If this works, it will be the new Tor Browser Bundle 1.2.8. Please test away.</p>
+
+<p>The full list of changes:</p>
+
+<ul>
+<li>update Torbutton to 1.2.2</li>
+<li>update Vidalia to 0.2.2</li>
+<li>compile OpenSSL 0.9.8k with Visual C to make dlls</li>
+</ul>
+
+<p>There is an issue for some people using a clean Windows XP, Vista, 7 which would either require we ship the Visual C redistributable package, or compile OpenSSL ourselves with Visual C. The symptoms were the &quot;find bridges now&quot; button didn&#39;t appear in Vidalia 0.2.x, and the relays would never get flags. A few people posted comments to this blog about lacking flags and geoip information with TBB.</p>
+
+<p>This is now fixed (at least it works on a freshly installed and patched WinXP system).</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

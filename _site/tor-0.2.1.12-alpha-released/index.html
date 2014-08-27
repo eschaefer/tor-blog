@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.1.12-alpha is released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.1.12-alpha is released</h2>
+<p class="meta">10 Feb 2009</p>
+
+<div class="post">
+<p>Tor 0.2.1.12-alpha features several more security-related fixes. You<br>
+should upgrade, especially if you run an exit relay (remote crash) or<br>
+a directory authority (remote infinite loop), or you&#39;re on an older<br>
+(pre-XP) or not-recently-patched Windows (remote exploit). It also<br>
+includes a big pile of minor bugfixes and cleanups.</p>
+
+<p><a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+
+<p>Changes in version 0.2.1.12-alpha - 2009-02-08<br>
+<strong>Security fixes:</strong></p>
+
+<ul>
+<li>Fix an infinite-loop bug on handling corrupt votes under certain<br>
+circumstances. Bugfix on 0.2.0.8-alpha.</li>
+<li>Fix a temporary DoS vulnerability that could be performed by<br>
+a directory mirror. Bugfix on 0.2.0.9-alpha; reported by lark.</li>
+<li>Avoid a potential crash on exit nodes when processing malformed<br>
+input. Remote DoS opportunity. Bugfix on 0.2.1.7-alpha.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Let controllers actually ask for the &quot;clients_seen&quot; event for<br>
+getting usage summaries on bridge relays. Bugfix on 0.2.1.10-alpha;<br>
+reported by Matt Edman.</li>
+<li>Fix a compile warning on OSX Panther. Fixes bug 913; bugfix against<br>
+0.2.1.11-alpha.</li>
+<li>Fix a bug in address parsing that was preventing bridges or hidden<br>
+service targets from being at IPv6 addresses.</li>
+<li>Solve a bug that kept hardware crypto acceleration from getting<br>
+enabled when accounting was turned on. Fixes bug 907. Bugfix on<br>
+0.0.9pre6.</li>
+<li>Remove a bash-ism from configure.in to build properly on non-Linux<br>
+platforms. Bugfix on 0.2.1.1-alpha.</li>
+<li>Fix code so authorities _actually_ send back X-Descriptor-Not-New<br>
+headers. Bugfix on 0.2.0.10-alpha.</li>
+<li>Don&#39;t consider expiring already-closed client connections. Fixes<br>
+bug 893. Bugfix on 0.0.2pre20.</li>
+<li>Fix another interesting corner-case of bug 891 spotted by rovv:<br>
+Previously, if two hosts had different amounts of clock drift, and<br>
+one of them created a new connection with just the wrong timing,<br>
+the other might decide to deprecate the new connection erroneously.<br>
+Bugfix on 0.1.1.13-alpha.</li>
+<li>Resolve a very rare crash bug that could occur when the user forced<br>
+a nameserver reconfiguration during the middle of a nameserver<br>
+probe. Fixes bug 526. Bugfix on 0.1.2.1-alpha.</li>
+<li>Support changing value of ServerDNSRandomizeCase during SIGHUP.<br>
+Bugfix on 0.2.1.7-alpha.</li>
+<li>If we&#39;re using bridges and our network goes away, be more willing<br>
+to forgive our bridges and try again when we get an application<br>
+request. Bugfix on 0.2.0.x.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Support platforms where time_t is 64 bits long. (Congratulations,<br>
+NetBSD!) Patch from Matthias Drochner.</li>
+<li>Add a &#39;getinfo status/clients-seen&#39; controller command, in case<br>
+controllers want to hear clients_seen events but connect late.</li>
+</ul>
+
+<p><strong>Build changes:</strong></p>
+
+<ul>
+<li>Disable GCC&#39;s strict alias optimization by default, to avoid the<br>
+likelihood of its introducing subtle bugs whenever our code violates<br>
+the letter of C99&#39;s alias rules.</li>
+</ul>
+
+<p>The original announcement can be found at <a href="http://archives.seul.org/or/talk/Feb-2009/msg00054.html" title="http://archives.seul.org/or/talk/Feb-2009/msg00054.html">http://archives.seul.org/or/talk/Feb-2009/msg00054.html</a></p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

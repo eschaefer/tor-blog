@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tails 0.23 is out</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tails 0.23 is out</h2>
+<p class="meta">19 Mar 2014</p>
+
+<div class="post">
+<p>Tails, The Amnesic Incognito Live System, version 0.23, is out.</p>
+
+<p>All users must upgrade as soon as possible: this release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_0.22.1/index.en.html">numerous security issues</a>.</p>
+
+<p><strong>Changes</strong></p>
+
+<p>Notable user-visible changes include:</p>
+
+<ul>
+<li><p>Security fixes</p>
+
+<ul>
+<li>Upgrade the web browser to 24.4.0esr-0+tails1~bpo60+1 (Firefox<br>
+24.4.0esr + Iceweasel patches + Torbrowser patches).</li>
+</ul></li>
+<li><p>Major new features</p>
+
+<ul>
+<li><a href="https://tails.boum.org/doc/first_steps/startup_options/mac_spoofing/index.en.html">Spoof the network interfaces&#39; MAC address</a><br>
+by default. It can be disabled in Tails Greeter.</li>
+<li>Rework the way to<br>
+<a href="https://tails.boum.org/doc/first_steps/startup_options/network_configuration/index.en.html">configure how Tor connects to the network</a><br>
+by using bridges, proxies and restrictive firewalls. This option<br>
+can be set from Tails Greeter, and replaces the old<br>
+experimental &quot;bridge mode&quot; feature.</li>
+</ul></li>
+<li><p>Bugfixes</p>
+
+<ul>
+<li>Additional software: do not crash when persistence is disabled.</li>
+<li>Upgrade Pidgin to 2.10.9, that fixes some regressions introduced in the 2.10.8 security update.</li>
+<li>Wait for Tor to have fully bootstrapped, plus a bit more time, before checking for upgrades and unfixed known security issues.</li>
+<li>Disable the Intel Management Engine Interface driver. We don&#39;t need it in Tails, it might be dangerous, and it causes bugs on various hardware such as systems that reboot when asked to shut down.</li>
+<li>Add a launcher for the Tails documentation. This makes it available in Windows Camouflage mode.</li>
+<li>Remove the obsolete wikileaks.de account from Pidgin.</li>
+</ul></li>
+<li><p>Minor improvements</p>
+
+<ul>
+<li>Upgrade Tor to 0.2.4.21-1~d60.squeeze+1.</li>
+<li>Upgrade obfsproxy to 0.2.6-2~~squeeze+1.</li>
+<li>Upgrade I2P to 0.9.11-1deb6u1.</li>
+<li>Install 64-bit kernel instead of the 686-pae one. This is a necessary first step towards UEFI boot support.</li>
+<li>Install Monkeysign (in a not-so-functional shape yet).</li>
+<li>Disable the autologin text consoles. This was one of the blockers before a screen saver can be installed in a meaningful way.</li>
+<li>Don&#39;t localize the text consoles anymore: it is broken on Wheezy, the intended users can as well use loadkeys, and we now do not have to trust setupcon to be safe for being run as root by the desktop user.</li>
+<li>Make it possible to manually start IBus.</li>
+<li>Reintroduce the possibility to switch identities in the Tor Browser, using a filtering proxy in front of the Tor ControlPort to avoid giving full control over Tor to the desktop user.</li>
+<li>Incremental upgrades improvements:</li>
+<li>Drop the Tails Upgrader launcher, to limit users&#39; confusion.</li>
+<li>Lock down sudo credentials a bit.</li>
+<li>Hide debugging information.</li>
+<li>Include ~/.xsession-errors in WhisperBack bug reports. This captures the Tails Upgrader errors and debugging information.</li>
+<li>Report more precisely why an incremental upgrade cannot be done.</li>
+<li>Various user interface and phrasing improvements.</li>
+<li>Don&#39;t install the Cookie Monster browser extension.</li>
+<li>Add a browser bookmark pointing to Tor&#39;s Stack Exchange.</li>
+<li>Remove the preconfigured #tor channel from the Pidgin: apparently, too many Tails users go ask Tails questions there, without making it clear that they are running Tails, hence creating a user-support nightmare.</li>
+<li>Use (most of) Tor Browser&#39;s mozconfig.</li>
+<li>Rebase the browser on top of iceweasel 24.3.0esr-1, to get the certificate authorities added by Debian back.</li>
+<li>Give access to the relevant documentation pages from Tails Greeter.</li>
+<li>Hide Tails Greeter&#39;s password mismatch warning when entry is changed.</li>
+<li>Persistent Volume Assistant:</li>
+<li>Take into account our installer is now called Tails Installer.</li>
+<li>Optimize window height.</li>
+<li>Display device paths in a more user-friendly way.</li>
+</ul></li>
+</ul>
+
+<p>See the <a href="https://git-tails.immerda.ch/tails/plain/debian/changelog">online Changelog</a> for technical details.</p>
+
+<p><strong>Known issues</strong></p>
+
+<ul>
+<li><a href="https://tails.boum.org/support/known_issues/index.en.html">Longstanding</a> known issues.</li>
+</ul>
+
+<p><strong>I want to try it or to upgrade!</strong></p>
+
+<p>Go to the <a href="https://tails.boum.org/download/index.en.html">download</a> page.</p>
+
+<p>As no software is ever perfect, we maintain a list of <a href="https://tails.boum.org/support/known_issues/index.en.html">problems that affects the last release of Tails</a>.</p>
+
+<p><strong>What&#39;s coming up?</strong></p>
+
+<p>The next Tails release is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for April 29.</p>
+
+<p>Have a look to our <a href="https://labs.riseup.net/code/projects/tails/roadmap">roadmap</a> to see where we are heading to.</p>
+
+<p>Would you want to help? There are many ways <a href="https://tails.boum.org/contribute/index.en.html"><strong>you</strong> can contribute to Tails</a>. If you want to help, come talk to us!</p>
+
+<p><strong>Support and feedback</strong></p>
+
+<p>For support and feedback, visit the <a href="https://tails.boum.org/support/">Support section</a> on the Tails website.</p>
+
+</div>
+<p>- tails</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

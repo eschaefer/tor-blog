@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.0.33-stable released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.0.33-stable released</h2>
+<p class="meta">22 Jan 2009</p>
+
+<div class="post">
+<p>Tor 0.2.0.33 fixes a variety of bugs that were making relays less useful<br>
+to users. It also finally fixes a bug where a relay or client that&#39;s<br>
+been off for many days would take a long time to bootstrap.</p>
+
+<p>This update also fixes an important security-related bug reported by<br>
+Ilja van Sprundel. You should upgrade. (We&#39;ll send out more details<br>
+about the bug once people have had some time to upgrade.)</p>
+
+<p><a href="https://www.torproject.org/download.html" title="https://www.torproject.org/download.html">https://www.torproject.org/download.html</a></p>
+
+<p>Changes in version 0.2.0.33 - 2009-01-21<br>
+<strong>Security fixes:</strong></p>
+
+<ul>
+<li>Fix a heap-corruption bug that may be remotely triggerable on<br>
+some platforms. Reported by Ilja van Sprundel.</li>
+</ul>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>When a stream at an exit relay is in state &quot;resolving&quot; or<br>
+&quot;connecting&quot; and it receives an &quot;end&quot; relay cell, the exit relay<br>
+would silently ignore the end cell and not close the stream. If<br>
+the client never closes the circuit, then the exit relay never<br>
+closes the TCP connection. Bug introduced in Tor 0.1.2.1-alpha;<br>
+reported by &quot;wood&quot;.</li>
+<li>When sending CREATED cells back for a given circuit, use a 64-bit<br>
+connection ID to find the right connection, rather than an addr:port<br>
+combination. Now that we can have multiple OR connections between<br>
+the same ORs, it is no longer possible to use addr:port to uniquely<br>
+identify a connection.</li>
+<li>Bridge relays that had DirPort set to 0 would stop fetching<br>
+descriptors shortly after startup, and then briefly resume<br>
+after a new bandwidth test and/or after publishing a new bridge<br>
+descriptor. Bridge users that try to bootstrap from them would<br>
+get a recent networkstatus but would get descriptors from up to<br>
+18 hours earlier, meaning most of the descriptors were obsolete<br>
+already. Reported by Tas; bugfix on 0.2.0.13-alpha.</li>
+<li>Prevent bridge relays from serving their &#39;extrainfo&#39; document<br>
+to anybody who asks, now that extrainfo docs include potentially<br>
+sensitive aggregated client geoip summaries. Bugfix on<br>
+0.2.0.13-alpha.</li>
+<li>If the cached networkstatus consensus is more than five days old,<br>
+discard it rather than trying to use it. In theory it could be<br>
+useful because it lists alternate directory mirrors, but in practice<br>
+it just means we spend many minutes trying directory mirrors that<br>
+are long gone from the network. Also discard router descriptors as<br>
+we load them if they are more than five days old, since the onion<br>
+key is probably wrong by now. Bugfix on 0.2.0.x. Fixes bug 887.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Do not mark smartlist_bsearch_idx() function as ATTR_PURE. This bug<br>
+could make gcc generate non-functional binary search code. Bugfix<br>
+on 0.2.0.10-alpha.</li>
+<li>Build correctly on platforms without socklen_t.</li>
+<li>Compile without warnings on solaris.</li>
+<li>Avoid potential crash on internal error during signature collection.<br>
+Fixes bug 864. Patch from rovv.</li>
+<li>Correct handling of possible malformed authority signing key<br>
+certificates with internal signature types. Fixes bug 880.<br>
+Bugfix on 0.2.0.3-alpha.</li>
+<li>Fix a hard-to-trigger resource leak when logging credential status.<br>
+CID 349.</li>
+<li>When we can&#39;t initialize DNS because the network is down, do not<br>
+automatically stop Tor from starting. Instead, we retry failed<br>
+dns_inits() every 10 minutes, and change the exit policy to reject<br>
+*:* until one succeeds. Fixes bug 691.</li>
+<li>Use 64 bits instead of 32 bits for connection identifiers used with<br>
+the controller protocol, to greatly reduce risk of identifier reuse.</li>
+<li>When we&#39;re choosing an exit node for a circuit, and we have<br>
+no pending streams, choose a good general exit rather than one that<br>
+supports &quot;all the pending streams&quot;. Bugfix on 0.1.1.x. Fix by rovv.</li>
+<li>Fix another case of assuming, when a specific exit is requested,<br>
+that we know more than the user about what hosts it allows.<br>
+Fixes one case of bug 752. Patch from rovv.</li>
+<li>Clip the MaxCircuitDirtiness config option to a minimum of 10<br>
+seconds. Warn the user if lower values are given in the<br>
+configuration. Bugfix on 0.1.0.1-rc. Patch by Sebastian.</li>
+<li>Clip the CircuitBuildTimeout to a minimum of 30 seconds. Warn the<br>
+user if lower values are given in the configuration. Bugfix on<br>
+0.1.1.17-rc. Patch by Sebastian.</li>
+<li>Fix a memory leak when we decline to add a v2 rendezvous descriptor to<br>
+the cache because we already had a v0 descriptor with the same ID.<br>
+Bugfix on 0.2.0.18-alpha.</li>
+<li>Fix a race condition when freeing keys shared between main thread<br>
+and CPU workers that could result in a memory leak. Bugfix on<br>
+0.1.0.1-rc. Fixes bug 889.</li>
+<li>Send a valid END cell back when a client tries to connect to a<br>
+nonexistent hidden service port. Bugfix on 0.1.2.15. Fixes bug<br>
+
+<ol>
+<li>Patch from rovv.</li>
+</ol></li>
+<li>Check which hops rendezvous stream cells are associated with to<br>
+prevent possible guess-the-streamid injection attacks from<br>
+intermediate hops. Fixes another case of bug 446. Based on patch<br>
+from rovv.</li>
+<li>If a broken client asks a non-exit router to connect somewhere,<br>
+do not even do the DNS lookup before rejecting the connection.<br>
+Fixes another case of bug 619. Patch from rovv.</li>
+<li>When a relay gets a create cell it can&#39;t decrypt (e.g. because it&#39;s<br>
+using the wrong onion key), we were dropping it and letting the<br>
+client time out. Now actually answer with a destroy cell. Fixes<br>
+bug 904. Bugfix on 0.0.2pre8.</li>
+</ul>
+
+<p><strong>Minor bugfixes (hidden services):</strong></p>
+
+<ul>
+<li>Do not throw away existing introduction points on SIGHUP. Bugfix on<br>
+0.0.6pre1. Patch by Karsten. Fixes bug 874.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Report the case where all signatures in a detached set are rejected<br>
+differently than the case where there is an error handling the<br>
+detached set.</li>
+<li>When we realize that another process has modified our cached<br>
+descriptors, print out a more useful error message rather than<br>
+triggering an assertion. Fixes bug 885. Patch from Karsten.</li>
+<li>Implement the 0x20 hack to better resist DNS poisoning: set the<br>
+case on outgoing DNS requests randomly, and reject responses that do<br>
+not match the case correctly. This logic can be disabled with the<br>
+ServerDNSRamdomizeCase setting, if you are using one of the 0.3%<br>
+of servers that do not reliably preserve case in replies. See<br>
+&quot;Increased DNS Forgery Resistance through 0x20-Bit Encoding&quot;<br>
+for more info.</li>
+<li>Check DNS replies for more matching fields to better resist DNS<br>
+poisoning.</li>
+<li>Never use OpenSSL compression: it wastes RAM and CPU trying to<br>
+compress cells, which are basically all encrypted, compressed, or<br>
+both.</li>
+</ul>
+
+<p>The original announcement can be found at <a href="http://archives.seul.org/or/announce/Jan-2009/msg00000.html" title="http://archives.seul.org/or/announce/Jan-2009/msg00000.html">http://archives.seul.org/or/announce/Jan-2009/msg00000.html</a></p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>GSoC 2011: Metadata Anonymisation Toolkit</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>GSoC 2011: Metadata Anonymisation Toolkit</h2>
+<p class="meta">30 Aug 2011</p>
+
+<div class="post">
+<p>This is a guest blog from one of our 2011 Google summer of code students, jvoisin.</p>
+
+<p>It&#39;s the end of the <a href="https://code.google.com/soc/">GSoC</a>. It was a really nice experience, I learned a lot, met a lot of nice people on irc, and earned some money.</p>
+
+<p>My project was to create a <a href="https://gitweb.torproject.org/user/jvoisin/mat.git">Metadata Anonymisation Toolkit</a> (MAT), to improve privacy of online file publications. First, I heavily based my code on <a href="https://bitbucket.org/haypo/hachoir/wiki/Home">hachoir</a> (a nice, but a slightly complex library), but now, must of the formats that the MAT supports do not use hachoir.<br>
+ Despite several code restructuring and re-factorizations, silly ideas, re-implementations, and re-writing/... the MAT is living !</p>
+
+<p>I made two big mistakes. The first being using python2.7, and <a href="https://live.gnome.org/PyGObject">pygobject</a>. Neither of these were in Debian stable/tails, so I had to rewrite those parts.</p>
+
+<p>MAP consists of a modular API (feel free to add support for other formats !), a command line interface, and a graphic user interface (powered by pygtk).</p>
+
+<p>It was my first &quot;serious&quot; project in python, and I was the first surprised about the ~3000 lines of code I produced. I&#39;m pretty proud of the &quot;pdf processing part&quot;, and I&#39;m sad about the setup.py/packaging part (that are the most ugly/dirty/painful things that I ever touched/coded ).</p>
+
+<p>I&#39;m still unhappy with my code/piece of software, so I&#39;ll continue to improve it, so expect great work in the future, such as an <a href="http://www.sno.phy.queensu.ca/%7Ephil/exiftool/">exiftool</a> binding, watermark counter-measures, ..</p>
+
+<p>Thank you mikeperry for being my mentor, thank you google for the amazing GSoC project, thank to every user that gave me feedback (and even more stuff to fix!), and special thanks to haypo, Mc2`, Kiri, intrigeri, bertagaz, Lunar^ and all #tails/#tor-dev !</p>
+
+<p>Hope to see you next year.</p>
+
+</div>
+<p>- jvoisin</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

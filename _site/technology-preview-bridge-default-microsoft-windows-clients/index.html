@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Technology Preview:  Bridge by default for Microsoft Windows clients</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Technology Preview:  Bridge by default for Microsoft Windows clients</h2>
+<p class="meta">06 Jun 2010</p>
+
+<div class="post">
+<p>We keep hearing from people around the world that clicking the 3 buttons to turn yourself into a bridge is too difficult todo for most users. These people have repeatedly asked for a &quot;bridge by default&quot; configuration in a package. Here it is: <a href="http://archive.torproject.org/tor-package-archive/technology-preview/" title="http://archive.torproject.org/tor-package-archive/technology-preview/">http://archive.torproject.org/tor-package-archive/technology-preview/</a></p>
+
+<p>When you install and run this package, you are a bridge relay helping censored users around the world access Tor and the uncensored Internet.<br>
+To understand more about bridges, read <a href="https://www.torproject.org/bridges" title="https://www.torproject.org/bridges">https://www.torproject.org/bridges</a>.</p>
+
+<p>This is the installable Vidalia bundle configured to be a bridge by default. This is Tor 0.2.2.13-alpha, Vidalia 0.2.9, Polipo 1.0.4.1. The only difference between this bridge-bundle and the vidalia-bundle is the bridge configuration.</p>
+
+<p>When started, Vidalia attempts to use UPnP to reconfigure any NAT/router device to open port 9001 for tor and 9030 for a directory mirror. The bandwidth is set to consume greater than 1.5 Mbps. It works just like the vidalia-bundle (because it is the vidalia-bundle) where if UPnP fails, it prompts you to open the correct ports on your NAT/router.</p>
+
+<p>None of this is final configuration. It is merely a &quot;does it work for you?&quot; test package. So far, it&#39;s worked on the 4 different networks I&#39;ve tried. Apologies to the 300 Chinese users who used my bridge on one of the test networks, only to have it go away a day later.</p>
+
+<p><em>Update 2010-06-11: Fixed a vidalia.conf issue which wasn&#39;t a problem, but looked like the controlport was open and un-authenticated. uploaded new binaries and removed the old ones. The bridge-bundle nsi file that creates this bundle is <a href="https://trac.vidalia-project.net/browser/vidalia/trunk/pkg/win32/bridge-bundle.nsi.in">in Vidalia svn</a>. Just replace vidalia-bundle.nsi.in with the bridge-bundle.nsi.in and create your bundle.</em></p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>How to use the “meek” pluggable transport</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>How to use the “meek” pluggable transport</h2>
+<p class="meta">15 Aug 2014</p>
+
+<div class="post">
+<p>The recently released 4.0-alpha-1 version of Tor Browser includes <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a>, a new <a href="https://www.torproject.org/docs/pluggable-transports.html">pluggable transport</a> for censorship circumvention. meek tunnels your Tor traffic through HTTPS, and uses a technique called “domain fronting” to hide the fact that you are communicating with a Tor bridge—to the censor it looks like you are talking to some other web site. For more details, see the <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek#Overview">overview</a> and the <a href="https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports#meek">Child’s Garden of Pluggable Transports</a>.</p>
+
+<p>You only need meek if your Internet connection is censored so that you can’t use ordinary Tor. Even then, you should try other pluggable transports first, because they have less overhead. My recommended order for trying transports is:</p>
+
+<ol>
+<li>obfs3</li>
+<li>fte</li>
+<li>scramblesuit</li>
+<li>meek</li>
+<li>flashproxy</li>
+</ol>
+
+<p>Use meek if other transports don’t work for you, or if you want to help development by testing it. I have been using meek for my day-to-day browsing for a few months now.</p>
+
+<p>All pluggable transports have some overhead. You might find that meek feels slower than ordinary Tor. We’re working on some tickets that will make it faster in the future: <a href="https://trac.torproject.org/projects/tor/ticket/12428" title="Make it possible to have multiple requests and responses in flight">#12428</a>, <a href="https://trac.torproject.org/projects/tor/ticket/12778" title="Put meek HTTP headers on a diet">#12778</a>, <a href="https://trac.torproject.org/projects/tor/ticket/12857" title="Use streaming downloads">#12857</a>.</p>
+
+<p>At this point, there are two different backends supported. <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek#AmazonCloudFront">meek-amazon</a> makes it look like you are talking to an Amazon Web Services server (when you are actually talking to a Tor bridge), and <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek#GoogleAppEngine">meek-google</a> makes it look like you are talking to the Google search page (when you are actually talking to a Tor bridge). It is likely that both will work for you. If one of them doesn’t work, try the other.</p>
+
+<p>These instructions and screenshots are for the 4.0-alpha-1 release. If they change in future releases, they will be updated at <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek#Quickstart" title="https://trac.torproject.org/projects/tor/wiki/doc/meek#Quickstart">https://trac.torproject.org/projects/tor/wiki/doc/meek#Quickstart</a>.</p>
+
+<h1>How to use meek</h1>
+
+<p>First, download a meek-capable version of Tor Browser for your platform and language.</p>
+
+<ul>
+<li><a href="https://www.torproject.org/projects/torbrowser.html#downloads-alpha" title="https://www.torproject.org/projects/torbrowser.html#downloads-alpha">https://www.torproject.org/projects/torbrowser.html#downloads-alpha</a></li>
+</ul>
+
+<p><a href="https://www.torproject.org/docs/verifying-signatures.html">Verify the signature</a> and run the bundle according to the instructions for <a href="https://www.torproject.org/projects/torbrowser.html#windows">Windows</a>, <a href="https://www.torproject.org/projects/torbrowser.html#macosx">OS X</a>, or <a href="https://www.torproject.org/projects/torbrowser.html#linux">GNU/Linux</a>.</p>
+
+<p>On the first screen, where it says <em>Which of the following best describes your situation?</em>, click the <strong>Configure</strong> button.</p>
+
+<p><center><img src="https://people.torproject.org/~dcf/graphs/blogfiles/4.0-alpha-1-meek-conf-0.png" alt="Tor Network Settings “Which of the following best describes your situation?” screen with the “Configure” button highlighted."></center></p>
+
+<p>On the screen that says <em>Does this computer need to use a proxy to access the Internet?</em>, say <strong>No</strong> unless you know you need to use a proxy. meek supports using an upstream proxy, but most users don’t need it.</p>
+
+<p><center><img src="https://people.torproject.org/~dcf/graphs/blogfiles/4.0-alpha-1-meek-conf-1.png" alt="Tor Network Settings “Does this computer need to use a proxy to access the Internet?” screen with “No” selected."></center></p>
+
+<p>On the screen that says <em>Does this computer&#39;s Internet connection go through a firewall that only allows connections to certain ports?</em>, say <strong>No</strong> . As an HTTPS transport, meek only uses web ports, which are allowed by most firewalls.</p>
+
+<p><center><img src="https://people.torproject.org/~dcf/graphs/blogfiles/4.0-alpha-1-meek-conf-2.png" alt="Tor Network Settings “Does this computer's Internet connection go through a firewall that only allows connections to certain ports?” screen with “No” selected."></center></p>
+
+<p>On the screen that says <em>Does your Internet Service Provider (ISP) block or otherwise censor connections to the Tor Network?</em>, say <strong>Yes</strong> . Saying Yes will lead you to the screen for configuring pluggable transports.</p>
+
+<p><center><img src="https://people.torproject.org/~dcf/graphs/blogfiles/4.0-alpha-1-meek-conf-3.png" alt="Tor Network Settings “Does your Internet Service Provider (ISP) block or otherwise censor connections to the Tor Network?” screen with “Yes” selected."></center></p>
+
+<p>On the pluggable transport screen, select <strong>Connect with provided bridges</strong> and choose either <strong>meek-amazon</strong> or <strong>meek-google</strong> from the list. Probably both of them will work for you, so choose whichever feels faster. If one of them doesn’t work, try the other. Then click the <strong>Connect</strong> button.</p>
+
+<p><center><img src="https://people.torproject.org/~dcf/graphs/blogfiles/4.0-alpha-1-meek-conf-4.png" alt="Tor Network Settings “You may use the provided set of bridges or you may obtain and enter a custom set of bridges.” screen with “meek-google” selected."></center></p>
+
+<p>If it doesn’t work, you can write to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-dev">tor-dev mailing list</a>, or to me personally at <a href="mailto:dcf@torproject.org">dcf@torproject.org</a>, or file a <a href="https://trac.torproject.org/projects/tor/newticket?component=meek">new ticket</a>.</p>
+
+</div>
+<p>- dcf</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor 0.2.0.30 is released as stable</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor 0.2.0.30 is released as stable</h2>
+<p class="meta">26 Aug 2008</p>
+
+<div class="post">
+<p>Tor 0.2.0.30 is released. A better formatted version of this report can be found <a href="http://permalink.gmane.org/gmane.network.onion-routing.announce/21">at gmane.org</a></p>
+
+<p>Tor 0.2.0.30 switches to a more efficient directory distribution design,<br>
+adds features to make connections to the Tor network harder to block,<br>
+allows Tor to act as a DNS proxy, adds separate rate limiting for relayed<br>
+traffic to make it easier for clients to become relays, fixes a variety<br>
+of potential anonymity problems, and includes the usual huge pile of<br>
+other features and bug fixes.</p>
+
+<p><a href="https://www.torproject.org/download.html" title="https://www.torproject.org/download.html">https://www.torproject.org/download.html</a></p>
+
+<p>Changes in version 0.2.0.30 - 2008-07-15<br>
+ o New v3 directory design:<br>
+ - Tor now uses a new way to learn about and distribute information<br>
+ about the network: the directory authorities vote on a common<br>
+ network status document rather than each publishing their own<br>
+ opinion. Now clients and caches download only one networkstatus<br>
+ document to bootstrap, rather than downloading one for each<br>
+ authority. Clients only download router descriptors listed in<br>
+ the consensus. Implements proposal 101; see doc/spec/dir-spec.txt<br>
+ for details.<br>
+ - Set up moria1, tor26, and dizum as v3 directory authorities<br>
+ in addition to being v2 authorities. Also add three new ones:<br>
+ ides (run by Mike Perry), gabelmoo (run by Karsten Loesing), and<br>
+ dannenberg (run by CCC).<br>
+ - Switch to multi-level keys for directory authorities: now their<br>
+ long-term identity key can be kept offline, and they periodically<br>
+ generate a new signing key. Clients fetch the &quot;key certificates&quot;<br>
+ to keep up to date on the right keys. Add a standalone tool<br>
+ &quot;tor-gencert&quot; to generate key certificates. Implements proposal 103.<br>
+ - Add a new V3AuthUseLegacyKey config option to make it easier for<br>
+ v3 authorities to change their identity keys if another bug like<br>
+ Debian&#39;s OpenSSL RNG flaw appears.<br>
+ - Authorities and caches fetch the v2 networkstatus documents<br>
+ less often, now that v3 is recommended.</p>
+
+<p>o Make Tor connections stand out less on the wire:<br>
+ - Use an improved TLS handshake designed by Steven Murdoch in proposal<br>
+ 124, as revised in proposal 130. The new handshake is meant to<br>
+ be harder for censors to fingerprint, and it adds the ability<br>
+ to detect certain kinds of man-in-the-middle traffic analysis<br>
+ attacks. The new handshake format includes version negotiation for<br>
+ OR connections as described in proposal 105, which will allow us<br>
+ to improve Tor&#39;s link protocol more safely in the future.<br>
+ - Enable encrypted directory connections by default for non-relays,<br>
+ so censor tools that block Tor directory connections based on their<br>
+ plaintext patterns will no longer work. This means Tor works in<br>
+ certain censored countries by default again.<br>
+ - Stop including recognizeable strings in the commonname part of<br>
+ Tor&#39;s x509 certificates.</p>
+
+<p>o Implement bridge relays:<br>
+ - Bridge relays (or &quot;bridges&quot; for short) are Tor relays that aren&#39;t<br>
+ listed in the main Tor directory. Since there is no complete public<br>
+ list of them, even an ISP that is filtering connections to all the<br>
+ known Tor relays probably won&#39;t be able to block all the bridges.<br>
+ See doc/design-paper/blocking.pdf and proposal 125 for details.<br>
+ - New config option BridgeRelay that specifies you want to be a<br>
+ bridge relay rather than a normal relay. When BridgeRelay is set<br>
+ to 1, then a) you cache dir info even if your DirPort ins&#39;t on,<br>
+ and b) the default for PublishServerDescriptor is now &quot;bridge&quot;<br>
+ rather than &quot;v2,v3&quot;.<br>
+ - New config option &quot;UseBridges 1&quot; for clients that want to use bridge<br>
+ relays instead of ordinary entry guards. Clients then specify<br>
+ bridge relays by adding &quot;Bridge&quot; lines to their config file. Users<br>
+ can learn about a bridge relay either manually through word of<br>
+ mouth, or by one of our rate-limited mechanisms for giving out<br>
+ bridge addresses without letting an attacker easily enumerate them<br>
+ all. See <a href="https://www.torproject.org/bridges" title="https://www.torproject.org/bridges">https://www.torproject.org/bridges</a> for details.<br>
+ - Bridge relays behave like clients with respect to time intervals<br>
+ for downloading new v3 consensus documents -- otherwise they<br>
+ stand out. Bridge users now wait until the end of the interval,<br>
+ so their bridge relay will be sure to have a new consensus document.</p>
+
+<p>o Implement bridge directory authorities:<br>
+ - Bridge authorities are like normal directory authorities, except<br>
+ they don&#39;t serve a list of known bridges. Therefore users that know<br>
+ a bridge&#39;s fingerprint can fetch a relay descriptor for that bridge,<br>
+ including fetching updates e.g. if the bridge changes IP address,<br>
+ yet an attacker can&#39;t just fetch a list of all the bridges.<br>
+ - Set up Tonga as the default bridge directory authority.<br>
+ - Bridge authorities refuse to serve bridge descriptors or other<br>
+ bridge information over unencrypted connections (that is, when<br>
+ responding to direct DirPort requests rather than begin_dir cells.)<br>
+ - Bridge directory authorities do reachability testing on the<br>
+ bridges they know. They provide router status summaries to the<br>
+ controller via &quot;getinfo ns/purpose/bridge&quot;, and also dump summaries<br>
+ to a file periodically, so we can keep internal stats about which<br>
+ bridges are functioning.<br>
+ - If bridge users set the UpdateBridgesFromAuthority config option,<br>
+ but the digest they ask for is a 404 on the bridge authority,<br>
+ they fall back to contacting the bridge directly.<br>
+ - Bridges always use begin_dir to publish their server descriptor to<br>
+ the bridge authority using an anonymous encrypted tunnel.<br>
+ - Early work on a &quot;bridge community&quot; design: if bridge authorities set<br>
+ the BridgePassword config option, they will serve a snapshot of<br>
+ known bridge routerstatuses from their DirPort to anybody who<br>
+ knows that password. Unset by default.<br>
+ - Tor now includes an IP-to-country GeoIP file, so bridge relays can<br>
+ report sanitized aggregated summaries in their extra-info documents<br>
+ privately to the bridge authority, listing which countries are<br>
+ able to reach them. We hope this mechanism will let us learn when<br>
+ certain countries start trying to block bridges.<br>
+ - Bridge authorities write bridge descriptors to disk, so they can<br>
+ reload them after a reboot. They can also export the descriptors<br>
+ to other programs, so we can distribute them to blocked users via<br>
+ the BridgeDB interface, e.g. via <a href="https://bridges.torproject.org/" title="https://bridges.torproject.org/">https://bridges.torproject.org/</a><br>
+ and bridges torproject.org.</p>
+
+<p>o Tor can be a DNS proxy:<br>
+ - The new client-side DNS proxy feature replaces the need for<br>
+ dns-proxy-tor: Just set &quot;DNSPort 9999&quot;, and Tor will now listen<br>
+ for DNS requests on port 9999, use the Tor network to resolve them<br>
+ anonymously, and send the reply back like a regular DNS server.<br>
+ The code still only implements a subset of DNS.<br>
+ - Add a new AutomapHostsOnResolve option: when it is enabled, any<br>
+ resolve request for hosts matching a given pattern causes Tor to<br>
+ generate an internal virtual address mapping for that host. This<br>
+ allows DNSPort to work sensibly with hidden service users. By<br>
+ default, .exit and .onion addresses are remapped; the list of<br>
+ patterns can be reconfigured with AutomapHostsSuffixes.<br>
+ - Add an &quot;-F&quot; option to tor-resolve to force a resolve for a .onion<br>
+ address. Thanks to the AutomapHostsOnResolve option, this is no<br>
+ longer a completely silly thing to do.</p>
+
+<p>o Major features (relay usability):<br>
+ - New config options RelayBandwidthRate and RelayBandwidthBurst:<br>
+ a separate set of token buckets for relayed traffic. Right now<br>
+ relayed traffic is defined as answers to directory requests, and<br>
+ OR connections that don&#39;t have any local circuits on them. See<br>
+ proposal 111 for details.<br>
+ - Create listener connections before we setuid to the configured<br>
+ User and Group. Now non-Windows users can choose port values<br>
+ under 1024, start Tor as root, and have Tor bind those ports<br>
+ before it changes to another UID. (Windows users could already<br>
+ pick these ports.)<br>
+ - Added a new ConstrainedSockets config option to set SO_SNDBUF and<br>
+ SO_RCVBUF on TCP sockets. Hopefully useful for Tor servers running<br>
+ on &quot;vserver&quot; accounts. Patch from coderman.</p>
+
+<p>o Major features (directory authorities):<br>
+ - Directory authorities track weighted fractional uptime and weighted<br>
+ mean-time-between failures for relays. WFU is suitable for deciding<br>
+ whether a node is &quot;usually up&quot;, while MTBF is suitable for deciding<br>
+ whether a node is &quot;likely to stay up.&quot; We need both, because<br>
+ &quot;usually up&quot; is a good requirement for guards, while &quot;likely to<br>
+ stay up&quot; is a good requirement for long-lived connections.<br>
+ - Directory authorities use a new formula for selecting which relays<br>
+ to advertise as Guards: they must be in the top 7/8 in terms of<br>
+ how long we have known about them, and above the median of those<br>
+ nodes in terms of weighted fractional uptime.<br>
+ - Directory authorities use a new formula for selecting which relays<br>
+ to advertise as Stable: when we have 4 or more days of data, use<br>
+ median measured MTBF rather than median declared uptime. Implements<br>
+ proposal 108.<br>
+ - Directory authorities accept and serve &quot;extra info&quot; documents for<br>
+ routers. Routers now publish their bandwidth-history lines in the<br>
+ extra-info docs rather than the main descriptor. This step saves<br>
+ 60% (!) on compressed router descriptor downloads. Servers upload<br>
+ extra-info docs to any authority that accepts them; directory<br>
+ authorities now allow multiple router descriptors and/or extra<br>
+ info documents to be uploaded in a single go. Authorities, and<br>
+ caches that have been configured to download extra-info documents,<br>
+ download them as needed. Implements proposal 104.<br>
+ - Authorities now list relays who have the same nickname as<br>
+ a different named relay, but list them with a new flag:<br>
+ &quot;Unnamed&quot;. Now we can make use of relays that happen to pick the<br>
+ same nickname as a server that registered two years ago and then<br>
+ disappeared. Implements proposal 122.<br>
+ - Store routers in a file called cached-descriptors instead of in<br>
+ cached-routers. Initialize cached-descriptors from cached-routers<br>
+ if the old format is around. The new format allows us to store<br>
+ annotations along with descriptors, to record the time we received<br>
+ each descriptor, its source, and its purpose: currently one of<br>
+ general, controller, or bridge.</p>
+
+<p>o Major features (other):<br>
+ - New config options WarnPlaintextPorts and RejectPlaintextPorts so<br>
+ Tor can warn and/or refuse connections to ports commonly used with<br>
+ vulnerable-plaintext protocols. Currently we warn on ports 23,<br>
+ 109, 110, and 143, but we don&#39;t reject any. Based on proposal 129<br>
+ by Kevin Bauer and Damon McCoy.<br>
+ - Integrate Karsten Loesing&#39;s Google Summer of Code project to publish<br>
+ hidden service descriptors on a set of redundant relays that are a<br>
+ function of the hidden service address. Now we don&#39;t have to rely<br>
+ on three central hidden service authorities for publishing and<br>
+ fetching every hidden service descriptor. Implements proposal 114.<br>
+ - Allow tunnelled directory connections to ask for an encrypted<br>
+ &quot;begin_dir&quot; connection or an anonymized &quot;uses a full Tor circuit&quot;<br>
+ connection independently. Now we can make anonymized begin_dir<br>
+ connections for (e.g.) more secure hidden service posting and<br>
+ fetching.</p>
+
+<p>o Major bugfixes (crashes and assert failures):<br>
+ - Stop imposing an arbitrary maximum on the number of file descriptors<br>
+ used for busy servers. Bug reported by Olaf Selke; patch from<br>
+ Sebastian Hahn.<br>
+ - Avoid possible failures when generating a directory with routers<br>
+ with over-long versions strings, or too many flags set.<br>
+ - Fix a rare assert error when we&#39;re closing one of our threads:<br>
+ use a mutex to protect the list of logs, so we never write to the<br>
+ list as it&#39;s being freed. Fixes the very rare bug 575, which is<br>
+ kind of the revenge of bug 222.<br>
+ - Avoid segfault in the case where a badly behaved v2 versioning<br>
+ directory sends a signed networkstatus with missing client-versions.<br>
+ - When we hit an EOF on a log (probably because we&#39;re shutting down),<br>
+ don&#39;t try to remove the log from the list: just mark it as<br>
+ unusable. (Bulletproofs against bug 222.)</p>
+
+<p>o Major bugfixes (code security fixes):<br>
+ - Detect size overflow in zlib code. Reported by Justin Ferguson and<br>
+ Dan Kaminsky.<br>
+ - Rewrite directory tokenization code to never run off the end of<br>
+ a string. Fixes bug 455. Patch from croup.<br>
+ - Be more paranoid about overwriting sensitive memory on free(),<br>
+ as a defensive programming tactic to ensure forward secrecy.</p>
+
+<p>o Major bugfixes (anonymity fixes):<br>
+ - Reject requests for reverse-dns lookup of names that are in<br>
+ a private address space. Patch from lodger.<br>
+ - Never report that we&#39;ve used more bandwidth than we&#39;re willing to<br>
+ relay: it leaks how much non-relay traffic we&#39;re using. Resolves<br>
+ bug 516.<br>
+ - As a client, do not believe any server that tells us that an<br>
+ address maps to an internal address space.<br>
+ - Warn about unsafe ControlPort configurations.<br>
+ - Directory authorities now call routers Fast if their bandwidth is<br>
+ at least 100KB/s, and consider their bandwidth adequate to be a<br>
+ Guard if it is at least 250KB/s, no matter the medians. This fix<br>
+ complements proposal 107.<br>
+ - Directory authorities now never mark more than 2 servers per IP as<br>
+ Valid and Running (or 5 on addresses shared by authorities).<br>
+ Implements proposal 109, by Kevin Bauer and Damon McCoy.<br>
+ - If we&#39;re a relay, avoid picking ourselves as an introduction point,<br>
+ a rendezvous point, or as the final hop for internal circuits. Bug<br>
+ reported by taranis and lodger.<br>
+ - Exit relays that are used as a client can now reach themselves<br>
+ using the .exit notation, rather than just launching an infinite<br>
+ pile of circuits. Fixes bug 641. Reported by Sebastian Hahn.<br>
+ - Fix a bug where, when we were choosing the &#39;end stream reason&#39; to<br>
+ put in our relay end cell that we send to the exit relay, Tor<br>
+ clients on Windows were sometimes sending the wrong &#39;reason&#39;. The<br>
+ anonymity problem is that exit relays may be able to guess whether<br>
+ the client is running Windows, thus helping partition the anonymity<br>
+ set. Down the road we should stop sending reasons to exit relays,<br>
+ or otherwise prevent future versions of this bug.<br>
+ - Only update guard status (usable / not usable) once we have<br>
+ enough directory information. This was causing us to discard all our<br>
+ guards on startup if we hadn&#39;t been running for a few weeks. Fixes<br>
+ bug 448.<br>
+ - When our directory information has been expired for a while, stop<br>
+ being willing to build circuits using it. Fixes bug 401.</p>
+
+<p>o Major bugfixes (peace of mind for relay operators)<br>
+ - Non-exit relays no longer answer &quot;resolve&quot; relay cells, so they<br>
+ can&#39;t be induced to do arbitrary DNS requests. (Tor clients already<br>
+ avoid using non-exit relays for resolve cells, but now servers<br>
+ enforce this too.) Fixes bug 619. Patch from lodger.<br>
+ - When we setconf ClientOnly to 1, close any current OR and Dir<br>
+ listeners. Reported by mwenge.</p>
+
+<p>o Major bugfixes (other):<br>
+ - If we only ever used Tor for hidden service lookups or posts, we<br>
+ would stop building circuits and start refusing connections after<br>
+ 24 hours, since we falsely believed that Tor was dormant. Reported<br>
+ by nwf.<br>
+ - Add a new __HashedControlSessionPassword option for controllers<br>
+ to use for one-off session password hashes that shouldn&#39;t get<br>
+ saved to disk by SAVECONF --- Vidalia users were accumulating a<br>
+ pile of HashedControlPassword lines in their torrc files, one for<br>
+ each time they had restarted Tor and then clicked Save. Make Tor<br>
+ automatically convert &quot;HashedControlPassword&quot; to this new option but<br>
+ only when it&#39;s given on the command line. Partial fix for bug 586.<br>
+ - Patch from &quot;Andrew S. Lists&quot; to catch when we contact a directory<br>
+ mirror at IP address X and he says we look like we&#39;re coming from<br>
+ IP address X. Otherwise this would screw up our address detection.<br>
+ - Reject uploaded descriptors and extrainfo documents if they&#39;re<br>
+ huge. Otherwise we&#39;ll cache them all over the network and it&#39;ll<br>
+ clog everything up. Suggested by Aljosha Judmayer.<br>
+ - When a hidden service was trying to establish an introduction point,<br>
+ and Tor *did* manage to reuse one of the preemptively built<br>
+ circuits, it didn&#39;t correctly remember which one it used,<br>
+ so it asked for another one soon after, until there were no<br>
+ more preemptive circuits, at which point it launched one from<br>
+ scratch. Bugfix on 0.0.9.x.</p>
+
+<p>o Rate limiting and load balancing improvements:<br>
+ - When we add data to a write buffer in response to the data on that<br>
+ write buffer getting low because of a flush, do not consider the<br>
+ newly added data as a candidate for immediate flushing, but rather<br>
+ make it wait until the next round of writing. Otherwise, we flush<br>
+ and refill recursively, and a single greedy TLS connection can<br>
+ eat all of our bandwidth.<br>
+ - When counting the number of bytes written on a TLS connection,<br>
+ look at the BIO actually used for writing to the network, not<br>
+ at the BIO used (sometimes) to buffer data for the network.<br>
+ Looking at different BIOs could result in write counts on the<br>
+ order of ULONG_MAX. Fixes bug 614.<br>
+ - If we change our MaxAdvertisedBandwidth and then reload torrc,<br>
+ Tor won&#39;t realize it should publish a new relay descriptor. Fixes<br>
+ bug 688, reported by mfr.<br>
+ - Avoid using too little bandwidth when our clock skips a few seconds.<br>
+ - Choose which bridge to use proportional to its advertised bandwidth,<br>
+ rather than uniformly at random. This should speed up Tor for<br>
+ bridge users. Also do this for people who set StrictEntryNodes.</p>
+
+<p>o Bootstrapping faster and building circuits more intelligently:<br>
+ - Fix bug 660 that was preventing us from knowing that we should<br>
+ preemptively build circuits to handle expected directory requests.<br>
+ - When we&#39;re checking if we have enough dir info for each relay<br>
+ to begin establishing circuits, make sure that we actually have<br>
+ the descriptor listed in the consensus, not just any descriptor.<br>
+ - Correctly notify one-hop connections when a circuit build has<br>
+ failed. Possible fix for bug 669. Found by lodger.<br>
+ - Clients now hold circuitless TLS connections open for 1.5 times<br>
+ MaxCircuitDirtiness (15 minutes), since it is likely that they&#39;ll<br>
+ rebuild a new circuit over them within that timeframe. Previously,<br>
+ they held them open only for KeepalivePeriod (5 minutes).</p>
+
+<p>o Performance improvements (memory):<br>
+ - Add OpenBSD malloc code from &quot;phk&quot; as an optional malloc<br>
+ replacement on Linux: some glibc libraries do very poorly with<br>
+ Tor&#39;s memory allocation patterns. Pass --enable-openbsd-malloc to<br>
+ ./configure to get the replacement malloc code.<br>
+ - Switch our old ring buffer implementation for one more like that<br>
+ used by free Unix kernels. The wasted space in a buffer with 1mb<br>
+ of data will now be more like 8k than 1mb. The new implementation<br>
+ also avoids realloc();realloc(); patterns that can contribute to<br>
+ memory fragmentation.<br>
+ - Change the way that Tor buffers data that it is waiting to write.<br>
+ Instead of queueing data cells in an enormous ring buffer for each<br>
+ client-&gt;OR or OR-&gt;OR connection, we now queue cells on a separate<br>
+ queue for each circuit. This lets us use less slack memory, and<br>
+ will eventually let us be smarter about prioritizing different kinds<br>
+ of traffic.<br>
+ - Reference-count and share copies of address policy entries; only 5%<br>
+ of them were actually distinct.<br>
+ - Tune parameters for cell pool allocation to minimize amount of<br>
+ RAM overhead used.<br>
+ - Keep unused 4k and 16k buffers on free lists, rather than wasting 8k<br>
+ for every single inactive connection_t. Free items from the<br>
+ 4k/16k-buffer free lists when they haven&#39;t been used for a while.<br>
+ - Make memory debugging information describe more about history<br>
+ of cell allocation, so we can help reduce our memory use.<br>
+ - Be even more aggressive about releasing RAM from small<br>
+ empty buffers. Thanks to our free-list code, this shouldn&#39;t be too<br>
+ performance-intensive.<br>
+ - Log malloc statistics from mallinfo() on platforms where it exists.<br>
+ - Use memory pools to allocate cells with better speed and memory<br>
+ efficiency, especially on platforms where malloc() is inefficient.<br>
+ - Add a --with-tcmalloc option to the configure script to link<br>
+ against tcmalloc (if present). Does not yet search for non-system<br>
+ include paths.</p>
+
+<p>o Performance improvements (socket management):<br>
+ - Count the number of open sockets separately from the number of<br>
+ active connection_t objects. This will let us avoid underusing<br>
+ our allocated connection limit.<br>
+ - We no longer use socket pairs to link an edge connection to an<br>
+ anonymous directory connection or a DirPort test connection.<br>
+ Instead, we track the link internally and transfer the data<br>
+ in-process. This saves two sockets per &quot;linked&quot; connection (at the<br>
+ client and at the server), and avoids the nasty Windows socketpair()<br>
+ workaround.<br>
+ - We were leaking a file descriptor if Tor started with a zero-length<br>
+ cached-descriptors file. Patch by &quot;freddy77&quot;.</p>
+
+<p>o Performance improvements (CPU use):<br>
+ - Never walk through the list of logs if we know that no log target<br>
+ is interested in a given message.<br>
+ - Call routerlist_remove_old_routers() much less often. This should<br>
+ speed startup, especially on directory caches.<br>
+ - Base64 decoding was actually showing up on our profile when parsing<br>
+ the initial descriptor file; switch to an in-process all-at-once<br>
+ implementation that&#39;s about 3.5x times faster than calling out to<br>
+ OpenSSL.<br>
+ - Use a slightly simpler string hashing algorithm (copying Python&#39;s<br>
+ instead of Java&#39;s) and optimize our digest hashing algorithm to take<br>
+ advantage of 64-bit platforms and to remove some possibly-costly<br>
+ voodoo.<br>
+ - When implementing AES counter mode, update only the portions of the<br>
+ counter buffer that need to change, and don&#39;t keep separate<br>
+ network-order and host-order counters on big-endian hosts (where<br>
+ they are the same).<br>
+ - Add an in-place version of aes_crypt() so that we can avoid doing a<br>
+ needless memcpy() call on each cell payload.<br>
+ - Use Critical Sections rather than Mutexes for synchronizing threads<br>
+ on win32; Mutexes are heavier-weight, and designed for synchronizing<br>
+ between processes.</p>
+
+<p>o Performance improvements (bandwidth use):<br>
+ - Don&#39;t try to launch new descriptor downloads quite so often when we<br>
+ already have enough directory information to build circuits.<br>
+ - Version 1 directories are no longer generated in full. Instead,<br>
+ authorities generate and serve &quot;stub&quot; v1 directories that list<br>
+ no servers. This will stop Tor versions 0.1.0.x and earlier from<br>
+ working, but (for security reasons) nobody should be running those<br>
+ versions anyway.<br>
+ - Avoid going directly to the directory authorities even if you&#39;re a<br>
+ relay, if you haven&#39;t found yourself reachable yet or if you&#39;ve<br>
+ decided not to advertise your dirport yet. Addresses bug 556.<br>
+ - If we&#39;ve gone 12 hours since our last bandwidth check, and we<br>
+ estimate we have less than 50KB bandwidth capacity but we could<br>
+ handle more, do another bandwidth test.<br>
+ - Support &quot;If-Modified-Since&quot; when answering HTTP requests for<br>
+ directories, running-routers documents, and v2 and v3 networkstatus<br>
+ documents. (There&#39;s no need to support it for router descriptors,<br>
+ since those are downloaded by descriptor digest.)<br>
+ - Stop fetching directory info so aggressively if your DirPort is<br>
+ on but your ORPort is off; stop fetching v2 dir info entirely.<br>
+ You can override these choices with the new FetchDirInfoEarly<br>
+ config option.</p>
+
+<p>o Changed config option behavior (features):<br>
+ - Configuration files now accept C-style strings as values. This<br>
+ helps encode characters not allowed in the current configuration<br>
+ file format, such as newline or #. Addresses bug 557.<br>
+ - Add hidden services and DNSPorts to the list of things that make<br>
+ Tor accept that it has running ports. Change starting Tor with no<br>
+ ports from a fatal error to a warning; we might change it back if<br>
+ this turns out to confuse anybody. Fixes bug 579.<br>
+ - Make PublishServerDescriptor default to 1, so the default doesn&#39;t<br>
+ have to change as we invent new directory protocol versions.<br>
+ - Allow people to say PreferTunnelledDirConns rather than<br>
+ PreferTunneledDirConns, for those alternate-spellers out there.<br>
+ - Raise the default BandwidthRate/BandwidthBurst to 5MB/10MB, to<br>
+ accommodate the growing number of servers that use the default<br>
+ and are reaching it.<br>
+ - Make it possible to enable HashedControlPassword and<br>
+ CookieAuthentication at the same time.<br>
+ - When a TrackHostExits-chosen exit fails too many times in a row,<br>
+ stop using it. Fixes bug 437.</p>
+
+<p>o Changed config option behavior (bugfixes):<br>
+ - Do not read the configuration file when we&#39;ve only been told to<br>
+ generate a password hash. Fixes bug 643. Bugfix on 0.0.9pre5. Fix<br>
+ based on patch from Sebastian Hahn.<br>
+ - Actually validate the options passed to AuthDirReject,<br>
+ AuthDirInvalid, AuthDirBadDir, and AuthDirBadExit.<br>
+ - Make &quot;ClientOnly 1&quot; config option disable directory ports too.<br>
+ - Don&#39;t stop fetching descriptors when FetchUselessDescriptors is<br>
+ set, even if we stop asking for circuits. Bug reported by tup<br>
+ and ioerror.<br>
+ - Servers used to decline to publish their DirPort if their<br>
+ BandwidthRate or MaxAdvertisedBandwidth were below a threshold. Now<br>
+ they look only at BandwidthRate and RelayBandwidthRate.<br>
+ - Treat &quot;2gb&quot; when given in torrc for a bandwidth as meaning 2gb,<br>
+ minus 1 byte: the actual maximum declared bandwidth.<br>
+ - Make &quot;TrackHostExits .&quot; actually work. Bugfix on 0.1.0.x.<br>
+ - Make the NodeFamilies config option work. (Reported by<br>
+ lodger -- it has never actually worked, even though we added it<br>
+ in Oct 2004.)<br>
+ - If Tor is invoked from something that isn&#39;t a shell (e.g. Vidalia),<br>
+ now we expand &quot;-f ~/.tor/torrc&quot; correctly. Suggested by Matt Edman.</p>
+
+<p>o New config options:<br>
+ - New configuration options AuthDirMaxServersPerAddr and<br>
+ AuthDirMaxServersperAuthAddr to override default maximum number<br>
+ of servers allowed on a single IP address. This is important for<br>
+ running a test network on a single host.<br>
+ - Three new config options (AlternateDirAuthority,<br>
+ AlternateBridgeAuthority, and AlternateHSAuthority) that let the<br>
+ user selectively replace the default directory authorities by type,<br>
+ rather than the all-or-nothing replacement that DirServer offers.<br>
+ - New config options AuthDirBadDir and AuthDirListBadDirs for<br>
+ authorities to mark certain relays as &quot;bad directories&quot; in the<br>
+ networkstatus documents. Also supports the &quot;!baddir&quot; directive in<br>
+ the approved-routers file.<br>
+ - New config option V2AuthoritativeDirectory that all v2 directory<br>
+ authorities must set. This lets v3 authorities choose not to serve<br>
+ v2 directory information.</p>
+
+<p>o Minor features (other):<br>
+ - When we&#39;re not serving v2 directory information, there is no reason<br>
+ to actually keep any around. Remove the obsolete files and directory<br>
+ on startup if they are very old and we aren&#39;t going to serve them.<br>
+ - When we negotiate a v2 link-layer connection (not yet implemented),<br>
+ accept RELAY_EARLY cells and turn them into RELAY cells if we&#39;ve<br>
+ negotiated a v1 connection for their next step. Initial steps for<br>
+ proposal 110.<br>
+ - When we have no consensus, check FallbackNetworkstatusFile (defaults<br>
+ to $PREFIX/share/tor/fallback-consensus) for a consensus. This way<br>
+ we can start out knowing some directory caches. We don&#39;t ship with<br>
+ a fallback consensus by default though, because it was making<br>
+ bootstrapping take too long while we tried many down relays.<br>
+ - Authorities send back an X-Descriptor-Not-New header in response to<br>
+ an accepted-but-discarded descriptor upload. Partially implements<br>
+ fix for bug 535.<br>
+ - If we find a cached-routers file that&#39;s been sitting around for more<br>
+ than 28 days unmodified, then most likely it&#39;s a leftover from<br>
+ when we upgraded to 0.2.0.8-alpha. Remove it. It has no good<br>
+ routers anyway.<br>
+ - When we (as a cache) download a descriptor because it was listed<br>
+ in a consensus, remember when the consensus was supposed to expire,<br>
+ and don&#39;t expire the descriptor until then.<br>
+ - Optionally (if built with -DEXPORTMALLINFO) export the output<br>
+ of mallinfo via http, as tor/mallinfo.txt. Only accessible<br>
+ from localhost.<br>
+ - Tag every guard node in our state file with the version that<br>
+ we believe added it, or with our own version if we add it. This way,<br>
+ if a user temporarily runs an old version of Tor and then switches<br>
+ back to a new one, she doesn&#39;t automatically lose her guards.<br>
+ - When somebody requests a list of statuses or servers, and we have<br>
+ none of those, return a 404 rather than an empty 200.<br>
+ - Merge in some (as-yet-unused) IPv6 address manipulation code. (Patch<br>
+ from croup.)<br>
+ - Add an HSAuthorityRecordStats option that hidden service authorities<br>
+ can use to track statistics of overall hidden service usage without<br>
+ logging information that would be as useful to an attacker.<br>
+ - Allow multiple HiddenServicePort directives with the same virtual<br>
+ port; when they occur, the user is sent round-robin to one<br>
+ of the target ports chosen at random. Partially fixes bug 393 by<br>
+ adding limited ad-hoc round-robining.<br>
+ - Revamp file-writing logic so we don&#39;t need to have the entire<br>
+ contents of a file in memory at once before we write to disk. Tor,<br>
+ meet stdio.</p>
+
+<p>o Minor bugfixes (other):<br>
+ - Alter the code that tries to recover from unhandled write<br>
+ errors, to not try to flush onto a socket that&#39;s given us<br>
+ unhandled errors.<br>
+ - Directory mirrors no longer include a guess at the client&#39;s IP<br>
+ address if the connection appears to be coming from the same /24<br>
+ network; it was producing too many wrong guesses.<br>
+ - If we&#39;re trying to flush the last bytes on a connection (for<br>
+ example, when answering a directory request), reset the<br>
+ time-to-give-up timeout every time we manage to write something<br>
+ on the socket.<br>
+ - Reject router descriptors with out-of-range bandwidthcapacity or<br>
+ bandwidthburst values.<br>
+ - If we can&#39;t expand our list of entry guards (e.g. because we&#39;re<br>
+ using bridges or we have StrictEntryNodes set), don&#39;t mark relays<br>
+ down when they fail a directory request. Otherwise we&#39;re too quick<br>
+ to mark all our entry points down.<br>
+ - Authorities no longer send back &quot;400 you&#39;re unreachable please fix<br>
+ it&quot; errors to Tor servers that aren&#39;t online all the time. We&#39;re<br>
+ supposed to tolerate these servers now.<br>
+ - Let directory authorities startup even when they can&#39;t generate<br>
+ a descriptor immediately, e.g. because they don&#39;t know their<br>
+ address.<br>
+ - Correctly enforce that elements of directory objects do not appear<br>
+ more often than they are allowed to appear.<br>
+ - Stop allowing hibernating servers to be &quot;stable&quot; or &quot;fast&quot;.<br>
+ - On Windows, we were preventing other processes from reading<br>
+ cached-routers while Tor was running. (Reported by janbar)<br>
+ - Check return values from pthread_mutex functions.<br>
+ - When opening /dev/null in finish_daemonize(), do not pass the<br>
+ O_CREAT flag. Fortify was complaining, and correctly so. Fixes<br>
+ bug 742; fix from Michael Scherer. Bugfix on 0.0.2pre19.</p>
+
+<p>o Controller features:<br>
+ - The GETCONF command now escapes and quotes configuration values<br>
+ that don&#39;t otherwise fit into the torrc file.<br>
+ - The SETCONF command now handles quoted values correctly.<br>
+ - Add &quot;GETINFO/desc-annotations/id/≤OR digest&gt;&quot; so controllers can<br>
+ ask about source, timestamp of arrival, purpose, etc. We need<br>
+ something like this to help Vidalia not do GeoIP lookups on bridge<br>
+ addresses.<br>
+ - Allow multiple HashedControlPassword config lines, to support<br>
+ multiple controller passwords.<br>
+ - Accept LF instead of CRLF on controller, since some software has a<br>
+ hard time generating real Internet newlines.<br>
+ - Add GETINFO values for the server status events<br>
+ &quot;REACHABILITY_SUCCEEDED&quot; and &quot;GOOD_SERVER_DESCRIPTOR&quot;. Patch from<br>
+ Robert Hogan.<br>
+ - There is now an ugly, temporary &quot;desc/all-recent-extrainfo-hack&quot;<br>
+ GETINFO for Torstat to use until it can switch to using extrainfos.<br>
+ - New config option CookieAuthFile to choose a new location for the<br>
+ cookie authentication file, and config option<br>
+ CookieAuthFileGroupReadable to make it group-readable.<br>
+ - Add a SOURCE_ADDR field to STREAM NEW events so that controllers can<br>
+ match requests to applications. Patch from Robert Hogan.<br>
+ - Add a RESOLVE command to launch hostname lookups. Original patch<br>
+ from Robert Hogan.<br>
+ - Add GETINFO status/enough-dir-info to let controllers tell whether<br>
+ Tor has downloaded sufficient directory information. Patch from Tup.<br>
+ - You can now use the ControlSocket option to tell Tor to listen for<br>
+ controller connections on Unix domain sockets on systems that<br>
+ support them. Patch from Peter Palfrader.<br>
+ - New &quot;GETINFO address-mappings/*&quot; command to get address mappings<br>
+ with expiry information. &quot;addr-mappings/*&quot; is now deprecated.<br>
+ Patch from Tup.<br>
+ - Add a new config option __DisablePredictedCircuits designed for<br>
+ use by the controller, when we don&#39;t want Tor to build any circuits<br>
+ preemptively.<br>
+ - Let the controller specify HOP=%d as an argument to ATTACHSTREAM,<br>
+ so we can exit from the middle of the circuit.<br>
+ - Implement &quot;getinfo status/circuit-established&quot;.<br>
+ - Implement &quot;getinfo status/version/...&quot; so a controller can tell<br>
+ whether the current version is recommended, and whether any versions<br>
+ are good, and how many authorities agree. Patch from &quot;shibz&quot;.<br>
+ - Controllers should now specify cache=no or cache=yes when using<br>
+ the +POSTDESCRIPTOR command.<br>
+ - Add a &quot;PURPOSE=&quot; argument to &quot;STREAM NEW&quot; events, as suggested by<br>
+ Robert Hogan. Fixes the first part of bug 681.<br>
+ - When reporting clock skew, and we know that the clock is _at least<br>
+ as skewed_ as some value, but we don&#39;t know the actual value,<br>
+ report the value as a &quot;minimum skew.&quot;</p>
+
+<p>o Controller bugfixes:<br>
+ - Generate &quot;STATUS_SERVER&quot; events rather than misspelled<br>
+ &quot;STATUS_SEVER&quot; events. Caught by mwenge.<br>
+ - Reject controller commands over 1MB in length, so rogue<br>
+ processes can&#39;t run us out of memory.<br>
+ - Change the behavior of &quot;getinfo status/good-server-descriptor&quot;<br>
+ so it doesn&#39;t return failure when any authority disappears.<br>
+ - Send NAMESERVER_STATUS messages for a single failed nameserver<br>
+ correctly.<br>
+ - When the DANGEROUS_VERSION controller status event told us we&#39;re<br>
+ running an obsolete version, it used the string &quot;OLD&quot; to describe<br>
+ it. Yet the &quot;getinfo&quot; interface used the string &quot;OBSOLETE&quot;. Now use<br>
+ &quot;OBSOLETE&quot; in both cases.<br>
+ - Respond to INT and TERM SIGNAL commands before we execute the<br>
+ signal, in case the signal shuts us down. We had a patch in<br>
+ 0.1.2.1-alpha that tried to do this by queueing the response on<br>
+ the connection&#39;s buffer before shutting down, but that really<br>
+ isn&#39;t the same thing at all. Bug located by Matt Edman.<br>
+ - Provide DNS expiry times in GMT, not in local time. For backward<br>
+ compatibility, ADDRMAP events only provide GMT expiry in an extended<br>
+ field. &quot;GETINFO address-mappings&quot; always does the right thing.<br>
+ - Use CRLF line endings properly in NS events.<br>
+ - Make &#39;getinfo fingerprint&#39; return a 551 error if we&#39;re not a<br>
+ server, so we match what the control spec claims we do. Reported<br>
+ by daejees.<br>
+ - Fix a typo in an error message when extendcircuit fails that<br>
+ caused us to not follow the \r\n-based delimiter protocol. Reported<br>
+ by daejees.<br>
+ - When tunneling an encrypted directory connection, and its first<br>
+ circuit fails, do not leave it unattached and ask the controller<br>
+ to deal. Fixes the second part of bug 681.<br>
+ - Treat some 403 responses from directory servers as INFO rather than<br>
+ WARN-severity events.</p>
+
+<p>o Portability / building / compiling:<br>
+ - When building with --enable-gcc-warnings, check for whether Apple&#39;s<br>
+ warning &quot;-Wshorten-64-to-32&quot; is available.<br>
+ - Support compilation to target iPhone; patch from cjacker huang.<br>
+ To build for iPhone, pass the --enable-iphone option to configure.<br>
+ - Detect non-ASCII platforms (if any still exist) and refuse to<br>
+ build there: some of our code assumes that &#39;A&#39; is 65 and so on.<br>
+ - Clear up some MIPSPro compiler warnings.<br>
+ - Make autoconf search for libevent, openssl, and zlib consistently.<br>
+ - Update deprecated macros in configure.in.<br>
+ - When warning about missing headers, tell the user to let us<br>
+ know if the compile succeeds anyway, so we can downgrade the<br>
+ warning.<br>
+ - Include the current subversion revision as part of the version<br>
+ string: either fetch it directly if we&#39;re in an SVN checkout, do<br>
+ some magic to guess it if we&#39;re in an SVK checkout, or use<br>
+ the last-detected version if we&#39;re building from a .tar.gz.<br>
+ Use this version consistently in log messages.<br>
+ - Correctly report platform name on Windows 95 OSR2 and Windows 98 SE.<br>
+ - Read resolv.conf files correctly on platforms where read() returns<br>
+ partial results on small file reads.<br>
+ - Build without verbose warnings even on gcc 4.2 and 4.3.<br>
+ - On Windows, correctly detect errors when listing the contents of<br>
+ a directory. Fix from lodger.<br>
+ - Run &#39;make test&#39; as part of &#39;make dist&#39;, so we stop releasing so<br>
+ many development snapshots that fail their unit tests.<br>
+ - Add support to detect Libevent versions in the 1.4.x series<br>
+ on mingw.<br>
+ - Add command-line arguments to unit-test executable so that we can<br>
+ invoke any chosen test from the command line rather than having<br>
+ to run the whole test suite at once; and so that we can turn on<br>
+ logging for the unit tests.<br>
+ - Do not automatically run configure from autogen.sh. This<br>
+ non-standard behavior tended to annoy people who have built other<br>
+ programs.<br>
+ - Fix a macro/CPP interaction that was confusing some compilers:<br>
+ some GCCs don&#39;t like #if/#endif pairs inside macro arguments.<br>
+ Fixes bug 707.<br>
+ - Fix macro collision between OpenSSL 0.9.8h and Windows headers.<br>
+ Fixes bug 704; fix from Steven Murdoch.<br>
+ - Correctly detect transparent proxy support on Linux hosts that<br>
+ require in.h to be included before netfilter_ipv4.h. Patch<br>
+ from coderman.</p>
+
+<p>o Logging improvements:<br>
+ - When we haven&#39;t had any application requests lately, don&#39;t bother<br>
+ logging that we have expired a bunch of descriptors.<br>
+ - When attempting to open a logfile fails, tell us why.<br>
+ - Only log guard node status when guard node status has changed.<br>
+ - Downgrade the 3 most common &quot;INFO&quot; messages to &quot;DEBUG&quot;. This will<br>
+ make &quot;INFO&quot; 75% less verbose.<br>
+ - When SafeLogging is disabled, log addresses along with all TLS<br>
+ errors.<br>
+ - Report TLS &quot;zero return&quot; case as a &quot;clean close&quot; and &quot;IO error&quot;<br>
+ as a &quot;close&quot;. Stop calling closes &quot;unexpected closes&quot;: existing<br>
+ Tors don&#39;t use SSL_close(), so having a connection close without<br>
+ the TLS shutdown handshake is hardly unexpected.<br>
+ - When we receive a consensus from the future, warn about skew.<br>
+ - Make &quot;not enough dir info yet&quot; warnings describe *why* Tor feels<br>
+ it doesn&#39;t have enough directory info yet.<br>
+ - On the USR1 signal, when dmalloc is in use, log the top 10 memory<br>
+ consumers. (We already do this on HUP.)<br>
+ - Give more descriptive well-formedness errors for out-of-range<br>
+ hidden service descriptor/protocol versions.<br>
+ - Stop recommending that every server operator send mail to tor-ops.<br>
+ Resolves bug 597. Bugfix on 0.1.2.x.<br>
+ - Improve skew reporting: try to give the user a better log message<br>
+ about how skewed they are, and how much this matters.<br>
+ - New --quiet command-line option to suppress the default console log.<br>
+ Good in combination with --hash-password.<br>
+ - Don&#39;t complain that &quot;your server has not managed to confirm that its<br>
+ ports are reachable&quot; if we haven&#39;t been able to build any circuits<br>
+ yet.<br>
+ - Detect the reason for failing to mmap a descriptor file we just<br>
+ wrote, and give a more useful log message. Fixes bug 533.<br>
+ - Always prepend &quot;Bug: &quot; to any log message about a bug.<br>
+ - When dumping memory usage, list bytes used in buffer memory<br>
+ free-lists.<br>
+ - When running with dmalloc, dump more stats on hup and on exit.<br>
+ - Put a platform string (e.g. &quot;Linux i686&quot;) in the startup log<br>
+ message, so when people paste just their logs, we know if it&#39;s<br>
+ OpenBSD or Windows or what.<br>
+ - When logging memory usage, break down memory used in buffers by<br>
+ buffer type.<br>
+ - When we are reporting the DirServer line we just parsed, we were<br>
+ logging the second stanza of the key fingerprint, not the first.<br>
+ - Even though Windows is equally happy with / and \ as path separators,<br>
+ try to use \ consistently on Windows and / consistently on Unix: it<br>
+ makes the log messages nicer.<br>
+ - On OSX, stop warning the user that kqueue support in libevent is<br>
+ &quot;experimental&quot;, since it seems to have worked fine for ages.</p>
+
+<p>o Contributed scripts and tools:<br>
+ - Update linux-tor-prio.sh script to allow QoS based on the uid of<br>
+ the Tor process. Patch from Marco Bonetti with tweaks from Mike<br>
+ Perry.<br>
+ - Include the &quot;tor-ctrl.sh&quot; bash script by Stefan Behte to provide<br>
+ Unix users an easy way to script their Tor process (e.g. by<br>
+ adjusting bandwidth based on the time of the day).<br>
+ - In the exitlist script, only consider the most recently published<br>
+ server descriptor for each server. Also, when the user requests<br>
+ a list of servers that _reject_ connections to a given address,<br>
+ explicitly exclude the IPs that also have servers that accept<br>
+ connections to that address. Resolves bug 405.<br>
+ - Include a new contrib/tor-exit-notice.html file that exit relay<br>
+ operators can put on their website to help reduce abuse queries.</p>
+
+<p>o Newly deprecated features:<br>
+ - The status/version/num-versioning and status/version/num-concurring<br>
+ GETINFO controller options are no longer useful in the v3 directory<br>
+ protocol: treat them as deprecated, and warn when they&#39;re used.<br>
+ - The RedirectExits config option is now deprecated.</p>
+
+<p>o Removed features:<br>
+ - Drop the old code to choke directory connections when the<br>
+ corresponding OR connections got full: thanks to the cell queue<br>
+ feature, OR conns don&#39;t get full any more.<br>
+ - Remove the old &quot;dns worker&quot; server DNS code: it hasn&#39;t been default<br>
+ since 0.1.2.2-alpha, and all the servers are using the new<br>
+ eventdns code.<br>
+ - Remove the code to generate the oldest (v1) directory format.<br>
+ - Remove support for the old bw_accounting file: we&#39;ve been storing<br>
+ bandwidth accounting information in the state file since<br>
+ 0.1.2.5-alpha. This may result in bandwidth accounting errors<br>
+ if you try to upgrade from 0.1.1.x or earlier, or if you try to<br>
+ downgrade to 0.1.1.x or earlier.<br>
+ - Drop support for OpenSSL version 0.9.6. Just about nobody was using<br>
+ it, it had no AES, and it hasn&#39;t seen any security patches since<br>
+ 2004.<br>
+ - Stop overloading the circuit_t.onionskin field for both &quot;onionskin<br>
+ from a CREATE cell that we are waiting for a cpuworker to be<br>
+ assigned&quot; and &quot;onionskin from an EXTEND cell that we are going to<br>
+ send to an OR as soon as we are connected&quot;. Might help with bug 600.<br>
+ - Remove the tor_strpartition() function: its logic was confused,<br>
+ and it was only used for one thing that could be implemented far<br>
+ more easily.<br>
+ - Remove the contrib scripts ExerciseServer.py, PathDemo.py,<br>
+ and TorControl.py, as they use the old v0 controller protocol,<br>
+ and are obsoleted by TorFlow anyway.<br>
+ - Drop support for v1 rendezvous descriptors, since we never used<br>
+ them anyway, and the code has probably rotted by now. Based on<br>
+ patch from Karsten Loesing.<br>
+ - Stop allowing address masks that do not correspond to bit prefixes.<br>
+ We have warned about these for a really long time; now it&#39;s time<br>
+ to reject them. (Patch from croup.)<br>
+ - Remove an optimization in the AES counter-mode code that assumed<br>
+ that the counter never exceeded 2^68. When the counter can be set<br>
+ arbitrarily as an IV (as it is by Karsten&#39;s new hidden services<br>
+ code), this assumption no longer holds.<br>
+ - Disable the SETROUTERPURPOSE controller command: it is now<br>
+ obsolete.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

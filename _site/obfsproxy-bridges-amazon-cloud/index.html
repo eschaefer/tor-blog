@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Obfsproxy Bridges in the Amazon Cloud</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Obfsproxy Bridges in the Amazon Cloud</h2>
+<p class="meta">26 Sep 2012</p>
+
+<div class="post">
+<p><a href="https://cloud.torproject.org/">The Tor Cloud</a> images for all the seven regions have been updated to fix a bug found in the unattended-upgrades configuration. The normal bridge images have also been updated to include <a href="https://www.torproject.org/projects/obfsproxy">obfsproxy</a>, which attempts to help users circumvent censorship by transforming the Tor traffic between the client and the bridge.</p>
+
+<p>If you are already running a Tor Cloud bridge, you will need to either manually update your image, or set up a new Tor Cloud bridge and terminate the old one. If you decide not to take action, your image will fail to upgrade Tor correctly and will not be running as a bridge.</p>
+
+<p>If you just want to fix the bug in the unattended-upgrades configuration, do the following; log on with SSH and edit <em>/etc/apt/apt.conf.d/50unattended-upgrades</em> to say <em>precise</em> instead of <em>lucid</em>.</p>
+
+</div>
+<p>- Runa</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

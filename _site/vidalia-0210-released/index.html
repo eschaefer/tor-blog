@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Vidalia 0.2.10 Released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Vidalia 0.2.10 Released</h2>
+<p class="meta">28 Sep 2010</p>
+
+<div class="post">
+<p>The latest version of the graphical controller for tor, Vidalia, is now available. The main change is the use of Tor&#39;s native geoip database to map relay IP addresses to country. This removes the remote geoip resolution that occurred over Tor in previous versions of Vidalia.</p>
+
+<p>Vidalia can be found at <a href="https://www.torproject.org/vidalia/" title="https://www.torproject.org/vidalia/">https://www.torproject.org/vidalia/</a>.</p>
+
+<p>The full changelog is:</p>
+
+<ul>
+<li>Drop remote GeoIP lookups. Instead, the default behavior now is to use the country-level GeoIP database that ships with Tor to map an IP address to a country code, and then map the country code to latitude and longitude with a separate database built into Vidalia.</li>
+<li>Add a -DUSE_GEOIP build option to enable building with MaxMind&#39;s GeoIP C library for using a local city-level or country-level database instead of Tor&#39;s database. See README.geoip for details on use.</li>
+<li>Only update a stream&#39;s displayed target address in the network map if no hostname was given in the stream&#39;s NEW status event. Fix suggested by Robert Hogan. (Ticket #608)</li>
+<li>Update the menubar icon at the same time as the dock icon on OS X. Previously, we had a blank icon in the menubar. (Ticket #610)</li>
+<li>Updated several translations.</li>
+</ul>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

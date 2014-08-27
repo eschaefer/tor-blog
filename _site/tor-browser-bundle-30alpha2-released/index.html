@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tor Browser Bundle 3.0alpha2 Released</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Tor Browser Bundle 3.0alpha2 Released</h2>
+<p class="meta">01 Jul 2013</p>
+
+<div class="post">
+<p>The second alpha release in the <a href="https://blog.torproject.org/category/tags/tbb-30">3.0 series</a> of the Tor Browser Bundle is now available from the <a href="https://archive.torproject.org/tor-package-archive/torbrowser/3.0a2">Tor Package Archive</a>.</p>
+
+<p>In addition to providing important security updates to Firefox and Tor, these release binaries should now be exactly reproducible from the source code by anyone. They have been independently reproduced by at least 3 public builders using independent machines, and the Tor Package Archive contains all three builder&#39;s GPG signatures of the sha256sums.txt file in the package directory.</p>
+
+<p>To build your own identical copies of these bundles from source code, check out <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/">the official repository</a> and <a href="http://stackoverflow.com/questions/10303665/how-to-clone-a-specific-version-of-a-git-repository/10304054#10304054">use</a> git tag <strong>tbb-3.0alpha2-release</strong> (commit c0242c24bed086cc9c545c7bf2d699948792c1e3). <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build">These instructions</a> should explain things from there. If you notice any differences from the official bundles, I would love to hear about it!</p>
+
+<p>I will be writing a two part blog series explaining why this is important, and describing the technical details of how it was accomplished in the coming week or two. For now, <a href="https://mailman.stanford.edu/pipermail/liberationtech/2013-June/009257.html">a brief explanation</a> can be found on the <a href="https://mailman.stanford.edu/mailman/listinfo/liberationtech">Liberation Technologies</a> mailing list archive.</p>
+
+<h1>ChangeLog</h1>
+
+<ul>
+<li><p><strong>All Platforms:</strong></p>
+
+<ul>
+<li>Update Firefox to 17.0.7esr</li>
+<li>Update Tor to 0.2.4.14-alpha</li>
+<li>Include Tor&#39;s GeoIP file</li>
+<li>This should fix custom torrc issues with country-based node restrictions</li>
+<li>Fix several build determinism issues</li>
+<li>Include ChangeLog in bundles</li>
+</ul></li>
+<li><p><strong>Windows:</strong></p>
+
+<ul>
+<li>Fix many crash issues by disabling Direct2D support for now.</li>
+</ul></li>
+<li><p><strong>Mac:</strong></p>
+
+<ul>
+<li>Bug 8987: Disable TBB&#39;s &#39;Saved Application State&#39; disk records on OSX 10.7+</li>
+</ul></li>
+<li><p><strong>Linux:</strong></p>
+
+<ul>
+<li>Use Ubuntu&#39;s &#39;hardening-wrapper&#39; to build our Linux binaries</li>
+</ul></li>
+</ul>
+
+<p>The <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob_plain/HEAD:/Bundle-Data/Docs/ChangeLog.txt">complete 3.0 ChangeLog now lives here</a>.</p>
+
+<h1>Major Known Issues</h1>
+
+<ol>
+<li>Windows XP users may still experience crashes due to <a href="https://trac.torproject.org/projects/tor/ticket/9084">Bug 9084</a>.</li>
+<li>Transifex issues are still causing problems with missing translation text in some bundles</li>
+</ol>
+
+</div>
+<p>- mikeperry</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

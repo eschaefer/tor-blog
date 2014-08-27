@@ -1,0 +1,25 @@
+---
+layout: post
+title: "Arm Release 1.4.4"
+permalink: arm-release-144
+date: 2011-09-26
+author: atagar
+category: blog
+tags: ["arm"]
+---
+
+Hi all. A new release of [arm](http://www.atagar.com/arm/) is now available. Besides the normal batch of [bug fixes and minor features](http://www.atagar.com/arm/releaseNotes.php#1.4.4) this includes an [interactive interpretor for raw control port access](http://www.atagar.com/arm/images/screenshot_interpretor_full.png).
+
+This is intended to be a tool for developers, highly knowledgeable operators, and anyone that would like to learn about Tor's control protocol. It provides usability improvements like tab completion and history scroll-back, along with IRC style interpretor commands...
+
+- **/help** - provides usage information for all of the tor/interpretor commands and tor's configuration options
+- **/info** - queries relay information via fingerprint, nickname, or IP address
+- **/find** - searches the backlog for the given regex
+- **/events** - displays any events that we've listened for
+- **/write** - dumps the interpretor backlog to a file
+
+This can both be used via a new page in the curses interface and as  
+ [a standalone prompt](http://www.atagar.com/arm/images/screenshot_interpretorPrompt.png) by running "arm --prompt".
+
+Hopefully I'm not the only person that finds this to be useful! -Damian
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Some notes on progress with IOCP and Libevent</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Some notes on progress with IOCP and Libevent</h2>
+<p class="meta">01 Mar 2009</p>
+
+<div class="post">
+<p>Hi! I recently wrote up a status report for the progress we&#39;re making on hacking Libevent, and I thought I&#39;d post it here too.</p>
+
+<p>BACKGROUND</p>
+
+<p>Tor currently uses Libevent for its high-performance networking calls. Libevent is a software library originally written by Niels Provos (then of UMichigan, now of Google), and now co-developed by Niels Provos and the Tor Project&#39;s Nick Mathewson. Its purpose is to provide consistent fast interfaces to various operating systems&#39; mutually incompatible fast networking facilities. Libevent gives applications two basic interfaces to these networking layers: a low-level interface where the application is notified when an operation (like a network read or write) is ready to begin, and a higher-level interface where Libevent itself manages network operations and the application is notified when the network operations are completed.</p>
+
+<p>Existing versions of Libevent have good performance everywhere but on Windows. This is because, while all other remotely common server operating systems provide a fast networking facility suitable for Libevent&#39;s low-level interface, Windows&#39;s fast (&quot;IOCP&quot;) networking calls are only suitable for building a compatible version of Libevent&#39;s high-level interface. Additionally, Libevent has not even used these fast Windows calls for its high-level interface, because of certain deficiencies in Libevent&#39;s existing implementation (such as lack of full Windows compatibility in all its submodules, lack of thread-safe data structures, and inefficient data structures).</p>
+
+<p>For Windows, using IOCP is not just a performance requirement, but a stability one. Many non-server versions of Windows require all network IO buffers to use &quot;non-paged RAM&quot; (memory that doesn&#39;t get swapped to disk), and limit the total amount of RAM that can be used for non-paged storage to an uncomfortably low amount.</p>
+
+<p>So to make Libevent fast and stable on Windows, the tasks are:</p>
+
+<p>1) Make Libevent&#39;s overall design flexible enough to support an IOCP-based backend for its high-level interface.</p>
+
+<p>2) Write the IOCP-based backend for Windows.</p>
+
+<p>Additionally, Tor today only uses Libevent&#39;s low-level interface because of missing features in the high-level interface, such as support for SSL-based connections and rate-limiting. Also, while the speed-performance of the high-level interface has been fine, it has used unacceptably large amounts of RAM in existing versions of Libevent. So to make Tor take advantage of Libevent&#39;s high-level networking capabilities, the tasks are:</p>
+
+<p>3) Revise Libevent&#39;s high-level interface to support the features Tor needs.</p>
+
+<p>4) Revise Tor&#39;s own networking layer to use Libevent&#39;s high-level interface.</p>
+
+<p>Finally, Windows&#39;s IOCP performs best when it is run in an aggressively multi-threaded environment, where any one of a pool of worker threads might be notified about any operation&#39;s completion on any socket. Moving to a model of this kind is out-of-scope for this report, though Libevent and Tor both plan to move in this direction in the longer term.</p>
+
+<p>STATUS</p>
+
+<p>Items 1 and 3 are mostly done: Nick has re-written large portions of Libevent&#39;s underlying high-level (&quot;bufferevents&quot;) interface in order to support multiple backends; to run safely in multiple threads; to allow for arbitrary data filters (including SSL and compression) and connection restraints (including rate limiting); and to provide acceptable RAM usage by use of improved data structures. These improvements and others are slated for inclusion in Libevent 2.0, which will represent the largest revision in Libevent since its beginning.</p>
+
+<p>Item 2 is begun and underway. We expect to have the first version of a Windows IOCP-based implementation of the high-level Libevent interfaces completed by the end of March; perhaps sooner. After this point, we&#39;ll need to spend a while load-testing the implementation to ensure it behaves correctly and quickly. Additionally, our conference outreach has found us a volunteer domain expert in this area who has offered to help us out with high-load testing.</p>
+
+<p>Item 4 will start once the Libevent interfaces have been tested enough that we are relatively confident of their stability. We will have two options at this point. First, we could make future versions of Tor require Libevent 2.0 everywhere, and replace Tor&#39;s buffered network IO code with calls to Libevent&#39;s. Alternatively, we could build Tor to use the low-level Libevent interface if built against an older Libevent, but use the high-level interface if built against a more recent one. The former approach would be easier to build, but might create unacceptable dependencies for some package bundlers depending on when the various free operating systems begin to ship Libevent 2. We will work with them to identify which approach is best for our users.</p>
+
+</div>
+<p>- nickm</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

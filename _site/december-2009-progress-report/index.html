@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>December 2009 Progress Report</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>December 2009 Progress Report</h2>
+<p class="meta">13 Feb 2010</p>
+
+<div class="post">
+<p><strong>New releases, new hires, new funding</strong><br>
+Erinn Clark joins Tor to develop, enhance, and upgrade our package build system. Her initial goals are to configure, maintain, and automate builds of tor and vidalia for Windows, OS X, ubuntu, debian, centos, fedora, and opensuse systems. Secondary goals are to develop a builtbot system that includes as many disparate operating systems as possible, including Apple OS X and Microsoft<br>
+Windows flavors.<br>
+ On December 2, 2009, we released torbutton 1.2.3. This is the first release that addresses the<br>
+Firefox 3.5.x codebase. It contains the following changes:</p>
+
+<ul>
+<li>bugfix: bug 950: Preserve useragent and download settings across toggle</li>
+<li>bugfix: bug 1014: Fix XML Parsing Error on XHTML sites in Tor mode</li>
+<li>bugfix: bug 1041: Preserve tab history in FF3.5</li>
+<li>bugfix: bug 1047: Fix spurious user agent change notice</li>
+<li>bugfix: bug 1053: Partial fix for ’TypeError: browser is undefined’ error</li>
+<li>bugfix: bug 1084: Preserve HTTP accept language for Non-Tor usage</li>
+<li>bugfix: bug 1085: Fix test settings issues with dead privoxy</li>
+<li>bugfix: bug 1088: Clean up some namespace issues in the main chrome window</li>
+<li>bugfix: bug 1091: Fix a lockup when ’Ask Every Time’ cookie pref is set</li>
+<li>bugfix: bug 1093: Fix cert acceptance dialogs in Firefox 3.5</li>
+<li>bugfix: bug 1146: Fixes for properly handling tab restore in FF3.5</li>
+<li>bugfix: bug 1152: Close tabs on toggle prevents toggling in FF3.5”</li>
+<li>bugfix: bug 1154: Clarify ”Last Tor test failed” message</li>
+<li>misc: Disable geolocation in FF3.5 during Tor mode</li>
+<li>misc: Disable DNS prefetch in FF3.5 in Tor mode and for Tor-loaded tabs</li>
+<li>misc: Disable offline app cache during Tor mode</li>
+<li>misc: Disable specific site zoom settings during Tor mode</li>
+<li>new: Transfer Google cookies between country-code domains. This should make it such that captchas only need to be solved once per Tor session, as opposed to for each country.</li>
+</ul>
+
+<p>On December 16, 2009, we released Torbutton 1.2.4. This fixes a number of bugs found after two weeks of live testing by users. It contains the following changes:</p>
+
+<ul>
+<li>bugfix: bug 1169: Fix blank popup conflict with Google Toolbar</li>
+<li>bugfix: bug 1171: Properly store and set network.dns.disablePrefetch</li>
+<li>bugfix: bug 1165: Fix an exception on toggle in FF3.6</li>
+<li>bugfix: bug 1163: Fix history loss in FF3.6</li>
+<li>bugfix: Fix a typo error during logging</li>
+<li>bugfix: Properly handle session restore in FF3.6</li>
+<li>misc: Kill a warning message about missing properties in window-mapper.js</li>
+<li>new: Add a new pref to disable Livemark updates during Tor usage (FF3.5+)</li>
+</ul>
+
+<p>On December 21, 2009, we released an update to the -stable Tor branch, Tor 0.2.1.21. It fixes compatibility with newer OpenSSL libraries that work around the renegotiation bug. The full changelog is:<br>
+ Tor 0.2.1.21 fixes an incompatibility with the most recent OpenSSL library. If you use Tor on Linux / Unix and you’re getting SSL renegotiation errors, upgrading should help. We also recommend an upgrade if you’re an exit relay.<br>
+<strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Work around a security feature in OpenSSL 0.9.8l that prevents our handshake from working unless we explicitly tell OpenSSL that we are using SSL renegotiation safely. We are, of course, but OpenSSL 0.9.8l won’t work unless we say we are.</li>
+<li>Avoid crashing if the client is trying to upload many bytes and the circuit gets torn down at the same time, or if the flip side happens on the exit relay. Bugfix on 0.2.0.1-alpha; fixes bug 1150.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Do not refuse to learn about authority certs and v2 networkstatus documents that are older than the latest consensus. This bug might have degraded client bootstrapping. Bugfix on 0.2.0.10-alpha. Spotted and fixed by xmux.</li>
+<li>Fix a couple of very-hard-to-trigger memory leaks, and one hard-to- trigger platform-specific option misparsing case found by Coverity Scan.</li>
+<li>Fix a compilation warning on Fedora 12 by removing an impossible-to- trigger assert. Fixes bug 1173.</li>
+</ul>
+
+<p>On December 31, 2009, we released Tor Browser Bundle 1.3.0. The major change was the upgrade of Firefox to the 3.5 branch. The full changelog is:</p>
+
+<ul>
+<li>upgrade Firefox to 3.5.6</li>
+<li>update Pidgin to 2.6.4</li>
+<li>update Torbutton to 1.2.4</li>
+<li>upgrade Tor to 0.2.1.21</li>
+</ul>
+
+<p><strong>Design, develop, and implement enhancements that make<br>
+Tor a better tool for users in censored countries.</strong><br>
+Updated the get-tor email autoresponder to better handle translations into non-English languages. Also updated to better handle split downloads of torbrowser bundle and mac os x vidalia bundles.<br>
+Mike finished his six week analysis of the Firefox 3.5 code base for privacy and anonymity leaks. The notes from the audit are documented in <a href="https://www.torproject.org/torbutton/design/FF35_AUDIT" title="https://www.torproject.org/torbutton/design/FF35\_AUDIT">https://www.torproject.org/torbutton/design/FF35_AUDIT</a>.</p>
+
+<p><strong>Grow the Tor network and user base. Outreach.</strong></p>
+
+<ul>
+<li>Jacob presented at the Arab Bloggers Conference in Beirut, Lebanon. <a href="http://www.arabloggers.com/" title="http://www.arabloggers.com/">http://www.arabloggers.com/</a></li>
+<li>Jacob met with Al Jazeera in Doha, Qatar. <a href="http://www.aljazeera.net/" title="http://www.aljazeera.net/">http://www.aljazeera.net/</a></li>
+<li>Jacob met with Rainbow House in Amman, Jordan.</li>
+<li>Andrew and Roger attended a circumvention technology workshop in California.</li>
+<li>Jacob, Roger, Karsten, Steven, and others attended 26C3 in Berlin, Germany. <a href="http://events.ccc.de/congress/2009/wiki/index.php/Main_Page" title="http://events.ccc.de/congress/2009/wiki/index.php/Main\_Page">http://events.ccc.de/congress/2009/wiki/index.php/Main_Page</a>. Jacob and Roger presented on ”Tor and censorship: lessons learned”, <a href="http://events.ccc.de/congress/2009/Fahrplan/events/3554.en.html" title="http://events.ccc.de/congress/2009/Fahrplan/events/3554.en.html">http://events.ccc.de/congress/2009/Fahrplan/events/3554.en.html</a>. We mirrored the video and slides at <a href="https://blog.torproject.org/blog/tor-and-censorship-lessons-learned" title="https://blog.torproject.org/blog/tor-and-censorship-lessons-learned">https://blog.torproject.org/blog/tor-and-censorship-lessons-learned</a>.</li>
+</ul>
+
+<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong><br>
+On December 31, 2009, we released Tor Browser Bundle 1.3.0. The major change was the upgrade of Firefox to the 3.5 branch. The full changelog is:</p>
+
+<ul>
+<li>upgrade Firefox to 3.5.6</li>
+<li>update Pidgin to 2.6.4</li>
+<li>update Torbutton to 1.2.4</li>
+<li>upgrade Tor to 0.2.1.21</li>
+</ul>
+
+<p>Mike, Roger, and Andrew met with the Chrome team at Google to discuss integration of Tor into Chrome’s ”incognito mode”. We need some APIs to make the integration smoother, and to be able to scale the Tor Network to handle the expected traffic from Chrome users.</p>
+
+<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong></p>
+
+<ul>
+<li>We did a one weekend test of the performance impact of changing circuit package window from 1000 cells to 101. The test and numbers are based on research by Csaba Kiraly. ”Effectof Tor window size on performance. Email to <a href="mailto:or-dev@freehaven.net">or-dev@freehaven.net</a>, February 2009. http://archives.seul.org/or/dev/Feb-2009/msg00000.html”. The test appeared to be a null operation, it didn’t help nor hurt performance of the network as a whole.</li>
+<li>Karsten continues to work on metrics about the Tor Network. We have a new metrics portal, <a href="http://metrics.torproject.org/" title="http://metrics.torproject.org/">http://metrics.torproject.org/</a> that shows the output, raw data, process for the collection, and the statistical analysis performed. Currently, our basic process is to collect, collate, and transform the data into graphs with R. Two organizations have offered to take the raw data from <a href="http://archives.torproject.org/" title="http://archives.torproject.org/">http://archives.torproject.org/</a> and import it into their data analysis products. We’re continuing to work on both tactics at this time.</li>
+</ul>
+
+<p><strong>More reliable (e.g. split) download mechanism.</strong><br>
+OS X split dmg files will be available with each release going forward. The split dmg files are a native format for OS X 10.3 (Panther) and above; so users on low bandwidth connections should easily be able to work with these.</p>
+
+<p><strong>Translation work, ultimately a browser-based approach.</strong></p>
+
+<ul>
+<li>Hundreds of updated translations for torbutton, tor website, vidalia, torcheck, and get-tor in the following languages: Swedish, Brazillian Portugese, Polish, Russian, Spanish, Norwegian, Burmese, Chinese, Farsi, Arabic, Portugese, Ukranian, German, Spanish, French, Finnish, Italian, Dutch, and Turkish.</li>
+<li>Runa applied updates to the process of syncing between the translation portal and live website. And she continues to maintain the translation portal.</li>
+<li>Carolyn found translators for Russian, Ukrainian, and Burmese languages. She’s currently working on finding translators for Arabic, Farsi, and Spanish languages.</li>
+</ul>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

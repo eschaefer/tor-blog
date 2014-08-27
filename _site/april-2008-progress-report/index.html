@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>April 2008 Progress Report</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>April 2008 Progress Report</h2>
+<p class="meta">14 May 2008</p>
+
+<div class="post">
+<p>Tor 0.2.0.24-rc (released Apr 22) adds dizum (run by Alex de Joode)<br>
+as the new sixth v3 directory authority, makes relays with dynamic IP<br>
+addresses and no DirPort notice more quickly when their IP address<br>
+changes, fixes a few rare crashes and memory leaks, and fixes a few<br>
+other miscellaneous bugs. Tor 0.2.0.25-rc (released Apr 23) makes Tor<br>
+work again on OS X and certain BSDs.<br>
+ <a href="http://archives.seul.org/or/talk/May-2008/msg00014.html" title="http://archives.seul.org/or/talk/May-2008/msg00014.html">http://archives.seul.org/or/talk/May-2008/msg00014.html</a></p>
+
+<p>Torbutton 1.1.18 (released Apr 17) fixes many usability and interoperability<br>
+items, in an attempt to make the new Torbutton not so obnoxious in its<br>
+zeal to protect the user. It also includes new translations for French,<br>
+Russian, Farsi, Italian, and Spanish.</p>
+
+<p>We did a complete overhaul of the <a href="https://check.torproject.org/" title="https://check.torproject.org/">https://check.torproject.org/</a><br>
+page. Now it accepts a language choice,<br>
+e.g. <a href="https://check.torproject.org/?lang=fa-IR" title="https://check.torproject.org/?lang=fa-IR">https://check.torproject.org/?lang=fa-IR</a><br>
+Available languages are German, English, Spanish, Italian, Farsi,<br>
+Japanese, Polish, Portugese, Russian, and Chinese. The Tor Browser<br>
+Bundle automatically uses the appropriate language as its home page,<br>
+based on which language of the Browser Bundle was downloaded.</p>
+
+<p>Started on a documentation page to explain to users what bridges are,<br>
+how they can decide whether they need one, and how to configure their<br>
+Tor client to use them:<br>
+ <a href="https://www.torproject.org/bridges.html" title="https://www.torproject.org/bridges.html">https://www.torproject.org/bridges.html</a></p>
+
+<p>We&#39;ve also started working on a design proposal for making it easier<br>
+to set up a private or testing Tor network. With the advent of the v3<br>
+directory protocol, it currently takes up to 30 minutes before a test<br>
+network will produce a useful networkstatus consensus. Also, there are<br>
+a dozen different config options that need to be set correctly for<br>
+a Tor network running on a single IP address to not trigger various<br>
+security defenses. This approach should let more people set up their<br>
+own Tor networks, either for testing or because they can&#39;t reach the<br>
+main Tor network.<br>
+ <a href="https://www.torproject.org/svn/trunk/doc/spec/proposals/135-private-tor-networks.txt" title="https://www.torproject.org/svn/trunk/doc/spec/proposals/135-private-tor-networks.txt">https://www.torproject.org/svn/trunk/doc/spec/proposals/135-private-tor-...</a></p>
+
+<p>We have the beginnings of a grand plan for how to successfully scale<br>
+the Tor network to orders of magnitude more relays than we have<br>
+currently. Much more work and thinking remain.<br>
+ <a href="https://www.torproject.org/svn/trunk/doc/spec/proposals/ideas/xxx-grand-scaling-plan.txt" title="https://www.torproject.org/svn/trunk/doc/spec/proposals/ideas/xxx-grand-scaling-plan.txt">https://www.torproject.org/svn/trunk/doc/spec/proposals/ideas/xxx-grand-...</a></p>
+
+<p>We also did a retrospective on currently open but not finished design<br>
+proposals, so we don&#39;t have as many &quot;open&quot; proposals in the pipeline<br>
+but not getting attention:<br>
+ <a href="http://archives.seul.org/or/dev/Apr-2008/msg00009.html" title="http://archives.seul.org/or/dev/Apr-2008/msg00009.html">http://archives.seul.org/or/dev/Apr-2008/msg00009.html</a></p>
+
+<p>We added several more research papers that we&#39;d like to see written to<br>
+the <a href="https://www.torproject.org/volunteer#Research" title="https://www.torproject.org/volunteer#Research">https://www.torproject.org/volunteer#Research</a> page. In May we&#39;ll add<br>
+a few more and then start pointing academic professors at the new list.</p>
+
+<p>The development version of Vidalia now has GUI boxes to configure an http<br>
+proxy that Vidalia should launch when it starts. (The Tor Browser Bundle<br>
+already uses these config options internally to launch Polipo when it<br>
+starts.) The next steps are to make sure that Polipo (our preferred new<br>
+http proxy) is stable enough on Windows, and then start shipping some<br>
+new standard bundles with Polipo rather than Privoxy.</p>
+
+<p>We cleaned up the Torbutton install in the OS X bundles so it installs<br>
+Torbutton for the local user, rather than global. Hopefully this will<br>
+make OS X users happier.</p>
+
+<p>We&#39;re making progress on integrating a UPnP library into Vidalia. This<br>
+feature will allow users who want to set up a Tor relay but don&#39;t want<br>
+to muck with manual port forwarding on their router/firewall to just<br>
+click a button and have Vidalia interact with their router/firewall<br>
+automatically. This approach won&#39;t work in all cases, but it should work<br>
+in at least some. We hope to land the first version of this in May.</p>
+
+<p>Steven Murdoch and Robert Watson worked towards a final version of<br>
+their PETS 2008 paper called &quot;Metrics for Security and Performance in<br>
+Low-Latency Anonymity Systems.&quot; The final version will be available in<br>
+May at:<br>
+ <a href="http://www.cl.cam.ac.uk/%7Esjm217/papers/pets08metrics.pdf" title="http://www.cl.cam.ac.uk/~sjm217/papers/pets08metrics.pdf">http://www.cl.cam.ac.uk/~sjm217/papers/pets08metrics.pdf</a></p>
+
+<p>So far there appear to be no free-software zip splitters that work<br>
+on Windows and produce self-contained exe files for automatically<br>
+reconstructing the file. Rather than using a closed-source shareware<br>
+application (as it seems a shame to put a trust gap in our build process<br>
+when we don&#39;t need to), the current plan is to write some instructions<br>
+for users to fetch the 7zip program, and then fetch a set of blocks,<br>
+and run a batch file to reconstruct them. We&#39;re in the process of trying<br>
+to learn how large the blocks can be -- preliminary guess is 2MB.</p>
+
+<p>We have a first draft of a translation portal up here:<br>
+ <a href="https://www.torproject.org/translation-portal" title="https://www.torproject.org/translation-portal">https://www.torproject.org/translation-portal</a></p>
+
+<p>The Vidalia GUI now has (manual) translation instructions:<br>
+ <a href="http://trac.vidalia-project.net/wiki/Translations" title="http://trac.vidalia-project.net/wiki/Translations">http://trac.vidalia-project.net/wiki/Translations</a></p>
+
+<p>We&#39;ve registered the Vidalia project on &quot;LaunchPad&quot;, which is a<br>
+web-based translation site that is compatible with Vidalia&#39;s string<br>
+format:<br>
+ <a href="https://translations.launchpad.net/vidalia/trunk/+pots/vidalia" title="https://translations.launchpad.net/vidalia/trunk/+pots/vidalia">https://translations.launchpad.net/vidalia/trunk/+pots/vidalia</a><br>
+We&#39;re currently working to try to upload our current translations into<br>
+the LaunchPad interface.</p>
+
+<p>We&#39;ve registered the Torbutton project on &quot;BabelZilla&quot;, which is a<br>
+web-based translation site designed specifically for Firefox extensions.<br>
+We&#39;ve uploaded the current translation strings:<br>
+ <a href="http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=88&amp;extension=3510&amp;type=lang" title="http://www.babelzilla.org/index.php?option=com\_wts&amp;Itemid=88&amp;extension=3510&amp;type=lang">http://www.babelzilla.org/index.php?option=com_wts&amp;Itemid=88&amp;extension=3...</a></p>
+
+<p>Lastly, we&#39;ve begun developer-oriented documentation for how to manage<br>
+and maintain these various translation web-interfaces:<br>
+ <a href="https://www.torproject.org/svn/trunk/doc/translations.txt" title="https://www.torproject.org/svn/trunk/doc/translations.txt">https://www.torproject.org/svn/trunk/doc/translations.txt</a></p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

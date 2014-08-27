@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>May 2009 Progress Report</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>May 2009 Progress Report</h2>
+<p class="meta">10 Jun 2009</p>
+
+<div class="post">
+<p><strong>New releases</strong><br>
+On May 25, we released Tor 0.2.1.15-rc.<br>
+On May 17, we released Tor VM 0.0.2.<br>
+On May 25, we released Vidalia 0.1.13 containing</p>
+
+<ul>
+<li>Remove an old warning on the relay settings page that running a bridge<br>
+relay requires Tor 0.2.0.8-alpha or newer. </li>
+<li>Add a workaround for a bug that prevented Vidalia&#39;s tray icon from<br>
+getting added to the system notification area on Gnome when Vidalia was<br>
+run on system startup. Patch by Steve Tyree. (Ticket #247) </li>
+<li>Fix a bug that prevented the control panel from displaying when<br>
+running on the Enlightenment window manager. Patch by Steve Tyree. </li>
+<li>Rename the CMake variables used to store the location of Qt&#39;s lupdate<br>
+and lrelease executables. Recent versions of CMake decided to use the<br>
+same variable name, which was stomping on mine, resulting in the wrong<br>
+lupdate and lrelease executables being used. </li>
+<li>Use the TorProcess subclass of QProcess for launching Tor when hashing<br>
+a control password so we can take advantage of its PATH+=:/usr/sbin<br>
+trick on Debian there too. </li>
+<li>If a RouterDescriptor object is empty, don&#39;t try to display it in the<br>
+router descriptor details viewer. (Ticket #479)</li>
+<li>Wait until Vidalia has registered for log events via the control port<br>
+before ignoring Tor&#39;s output on stdout. Previously we would start<br>
+ignoring Tor&#39;s stdout after successfully authenticating, but before<br>
+registering for log events which, in some cases, could lead to<br>
+messages not appearing in the message log. </li>
+<li>Update many translations and remove others than are no longer<br>
+up-to-date enough to be useful.</li>
+</ul>
+
+<p>On May 25th, we released Tor Browser Bundle 1.2.0 containing</p>
+
+<ul>
+<li>Switch to launching Firefox directly from Vidalia to<br>
+allow multiple instances of Firefox </li>
+<li>Update Firefox to 3.0.10 </li>
+<li>Update to Qt 4.5.1</li>
+<li>Update Firefox prefs.js to stop scanning for plugins </li>
+<li>Update libevent to 1.4.11</li>
+<li>Include the Tor geoip database</li>
+<li>Update Vidalia to 0.1.13</li>
+<li>Update Tor to 0.2.1.15-rc</li>
+</ul>
+
+<p><strong>Design, develop, and implement enhancements that make Tor a better<br>
+tool for users in censored countries.</strong></p>
+
+<p>Matt added &quot;fetch bridges&quot; features to Vidalia 0.2.x. This provides a link to automatically request bridges from <a href="https://bridges.torproject.org" title="https://bridges.torproject.org">https://bridges.torproject.org</a> for users.</p>
+
+<p><strong>Architecture and technical design docs for Tor enhancements<br>
+related to blocking-resistance.</strong><br>
+Proposal 160 aims to let authorities modify the bandwidth they put in<br>
+the consensus for each relay. This step will allow us to adjust the<br>
+weights we advertise for clients, once the measurements from TorFlow<br>
+start giving us better weights.<br>
+ <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/160-bandwidth-offset.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/160-bandwidth-offset.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/160-ba...</a></p>
+
+<p>Proposal 161 describes how node bandwidth ratios are<br>
+ computed and how they can be produced in parallel.<br>
+ <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-computing-bandwidth-adjustments.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-computing-bandwidth-adjustments.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-co...</a></p>
+
+<p>Proposal 162 describes &quot;consensus flavors&quot;: the size of the networkstatus<br>
+consensus is critical, since every user fetches it every few hours. So<br>
+we need a way to add new fields -- and remove old fields -- in a way<br>
+that lets old clients continue to use the consensus. The current plan<br>
+is to build and distribute several different versions at once, so each<br>
+client can fetch the one with the format they expect.<br>
+ <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/162-consensus-flavors.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/162-consensus-flavors.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/162-co...</a></p>
+
+<p>Proposal 163 starts to consider the problem of clients using relays as<br>
+single-hop proxies. If many clients start doing this (say, to improve<br>
+their own performance), it puts additional risk on the relays, since now<br>
+an attacker can expect to discover both client origins and destinations<br>
+by attacking the relay. Our current strategy for forcing clients to use<br>
+more than one hop is quite fragile, and it looks like we will soon need<br>
+more robust strategies.<br>
+ <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/163-detecting-clients.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/163-detecting-clients.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/163-de...</a></p>
+
+<p>Proposal 164 suggests ways to make it easier for relay operators to<br>
+discover why they are not listed in the networkstatus consensus. We have<br>
+a handle of people each week ask us on IRC why their relay isn&#39;t listed,<br>
+and currently the only way to answer is to have a competent directory<br>
+authority operator go dig around in various files in his datadirectory.<br>
+ <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/164-reporting-server-status.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/164-reporting-server-status.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/164-re...</a></p>
+
+<p>Proposal 165 focuses on simplifying the steps required to add a new<br>
+directory authority. The current approach requires manual work from every<br>
+directory authority operator within a space of several hours. As the<br>
+number of authorities grows, this synchronization is becoming impractical<br>
+-- and that&#39;s causing us to leave the number of authorities small, which<br>
+makes us vulnerable to other attacks. Once this proposal is finalized<br>
+and deployed, we&#39;ll hopefully be able to add new authorities more<br>
+smoothly.<br>
+ <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/165-simple-robust-voting.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/165-simple-robust-voting.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/165-si...</a></p>
+
+<p><strong>Grow the Tor network and user base. Outreach.</strong><br>
+Jacob attended CONFidence in Krakow, Poland as a keynote speaker. <a href="http://2009.confidence.org.pl/" title="http://2009.confidence.org.pl/">http://2009.confidence.org.pl/</a></p>
+
+<p>Andrew and Jacob attended the Soul of a New Machine conference in Berkeley, CA. <a href="http://hrc.berkeley.edu/events/newmachineconference/" title="http://hrc.berkeley.edu/events/newmachineconference/">http://hrc.berkeley.edu/events/newmachineconference/</a></p>
+
+<p>Roger and Andrew attended the 7th Annual Chinese Internet Research Conference in Philadelphia, PA. <a href="http://www.global.asc.upenn.edu/index.php?page=167" title="http://www.global.asc.upenn.edu/index.php?page=167">http://www.global.asc.upenn.edu/index.php?page=167</a></p>
+
+<p>Karsten attended SIGINT 09 in Cologne.</p>
+
+<p>Mike gave a presentation on TorFlow at CodeCon.</p>
+
+<p>Roger met with Nick, Paul Syverson and Aaron Johnson at Yale to work more on Paul&#39;s research question: if we trust some Tor relays differently than others, how should we select our paths to be safe, and how do we analyze how safe the paths are?</p>
+
+<p>Roger did a talk for about 15 OSI people in Budapest, Hungary.</p>
+
+<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD</strong><br>
+The two large changes were the ability to run multiple instances of Firefox at once, such that a user&#39;s personal firefox shouldn&#39;t share data with the firefox from our bundle. The other change is the ability to stop TBB firefox from scanning the system for potential plugins, like Windows Media, Java, etc.</p>
+
+<p>Started work on a hardened branch of Incognito live CD to help protect users from possible bugs in the programs running.</p>
+
+<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong></p>
+
+<p>We documented the metrics we collect to help us determine the best ways to scale the Tor network. <a href="http://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network" title="http://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network">http://blog.torproject.org/blog/performance-measurements-and-blockingres...</a> A number of nodes are now collecting this information to assist our network-wide measurements.</p>
+
+<p>Much progress on torctl and torflow tools being used to measure real and potential performance of nodes in the public tor network.</p>
+
+<p>Mike wrote proposal 161 describing how node bandwidth ratios are<br>
+ computed and how they can be produced in parallel. The proposal can be found at <a href="http://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-computing-bandwidth-adjustments.txt" title="http://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-computing-bandwidth-adjustments.txt">http://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-com...</a></p>
+
+<p>Karsten finished a first patch to dump statistics about local queues to disk every 15 minutes. A first impression of how these data could be evaluated can be found in <a href="http://freehaven.net/%7Ekarsten/volatile/bufferstats-2009-05-25.pdf" title="http://freehaven.net/~karsten/volatile/bufferstats-2009-05-25.pdf">http://freehaven.net/~karsten/volatile/bufferstats-2009-05-25.pdf</a>. The goal is to see if our buffer allocation algorithms are sufficient or need tweaking.</p>
+
+<p><strong>More reliable (e.g. split) download mechanism.</strong><br>
+Developed the ability to split Apple OS X bundles into 1.44MB chunks. The functionality is native to OS X versions 10.4 and newer. It will not work in versions 10.3.9 or earlier releases.</p>
+
+<p><strong>Translation work, ultimately a browser-based approach</strong><br>
+11 Polish updates<br>
+4 German updates<br>
+Portugese torbutton updates<br>
+Danish torbutton updates<br>
+Romanian torbutton updates<br>
+11 Italian updates<br>
+3 Chinese updates</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

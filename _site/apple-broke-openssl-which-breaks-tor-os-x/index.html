@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Apple broke OpenSSL which breaks Tor on OS X</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Apple broke OpenSSL which breaks Tor on OS X</h2>
+<p class="meta">27 Jan 2010</p>
+
+<div class="post">
+<p>Apple OS X Security Update 2010-001 removes OpenSSL renegotation, <a href="http://support.apple.com/kb/HT1222" title="http://support.apple.com/kb/HT1222">http://support.apple.com/kb/HT1222</a>. We&#39;ve filed a bug report with Apple on this issue. Their standard response so far is <a href="http://support.apple.com/kb/HT4004" title="http://support.apple.com/kb/HT4004">http://support.apple.com/kb/HT4004</a>.</p>
+
+<p>In the meanwhile, we have bug #1225 open, <a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225</a>. Add yourself to the Notifications if you want updates as they happen. A fine explanation of why Tor is not affected by the TLS renegotiation bug can be found at <a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225&amp;area=comments#3804" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225&amp;area=comments#3804">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225&amp;area=c...</a></p>
+
+<p>Packages for testing are available at:<br>
+ <a href="https://www.torproject.org/dist/testing/" title="https://www.torproject.org/dist/testing/">https://www.torproject.org/dist/testing/</a></p>
+
+<p><strong>READ THIS FINE PRINT</strong> :</p>
+
+<ol>
+<li>These will only work on OSX 10.5 and 10.6 (both i386 and powerpc). Tor fails to compile when using the 10.4 libraries and static openssl.</li>
+<li>Tor-0.2.2.8-alpha-i386-Bundle.dmg is compiled to replace the tor<br>
+binaries in /Applications/Vidalia.app/Contents/MacOS only. If your tor<br>
+is located elsewhere, compile your own for now.</li>
+<li>let us know if they work for you. My testing systems show it works<br>
+for me. Update<br>
+<a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225</a> if it<br>
+doesn&#39;t work or you have other issues with these testing packages.</li>
+</ol>
+
+<p>I&#39;m still working on os x 10.4 packages.</p>
+
+</div>
+<p>- phobos</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

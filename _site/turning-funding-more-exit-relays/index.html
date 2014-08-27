@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Turning funding into more exit relays</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>Turning funding into more exit relays</h2>
+<p class="meta">24 Jul 2012</p>
+
+<div class="post">
+<p>For a few years now, funders have been asking if they can pay Tor to run more relays. I kept telling them their money was better spent on code and design improvements:<br>
+ <a href="https://blog.torproject.org/blog/why-tor-is-slow" title="https://blog.torproject.org/blog/why-tor-is-slow">https://blog.torproject.org/blog/why-tor-is-slow</a><br>
+ <a href="https://trac.torproject.org/projects/tor/wiki/org/roadmaps/Tor/Performance" title="https://trac.torproject.org/projects/tor/wiki/org/roadmaps/Tor/Performance">https://trac.torproject.org/projects/tor/wiki/org/roadmaps/Tor/Performan...</a><br>
+since a) network load would just grow to fill whatever new capacity we have, especially if we don&#39;t deal with the tiny fraction of users who do bulk downloads, and b) reducing diversity of relay operator control can harm anonymity.</p>
+
+<p>But lately the Tor network has become noticeably faster, and I think it has a lot to do with the growing amount of excess relay capacity relative to network load:<br>
+ <a href="https://metrics.torproject.org/network.html?graph=bandwidth&amp;start=2010-06-01&amp;end=2012-07-21#bandwidth" title="https://metrics.torproject.org/network.html?graph=bandwidth&amp;start=2010-06-01&amp;end=2012-07-21#bandwidth">https://metrics.torproject.org/network.html?graph=bandwidth&amp;start=2010-0...</a></p>
+
+<p>At the same time, much of our performance improvement comes from better load balancing -- that is, concentrating traffic on the relays that can handle it better. The result though is a direct tradeoff with relay diversity: on today&#39;s network, clients choose one of the fastest 5 exit relays around 25-30% of the time, and 80% of their choices come from a pool of 40-50 relays.<br>
+ <a href="https://trac.torproject.org/projects/tor/ticket/6443" title="https://trac.torproject.org/projects/tor/ticket/6443">https://trac.torproject.org/projects/tor/ticket/6443</a></p>
+
+<p>Since extra capacity is clearly good for performance, and since we&#39;re not doing particularly well at diversity with the current approach, we&#39;re going to try an experiment: we&#39;ll connect funding to exit relay operators so they can run bigger and/or better exit relays.</p>
+
+<p>If we do it right (make more faster exit relays that aren&#39;t the current biggest ones, so there are more to choose from), we will improve the network&#39;s diversity as well as being able to handle more users.</p>
+
+<p>We&#39;ve lined up our first funder (BBG, aka <a href="http://www.voanews.com/" title="http://www.voanews.com/">http://www.voanews.com/</a>), and they&#39;re excited to have us start as soon as we can. They want to sponsor 125+ fast exits.</p>
+
+<p>I&#39;ve started a discussion on the tor-relays list about open questions that we as a community will need to decide about:<br>
+1) What exactly would we pay for?<br>
+2) Should we fund existing relays or new ones?<br>
+4) What exactly do we mean by diversity?<br>
+5) How much &quot;should&quot; an exit relay cost?<br>
+6) How exactly should we choose which exit relay operators to reimburse?<br>
+7) How do we audit / track the sponsored relays?<br>
+8) Legal questions?</p>
+
+<p>The first step is collecting facts about the current fast Tor exit relays. Please join the discussion on the tor-relays list if you want to contribute:<br>
+ <a href="https://lists.torproject.org/pipermail/tor-relays/2012-July/001433.html" title="https://lists.torproject.org/pipermail/tor-relays/2012-July/001433.html">https://lists.torproject.org/pipermail/tor-relays/2012-July/001433.html</a></p>
+
+</div>
+<p>- arma</p>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>
