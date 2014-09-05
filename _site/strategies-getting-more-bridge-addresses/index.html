@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Strategies for getting more bridge addresses</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Strategies for getting more bridge addresses</h2>
 <p class="meta">14 May 2011</p>
 
-<div class="post">
+<div class="event">
 <p>We need more bridges. When I first envisioned the bridge address arms race, I said &quot;We need to get lots of bridges, so the adversary can&#39;t learn them all.&quot; That was the wrong statement to make. In retrospect, the correct statement was: &quot;We need the rate of new bridge addresses to exceed the rate that the adversary can block them.&quot;</p>
 
 <p>For background, <a href="https://www.torproject.org/bridges">bridge relays</a> (aka bridges) are Tor relays that aren&#39;t listed in the main Tor directory. So even if an attacker blocks all the public relays, they still need to block all these &quot;private&quot; or &quot;dark&quot; relays too. We deployed them <a href="https://svn.torproject.org/svn/projects/design-paper/blocking.html">several years ago</a> in anticipation of the upcoming arms race, and <a href="https://blog.torproject.org/blog/picturing-tor-censorship-china">they worked great in their first showing in 2009</a>. But since then, China has <a href="https://metrics.torproject.org/users.html?graph=bridge-users&amp;start=2010-01-01&amp;end=2011-04-09&amp;country=cn#bridge-users">learned and blocked</a> most of the bridges we give out through public (https and gmail) distribution channels.</p>
@@ -44,7 +45,6 @@
 <p>If we go this route, then rather than needing volunteers to run a whole Tor (which is especially cumbersome because it needs libraries like OpenSSL), people could run socks proxies on a much broader set of platforms. For example, they should be easy to add into <a href="https://www.torproject.org/docs/android">Orbot</a> (our Tor package for Android) or into <a href="https://seattle.cs.washington.edu/html/">Seattle</a> (an overlay network by UW researchers that restricts applications to a safe subset of Python). We could even imagine setting up a website where volunteers visit a given page and it runs a Flash or Java applet socks proxy, lending their address to the bridge pool while their browser is open. There are some gotchas to work through, such as a) needing to sign the applets so they have the required network permissions, b) figuring out how to get around the fact that it seems hard to allow connections from the Internet to a flash plugin, and c) needing to program the socks proxy with a Tor bridge or relay address so the user doesn&#39;t have to ask for it (after all, socks handshakes are unencrypted and it wouldn&#39;t do to let the adversary watch Alice ask for an IP address that&#39;s known to be associated with Tor). This &#39;flash proxy&#39; idea was developed in collaboration with Dan Boneh at Stanford, and they are currently designing and building it — stay tuned.</p>
 
 </div>
-<p>- arma</p>
 
 
           <div class="footer">

@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Tor Metrics - Google Summer of Code 2010</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Tor Metrics - Google Summer of Code 2010</h2>
 <p class="meta">14 Oct 2010</p>
 
-<div class="post">
+<div class="event">
 <p>Although it has been a while since GSoC ended, I want to give a quick run-down of my project and how everything went over the summer. The plan was to migrate the <a href="https://metrics.torproject.org/index.html" title="tor metrics portal">Tor metrics portal</a> from the file based system to a database driven one. This allows us to have a more dynamic website and a better interface to derive our statistics and visuals from. I spent most of my time designing the database schema (which had to be carefully optimized due to the amount of data we have), and the remainder of the time working on things such as <a href="https://metrics.torproject.org/graphs.html" title="dynamic graphs">dynamic graphs</a> and migrating the website to Java Server Pages. Thankfully, I finished almost everything I had planned to do, and it seems as though my work this summer is being put to good use! A significant amount of my metrics code has been merged, which is certainly a good feeling.</p>
 
 <p>While I did not have any specific research questions in mind, I was able to uncover some interesting things by exploring the wealth of data in front of me. One of the things I promised to deliver was relay churn - a statistic to show the stability of the network. The Y axis, or the &quot;churn ratio&quot; is rather abstract, but it tells us the percentage of unique router fingerprints from one cohort that appear in the following cohort. Unfortunately, it requires a significant amount of database power to produce (large table scans are necessary when grouping routers by time period - the smaller the interval the longer the operation takes). However, the logic is clear and is easily accomplished from the database. The churn graphs may find their way onto the website, but the underlying processes may need to be optimized further. Either way, a database system ought to open a few doors for us in regards to some of the interesting things we can easily explore. See some of the churn graphs <a href="https://blog.torproject.org/files/relay-churn-week.png">here</a>, and <a href="https://blog.torproject.org/files/relay-churn-month.png" title="relay churn month">here</a>.</p>
@@ -45,7 +46,6 @@
 </tbody></p>
 
 </div>
-<p>- kjbbb</p>
 
 
           <div class="footer">

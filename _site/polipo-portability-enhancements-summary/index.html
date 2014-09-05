@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Polipo Portability Enhancements Summary</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Polipo Portability Enhancements Summary</h2>
 <p class="meta">12 Sep 2009</p>
 
-<div class="post">
+<div class="event">
 <p>Over the summer for GSoC 2009, I worked on Polipo, Tor&#39;s favored Web proxy for bridging the gap between HTTP and SOCKS protocols. The proxy also provides an efficient memory cache to help speed up browsing. I had an opportunity to learn about Polipo and Libevent, and I had a chance to attend <a href="http://petsymposium.org/2009/">PETS</a>, a privacy conference, and meet some of the Tor folks in person. <a href="http://www.pps.jussieu.fr/%7Ejch/software/polipo/">Polipo</a> is authored by Juliusz Chroboczek. <a href="http://www.monkey.org/%7Eprovos/libevent/">Libevent</a> is developed by Nick Mathewson and Niels Provos. Nick Mathewson also happens to work for the Tor Project and was my GSoC mentor over the summer.</p>
 
 <p>My work included integrating support for Libevent, a library for managing I/O events portably. The main advantage of using Libevent over Polipo&#39;s built-in event loop is Libevent&#39;s support of platform-specific APIs for monitoring large numbers of connections for I/O events. Polipo, when compiled to use Libevent, should be quicker when juggling many open connections. Informal benchmarking seemed to back this up, although more thorough profiling is still TODO. Modern versions of Libevent also contain an asynchronous DNS resolver, which I tied into Polipo, as well. Polipo&#39;s original event system and asynchronous DNS resolver are still available in case Libevent is unavailable on a user&#39;s system.</p>
@@ -38,7 +39,6 @@
 <p>Working on this project was a fun and informative experience, and I hope to stay a member of the Tor community. I&#39;ve had some experience working on open source projects before, but it&#39;s unique to find developers as dedicated as those working on Tor. In fact, Tor is a full-time job for several of the developers, and I think seeing a high level of development activity helps to keep volunteers around.</p>
 
 </div>
-<p>- chrisd</p>
 
 
           <div class="footer">

@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Knock Knock Knockin' on Bridges' Doors</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Knock Knock Knockin' on Bridges' Doors</h2>
 <p class="meta">07 Jan 2012</p>
 
-<div class="post">
+<div class="event">
 <p>Greetings! My name is Tim Wilde, Software Engineer at Team Cymru, Inc., and a big fan of the Tor Project and everything that they do. We&#39;ve helped out the Tor Project with a few investigations into probing/blocking of Tor by oppressive regimes, and the guys asked me to write this one up for the Tor Blog, so here I am! Note: any opinions expressed here are mine, nor those of Team Cymru or the Tor Project.</p>
 
 <p>In October 2011, <a href="https://trac.torproject.org/projects/tor/ticket/4185">ticket #4185</a> was filed in the Tor bug tracker by a user in China who found that their connections to US-based Tor bridge relays were being regularly cut off after a very short period of time. At the time we performed some basic experimentation and discovered that Chinese IPs (presumably at the behest of the Great Firewall of China, or GFW) would reach out to the US-based bridge and connect to it shortly after the Tor user in China connected, and, if successful, shortly thereafter the connection would be blocked by the GFW. There wasn&#39;t time for a detailed investigation and analysis at the time, but that kernel eventually grew into the investigation detailed below. We were, however, able to determine that limiting connections to the bridge relay to only the single IP expected to be its client would, in fact, block the probes and allow the connection to remain open for an extended period (&gt;48 hours in our testing).</p>
@@ -44,7 +45,6 @@
 <p>You&#39;re welcome to check out my <a href="https://gist.github.com/da3c7a9af01d74cd7de7">full report on this investigation</a> for more detail than I could provide in the blog post here. Thanks very much to everyone who assisted with the investigation and the report! It was fun to investigate and report on this, and I hope to have the opportunity to help out with similar adventures in the future.</p>
 
 </div>
-<p>- twilde</p>
 
 
           <div class="footer">

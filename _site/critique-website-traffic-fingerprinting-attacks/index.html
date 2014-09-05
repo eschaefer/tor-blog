@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>A Critique of Website Traffic Fingerprinting Attacks</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>A Critique of Website Traffic Fingerprinting Attacks</h2>
 <p class="meta">07 Nov 2013</p>
 
-<div class="post">
+<div class="event">
 <p>Website traffic fingerprinting is an attack where the adversary attempts to recognize the encrypted traffic patterns of specific web pages without using any other information. In the case of Tor, this attack would take place between the user and the Guard node, or at the Guard node itself.</p>
 
 <p>There are two models under which these attacks are typically studied: The &quot;closed world&quot; scenario, and the &quot;open world&quot; scenario. In the &quot;closed world&quot; scenario, the only traffic patterns the classifier ever sees are for web pages that it has already been trained on, and it typically must successfully label all of them. This is meant to simulate situations where users only use Tor for viewing a small set of censored web pages and nothing else. The &quot;open world&quot; scenario is slightly more realistic in that it attempts to examine the ability of the adversary to recognize a few censored pages out of a much larger set of uncensored pages, some of which it has never seen before.</p>
@@ -92,13 +93,13 @@
 <p>If instead of trying to enumerate specific visitors, the adversary is trying to interfere with the traffic patterns of certain web pages, the accuracy value that matters is the Bayesian Detection Rate, which is the probability that a traffic pattern was actually due to a censored/target page visit given that the detector said it was recognized. This is written as <strong>P(Censored|Classified)</strong> .</p>
 
 <p>Using Bayes Theorem, it is possible to convert from the true and false positive rates of <strong>P(Classified|Censored)</strong> and <strong>P(Classified|~Censored)</strong> to the Bayesian Detection Rate of <strong>P(Censored|Classified)</strong> like so:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">P(Censored|Classified) =
+<div class="highlight"><pre><code class="language-text" data-lang="text">P(Censored|Classified) =
  P(Classified|Censored)*P(Censored) /
   (P(Censored)*P(Classified|Censored) + 
    P(~Censored)*P(Classified|~Censored))
 </code></pre></div>
 <p>Under conditions of low censorship (0.1% -- such as when the Tor traffic successfully blends in with a large volume of innocuous Internet traffic, or when Tor is used for both censorship circumvention and general privacy), with a true positive rate of 0.6 and a false positive rate of 0.005, we have:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">P(Censored|Classified) = 0.6*.001/(.001*0.6+.999*.005)
+<div class="highlight"><pre><code class="language-text" data-lang="text">P(Censored|Classified) = 0.6*.001/(.001*0.6+.999*.005)
 P(Censored|Classified) = 0.10
 P(~Censored|Classified) = 1 - P(Censored|Classified)
 P(~Censored|Classified) = 0.90
@@ -312,7 +313,6 @@ P(~Censored|Classified) = 0.90
 <p>Promising defenses include <a href="https://trac.torproject.org/projects/tor/ticket/7028">Adaptive Padding</a>, <a href="http://freehaven.net/anonbib/cache/morphing09.pdf">Traffic Morphing</a>, and various <a href="http://dev.online6.eu/spdytor/">transformation and prediction proxies</a> at the exit node (which could also help performance while we&#39;re at it).</p>
 
 </div>
-<p>- mikeperry</p>
 
 
           <div class="footer">

@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>On the risks of serving whenever you surf</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>On the risks of serving whenever you surf</h2>
 <p class="meta">23 Dec 2009</p>
 
-<div class="post">
+<div class="event">
 <p><a href="https://www.torproject.org/bridges">Bridge nodes</a> are one of Tor&#39;s key architectural components for allowing wide access to the network. These act like normal Tor nodes, except there is no centralized list available to download, so it&#39;s harder to block access to all of them. Users who cannot access the Tor network in the normal way can find the IP addresses of a few bridges, and connect to the rest of the Tor network via these nodes. The bridge node IP addresses are distributed in a way such that anyone should be able to find a few, but it should be difficult for someone to find (and block access to) them all. Currently they are available by email or the web, but more strategies are being considered, such as instant messaging or MMORPGs.</p>
 
 <p>For the bridge system to work well, Tor needs lots of volunteers to run bridge nodes, as otherwise there would be so few that they could all be easily discovered and blocked. To increase the number of such nodes, it has been made easy to set up a bridge, just by clicking the &quot;Help censored users reach the Tor network&quot; in the Vidalia preferences. More could be done however. For example, the default Tor configuration could be set to make Tor clients automatically a bridge if they are reachable from the Internet and sufficiently reliable.</p>
@@ -48,7 +49,6 @@
 <p>The <a href="http://www-users.cs.umn.edu/%7Ehopper/surf_and_serve.pdf">paper</a> goes into much more detail than covered in this blog post, so do read it if you would like to find out more about how precisely how the experiments were performed. For example, the experiments perform the clogging attack on nodes with fast network connections and comparatively slow CPUs, and their proposed defence makes this assumption. In the case of many bridge nodes, for example on domestic DSL lines, the situation could be very different, and variants of the attack might circumvent their protection. While this paper is an excellent start, there is much more that can be done in analyzing and defending against these style of attacks.</p>
 
 </div>
-<p>- sjmurdoch</p>
 
 
           <div class="footer">

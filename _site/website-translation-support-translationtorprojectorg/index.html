@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Website translation support for translation.torproject.org</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Website translation support for translation.torproject.org</h2>
 <p class="meta">20 Sep 2009</p>
 
-<div class="post">
+<div class="event">
 <p>This summer I was working on a set of scripts that would make it possible to translate the <a href="https://www.torproject.org/">Tor Project website</a> via <a href="http://translate.sourceforge.net/wiki/pootle">Pootle</a> on <a href="http://translation.torproject.org">translation.torproject.org</a>. The website is based on a set of .wml files, but Pootle only takes files in the .pot and po format. The goal was to find a solution that would make it easy to not only translate from .wml to .po and back, but enable us to convert and keep the already translated documents.</p>
 
 <p>The solution that I chose was to use the <a href="http://po4a.alioth.debian.org/">po4a framework</a> in a set of scripts. The first script, <a href="https://tor-svn.freehaven.net/svn/website/trunk/wml2po.sh">wml2po.sh</a>, converts from .wml to .po and adds the correct charset, encoding and copyright holder. The script also checks to see which .po files need to be updated and which don&#39;t. The second script, <a href="https://tor-svn.freehaven.net/svn/website/trunk/po2wml.sh">po2wml.sh</a> writes the translated documents, i.e. converts from .po back to .wml. I also documented the things one would need to know before using the scripts, as well as the process of converting already translated documents. See the <a href="https://tor-svn.freehaven.net/svn/translation/trunk/tools/gsoc09/HOWTO">howto</a> and the <a href="https://tor-svn.freehaven.net/svn/translation/trunk/tools/gsoc09/README">readme</a>.</p>
@@ -34,7 +35,6 @@
 <p>Overall, I&#39;m pleased with how GSoC turned out. I am looking forward to seeing my code be put to use and to start working on other projects for Tor.</p>
 
 </div>
-<p>- Runa</p>
 
 
           <div class="footer">

@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Life without a CA</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Life without a CA</h2>
 <p class="meta">26 Mar 2010</p>
 
-<div class="post">
+<div class="event">
 <p>At <a href="http://libreplanet.org/">Libreplanet 2010</a>, I was in a discussion with the <a href="https://web.monkeysphere.info/">MonkeySphere</a> and <a href="https://www.eff.org/">EFF</a> folks about how to encourage every website to offer ssl by default. The general idea is to stop local traffic snooping and provide more security by default. During the discussion, it came up that I disable all of the <a href="http://en.wikipedia.org/wiki/Certificate_authority">Certificate Authorities</a> in my systems and selectively trust the ssl certificates from individual websites. I&#39;ve been doing this for years. Apparently my admission was a shocking statement to many. The group asked me to document my Firefox setup and what life is like without any trusted CAs. Seth from the EFF has a <a href="https://www.eff.org/deeplinks/2010/03/researchers-reveal-likelihood-governments-fake-ssl">quick post</a> about possible concerns over the CAs in your browser. I used to rely on the <a href="https://addons.mozilla.org/en-US/firefox/addon/6415">Certificate Patrol</a> Firefox Extension to monitor changing certs.</p>
 
 <p>I generally use FreeBSD and Debian-based linux distributions for my operating systems. After I install firefox, I rename libnssckbi.so to something else (like libnssckbi.so.saved). Restart Firefox (see below for option two). Firefox should no longer validate ssl certs automatically.</p>
@@ -41,7 +42,6 @@
  I generally remove all of the CAs as well, even though I think it&#39;s just a display issue at this point. To do so, go into Preferences, Advanced, Encryption tab, click View Certificates. Then just manually cycle through the remaining CAs and delete them all. I started writing a script to do this automatically, but it seems to change in each version of Firefox. If someone has a better/more automatic way to do this, I&#39;d like to hear about it. Now you have no CAs.</p>
 
 </div>
-<p>- phobos</p>
 
 
           <div class="footer">

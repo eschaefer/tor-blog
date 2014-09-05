@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Overhead from directory info: past, present, future</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Overhead from directory info: past, present, future</h2>
 <p class="meta">16 Feb 2009</p>
 
-<div class="post">
+<div class="event">
 <p>A growing number of people want to use Tor in low-bandwidth contexts (e.g. modems or shared Internet cafes in the Middle East) and mobile contexts (start up a Tor client, use it for a short time, and then stop it again). Currently Tor is nearly unusable in these situations, because it spends too many bytes fetching directory info. This post summarizes the steps we&#39;ve taken so far to reduce directory overhead, and explains the steps that are coming next.</p>
 
 <p>First, what do I mean by &quot;directory info&quot;? Part of the Tor design is the _discovery_ component: how clients learn about the available Tor relays, along with their keys, locations, exit policies, and so on. Tor&#39;s solution so far uses a few trusted directory authorities that sign and distribute official lists of the relays that make up the Tor network.</p>
@@ -60,7 +61,6 @@
 <p>Down the road, there are even more radical design changes to consider. One day there will be too many relays for every client to know about all of them, so we will want to partition the network (see Section 4.4 of <a href="https://svn.torproject.org/svn/projects/roadmaps/2008-12-19-roadmap-full.pdf">Tor&#39;s development roadmap</a>). When we do that, we can bound the amount of directory info that each client has to maintain. Another promising idea is to figure out ways to let clients build paths through the network while requiring less information about each relay. There&#39;s definitely a tradeoff here between centralized coordination (which is easier to design, and can more easily provide good anonymity properties) and scaling to many tens of thousands of relays. But that, as they say, is a story for another time.</p>
 
 </div>
-<p>- arma</p>
 
 
           <div class="footer">

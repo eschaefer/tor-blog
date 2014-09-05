@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Stem Release 1.1</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Stem Release 1.1</h2>
 <p class="meta">14 Oct 2013</p>
 
-<div class="post">
+<div class="event">
 <p>Hi all. After seven months of work I&#39;m pleased to announce Stem&#39;s 1.1.0 release!</p>
 
 <p>For those who aren&#39;t familiar with it, Stem is a Python library for interacting with Tor. With it you can script against your relay, descriptor data, or even write applications similar to <a href="https://www.atagar.com/arm/">arm</a> and <a href="https://www.torproject.org/projects/vidalia.html.en">Vidalia</a>.</p>
@@ -40,7 +41,7 @@
 <p>The <a href="https://stem.torproject.org/api/descriptor/remote.html">stem.descriptor.remote</a> module allows you download current Tor descriptor data from directory authorities and mirrors, much like Tor itself does. With this you can easily check the status of the network without piggybacking on a local instance of Tor (or even having it installed).</p>
 
 <p>For example...</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">from stem.descriptor.remote import DescriptorDownloader
+<div class="highlight"><pre><code class="language-text" data-lang="text">from stem.descriptor.remote import DescriptorDownloader
 
 
 downloader = DescriptorDownloader()
@@ -69,7 +70,6 @@ except Exception as exc:
 <p>Cheers! -Damian</p>
 
 </div>
-<p>- atagar</p>
 
 
           <div class="footer">

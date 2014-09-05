@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>KAIST freshmen working on bridge distribution strategies</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>KAIST freshmen working on bridge distribution strategies</h2>
 <p class="meta">09 Sep 2009</p>
 
-<div class="post">
+<div class="event">
 <p>Thanks to a friend who&#39;s a professor at <a href="http://www.kaist.edu/edu.html">KAIST</a> in Korea, several teams of students there are working for their &quot;freshman design class&quot; on designing new bridge (aka bridge relay) distribution strategies. Here&#39;s some early brainstorming on what the actual problems are and what needs doing.</p>
 
 <p>Background: Tor uses directory servers to give out information about what relays are in the network. But blocking connections between users and the main Tor network is actually not that hard — after all, there&#39;s a public list of relays, which needs to stay public so clients can know where to connect. That&#39;s where <a href="https://www.torproject.org/docs/bridges.html.en">bridge relays</a> come in. Now that we&#39;ve deployed bridge relays, we changed the arms race from &quot;how do we prevent the adversary from learning about 2000 IP address that we&#39;re openly publishing?&quot; (which is an impossible problem) to &quot;how do we take these several thousand secret IP addresses and give them out one at a time to the good guys, without letting the bad guys learn all of them?&quot; Hopefully that&#39;s a more manageable arms race. You can read more background in the <a href="https://svn.torproject.org/svn/projects/design-paper/blocking.html">blocking-resistance design doc</a> and <a href="http://freehaven.net/%7Earma/23C3-1444-en-tor_and_china.m4v">video</a>.</p>
@@ -72,7 +73,6 @@
 <p>Last, it&#39;s worth noting that so far no countries have blocked the public Tor network. Tor played a <a href="https://blog.torproject.org/blog/measuring-tor-and-iran-part-two">big role in Iran&#39;s organizations and demonstrations in June</a>, and it has even more users in China, Russia, and other repressive countries. So the arms race has already begun, and none of the adversaries have proved to be powerful enough and/or concerned enough to take a step. Building a broad range of strategies — from convenient but breakable ones to very secure ones — will be the best preparation for however the arms race plays out.</p>
 
 </div>
-<p>- arma</p>
 
 
           <div class="footer">

@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Research problem: better guard rotation parameters</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Research problem: better guard rotation parameters</h2>
 <p class="meta">20 Aug 2011</p>
 
-<div class="post">
+<div class="event">
 <p>Tor&#39;s <a href="https://www.torproject.org/docs/faq#EntryGuards">entry guard design</a> protects users in a variety of ways.</p>
 
 <p>First, they protect against the &quot; <a href="http://freehaven.net/anonbib/#Wright:2004">predecessor attack</a>&quot;: if you choose new relays for each circuit, eventually an attacker who runs a few relays will be your first and last hop. With entry guards, the risk of end-to-end correlation for any given circuit is the same, but the cumulative risk for all your circuits over time is capped.</p>
@@ -53,7 +54,6 @@
 <p>The big-picture tradeoff to explore is: what algorithm should we use to assign Guard flags such that a) we assign the flag to as many relays as possible, yet b) we minimize the chance that Alice will use the adversary&#39;s node as a guard?</p>
 
 </div>
-<p>- arma</p>
 
 
           <div class="footer">

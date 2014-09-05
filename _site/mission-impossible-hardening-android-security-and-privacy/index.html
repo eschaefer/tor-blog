@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Mission Impossible: Hardening Android for Security and Privacy</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Mission Impossible: Hardening Android for Security and Privacy</h2>
 <p class="meta">03 Apr 2014</p>
 
-<div class="post">
+<div class="event">
 <p><strong>Updates:</strong> See the Changes section for a list of changes since initial posting.</p>
 
 <h1>Executive Summary</h1>
@@ -108,7 +109,7 @@
 <p>Because the download integrity for all of these packages is abysmal, here is a <a href="https://people.torproject.org/%7Emikeperry/android-hardening/sha256sums-cm11.txt.asc">signed set of SHA256 hashes</a> I&#39;ve observed for those packages.</p>
 
 <p>Once you have all of those packages, boot your tablet into fastboot mode by holding the Power button and the Volume Down button during a cold boot. Then, attach it to your desktop/laptop machine with a USB cable and run the following commands from a Linux/UNIX shell:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">apt-get install android-tools-adb android-tools-fastboot
+<div class="highlight"><pre><code class="language-text" data-lang="text">apt-get install android-tools-adb android-tools-fastboot
  fastboot devices
  fastboot oem unlock
  fastboot flash recovery openrecovery-twrp-2.7.0.0-flo.img
@@ -116,7 +117,7 @@
 <p>After the recovery firmware is flashed successfully, use the volume keys to select <em>Recovery</em> and hit the power button to reboot the device (or power it off, and then boot holding Power and Volume Up).</p>
 
 <p>Once Team Win boots, go into <em>Wipe</em> and select <em>Advanced Wipe</em>. Select all checkboxes except for USB-OTG, and slide to wipe. Once the wipe is done, click <em>Format Data</em>. After the format completes, issue these commands from your Linux shell:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">adb server start
+<div class="highlight"><pre><code class="language-text" data-lang="text">adb server start
  adb push cm-11-20140504-SNAPSHOT-M6-flo.zip /sdcard/
  adb push gapps-kk-20140105-signed.zip /sdcard/ # Optional
 </code></pre></div>
@@ -127,7 +128,7 @@
 <p>Then, go into <em>Settings -&gt; About Tablet</em> and scroll to the bottom and click the greyed out Build number 5 times until developer mode is enabled. Then go into <em>Settings -&gt; Developer Options</em> and turn on <em>USB Debugging</em>.</p>
 
 <p>After that, run the following commands from your Linux shell:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">adb install FDroid.apk
+<div class="highlight"><pre><code class="language-text" data-lang="text">adb install FDroid.apk
  adb install org.torproject.android_86.apk
  adb install com.googlecode.droidwall_157.apk
 </code></pre></div>
@@ -203,7 +204,7 @@
 <p>We will also do this from the shell, in order to set a different password than your screen unlock pin. This is done to mitigate the risk of compromise of this password from shoulder surfers, and to allow the use of a much longer (and non-numeric) password that you would prefer not to type every time you unlock the screen.</p>
 
 <p>To do this, open the Terminal app, and type the following commands:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">su
+<div class="highlight"><pre><code class="language-text" data-lang="text">su
 vdc cryptfs enablecrypto inplace NewMoreSecurePassword
 </code></pre></div>
 <p>Watch for typos! That command does not ask you to re-type that password for confirmation.</p>
@@ -234,7 +235,7 @@ vdc cryptfs enablecrypto inplace NewMoreSecurePassword
 <h2>Installation and Setup: Tor and Firewall configuration</h2>
 
 <p>Ok, now let&#39;s install the firewall and tor support scripts. Go back into <em>Settings -&gt; Developer Options</em> and enable <em>USB Debugging</em> and change <em>Root Access</em> to <em>Apps and ADB</em>. Then, unzip the <a href="https://people.torproject.org/%7Emikeperry/android-hardening/android-firewall.zip">android-firewall.zip</a> on your laptop, and run the <a href="https://people.torproject.org/%7Emikeperry/android-hardening/android-firewall/install-firewall.sh">installation script</a>:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">./install-firewall.sh
+<div class="highlight"><pre><code class="language-text" data-lang="text">./install-firewall.sh
 </code></pre></div>
 <p>That firewall installation provides several key scripts that provide functionality that is currently impossible to achieve with any app (including Orbot):</p>
 
@@ -261,7 +262,7 @@ vdc cryptfs enablecrypto inplace NewMoreSecurePassword
 </ol>
 
 <p>To make use of the firewall scripts, open up Droidwall and hit the config button (the vertical three dots), go to <em>More -&gt; Set Custom Script</em>. Enter the following:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">. /data/local/firewall-torify-all.sh
+<div class="highlight"><pre><code class="language-text" data-lang="text">. /data/local/firewall-torify-all.sh
 #. /data/local/firewall-allow-adb.sh
 #. /data/local/firewall-allow-linphone-udp.sh
 #. /data/local/firewall-allow-nontor-browser.sh
@@ -440,7 +441,7 @@ vdc cryptfs enablecrypto inplace NewMoreSecurePassword
 <p>To use this script over the network without a usb cable, enable both USB Debugging and ADB Over Network in your developer settings. The script does not require you to enable root access from adb, and you should not enable root because it takes quite a while to run a backup, especially if you are using network adb.</p>
 
 <p>Prior to using network adb, you must edit your Droidwall custom scripts to allow it (by removing the &#39;#&#39; in the <strong>#. /data/local/firewall-allow-adb.sh</strong> line you entered earlier), and then run the following commands from a non-root Linux shell on your desktop/laptop (the <em>ADB Over Network</em> setting will tell you the IP and port):</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">killall adb
+<div class="highlight"><pre><code class="language-text" data-lang="text">killall adb
 adb connect ip:5555
 </code></pre></div>
 <p><strong>VERY IMPORTANT</strong> : Don&#39;t forget to disable <em>USB Debugging</em>, as well as the Droidwall adb exemption when you are done with the backup!</p>
@@ -468,17 +469,17 @@ adb connect ip:5555
 <p>Even so, since we lack public schematics for the Nexus 7 to verify that cell components are actually missing or hardware-disabled, it may be wise to wipe this radio firmware as well, as defense in depth.</p>
 
 <p>To do this, open the Terminal app, and run:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">su
+<div class="highlight"><pre><code class="language-text" data-lang="text">su
 cd /dev/block/platform/msm_sdcc.1/by-name
 dd if=/dev/zero of=./radio
 </code></pre></div>
 <p>I have wiped that partition while the device was running without any issue, or any additional errors from ADB logs.</p>
 
 <p>Note that an anonymous commenter also suggested it is <a href="https://blog.torproject.org/blog/mission-impossible-hardening-android-security-and-privacy#comment-55280">possible to disable the baseband</a> of a cell-enabled device using a series of Android service disable commands, and by wiping that radio block device. I have not tested this on a device other than the WiFI-only Nexus 7, though, so proceed with caution. If you try those steps on a cell-enabled device, you should archive a copy of your radio firmware first by doing something like the following from that dev directory that contains the radio firmware block device.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">dd if=./radio of=/sdcard/radio.img
+<div class="highlight"><pre><code class="language-text" data-lang="text">dd if=./radio of=/sdcard/radio.img
 </code></pre></div>
 <p>If anything goes wrong, you can restore that image with:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">dd if=/sdcard/radio.img of=./radio
+<div class="highlight"><pre><code class="language-text" data-lang="text">dd if=/sdcard/radio.img of=./radio
 </code></pre></div>
 <h1>Future Work</h1>
 
@@ -578,7 +579,6 @@ dd if=/dev/zero of=./radio
 </ol>
 
 </div>
-<p>- mikeperry</p>
 
 
           <div class="footer">

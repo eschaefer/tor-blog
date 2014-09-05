@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Research problem: Five ways to test bridge reachability</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Research problem: Five ways to test bridge reachability</h2>
 <p class="meta">01 Dec 2011</p>
 
-<div class="post">
+<div class="event">
 <p>Once we get <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">more (and more diverse) bridge addresses</a>, the next research step is that we&#39;ll need to get better at telling which bridges are blocked in which jurisdictions. For example, most of the bridges we give out via https and gmail are blocked in China. But which ones exactly? How quickly do they get blocked? Do some last longer than others? Do they ever get unblocked? Is there some pattern to the blocking, either by time, by IP address or network, by user load on the bridge, or by distribution strategy? We can&#39;t evaluate <a href="https://blog.torproject.org/blog/bridge-distribution-strategies">new bridge distribution strategies</a> if we can&#39;t track whether the bridges in each strategy are being blocked.</p>
 
 <p>Generally speaking, bridge reachability tests break down into two approaches: passive and active. Passive tests don&#39;t involve any new connections on the part of Tor clients or bridges, whereas active tests follow the more traditional &quot;scanning&quot; idea. None of the reachability tests we&#39;ve thought of are perfect. Instead, here we discuss how to combine imperfect tests and use feedback from the tests to balance their strengths and weaknesses.</p>
@@ -108,7 +109,6 @@
 <p>Of course, there&#39;s more to it than that. For example, we need to consider how to handle the presence of bridge enumeration attacks that work independently of which distribution channel a given bridge address was given to. We also need to consider attacks that artificially inflate the efficiency of bridges (and thus make us overreward distribution channels), or that learn about a bridge but choose not to block it. But that, as they say, is a story for another time.</p>
 
 </div>
-<p>- arma</p>
 
 
           <div class="footer">

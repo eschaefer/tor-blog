@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Some thoughts on the CRIME attack</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Some thoughts on the CRIME attack</h2>
 <p class="meta">14 Sep 2012</p>
 
-<div class="post">
+<div class="event">
 <p>By this point, some people have started to ask me about the Rizzo and Duong&#39;s new <a href="http://www.ekoparty.org//2012/juliano-rizzo.php">CRIME</a> attack on TLS.</p>
 
 <p>The short version is the same as with <a href="https://blog.torproject.org/blog/tor-and-beast-ssl-attack">BEAST</a> last year: Tor is not affected. TorBrowser is not affected. Other applications may be affected; please consult your app vendor.</p>
@@ -33,7 +34,7 @@
 
 <p><strong>The attack</strong> : CRIME exploits TLS compression to learn secret cookies. (Approximate description follows.) The attacker uses JavaScript (or some other means) to cause a client to make an encrypted, compressed request to a webserver. Part of that request (for example, the URL) is under the attacker&#39;s control. Part of that request (for example, the cookie) is secret. TLS does not hide the length of what it&#39;s transmitting[*], so the attacker can learn the length of the compressed request. The length of the compressed request will depend on how much redundancy there is between the attacker-controlled data and the rest of the request (including the secret). By learning how much redundancy there was, the attacker can learn how many bytes of attacker-controlled information were shared with the secret, and thereby how many bytes.</p>
 
-<p>You can imagine it as something like a sophisticated game of <a href="http://en.wikipedia.org/wiki/Mastermind_(board_game">Mastermind</a>): the attacker gets to guess a cookie, and they learn something how much of the cookie they guessed right. With enough guesses, they can learn the cookie, which lets them impersonate the client to the server.</p>
+<p>You can imagine it as something like a sophisticated game of <a href="http://en.wikipedia.org/wiki/Mastermind_(board_game)">Mastermind</a>: the attacker gets to guess a cookie, and they learn something how much of the cookie they guessed right. With enough guesses, they can learn the cookie, which lets them impersonate the client to the server.</p>
 
 <p><a href="Okay,%20not%20all%20TLS%20implementation%20reveal%20the%20exact%20length%20of%20what%20they&#x27;re%20encrypting.%20If%20they&#x27;re%20using%20CBC,%20they&#x27;ll%20round%20up%20to%20the%20nearest%2016%20bytes.%20But%20that&#x27;s%20still%20enough%20information%20about%20the%20compressed%20data&#x27;s%20length%20for%20this%20attack%20to%20work.">*</a></p>
 
@@ -95,7 +96,6 @@
 <p><strong>Acknowledgements</strong> : my thanks to Juliano for explaining the attack to me and helping me understand its ramifications. Lots of the analysis above is due to a conversation with him. Thanks also to Juliano and Thai for coming up with the attack. Thanks to Robert Ransom for feedback and corrections on the first draft of this post.</p>
 
 </div>
-<p>- nickm</p>
 
 
           <div class="footer">

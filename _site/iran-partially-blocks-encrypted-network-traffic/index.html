@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Iran partially blocks encrypted network traffic</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Iran partially blocks encrypted network traffic</h2>
 <p class="meta">10 Feb 2012</p>
 
-<div class="post">
+<div class="event">
 <p>Over the past two days we&#39;ve been hearing from, and working with, a number of Iranians having difficulty using Tor from inside Iran. It seems the Iranian government has ramped up censorship in three ways: deep packet inspection (dpi) of SSL traffic, selective blocking of IP Address and TCP port combinations, and some keyword filtering. For instance, they have partially blocked access to Tor&#39;s website, torproject.org, via IP address (such as 86.59.30.36) and port 443 (which is the HTTPS port). The third level of blocking is by keywords, such as searching for the word &#39;tor&#39; via regular, non-encrypted search engine websites.</p>
 
 <p>The blocks on SSL are not complete and not nationwide. Where blocking is in place, initial investigations show they are identifying the beginning of the SSL handshake and simply interrupting the handshake. We continue to research and investigate solutions with the assumption that SSL will eventually be blocked nationwide inside Iran. Our goal is to defeat their dpi signatures and allow tor to work by default.</p>
@@ -38,7 +39,6 @@
 <p><strong>Update</strong> 2011-02-10 18:05 UTC: We are working on making our obfuscating proxy more stable and easier to deploy. If you can compile code, following <a href="https://lists.torproject.org/pipermail/tor-talk/2012-February/023070.html">these directions</a> will help. We&#39;re also working on Amazon EC2 instances of obfsproxy for point and click deployment.</p>
 
 </div>
-<p>- phobos</p>
 
 
           <div class="footer">

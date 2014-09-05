@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Top changes in Tor since the 2004 design paper (Part 2)</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Top changes in Tor since the 2004 design paper (Part 2)</h2>
 <p class="meta">22 Oct 2012</p>
 
-<div class="post">
+<div class="event">
 <p>This is part 2 of Nick Mathewson and Steven Murdoch&#39;s series on what has changed in Tor&#39;s design since the original design paper in 2004. <a href="https://blog.torproject.org/blog/top-changes-tor-2004-design-paper-part-1">Part one is back over here.</a></p>
 
 <p>In this installment, we cover changes in how we pick and use nodes in our circuits, and general anticensorship features.</p>
@@ -94,7 +95,6 @@
 <p>Running BitTorrent over Tor is still strongly discouraged, but this paper did illustrate some potential problems with circuit reuse so <a href="https://gitweb.torproject.org/torspec.git/blob/master:/proposals/171-separate-streams.txt">proposal 171</a> was written, and implemented in Tor 0.2.3.3-alpha, to help isolate streams which shouldn&#39;t share the same circuit. By default streams which were initiated by different clients, which came from SOCKS connections with different authentication credentials, or which came to a different SOCKS port on the Tor client, are separated. In this way, a user can isolate applications by either setting up multiple SOCKS ports on Tor and using one per application, or by setting up a single SOCKS port but using different username/passwords for each application. Tor can also be configured to isolate streams based on destination address and/or port.</p>
 
 </div>
-<p>- nickm</p>
 
 
           <div class="footer">

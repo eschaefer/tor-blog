@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Moving Tor to a datagram transport</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Moving Tor to a datagram transport</h2>
 <p class="meta">07 Nov 2011</p>
 
-<div class="post">
+<div class="event">
 <p>Tor currently transports data over encrypted TLS tunnels between nodes, in turn carried by TCP. This has worked reasonably well, but recent research has shown that it might not be the best option, particularly for performance.</p>
 
 <p>For example, when a packet gets dropped or corrupted on a link between two Tor nodes, TCP will cause the packet to be retransmitted eventually. However, in the meantime, all circuits passing through this pair of nodes will be stalled, not only the circuit corresponding to the packet which was dropped.</p>
@@ -38,7 +39,6 @@
 <p>The document, “ <a href="http://www.cl.cam.ac.uk/%7Esjm217/papers/tor11datagramcomparison.pdf">Comparison of Tor Datagram Designs</a>”, is now available (with source in <a href="https://gitweb.torproject.org/sjm217/torspec.git/tree/datagram_comparison:/proposals/ideas/xxx-datagram-comparison">git</a>), and I would welcome comments. Over the next few months I&#39;ll be working on building and evaluating prototypes for these schemes, and I will be incorporating feedback from the Tor community into the process.</p>
 
 </div>
-<p>- sjmurdoch</p>
 
 
           <div class="footer">

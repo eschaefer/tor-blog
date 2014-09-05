@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Deterministic Builds Part One: Cyberwar and Global Compromise</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="robots" content="noindex" />
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -24,7 +25,7 @@
           <h2>Deterministic Builds Part One: Cyberwar and Global Compromise</h2>
 <p class="meta">20 Aug 2013</p>
 
-<div class="post">
+<div class="event">
 <p>I&#39;ve spent the past few months developing a new build system for the <a href="https://blog.torproject.org/category/tags/tbb-30">3.0 series</a> of the Tor Browser Bundle that produces what are called &quot;deterministic builds&quot; -- packages which are byte-for-byte identical no matter who actually builds them, or what hardware they use. This effort was extraordinarily involved, consuming all of my development time for over two months (including several nights and weekends), babysitting builds and fixing differences and issues that arose.</p>
 
 <p>When describing my recent efforts to others, by far the two most common questions I&#39;ve heard are &quot;Why did you do that?&quot; and &quot;How did you do that?&quot;. I&#39;ve decided to answer each question at length in a separate blog post. This blog post attempts to answer the first question: &quot;Why would anyone want a deterministic build process?&quot;</p>
@@ -66,7 +67,6 @@
 <p>I believe it is important for Tor to set an example on this point, and I hope that the Linux distributions will follow in making deterministic packaging the norm. Thankfully, due to our close relationship with Debian, after we whispered in a few of the right ears <a href="https://wiki.debian.org/ReproducibleBuilds">they have started work</a> on this effort. Don&#39;t despair guys: it won&#39;t take two months for each Linux package. In our case, we had to cross-compile Firefox deterministically for four different target operating system and architecture combinations and fix a number of Firefox-specific build issues, all of which I will describe in the <a href="https://blog.torproject.org/blog/deterministic-builds-part-two-technical-details">second post on the technical details</a>.</p>
 
 </div>
-<p>- mikeperry</p>
 
 
           <div class="footer">
