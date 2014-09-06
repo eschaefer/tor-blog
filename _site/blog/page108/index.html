@@ -63,7 +63,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>This summer I have been working on new feature for the Torbutton Firefox extension with Mike Perry as my mentor. The Tor Project volunteer page describes this project as requiring a high skill and effort level. Initially, I was confident in the effort that I was capable of putting forth, however I was doubtful of my skill level. My knowledge of XUL (an xml based markup language for the Mozilla Framework) and Javascript was a medium at best. Knowing that I was going to have to spend a good amount of time becoming adept with these languages, I took on writing three new features for Torbutton.</p>
+          <p>This summer I have been working on new feature for the Torbutton Firefox extension with Mike Perry as my mentor. The Tor Project volunteer page describes this project as requiring a high skill and effort level. Initially, I was confident in the effort that I was capable of putting forth, however I was doubtful of my skill level. My knowledge of XUL (an xml based markup language for the Mozilla Framework) and Javascript was a medium at best. Knowing that I was going to have to spend a good amount of time becoming adept with these languages, I took on writing three new features for Torbutton.</p>
 
 <p>The first feature is handling tor:// and tors:// urls. I implemented these protocols to be handled by Torbutton, and will be opened in your Tor connection. If you do not have Tor enabled, you will be prompted to enable it. In addition, I added options in any link’s context menu for copying Tor URLs and opening them in a new window or tab.</p>
 
@@ -74,7 +74,7 @@
 <p>These features are almost ready to be released. There will be a pre-release version that will be out soon, I will notify or-talk when this is ready – so that it can be tested before release. In particular, I am looking for possible security vulnerabilities in my features. The tor/tors protocol is currently a source of vulnerability, because it can be called from many different places in the browser, and could be used to correlate a user’s Tor identity with his/her non-Tor identity. Therefore I want to make sure that it can only be called from a few parts on the page.</p>
 
 <p>I plan on making sure that my features are robust and secure before releasing them, and expect that to be done by the next release of Torbutton. In addition, I plan on continuing to contribute to the Tor Project. I enjoyed my Summer of Code, and now I am looking forward to contributing to Tor.</p>
-</p>
+
         </div>
       </section>
     
@@ -98,7 +98,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>Tor Browser Bundle 1.2.9 is released today. It updates Firefox and Pidgin Instant Messaging client to address the security issues in the older versions, and includes the latest and greatest Vidalia.</p>
+          <p>Tor Browser Bundle 1.2.9 is released today. It updates Firefox and Pidgin Instant Messaging client to address the security issues in the older versions, and includes the latest and greatest Vidalia.</p>
 
 <p>TBB can be downloaded from <a href="https://www.torproject.org/torbrowser" title="https://www.torproject.org/torbrowser">https://www.torproject.org/torbrowser</a>.</p>
 
@@ -110,7 +110,7 @@
 <li>update Pidgin to 2.6.2</li>
 <li>update Firefox to 3.0.14</li>
 </ul>
-</p>
+
         </div>
       </section>
     
@@ -130,7 +130,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>Over the summer for GSoC 2009, I worked on Polipo, Tor&#39;s favored Web proxy for bridging the gap between HTTP and SOCKS protocols. The proxy also provides an efficient memory cache to help speed up browsing. I had an opportunity to learn about Polipo and Libevent, and I had a chance to attend <a href="http://petsymposium.org/2009/">PETS</a>, a privacy conference, and meet some of the Tor folks in person. <a href="http://www.pps.jussieu.fr/%7Ejch/software/polipo/">Polipo</a> is authored by Juliusz Chroboczek. <a href="http://www.monkey.org/%7Eprovos/libevent/">Libevent</a> is developed by Nick Mathewson and Niels Provos. Nick Mathewson also happens to work for the Tor Project and was my GSoC mentor over the summer.</p>
+          <p>Over the summer for GSoC 2009, I worked on Polipo, Tor&#39;s favored Web proxy for bridging the gap between HTTP and SOCKS protocols. The proxy also provides an efficient memory cache to help speed up browsing. I had an opportunity to learn about Polipo and Libevent, and I had a chance to attend <a href="http://petsymposium.org/2009/">PETS</a>, a privacy conference, and meet some of the Tor folks in person. <a href="http://www.pps.jussieu.fr/%7Ejch/software/polipo/">Polipo</a> is authored by Juliusz Chroboczek. <a href="http://www.monkey.org/%7Eprovos/libevent/">Libevent</a> is developed by Nick Mathewson and Niels Provos. Nick Mathewson also happens to work for the Tor Project and was my GSoC mentor over the summer.</p>
 
 <p>My work included integrating support for Libevent, a library for managing I/O events portably. The main advantage of using Libevent over Polipo&#39;s built-in event loop is Libevent&#39;s support of platform-specific APIs for monitoring large numbers of connections for I/O events. Polipo, when compiled to use Libevent, should be quicker when juggling many open connections. Informal benchmarking seemed to back this up, although more thorough profiling is still TODO. Modern versions of Libevent also contain an asynchronous DNS resolver, which I tied into Polipo, as well. Polipo&#39;s original event system and asynchronous DNS resolver are still available in case Libevent is unavailable on a user&#39;s system.</p>
 
@@ -141,7 +141,7 @@
 <p>Looking farther ahead, it would be good to consider a few ways to improve Polipo&#39;s performance. Roger mentioned to me during PETS that retrieving web pages might be made more efficient by packing client requests into Tor&#39;s RELAY BEGIN cells, so that the requests can be sent by the exit node immediately after connection to the requested server without the additional latency that currently exists while the client waits for notice of a successful connection. This would require changes to Polipo and Tor to implement, and there may be design issues worth considering, such as the limited payload space available in cells. Another thing that could potentially increase performance is adding support for Libevent&#39;s buffer events, which make use of more efficient I/O routines on Windows. This would be pretty difficult to do, yet worth considering.</p>
 
 <p>Working on this project was a fun and informative experience, and I hope to stay a member of the Tor community. I&#39;ve had some experience working on open source projects before, but it&#39;s unique to find developers as dedicated as those working on Tor. In fact, Tor is a full-time job for several of the developers, and I think seeing a high level of development activity helps to keep volunteers around.</p>
-</p>
+
         </div>
       </section>
     
@@ -165,7 +165,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>As a returning <a href="http://socghop.appspot.com/org/home/google/gsoc2009/eff">Google Summer of Code</a> student for the second year in a row, I was thrilled to hear that I had been accepted again.</p>
+          <p>As a returning <a href="http://socghop.appspot.com/org/home/google/gsoc2009/eff">Google Summer of Code</a> student for the second year in a row, I was thrilled to hear that I had been accepted again.</p>
 
 <p>My task was to add <a href="http://www.bittorrent.com/">BitTorrent</a> support to <a href="https://git.torproject.org/checkout/thandy/master/">Thandy</a>, the secure automated updater <a href="http://google-opensource.blogspot.com/2009/03/thandy-secure-update-for-tor.html">developed</a> by the Tor project, along with setting up and testing the necessary infrastructure. The goal is to better mitigate load spikes following the release of new software versions and allowing volunteers to easily help users to fetch Tor.</p>
 
@@ -176,7 +176,7 @@
 <p>It was great to see that this year, all my code has been merged into the Thandy source. I think my experience from last year saved me from making the same mistakes again, by focusing on small parts that work instead of re-designing major aspects of the software.</p>
 
 <p>Overall, I&#39;m very happy with how my Summer of Code turned out to be, and I hope to participate again (either as student or even mentor)!</p>
-</p>
+
         </div>
       </section>
     
@@ -190,7 +190,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>Thanks to a friend who&#39;s a professor at <a href="http://www.kaist.edu/edu.html">KAIST</a> in Korea, several teams of students there are working for their &quot;freshman design class&quot; on designing new bridge (aka bridge relay) distribution strategies. Here&#39;s some early brainstorming on what the actual problems are and what needs doing.</p>
+          <p>Thanks to a friend who&#39;s a professor at <a href="http://www.kaist.edu/edu.html">KAIST</a> in Korea, several teams of students there are working for their &quot;freshman design class&quot; on designing new bridge (aka bridge relay) distribution strategies. Here&#39;s some early brainstorming on what the actual problems are and what needs doing.</p>
 
 <p>Background: Tor uses directory servers to give out information about what relays are in the network. But blocking connections between users and the main Tor network is actually not that hard — after all, there&#39;s a public list of relays, which needs to stay public so clients can know where to connect. That&#39;s where <a href="https://www.torproject.org/docs/bridges.html.en">bridge relays</a> come in. Now that we&#39;ve deployed bridge relays, we changed the arms race from &quot;how do we prevent the adversary from learning about 2000 IP address that we&#39;re openly publishing?&quot; (which is an impossible problem) to &quot;how do we take these several thousand secret IP addresses and give them out one at a time to the good guys, without letting the bad guys learn all of them?&quot; Hopefully that&#39;s a more manageable arms race. You can read more background in the <a href="https://svn.torproject.org/svn/projects/design-paper/blocking.html">blocking-resistance design doc</a> and <a href="http://freehaven.net/%7Earma/23C3-1444-en-tor_and_china.m4v">video</a>.</p>
 
@@ -235,7 +235,7 @@
 <p>Overall, a lot of the challenge here comes from not having a good handle on how powerful the attackers might be. In the cryptography world, the standard approach is to assume an extremely powerful attacker, and design a system that can protect against even that. But here, it would seem that convenience and usability are at odds with this traditional approach to strong security — not to mention that we don&#39;t even know how to provide strong (crypto-grade) security in this context.</p>
 
 <p>Last, it&#39;s worth noting that so far no countries have blocked the public Tor network. Tor played a <a href="https://blog.torproject.org/blog/measuring-tor-and-iran-part-two">big role in Iran&#39;s organizations and demonstrations in June</a>, and it has even more users in China, Russia, and other repressive countries. So the arms race has already begun, and none of the adversaries have proved to be powerful enough and/or concerned enough to take a step. Building a broad range of strategies — from convenient but breakable ones to very secure ones — will be the best preparation for however the arms race plays out.</p>
-</p>
+
         </div>
       </section>
     

@@ -69,7 +69,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>Perhaps you&#39;ve noticed that the packages for CentOS 4 and OSX Tiger/10.4 haven&#39;t been updated lately. Welcome to dead hard drives.</p>
+          <p>Perhaps you&#39;ve noticed that the packages for CentOS 4 and OSX Tiger/10.4 haven&#39;t been updated lately. Welcome to dead hard drives.</p>
 
 <p>For a long while, I used <a href="http://www.vmware.com/products/server/">VMware Server</a> for guest OSes to build the various rpm and windows packages. This mostly worked well. And then both drives in the physical server I used to host the vmware instance failed. A two-drive RAID 1 array doesn&#39;t like it when both drives fail. I replaced the drives, re-installed Debian, and attempted to install vmware server again. The vmware kernel module refused to load. I tried the old tricks to get it to work, nothing. I finally looked at some script/patch that I found via Google, and got the module to load. Then my license key didn&#39;t work anymore.</p>
 
@@ -80,7 +80,7 @@
 <p>Perhaps it&#39;s time to start using Amazon&#39;s EC2 or something similar instead of messing with all this hardware and virtualization software. Or maybe I should work on hacking OSX 10.4 and 10.5 into virtualbox.</p>
 
 <p>** Update 2008-08-06: new drive was DOA. And it appears the logic board on the mac mini is fried. Ugh.</p>
-</p>
+
         </div>
       </section>
     
@@ -106,14 +106,14 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>I&#39;ve noticed a <a href="https://blog.torproject.org/blog/june-2008-progress-report#comment-154">few comments</a> about a Chinese anti-virus program, RISING, reporting that Vidalia.exe and Privoxy.exe are infected with Trojan.PSW.Win32.Undef.adp. In both cases, I suspect that RISING is reporting false positives. These executables as packaged and available on the Tor download page are not infected.</p>
+          <p>I&#39;ve noticed a <a href="https://blog.torproject.org/blog/june-2008-progress-report#comment-154">few comments</a> about a Chinese anti-virus program, RISING, reporting that Vidalia.exe and Privoxy.exe are infected with Trojan.PSW.Win32.Undef.adp. In both cases, I suspect that RISING is reporting false positives. These executables as packaged and available on the Tor download page are not infected.</p>
 
 <p>I&#39;ve looked at the MD5 and SHA-1 sums of these programs as included in the Vidalia bundle and they match what the source packages produce as executables. The privoxy.exe included in the bundles is the exact same one as found at the <a href="http://downloads.sourceforge.net/ijbswa/privoxy_setup_3_0_6.exe?modtime=1164015760&amp;big_mirror=0">Sourceforge Privoxy Download Page</a>.</p>
 
 <p>The Vidalia.exe is the same as the one included in the <a href="http://www.vidalia-project.net/dist/vidalia-0.1.7.exe">Vidalia Download Page</a>.</p>
 
 <p>Feel free to confirm this is true for you. Better yet, let us know if these individual packages (Vidalia.exe from Vidalia and Privoxy.exe from Sourceforge) also show up as infected.</p>
-</p>
+
         </div>
       </section>
     
@@ -141,7 +141,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>Torbutton 1.2.0rc1 (released June 1), the first release candidate for the next stable series of the security-enhanced Torbutton Firefox extension, features functional support for Firefox 3. However, this support has not been extensively tested. In particular, timezone masking does not work at all. The workaround is to manually set the environment variable &#39;TZ&#39; to &#39;UTC&#39; before starting Firefox. This works on both Linux and Windows:
+          <p>Torbutton 1.2.0rc1 (released June 1), the first release candidate for the next stable series of the security-enhanced Torbutton Firefox extension, features functional support for Firefox 3. However, this support has not been extensively tested. In particular, timezone masking does not work at all. The workaround is to manually set the environment variable &#39;TZ&#39; to &#39;UTC&#39; before starting Firefox. This works on both Linux and Windows:
  <a href="http://archives.seul.org/or/talk/Jun-2008/msg00044.html" title="http://archives.seul.org/or/talk/Jun-2008/msg00044.html">http://archives.seul.org/or/talk/Jun-2008/msg00044.html</a></p>
 
 <p>Tor 0.2.0.27-rc (released June 3) adds a few features we left out of the earlier release candidates. In particular, we now include an IP-to-country GeoIP database, so controllers can easily look up what country a given relay is in, and so bridge relays can give us some sanitized summaries about which countries are making use of bridges. (See proposal 126-geoip-fetching.txt for details.)
@@ -266,7 +266,7 @@ and we even hacked in some Torbutton fixes that will come out in version 1.2.0rc
 <p>In July we plan to add the strings for Vidalia&#39;s installer; the challenge is that we need to write a script to convert from the &quot;nsh&quot; (nullscript installer language) format to the &quot;po&quot; (preferred by Pootle) format and back.</p>
 
 <p>In July we also expect to see the first version of our &quot;wml to po and back&quot; conversion tool, that will allow us to start putting our website pages into the translation server.</p>
-</p>
+
         </div>
       </section>
     
@@ -284,7 +284,7 @@ and we even hacked in some Torbutton fixes that will come out in version 1.2.0rc
           </p>
         </header>
         <div class="post-description">
-          <p><p>For those of you just tuning in: Over the past year, I have been the maintainer of the <a href="https://torbutton.torproject.org/dev/">Torbutton Firefox extension</a>, adding a number of features and security enhancements to transform Torbutton from a simple proxy switcher into a secure way to <a href="https://torbutton.torproject.org/dev/design/#requirements">fully isolate all browser state</a> from one proxy state to another and defend against all known <a href="https://torbutton.torproject.org/dev/design/#adversary">privacy and IP address leakage attacks</a>.</p>
+          <p>For those of you just tuning in: Over the past year, I have been the maintainer of the <a href="https://torbutton.torproject.org/dev/">Torbutton Firefox extension</a>, adding a number of features and security enhancements to transform Torbutton from a simple proxy switcher into a secure way to <a href="https://torbutton.torproject.org/dev/design/#requirements">fully isolate all browser state</a> from one proxy state to another and defend against all known <a href="https://torbutton.torproject.org/dev/design/#adversary">privacy and IP address leakage attacks</a>.</p>
 
 <p>The release candidate phase of the extension started about a month ago, but with the release of Firefox 3 and Torbutton 1.2.0rc series occurring at the same time, we&#39;ve hit a number of unexpected rough spots and snags. However, with the 1.2.0rc5 release of Torbutton, I&#39;m pleased to report that the majority of those now seem to be <a href="https://torbutton.torproject.org/dev/CHANGELOG">behind us</a> (a few annoying <a href="https://torbutton.torproject.org/dev/design/#FirefoxBugs">Firefox bugs</a> notwithstanding).</p>
 
@@ -293,7 +293,7 @@ and we even hacked in some Torbutton fixes that will come out in version 1.2.0rc
 <p>In addition, Torbutton is now much better about preserving users&#39; custom Firefox preferences, including password and form fill preferences. Amusingly, the fact that we touch these preferences to protect users during Tor usage led to wild speculation on the <a href="https://addons.mozilla.org/en-US/firefox/addon/2275">addons.mozilla.org page</a> that we were using them to steal passwords and send user details to Alexa. Of course, simply grepping the <a href="https://tor-svn.freehaven.net/svn/torbutton/trunk">source code</a> for &#39;Alexa&#39; and related IP addresses proves this to be false, but that didn&#39;t stop at least three people (or at least three sock puppets) from running with the rumor that Torbutton is a password stealer. Ignorance sure is contagious.</p>
 
 <p>At any rate, after over a year since development began, it looks like we&#39;re finally getting really close to declaring Torbutton 1.2.0 &#39;stable&#39;, which should coincide nicely with the upcoming Tor 0.2.0 stable release and bundles. It&#39;s been a long road!</p>
-</p>
+
         </div>
       </section>
     
@@ -313,7 +313,7 @@ and we even hacked in some Torbutton fixes that will come out in version 1.2.0rc
           </p>
         </header>
         <div class="post-description">
-          <p><p><a href="http://anonymityanywhere.com/incognito/">Incognito</a> is an open source LiveDistro assisting you to securely and anonymously use the Internet almost anywhere you go. Incognito can be used from either a CD or a USB drive and has several Internet applications (Web browser, IRC client, Mail client, Instant messenger, etc.) pre-configured with security in mind, and all Internet traffic will be anonymized.</p>
+          <p><a href="http://anonymityanywhere.com/incognito/">Incognito</a> is an open source LiveDistro assisting you to securely and anonymously use the Internet almost anywhere you go. Incognito can be used from either a CD or a USB drive and has several Internet applications (Web browser, IRC client, Mail client, Instant messenger, etc.) pre-configured with security in mind, and all Internet traffic will be anonymized.</p>
 
 <p>At the core of this anonymity is the Tor software and network. In recognition of the transparency, open source base, continued development, and improvement of the Incognito software, The Tor Project is proud to list Incognito as a licensee of the Tor brands.</p>
 
@@ -321,7 +321,7 @@ and we even hacked in some Torbutton fixes that will come out in version 1.2.0rc
 
 <p>We welcome the further cooperation and collaboration between Incognito and The
 Tor Project.</p>
-</p>
+
         </div>
       </section>
     

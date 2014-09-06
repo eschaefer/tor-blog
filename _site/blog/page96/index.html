@@ -73,7 +73,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p><strong>New releases</strong></p>
+          <p><strong>New releases</strong></p>
 
 <ul>
 <li>On April 24, we released Tor 0.2.2.13-alpha. This version addresses the recent connection and memory overload problems we’ve been seeing on relays, especially relays with their DirPort open. If your relay has been crashing, or you turned it off because it used too many resources, give this release a try.</li>
@@ -277,7 +277,7 @@ Directory authorities now do an immediate reachability check as soon as they hea
 <li>Added new translations of Vietnamese, Greek and Serbian to all projects.</li>
 <li>Many updated translated strings in German, Polish, Greek, Dutch, Finnish, Russian, Japanese, Chinese, French, Burmese, Spanish, Farsi, Arabic, Swedish, Turkish, and Norwegian.</li>
 </ul>
-</p>
+
         </div>
       </section>
     
@@ -305,7 +305,7 @@ Directory authorities now do an immediate reachability check as soon as they hea
           </p>
         </header>
         <div class="post-description">
-          <p><p>An increasing number of people are asking us about the <a href="http://hal.inria.fr/docs/00/47/15/56/PDF/TorBT.pdf">recent paper</a> coming out of Inria in France around Bittorrent and privacy attacks. This post tries to explain the attacks and what they imply.</p>
+          <p>An increasing number of people are asking us about the <a href="http://hal.inria.fr/docs/00/47/15/56/PDF/TorBT.pdf">recent paper</a> coming out of Inria in France around Bittorrent and privacy attacks. This post tries to explain the attacks and what they imply.</p>
 
 <p>There are three pieces to the attack (or three separate attacks that build on each other, if you prefer).</p>
 
@@ -332,7 +332,7 @@ Directory authorities now do an immediate reachability check as soon as they hea
 <p>Another answer is to separate streams by destination port. Then all the streams that go to port 80 are on one circuit, and a stream for a different destination port goes on another circuit. We&#39;ve had that idea lurking in the background for a long time now, but it&#39;s actually because of Bittorrent that we haven&#39;t implemented it: if a BT client asks us to make 50 streams to 50 different destination ports, I don&#39;t want the Tor client to try to make 50 different circuits. That puts too much load on the network. I guess we could special-case it by separating &quot;80&quot; and &quot;not 80&quot;, but I&#39;m not sure how effective that would be in practice, first since many other ports (IM, SSH, etc) would want to be special-cased, and second since firewalls are pressuring more and more of the Internet to go over port 80 these days.</p>
 
 <p>We should keep brainstorming about ways to protect users even when their applications are handing over their sensitive information. But in the mean time, I think it&#39;s great that these researchers are publishing their results and letting everybody else evaluate the attacks. (If you&#39;re a researcher working on Tor attacks or defenses, check out our new <a href="https://www.torproject.org/research.html.en">research resources</a> page.) The attacks in this paper are serious attacks if you&#39;re a Bittorrent user and you&#39;re hoping to have some privacy.</p>
-</p>
+
         </div>
       </section>
     
@@ -372,7 +372,7 @@ Directory authorities now do an immediate reachability check as soon as they hea
           </p>
         </header>
         <div class="post-description">
-          <p><p>Over the past 18 months someone has been mailing fake checks from us to individuals all over the United States. The text of the letter one receives is:</p>
+          <p>Over the past 18 months someone has been mailing fake checks from us to individuals all over the United States. The text of the letter one receives is:</p>
 
 <blockquote>
 <p>From: Merchant &amp; Bryce, Partners in Finance.
@@ -409,7 +409,7 @@ Paul Lylesworth, Attorney at Law and 2009 Dreams Sweepstakes(tm).</p>
 <p>As for as some basic sleuthing, the phone numbers NPA-NPX are assigned to MagicJack in Los Angeles, California. The letters themselves are mailed from Canada. postal code M4L 3T6. This is Toronto, Ontario.</p>
 
 <p>That&#39;s all we know. If you receive an unexpected check from us, it&#39;s fake.</p>
-</p>
+
         </div>
       </section>
     
@@ -429,7 +429,7 @@ Paul Lylesworth, Attorney at Law and 2009 Dreams Sweepstakes(tm).</p>
           </p>
         </header>
         <div class="post-description">
-          <p><p>Tor 0.2.2.12-alpha fixes a critical bug in how directory authorities
+          <p>Tor 0.2.2.12-alpha fixes a critical bug in how directory authorities
 handle and vote on descriptors. It was causing relays to drop out of
 the consensus.</p>
 
@@ -517,7 +517,7 @@ rather than waiting for every package.)</p>
  window. This resulted in test failures. Now the master thread sleeps
  occasionally for a few microseconds while the two worker-threads
  compete for the mutex. Bugfix on 0.2.0.1-alpha.</p>
-</p>
+
         </div>
       </section>
     
@@ -543,7 +543,7 @@ rather than waiting for every package.)</p>
           </p>
         </header>
         <div class="post-description">
-          <p><p><strong>New Releases</strong>
+          <p><strong>New Releases</strong>
 On March 7th, we released the latest in the -alpha series, Tor 0.2.2.10-alpha. Tor 0.2.2.10-alpha fixes a regression introduced in 0.2.2.9-alpha that could prevent relays from guessing their IP address correctly. It also starts the groundwork for another client-side performance boost, since currently we&#39;re not making efficient use of relays that have both the Guard flag and the Exit flag.</p>
 
 <p>o Major bugfixes:
@@ -683,7 +683,7 @@ Karsten continued to improve the Tor Metrics Portal, <a href="http://metrics.tor
 <li>Language updates to torbutton in Arabic, German, Danish, Slovakian, Swedish, Vietnamese, Russian</li>
 <li>Runa fixed a large amount of broken html and translated files. This enabled us to push nearly all projects and languages into the codebases.</li>
 </ul>
-</p>
+
         </div>
       </section>
     

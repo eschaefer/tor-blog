@@ -61,7 +61,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>The fourth pointfix release of the 3.6 series is available from the <a href="https://www.torproject.org/download/download-easy.html">Tor Browser Project page</a> and also from our <a href="https://www.torproject.org/dist/torbrowser/3.6.4/">distribution directory</a>.</p>
+          <p>The fourth pointfix release of the 3.6 series is available from the <a href="https://www.torproject.org/download/download-easy.html">Tor Browser Project page</a> and also from our <a href="https://www.torproject.org/dist/torbrowser/3.6.4/">distribution directory</a>.</p>
 
 <p>This release features an update to OpenSSL to address the latest round of <a href="https://www.openssl.org/news/secadv_20140806.txt">OpenSSL security issues</a>. Tor Browser should only be vulnerable to one of these issues - the null pointer dereference. As this issue is only a DoS, we are not considering this a critical security update, but users are advised to upgrade anyway. This release also features an update to Tor to alert users of the <a href="https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">RELAY_EARLY attack</a> via a log message, and a fix for a hang that was happening to some users at startup/Tor network bootstrap.</p>
 
@@ -133,7 +133,7 @@ bug11200 patch.</li>
 </ul>
 
 <p>The list of <a href="https://trac.torproject.org/projects/tor/query?keywords=%7Etbb-helpdesk-frequent&amp;status=!closed">frequently encountered known issues</a> is also available in our bug tracker.</p>
-</p>
+
         </div>
       </section>
     
@@ -149,7 +149,7 @@ bug11200 patch.</li>
           </p>
         </header>
         <div class="post-description">
-          <p><p>Welcome to the thirty-first issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+          <p>Welcome to the thirty-first issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
 
 <h1>Tor and the RELAY_EARLY traffic confirmation attack</h1>
 
@@ -208,7 +208,7 @@ bug11200 patch.</li>
 <p>This issue of Tor Weekly News has been assembled by Lunar, harmony, Matt Pagan, Philipp Winter, David Fifield, Karsten Loesing, and Roger Dingledine.</p>
 
 <p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
-</p>
+
         </div>
       </section>
     
@@ -224,7 +224,7 @@ bug11200 patch.</li>
           </p>
         </header>
         <div class="post-description">
-          <p><p>Welcome to the thirtieth issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+          <p>Welcome to the thirtieth issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
 
 <h1>Tor Browser 3.6.3 is out</h1>
 
@@ -290,7 +290,7 @@ directory server, the profiling and partitioning attack vector is reduced to the
 <p>This issue of Tor Weekly News has been assembled by Lunar, Matt Pagan, harmony, and Philipp Winter.</p>
 
 <p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
-</p>
+
         </div>
       </section>
     
@@ -312,7 +312,7 @@ directory server, the profiling and partitioning attack vector is reduced to the
           </p>
         </header>
         <div class="post-description">
-          <p><p>This advisory was posted on the <a href="https://lists.torproject.org/pipermail/tor-announce/2014-July/000094.html">tor-announce</a> mailing list.</p>
+          <p>This advisory was posted on the <a href="https://lists.torproject.org/pipermail/tor-announce/2014-July/000094.html">tor-announce</a> mailing list.</p>
 
 <h2>SUMMARY:</h2>
 
@@ -385,7 +385,7 @@ directory server, the profiling and partitioning attack vector is reduced to the
 <strong>Q4)</strong> What data did the attackers keep, and are they going to destroy it? How have they protected the data (if any) while storing it?</p>
 
 <p>Great questions. We spent several months trying to extract information from the researchers who were going to give the Black Hat talk, and eventually we did get some hints from them about how &quot;relay early&quot; cells could be used for traffic confirmation attacks, which is how we started looking for the attacks in the wild. They haven&#39;t answered our emails lately, so we don&#39;t know for sure, but it seems likely that the answer to Q1 is &quot;yes&quot;. In fact, we hope they *were* the ones doing the attacks, since otherwise it means somebody else was. We don&#39;t yet know the answers to Q2, Q3, or Q4.</p>
-</p>
+
         </div>
       </section>
     
@@ -405,10 +405,10 @@ directory server, the profiling and partitioning attack vector is reduced to the
           </p>
         </header>
         <div class="post-description">
-          <p><p>We now have a <a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays">wiki page</a> which explains how bad relays should be reported to the Tor Project. A bad relay can be malicious, misconfigured, or otherwise broken. Once such a relay is reported, a subset of vigilant Tor developers (currently Roger, Peter, Damian, Karsten, and I) first tries to reproduce the issue. If it&#39;s reproducible, we attempt to get in touch with the relay operator and work on the issue together. However, if the relay has no contact information or we cannot reach the operator, we will resort to assigning flags (such as BadExit) to the reported relay which instructs clients to no longer use the relay in the future. In severe cases, we are also able to remove the relay descriptor from the network consensus which effectively makes the relay disappear. To get an idea of what bad behavior was documented in the past, have a look at this (no longer maintained) <a href="https://trac.torproject.org/projects/tor/wiki/doc/badRelays">wiki page</a> or these <a href="http://www.cs.columbia.edu/%7Emikepo/papers/tordecoys.raid11.pdf">research</a> <a href="http://www.cs.kau.se/philwint/spoiled_onions/pets2014.pdf">papers</a>.</p>
+          <p>We now have a <a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays">wiki page</a> which explains how bad relays should be reported to the Tor Project. A bad relay can be malicious, misconfigured, or otherwise broken. Once such a relay is reported, a subset of vigilant Tor developers (currently Roger, Peter, Damian, Karsten, and I) first tries to reproduce the issue. If it&#39;s reproducible, we attempt to get in touch with the relay operator and work on the issue together. However, if the relay has no contact information or we cannot reach the operator, we will resort to assigning flags (such as BadExit) to the reported relay which instructs clients to no longer use the relay in the future. In severe cases, we are also able to remove the relay descriptor from the network consensus which effectively makes the relay disappear. To get an idea of what bad behavior was documented in the past, have a look at this (no longer maintained) <a href="https://trac.torproject.org/projects/tor/wiki/doc/badRelays">wiki page</a> or these <a href="http://www.cs.columbia.edu/%7Emikepo/papers/tordecoys.raid11.pdf">research</a> <a href="http://www.cs.kau.se/philwint/spoiled_onions/pets2014.pdf">papers</a>.</p>
 
 <p>We regularly scan the network for bad relays using <a href="https://gitweb.torproject.org/user/phw/exitmap.git">exitmap</a> but there are several other great tools such as <a href="https://gitweb.torproject.org/torflow.git/blob/HEAD:/NetworkScanners/ExitAuthority/README.ExitScanning">Snakes on a Tor</a>, <a href="https://code.google.com/p/torscanner/">torscanner</a>, <a href="http://www.thoughtcrime.org/software/tortunnel/">tortunnel</a>, and <a href="http://detector.io/DetecTor.html">DetecTor</a>. We are also dependent on the wider community to help us spot relays which don&#39;t act as they should. So if you think that you stumbled upon a bad relay while using Tor, please report it to us by sending an email to <a href="mailto:bad-relays@lists.torproject.org">bad-relays@lists.torproject.org</a>. To find out which relay is currently being used as your exit relay, please visit our <a href="https://check.torproject.org">Check service</a>. Just tell us the relay&#39;s IP address (Check tells you what your IP address appears to be) and the behavior you observed. Then, we can begin to investigate!</p>
-</p>
+
         </div>
       </section>
     

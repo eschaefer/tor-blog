@@ -69,7 +69,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>Hi! I recently wrote up a status report for the progress we&#39;re making on hacking Libevent, and I thought I&#39;d post it here too.</p>
+          <p>Hi! I recently wrote up a status report for the progress we&#39;re making on hacking Libevent, and I thought I&#39;d post it here too.</p>
 
 <p>BACKGROUND</p>
 
@@ -100,7 +100,7 @@
 <p>Item 2 is begun and underway. We expect to have the first version of a Windows IOCP-based implementation of the high-level Libevent interfaces completed by the end of March; perhaps sooner. After this point, we&#39;ll need to spend a while load-testing the implementation to ensure it behaves correctly and quickly. Additionally, our conference outreach has found us a volunteer domain expert in this area who has offered to help us out with high-load testing.</p>
 
 <p>Item 4 will start once the Libevent interfaces have been tested enough that we are relatively confident of their stability. We will have two options at this point. First, we could make future versions of Tor require Libevent 2.0 everywhere, and replace Tor&#39;s buffered network IO code with calls to Libevent&#39;s. Alternatively, we could build Tor to use the low-level Libevent interface if built against an older Libevent, but use the high-level interface if built against a more recent one. The former approach would be easier to build, but might create unacceptable dependencies for some package bundlers depending on when the various free operating systems begin to ship Libevent 2. We will work with them to identify which approach is best for our users.</p>
-</p>
+
         </div>
       </section>
     
@@ -124,7 +124,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p><strong>New releases, new hires, new funding</strong></p>
+          <p><strong>New releases, new hires, new funding</strong></p>
 
 <p>Tor 0.2.1.10-alpha (released January 6) fixes two major bugs in bridge
 relays (one that would make the bridge relay not so useful if it had
@@ -305,7 +305,7 @@ Our translation server is up and online:
 <p>We continued enhancements to the Chinese and Russian Tor website
 translations. Our Farsi translation from this summer is slowly becoming
 obsolete; we should solve that at some point.</p>
-</p>
+
         </div>
       </section>
     
@@ -325,7 +325,7 @@ obsolete; we should solve that at some point.</p>
           </p>
         </header>
         <div class="post-description">
-          <p><p>Tor Browser Bundle 1.1.9 is released.</p>
+          <p>Tor Browser Bundle 1.1.9 is released.</p>
 
 <p>It includes the following changes:</p>
 
@@ -334,7 +334,7 @@ Update Firefox to 3.0.6
 Update Vidalia to 0.1.11</p>
 
 <p>It&#39;s available at <a href="https://www.torproject.org/torbrowser/" title="https://www.torproject.org/torbrowser/">https://www.torproject.org/torbrowser/</a></p>
-</p>
+
         </div>
       </section>
     
@@ -354,7 +354,7 @@ Update Vidalia to 0.1.11</p>
           </p>
         </header>
         <div class="post-description">
-          <p><p>Tomorrow there&#39;s a talk at Black Hat DC by Xinwen Fu on an active attack that can allow traffic confirmation in Tor. He calls it a &quot; <a href="http://www.cs.uml.edu/%7Exinwenfu/paper/ICC08_Fu.pdf">replay attack</a>&quot;, whereas we called it a &quot;tagging attack&quot; in the original Tor paper, but let&#39;s look at how it actually works.</p>
+          <p>Tomorrow there&#39;s a talk at Black Hat DC by Xinwen Fu on an active attack that can allow traffic confirmation in Tor. He calls it a &quot; <a href="http://www.cs.uml.edu/%7Exinwenfu/paper/ICC08_Fu.pdf">replay attack</a>&quot;, whereas we called it a &quot;tagging attack&quot; in the original Tor paper, but let&#39;s look at how it actually works.</p>
 
 <p>First, remember the basics of how Tor provides anonymity. Tor clients <a href="https://www.torproject.org/images/htw2.png">route their traffic</a> over several ( <a href="https://wiki.torproject.org/noreply/TheOnionRouter/TorFAQ#VariablePathLength">usually three</a>) relays, with the goal that no single relay gets to learn both where the user is (call her Alice) and what site she&#39;s reaching (call it Bob).</p>
 
@@ -403,7 +403,7 @@ Update Vidalia to 0.1.11</p>
 <p>If somebody can show us that tagging attacks are actually much more effective than their passive timing counterparts, we should work harder to fix them. If somebody can come up with a cheap way to make them harder, we&#39;re all ears. But while they remain on par with passive attacks and remain expensive to fix, then it doesn&#39;t seem like a good move to slow down Tor even more without actually making it safer.</p>
 
 <p>Overall, I&#39;m confused why the conference organizers thought this would be a good topic for a Black Hat talk. It&#39;s not like there&#39;s a shortage of &quot;oh crap&quot; Tor attack papers lately. I guess my take-away message is that I need to introduce Jeff Moss to Nick Hopper et al from Minnesota ( <a href="http://freehaven.net/anonbib/#tissec-latency-leak">How Much Anonymity does Network Latency Leak?</a>) and Sambuddho Chakravarty et al from Columbia ( <a href="http://www.google.com/search?q=columbia+global+passive+adversary+tor">Approximating a Global Passive Adversary against Tor</a>).</p>
-</p>
+
         </div>
       </section>
     
@@ -423,7 +423,7 @@ Update Vidalia to 0.1.11</p>
           </p>
         </header>
         <div class="post-description">
-          <p><p>I was asked the other day why we don&#39;t advocate for just Tor as the one tool to rule them all. My glib answer is &quot;of course we do, however the larger the toolbox, the better off the world.&quot;</p>
+          <p>I was asked the other day why we don&#39;t advocate for just Tor as the one tool to rule them all. My glib answer is &quot;of course we do, however the larger the toolbox, the better off the world.&quot;</p>
 
 <p>Expanding on that notion, the various anonymity, privacy, and circumvention tools target different people and use cases. Tor advocates for <a href="https://blog.torproject.org/blog/circumvention-and-anonymity">Anonymity first, circumvention second</a>. It would be very naive of us to think that we can solve all use cases. In fact, it would be silly of us to try to dictate the needs of any user. The larger the ecosystem of privacy and anonymity tools, the more options for users, and the better off we are as a whole.</p>
 
@@ -434,7 +434,7 @@ Update Vidalia to 0.1.11</p>
 <p>Instead of an answer, we ask a series of questions to find out why they use X; for the reasons of learning more about X, why people choose X, and what Tor may lack. It turns out, they use X because their friends use X, and they know the strengths and weaknesses of the software well. It may not be perfect, but they know what the software can and cannot do. They know if a tool is compromised, or access to the service is shut off, they can switch to another. If there was only one tool, once it is blocked or disappears, the users are screwed. Isn&#39;t it great to have options?</p>
 
 <p>Obviously, we state that Tor is a fine solution, and perhaps they should add the concept of anonymity and our software to their list of options. Our goal is educating users to help themselves and others. Anyone who suggests otherwise is trying to sell you something.</p>
-</p>
+
         </div>
       </section>
     

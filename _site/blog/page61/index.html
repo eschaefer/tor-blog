@@ -73,7 +73,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p><strong>Tor 0.2.2.35 fixes a critical heap-overflow security issue in Tor&#39;s
+          <p><strong>Tor 0.2.2.35 fixes a critical heap-overflow security issue in Tor&#39;s
  buffers code. Absolutely everybody should upgrade.</strong></p>
 
 <p>The bug relied on an incorrect calculation when making data continuous
@@ -209,7 +209,7 @@ was ignored. Bugfix on 0.0.6; fixes bug 4426.</li>
 <li>Make it easier to automate expert package builds on Windows,
 by removing an absolute path from makensis.exe command.</li>
 </ul>
-</p>
+
         </div>
       </section>
     
@@ -231,7 +231,7 @@ by removing an absolute path from makensis.exe command.</li>
           </p>
         </header>
         <div class="post-description">
-          <p><p>The Tor Browser Bundles have been updated to Tor 0.2.2.35 which has a fix for a security critical bug. Please see the <a href="https://blog.torproject.org/blog/tor-02235-released-security-patches">release announcement</a> for further details. <strong>All users should update immediately.</strong></p>
+          <p>The Tor Browser Bundles have been updated to Tor 0.2.2.35 which has a fix for a security critical bug. Please see the <a href="https://blog.torproject.org/blog/tor-02235-released-security-patches">release announcement</a> for further details. <strong>All users should update immediately.</strong></p>
 
 <p>This Tor Browser Bundle release also contains new Firefox patches which improve privacy and unlinkability.</p>
 
@@ -250,7 +250,7 @@ by removing an absolute path from makensis.exe command.</li>
 <li>Provide an observer event to close persistent connections</li>
 </ul></li>
 </ul>
-</p>
+
         </div>
       </section>
     
@@ -274,8 +274,8 @@ by removing an absolute path from makensis.exe command.</li>
           </p>
         </header>
         <div class="post-description">
-          <p><p>The progress report for November 2011 is released as <a href="https://archive.torproject.org/monthly-report-archive/2011-November-Monthly-Report.pdf">pdf</a> and <a href="https://archive.torproject.org/monthly-report-archive/2011-November-Monthly-Report.txt">plaintext</a> documents. Highlights include progress on the new Tor Check, Tor Bulk Exitlist, global media hits, Tor Cloud launch, and three new proposals to improve Tor Bridge Relay functionality in difficult environments.</p>
-</p>
+          <p>The progress report for November 2011 is released as <a href="https://archive.torproject.org/monthly-report-archive/2011-November-Monthly-Report.pdf">pdf</a> and <a href="https://archive.torproject.org/monthly-report-archive/2011-November-Monthly-Report.txt">plaintext</a> documents. Highlights include progress on the new Tor Check, Tor Bulk Exitlist, global media hits, Tor Cloud launch, and three new proposals to improve Tor Bridge Relay functionality in difficult environments.</p>
+
         </div>
       </section>
     
@@ -301,7 +301,7 @@ by removing an absolute path from makensis.exe command.</li>
           </p>
         </header>
         <div class="post-description">
-          <p><p>Tor 0.2.3.9-alpha introduces initial IPv6 support for bridges, adds
+          <p>Tor 0.2.3.9-alpha introduces initial IPv6 support for bridges, adds
  a &quot;DisableNetwork&quot; security feature that bundles can use to avoid
  touching the network until bridges are configured, moves forward on
  the pluggable transport design, fixes a flaw in the hidden service
@@ -497,7 +497,7 @@ changes suggested in ticket 4421.</li>
 <li>Remove some dead code spotted by coverity. Fixes cid 432.
 Bugfix on 0.2.3.1-alpha, closes bug 4637.</li>
 </ul>
-</p>
+
         </div>
       </section>
     
@@ -517,7 +517,7 @@ Bugfix on 0.2.3.1-alpha, closes bug 4637.</li>
           </p>
         </header>
         <div class="post-description">
-          <p><p>Once we get <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">more (and more diverse) bridge addresses</a>, the next research step is that we&#39;ll need to get better at telling which bridges are blocked in which jurisdictions. For example, most of the bridges we give out via https and gmail are blocked in China. But which ones exactly? How quickly do they get blocked? Do some last longer than others? Do they ever get unblocked? Is there some pattern to the blocking, either by time, by IP address or network, by user load on the bridge, or by distribution strategy? We can&#39;t evaluate <a href="https://blog.torproject.org/blog/bridge-distribution-strategies">new bridge distribution strategies</a> if we can&#39;t track whether the bridges in each strategy are being blocked.</p>
+          <p>Once we get <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">more (and more diverse) bridge addresses</a>, the next research step is that we&#39;ll need to get better at telling which bridges are blocked in which jurisdictions. For example, most of the bridges we give out via https and gmail are blocked in China. But which ones exactly? How quickly do they get blocked? Do some last longer than others? Do they ever get unblocked? Is there some pattern to the blocking, either by time, by IP address or network, by user load on the bridge, or by distribution strategy? We can&#39;t evaluate <a href="https://blog.torproject.org/blog/bridge-distribution-strategies">new bridge distribution strategies</a> if we can&#39;t track whether the bridges in each strategy are being blocked.</p>
 
 <p>Generally speaking, bridge reachability tests break down into two approaches: passive and active. Passive tests don&#39;t involve any new connections on the part of Tor clients or bridges, whereas active tests follow the more traditional &quot;scanning&quot; idea. None of the reachability tests we&#39;ve thought of are perfect. Instead, here we discuss how to combine imperfect tests and use feedback from the tests to balance their strengths and weaknesses.</p>
 
@@ -598,7 +598,7 @@ Bugfix on 0.2.3.1-alpha, closes bug 4637.</li>
 <p>We can define the <em>efficiency</em> of a bridge address in terms of how many people use it and how long before it gets blocked. So a bridge that gets blocked very quickly scores a low efficiency, a bridge that doesn&#39;t get blocked but doesn&#39;t see much use scores a medium efficiency, and a popular bridge that doesn&#39;t get blocked scores high. We can characterize the efficiency of a distribution channel as a function of the efficiency of the bridges it distributes. The key insight is that we then adapt how many new bridges we give to each distribution channel based on its efficiency. So channels that are working well automatically get more addresses to give out, and channels that aren&#39;t working well automatically end up with fewer addresses.</p>
 
 <p>Of course, there&#39;s more to it than that. For example, we need to consider how to handle the presence of bridge enumeration attacks that work independently of which distribution channel a given bridge address was given to. We also need to consider attacks that artificially inflate the efficiency of bridges (and thus make us overreward distribution channels), or that learn about a bridge but choose not to block it. But that, as they say, is a story for another time.</p>
-</p>
+
         </div>
       </section>
     

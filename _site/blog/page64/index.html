@@ -67,7 +67,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>While we&#39;re exploring <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">smarter ways of getting more bridge addresses</a>, and while the bridge arms race hasn&#39;t heated up yet in most countries (or has surpassed the number of bridges we have, in the case of China), it&#39;s the perfect time to take stock of bridge address enumeration attacks and how well we can defend against them.</p>
+          <p>While we&#39;re exploring <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">smarter ways of getting more bridge addresses</a>, and while the bridge arms race hasn&#39;t heated up yet in most countries (or has surpassed the number of bridges we have, in the case of China), it&#39;s the perfect time to take stock of bridge address enumeration attacks and how well we can defend against them.</p>
 
 <p>For background, <a href="https://www.torproject.org/docs/bridges">bridge relays</a> (aka bridges) are Tor relays that aren&#39;t listed in the main Tor directory. So even if an attacker blocks all the public relays, they still need to block all these &quot;private&quot; or &quot;dark&quot; relays too.</p>
 
@@ -156,7 +156,7 @@
 <p>Dan Boneh suggested an alternate approach where we do <a href="http://en.wikipedia.org/wiki/HMAC">keyed hashes</a> of the user&#39;s address and all the bridge fingerprints, and return all bridges whose hashed fingerprints match the user&#39;s hash in the first b bits. The result is that users would tend to get clustered by the bridges they know. That feature limits the damage from the zig-zag attack, but does it increase the risks in some distribution strategies? I already worry that bridge distribution strategies based on social networks will result in clusters of socially related users using the same bridges, meaning the attacker can reconstruct the social network. If we isolate socially related users in the same partition, do we magnify that problem? This approach also needs more research work to make it scale such that we can always return about k results, even as the address pool grows, and without reintroducing zig-zag vulnerabilities.</p>
 
 <p><strong>#11: ...What did I miss?</strong></p>
-</p>
+
         </div>
       </section>
     
@@ -172,7 +172,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>I&#39;m happy to announce the release of <a href="http://code.google.com/p/torsocks/downloads/list">Torsocks 1.2</a>.</p>
+          <p>I&#39;m happy to announce the release of <a href="http://code.google.com/p/torsocks/downloads/list">Torsocks 1.2</a>.</p>
 
 <p>Torsocks is an application for Linux, BSD and Mac OSX that allows you to use network applications such as ssh and irssi with Tor.</p>
 
@@ -189,7 +189,7 @@
 <ul>
 <li>Robert</li>
 </ul>
-</p>
+
         </div>
       </section>
     
@@ -211,7 +211,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p><strong>Tor 0.2.2.34 fixes a critical anonymity vulnerability where an attacker
+          <p><strong>Tor 0.2.2.34 fixes a critical anonymity vulnerability where an attacker
 can deanonymize Tor users. Everybody should upgrade.</strong></p>
 
 <p>The attack relies on four components:</p>
@@ -327,7 +327,7 @@ extra-info descriptors. Don&#39;t break if we have no GeoIP database. Backported
 from 0.2.3.1-alpha; implements ticket 3951.</li>
 <li>Update to the October 4 2011 Maxmind GeoLite Country database.</li>
 </ul>
-</p>
+
         </div>
       </section>
     
@@ -357,7 +357,7 @@ from 0.2.3.1-alpha; implements ticket 3951.</li>
           </p>
         </header>
         <div class="post-description">
-          <p><p>There are two recent stories claiming the Tor network is compromised. It seems it is easier to get press than to publish research, work with us on the details, and propose solutions. Our comments here are based upon the same stories you are reading. We have no insider information.</p>
+          <p>There are two recent stories claiming the Tor network is compromised. It seems it is easier to get press than to publish research, work with us on the details, and propose solutions. Our comments here are based upon the same stories you are reading. We have no insider information.</p>
 
 <p>The first story has been around &#39;Freedom Hosting&#39; and their hosting of child abuse materials as exposed by <a href="http://arstechnica.com/business/news/2011/10/anonymous-takes-down-darknet-child-porn-site-on-tor-network.ars">Anonymous Operation Darknet</a>. We&#39;re reading the press articles, pastebin urls, and talking to the same people as you. It appears &#39;Anonymous&#39; cracked the Apache/PHP/MySQL setup at Freedom Hosting and published some, or all, of their users in the database. These sites happened to be hosted on a <a href="https://www.torproject.org/docs/hidden-services.html.en">Tor hidden service</a>. Further, &#39;Anonymous&#39; used a somewhat recent RAM-exhaustion denial of service attack on the &#39;Freedom Hosting&#39; Apache server. It&#39;s a simple resource starvation attack that can be conducted over low bandwidth, low resource requirement connections to individual hosts. This isn&#39;t an attack on Tor, but rather an attack on some software behind a Tor hidden service. This attack was discussed in a thread on the <a href="https://lists.torproject.org/pipermail/tor-talk/2011-October/021822.html">tor-talk</a> mailing list starting October 19th.</p>
 
@@ -390,7 +390,7 @@ from 0.2.3.1-alpha; implements ticket 3951.</li>
 <p>More generally, there are two broader lessons to remember here. First, research into anonymity-breaking attacks is how the field moves forward, and using Tor for your target is <a href="http://freehaven.net/anonbib/">common</a> because a) it&#39;s resistant to all the simpler attacks and b) we make it <a href="https://www.torproject.org/getinvolved/research.html.en">really easy</a> to do your research on. And second, remember that most other anonymity systems out there fall to these attacks so quickly and thoroughly that no researchers even talk about it anymore. For some recent examples, see the single-hop proxy discussions in <a href="http://freehaven.net/anonbib/#tissec-latency-leak">How Much Anonymity does Network Latency Leak?</a> and <a href="http://freehaven.net/anonbib/#wpes11-panchenko">Website Fingerprinting in Onion Routing Based Anonymization Networks</a>.</p>
 
 <p>I thank Roger, Nick, and Runa for helping with this post.</p>
-</p>
+
         </div>
       </section>
     
@@ -412,7 +412,7 @@ from 0.2.3.1-alpha; implements ticket 3951.</li>
           </p>
         </header>
         <div class="post-description">
-          <p><p>Over the past few years, Tor has gotten more popular and has had to grow and change to accommodate a highly varied userbase. One aspect of this is getting the software into users&#39; hands and having it immediately do what they want it to, while also not allowing them to inadvertently deanonymize themselves because they missed a configuration step or didn&#39;t understand which applications were using Tor and which were not. As a result, we have standardized on the Tor Browser Bundle for all platforms and are currently promoting it as our only fully supported client experience.</p>
+          <p>Over the past few years, Tor has gotten more popular and has had to grow and change to accommodate a highly varied userbase. One aspect of this is getting the software into users&#39; hands and having it immediately do what they want it to, while also not allowing them to inadvertently deanonymize themselves because they missed a configuration step or didn&#39;t understand which applications were using Tor and which were not. As a result, we have standardized on the Tor Browser Bundle for all platforms and are currently promoting it as our only fully supported client experience.</p>
 
 <p>Since the Tor Browser Bundle offers the best current protection, we are moving to a client/server model for packages, and consequently the &quot;plain&quot; Vidalia bundles will be discontinued by the <strong>end of the year</strong> and no longer recommended for client usage. We&#39;ve started rolling out server Vidalia bundles for Windows, which you can test by going to the <a href="https://www.torproject.org/download">download page</a>.</p>
 
@@ -437,7 +437,7 @@ from 0.2.3.1-alpha; implements ticket 3951.</li>
 <p>This configures Tor to run as an <strong>exit relay</strong> by default. Exit nodes are special, as they allow traffic to exit from the Tor network to the plain internet, and anyone who has not already looked into the risks associated with running an exit relay should read our <a href="https://blog.torproject.org/running-exit-node">tips for running an exit node with minimal harassment</a></p>
 
 <p>We&#39;ve started creating a <a href="https://trac.torproject.org/projects/tor/wiki/doc/TorFAQ#TorBrowserBundle">Tor Browser Bundle FAQ</a>, but we&#39;d like to hear your concerns so we can provide answers where necessary, documentation for alternative setups, and fix the software where answers are insufficient. We have several months before Tor Browser Bundle is the only option, so please help us make it as good as possible! If you have bugs to file, please don&#39;t file them in the blog comments -- use our <a href="https://trac.torproject.org">bug tracker</a> for that.</p>
-</p>
+
         </div>
       </section>
     

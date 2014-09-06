@@ -73,8 +73,8 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>Our progress report for December 2011 is available as a <a href="https://archive.torproject.org/monthly-report-archive/2011-December-Monthly-Report.pdf">pdf with pretty graphs</a> and <a href="https://archive.torproject.org/monthly-report-archive/2011-December-Monthly-Report.txt">text</a> file. Highlights are on hidden services fixes, openssl fixes, obfuscating proxy progress, and general updates on advocacy and releases.</p>
-</p>
+          <p>Our progress report for December 2011 is available as a <a href="https://archive.torproject.org/monthly-report-archive/2011-December-Monthly-Report.pdf">pdf with pretty graphs</a> and <a href="https://archive.torproject.org/monthly-report-archive/2011-December-Monthly-Report.txt">text</a> file. Highlights are on hidden services fixes, openssl fixes, obfuscating proxy progress, and general updates on advocacy and releases.</p>
+
         </div>
       </section>
     
@@ -92,7 +92,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p><a href="https://tails.boum.org/">The Amnesic Incognito Live System (Tails)</a>, version 0.10, is out.</p>
+          <p><a href="https://tails.boum.org/">The Amnesic Incognito Live System (Tails)</a>, version 0.10, is out.</p>
 
 <p><strong>Changes</strong></p>
 
@@ -168,7 +168,7 @@
 <p><strong>Known issue</strong></p>
 
 <p>The memory erasure on Tails shutdown cannot guarantee that all memory in the 2 GB to 4 GB region is wiped. The improvements made in Tails 0.10 should at least make the situation better than previously.</p>
-</p>
+
         </div>
       </section>
     
@@ -194,7 +194,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>Getting good stories for Tor successes is tricky, because if Tor is doing its job, nobody notices. I know a lot of people who have really interesting Tor success stories and have no interest in telling the world who they are and how they managed (until that moment when everybody is reading about them, that is) to stay safe.</p>
+          <p>Getting good stories for Tor successes is tricky, because if Tor is doing its job, nobody notices. I know a lot of people who have really interesting Tor success stories and have no interest in telling the world who they are and how they managed (until that moment when everybody is reading about them, that is) to stay safe.</p>
 
 <p>Still, there are a bunch of other stories out there that haven&#39;t been documented as well. For example, I really like Nasser&#39;s story about his experiences in Mauritania:
  <a href="http://www.technologyreview.com/computing/22427/page4/" title="http://www.technologyreview.com/computing/22427/page4/">http://www.technologyreview.com/computing/22427/page4/</a></p>
@@ -215,7 +215,7 @@
  <a href="https://blog.torproject.org/blog/we-need-your-good-tor-stories" title="https://blog.torproject.org/blog/we-need-your-good-tor-stories">https://blog.torproject.org/blog/we-need-your-good-tor-stories</a></p>
 
 <p>This blog post was adapted from an email to tor-talk by Roger. See the original email at <a href="https://lists.torproject.org/pipermail/tor-talk/2011-November/021997.html" title="https://lists.torproject.org/pipermail/tor-talk/2011-November/021997.html">https://lists.torproject.org/pipermail/tor-talk/2011-November/021997.htm...</a></p>
-</p>
+
         </div>
       </section>
     
@@ -239,7 +239,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>Greetings! My name is Tim Wilde, Software Engineer at Team Cymru, Inc., and a big fan of the Tor Project and everything that they do. We&#39;ve helped out the Tor Project with a few investigations into probing/blocking of Tor by oppressive regimes, and the guys asked me to write this one up for the Tor Blog, so here I am! Note: any opinions expressed here are mine, nor those of Team Cymru or the Tor Project.</p>
+          <p>Greetings! My name is Tim Wilde, Software Engineer at Team Cymru, Inc., and a big fan of the Tor Project and everything that they do. We&#39;ve helped out the Tor Project with a few investigations into probing/blocking of Tor by oppressive regimes, and the guys asked me to write this one up for the Tor Blog, so here I am! Note: any opinions expressed here are mine, nor those of Team Cymru or the Tor Project.</p>
 
 <p>In October 2011, <a href="https://trac.torproject.org/projects/tor/ticket/4185">ticket #4185</a> was filed in the Tor bug tracker by a user in China who found that their connections to US-based Tor bridge relays were being regularly cut off after a very short period of time. At the time we performed some basic experimentation and discovered that Chinese IPs (presumably at the behest of the Great Firewall of China, or GFW) would reach out to the US-based bridge and connect to it shortly after the Tor user in China connected, and, if successful, shortly thereafter the connection would be blocked by the GFW. There wasn&#39;t time for a detailed investigation and analysis at the time, but that kernel eventually grew into the investigation detailed below. We were, however, able to determine that limiting connections to the bridge relay to only the single IP expected to be its client would, in fact, block the probes and allow the connection to remain open for an extended period (&gt;48 hours in our testing).</p>
 
@@ -256,7 +256,7 @@
 <p>There is light at the end of the tunnel, though. A number of ideas have been put forward about new protocols, handshakes, and extensions to the Tor protocol that could be used to combat this type of censorship technology in a more long-term-sustainable way. <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/190-password-bridge-authorization.txt">Proposal 190</a> provides for password authorization for bridge relays. <a href="https://gitweb.torproject.org/obfsproxy.git/blob/HEAD:/doc/tor-obfs-howto.txt">obfsproxy</a> provides an extra layer on top of a Tor connection that makes it look like generic binary data. The Tor v3 link protocol/handshake, currently available and in testing in the 0.2.3.x-alpha series of Tor releases, eliminates SSL renegotiation in Tor session establishment, removing one of Tor&#39;s current &quot;sore thumbs&quot; that stick out from normal HTTPS SSL traffic.</p>
 
 <p>You&#39;re welcome to check out my <a href="https://gist.github.com/da3c7a9af01d74cd7de7">full report on this investigation</a> for more detail than I could provide in the blog post here. Thanks very much to everyone who assisted with the investigation and the report! It was fun to investigate and report on this, and I hope to have the opportunity to help out with similar adventures in the future.</p>
-</p>
+
         </div>
       </section>
     
@@ -276,7 +276,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>The Tor Browser Bundles and other packages have been updated to <a href="http://openssl.org/news/secadv_20120104.txt">OpenSSL 1.0.0f and 0.9.8s</a>. All users are encouraged to update.</p>
+          <p>The Tor Browser Bundles and other packages have been updated to <a href="http://openssl.org/news/secadv_20120104.txt">OpenSSL 1.0.0f and 0.9.8s</a>. All users are encouraged to update.</p>
 
 <p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
 
@@ -286,7 +286,7 @@
 <li>Update OpenSSL to 1.0.0f</li>
 <li>Update NoScript to 2.2.5</li>
 </ul>
-</p>
+
         </div>
       </section>
     

@@ -67,7 +67,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>All of the stable Tor Browser Bundles have been updated with the latest Firefox 10.0.9esr release.</p>
+          <p>All of the stable Tor Browser Bundles have been updated with the latest Firefox 10.0.9esr release.</p>
 
 <p><a href="https://www.torproject.org/download/download-easy.html.en" title="https://www.torproject.org/download/download-easy.html.en">https://www.torproject.org/download/download-easy.html.en</a></p>
 
@@ -82,7 +82,7 @@
 <li>Update HTTPS Everywhere to 2.2.2</li>
 <li>Update libpng to 1.5.13</li>
 </ul>
-</p>
+
         </div>
       </section>
     
@@ -96,7 +96,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>The main academic reference for Tor is <a href="https://svn.torproject.org/svn/projects/design-paper/tor-design.pdf">&quot;Tor: The Second-Generation Onion Router&quot; by Dingledine, Mathewson, and Syverson</a>. But that paper was published back in 2004, and Tor has evolved since then. So Steven Murdoch and Nick Mathewson are currently preparing an updated version of the Tor design paper, to include new design changes and research results concerning Tor over the last 8 years.</p>
+          <p>The main academic reference for Tor is <a href="https://svn.torproject.org/svn/projects/design-paper/tor-design.pdf">&quot;Tor: The Second-Generation Onion Router&quot; by Dingledine, Mathewson, and Syverson</a>. But that paper was published back in 2004, and Tor has evolved since then. So Steven Murdoch and Nick Mathewson are currently preparing an updated version of the Tor design paper, to include new design changes and research results concerning Tor over the last 8 years.</p>
 
 <p>In this series of posts, we (Steven and Nick) will try to summarize the most interesting or significant changes to Tor&#39;s design since the publication of the original paper. We&#39;re only going to cover the stuff we think is most interesting, and we&#39;ll aim to do so in an interesting way.</p>
 
@@ -191,7 +191,7 @@
 <p>When we first implemented these cell queues in 0.2.0.1-alpha (Jun 2007), we chose which cells to deliver by rotating the circuits in a round-robin approach. In Tor 0.2.2.7-alpha (Jan 2010), we began to instead <a href="http://freehaven.net/anonbib/#ccs10-scheduling">favor the circuits on each connection that had been quiet recently</a>, so that a circuit with small, infrequent amounts of cells will get better latency than a circuit being used for a bulk transfer. (Specifically, when we are about to put a cell on an outgoing connection, we choose the circuit which has sent the lowest total exponentially-decaying number of cells so far. Currently, each cell has a 30-second half-life.)</p>
 
 <p>In Part 2 we will look at changes to how Tor selects paths and the new anti-censorship measures.</p>
-</p>
+
         </div>
       </section>
     
@@ -209,7 +209,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>A project coordinator is the person who brings order to chaos. You will coordinate and help track deliverables, progress, and metrics of current projects. You will also help plan future projects through proposals.</p>
+          <p>A project coordinator is the person who brings order to chaos. You will coordinate and help track deliverables, progress, and metrics of current projects. You will also help plan future projects through proposals.</p>
 
 <p>Your impact will involve:</p>
 
@@ -227,7 +227,7 @@
 </ul>
 
 <p>See the <a href="https://www.torproject.org/about/jobs-projectcoordinator.html.en">job posting</a> for information on how to apply and what you need to send in with your application.</p>
-</p>
+
         </div>
       </section>
     
@@ -251,12 +251,12 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p><a href="https://cloud.torproject.org/">The Tor Cloud</a> images for all the seven regions have been updated to fix a bug found in the unattended-upgrades configuration. The normal bridge images have also been updated to include <a href="https://www.torproject.org/projects/obfsproxy">obfsproxy</a>, which attempts to help users circumvent censorship by transforming the Tor traffic between the client and the bridge.</p>
+          <p><a href="https://cloud.torproject.org/">The Tor Cloud</a> images for all the seven regions have been updated to fix a bug found in the unattended-upgrades configuration. The normal bridge images have also been updated to include <a href="https://www.torproject.org/projects/obfsproxy">obfsproxy</a>, which attempts to help users circumvent censorship by transforming the Tor traffic between the client and the bridge.</p>
 
 <p>If you are already running a Tor Cloud bridge, you will need to either manually update your image, or set up a new Tor Cloud bridge and terminate the old one. If you decide not to take action, your image will fail to upgrade Tor correctly and will not be running as a bridge.</p>
 
 <p>If you just want to fix the bug in the unattended-upgrades configuration, do the following; log on with SSH and edit <em>/etc/apt/apt.conf.d/50unattended-upgrades</em> to say <em>precise</em> instead of <em>lucid</em>.</p>
-</p>
+
         </div>
       </section>
     
@@ -278,12 +278,12 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p><a href="https://cloud.torproject.org/">The Tor Cloud</a> images for all the seven regions have been updated to include the latest cloud image for stable Ubuntu release 12.04.1 LTS (Precise Pangolin). These new images are available on the Tor Cloud website.</p>
+          <p><a href="https://cloud.torproject.org/">The Tor Cloud</a> images for all the seven regions have been updated to include the latest cloud image for stable Ubuntu release 12.04.1 LTS (Precise Pangolin). These new images are available on the Tor Cloud website.</p>
 
 <p>The new images include Tor&#39;s new GPG key, uses apt-get instead of aptitude, and also includes the deb.torproject.org-keyring package ( <a href="https://trac.torproject.org/projects/tor/ticket/6776">#6776</a>).</p>
 
 <p>If you are already running a Tor Cloud bridge, you will need to either manually update your image, or set up a new Tor Cloud bridge and terminate the old one. If you decide not to take action, your image will fail to upgrade Tor correctly and will not be running as a bridge. To manually update your image; log on with SSH, and follow the <a href="https://www.torproject.org/docs/debian.html.en">instructions</a> to add the new GPG key, upgrade Tor, and install the deb.torproject.org-keyring package.</p>
-</p>
+
         </div>
       </section>
     

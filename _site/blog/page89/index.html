@@ -75,10 +75,10 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>Vidalia 0.2.10 changed the way we deal with the <a href="https://blog.torproject.org/blog/vidalia-0210-released">geoip databases by dropping the remote geoip lookups</a>. This caused a lot of headaches for OS X users because of the layout of the package, but it&#39;s fixed in this version. You can download the new version <a href="https://www.torproject.org/dist/vidalia-bundles/">here</a>.</p>
+          <p>Vidalia 0.2.10 changed the way we deal with the <a href="https://blog.torproject.org/blog/vidalia-0210-released">geoip databases by dropping the remote geoip lookups</a>. This caused a lot of headaches for OS X users because of the layout of the package, but it&#39;s fixed in this version. You can download the new version <a href="https://www.torproject.org/dist/vidalia-bundles/">here</a>.</p>
 
 <p>Please let us know if you have further problems by <a href="https://trac.torproject.org/projects/tor">reporting a bug</a>.</p>
-</p>
+
         </div>
       </section>
     
@@ -98,7 +98,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p>Although it has been a while since GSoC ended, I want to give a quick run-down of my project and how everything went over the summer. The plan was to migrate the <a href="https://metrics.torproject.org/index.html" title="tor metrics portal">Tor metrics portal</a> from the file based system to a database driven one. This allows us to have a more dynamic website and a better interface to derive our statistics and visuals from. I spent most of my time designing the database schema (which had to be carefully optimized due to the amount of data we have), and the remainder of the time working on things such as <a href="https://metrics.torproject.org/graphs.html" title="dynamic graphs">dynamic graphs</a> and migrating the website to Java Server Pages. Thankfully, I finished almost everything I had planned to do, and it seems as though my work this summer is being put to good use! A significant amount of my metrics code has been merged, which is certainly a good feeling.</p>
+          <p>Although it has been a while since GSoC ended, I want to give a quick run-down of my project and how everything went over the summer. The plan was to migrate the <a href="https://metrics.torproject.org/index.html" title="tor metrics portal">Tor metrics portal</a> from the file based system to a database driven one. This allows us to have a more dynamic website and a better interface to derive our statistics and visuals from. I spent most of my time designing the database schema (which had to be carefully optimized due to the amount of data we have), and the remainder of the time working on things such as <a href="https://metrics.torproject.org/graphs.html" title="dynamic graphs">dynamic graphs</a> and migrating the website to Java Server Pages. Thankfully, I finished almost everything I had planned to do, and it seems as though my work this summer is being put to good use! A significant amount of my metrics code has been merged, which is certainly a good feeling.</p>
 
 <p>While I did not have any specific research questions in mind, I was able to uncover some interesting things by exploring the wealth of data in front of me. One of the things I promised to deliver was relay churn - a statistic to show the stability of the network. The Y axis, or the &quot;churn ratio&quot; is rather abstract, but it tells us the percentage of unique router fingerprints from one cohort that appear in the following cohort. Unfortunately, it requires a significant amount of database power to produce (large table scans are necessary when grouping routers by time period - the smaller the interval the longer the operation takes). However, the logic is clear and is easily accomplished from the database. The churn graphs may find their way onto the website, but the underlying processes may need to be optimized further. Either way, a database system ought to open a few doors for us in regards to some of the interesting things we can easily explore. See some of the churn graphs <a href="https://blog.torproject.org/files/relay-churn-week.png">here</a>, and <a href="https://blog.torproject.org/files/relay-churn-month.png" title="relay churn month">here</a>.</p>
 
@@ -116,7 +116,7 @@
 <td><a href="https://blog.torproject.org/files/relay-churn-week.png">relay-churn-week.png</a></td>
 <td>16.78 KB</td> </tr>
 </tbody></p>
-</p>
+
         </div>
       </section>
     
@@ -138,7 +138,7 @@
           </p>
         </header>
         <div class="post-description">
-          <p><p><strong>New Hires</strong></p>
+          <p><strong>New Hires</strong></p>
 
 <ul>
 <li>Tom Heydt-Benjamin is contracted full-time to work on NSF-related research through December 2010.</li>
@@ -191,7 +191,7 @@ Created Tor 0.2.3 branch and started work on integrated bufferevents and microde
 <li>We began the migration from our Pootle-based translation portal to Transifex after a discussion with their developers. Transifex provides free hosting of their translation software for free software projects and access to thousands of translators shared between hosted projects. All of our translations will be completed through Transifex going forward. <a href="https://www.transifex.net/projects/p/torproject/" title="https://www.transifex.net/projects/p/torproject/">https://www.transifex.net/projects/p/torproject/</a>.</li>
 <li>Updated translations for Russian, Arabic, Persian, Greek, Burmese, French, Italian, Swedish, Dutch, German, Spanish, Polish, and Simplified Chinese.</li>
 </ul>
-</p>
+
         </div>
       </section>
     
@@ -207,7 +207,7 @@ Created Tor 0.2.3 branch and started work on integrated bufferevents and microde
           </p>
         </header>
         <div class="post-description">
-          <p><p>We have heard from web server operators who are wondering how many of
+          <p>We have heard from web server operators who are wondering how many of
 their visitors are using Tor to do so.</p>
 
 <p>We can now answer this question. We have an exit list archive back to
@@ -232,7 +232,7 @@ Java code, run the tool on your machine, and let us know how that works!</p>
 
 <p>(There will be a Python version once we&#39;re happy with the Java version.
 Want to help writing (and maintaining) a Python version?)</p>
-</p>
+
         </div>
       </section>
     
@@ -256,7 +256,7 @@ Want to help writing (and maintaining) a Python version?)</p>
           </p>
         </header>
         <div class="post-description">
-          <p><p>Tor 0.2.2.17-alpha introduces a feature to make it harder for clients to use one-hop circuits (which can put the exit relays at higher risk, plus unbalance the network); fixes a big bug in bandwidth accounting for relays that want to limit their monthly bandwidth use; fixes a big pile of bugs in how clients tolerate temporary network failure; and makes our adaptive circuit build timeout feature (which improves client performance if your network is fast while not breaking things if your network is slow) better handle bad networks.</p>
+          <p>Tor 0.2.2.17-alpha introduces a feature to make it harder for clients to use one-hop circuits (which can put the exit relays at higher risk, plus unbalance the network); fixes a big bug in bandwidth accounting for relays that want to limit their monthly bandwidth use; fixes a big pile of bugs in how clients tolerate temporary network failure; and makes our adaptive circuit build timeout feature (which improves client performance if your network is fast while not breaking things if your network is slow) better handle bad networks.</p>
 
 <p><a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
 
@@ -371,7 +371,7 @@ choosing bridges or other relays not in the consensus. Bugfix on
 authorities both as &quot;from unknown authority&quot; and &quot;not
 present&quot;. Fixes bug 1956, bugfix on 0.2.2.16-alpha.</p>
 </blockquote>
-</p>
+
         </div>
       </section>
     
