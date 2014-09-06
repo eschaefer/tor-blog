@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>May 2010 Progress Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>May 2010 Progress Report</h2>
+<p class="meta">16 Jun 2010</p>
+
+<div class="event">
+<p><strong>New releases</strong></p>
+
+<p>On May 26, Tor Browser Bundle for Microsoft Windows is updated to include the newer Vidalia 0.2.9. This ﬁxes some issues with character set handling, and adds Vietnamese as a new language.</p>
+
+<p>On May 31, we released Tor Browser Bundle for Linux 1.0.6. It contains the following updates:</p>
+
+<ul>
+<li>Add arch to tarball name so there&#39;s no collision</li>
+<li>Add libpng for Arch Linux</li>
+<li>Add HTTPS Everywhere extension</li>
+<li>Update Qt to 4.6.2</li>
+<li>Update Vidalia to 0.2.9</li>
+<li>Update NoScript to 1.9.9.80</li>
+</ul>
+
+<p>On June 1st, we released Tor Browser Bundle for Linux 1.0.7. It uses an older glibc for better compatibility with older linux distributions.</p>
+
+<p>On May 20, we released Vidalia 0.2.9. Fixes include Qt 4.6.2 compatibility, new cert, and some new translations. You can download it at <a href="https://www.torproject.org/vidalia/" title="https://www.torproject.org/vidalia/">https://www.torproject.org/vidalia/</a>. Packages are slowly being updated to include this version of Vidalia.
+The full changelog is:</p>
+
+<ul>
+<li>Remove the GoDaddy CA certificate bundle since we changed the certificate used to authenticate connections to geoips.vidalia-project.net for downloading GeoIP information from a commercial GoDaddy certificate to a free CACert certificate.</li>
+<li>Define -D_WIN32_WINNT=0x0501 on Windows builds so that MiniUPnPc will build with the latest versions of MinGW.</li>
+<li>Modify miniupnpc.c from MiniUPnPc&#39;s source so that it will build on Mac OS X 10.4.</li>
+<li>Work around Qt&#39;s new behavior for the QT_WA macro so that Vidalia will work correctly again on Windows with Qt &gt;= 4.6.</li>
+</ul>
+
+<p>On May 2nd, we released an updated stable version of Tor, 0.2.1.26.
+The detailed list of changes is:</p>
+
+<p>o Major bugfixes:
+ - Teach relays to defend themselves from connection overload. Relays
+ now close idle circuits early if it looks like they were intended
+ for directory fetches. Relays are also more aggressive about closing
+ TLS connections that have no circuits on them. Such circuits are
+ unlikely to be re-used, and tens of thousands of them were piling
+ up at the fast relays, causing the relays to run out of sockets
+ and memory. Bugfix on 0.2.0.22-rc (where clients started tunneling
+ their directory fetches over TLS).
+ - Fix SSL renegotiation behavior on OpenSSL versions like on Centos
+ that claim to be earlier than 0.9.8m, but which have in reality
+ backported huge swaths of 0.9.8m or 0.9.8n renegotiation
+ behavior. Possible fix for some cases of bug 1346.
+ - Directory mirrors were fetching relay descriptors only from v2
+ directory authorities, rather than v3 authorities like they should.
+ Only 2 v2 authorities remain (compared to 7 v3 authorities), leading
+ to a serious bottleneck. Bugfix on 0.2.0.9-alpha. Fixes bug 1324.</p>
+
+<p>o Minor bugfixes:
+ - Finally get rid of the deprecated and now harmful notion of &quot;clique
+ mode&quot;, where directory authorities maintain TLS connections to
+ every other relay.</p>
+
+<p>o Testsuite fixes:
+ - In the util/threads test, no longer free the test_mutex before all
+ worker threads have finished. Bugfix on 0.2.1.6-alpha.
+ - The master thread could starve the worker threads quite badly on
+ certain systems, causing them to run only partially in the allowed
+ window. This resulted in test failures. Now the master thread sleeps
+ occasionally for a few microseconds while the two worker-threads
+ compete for the mutex. Bugfix on 0.2.0.1-alpha.</p>
+
+<p>On May 19, we released an updated OrBot (Tor for Android), version 0.0.6, which contains Tor 0.2.2.13-alpha.</p>
+
+<p>On May 26, we released an updated Orbot (Tor for Android), version 0.0.7, which contains a number of usability fixes reported by users. See the bugfixes <a href="https://trac.torproject.org/projects/tor/query?status=closed&amp;component=Android+(Orbot)-Backend+/+Core&amp;order=priority&amp;col=id&amp;col=summary&amp;col=status&amp;col=type&amp;col=priority&amp;col=milestone&amp;col=component&amp;owner=">in trac</a>.</p>
+
+<p><strong>Design, develop, and implement enhancements that make Tor a better tool for users in censored countries.</strong></p>
+
+<p>On May 4, China&#39;s Great Firewall began blocking connections to the public Tor relays. They also updated their blocking to include bridge relays published via email and https websites. Further research into the blocking mechanisms from inside China show they are simply blocking IP Address and TCP port combinations. Bridge relays that have been seeded into various social networks in China continue to work well.</p>
+
+<p>Tor on the Android OS, called Orbot, continues progress. Work continues on a privacy-preserving web browser, Orweb, and other supporting applications to make Tor on Android more useful for daily users. Nathan got a Tor relay running on a Moons e-7001 “iRobot” tablet, <a href="http://guardianproject.info/2010/05/25/tor-on-a-tablet">tor on a tablet</a>.</p>
+
+<p><strong>Grow the Tor network and user base. Outreach.</strong></p>
+
+<ul>
+<li>Jacob, Roger, Runa, and Linus talked to various NorduNet and SUNET people in Sweden. As a result, we have a new directory authority and bandwidth authority located within NorduNET.</li>
+<li>Erinn and Karen attended the Global Voices Summit 2010 in Santiago, Chile. There were a number of discussions about how to use Tor safely and its usage in activism. Erinn held a detailed Tor training for 5-10 activists in Spanish. <a href="http://summit2010.globalvoicesonline.org" title="http://summit2010.globalvoicesonline.org">http://summit2010.globalvoicesonline.org</a></li>
+<li>Roger gave a few talks as AUSCERT, <a href="http://www.auscert.org.au/" title="http://www.auscert.org.au/">http://www.auscert.org.au/</a></li>
+<li>Roger was interviewed by The Australian about Internet censorship and privacy. <a href="http://www.theaustralian.com.au/australian-it/call-to-join-tor-network-to-fight-censorship/story-e6frgakx-1225870756466" title="http://www.theaustralian.com.au/australian-it/call-to-join-tor-network-to-fight-censorship/story-e6frgakx-1225870756466">http://www.theaustralian.com.au/australian-it/call-to-join-tor-network-t...</a></li>
+<li>Roger was interviewed by ComputerWorld Australia about the relationship between China and Tor. <a href="http://www.computerworld.com.au/article/347273/auscert_2010_china_set_net_blackout_tiananmen_square_anniversary/" title="http://www.computerworld.com.au/article/347273/auscert\_2010\_china\_set\_net\_blackout\_tiananmen\_square\_anniversary/">http://www.computerworld.com.au/article/347273/auscert_2010_china_set_ne...</a></li>
+<li>Jacob gave the keynote speech at CONFidence in Krakow, Poland, <a href="http://2010.confidence.org.pl/" title="http://2010.confidence.org.pl/">http://2010.confidence.org.pl/</a>.</li>
+<li>Jacob, Christian, and others attended pH neutral in Berlin, Germany. <a href="http://ph-neutral.darklab.org/" title="http://ph-neutral.darklab.org/">http://ph-neutral.darklab.org/</a></li>
+<li>Karen met with a sub-committee of the US Senate Intelligence Committee to discuss the fallacy of cyberwar.</li>
+</ul>
+
+<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong>
+Continued to work on Linux and Mac OS X tor browser bundles. The Mac version of TBB is going to use a sandboxing technology borrowed from IronFox. This should help minimize the footprint and security concerns about running TBB on OS X computers.</p>
+
+<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong>
+From the 0.2.1.26 release notes, teach relays to defend themselves from connection overload. Relays now close idle circuits early if it looks like they were intended for directory fetches. Relays are also more aggressive about closing TLS connections that have no circuits on them. Such circuits are unlikely to be re-used, and tens of thousands of them were piling up at the fast relays, causing the relays to run out of sockets and memory. Bugfix on 0.2.0.22-rc (where clients started tunneling their directory fetches over TLS).</p>
+
+<p><strong>Translation work, ultimately a browser-based approach.</strong></p>
+
+<ul>
+<li>Added the Android orbot application to the translation portal.</li>
+<li>By user request, add Serbian to the available languages.</li>
+<li>Translation updates for the following languages: Polish, Arabic, Greek, Serbian, Russian, Swedish, Chinese, Norwegian, Japanese, German, Spanish, Portugese, French, Dutch, Romanian, and Farsi.</li>
+</ul>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

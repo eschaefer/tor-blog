@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Technology Preview:  Bridge by default for Microsoft Windows clients</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Technology Preview:  Bridge by default for Microsoft Windows clients</h2>
+<p class="meta">06 Jun 2010</p>
+
+<div class="event">
+<p>We keep hearing from people around the world that clicking the 3 buttons to turn yourself into a bridge is too difficult todo for most users. These people have repeatedly asked for a &quot;bridge by default&quot; configuration in a package. Here it is: <a href="http://archive.torproject.org/tor-package-archive/technology-preview/" title="http://archive.torproject.org/tor-package-archive/technology-preview/">http://archive.torproject.org/tor-package-archive/technology-preview/</a></p>
+
+<p>When you install and run this package, you are a bridge relay helping censored users around the world access Tor and the uncensored Internet.
+To understand more about bridges, read <a href="https://www.torproject.org/bridges" title="https://www.torproject.org/bridges">https://www.torproject.org/bridges</a>.</p>
+
+<p>This is the installable Vidalia bundle configured to be a bridge by default. This is Tor 0.2.2.13-alpha, Vidalia 0.2.9, Polipo 1.0.4.1. The only difference between this bridge-bundle and the vidalia-bundle is the bridge configuration.</p>
+
+<p>When started, Vidalia attempts to use UPnP to reconfigure any NAT/router device to open port 9001 for tor and 9030 for a directory mirror. The bandwidth is set to consume greater than 1.5 Mbps. It works just like the vidalia-bundle (because it is the vidalia-bundle) where if UPnP fails, it prompts you to open the correct ports on your NAT/router.</p>
+
+<p>None of this is final configuration. It is merely a &quot;does it work for you?&quot; test package. So far, it&#39;s worked on the 4 different networks I&#39;ve tried. Apologies to the 300 Chinese users who used my bridge on one of the test networks, only to have it go away a day later.</p>
+
+<p><em>Update 2010-06-11: Fixed a vidalia.conf issue which wasn&#39;t a problem, but looked like the controlport was open and un-authenticated. uploaded new binaries and removed the old ones. The bridge-bundle nsi file that creates this bundle is <a href="https://trac.vidalia-project.net/browser/vidalia/trunk/pkg/win32/bridge-bundle.nsi.in">in Vidalia svn</a>. Just replace vidalia-bundle.nsi.in with the bridge-bundle.nsi.in and create your bundle.</em></p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Knight Pulse, Jillian, and Tor"
-permalink: knight-pulse%2C-jillian%2C-and-tor
+permalink: blog/knight-pulse%2C-jillian%2C-and-tor
 date: 2008-11-25
 author: phobos
 category: blog

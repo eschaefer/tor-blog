@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Talking to German police in Stuttgart"
-permalink: talking-german-police-stuttgart
+permalink: blog/talking-german-police-stuttgart
 date: 2008-03-26
 author: arma
 category: blog
@@ -20,7 +20,7 @@ And I can understand why they're reluctant to speak against it. First, there are
 
 Overall, they were nice and reasonable people. We left with three takeaway plans:
 
-1) Tor should expand its exitlist.torproject.org system so there's an interface for asking "was this IP address a Tor exit relay in the past few months?" The goal is to give them an easy way to answer the question "is it not worth breaking down another door?" which will save them time and save Tor operators hassle.  
-2) They thought it was quite clear that Tor relays weren't included as "server providers" in the upcoming data retention laws. They offered to talk to a state prosecutor in their area to try to get a public statement to that effect. I'm not optimistic (it's hard to ever get the government to publically say anything), but that's a fine start.  
+1) Tor should expand its exitlist.torproject.org system so there's an interface for asking "was this IP address a Tor exit relay in the past few months?" The goal is to give them an easy way to answer the question "is it not worth breaking down another door?" which will save them time and save Tor operators hassle.
+2) They thought it was quite clear that Tor relays weren't included as "server providers" in the upcoming data retention laws. They offered to talk to a state prosecutor in their area to try to get a public statement to that effect. I'm not optimistic (it's hard to ever get the government to publically say anything), but that's a fine start.
 3) They will tell other German police groups about me, and maybe I'll visit others at some point.
 

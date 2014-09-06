@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger, Jacob, Karsten, and others at 26C3 "
-permalink: roger-jacob-karsten-and-others-26c3
+permalink: /events/roger-jacob-karsten-and-others-26c3
 date: 2009-12-27
 startdate: 2009-12-27
 enddate: 2009-12-30

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing the Tor Farsi blog"
-permalink: announcing-tor-farsi-blog
+permalink: blog/announcing-tor-farsi-blog
 date: 2011-12-20
 author: Runa
 category: blog

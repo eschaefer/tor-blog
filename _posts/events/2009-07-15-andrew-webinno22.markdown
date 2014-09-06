@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at WebInno22"
-permalink: andrew-webinno22
+permalink: /events/andrew-webinno22
 date: 2009-07-15
 startdate: 2009-07-15
 enddate: 2009-07-15

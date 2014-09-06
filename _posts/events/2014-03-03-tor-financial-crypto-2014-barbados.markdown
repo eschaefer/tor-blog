@@ -1,10 +1,10 @@
 ---
 layout: event
 title: "Tor @ Financial Crypto 2014, Barbados"
-permalink: tor-financial-crypto-2014-barbados
+permalink: /events/tor-financial-crypto-2014-barbados
 date: 2014-03-03
 startdate: 2014-03-03
-enddate: 
+enddate:
 author: admin
 category: event
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Torbutton Release 1.2.5, Google Captchas, and addons.mozilla.org"
-permalink: torbutton-release-125-google-captchas-and-addonsmozillaorg
+permalink: blog/torbutton-release-125-google-captchas-and-addonsmozillaorg
 date: 2010-04-10
 author: mikeperry
 category: blog

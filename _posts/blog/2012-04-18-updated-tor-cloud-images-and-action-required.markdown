@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Updated Tor Cloud images, and action required"
-permalink: updated-tor-cloud-images-and-action-required
+permalink: blog/updated-tor-cloud-images-and-action-required
 date: 2012-04-18
 author: Runa
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Alpha Bundles Available for Testing"
-permalink: alpha-bundles-available-testing
+permalink: blog/alpha-bundles-available-testing
 date: 2012-03-06
 author: erinn
 category: blog

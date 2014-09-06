@@ -1,20 +1,20 @@
 ---
 layout: post
 title: "Tor 0.2.1.15-rc released"
-permalink: tor-02115rc-released
+permalink: blog/tor-02115rc-released
 date: 2009-06-01
 author: phobos
 category: blog
 tags: ["bug fixes", "malloc fixes", "release candidate"]
 ---
 
-Tor 0.2.1.15-rc marks the second release candidate for the 0.2.1.x  
-series. It fixes a major bug on fast exit relays, as well as a variety  
+Tor 0.2.1.15-rc marks the second release candidate for the 0.2.1.x
+series. It fixes a major bug on fast exit relays, as well as a variety
 of more minor bugs.
 
-This is a release candidate! That means that we don't know of any  
-remaining show-stopping bugs, and this will become the new stable if  
-there are no problems. Please test it, and tell us about any problems  
+This is a release candidate! That means that we don't know of any
+remaining show-stopping bugs, and this will become the new stable if
+there are no problems. Please test it, and tell us about any problems
 that you find.
 
 [https://www.torproject.org/download](https://www.torproject.org/download "https://www.torproject.org/download")
@@ -23,29 +23,29 @@ Changes in version 0.2.1.15-rc - 2009-05-25
 
 **Major bugfixes (on 0.2.0.x):** - Fix a timing-dependent, allocator-dependent, DNS-related crash bug that would occur on some exit nodes when DNS failures and timeouts occurred in certain patterns. Fix for bug 957.
 
-**Minor bugfixes (on 0.2.0.x):** - Actually return -1 in the error case for read\_bandwidth\_usage().  
- Harmless bug, since we currently don't care about the return value  
+**Minor bugfixes (on 0.2.0.x):** - Actually return -1 in the error case for read\_bandwidth\_usage().
+ Harmless bug, since we currently don't care about the return value
  anywhere. Bugfix on 0.2.0.9-alpha.
-- Provide a more useful log message if bug 977 (related to buffer  
+- Provide a more useful log message if bug 977 (related to buffer
  freelists) ever reappears, and do not crash right away.
-- Fix an assertion failure on 64-bit platforms when we allocated  
- memory right up to the end of a memarea, then realigned the memory  
+- Fix an assertion failure on 64-bit platforms when we allocated
+ memory right up to the end of a memarea, then realigned the memory
  one step beyond the end. Fixes a possible cause of bug 930.
-- Protect the count of open sockets with a mutex, so we can't  
- corrupt it when two threads are closing or opening sockets at once.  
+- Protect the count of open sockets with a mutex, so we can't
+ corrupt it when two threads are closing or opening sockets at once.
  Fix for bug 939. Bugfix on 0.2.0.1-alpha.
-- Don't allow a bridge to publish its router descriptor to a  
+- Don't allow a bridge to publish its router descriptor to a
  non-bridge directory authority. Fixes part of bug 932.
-- When we change to or from being a bridge, reset our counts of  
+- When we change to or from being a bridge, reset our counts of
  client usage by country. Fixes bug 932.
-- Fix a bug that made stream bandwidth get misreported to the  
+- Fix a bug that made stream bandwidth get misreported to the
  controller.
-- Stop using malloc\_usable\_size() to use more area than we had  
+- Stop using malloc\_usable\_size() to use more area than we had
  actually allocated: it was safe, but made valgrind really unhappy.
-- Fix a memory leak when v3 directory authorities load their keys  
+- Fix a memory leak when v3 directory authorities load their keys
  and cert from disk. Bugfix on 0.2.0.1-alpha.
 
-**Minor bugfixes (on 0.2.1.x):** - Fix use of freed memory when deciding to mark a non-addable  
+**Minor bugfixes (on 0.2.1.x):** - Fix use of freed memory when deciding to mark a non-addable
  descriptor as never-downloadable. Bugfix on 0.2.1.9-alpha.
 
 The original release announcement can be found at [http://archives.seul.org/or/talk/May-2009/msg00133.html](http://archives.seul.org/or/talk/May-2009/msg00133.html "http://archives.seul.org/or/talk/May-2009/msg00133.html")

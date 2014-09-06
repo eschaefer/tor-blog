@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Updates on Kazakhstan Internet Censorship"
-permalink: updates-kazakhstan-internet-censorship
+permalink: blog/updates-kazakhstan-internet-censorship
 date: 2012-03-02
 author: phobos
 category: blog

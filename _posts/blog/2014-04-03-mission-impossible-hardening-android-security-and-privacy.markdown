@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Mission Impossible: Hardening Android for Security and Privacy"
-permalink: mission-impossible-hardening-android-security-and-privacy
+permalink: blog/mission-impossible-hardening-android-security-and-privacy
 date: 2014-04-03
 author: mikeperry
 category: blog
@@ -224,7 +224,7 @@ That firewall installation provides several key scripts that provide functionali
 4. The main firewall-torify-all.sh Droidwall script also includes an input firewall, to block all inbound connections to the device. It also fixes a Droidwall [permissions vulnerability](https://code.google.com/p/droidwall/issues/detail?id=260)
 5. It installs an [optional script](https://people.torproject.org/~mikeperry/android-hardening/android-firewall/firewall-allow-nontor-browser.sh) to allow the Browser app to bypass Tor for logging into WiFi captive portals.
 6. It installs an [optional script](https://people.torproject.org/~mikeperry/android-hardening/android-firewall/firewall-allow-adb.sh) to temporarily allow network adb access when you need it (if you are paranoid about USB exploits, which you should be).
-7. It provides an [optional script](https://people.torproject.org/~mikeperry/android-hardening/android-firewall/firewall-allow-linphone-udp.sh) to allow the UDP activity of LinPhone to bypass Tor, to allow ZRTP-encrypted Voice and Video SIP/VoIP calls. SIP account login/registration and call setup/signaling can be done over TCP, and Linphone's TCP activity is still sent through Tor with this script. 
+7. It provides an [optional script](https://people.torproject.org/~mikeperry/android-hardening/android-firewall/firewall-allow-linphone-udp.sh) to allow the UDP activity of LinPhone to bypass Tor, to allow ZRTP-encrypted Voice and Video SIP/VoIP calls. SIP account login/registration and call setup/signaling can be done over TCP, and Linphone's TCP activity is still sent through Tor with this script.
 
 Note that with the exception of the userinit network blocking script, installing these scripts does not activate them. You still need to configure Droidwall to use them.
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — November 13th, 2013"
-permalink: tor-weekly-news-%E2%80%94-november-13th-2013
+permalink: blog/tor-weekly-news-%E2%80%94-november-13th-2013
 date: 2013-11-13
 author: lunar
 category: blog
@@ -36,7 +36,7 @@ Mike concludes that “defense work has not been as conclusively studied as thes
 
 # The “bananaphone” pluggable transport
 
-[Pluggable transports](https://www.torproject.org/docs/pluggable-transports.html) is how Tor traffic can be transformed from a  
+[Pluggable transports](https://www.torproject.org/docs/pluggable-transports.html) is how Tor traffic can be transformed from a
 client to a bridge in order to hide it from Deep Packet Inspection filters.
 
 Improving upon the [initial work of Leif Ryge](https://github.com/leif/bananaphone), David Stainton has been working on the new [“bananaphone” pluggable transport for obfsproxy](https://github.com/david415/obfsproxy/tree/david-bananaphone). The latter implements “reverse hash encoding“, described by Leif Ryge as “a steganographic encoding scheme which transforms a stream of binary data into a stream of tokens (e.g., something resembling natural language text) such that the stream can be decoded by concatenating the hashes of the tokens.”

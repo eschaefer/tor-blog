@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to use the “meek” pluggable transport"
-permalink: how-use-%E2%80%9Cmeek%E2%80%9D-pluggable-transport
+permalink: blog/how-use-%E2%80%9Cmeek%E2%80%9D-pluggable-transport
 date: 2014-08-15
 author: dcf
 category: blog

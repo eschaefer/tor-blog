@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "TorFlow Node Capacity, Integrity and Reliability Measurements at HotPETS"
-permalink: torflow-node-capacity-integrity-and-reliability-measurements-hotpets
+permalink: blog/torflow-node-capacity-integrity-and-reliability-measurements-hotpets
 date: 2009-06-21
 author: mikeperry
 category: blog

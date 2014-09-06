@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Berkman 2007 Circumvention Landscape and Progress"
-permalink: berkman-2007-circumvention-landscape-and-progress
+permalink: blog/berkman-2007-circumvention-landscape-and-progress
 date: 2009-03-05
 author: phobos
 category: blog

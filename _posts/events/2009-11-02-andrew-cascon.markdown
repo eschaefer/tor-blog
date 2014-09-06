@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at CASCON"
-permalink: andrew-cascon
+permalink: /events/andrew-cascon
 date: 2009-11-02
 startdate: 2009-11-02
 enddate: 2009-11-05

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Weekly News — December 25th, 2013</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor Weekly News — December 25th, 2013</h2>
+<p class="meta">25 Dec 2013</p>
+
+<div class="event">
+<p>Welcome to the 26th issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+
+<h1>The 3.x series of the Tor Browser Bundle is now stable</h1>
+
+<p>After more than a year of work, Mike Perry has officially <a href="https://blog.torproject.org/blog/tor-browser-bundle-35-released">blessed the 3.5 release of the Tor Browser Bundle as the new stable release</a>. Improving on the previous stable series, it features a <a href="https://blog.torproject.org/blog/deterministic-builds-part-two-technical-details">deterministic build system</a> for <a href="https://blog.torproject.org/blog/deterministic-builds-part-one-cyberwar-and-global-compromise">distributed trust</a>, a new <a href="https://gitweb.torproject.org/tor-launcher.git">integrated interface to interact with Tor</a> and all the <a href="https://lists.torproject.org/pipermail/tor-talk/2013-December/031392.html">improvements from Tor 0.2.4</a>.</p>
+
+<p>Users of the previous 2.x series might be a little disoriented by the user interface changes. David Fifield, Matt Pagan and others have been compiling <a href="https://trac.torproject.org/projects/tor/wiki/doc/TorBrowserBundle3FAQ">the most frequent questions</a> heard after the switch. Until the integrated browser interface catches up, <a href="https://people.torproject.org/%7Eerinn/vidalia-standalone-bundles/">new Vidalia bundles are now available</a> for those who need them. Erinn Clark is ironing out the remaining integration issues.</p>
+
+<p>With the discontinuation of Firefox 17 ESR, the new release had to be pushed to users to avoid exposing them to security holes. Firefox 24 ESR, on which the Tor Browser is now based, should be supported by Mozilla for approximately one year. This will leave our browser hackers some time to focus more on user experience improvements, test automation, and better resistance to fingerprinting issues.</p>
+
+<p>Several tutorials, videos, and bits of documentation might now in one way or another be out-of-date in many places. Please help report them or, even better, write up some updated versions.</p>
+
+<p>This release is quite a milestone for the project. Update and enjoy!</p>
+
+<h1>The Tor Project now accepts donation in Bitcoin</h1>
+
+<p>As is often pointed out in the press, the majority of the Tor Project’s financial support comes from US government-linked organizations. In the ongoing effort to offer as many possible ways for individuals and organizations to give help to the project, <a href="https://blog.torproject.org/blog/announcement-tor-project-now-accepting-bitcoin-donations">Bitcoin donations are now being accepted</a>.</p>
+
+<p>As Roger Dingledine wrote in a subsequent comment: “We really need to get some funding for core Tor development, and especially for improving Tor’s anonymity, because none of our current funders care enough about the anonymity side of Tor. Outreach and blocking-resistance are great topics, but we can’t let the anonymity part rot.”</p>
+
+<p>Head over to the <a href="https://www.torproject.org/donate/donate#bitcoin">donations page</a> to learn more about how to chip in with Bitcoins or other currencies.</p>
+
+<h1>Tor 0.2.4.20 is out</h1>
+
+<p>The first update to the new stable branch of Tor has been <a href="https://lists.torproject.org/pipermail/tor-talk/2013-December/031483.html">released</a> on December 23rd. It fixes an issue that would create more preemptive circuits than actually need, and a security issue related to poor random number generation.</p>
+
+<p>The latter affects “users who 1) use OpenSSL 1.0.0 or later, 2) set ‘HardwareAccel 1’ in their torrc file, 3) have ‘Sandy Bridge’ or ‘Ivy Bridge’ Intel processors, and 4) have no state file in their DataDirectory (as would happen on first start). Users who generated relay or hidden service identity keys in such a situation should discard them and generate new ones.”</p>
+
+<p>The source code is already available from <a href="https://www.torproject.org/dist/">the usual location</a>. Update packages and bundles should be ready soon.</p>
+
+<h1>Tor events at the 30th Chaos Communication Congress</h1>
+
+<p>The Chaos Computer Club will be holding <a href="https://www.ccc.de/en/updates/2013/30c3">its 30th Congress</a> in Hamburg between the 27th and the 30th of December, and as usual there are a number of Tor-related talks and events scheduled.</p>
+
+<p>Following their <a href="https://media.torproject.org/video/29c3-5306-en-the_tor_software_ecosystem_h264.mp4">session on the Tor ecosystem at 29c3</a>, Tor Project members Roger Dingledine and Jacob Appelbaum will be giving a talk entitled “ <a href="https://events.ccc.de/congress/2013/Fahrplan/events/5423.html">The Tor Network: We’re living in interesting times</a>”, in which they discuss the Project’s work over the last few years, with special reference to “major cryptographic upgrades in the Tor network, interesting academic papers in attacking the Tor network, major high profile users breaking news about the network itself, discussions about funding, FBI/NSA exploitation of Tor Browser users, botnet related load on the Tor network, and other important topics”.</p>
+
+<p>Their talk will be followed by a <a href="https://events.ccc.de/congress/2013/wiki/Session:How_to_help_Tor%3F">discussion involving everyone interested in helping Tor</a> at the NoisySquare assembly. The Tor ecosystem is now made up of more than forty different projects, and there are sure to be ways you can help. Bring your skills and your energy!</p>
+
+<p>Torservers.net will be holding a <a href="https://events.ccc.de/congress/2013/wiki/Session:Tor_Relay_Operators_Meetup">meeting of Tor relay operators and organizations</a>, featuring “quick presentations on recent and future activities around Torservers.net”, to be followed by the official members’ meeting of the German Torservers.net partner organization, Zwiebelfreunde e.V.</p>
+
+<h1>youbroketheinternet will hold a session on the <a href="https://events.ccc.de/congress/2013/wiki/Session:YBTI_Cryptographic_Routing">future of crypto routing backends</a>: “Even the IETF is now considering that Onion Routing should be a fundamental capability of the Internet. How would that look in practice?”</h1>
+
+<p>If you are attending the Congress, feel free to come along and participate in these sessions; if not, you should be able to catch up with the talks online.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Anthony G. Basile <a href="http://opensource.dyc.edu/pipermail/tor-ramdisk/2013-December/000107.html">released version 20131216</a> of Tor-ramdisk, a “uClibc-based micro Linux distribution whose only purpose is to host a Tor server in an environment that maximizes security and privacy.” This new release is the first to ship the 0.2.4 branch of Tor.</p>
+
+<p>For those who like hazardous experiments, intrigeri sent a <a href="https://mailman.boum.org/pipermail/tails-dev/2013-December/004538.html">call for testing</a> an experimental Tails image with preliminary UEFI support — users of Apple hardware should be particularly interested. anonym also <a href="https://mailman.boum.org/pipermail/tails-dev/2013-December/004547.html">announced</a> that test images from the MAC spoofing branch were available.</p>
+
+<p>Nick Mathewson sent his now-monthly <a href="https://lists.torproject.org/pipermail/tor-dev/2013-December/005957.html">review of the status of Tor’s proposals</a>. Karsten Loesing followed-up by commenting on several of those related to the directory protocol. Have a look, you might also be able to move things forward!</p>
+
+<p>Many thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-December/000403.html">John Sweeney of otivpn.com</a>, <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-December/000411.html">Jeremy J. Olson of EPRCI</a>, and <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-December/000415.html">les.net</a> for running mirrors of the Tor Project website.</p>
+
+<p>Karsten Loesing has been <a href="https://bugs.torproject.org/10460">experimenting</a> with replacementsfor the “fast exits” graphs that would convey a better feeling of the network growth. He also deployed a new visualization for the <a href="https://metrics.torproject.org/performance.html#connbidirect">fraction of connections used uni-/bidirectionally</a>.</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>Multiple users have now emailed the help desk regarding a particular type of “ <a href="https://en.wikipedia.org/wiki/Ransomware_%28malware%29">ransomware</a>” that encrypts the hard drive of Windows computers and won’t give users the decryption key until a payment is made. Victims of this malware have emailed the help desk because the ransomware message includes a link to a tor hidden service site. Malware victims wanted to know how to install the Tor Browser, or thought the Tor Project was the source of the malware.</p>
+
+<p>The Tor Project does not make malware; in the past Tor developers have worked with anti-virus developers to help stop other types of malware. Users affected might find useful information in the <a href="http://www.bleepingcomputer.com/virus-removal/cryptolocker-ransomware-information">guide assembled by BleepingComputer.com</a>. If you have not been affected, the story might be a good reminder to think about your backups.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, harmony, Matt Pagan and dope457.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

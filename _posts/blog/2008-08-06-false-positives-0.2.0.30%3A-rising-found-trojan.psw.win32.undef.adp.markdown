@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "False Positives in 0.2.0.30:  RISING found Trojan.PSW.Win32.Undef.adp"
-permalink: false-positives-0.2.0.30%3A-rising-found-trojan.psw.win32.undef.adp
+permalink: blog/false-positives-0.2.0.30%3A-rising-found-trojan.psw.win32.undef.adp
 date: 2008-08-06
 author: phobos
 category: blog

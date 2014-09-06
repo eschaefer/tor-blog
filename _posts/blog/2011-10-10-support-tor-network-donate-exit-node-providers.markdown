@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Support the Tor Network: Donate to Exit Node Providers"
-permalink: support-tor-network-donate-exit-node-providers
+permalink: blog/support-tor-network-donate-exit-node-providers
 date: 2011-10-10
 author: mikeperry
 category: blog

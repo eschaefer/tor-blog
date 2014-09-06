@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor @ PETS 2014, Amsterdam"
-permalink: tor-pets-2014-amsterdam
+permalink: /events/tor-pets-2014-amsterdam
 date: 2014-07-16
 startdate: 2014-07-16
 enddate: 2014-07-18

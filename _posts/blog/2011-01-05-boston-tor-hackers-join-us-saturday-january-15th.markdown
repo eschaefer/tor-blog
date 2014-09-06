@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Boston Tor Hackers, join us Saturday, January 15th"
-permalink: boston-tor-hackers-join-us-saturday-january-15th
+permalink: blog/boston-tor-hackers-join-us-saturday-january-15th
 date: 2011-01-05
 author: phobos
 category: blog

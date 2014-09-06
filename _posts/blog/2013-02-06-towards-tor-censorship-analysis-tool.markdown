@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Towards a Tor Censorship Analysis Tool"
-permalink: towards-tor-censorship-analysis-tool
+permalink: blog/towards-tor-censorship-analysis-tool
 date: 2013-02-06
 author: phw
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Summer 2014 Dev Meeting Hosted by Mozilla"
-permalink: tor-summer-2014-dev-meeting-hosted-mozilla
+permalink: blog/tor-summer-2014-dev-meeting-hosted-mozilla
 date: 2014-04-29
 author: kelley
 category: blog

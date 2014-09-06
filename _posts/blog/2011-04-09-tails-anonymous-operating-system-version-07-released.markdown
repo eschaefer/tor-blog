@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "tails anonymous operating system, version 0.7 released"
-permalink: tails-anonymous-operating-system-version-07-released
+permalink: blog/tails-anonymous-operating-system-version-07-released
 date: 2011-04-09
 author: phobos
 category: blog

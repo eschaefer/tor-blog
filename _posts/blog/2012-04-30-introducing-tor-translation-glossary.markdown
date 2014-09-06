@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introducing the Tor translation glossary"
-permalink: introducing-tor-translation-glossary
+permalink: blog/introducing-tor-translation-glossary
 date: 2012-04-30
 author: Runa
 category: blog

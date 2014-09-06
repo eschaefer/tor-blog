@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger @ FOCI '13, Washington, DC"
-permalink: roger-foci-13-washington-dc
+permalink: /events/roger-foci-13-washington-dc
 date: 2013-08-13
 startdate: 2013-08-13
 enddate: 2013-08-13

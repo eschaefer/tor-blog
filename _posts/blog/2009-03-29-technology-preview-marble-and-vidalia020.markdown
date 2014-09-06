@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Technology Preview:  Marble and Vidalia-0.2.0"
-permalink: technology-preview-marble-and-vidalia020
+permalink: blog/technology-preview-marble-and-vidalia020
 date: 2009-03-29
 author: phobos
 category: blog

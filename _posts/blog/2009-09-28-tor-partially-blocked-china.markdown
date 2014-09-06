@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor partially blocked in China"
-permalink: tor-partially-blocked-china
+permalink: blog/tor-partially-blocked-china
 date: 2009-09-28
 author: phobos
 category: blog

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Weekly News — August, 14th 2013</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor Weekly News — August, 14th 2013</h2>
+<p class="meta">14 Aug 2013</p>
+
+<div class="event">
+<p>Welcome to the seventh issue of Tor Weekly News, the weekly newsletter that covers what is happening in the fast-paced Tor community.</p>
+
+<h1>New Tor Browser Bundle releases</h1>
+
+<p>Mozilla released <a href="https://www.mozilla.org/en-US/firefox/17.0.8/releasenotes/">Firefox version 17.0.8esr</a> on August 6th, fixing several release critical bugs. Three days later, the stable, beta and alpha versions of the Tor Browser Bundle were updated, along with Tails
+(see below).</p>
+
+<p>The stable 2.3.25-11 and 2.4.15-beta-2 also updates HTTPS Everywhere, PDF.js, NoScript and libpng to their latest version. Both bundles had a localization issue which was fixed in the subsequently <a href="https://blog.torproject.org/blog/new-tor-02416-rc-packages-and-updated-stable-tor-browser-bundles">released 2.3.25-12 and 2.4.16-beta-1</a>.</p>
+
+<p>Before updating your browser to the latest version, please pause and admire the <a href="https://www.torproject.org/projects/torbrowser.html.en#downloads">enhanced download page</a>. Kudos to J.M. Todaro for the <a href="https://trac.torproject.org/projects/tor/ticket/2109#comment:7">design and patches</a> and Andrew for the final integration.</p>
+
+<p>The pluggable transports bundles have also been <a href="https://blog.torproject.org/blog/pluggable-transports-bundles-2415-beta-2-pt1-firefox-1708esr">updated to 2.4.15-beta-2-pt1</a>. Like previously, they contains flash proxy and obfsproxy configured to run by default. Using flash proxy requires a <a href="https://trac.torproject.org/projects/tor/wiki/FlashProxyHowto">few extra steps</a>, as before.</p>
+
+<p>For more experimental matters, the new 3.0 series has seen the <a href="https://blog.torproject.org/blog/tor-browser-bundle-30alpha3-released">release of alpha3</a>. On top of the previous updates, several other small improvements were made: in the new launcher and build system, in fingerprinting fixes and in a <a href="https://bugs.torproject.org/9195">possible anonymity threat for Windows users</a> coming from cloud anti-virus solutions. This is another opportunity to play with the new build system that should produce byte-to-byte identical results. Please <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/README">have a try</a> and report any discrepancies with Mike Perry’s builds.</p>
+
+<h1>Tails 0.20 has been released</h1>
+
+<p>The <a href="https://tails.boum.org/news/version_0.20/">32nd release of Tails is out</a>. It fixes several security issues, and all users are <a href="https://tails.boum.org/security/Numerous_security_holes_in_0.19/">advised to upgrade</a>.</p>
+
+<p>Among other small bugfixes, minor improvements and translation updates, this release tightens the security around Pidgin — by removing support for protocols other than IRC and XMPP — and restricting access to the ptrace(2) system call for unprivileged users.</p>
+
+<p><a href="https://tails.boum.org/download/">Download</a>, burn, and <a href="https://tails.boum.org/doc/first_steps/usb_upgrade/">upgrade</a>!</p>
+
+<h1>New release candidate for the 0.2.4 tor branch</h1>
+
+<p>Roger Dingledine announced the <a href="https://lists.torproject.org/pipermail/tor-talk/2013-August/029344.html">release of tor 0.2.4.16-rc</a>, the latest incarnation of the 0.2.4 series. This release include several major and minor bugfixes.</p>
+
+<p>The most important one is probably a crash that can be triggered remotely via badly formatted INTRODUCE1 cells. Roger advises: “Anybody running a hidden service on the experimental 0.2.4.x branch should upgrade”.</p>
+
+<p>Erinn Clark has updated the <a href="https://blog.torproject.org/blog/new-tor-02416-rc-packages-and-updated-stable-tor-browser-bundles">beta version of the Tor Browser Bundle</a> for a wider audience of testers.</p>
+
+<h1>About Tor Browser usability</h1>
+
+<p><a href="https://blog.torproject.org/blog/tor-weekly-news-%E2%80%94-august-7th-2013">Last week events</a> sparked a good amount of discussions on Tor Browser usability. Several discussions on tor-talk and in other places revolved around the idea that “JavaScript should be disabled by default”. scarp wrote a <a href="https://lists.torproject.org/pipermail/tor-talk/2013-August/029266.html">good summary</a> on why it is not so simple: “I understand that JavaScript was enabled globally in the Tor Browser Bundle for usability reasons as well as to prevent browser fingerprinting. […] If the torproject were to disable it by default, that would not ensure that users are protected in the future by similar methods. Sites can be written in a way that if you do not allow JavaScript they simply won’t work at all. If I was writing an exploit I’d do this to frustrate users so hopefully they enable JavaScript and accept my exploit.“ Roger Dingledine also <a href="https://lists.torproject.org/pipermail/tor-talk/2013-August/029364.html">improved</a> the <a href="https://www.torproject.org/docs/faq.html.en#TBBJavaScriptEnabled">relevant question in Tor FAQ</a>.</p>
+
+<p>One possible solution to satisfy contradicting requirements would be to
+add a “ <a href="https://bugs.torproject.org/9387">security slider</a>” that would allow users to easily trade off
+web compatibility over security. The slider would have three or four different positions that would gradually deactivate more and more features of the browser. One has to understand that the “most secure” should probably disable loading of any pictures. This also impacts the Tor Browser anonymity set but this is probably a trade off that can be afforded given the actual size of the Tor Browser user base.</p>
+
+<p>scarp had also pined another big usability problem related to updating: “This exploit wasn’t new. […] Users running the latest Tor Browser Bundle didn’t have any issues as their browsers had been patched. It is inappropriate for a web browser to not be automatically updated.” Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005228.html">recapitulated</a> the <a href="https://trac.torproject.org/projects/tor/wiki/org/meetings/2013SummerDevMeeting/BundleUpdatePlan">latest plan</a> that was discussed during the last summer dev. meeting to simply build upon Firefox update mechanism. The next step is to do a proper review. Hopefully, given it is “mature and widespread” and has been “proven to update Firefox”, we will not “run screaming for the hills” when looking at the disadvantages.</p>
+
+<p>On a more general level, an <a href="https://twitter.com/BrendanEich/status/364265592112414720">unexpected comment</a> came from Brendan Eich (Mozilla’s chief technology officer) on Twitter: “Maybe we should just adopt, support, and bundle Tor in Firefox...” David Dahl subsequently opened a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=901614">bug report in Mozilla’s tracker</a> to discuss a way forward. Mike Perry <a href="https://mailman.stanford.edu/pipermail/liberationtech/2013-August/010650.html">commented on a thread on the liberationtech mailing list</a>: “In short, I am excited by this news, and I look forward to improving our communication and cooperation with Mozilla
+on this front.”</p>
+
+<h1>Tails 2013 summit</h1>
+
+<p>The Tails team has sent a <a href="https://tails.boum.org/news/summit_2013/">report on their 2013 development summit</a> for which “a bunch of people spend a dozen days together in July”.</p>
+
+<p>Read the report in full for all the details. Some highlights: task tracking have been <a href="https://labs.riseup.net/code/projects/tails">moved to Redmine</a>, <a href="https://labs.riseup.net/code/projects/tails/issues?query_id=112">tasks fit for new contributors</a> has been better identified, progress has been made to <a href="https://labs.riseup.net/code/issues/6015">move Tails to the current Debian stable release</a>, the <a href="https://labs.riseup.net/code/projects/tails/roadmap">roadmap</a> has been updated.</p>
+
+<p>Communication channels are going to change a little bit “to ease involvement of new contributors, to make more workload sharing possible, and to be able to provide better user support”. As a start a new <a href="https://tails.boum.org/support/tails-support/">user support mailing list</a> was created. Subscribe if you have questions or want to help fellow Tails users.</p>
+
+<p>A lot of discussions revolved around “the growth of the project: given the growing number of users and our super-short release cycle, it is a challenge to keep the project sustainable and maintainable in the mid/long term.” Give the current project exposure, the report rightfully concludes: “Tails is living decisive times, so we expect the next year to be pretty interesting. You can perhaps make the difference, so do not hesitate <a href="https://tails.boum.org/contribute/">joining the dance</a>!”.</p>
+
+<h1>Three new proposals</h1>
+
+<p>On Monday, Nick Mathewson robbed everyone of his “I’m a little teapot” <a href="https://twitter.com/nickm_tor/status/365527533627777025">performance</a> by releasing the following three new proposals:</p>
+
+<p><a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/219-expanded-dns.txt">Proposal 219</a> has been written a year ago by Ondrej Mikle. It is currently at draft stage. Its goal is to make Tor support any DNS query type and also support full DNSSEC resolution. The latter is important as it provides “protection against DNS cache-poisoning attacks” but is made tricky given a routine hostname resolution with DNSSEC “can require dozens of round trips across a circuit”.</p>
+
+<p>In <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/220-ecc-id-keys.txt">another draft proposal</a>, Nick Mathewson describes a plan for a smooth transition from the current 1024-bit RSA keys used for router identity and TLS links to <a href="http://ed25519.cr.yp.to/">Ed25519-SHA-512</a> keys. Several small details still have to be ironed out. This proposal does not address hidden service keys. They will have to be addressed in another proposal once an <a href="https://bugs.torproject.org/8106">agreement has been reached</a> regarding the best crypto scheme.</p>
+
+<p>Now that the <a href="https://gitweb.torproject.org/torspec.git/blob_plain/HEAD:/proposals/216-ntor-handshake.txt">ntor onionskin handshake</a> has been implemented in 0.2.4, we could get better forward secrecy by having clients stop sending CREATE_FAST cells. Nick Mathewson has issued <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/221-stop-using-create-fast.txt">proposal 221</a> to detail the reasons and the implications of such change.</p>
+
+<p>All these proposals are now up for discussions on the tor-dev mailing list.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Jens Kubieziel researched how to <a href="https://lists.torproject.org/pipermail/tor-talk/2013-August/029256.html">get a GnuPG version for Windows</a> in a secure way, something needed for users that would like to properly verify the Tor Browser Bundle signatures on Windows systems.</p>
+
+<p>George Kadianakis wrote on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005231.html">how to deploy your very own pluggable transport</a> explaining what to do before, while and after coding a new pluggable transport. Given they were designed to be “pluggable”, “it should be easy to write new [ones]”. So be sure to read these advices and start experimenting!</p>
+
+<p>A new round of GSoC reports arrived to the tor-dev mailing list: Johannes Fürmann about <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005237.html">EvilGenius</a>, Cristian-Matei Toader about <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005238.html">Tor capabilities</a>, Hareesan about the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005243.html">Steganography Browser Extension</a>, and Kostas Jakeliunas about the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005244.html">searchable metrics archive</a>. All of them seems to be making good progress. Let’s wish them success for the last six weeks!</p>
+
+<p>More reports came from the July 2013 wave: the <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000310.html">Tor Help Desk</a> by Runa Sandvik, and <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000311.html">Moritz Bartl</a>.</p>
+
+<p>Andrew Lewman gave a talk during the US National Network to End Domestic
+Violence’s (NNEDV) annual technology summit. His <a href="https://svn.torproject.org/svn/projects/presentations/2013-07-30-NNEDV-Presentation.pdf">presentation</a>
+covered “a quick overview of Tor, why I’m here talking about domestic
+violence and intimate partner abuse, and what we’re doing to help.”. Be
+sure to read <a href="https://blog.torproject.org/blog/nnedv-tech-summit-2013-report">his report</a> in full.</p>
+
+<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-commits/2013-August/060352.html">Paul Templeton from CoffsWiFi</a>, and <a href="https://lists.torproject.org/pipermail/tor-commits/2013-August/060583.html">nsane</a> for running new Tor website mirrors.</p>
+
+<p>Several people are trying to assemble localization teams for Tails: <a href="https://mailman.boum.org/pipermail/tails-l10n/2013-August/000637.html">Miriam Matar for Arabic</a>, <a href="https://mailman.boum.org/pipermail/tails-l10n/2013-August/000646.html">irregulator for Greek</a>, <a href="https://mailman.boum.org/pipermail/tails-l10n/2013-August/000652.html">hemlockii for Turkish</a>. Tails policy regarding <a href="https://tails.boum.org/contribute/how/translate/">website translations</a> specifies that “a team of translators, not just one person, is necessary”, so please join if you can help!</p>
+
+<h1>Help Desk Roundup</h1>
+
+<p>Below is a summary of some frequent questions received at the Tor help desk this past week:</p>
+
+<p>Users are frequently confused by the message they receive from GetTor. Currently the Tor Browser Bundle is too large to send over GetTor, so users instead receive three mirrors with a link to a page with all available translations of the Tor Browser Bundle. Many users email the help desk unsure of what this page means or which package they need.</p>
+
+<p>A number of users asked whether or not they needed to disable JavaScript in the Tor Browser Bundle. While the vulnerability in Firefox does not affect the latest Tor Browser Bundle, disabling JavaScript globally will reduce one’s risk of being affected by future JavaScript exploits. Users were asked to choose for themselves between greater protection inside the browser or a browsing experience with more functionality enabled.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, malaparte, mttp, Phoul, Tails developers, David Fifield, Nick Mathewson, and Karsten Loesing.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Employers Against Domestic Violence and Technology Panel"
-permalink: employers-against-domestic-violence-and-technology-panel
+permalink: blog/employers-against-domestic-violence-and-technology-panel
 date: 2012-11-19
 author: phobos
 category: blog

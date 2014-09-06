@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Lead Automation Engineer Job Posting"
-permalink: lead-automation-engineer-job-posting
+permalink: blog/lead-automation-engineer-job-posting
 date: 2013-07-12
 author: mikeperry
 category: blog
@@ -16,6 +16,6 @@ This is a contract position. Candidates are expected to be capable of taking the
 
 Candidates should also be capable of reproducing bugs and writing new reproduction test cases for one or more of the testing frameworks. Eventually, we hope to add additional staff to assist in this project, but to start, you will be expected to prioritize your own work such that the most important tasks get attention first, without letting any specific core component starve for attention.
 
-For more details, including information on how to apply, see the job posting:  
+For more details, including information on how to apply, see the job posting:
  [https://www.torproject.org/about/jobs-lead-automation.html.en](https://www.torproject.org/about/jobs-lead-automation.html.en "https://www.torproject.org/about/jobs-lead-automation.html.en")
 

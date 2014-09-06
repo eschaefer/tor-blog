@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger, Nick, Paul in Washington DC"
-permalink: roger%2C-nick%2C-paul-washington-dc
+permalink: /events/roger%2C-nick%2C-paul-washington-dc
 date: 2008-10-27
 startdate: 2008-10-27
 enddate: 2008-10-30

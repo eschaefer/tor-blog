@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Congrats 2008 Google Summer of Code Students!"
-permalink: congrats-2008-google-summer-code-students%21
+permalink: blog/congrats-2008-google-summer-code-students%21
 date: 2008-05-07
 author: phobos
 category: blog

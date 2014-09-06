@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles with Firefox 17.0.11esr and Tor 0.2.4.18-rc"
-permalink: new-tor-browser-bundles-firefox-17011esr-and-tor-02418-rc
+permalink: blog/new-tor-browser-bundles-firefox-17011esr-and-tor-02418-rc
 date: 2013-11-19
 author: erinn
 category: blog
@@ -18,7 +18,7 @@ There is also a new Tor 0.2.4.18-rc release and the RC bundles have been updated
 
 - Update Firefox to 17.0.11esr
 - Update NoScript to 2.6.8.5
-- Fix paths so Mac OS X 10.9 can find the geoip file. Patch by David Fifield.  
+- Fix paths so Mac OS X 10.9 can find the geoip file. Patch by David Fifield.
  (closes: #10092)
 
 **Tor Browser Bundle (2.4.18-rc-1)**
@@ -27,6 +27,6 @@ There is also a new Tor 0.2.4.18-rc release and the RC bundles have been updated
 - Update Firefox to 17.0.11esr
 - Update NoScript to 2.6.8.5
 - Remove PDF.js since it is no longer supported in Firefox 17
-- Fix paths so Mac OS X 10.9 can find the geoip file. Patch by David Fifield.  
+- Fix paths so Mac OS X 10.9 can find the geoip file. Patch by David Fifield.
  (closes: #10092)
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Why Tor is slow and what we're going to do about it"
-permalink: why-tor-is-slow
+permalink: blog/why-tor-is-slow
 date: 2009-03-13
 author: arma
 category: blog
@@ -12,7 +12,7 @@ I've just finished writing up an explanation of all the various reasons why the 
 
 Specifically, we've identified six categories of problems to address, and laid out some steps to resolve each of them.
 
-You can read the pdf here:  
+You can read the pdf here:
  [https://svn.torproject.org/svn/projects/roadmaps/2009-03-11-performance.pdf](https://svn.torproject.org/svn/projects/roadmaps/2009-03-11-performance.pdf)
 
 Andrew has also put together a real live [press release](https://www.torproject.org/press/2009-03-12-performance-roadmap-press-release) to go with it.

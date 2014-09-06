@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Jacob at SOURCE Boston Conference"
-permalink: jacob-source-boston-conference
+permalink: /events/jacob-source-boston-conference
 date: 2010-04-21
 startdate: 2010-04-21
 enddate: 2010-04-23

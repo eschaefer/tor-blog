@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "BitTorrent support for Thandy"
-permalink: bittorrent-support-thandy
+permalink: blog/bittorrent-support-thandy
 date: 2009-09-10
 author: Sebastian
 category: blog

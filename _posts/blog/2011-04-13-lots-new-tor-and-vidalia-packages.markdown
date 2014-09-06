@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Lots of new Tor and Vidalia packages"
-permalink: lots-new-tor-and-vidalia-packages
+permalink: blog/lots-new-tor-and-vidalia-packages
 date: 2011-04-13
 author: erinn
 category: blog

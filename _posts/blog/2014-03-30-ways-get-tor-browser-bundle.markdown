@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ways to get the Tor Browser Bundle"
-permalink: ways-get-tor-browser-bundle
+permalink: blog/ways-get-tor-browser-bundle
 date: 2014-03-30
 author: sukhbir
 category: blog
@@ -14,29 +14,29 @@ To start with, please look at Bundle Downloads and determine the best way for yo
 
 We have screencasts (video guides) that will help you with the installation and verification process on Windows, Linux and OS X.
 
-**Windows**  
+**Windows**
  [TBBTraining-DownloadAndVerify-Windows.mp4](https://media.torproject.org/video/TBBTraining/TBBTraining-DownloadAndVerify-Windows.mp4)
 
-Mirror:  
+Mirror:
  [torservers.net](https://www.torservers.net/mirrors/media.torproject.org/video/TBBTraining/TBBTraining-DownloadAndVerify-Windows.mp4)
 
-**Linux**  
+**Linux**
  [TBBTraining-DownloadAndVerify-Linux.mp4](https://media.torproject.org/video/TBBTraining/TBBTraining-DownloadAndVerify-Linux.mp4)
 
-Mirror:  
+Mirror:
  [torservers.net](https://www.torservers.net/mirrors/media.torproject.org/video/TBBTraining/TBBTraining-DownloadAndVerify-Linux.mp4)
 
-**OS X**  
+**OS X**
  [TBBTraining-DownloadAndVerify-MacOS.mp4](https://media.torproject.org/video/TBBTraining/TBBTraining-DownloadAndVerify-MacOS.mp4)
 
-Mirror:  
+Mirror:
  [torservers.net](https://www.torservers.net/mirrors/media.torproject.org/video/TBBTraining/TBBTraining-DownloadAndVerify-MacOS.mp4)
 
-**Text guide for signature verification**  
+**Text guide for signature verification**
  [https://www.torproject.org/docs/verifying-signatures.html.en](https://www.torproject.org/docs/verifying-signatures.html.en "https://www.torproject.org/docs/verifying-signatures.html.en")
 
-Mirrors:  
- [EFF](https://s.eff.org/tor-mirror/docs/verifying-signatures.html.en)  
+Mirrors:
+ [EFF](https://s.eff.org/tor-mirror/docs/verifying-signatures.html.en)
  [torservers.net](https://www.torservers.net/mirrors/torproject.org/docs/verifying-signatures.html.en)
 
 ## Tor Browser Bundle Downloads
@@ -45,8 +45,8 @@ Mirrors:
 
 [https://www.torproject.org/projects/torbrowser.html.en](https://www.torproject.org/projects/torbrowser.html.en "https://www.torproject.org/projects/torbrowser.html.en")
 
-Mirrors:  
- [EFF](https://s.eff.org/tor-mirror/projects/torbrowser.html.en)  
+Mirrors:
+ [EFF](https://s.eff.org/tor-mirror/projects/torbrowser.html.en)
  [torservers.net](https://www.torservers.net/mirrors/torproject.org/projects/torbrowser.html.en)
 
 ### GetTor
@@ -69,10 +69,10 @@ You can also acquire bridges by visiting [https://bridges.torproject.org/](https
 
 ### Bridge Usage
 
-1. Launch the Tor Browser Bundle  
-2. Click "Configure"  
-3. Click "Next" until you reach a page that reads "If this computer's Internet connection is censored, you will need to obtain and use bridge relays"  
-4. Enter the bridges you received from one of the methods above into the text box  
+1. Launch the Tor Browser Bundle
+2. Click "Configure"
+3. Click "Next" until you reach a page that reads "If this computer's Internet connection is censored, you will need to obtain and use bridge relays"
+4. Enter the bridges you received from one of the methods above into the text box
 5. Click "Connect"
 
 # Pluggable Transports
@@ -85,11 +85,11 @@ To activate pluggable transports in the 3.6-beta-1 bundle, follow the bridge dir
 
 Still need help? If you have any questions, trouble connecting to Tor network, or need to talk to a human, please contact our support team at:
 
-> [help@rt.torproject.org](mailto:help@rt.torproject.org) for English  
-> [help-ar@rt.torproject.org](mailto:help-ar@rt.torproject.org) for Arabic  
-> [help-es@rt.torproject.org](mailto:help-es@rt.torproject.org) for Spanish  
-> [help-fa@rt.torproject.org](mailto:help-fa@rt.torproject.org) for Farsi  
-> [help-fr@rt.torproject.org](mailto:help-fr@rt.torproject.org) for French  
+> [help@rt.torproject.org](mailto:help@rt.torproject.org) for English
+> [help-ar@rt.torproject.org](mailto:help-ar@rt.torproject.org) for Arabic
+> [help-es@rt.torproject.org](mailto:help-es@rt.torproject.org) for Spanish
+> [help-fa@rt.torproject.org](mailto:help-fa@rt.torproject.org) for Farsi
+> [help-fr@rt.torproject.org](mailto:help-fr@rt.torproject.org) for French
 > [help-zh@rt.torproject.org](mailto:help-zh@rt.torproject.org) for Mandarin
 
 * * *

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "World Press Freedom Day"
-permalink: world-press-freedom-day
+permalink: /events/world-press-freedom-day
 date: 2011-05-02
 startdate: 2011-05-02
 enddate: 2011-05-02

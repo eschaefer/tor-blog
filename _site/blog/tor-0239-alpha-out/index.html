@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor 0.2.3.9-alpha is out</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor 0.2.3.9-alpha is out</h2>
+<p class="meta">09 Dec 2011</p>
+
+<div class="event">
+<p>Tor 0.2.3.9-alpha introduces initial IPv6 support for bridges, adds
+ a &quot;DisableNetwork&quot; security feature that bundles can use to avoid
+ touching the network until bridges are configured, moves forward on
+ the pluggable transport design, fixes a flaw in the hidden service
+ design that unnecessarily prevented clients with wrong clocks from
+ reaching hidden services, and fixes a wide variety of other issues.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Changes in version 0.2.3.9-alpha - 2011-12-08</strong>
+<strong>Major features:</strong></p>
+
+<ul>
+<li>Clients can now connect to private bridges over IPv6. Bridges
+still need at least one IPv4 address in order to connect to
+other relays. Note that we don&#39;t yet handle the case where the
+user has two bridge lines for the same bridge (one IPv4, one
+IPv6). Implements parts of proposal 186.</li>
+<li>New &quot;DisableNetwork&quot; config option to prevent Tor from launching any
+connections or accepting any connections except on a control port.
+Bundles and controllers can set this option before letting Tor talk
+to the rest of the network, for example to prevent any connections
+to a non-bridge address. Packages like Orbot can also use this
+option to instruct Tor to save power when the network is off.</li>
+<li>Clients and bridges can now be configured to use a separate
+&quot;transport&quot; proxy. This approach makes the censorship arms race
+easier by allowing bridges to use protocol obfuscation plugins. It
+implements the &quot;managed proxy&quot; part of proposal 180 (ticket 3472).</li>
+<li>When using OpenSSL 1.0.0 or later, use OpenSSL&#39;s counter mode
+implementation. It makes AES_CTR about 7% faster than our old one
+(which was about 10% faster than the one OpenSSL used to provide).
+Resolves ticket 4526.</li>
+<li>Add a &quot;tor2web mode&quot; for clients that want to connect to hidden
+services non-anonymously (and possibly more quickly). As a safety
+measure to try to keep users from turning this on without knowing
+what they are doing, tor2web mode must be explicitly enabled at
+compile time, and a copy of Tor compiled to run in tor2web mode
+cannot be used as a normal Tor client. Implements feature 2553.</li>
+<li>Add experimental support for running on Windows with IOCP and no
+kernel-space socket buffers. This feature is controlled by a new
+&quot;UserspaceIOCPBuffers&quot; config option (off by default), which has
+no effect unless Tor has been built with support for bufferevents,
+is running on Windows, and has enabled IOCP. This may, in the long
+run, help solve or mitigate bug 98.</li>
+<li>Use a more secure consensus parameter voting algorithm. Now at
+least three directory authorities or a majority of them must
+vote on a given parameter before it will be included in the
+consensus. Implements proposal 178.</li>
+</ul>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Hidden services now ignore the timestamps on INTRODUCE2 cells.
+They used to check that the timestamp was within 30 minutes
+of their system clock, so they could cap the size of their
+replay-detection cache, but that approach unnecessarily refused
+service to clients with wrong clocks. Bugfix on 0.2.1.6-alpha, when
+the v3 intro-point protocol (the first one which sent a timestamp
+field in the INTRODUCE2 cell) was introduced; fixes bug 3460.</li>
+<li>Only use the EVP interface when AES acceleration is enabled,
+to avoid a 5-7% performance regression. Resolves issue 4525;
+bugfix on 0.2.3.8-alpha.</li>
+</ul>
+
+<p><strong>Privacy/anonymity features (bridge detection):</strong></p>
+
+<ul>
+<li>Make bridge SSL certificates a bit more stealthy by using random
+serial numbers, in the same fashion as OpenSSL when generating
+self-signed certificates. Implements ticket 4584.</li>
+<li>Introduce a new config option &quot;DynamicDHGroups&quot;, enabled by
+default, which provides each bridge with a unique prime DH modulus
+to be used during SSL handshakes. This option attempts to help
+against censors who might use the Apache DH modulus as a static
+identifier for bridges. Addresses ticket 4548.</li>
+</ul>
+
+<p><strong>Minor features (new/different config options):</strong></p>
+
+<ul>
+<li>New configuration option &quot;DisableDebuggerAttachment&quot; (on by default)
+to prevent basic debugging attachment attempts by other processes.
+Supports Mac OS X and Gnu/Linux. Resolves ticket 3313.</li>
+<li>Allow MapAddress directives to specify matches against super-domains,
+as in &quot;MapAddress *.torproject.org *.torproject.org.torserver.exit&quot;.
+Implements issue 933.</li>
+<li>Slightly change behavior of &quot;list&quot; options (that is, config
+options that can appear more than once) when they appear both in
+torrc and on the command line. Previously, the command-line options
+would be appended to the ones from torrc. Now, the command-line
+options override the torrc options entirely. This new behavior
+allows the user to override list options (like exit policies and
+ports to listen on) from the command line, rather than simply
+appending to the list.</li>
+<li>You can get the old (appending) command-line behavior for &quot;list&quot;
+options by prefixing the option name with a &quot;+&quot;.</li>
+<li>You can remove all the values for a &quot;list&quot; option from the command
+line without adding any new ones by prefixing the option name
+with a &quot;/&quot;.</li>
+<li>Add experimental support for a &quot;defaults&quot; torrc file to be parsed
+before the regular torrc. Torrc options override the defaults file&#39;s
+options in the same way that the command line overrides the torrc.
+The SAVECONF controller command saves only those options which
+differ between the current configuration and the defaults file. HUP
+reloads both files. (Note: This is an experimental feature; its
+behavior will probably be refined in future 0.2.3.x-alpha versions
+to better meet packagers&#39; needs.)</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Try to make the introductory warning message that Tor prints on
+startup more useful for actually finding help and information.
+Resolves ticket 2474.</li>
+<li>Running &quot;make version&quot; now displays the version of Tor that
+we&#39;re about to build. Idea from katmagic; resolves issue 4400.</li>
+<li>Expire old or over-used hidden service introduction points.
+Required by fix for bug 3460.</li>
+<li>Move the replay-detection cache for the RSA-encrypted parts of
+INTRODUCE2 cells to the introduction point data structures.
+Previously, we would use one replay-detection cache per hidden
+service. Required by fix for bug 3460.</li>
+<li>Reduce the lifetime of elements of hidden services&#39; Diffie-Hellman
+public key replay-detection cache from 60 minutes to 5 minutes. This
+replay-detection cache is now used only to detect multiple
+INTRODUCE2 cells specifying the same rendezvous point, so we can
+avoid launching multiple simultaneous attempts to connect to it.</li>
+</ul>
+
+<p><strong>Minor bugfixes (on Tor 0.2.2.x and earlier):</strong></p>
+
+<ul>
+<li>Resolve an integer overflow bug in smartlist_ensure_capacity().
+Fixes bug 4230; bugfix on Tor 0.1.0.1-rc. Based on a patch by
+Mansour Moufid.</li>
+<li>Fix a minor formatting issue in one of tor-gencert&#39;s error messages.
+Fixes bug 4574.</li>
+<li>Prevent a false positive from the check-spaces script, by disabling
+the &quot;whitespace between function name and (&quot; check for functions
+named &#39;op()&#39;.</li>
+<li>Fix a log message suggesting that people contact a non-existent
+email address. Fixes bug 3448.</li>
+<li>Fix null-pointer access that could occur if TLS allocation failed.
+Fixes bug 4531; bugfix on 0.2.0.20-rc. Found by &quot;troll_un&quot;.</li>
+<li>Report a real bootstrap problem to the controller on router
+identity mismatch. Previously we just said &quot;foo&quot;, which probably
+made a lot of sense at the time. Fixes bug 4169; bugfix on
+0.2.1.1-alpha.</li>
+<li>If we had ever tried to call tor_addr_to_str() on an address of
+unknown type, we would have done a strdup() on an uninitialized
+buffer. Now we won&#39;t. Fixes bug 4529; bugfix on 0.2.1.3-alpha.
+Reported by &quot;troll_un&quot;.</li>
+<li>Correctly detect and handle transient lookup failures from
+tor_addr_lookup(). Fixes bug 4530; bugfix on 0.2.1.5-alpha.
+Reported by &quot;troll_un&quot;.</li>
+<li>Use tor_socket_t type for listener argument to accept(). Fixes bug
+4535; bugfix on 0.2.2.28-beta. Found by &quot;troll_un&quot;.</li>
+<li>Initialize conn-&gt;addr to a valid state in spawn_cpuworker(). Fixes
+bug 4532; found by &quot;troll_un&quot;.</li>
+</ul>
+
+<p><strong>Minor bugfixes (on Tor 0.2.3.x):</strong></p>
+
+<ul>
+<li>Fix a compile warning in tor_inet_pton(). Bugfix on 0.2.3.8-alpha;
+fixes bug 4554.</li>
+<li>Don&#39;t send two ESTABLISH_RENDEZVOUS cells when opening a new
+circuit for use as a hidden service client&#39;s rendezvous point.
+Fixes bugs 4641 and 4171; bugfix on 0.2.3.3-alpha. Diagnosed
+with help from wanoskarnet.</li>
+<li>Restore behavior of overriding SocksPort, ORPort, and similar
+options from the command line. Bugfix on 0.2.3.3-alpha.</li>
+</ul>
+
+<p><strong>Build fixes:</strong></p>
+
+<ul>
+<li>Properly handle the case where the build-tree is not the same
+as the source tree when generating src/common/common_sha1.i,
+src/or/micro-revision.i, and src/or/or_sha1.i. Fixes bug 3953;
+bugfix on 0.2.0.1-alpha.</li>
+</ul>
+
+<p><strong>Code simplifications, cleanups, and refactorings:</strong></p>
+
+<ul>
+<li>Remove the pure attribute from all functions that used it
+previously. In many cases we assigned it incorrectly, because the
+functions might assert or call impure functions, and we don&#39;t have
+evidence that keeping the pure attribute is worthwhile. Implements
+changes suggested in ticket 4421.</li>
+<li>Remove some dead code spotted by coverity. Fixes cid 432.
+Bugfix on 0.2.3.1-alpha, closes bug 4637.</li>
+</ul>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

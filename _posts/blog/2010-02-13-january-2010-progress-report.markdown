@@ -1,16 +1,16 @@
 ---
 layout: post
 title: "January 2010 Progress Report"
-permalink: january-2010-progress-report
+permalink: blog/january-2010-progress-report
 date: 2010-02-13
 author: phobos
 category: blog
 tags: ["advocacy", "bug fixes", "enhancements", "feature removals", "progress report", "releases", "translations"]
 ---
 
- **New releases, new hires, new funding**  
-On January 19, 2010 we released the latest in the -stable series, Tor 0.2.1.22-stable.  
-Tor 0.2.1.22 fixes a critical privacy problem in bridge directory authorities -- it would tell you its whole history of bridge descriptors if you make the right directory request. This stable update also rotates two of the seven v3 directory authority keys and locations.  
+ **New releases, new hires, new funding**
+On January 19, 2010 we released the latest in the -stable series, Tor 0.2.1.22-stable.
+Tor 0.2.1.22 fixes a critical privacy problem in bridge directory authorities -- it would tell you its whole history of bridge descriptors if you make the right directory request. This stable update also rotates two of the seven v3 directory authority keys and locations.
 **Directory authority changes** :
 
 - Rotate keys (both v3 identity and relay identity) for moria1 and gabelmoo.
@@ -19,8 +19,8 @@ Tor 0.2.1.22 fixes a critical privacy problem in bridge directory authorities --
 
 - Stop bridge directory authorities from answering dbg-stability.txt directory queries, which would let people fetch a list of all bridge identities they track. Bugfix on 0.2.1.6-alpha.
 
-On January 19, 2010, we released the latest in the -alpha series, Tor 0.2.2.7-alpha.  
-Tor 0.2.2.7-alpha fixes a huge client-side performance bug, as well as laying the groundwork for further relay-side performance fixes. It also starts cleaning up client behavior with respect to the EntryNodes, ExitNodes, and StrictNodes config options. This release also rotates two directory authority keys, due to a security breach of some of the Torproject servers.  
+On January 19, 2010, we released the latest in the -alpha series, Tor 0.2.2.7-alpha.
+Tor 0.2.2.7-alpha fixes a huge client-side performance bug, as well as laying the groundwork for further relay-side performance fixes. It also starts cleaning up client behavior with respect to the EntryNodes, ExitNodes, and StrictNodes config options. This release also rotates two directory authority keys, due to a security breach of some of the Torproject servers.
 **Directory authority changes:**
 
 - Rotate keys (both v3 identity and relay identity) for moria1 and gabelmoo.
@@ -95,7 +95,7 @@ o- Remove the explicit palette set for the configuration dialog that prevented t
 - Change the vidalia\_ru.nsh output encoding from KOI8-R to Windows-1251. (Ticket #527)
 - Add an option for building an OS X 10.4 compatible binary.
 
-On January 26, 2010, we released an updated -alpha, Tor 0.2.2.8-alpha.  
+On January 26, 2010, we released an updated -alpha, Tor 0.2.2.8-alpha.
 **Major bugfixes:**
 
 - Fix a memory corruption bug on bridges that occured during the inclusion of stats data in extra-info descriptors. Also fix the interface for geoip\_get\_bridge\_stats\* to prevent similar bugs in the future. Diagnosis by Tas, patch by Karsten and Sebastian. Fixes bug 1208; bugfix on 0.2.2.7-alpha.
@@ -104,13 +104,13 @@ On January 26, 2010, we released an updated -alpha, Tor 0.2.2.8-alpha.
 
 - Ignore OutboundBindAddress when connecting to localhost. Connections to localhost need to come \_from\_ localhost, or else local servers (like DNS and outgoing HTTP/SOCKS proxies) will often refuse to listen.
 
-**Design, develop, and implement enhancements that make Tor a better tool for users in censored countries.**  
+**Design, develop, and implement enhancements that make Tor a better tool for users in censored countries.**
 Submitted Proposal 169. A backward-compatible change to the Tor connection establishment protocol to avoid the use of TLS renegotiation. In response to others using TLS renegotiation incorrectly, vendors are pulling support for TLS renegotiation. As TLS renegotiation disappears from the Internet, Tor’s use of it will stand out. In order to blend in with the crowd, we need to remove TLS renegotiation from the Tor protocol. The full spec can be found at [http://gitweb.torproject.org//tor.git?a=blob;f=doc/spec/proposals/169-el...](http://gitweb.torproject.org//tor.git?a=blob;f=doc/spec/proposals/169-eliminating-renegotiation.txt;hb=HEAD "http://gitweb.torproject.org//tor.git?a=blob;f=doc/spec/proposals/169-eliminating-renegotiation.txt;hb=HEAD").
 
-**Architecture and technical design docs for Tor enhancements related to blocking-resistance.**  
+**Architecture and technical design docs for Tor enhancements related to blocking-resistance.**
 Submitted Proposal 169. A backward-compatible change to the Tor connection establishment protocol to avoid the use of TLS renegotiation. In response to others using TLS renegotiation incorrectly, vendors are pulling support for TLS renegotiation. As TLS renegotiation disappears from the Internet, Tor’s use of it will stand out. In order to blend in with the crowd, we need to remove TLS renegotiation from the Tor protocol. The full spec can be found at [http://gitweb.torproject.org//tor.git?a=blob;f=doc/spec/proposals/169-el...](http://gitweb.torproject.org//tor.git?a=blob;f=doc/spec/proposals/169-eliminating-renegotiation.txt;hb=HEAD "http://gitweb.torproject.org//tor.git?a=blob;f=doc/spec/proposals/169-eliminating-renegotiation.txt;hb=HEAD").
 
-**Hide Tor’s network signature.**  
+**Hide Tor’s network signature.**
 Submitted Proposal 169. A backward-compatible change to the Tor connection establishment protocol to avoid the use of TLS renegotiation. In response to others using TLS renegotiation incorrectly, vendors are pulling support for TLS renegotiation. As TLS renegotiation disappears from the Internet, Tor’s use of it will stand out. In order to blend in with the crowd, we need to remove TLS renegotiation from the Tor protocol. The full spec can be found at [http://gitweb.torproject.org//tor.git?a=blob;f=doc/spec/proposals/169-el...](http://gitweb.torproject.org//tor.git?a=blob;f=doc/spec/proposals/169-eliminating-renegotiation.txt;hb=HEAD "http://gitweb.torproject.org//tor.git?a=blob;f=doc/spec/proposals/169-eliminating-renegotiation.txt;hb=HEAD").
 
 **Grow the Tor network and user base. Outreach.**
@@ -132,24 +132,24 @@ On January 19, 2010, we released an updated Tor Browser Bundle, version 1.3.1.
 - update Pidgin to 2.6.5
 - update Tor to 0.2.1.22
 
-**Bridge relay and bridge authority work.**  
-From the Tor 0.2.2.8-alpha release notes;  
-Fix a memory corruption bug on bridges that occurred during the inclusion of stats data in extra-  
-info descriptors. Also fix the interface for geoip get bridge stats to prevent similar bugs in the  
-future. Diagnosis by Tas, patch by Karsten and Sebastian. Fixes bug 1208; bugfix on 0.2.2.7-  
-alpha.  
+**Bridge relay and bridge authority work.**
+From the Tor 0.2.2.8-alpha release notes;
+Fix a memory corruption bug on bridges that occurred during the inclusion of stats data in extra-
+info descriptors. Also fix the interface for geoip get bridge stats to prevent similar bugs in the
+future. Diagnosis by Tas, patch by Karsten and Sebastian. Fixes bug 1208; bugfix on 0.2.2.7-
+alpha.
 Roger and Christian defined a roadmap for bridgedb updates, scalability, and bugfixes. The plan can be found at [http://gitweb.torproject.org//bridgedb.git?a=blob\_plain;f=TODO;hb=HEAD](http://gitweb.torproject.org//bridgedb.git?a=blob_plain;f=TODO;hb=HEAD "http://gitweb.torproject.org//bridgedb.git?a=blob\_plain;f=TODO;hb=HEAD")
 
-**Scalability, load balancing, directory overhead, efficiency.**  
-From the 0.2.2.7-alpha release notes:  
-We were selecting our guards uniformly at random, and then weighting which of our guards we’duse uniformly at random. This imbalance meant that Tor clients were severely limited on throughput (and probably latency too) by the first hop in their circuit. Now we select guards weighted by currently advertised bandwidth. We also automatically discard guards picked using the old algorithm. Fixes bug 1217; bugfix on 0.2.1.3-alpha. Found by Mike Perry.  
-When choosing which cells to relay first, relays can now favor circuits that have been quiet recently, to provide lower latency for low-volume circuits. By default, relays enable or disable this feature based on a setting in the consensus. You can override this default by using the new “CircuitPriorityHalflife” configuration option. Design and code by Ian Goldberg, Can Tang, and Chris Alexander.  
+**Scalability, load balancing, directory overhead, efficiency.**
+From the 0.2.2.7-alpha release notes:
+We were selecting our guards uniformly at random, and then weighting which of our guards we’duse uniformly at random. This imbalance meant that Tor clients were severely limited on throughput (and probably latency too) by the first hop in their circuit. Now we select guards weighted by currently advertised bandwidth. We also automatically discard guards picked using the old algorithm. Fixes bug 1217; bugfix on 0.2.1.3-alpha. Found by Mike Perry.
+When choosing which cells to relay first, relays can now favor circuits that have been quiet recently, to provide lower latency for low-volume circuits. By default, relays enable or disable this feature based on a setting in the consensus. You can override this default by using the new “CircuitPriorityHalflife” configuration option. Design and code by Ian Goldberg, Can Tang, and Chris Alexander.
 Mike Perry implemented consensus parameters for the Circuit Build Times constants and found good defaults based on experimentation on a few simulated links. The simulations seem to indicate that tor does really poorly on links with greater than 1 second of latency. Mike wrote up his findings at [http://archives.seul.org/or/dev/Jan-2010/msg00012.html](http://archives.seul.org/or/dev/Jan-2010/msg00012.html "http://archives.seul.org/or/dev/Jan-2010/msg00012.html"). Mike’s work on circuit build times should improve tor client performance as the clients pick new guard nodes and learn better circuit build times.
 
-**More reliable (e.g. split) download mechanism.**  
+**More reliable (e.g. split) download mechanism.**
 Enhanced get-tor to handle Apple OS X split files.
 
-**Translation work, ultimately a browser-based approach.**  
-Updated translations via the translation portal for Chinese, Norwegian, Russian, Dutch, French,  
+**Translation work, ultimately a browser-based approach.**
+Updated translations via the translation portal for Chinese, Norwegian, Russian, Dutch, French,
 Polish, Swedish, Italian, German, Spanish, Burmese, and Turkish languages.
 

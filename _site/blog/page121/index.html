@@ -22,7 +22,7 @@
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
-            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
             <h1 class="brand-title">The Tor Project Blog</h1>
             <h2 class="brand-tagline">News and events from Tor</h2>
 
@@ -44,30 +44,30 @@
 
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
+
             <!-- A wrapper for all the blog posts -->
-            <div class="posts">
-                <h1 class="content-subhead">Recent Posts</h1>
+<div class="posts">
 
-
-               <div id="home">
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/black-t-shirts-user-request">Black t-shirts by user request</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">anonymity advocacy</a>
-            
-              <a class="post-category post-category-js" href="#">black t-shirts</a>
-            
-              <a class="post-category post-category-js" href="#">user request</a>
-             |
-            17 Feb 2009
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Our fine green t-shirts have been a hit over the past few years. By the sheer number of requests we&#39;ve received for another color, it appears not everyone is comfortable wearing the <a href="https://www.torproject.org/tshirt/green-tor-tshirt.png">conversation starting green</a>. We now have black t-shirts. Just like the green shirts, these are Fruit of the Loom &quot;tagless&quot; 100% cotton t-shirts. They have the Tor logo and domain name on the front, nothing on the back.</p>
+  <h1 class="content-subhead">Recent Posts</h1>
+  <div id="home">
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/black-t-shirts-user-request">Black t-shirts by user request</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">black t-shirts</a>
+              
+                <a class="post-category post-category-js" href="#">user request</a>
+               |
+              17 Feb 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Our fine green t-shirts have been a hit over the past few years. By the sheer number of requests we&#39;ve received for another color, it appears not everyone is comfortable wearing the <a href="https://www.torproject.org/tshirt/green-tor-tshirt.png">conversation starting green</a>. We now have black t-shirts. Just like the green shirts, these are Fruit of the Loom &quot;tagless&quot; 100% cotton t-shirts. They have the Tor logo and domain name on the front, nothing on the back.</p>
 
 <p>The conditions for receiving them are still the same:</p>
 
@@ -83,26 +83,26 @@
 
 <p><a href="https://www.torproject.org/images/green-tor-tshirt.png"><img src="https://www.torproject.org/images/green-tor-tshirt.png" alt="green t-shirt"></a></p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/overhead-directory-info%3A-past%2C-present%2C-future">Overhead from directory info: past, present, future</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">arma</a> under
-            
-              <a class="post-category post-category-js" href="#">directory</a>
-            
-              <a class="post-category post-category-js" href="#">performance</a>
-            
-              <a class="post-category post-category-js" href="#">research</a>
-             |
-            16 Feb 2009
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>A growing number of people want to use Tor in low-bandwidth contexts (e.g. modems or shared Internet cafes in the Middle East) and mobile contexts (start up a Tor client, use it for a short time, and then stop it again). Currently Tor is nearly unusable in these situations, because it spends too many bytes fetching directory info. This post summarizes the steps we&#39;ve taken so far to reduce directory overhead, and explains the steps that are coming next.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/overhead-directory-info%3A-past%2C-present%2C-future">Overhead from directory info: past, present, future</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">directory</a>
+              
+                <a class="post-category post-category-js" href="#">performance</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+               |
+              16 Feb 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>A growing number of people want to use Tor in low-bandwidth contexts (e.g. modems or shared Internet cafes in the Middle East) and mobile contexts (start up a Tor client, use it for a short time, and then stop it again). Currently Tor is nearly unusable in these situations, because it spends too many bytes fetching directory info. This post summarizes the steps we&#39;ve taken so far to reduce directory overhead, and explains the steps that are coming next.</p>
 
 <p>First, what do I mean by &quot;directory info&quot;? Part of the Tor design is the _discovery_ component: how clients learn about the available Tor relays, along with their keys, locations, exit policies, and so on. Tor&#39;s solution so far uses a few trusted directory authorities that sign and distribute official lists of the relays that make up the Tor network.</p>
 
@@ -136,240 +136,240 @@
 
 <p>Down the road, there are even more radical design changes to consider. One day there will be too many relays for every client to know about all of them, so we will want to partition the network (see Section 4.4 of <a href="https://svn.torproject.org/svn/projects/roadmaps/2008-12-19-roadmap-full.pdf">Tor&#39;s development roadmap</a>). When we do that, we can bound the amount of directory info that each client has to maintain. Another promising idea is to figure out ways to let clients build paths through the network while requiring less information about each relay. There&#39;s definitely a tradeoff here between centralized coordination (which is easier to design, and can more easily provide good anonymity properties) and scaling to many tens of thousands of relays. But that, as they say, is a story for another time.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-0.2.1.12-alpha-released">Tor 0.2.1.12-alpha is released</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">alpha release</a>
-            
-              <a class="post-category post-category-js" href="#">bug fixes</a>
-            
-              <a class="post-category post-category-js" href="#">improvements</a>
-            
-              <a class="post-category post-category-js" href="#">security fixes</a>
-             |
-            10 Feb 2009
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Tor 0.2.1.12-alpha features several more security-related fixes. You<br>
-should upgrade, especially if you run an exit relay (remote crash) or<br>
-a directory authority (remote infinite loop), or you&#39;re on an older<br>
-(pre-XP) or not-recently-patched Windows (remote exploit). It also<br>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-0.2.1.12-alpha-released">Tor 0.2.1.12-alpha is released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha release</a>
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">improvements</a>
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+               |
+              10 Feb 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Tor 0.2.1.12-alpha features several more security-related fixes. You
+should upgrade, especially if you run an exit relay (remote crash) or
+a directory authority (remote infinite loop), or you&#39;re on an older
+(pre-XP) or not-recently-patched Windows (remote exploit). It also
 includes a big pile of minor bugfixes and cleanups.</p>
 
 <p><a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
 
-<p>Changes in version 0.2.1.12-alpha - 2009-02-08<br>
+<p>Changes in version 0.2.1.12-alpha - 2009-02-08
 <strong>Security fixes:</strong></p>
 
 <ul>
-<li>Fix an infinite-loop bug on handling corrupt votes under certain<br>
+<li>Fix an infinite-loop bug on handling corrupt votes under certain
 circumstances. Bugfix on 0.2.0.8-alpha.</li>
-<li>Fix a temporary DoS vulnerability that could be performed by<br>
+<li>Fix a temporary DoS vulnerability that could be performed by
 a directory mirror. Bugfix on 0.2.0.9-alpha; reported by lark.</li>
-<li>Avoid a potential crash on exit nodes when processing malformed<br>
+<li>Avoid a potential crash on exit nodes when processing malformed
 input. Remote DoS opportunity. Bugfix on 0.2.1.7-alpha.</li>
 </ul>
 
 <p><strong>Minor bugfixes:</strong></p>
 
 <ul>
-<li>Let controllers actually ask for the &quot;clients_seen&quot; event for<br>
-getting usage summaries on bridge relays. Bugfix on 0.2.1.10-alpha;<br>
+<li>Let controllers actually ask for the &quot;clients_seen&quot; event for
+getting usage summaries on bridge relays. Bugfix on 0.2.1.10-alpha;
 reported by Matt Edman.</li>
-<li>Fix a compile warning on OSX Panther. Fixes bug 913; bugfix against<br>
+<li>Fix a compile warning on OSX Panther. Fixes bug 913; bugfix against
 0.2.1.11-alpha.</li>
-<li>Fix a bug in address parsing that was preventing bridges or hidden<br>
+<li>Fix a bug in address parsing that was preventing bridges or hidden
 service targets from being at IPv6 addresses.</li>
-<li>Solve a bug that kept hardware crypto acceleration from getting<br>
-enabled when accounting was turned on. Fixes bug 907. Bugfix on<br>
+<li>Solve a bug that kept hardware crypto acceleration from getting
+enabled when accounting was turned on. Fixes bug 907. Bugfix on
 0.0.9pre6.</li>
-<li>Remove a bash-ism from configure.in to build properly on non-Linux<br>
+<li>Remove a bash-ism from configure.in to build properly on non-Linux
 platforms. Bugfix on 0.2.1.1-alpha.</li>
-<li>Fix code so authorities _actually_ send back X-Descriptor-Not-New<br>
+<li>Fix code so authorities _actually_ send back X-Descriptor-Not-New
 headers. Bugfix on 0.2.0.10-alpha.</li>
-<li>Don&#39;t consider expiring already-closed client connections. Fixes<br>
+<li>Don&#39;t consider expiring already-closed client connections. Fixes
 bug 893. Bugfix on 0.0.2pre20.</li>
-<li>Fix another interesting corner-case of bug 891 spotted by rovv:<br>
-Previously, if two hosts had different amounts of clock drift, and<br>
-one of them created a new connection with just the wrong timing,<br>
-the other might decide to deprecate the new connection erroneously.<br>
+<li>Fix another interesting corner-case of bug 891 spotted by rovv:
+Previously, if two hosts had different amounts of clock drift, and
+one of them created a new connection with just the wrong timing,
+the other might decide to deprecate the new connection erroneously.
 Bugfix on 0.1.1.13-alpha.</li>
-<li>Resolve a very rare crash bug that could occur when the user forced<br>
-a nameserver reconfiguration during the middle of a nameserver<br>
+<li>Resolve a very rare crash bug that could occur when the user forced
+a nameserver reconfiguration during the middle of a nameserver
 probe. Fixes bug 526. Bugfix on 0.1.2.1-alpha.</li>
-<li>Support changing value of ServerDNSRandomizeCase during SIGHUP.<br>
+<li>Support changing value of ServerDNSRandomizeCase during SIGHUP.
 Bugfix on 0.2.1.7-alpha.</li>
-<li>If we&#39;re using bridges and our network goes away, be more willing<br>
-to forgive our bridges and try again when we get an application<br>
+<li>If we&#39;re using bridges and our network goes away, be more willing
+to forgive our bridges and try again when we get an application
 request. Bugfix on 0.2.0.x.</li>
 </ul>
 
 <p><strong>Minor features:</strong></p>
 
 <ul>
-<li>Support platforms where time_t is 64 bits long. (Congratulations,<br>
+<li>Support platforms where time_t is 64 bits long. (Congratulations,
 NetBSD!) Patch from Matthias Drochner.</li>
-<li>Add a &#39;getinfo status/clients-seen&#39; controller command, in case<br>
+<li>Add a &#39;getinfo status/clients-seen&#39; controller command, in case
 controllers want to hear clients_seen events but connect late.</li>
 </ul>
 
 <p><strong>Build changes:</strong></p>
 
 <ul>
-<li>Disable GCC&#39;s strict alias optimization by default, to avoid the<br>
-likelihood of its introducing subtle bugs whenever our code violates<br>
+<li>Disable GCC&#39;s strict alias optimization by default, to avoid the
+likelihood of its introducing subtle bugs whenever our code violates
 the letter of C99&#39;s alias rules.</li>
 </ul>
 
 <p>The original announcement can be found at <a href="http://archives.seul.org/or/talk/Feb-2009/msg00054.html" title="http://archives.seul.org/or/talk/Feb-2009/msg00054.html">http://archives.seul.org/or/talk/Feb-2009/msg00054.html</a></p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-0.2.0.34-stable-released">Tor 0.2.0.34-stable released</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">bug fixes</a>
-            
-              <a class="post-category post-category-js" href="#">security fixes</a>
-            
-              <a class="post-category post-category-js" href="#">stable release</a>
-             |
-            10 Feb 2009
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Tor 0.2.0.34 features several more security-related fixes. You<br>
-should upgrade, especially if you run an exit relay (remote crash) or<br>
-a directory authority (remote infinite loop), or you&#39;re on an older<br>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-0.2.0.34-stable-released">Tor 0.2.0.34-stable released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+              
+                <a class="post-category post-category-js" href="#">stable release</a>
+               |
+              10 Feb 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Tor 0.2.0.34 features several more security-related fixes. You
+should upgrade, especially if you run an exit relay (remote crash) or
+a directory authority (remote infinite loop), or you&#39;re on an older
 (pre-XP) or not-recently-patched Windows (remote exploit).</p>
 
-<p>This release marks end-of-life for Tor 0.1.2.x. Those Tor versions have<br>
-many known flaws, and nobody should be using them. You should upgrade. If<br>
-you&#39;re using a Linux or BSD and its packages are obsolete, stop using<br>
+<p>This release marks end-of-life for Tor 0.1.2.x. Those Tor versions have
+many known flaws, and nobody should be using them. You should upgrade. If
+you&#39;re using a Linux or BSD and its packages are obsolete, stop using
 those packages and upgrade anyway.</p>
 
 <p><a href="https://www.torproject.org/download.html" title="https://www.torproject.org/download.html">https://www.torproject.org/download.html</a></p>
 
-<p>Changes in version 0.2.0.34 - 2009-02-08<br>
+<p>Changes in version 0.2.0.34 - 2009-02-08
 <strong>Security fixes:</strong></p>
 
 <ul>
-<li>Fix an infinite-loop bug on handling corrupt votes under certain<br>
+<li>Fix an infinite-loop bug on handling corrupt votes under certain
       circumstances. Bugfix on 0.2.0.8-alpha.</li>
-<li>Fix a temporary DoS vulnerability that could be performed by<br>
+<li>Fix a temporary DoS vulnerability that could be performed by
       a directory mirror. Bugfix on 0.2.0.9-alpha; reported by lark.</li>
-<li>Avoid a potential crash on exit nodes when processing malformed<br>
+<li>Avoid a potential crash on exit nodes when processing malformed
       input. Remote DoS opportunity. Bugfix on 0.2.0.33.</li>
-<li>Do not accept incomplete ipv4 addresses (like 192.168.0) as valid.<br>
+<li>Do not accept incomplete ipv4 addresses (like 192.168.0) as valid.
       Spec conformance issue. Bugfix on Tor 0.0.2pre27.</li>
 </ul>
 
 <p><strong>Minor bugfixes:</strong></p>
 
 <ul>
-<li>Fix compilation on systems where time_t is a 64-bit integer.<br>
+<li>Fix compilation on systems where time_t is a 64-bit integer.
       Patch from Matthias Drochner.</li>
-<li>Don&#39;t consider expiring already-closed client connections. Fixes<br>
+<li>Don&#39;t consider expiring already-closed client connections. Fixes
       bug 893. Bugfix on 0.0.2pre20.</li>
 </ul>
 
 <p>The original announcement can be found at <a href="http://archives.seul.org/or/announce/Feb-2009/msg00000.html" title="http://archives.seul.org/or/announce/Feb-2009/msg00000.html">http://archives.seul.org/or/announce/Feb-2009/msg00000.html</a></p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/december-2008-progress-report">December 2008 Progress Report</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">alpha releases</a>
-            
-              <a class="post-category post-category-js" href="#">anonymity advocacy</a>
-            
-              <a class="post-category post-category-js" href="#">bug fixes</a>
-            
-              <a class="post-category post-category-js" href="#">progress report</a>
-            
-              <a class="post-category post-category-js" href="#">security fixes</a>
-             |
-            02 Feb 2009
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p><strong>Releases</strong><br>
-Tor 0.2.1.8-alpha (released December 8) fixes some crash bugs in earlier alpha releases, builds better on unusual platforms like Solaris and old OS X, and fixes a variety of other issues.<br>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/december-2008-progress-report">December 2008 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha releases</a>
+              
+                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+               |
+              02 Feb 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p><strong>Releases</strong>
+Tor 0.2.1.8-alpha (released December 8) fixes some crash bugs in earlier alpha releases, builds better on unusual platforms like Solaris and old OS X, and fixes a variety of other issues.
  <a href="http://archives.seul.org/or/talk/Dec-2008/msg00129.html" title="http://archives.seul.org/or/talk/Dec-2008/msg00129.html">http://archives.seul.org/or/talk/Dec-2008/msg00129.html</a></p>
 
-<p>Tor Browser Bundle 1.1.6 (released December 2) and 1.1.7 (released December 12) update Tor to 0.2.1.8-alpha, include a new version of Firefox, and attempt to wrestle with the &quot;AllowMultipleInstances=false&quot; design that could allow us to run Tor Browser Bundle alongside a normal Firefox.<br>
+<p>Tor Browser Bundle 1.1.6 (released December 2) and 1.1.7 (released December 12) update Tor to 0.2.1.8-alpha, include a new version of Firefox, and attempt to wrestle with the &quot;AllowMultipleInstances=false&quot; design that could allow us to run Tor Browser Bundle alongside a normal Firefox.
  <a href="https://svn.torproject.org/svn/torbrowser/trunk/README" title="https://svn.torproject.org/svn/torbrowser/trunk/README">https://svn.torproject.org/svn/torbrowser/trunk/README</a></p>
 
-<p>Tor 0.2.1.9-alpha (released December 25) fixes many more bugs, some of them security-related.<br>
+<p>Tor 0.2.1.9-alpha (released December 25) fixes many more bugs, some of them security-related.
  <a href="http://archives.seul.org/or/talk/Jan-2009/msg00029.html" title="http://archives.seul.org/or/talk/Jan-2009/msg00029.html">http://archives.seul.org/or/talk/Jan-2009/msg00029.html</a></p>
 
-<p><strong>Bug fixes</strong><br>
-Security fixes in the Tor 0.2.1.8-alpha release:<br>
- - When the client is choosing entry guards, now it selects at most one guard from a given relay family. Otherwise we could end up with all of our entry points into the network run by the same operator. Suggested by Camilo Viecco. Fix on 0.1.1.11-alpha.<br>
- - The &quot;ClientDNSRejectInternalAddresses&quot; config option wasn&#39;t being consistently obeyed: if an exit relay refuses a stream because its exit policy doesn&#39;t allow it, we would remember what IP address the relay said the destination address resolves to, even if it&#39;s an internal IP address. Bugfix on 0.2.0.7-alpha; patch by rovv.<br>
+<p><strong>Bug fixes</strong>
+Security fixes in the Tor 0.2.1.8-alpha release:
+ - When the client is choosing entry guards, now it selects at most one guard from a given relay family. Otherwise we could end up with all of our entry points into the network run by the same operator. Suggested by Camilo Viecco. Fix on 0.1.1.11-alpha.
+ - The &quot;ClientDNSRejectInternalAddresses&quot; config option wasn&#39;t being consistently obeyed: if an exit relay refuses a stream because its exit policy doesn&#39;t allow it, we would remember what IP address the relay said the destination address resolves to, even if it&#39;s an internal IP address. Bugfix on 0.2.0.7-alpha; patch by rovv.
  - The &quot;User&quot; and &quot;Group&quot; config options did not clear the supplementary group entries for the Tor process. The &quot;User&quot; option is now more robust, and we now set the groups to the specified user&#39;s primary group. The &quot;Group&quot; option is now ignored. For more detailed logging on credential switching, set CREDENTIAL_LOG_LEVEL in common/compat.c to LOG_NOTICE or higher. Patch by Jacob Appelbaum and Steven Murdoch. Bugfix on 0.0.2pre14. Fixes bug 848.</p>
 
-<p>Performance scalability fixes from the Tor 0.2.1.9-alpha ChangeLog:<br>
- - Clip the MaxCircuitDirtiness config option to a minimum of 10 seconds. Warn the user if lower values are given in the configuration. Bugfix on 0.1.0.1-rc. Patch by Sebastian.<br>
+<p>Performance scalability fixes from the Tor 0.2.1.9-alpha ChangeLog:
+ - Clip the MaxCircuitDirtiness config option to a minimum of 10 seconds. Warn the user if lower values are given in the configuration. Bugfix on 0.1.0.1-rc. Patch by Sebastian.
  - Clip the CircuitBuildTimeout to a minimum of 30 seconds. Warn the user if lower values are given in the configuration. Bugfix on 0.1.1.17-rc. Patch by Sebastian.</p>
 
-<p>Relay stability fixes from the Tor 0.2.1.9-alpha ChangeLog:<br>
- - Fix a logic error that would automatically reject all but the first configured DNS server. Bugfix on 0.2.1.5-alpha. Possible fix for part of bug 813/868. Bug spotted by coderman.<br>
+<p>Relay stability fixes from the Tor 0.2.1.9-alpha ChangeLog:
+ - Fix a logic error that would automatically reject all but the first configured DNS server. Bugfix on 0.2.1.5-alpha. Possible fix for part of bug 813/868. Bug spotted by coderman.
  - When we can&#39;t initialize DNS because the network is down, do not automatically stop Tor from starting. Instead, retry failed dns_init() every 10 minutes, and change the exit policy to reject *:* until one succeeds. Fixes bug 691.</p>
 
-<p>Karsten discovered a bug where some directory authorities would take many minutes to send out a network status, because they were rate limiting too low. The short-term fix is to get those authorities to set<br>
- &quot;MaxAdvertisedBandwidth 10 KB&quot;<br>
-in their torrc, so they don&#39;t spend as much of their bandwidth relaying ordinary Tor traffic.<br>
- <a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=847" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=847">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=847</a><br>
+<p>Karsten discovered a bug where some directory authorities would take many minutes to send out a network status, because they were rate limiting too low. The short-term fix is to get those authorities to set
+ &quot;MaxAdvertisedBandwidth 10 KB&quot;
+in their torrc, so they don&#39;t spend as much of their bandwidth relaying ordinary Tor traffic.
+ <a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=847" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=847">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=847</a>
 We need to consider longer-term solutions too, where clients actually recover more gracefully from this situation.</p>
 
-<p><strong>Advocacy</strong><br>
-We finally made our 3-year development roadmap public:<br>
+<p><strong>Advocacy</strong>
+We finally made our 3-year development roadmap public:
  <a href="https://blog.torproject.org/blog/our-three-year-development-roadmap-published" title="https://blog.torproject.org/blog/our-three-year-development-roadmap-published">https://blog.torproject.org/blog/our-three-year-development-roadmap-publ...</a></p>
 
-<p>Jillian York continued blogging for us about the good uses of Tor:<br>
+<p>Jillian York continued blogging for us about the good uses of Tor:
  <a href="http://www.knightpulse.org/blog/tor" title="http://www.knightpulse.org/blog/tor">http://www.knightpulse.org/blog/tor</a></p>
 
-<p>&quot;Syria: Using Tor for Censorship Resistance&quot;, Dec 1<br>
+<p>&quot;Syria: Using Tor for Censorship Resistance&quot;, Dec 1
  <a href="http://www.knightpulse.org/blog/08/12/01/syria-using-tor-censorship-resistance" title="http://www.knightpulse.org/blog/08/12/01/syria-using-tor-censorship-resistance">http://www.knightpulse.org/blog/08/12/01/syria-using-tor-censorship-resi...</a></p>
 
-<p>&quot;Australia Addresses Internet Circumvention&quot;, Dec 19<br>
+<p>&quot;Australia Addresses Internet Circumvention&quot;, Dec 19
  <a href="http://www.knightpulse.org/blog/08/12/19/australia-addresses-internet-circumvention" title="http://www.knightpulse.org/blog/08/12/19/australia-addresses-internet-circumvention">http://www.knightpulse.org/blog/08/12/19/australia-addresses-internet-ci...</a></p>
 
-<p>Howcast produced a quick video for the masses on how to circumvent censorship. We were technical consultants for this video. It&#39;s tough to talk about Tor, when the first question you&#39;re trying to answer is &quot;What is a proxy? And why do I care?&quot; Howcast did a great job for a high-level overview of circumvention technologies in four minutes.<br>
+<p>Howcast produced a quick video for the masses on how to circumvent censorship. We were technical consultants for this video. It&#39;s tough to talk about Tor, when the first question you&#39;re trying to answer is &quot;What is a proxy? And why do I care?&quot; Howcast did a great job for a high-level overview of circumvention technologies in four minutes.
  <a href="https://blog.torproject.org/blog/how-circumvent-internet-proxy-howcast" title="https://blog.torproject.org/blog/how-circumvent-internet-proxy-howcast">https://blog.torproject.org/blog/how-circumvent-internet-proxy-howcast</a></p>
 
-<p>Wendy was a panelist at a conference organized by Paul Ohm and others at Colorado U at the beginning of December on law, wiretapping, and research-oriented data collection: &quot;The Law and Ethics of Network Monitoring&quot;:<br>
+<p>Wendy was a panelist at a conference organized by Paul Ohm and others at Colorado U at the beginning of December on law, wiretapping, and research-oriented data collection: &quot;The Law and Ethics of Network Monitoring&quot;:
  <a href="http://www.silicon-flatirons.org/events.php?id=544" title="http://www.silicon-flatirons.org/events.php?id=544">http://www.silicon-flatirons.org/events.php?id=544</a></p>
 
-<p>Roger, Karsten, Sebastian, Steven, Jacob, Mike, Peter, Wendy, Frank, Christian, and others attended the 25C3 conference in Berlin, Dec 27-30.<br>
-Roger gave a talk there, similar to the DC08 talk but focusing entirely on &#39;present&#39; and &#39;future&#39;: &quot;Security and anonymity vulnerabilities in Tor: past, present, and future&quot;<br>
+<p>Roger, Karsten, Sebastian, Steven, Jacob, Mike, Peter, Wendy, Frank, Christian, and others attended the 25C3 conference in Berlin, Dec 27-30.
+Roger gave a talk there, similar to the DC08 talk but focusing entirely on &#39;present&#39; and &#39;future&#39;: &quot;Security and anonymity vulnerabilities in Tor: past, present, and future&quot;
  <a href="http://freehaven.net/%7Earma/slides-25c3.pdf" title="http://freehaven.net/~arma/slides-25c3.pdf">http://freehaven.net/~arma/slides-25c3.pdf</a></p>
 
 <p>There was a workshop after Roger&#39;s talk on Germany and data retention. Sebastian Hahn was really great at representing Tor there, particularly because it was right after Roger&#39;s talk so he missed half of it, and because it was mostly in German. Roger tried to add the points that a) he really still does want to do Tor talks for German law enforcement (we got a few leads), and b) the major German Tor relay busts were in 2006-2007, not 2008, and maybe we&#39;re finally making progress.</p>
 
-<p>Jacob was among the presenters at 25C3 on a talk about how they had managed to forge a root SSL certificate. In short, this meant that they could pretend to be any https site on the Internet, and no browser would complain. Nick wrote up a response explaining how it works and how it can affect Tor users:<br>
-&quot;The MD5 certificate collision attack, and what it means for Tor&quot;<br>
+<p>Jacob was among the presenters at 25C3 on a talk about how they had managed to forge a root SSL certificate. In short, this meant that they could pretend to be any https site on the Internet, and no browser would complain. Nick wrote up a response explaining how it works and how it can affect Tor users:
+&quot;The MD5 certificate collision attack, and what it means for Tor&quot;
  <a href="http://blog.torproject.org/blog/md5-certificate-collision-attack%2C-and-what-it-means-tor" title="http://blog.torproject.org/blog/md5-certificate-collision-attack%2C-and-what-it-means-tor">http://blog.torproject.org/blog/md5-certificate-collision-attack%2C-and-...</a></p>
 
-<p><strong>New features</strong><br>
-New feature from the Tor 0.2.1.8-alpha ChangeLog:<br>
+<p><strong>New features</strong>
+New feature from the Tor 0.2.1.8-alpha ChangeLog:
  - New DirPortFrontPage option that takes an html file and publishes it as &quot;/&quot; on the DirPort. Now relay operators can provide a disclaimer without needing to set up a separate webserver. There&#39;s a sample disclaimer in contrib/tor-exit-notice.html.</p>
 
 <p>We continued work on Thandy (our secure updater) this month.</p>
@@ -380,42 +380,43 @@ New feature from the Tor 0.2.1.8-alpha ChangeLog:<br>
 
 <p>We had hoped to be able to get away with patching our current .nsi Windows installer, but it turns out that &quot;nsi silent (non-GUI) install&quot; and &quot;Vista&quot; are not compatible concepts: Vista only likes MSI-based silent installs, due to that whole permissions thing that Vista gets so excited about.</p>
 
-<p>So we now have a shiny new wxs-based msi installer for Tor on Windows:<br>
- <a href="https://svn.torproject.org/svn/tor/trunk/contrib/tor.wxs.in" title="https://svn.torproject.org/svn/tor/trunk/contrib/tor.wxs.in">https://svn.torproject.org/svn/tor/trunk/contrib/tor.wxs.in</a><br>
-with buildbot-style output here:<br>
+<p>So we now have a shiny new wxs-based msi installer for Tor on Windows:
+ <a href="https://svn.torproject.org/svn/tor/trunk/contrib/tor.wxs.in" title="https://svn.torproject.org/svn/tor/trunk/contrib/tor.wxs.in">https://svn.torproject.org/svn/tor/trunk/contrib/tor.wxs.in</a>
+with buildbot-style output here:
  <a href="https://data.peertech.org/torbld" title="https://data.peertech.org/torbld">https://data.peertech.org/torbld</a></p>
 
 <p>The new installer has been tested for install, upgrade, repair and removal. But that&#39;s just Tor, and our recommended download bundle contains four components: Tor, Vidalia (the GUI), Torbutton (our Firefox extension), and either Privoxy or Polipo (an http proxy configured to use Tor -- we&#39;re migrating from Privoxy to Polipo).</p>
 
 <p>So, the next step is to work on MSI installer files for the other three, plus a meta-msi file for the bundle. We&#39;re aiming to have a first go of that at the beginning of January. That way we can give a simpler demo of &quot;download this bundle, then it will automatically notice that it should upgrade Tor, and it will fetch the new package and upgrade.&quot;</p>
 
-<p>In other news, Roger had a long chat with Justin Cappos in early December. Justin did his PhD thesis on security of package managers, and is now a post-doc at UW working on (among other things) auto-update frameworks. See the beginning of a thread here:<br>
+<p>In other news, Roger had a long chat with Justin Cappos in early December. Justin did his PhD thesis on security of package managers, and is now a post-doc at UW working on (among other things) auto-update frameworks. See the beginning of a thread here:
  <a href="http://archives.seul.org/or/dev/Dec-2008/msg00010.html" title="http://archives.seul.org/or/dev/Dec-2008/msg00010.html">http://archives.seul.org/or/dev/Dec-2008/msg00010.html</a></p>
 
-<p><strong>Translations</strong><br>
-We have our translation server up and online:<br>
- <a href="https://translation.torproject.org/" title="https://translation.torproject.org/">https://translation.torproject.org/</a><br>
+<p><strong>Translations</strong>
+We have our translation server up and online:
+ <a href="https://translation.torproject.org/" title="https://translation.torproject.org/">https://translation.torproject.org/</a>
  <a href="https://www.torproject.org/translation-portal" title="https://www.torproject.org/translation-portal">https://www.torproject.org/translation-portal</a></p>
 
 <p>We continued enhancements to the Chinese and Russian Tor website translations. Our Farsi translation from this summer is slowly becoming obsolete; we should solve that at some point.</p>
 </p>
-      </div>
-    </section>
-  
+        </div>
+      </section>
+    
 
-   <!-- Pagination links -->
-  <div class="pagination">
-    
-      <a href="/blog/page120" class="previous">Previous</a>
-    
-    <span class="page_number ">Page: 121 of 133</span>
-    
-      <a href="/blog/page122" class="next">Next</a>
-    
+     <!-- Pagination links -->
+    <div class="pagination">
+      
+        <a href="/blog/page120" class="previous">Previous</a>
+      
+      <span class="page_number ">Page: 121 of 133</span>
+      
+        <a href="/blog/page122" class="next">Next</a>
+      
+    </div>
   </div>
+
 </div>
 
-            </div>
 
             <div class="footer">
                 <div class="pure-menu pure-menu-horizontal pure-menu-open">

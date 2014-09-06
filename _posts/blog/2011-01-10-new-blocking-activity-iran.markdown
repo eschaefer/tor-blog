@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Blocking Activity from Iran"
-permalink: new-blocking-activity-iran
+permalink: blog/new-blocking-activity-iran
 date: 2011-01-10
 author: phobos
 category: blog

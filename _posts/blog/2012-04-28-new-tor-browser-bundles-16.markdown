@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles"
-permalink: new-tor-browser-bundles-16
+permalink: blog/new-tor-browser-bundles-16
 date: 2012-04-28
 author: erinn
 category: blog
@@ -28,7 +28,7 @@ The Tor Browser Bundles have all been updated to the latest Firefox 12.0 as well
 
   - Make Download Manager memory-only (closes: [#4017](https://trac.torproject.org/projects/tor/ticket/4017))
   - Add DuckDuckGo and Startpage to Omnibox (closes: [#4902](https://trac.torproject.org/projects/tor/ticket/4902))
-  - Add Steven Michaud's OS X crash fix patch. It doesn't fix [#5021](https://trac.torproject.org/projects/tor/ticket/5021) but will hopefully help us debug further. See also:  
+  - Add Steven Michaud's OS X crash fix patch. It doesn't fix [#5021](https://trac.torproject.org/projects/tor/ticket/5021) but will hopefully help us debug further. See also:
  [https://bugzilla.mozilla.org/show\_bug.cgi?id=715885#c35](https://bugzilla.mozilla.org/show_bug.cgi?id=715885#c35 "https://bugzilla.mozilla.org/show\_bug.cgi?id=715885#c35")
 - Make the 32-bit Tor Browser Bundle compatible with OS X 10.5
 

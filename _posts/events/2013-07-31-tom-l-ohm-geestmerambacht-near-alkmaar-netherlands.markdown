@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tom L. @ OHM, Geestmerambacht, near Alkmaar (The Netherlands)"
-permalink: tom-l-ohm-geestmerambacht-near-alkmaar-netherlands
+permalink: /events/tom-l-ohm-geestmerambacht-near-alkmaar-netherlands
 date: 2013-07-31
 startdate: 2013-07-31
 enddate: 2013-08-04

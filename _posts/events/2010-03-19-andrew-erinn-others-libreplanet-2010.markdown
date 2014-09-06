@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew, Erinn, others at LibrePlanet 2010"
-permalink: andrew-erinn-others-libreplanet-2010
+permalink: /events/andrew-erinn-others-libreplanet-2010
 date: 2010-03-19
 startdate: 2010-03-19
 enddate: 2010-03-21

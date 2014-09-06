@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor 0.2.4.17-rc packages"
-permalink: new-tor-02417-rc-packages
+permalink: blog/new-tor-02417-rc-packages
 date: 2013-09-06
 author: erinn
 category: blog

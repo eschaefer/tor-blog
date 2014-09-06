@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser Bundle 3.0alpha3 Released"
-permalink: tor-browser-bundle-30alpha3-released
+permalink: blog/tor-browser-bundle-30alpha3-released
 date: 2013-08-09
 author: mikeperry
 category: blog
@@ -36,14 +36,14 @@ This release includes [important security updates to Firefox](https://www.mozill
     - Bug #9128: Remove dependency on JSCtypes
 - **Windows:**
 
-  - Bug #9195: Disable download manager AV scanning (to prevent cloud  
+  - Bug #9195: Disable download manager AV scanning (to prevent cloud
  reporting+scanning of downloaded files)
 - **Mac:**
 
-Bug #9173 (partial): Launch firefox-bin on MacOS instead of TorBrowser.app  
+Bug #9173 (partial): Launch firefox-bin on MacOS instead of TorBrowser.app
  (improves dock behavior).
 
-As usual these binaries should be exactly reproducible by anyone with Ubuntu and KVM support (though there are some issues in LXC).  
+As usual these binaries should be exactly reproducible by anyone with Ubuntu and KVM support (though there are some issues in LXC).
 To build your own identical copies of these bundles from source code, check out [the official repository](https://gitweb.torproject.org/builders/tor-browser-bundle.git) and use git tag `tbb-3.0alpha3-release` (commit `49db54d147bd0bccc26f1d4f859cf9fe97e5f14c`).
 
 These instructions should explain things from there. If you notice any differences from the official bundles, I would love to hear about it!

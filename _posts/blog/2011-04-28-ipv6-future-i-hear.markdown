@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "IPv6 is the future, I hear"
-permalink: ipv6-future-i-hear
+permalink: blog/ipv6-future-i-hear
 date: 2011-04-28
 author: nickm
 category: blog

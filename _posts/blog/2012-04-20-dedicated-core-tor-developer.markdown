@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "We're looking for another dedicated core Tor developer"
-permalink: dedicated-core-tor-developer
+permalink: blog/dedicated-core-tor-developer
 date: 2012-04-20
 author: arma
 category: blog

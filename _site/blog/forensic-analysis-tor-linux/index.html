@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Forensic Analysis of Tor on Linux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Forensic Analysis of Tor on Linux</h2>
+<p class="meta">13 Apr 2013</p>
+
+<div class="event">
+<p>As part of a deliverable for two of our sponsors ( <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorJ">Sponsor J,</a> <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorL">Sponsor L</a>), I have been working on a forensic analysis of the Tor Browser Bundle. In this three part series, I will summarize the most interesting or significant traces left behind after using the bundle. This post will cover Debian Linux ( <a href="https://trac.torproject.org/projects/tor/ticket/8166">#8166</a>), part two will cover Windows 7, and part three will cover OS X 10.8.</p>
+
+<h3>Process</h3>
+
+<p>I set up a virtual machine with a fresh install of Debian 6.0 Squeeze, logged in once and shut it down cleanly. I then connected the virtual drive to another virtual machine and used <em>dd</em> to create an image of the drive. I also used <em>hashdeep</em> to compute hashes for every file on the drive, and <em>rsync</em> to copy all the files over to an external drive.</p>
+
+<p>After having secured a copy of the clean virtual machine, I rebooted the system, connected an external drive, and copied the Tor Browser Bundle (version 2.3.25-6, 64-bit) from the external drive to my Debian home directory. I extracted the package archive and started the Tor Browser Bundle by running ./start-tor-browser inside the Tor Browser directory.</p>
+
+<p>Once the Tor Browser was up and running, I browsed to a few pages, read a few paragraphs here and there, clicked on a few links, and then shut it down by closing the Tor Browser and clicking on the <em>Exit</em>-button in Vidalia. The Tor Browser did not crash and I did not see any error messages. I deleted the Tor Browser directory and the tarball using <em>rm -rf</em>.</p>
+
+<p>I repeated the steps with <em>dd</em>, <em>hashdeep</em>, and <em>rsync</em> to create a copy of the tainted virtual machine.</p>
+
+<h3>Results</h3>
+
+<p>Using <em>hashdeep</em>, I compared the hashes from the tainted virtual machine against the hashes from the clean virtual machine: <a href="https://trac.torproject.org/projects/tor/attachment/ticket/8166/debian_changed_files.txt">68 files</a> had a hash that did not match any of the hashes in the clean set. The most interesting files are:</p>
+
+<p><strong>~/.local/share/gvfs-metadata/home</strong> : contains the filename of the Tor Browser Bundle tarball: <em>tor-browser-gnu-linux-x86\</em>64-2.3.25-5-dev-en-US.tar.gz_. GVFS is the virtual filesystem for the GNOME desktop, so this result will probably vary depending on the window manager used. I have created <a href="https://trac.torproject.org/projects/tor/ticket/8695">#8695</a> for this issue.</p>
+
+<p><strong>~/.xsession-errors</strong> : contains the following string: <em>“Window manager warning: Buggy client sent a \</em>NET_ACTIVE_WINDOW message with a timestamp of 0 for 0x3800089 (Tor Browse)”<em>. It is worth noting that a file named _.xsession-errors.old</em> could also exist. I have created <a href="https://trac.torproject.org/projects/tor/ticket/8696">#8696</a> for this issue.</p>
+
+<p><strong>~/.bash_history</strong> : contains a record of commands typed into the terminal. I started the Tor Browser Bundle from the command line, so this file contains lines such as <em>./start-tor-browser</em>. I have created <a href="https://trac.torproject.org/projects/tor/ticket/8697">#8697</a> for this issue.</p>
+
+<p><strong>/var/log/daemon.log</strong> , <strong>/var/log/syslog</strong> , <strong>/var/log/kern.log</strong> , <strong>/var/log/messages</strong> : contains information about attached devices. I had an external drive attached to the virtual machine, so these files contain lines such as <em>“Mounted /dev/sdb1 (Read-Write, label “THA”, NTFS 3.1)”</em> and <em>“Initializing USB Mass Storage driver…”</em>.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

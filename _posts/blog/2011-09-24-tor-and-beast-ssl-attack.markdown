@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor and the BEAST SSL attack"
-permalink: tor-and-beast-ssl-attack
+permalink: blog/tor-and-beast-ssl-attack
 date: 2011-09-24
 author: nickm
 category: blog
@@ -40,7 +40,7 @@ And even **that** doesn't sound too bad, even in retrospect. In order to mount t
 
 Nevertheless, crypto people implemented workarounds. Better safe than sorry! In version 1.1 of the TLS protocol, every record gets a fresh IV, so the attacker can't know the IV of the next message in advance. And OpenSSL implemented a fix where, whenever they're about to send a TLS record, they send an empty TLS record immediately before, and then send the record with the message in it. The empty TLS record is enough to make the CBC state change, effectively giving the real message a new IV that the attacker can't predict.
 
-These fixes haven't gotten very far in the web world, though. TLS 1.1 isn't widely implemented or deployed, even though the standard has been out since 2006. And  
+These fixes haven't gotten very far in the web world, though. TLS 1.1 isn't widely implemented or deployed, even though the standard has been out since 2006. And
 OpenSSL's "empty record" trick turns out to break some non-conformant SSL implementations, so lots of folks turn it off. (The OpenSSL manual page for the option in question even says that "it is usually safe" to do so.)
 
 I suppose that, at the time, this seemed pretty reasonable. Guessing a plaintext is hard: there are something like 3.4 x 10^38 possible values. But as they say, attacks only get better.
@@ -111,7 +111,7 @@ RELAY and RELAY\_EARLY cell bodies are encrypted with at least one layer of AES\
 
 DESTROY, PADDING, NETINFO, and VERSIONS cells do not have interesting bodies. DESTROY and PADDING bodies are either 0s or random bytes, and NETINFO and VERSIONS provide only trivial information that you can learn just by connecting to a node (the time of day, its addresses, and which versions of the Tor link protocol it speaks).
 
-That's cell bodies. What about their headers? A Tor cell's header has a command and a circuit ID that take up only 3 bytes. Learning the command doesn't tell you anything you couldn't notice by observing the encrypted link in the first place and doing a little traffic analysis. The link-local 2-byte circuit ID is random, and not  
+That's cell bodies. What about their headers? A Tor cell's header has a command and a circuit ID that take up only 3 bytes. Learning the command doesn't tell you anything you couldn't notice by observing the encrypted link in the first place and doing a little traffic analysis. The link-local 2-byte circuit ID is random, and not
 interesting per se, but possibly interesting if you could use it to demultiplex traffic sent over multiple circuits. I'll discuss that more below at the end of the next section.
 
 ### CLAIM 2: You can't do the Duong/Rizzo attack against the Tor protocol either
@@ -126,7 +126,7 @@ What about the cell headers? They contain a command and a circuit ID. If a node 
 
 ### Hey, what if I'm wrong about those cell headers?
 
-Let's pretend that I flubbed the analyis above, and that the attacker can read the command and circuitID for every cell on a link. All this allows the attacker to do is to demultiplex the circuits on the link, and better separate the traffic pattern flows that the link is multiplexing for different clients... but the attacker can't really  
+Let's pretend that I flubbed the analyis above, and that the attacker can read the command and circuitID for every cell on a link. All this allows the attacker to do is to demultiplex the circuits on the link, and better separate the traffic pattern flows that the link is multiplexing for different clients... but the attacker can't really
 use this info unless the attacker can correlate it with a flow somewhere else. This requires that the attacker be watching the same traffic at two points. But if the attacker can do that, the attacker can already (we assume) do a passive correlation attack and win.
 
 ### And what if I'm wrong entirely?
@@ -145,7 +145,7 @@ It's actually even a little harder to do this attack against Tor than I've sugge
 
 First, consider bandwidth-shaping: If a node or a link is near its bandwidth limit, it will split cells in order to stay under that limit.
 
-Also, on a busy node, you can't really send a cell and expect it to get decrypted and put into the next output record on a given link: there are likely to be other circuits queueing other cells for that link, and by the time your cell is sent, it's likely that they'll have sent stuff too. You can get increased priority by making a very quiet  
+Also, on a busy node, you can't really send a cell and expect it to get decrypted and put into the next output record on a given link: there are likely to be other circuits queueing other cells for that link, and by the time your cell is sent, it's likely that they'll have sent stuff too. You can get increased priority by making a very quiet
 circuit, though.
 
 Finally, I don't actually think it's possible to cause chosen plaintext to appear on a client->server link.

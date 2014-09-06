@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "December 2011 Progress Report"
-permalink: december-2011-progress-report
+permalink: blog/december-2011-progress-report
 date: 2012-01-15
 author: phobos
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — November 6th, 2013"
-permalink: tor-weekly-news-%E2%80%94-november-6th-2013
+permalink: blog/tor-weekly-news-%E2%80%94-november-6th-2013
 date: 2013-11-06
 author: lunar
 category: blog
@@ -32,8 +32,8 @@ This should be the last bundles based on the 17 branch of Firefox as it is going
 
 # Monthly status reports for October 2013
 
-The wave of regular monthly reports from Tor project members for the  
-month of October has begun early this time to reach the tor-reports  
+The wave of regular monthly reports from Tor project members for the
+month of October has begun early this time to reach the tor-reports
 mailing-list: [Damian Johnson](https://lists.torproject.org/pipermail/tor-reports/2013-October/000367.html), [Linus Nordberg](https://lists.torproject.org/pipermail/tor-reports/2013-October/000369.html), [Karsten Loesing](https://lists.torproject.org/pipermail/tor-reports/2013-October/000370.html), [Philipp Winter](https://lists.torproject.org/pipermail/tor-reports/2013-November/000371.html), [Ximin Luo](https://lists.torproject.org/pipermail/tor-reports/2013-November/000372.html), [Lunar](https://lists.torproject.org/pipermail/tor-reports/2012-November/000373.html), [Kelley Misata](https://lists.torproject.org/pipermail/tor-reports/2013-November/000374.html), [Matt Pagan](https://lists.torproject.org/pipermail/tor-reports/2013-November/000375.html), [Sherief Alaa](https://lists.torproject.org/pipermail/tor-reports/2013-November/000376.html), [Nick Mathewson](https://lists.torproject.org/pipermail/tor-reports/2013-November/000377.html), [Pearl Crescent](https://lists.torproject.org/pipermail/tor-reports/2013-November/000378.html), [George Kadianakis](https://lists.torproject.org/pipermail/tor-reports/2013-November/000379.html), [Colin Childs](https://lists.torproject.org/pipermail/tor-reports/2013-November/000380.html), [Arlo Breault](https://lists.torproject.org/pipermail/tor-reports/2013-November/000381.html), and [Sukhbir Singh](https://lists.torproject.org/pipermail/tor-reports/2013-November/000382.html).
 
 # Tor Help Desk Roundup

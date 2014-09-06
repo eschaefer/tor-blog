@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hidden Services need some love"
-permalink: hidden-services-need-some-love
+permalink: blog/hidden-services-need-some-love
 date: 2013-04-23
 author: asn
 category: blog
@@ -21,8 +21,8 @@ Note that not every idea listed in the blog post is going to turn out to be a gr
 In any case, let's get down to the issues:
 
 * * *
-  
-  
+
+
 
 ### Hidden Service Scaling
 
@@ -129,8 +129,8 @@ On this topic, [Robert Ransom proposed](https://lists.torproject.org/pipermail/t
 [Zooko's triangle](https://en.wikipedia.org/wiki/Zooko%27s_triangle) characterizes onion addresses as _secure_ and _global_, but not _human memorable_. By now [a couple](https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/ideas/xxx-onion-nyms.txt) [of schemes](http://archives.seul.org/or/dev/Dec-2011/msg00034.html) have been proposed to make hidden services addresses memorable, but for [various reasons](https://lists.torproject.org/pipermail/tor-dev/2012-March/003434.html) none of them has been particularly successful.
 
 * * *
-  
-  
+
+
 
 These were just some of the things that must be done in the Hidden Services realm. If you are interested in helping around, please read the links and trac tickets, and hit us back with [proposals](https://gitweb.torproject.org/torspec.git?a=blob_plain;hb=HEAD;f=proposals/001-process.txt), patches and suggestions. Use the [[tor-dev] mailing list](https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-dev/), or our [IRC channels](https://www.torproject.org/about/contact.html.en#irc) for development-related communication.
 

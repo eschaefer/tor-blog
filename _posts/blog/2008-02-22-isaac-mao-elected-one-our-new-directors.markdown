@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Isaac Mao elected as one of our new directors"
-permalink: isaac-mao-elected-one-our-new-directors
+permalink: blog/isaac-mao-elected-one-our-new-directors
 date: 2008-02-22
 author: arma
 category: blog

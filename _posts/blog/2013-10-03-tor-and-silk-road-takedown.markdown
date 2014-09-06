@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor and the Silk Road takedown"
-permalink: tor-and-silk-road-takedown
+permalink: blog/tor-and-silk-road-takedown
 date: 2013-10-03
 author: arma
 category: blog
@@ -18,24 +18,24 @@ And finally, Tor's design goals include preventing even The Tor Project from tra
 
 Here are some helpful links to more information on these subjects:
 
-Technical details of hidden services:  
+Technical details of hidden services:
  [https://www.torproject.org/docs/hidden-services](https://www.torproject.org/docs/hidden-services "https://www.torproject.org/docs/hidden-services")
 
-Our abuse FAQ:  
+Our abuse FAQ:
  [https://www.torproject.org/docs/faq-abuse](https://www.torproject.org/docs/faq-abuse "https://www.torproject.org/docs/faq-abuse")
 
-For those curious about our interactions with law enforcement:  
- [https://blog.torproject.org/category/tags/law-enforcement](https://blog.torproject.org/category/tags/law-enforcement "https://blog.torproject.org/category/tags/law-enforcement")  
+For those curious about our interactions with law enforcement:
+ [https://blog.torproject.org/category/tags/law-enforcement](https://blog.torproject.org/category/tags/law-enforcement "https://blog.torproject.org/category/tags/law-enforcement")
  [https://www.torproject.org/docs/faq#Backdoor](https://www.torproject.org/docs/faq#Backdoor "https://www.torproject.org/docs/faq#Backdoor")
 
-Using Tor hidden services for good:  
+Using Tor hidden services for good:
  [https://blog.torproject.org/blog/using-tor-good](https://blog.torproject.org/blog/using-tor-good "https://blog.torproject.org/blog/using-tor-good")
 
-Regarding the Freedom Hosting incident in August 2013, which is unrelated  
-as far as we can tell:  
+Regarding the Freedom Hosting incident in August 2013, which is unrelated
+as far as we can tell:
  [https://blog.torproject.org/blog/hidden-services-current-events-and-free...](https://blog.torproject.org/blog/hidden-services-current-events-and-freedom-hosting "https://blog.torproject.org/blog/hidden-services-current-events-and-freedom-hosting")
 
-Some general hints on staying anonymous:  
+Some general hints on staying anonymous:
  [https://www.torproject.org/about/overview#stayinganonymous](https://www.torproject.org/about/overview#stayinganonymous "https://www.torproject.org/about/overview#stayinganonymous")
 
 The Tor Project is a nonprofit 501(c)(3) organization dedicated to providing tools to help people manage their privacy on the Internet. Our focus continues to be in helping ordinary citizens, victims of abuse, individuals in dangerous parts of the world, and [others](https://www.torproject.org/about/torusers) stay aware and educated about how to keep themselves secure online.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Strategies for getting more bridge addresses"
-permalink: strategies-getting-more-bridge-addresses
+permalink: blog/strategies-getting-more-bridge-addresses
 date: 2011-05-14
 author: arma
 category: blog

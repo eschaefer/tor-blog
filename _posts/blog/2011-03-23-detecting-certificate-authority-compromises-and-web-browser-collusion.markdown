@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Detecting Certificate Authority compromises and web browser collusion "
-permalink: detecting-certificate-authority-compromises-and-web-browser-collusion
+permalink: blog/detecting-certificate-authority-compromises-and-web-browser-collusion
 date: 2011-03-23
 author: ioerror
 category: blog
@@ -158,7 +158,7 @@ We appear to have no initial matches for the following Mozilla specific serials 
 - 00e9028b9578e415dc1a710a2b88154447
 - 00f5c86af36162f13a64f54f6dc9587c06
 
-Those serial numbers appear to not match, right? Nope. Mozilla appears  
+Those serial numbers appear to not match, right? Nope. Mozilla appears
 to deal with certificate serial numbers in a slightly different manner - Chrome does the same internally but Mozilla exposes a weird quirk of certificate encoding directly in the source. The human readable data does not contain this quirk. Thus if you remove the prefix of ‘00’ from those serial numbers and search for the sixteen byte values, we find what we'd expect:
 
 `
@@ -235,7 +235,7 @@ This should serve as a wake up call to the internet. We need to research, build,
 
 Certification Authorities may continue to provide a piece of the puzzle but it’s high time we ensure that they’re not the alpha and the omega, anymore.
 
-**Update:**  
+**Update:**
 Comodo has issued [a statement confirming everything](http://www.comodo.com/Comodo-Fraud-Incident-2011-03-23.html) that I've said and more. They believe that this was a targeted attack by a state level actor and they have named Iran as the country they suspect. Mozilla has now opened the bug reports about the issue to the public. Microsoft has now [disclosed their report](http://www.microsoft.com/technet/security/advisory/2524375.mspx) as well.
 
 In the details of their statement we have a confirmation that they have the ability to monitor and thus surveille people who wish to know if certificates are valid.

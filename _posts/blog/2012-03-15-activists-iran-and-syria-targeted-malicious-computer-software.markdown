@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Activists in Iran and Syria targeted with malicious computer software"
-permalink: activists-iran-and-syria-targeted-malicious-computer-software
+permalink: blog/activists-iran-and-syria-targeted-malicious-computer-software
 date: 2012-03-15
 author: Runa
 category: blog

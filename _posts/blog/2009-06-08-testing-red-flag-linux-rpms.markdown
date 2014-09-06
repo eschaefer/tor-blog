@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Testing Red Flag Linux rpms"
-permalink: testing-red-flag-linux-rpms
+permalink: blog/testing-red-flag-linux-rpms
 date: 2009-06-08
 author: phobos
 category: blog

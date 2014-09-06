@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles and Tor 0.2.4.7-alpha packages available"
-permalink: new-tor-browser-bundles-and-tor-0247-alpha-packages-available
+permalink: blog/new-tor-browser-bundles-and-tor-0247-alpha-packages-available
 date: 2013-01-06
 author: erinn
 category: blog
@@ -11,7 +11,7 @@ tags: ["certificate authority", "firefox", "security", "tbb", "tor alpha", "tor 
 All of the Tor Browser Bundles have been updated to Firefox 10.0.12esr in order to address the recent problems with [TurkTrust](https://blog.mozilla.org/security/2013/01/03/revoking-trust-in-two-turktrust-certficates/) [certificates](http://googleonlinesecurity.blogspot.se/2013/01/enhancing-digital-certificate-security.html). From Mozilla's post:
 
 > TURKTRUST, a certificate authority in Mozilla’s root program, mis-issued two intermediate certificates to customers. TURKTRUST has scanned their certificate database and log files and confirmed that the mistake was made for only two certificates.
-> 
+>
 > This is not a Firefox-specific issue. Nevertheless, we are concerned that at least one of the mis-issued intermediate certificates was used for man-in-the-middle (MITM) traffic management of domain names that the customer did not legitimately own or control. We are also concerned that the private keys for these certificates were not kept as secure as would be expected for intermediate certificates.
 
 All users are strongly encouraged to upgrade.

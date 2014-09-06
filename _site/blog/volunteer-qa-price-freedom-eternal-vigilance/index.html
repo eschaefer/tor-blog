@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Volunteer QA: The Price of Freedom is Eternal Vigilance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Volunteer QA: The Price of Freedom is Eternal Vigilance</h2>
+<p class="meta">23 May 2012</p>
+
+<div class="event">
+<p>We have a dream. We believe it is possible to produce free, secure privacy software that is regularly used by many millions of ordinary people all over the world. They will use it to inform themselves, explore new and controversial ideas, communicate with one another, and safely share things about their lives. They will do so with confidence that so long as the software rests upon a secure foundation, it will not betray them; in fact it *cannot* betray them, by design.</p>
+
+<p>Tor Browser Bundle can be that software. Sadly, we know that it is not yet that software. We&#39;re aware that many aspects of the Bundle are either imperfect, incomplete, or absent entirely. We intend to work as hard as we can to improve this situation.</p>
+
+<p>However, we also know that even the keystone of true security is not yet properly in place. We know that we must properly deploy this keystone, or we risk the collapse of everything we have built so far.</p>
+
+<p>That keystone is the community that reviews our designs. It is the community that audits our source code. It is the community that tests the binaries produced from that source code. It is the community that will verify that the binaries that we distribute are produced from that source code and nothing else.</p>
+
+<p>It is time to organize our community into place to serve as that keystone. We cannot have true security without it.</p>
+
+<p>Our plan is to start small, with manual testing and manual analysis of each build. We will use that to incrementally work towards full automation available to be run on any of the arbitrary platform configurations available to the community. Runa Sandvik will begin coordinating these releases.</p>
+
+<p>We expect the process to be bumpy at first. To start, Runa will simply give interested people a url to a release candidate with a <a href="https://trac.torproject.org/projects/tor/ticket/5292">grab bag of urls</a> along with some basic tests to perform within some time limit before the build is to be released. These urls will initially come from arbitrary pages around the web, but hopefully we&#39;ll eventually distill them into our own collection of minimal test cases for which testing is fully automated. Until that point, test pages will need to come with a description of expected behavior and results. We&#39;re hoping that the community will also seek out new and useful test urls and write up result descriptions for them.</p>
+
+<p>We will soon be switching to the 10.x-ESR Firefox branch for our stable TBBs, while concurrently maintaining an alpha series based on Rapid Release. To minimize the incidence of surprise issues in the stable TBB when ESR undergoes major upgrades, we will need people devoted to testing both branches on multiple platforms. We will also need people running <a href="https://trac.torproject.org/projects/tor/ticket/5791">auditing systems that verify the TBB they test is well behaved</a>.</p>
+
+<p>To participate, please inform Runa via email (runa at torproject.org) which TBB branch or branches you intend to test on which platform (Operating System and CPU). Bonus points if you have a unique configuration such as AntiVirus software, and/or are able to analyze TBB in an auditing sandbox framework such as Seatbelt, AppArmor, SELinux, a firewall that will log proxy bypass attempts, or simply with Wireshark or any other network analyzer. Extra bonus points if you <a href="https://trac.torproject.org/projects/tor/ticket/5767">document your setup for others to use</a>.</p>
+
+<p>Independent from the group Runa will coordinate, we also need people <a href="https://trac.torproject.org/projects/tor/ticket/5837">analyzing our builds</a>, to ensure against tampering at the build machines themselves. We need to use the differences uncovered by this analysis to work towards the ability to <a href="https://trac.torproject.org/projects/tor/ticket/3688">produce identical binaries on multiple, clean instances of build platforms</a> which can be brought up from scratch anywhere around the world.</p>
+
+<p>To help us get started, we will also need people who simply create independent builds for others to compare against our official builds. I suspect that many reversers and hobbyists interested in learning reversing may find devoting the system resources and time to build their own TBB binaries a prohibitive barrier.</p>
+
+<p>Basically, everyone should try to help eliminate the need for duplicate work done by others at each step of both the QA and build inspection processes. Similarly, we should be constantly looking to refine our testing and analysis processes to eliminate manual labor.</p>
+
+<p>Thank you all for you willingness to help. Let&#39;s work together to build the world we want to live in.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

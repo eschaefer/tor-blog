@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Academic (Postdoc, PhD, and Master's) positions available for Tor-related research"
-permalink: academic-postdoc-phd-and-masters-positions-available-tor-related-research
+permalink: blog/academic-postdoc-phd-and-masters-positions-available-tor-related-research
 date: 2011-09-24
 author: ian
 category: blog

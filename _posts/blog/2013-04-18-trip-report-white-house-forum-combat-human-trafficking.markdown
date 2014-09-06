@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Trip Report: White House Forum to Combat Human Trafficking"
-permalink: trip-report-white-house-forum-combat-human-trafficking
+permalink: blog/trip-report-white-house-forum-combat-human-trafficking
 date: 2013-04-18
 author: phobos
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Jacob at Bluehat"
-permalink: jacob-bluehat
+permalink: /events/jacob-bluehat
 date: 2010-10-14
 startdate: 2010-10-14
 enddate: 2010-10-15

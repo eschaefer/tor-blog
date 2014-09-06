@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Recent events in Egypt"
-permalink: recent-events-egypt
+permalink: blog/recent-events-egypt
 date: 2011-01-29
 author: ioerror
 category: blog
@@ -24,13 +24,13 @@ There is a serious trade off to be made by users in hostile network environments
 
 Please understand that while we make no promises, we believe that Tor is currently the best option for people in this situation. It's what we use when we're in Egypt and it's what we think will serve people the best in Egypt when they have a network connection to the rest of the internet.
 
-The number of users in Egypt in the last week has skyrocketed:  
+The number of users in Egypt in the last week has skyrocketed:
  ![](https://blog.torproject.org/files/eg-users2-2011-01-28.png)
 
-The number of bridges run around the world has increased remarkably:  
+The number of bridges run around the world has increased remarkably:
  ![](https://blog.torproject.org/files/running-bridges-2011-01-28.png)
 
-Most impressively, the number of fully public Tor relays has increased:  
+Most impressively, the number of fully public Tor relays has increased:
  ![](https://blog.torproject.org/files/relays-diff-2011-01-28.png)
 
 It appears that the Tor network itself has gained bandwidth capacity and geographical scope thanks to people concerned with the situation in Egypt. If you'd like to get involved, we'd love it if you could help by [running a Tor relay or a Tor bridge](https://www.torproject.org/getinvolved/volunteer.html.en).

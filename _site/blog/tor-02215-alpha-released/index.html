@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor 0.2.2.15-alpha released</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor 0.2.2.15-alpha released</h2>
+<p class="meta">23 Aug 2010</p>
+
+<div class="event">
+<p>Tor 0.2.2.15-alpha fixes a big bug in hidden service availability, fixes a variety of other bugs that were preventing performance experiments from moving forward, fixes several bothersome memory leaks, and generally closes a lot of smaller bugs that have been filling up trac lately.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><a href="https://gitweb.torproject.org/tor.git/blob_plain/eba3f37f17a2af4ff628dd5cbc653441e6dce6eb:/ChangeLog">Changes in version 0.2.2.15-alpha - 2010-08-18</a>
+ o Major bugfixes:
+ - Stop assigning the HSDir flag to relays that disable their
+ DirPort (and thus will refuse to answer directory requests). This
+ fix should dramatically improve the reachability of hidden services:
+ hidden services and hidden service clients pick six HSDir relays
+ to store and retrieve the hidden service descriptor, and currently
+ about half of the HSDir relays will refuse to work. Bugfix on
+ 0.2.0.10-alpha; fixes part of bug 1693.
+ - The PerConnBWRate and Burst config options, along with the
+ bwconnrate and bwconnburst consensus params, initialized each conn&#39;s
+ token bucket values only when the connection is established. Now we
+ update them if the config options change, and update them every time
+ we get a new consensus. Otherwise we can encounter an ugly edge
+ case where we initialize an OR conn to client-level bandwidth,
+ but then later the relay joins the consensus and we leave it
+ throttled. Bugfix on 0.2.2.7-alpha; fixes bug 1830.
+ - Fix a regression that caused Tor to rebind its ports if it receives
+ SIGHUP while hibernating. Bugfix in 0.1.1.6-alpha; closes bug 919.</p>
+
+<p>o Major features:
+ - Lower the maximum weighted-fractional-uptime cutoff to 98%. This
+ should give us approximately 40-50% more Guard-flagged nodes,
+ improving the anonymity the Tor network can provide and also
+ decreasing the dropoff in throughput that relays experience when
+ they first get the Guard flag.
+ - Allow enabling or disabling the *Statistics config options while
+ Tor is running.</p>
+
+<p>o Minor features:
+ - Update to the August 1 2010 Maxmind GeoLite Country database.
+ - Have the controller interface give a more useful message than
+ &quot;Internal Error&quot; in response to failed GETINFO requests.
+ - Warn when the same option is provided more than once in a torrc
+ file, on the command line, or in a single SETCONF statement, and
+ the option is one that only accepts a single line. Closes bug 1384.
+ - Build correctly on mingw with more recent versions of OpenSSL 0.9.8.
+ Patch from mingw-san.
+ - Add support for the country code &quot;{??}&quot; in torrc options like
+ ExcludeNodes, to indicate all routers of unknown country. Closes
+ bug 1094.
+ - Relays report the number of bytes spent on answering directory
+ requests in extra-info descriptors similar to {read,write}-history.
+ Implements enhancement 1790.</p>
+
+<p>o Minor bugfixes (on 0.2.1.x and earlier):
+ - Complain if PublishServerDescriptor is given multiple arguments that
+ include 0 or 1. This configuration will be rejected in the future.
+ Bugfix on 0.2.0.1-alpha; closes bug 1107.
+ - Disallow BridgeRelay 1 and ORPort 0 at once in the configuration.
+ Bugfix on 0.2.0.13-alpha; closes bug 928.
+ - Change &quot;Application request when we&#39;re believed to be offline.&quot;
+ notice to &quot;Application request when we haven&#39;t used client
+ functionality lately.&quot;, to clarify that it&#39;s not an error. Bugfix
+ on 0.0.9.3; fixes bug 1222.
+ - Fix a bug in the controller interface where &quot;GETINFO ns/asdaskljkl&quot;
+ would return &quot;551 Internal error&quot; rather than &quot;552 Unrecognized key
+ ns/asdaskljkl&quot;. Bugfix on 0.1.2.3-alpha.
+ - Users can&#39;t configure a regular relay to be their bridge. It didn&#39;t
+ work because when Tor fetched the bridge descriptor, it found
+ that it already had it, and didn&#39;t realize that the purpose of the
+ descriptor had changed. Now we replace routers with a purpose other
+ than bridge with bridge descriptors when fetching them. Bugfix on
+ 0.1.1.9-alpha. Bug 1776 not yet fixed because now we immediately
+ refetch the descriptor with router purpose &#39;general&#39;, disabling
+ it as a bridge.
+ - Fix a rare bug in rend_fn unit tests: we would fail a test when
+ a randomly generated port is 0. Diagnosed by Matt Edman. Bugfix
+ on 0.2.0.10-alpha; fixes bug 1808.
+ - Exit nodes didn&#39;t recognize EHOSTUNREACH as a plausible error code,
+ and so sent back END_STREAM_REASON_MISC. Clients now recognize a new
+ stream ending reason for this case: END_STREAM_REASON_NOROUTE.
+ Servers can start sending this code when enough clients recognize
+ it. Also update the spec to reflect this new reason. Bugfix on
+ 0.1.0.1-rc; fixes part of bug 1793.
+ - Delay geoip stats collection by bridges for 6 hours, not 2 hours,
+ when we switch from being a public relay to a bridge. Otherwise
+ there will still be clients that see the relay in their consensus,
+ and the stats will end up wrong. Bugfix on 0.2.1.15-rc; fixes bug
+ 932 even more.
+ - Instead of giving an assertion failure on an internal mismatch
+ on estimated freelist size, just log a BUG warning and try later.
+ Mitigates but does not fix bug 1125.
+ - Fix an assertion failure that could occur in caches or bridge users
+ when using a very short voting interval on a testing network.
+ Diagnosed by Robert Hogan. Fixes bug 1141; bugfix on 0.2.0.8-alpha.</p>
+
+<p>o Minor bugfixes (on 0.2.2.x):
+ - Alter directory authorities to always consider Exit-flagged nodes
+ as potential Guard nodes in their votes. The actual decision to
+ use Exits as Guards is done in the consensus bandwidth weights.
+ Fixes bug 1294; bugfix on 0.2.2.10-alpha.
+ - When the controller is reporting the purpose of circuits that
+ didn&#39;t finish building before the circuit build timeout, it was
+ printing UNKNOWN_13. Now print EXPIRED. Bugfix on 0.2.2.14-alpha.
+ - Our libevent version parsing code couldn&#39;t handle versions like
+ 1.4.14b-stable and incorrectly warned the user about using an
+ old and broken version of libevent. Treat 1.4.14b-stable like
+ 1.4.14-stable when parsing the version. Fixes bug 1731; bugfix
+ on 0.2.2.1-alpha.
+ - Don&#39;t use substitution references like $(VAR:MOD) when
+ $(asciidoc_files) is empty -- make(1) on NetBSD transforms
+ &#39;$(:x)&#39; to &#39;x&#39; rather than the empty string. This bites us in
+ doc/ when configured with --disable-asciidoc. Bugfix on
+ 0.2.2.9-alpha; fixes bug 1773.
+ - Remove a spurious hidden service server-side log notice about
+ &quot;Ancient non-dirty circuits&quot;. Bugfix on 0.2.2.14-alpha; fixes
+ bug 1741.
+ - Fix compilation with --with-dmalloc set. Bugfix on 0.2.2.6-alpha;
+ fixes bug 1832.
+ - Correctly report written bytes on linked connections. Found while
+ implementing 1790. Bugfix on 0.2.2.4-alpha.
+ - Fix three memory leaks: one in circuit_build_times_parse_state(),
+ one in dirvote_add_signatures_to_pending_consensus(), and one every
+ time we parse a v3 network consensus. Bugfixes on 0.2.2.14-alpha,
+ 0.2.2.6-alpha, and 0.2.2.10-alpha respectively; fixes bug 1831.</p>
+
+<p>o Code simplifications and refactoring:
+ - Take a first step towards making or.h smaller by splitting out
+ function definitions for all source files in src/or/. Leave
+ structures and defines in or.h for now.
+ - Remove a bunch of unused function declarations as well as a block of
+ #if 0&#39;d code from the unit tests. Closes bug 1824.
+ - New unit tests for exit-port history statistics; refactored exit
+ statistics code to be more easily tested.
+ - Remove the old debian/ directory from the main Tor distribution.
+ The official Tor-for-debian git repository lives at the URL
+ <a href="https://git.torproject.org/debian/tor.git" title="https://git.torproject.org/debian/tor.git">https://git.torproject.org/debian/tor.git</a></p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

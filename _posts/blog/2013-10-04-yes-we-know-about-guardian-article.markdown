@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Yes, we know about the Guardian article"
-permalink: yes-we-know-about-guardian-article
+permalink: blog/yes-we-know-about-guardian-article
 date: 2013-10-04
 author: arma
 category: blog

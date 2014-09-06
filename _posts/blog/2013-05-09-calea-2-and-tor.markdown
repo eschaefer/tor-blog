@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "CALEA 2 and Tor"
-permalink: calea-2-and-tor
+permalink: blog/calea-2-and-tor
 date: 2013-05-09
 author: arma
 category: blog

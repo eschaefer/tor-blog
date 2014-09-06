@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Experimental OS X Drag and Drop Vidalia Bundle Installer"
-permalink: experimental-os-x-drag-and-drop-vidalia-bundle-installer
+permalink: blog/experimental-os-x-drag-and-drop-vidalia-bundle-installer
 date: 2009-01-13
 author: phobos
 category: blog
@@ -26,10 +26,10 @@ Here is a running [CHANGELOG](http://trac.vidalia-project.net/browser/vidalia/tr
 
 The changes to Polipo are [documented](https://svn.torproject.org/svn/tor/trunk/contrib/polipo/). See the [README](https://svn.torproject.org/svn/tor/trunk/contrib/polipo/README) file for some details.
 
-The only change to Tor are the parameters passed to configure:  
-"CFLAGS="-O -g -mmacosx-version-min=10.4 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc" LDFLAGS="-Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk"  
-CONFDIR=/Applications/Vidalia.app  
-./configure --prefix=/Applications/Vidalia.app --bindir=/Applications/Vidalia.app  
+The only change to Tor are the parameters passed to configure:
+"CFLAGS="-O -g -mmacosx-version-min=10.4 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc" LDFLAGS="-Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk"
+CONFDIR=/Applications/Vidalia.app
+./configure --prefix=/Applications/Vidalia.app --bindir=/Applications/Vidalia.app
 --sysconfdir=/Library --disable-dependency-tracking". And edit the Makefile to remove the tests for /Library/Tor.
 
 The goal is to make it easier for users to install the Vidalia Bundle and get Tor working. Using Vidalia to configure Tor is recommended. I don't know if this is the final direction, but enough people have trouble installing and configuring our packages in OS X, this is worth a test.

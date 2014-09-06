@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "MIT-Knight Civic Media Conference"
-permalink: mit-knight-civic-media-conference
+permalink: /events/mit-knight-civic-media-conference
 date: 2012-06-17
 startdate: 2012-06-17
 enddate: 2012-06-19

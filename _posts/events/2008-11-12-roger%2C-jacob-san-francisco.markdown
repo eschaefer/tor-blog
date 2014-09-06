@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger, Jacob in San Francisco"
-permalink: roger%2C-jacob-san-francisco
+permalink: /events/roger%2C-jacob-san-francisco
 date: 2008-11-12
 startdate: 2008-11-12
 enddate: 2008-11-15

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — August, 28th 2013"
-permalink: tor-weekly-news-%E2%80%94-august-28th-2013
+permalink: blog/tor-weekly-news-%E2%80%94-august-28th-2013
 date: 2013-08-28
 author: lunar
 category: blog
@@ -34,7 +34,7 @@ Even if “it is important for Tor to set an example on this point”, Mike hope
 
 # Filters and the default Tor Browser search engine
 
-Four months ago, an anonymous reporter complained that the search engine  
+Four months ago, an anonymous reporter complained that the search engine
 used by default by the Tor Browser, Startpage, had a [“family filter” enabled by default](https://bugs.torproject.org/8839). The reporter pointed out that it was pretty funny “for a browser that people use to evade censorship and filters”. Another anonymous contributor quickly pointed out that the filter could be deactivated in a few clicks in Startpage preferences.
 
 The issue got some more attention a few days ago as Nick Mathewson mentioned hearing reports that the filter was blocking “LGBT stuff, which is of course serious”. Nick further identified that the filter was blocking — among several other things — search for “ [The Owl and the Pussy-Cat](https://en.wikipedia.org/wiki/The_Owl_and_the_Pussycat)”, “ [Pussy Riot](https://en.wikipedia.org/wiki/Pussy_Riot)”, “ [Dick Cheney](https://en.wikipedia.org/wiki/Dick_Cheney)”, “ [Cock Robin](https://en.wikipedia.org/wiki/Cock_Robin_%28band%29)”, ” [Gerald Cock](https://en.wikipedia.org/wiki/Gerald_Cock)”.

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Google Chrome Incognito Mode, Tor, and Fingerprinting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Google Chrome Incognito Mode, Tor, and Fingerprinting</h2>
+<p class="meta">14 Sep 2010</p>
+
+<div class="event">
+<p>A few months back, I posted that <a href="https://blog.torproject.org/blog/firefox-private-browsing-mode-torbutton-and-fingerprinting">we have been in discussion</a> with Mozilla about improving their Private Browsing mode to resist <a href="https://wiki.mozilla.org/Fingerprinting">fingerprinting</a> and the <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing">network adversary</a>. As I mentioned there, we have also been doing the same thing with Google for Google Chrome. Google has taken the same approach as Firefox for their Incognito mode, which means that it provides little to no protections against a network adversary.</p>
+
+<p>This means that Chrome Incognito mode is not safe to use with Tor.</p>
+
+<h1>The Story So Far</h1>
+
+<p>In general, Incognito&#39;s major shortcomings are plugins, fingerprinting, DNS leaks, SSL state leaks, auto-formfill and site-specific zoom. The Applied Crypto research group at Stanford recently published a <a href="http://crypto.stanford.edu/%7Edabo/pubs/abstracts/privatebrowsing.html">comparison of the four major browser&#39;s private browsing modes</a> against a dedicated local and remote adversary which details some of these issues. The added poison for Tor is that plugins and DNS leaks can also reveal your IP address and complete web activity to the network adversary.</p>
+
+<p>So, starting almost a year ago, we began providing feedback on Google Chrome&#39;s extension system APIs to ensure that Google is aware of the APIs that we and others need to write defenses against a network adversary.</p>
+
+<p>We drew up <a href="https://groups.google.com/group/chromium-extensions/browse_thread/thread/ceba26ca9e2f6a78/e83920020719a6b2">a wish list of API categories</a> that would be useful for privacy enhancing extensions. Many of the items on that first list were a bit far-reaching, and not all were strictly required to produce a Tor Mode for Google Chrome.</p>
+
+<p>Over the past year, a rather astonishing amount of progress has been made on the Google Chrome Extension API set and also on many items of that list. In fact, work is now in progress on all the major API sets that we need to build a Tor Mode for Google Chrome, to port <a href="https://blog.torproject.org/blog/https-everywhere-firefox-addon-helps-you-encrypt-web-traffic">HTTPS Everywhere</a>, and also write a separate extension to provide defenses against fingerprinting and a network adversary, all using much simpler mechanisms that we had to use for the equivalent functionality in Firefox. It should also soon be possible for many similar privacy and security enhancing extensions to follow suit.</p>
+
+<h1>Key Security and Privacy Enhancing APIs</h1>
+
+<p>The three API sets that will make this possible are <a href="http://www.chromium.org/developers/design-documents/extensions/notifications-of-web-request-and-navigation">Web Request</a>, <a href="https://code.google.com/chrome/extensions/dev/content_scripts.html">Content Scripts</a>, and the <a href="http://dev.chromium.org/developers/design-documents/extensions/proxy%20proposal">Proxy APIs</a>. Our prolific Tor volunteer <a href="http://roberthogan.net/">Robert Hogan</a> has also been doing some work on <a href="https://code.google.com/p/chromium/issues/detail?id=30877">SSL related issues</a> that will prove crucial, as well.</p>
+
+<p>Each of these API sets, however, has its own shortcomings, rough edges, and missing pieces that need to be taken care of before it becomes suitable for us to use. I&#39;ve been spending my time over the past couple months looking over these rough spots, documenting them, and informing Google. I&#39;m also lucky enough to have my brother on the inside: he&#39;s one of the Google Chrome engineers who is working on these very APIs.</p>
+
+<p>With his help, I&#39;ve identified three major stumbling blocks to us and anyone else who is interested in writing security and privacy enhancing extensions on their platform.</p>
+
+<h1>Three Major Stumbling Blocks</h1>
+
+<p>The first major stumbling block is that not only do we need to convince Google that these APIs are useful and needed, but there also has to be a way for them to implement the APIs easily, cleanly, and with very little overhead. Google Chrome is a very fine-tuned high performance browser, and keeping it this way is priority #1 for Google. At the present time, all of the extension APIs are asynchronous, and delivery is optimized so that increasing the number of installed extensions listening for events has negligible to absolutely zero effect on page load time.</p>
+
+<p>However, security and privacy enhancing extensions will need the ability to actually block and modify requests with certainty. This means that fully asynchronous notification and response is not a viable option for some events.</p>
+
+<p>Therefore, last month, I wrote up a <a href="https://groups.google.com/a/chromium.org/group/chromium-extensions/browse_thread/thread/17ea6efa15bfea0a">review of the Web Request APIs</a>, describing a method that could allow for blocking versions of three of the APIs to function with minimal performance impact, which is the key factor in Google&#39;s decision to provide them.</p>
+
+<p>The second major stumbling block is the fact that none of the Google Extension APIs have yet been used to provide any real added security against any threat model, let alone one as <a href="https://www.torproject.org/torbutton/design/#adversary">advanced as the one Torbutton employs</a>. Extensions such as <a href="https://chrome.google.com/extensions/detail/flcpelgcagfhfoegekianiofphddckof?hl=en">KB SSL Enforcer</a> and <a href="http://www.chromeextensions.org/appearance-functioning/adblock/">Adblock Plus for Chrome</a> do not actually have any security guarantees beyond that which they can get through asynchronous DOM manipulation. There are also magical &quot;special&quot; urls and types of requests that currently are exempt from extension notification or control.</p>
+
+<p>This is a real potential danger for us, and one that we only narrowly dodged with Firefox due only to the significantly more flexibility we have on that platform to reimplement arbitrary browser components, and to use different APIs and observers at different levels of notification. We have learned the hard way over the years that any URLs that go through special codepaths can leave the browser vulnerable to plugin injection, fingerprinting, unmasking, and exploitation.</p>
+
+<p>Because of this, I took the time to write up <a href="https://groups.google.com/a/chromium.org/group/chromium-extensions/browse_thread/thread/f5a73572eb040bea">what extensions using the Chrome APIs for security will expect</a>. This includes things like uniform applicability, no functional surprises, and no unilateral exemptions.</p>
+
+<p>The third stumbling block is how Google initially approached Incognito mode and privacy, and extension development in general. The entire extension system is built upon least privilege to ensure security rather than code reviews and audits. Extensions must request permissions to perform classes of actions, and Google is wary of creating permissions that are attractive to (semi-)malicious extensions that want control over everything.</p>
+
+<p>Therefore, it was first believed that no extension should be allowed in Incognito mode, because no assurances could be made about its willingness or ability not to record usage information. This June, my brother finally <a href="http://blog.chromium.org/2010/06/extensions-in-incognito.html">flipped the switch</a> to allow extensions to be run in Incognito mode, but only with with manual and explicit user approval, after installation.</p>
+
+<p>As such, the behavior of an Incognito-specific extension still has not received a lot of attention at Google. This caused me to write a third post to describe <a href="https://groups.google.com/a/chromium.org/group/chromium-extensions/browse_thread/thread/8a46d570807c9a72">how Incognito-specific extensions might function</a>. My hope is that this will help provide another perspective towards extension developers in terms of adding privacy and security to Incognito mode, and to encourage discussions about how to best allow it.</p>
+
+<h1>The Road Ahead</h1>
+
+<p>We&#39;re still many more months away from being able to write a full and working version of Tor Mode, HTTPS Everywhere, or the fingerprint resistance addon, but we&#39;re at least much closer than before, and everything seems to be heading in the right direction, so far.</p>
+
+<p>For those who want to track our progress, as well as Google&#39;s, you can see the <a href="https://trac.torproject.org/projects/tor/ticket/1925">entire list of remaining/important issues</a> on our bugtracker.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

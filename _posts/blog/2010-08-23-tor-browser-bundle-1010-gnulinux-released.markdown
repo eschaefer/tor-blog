@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser Bundle 1.0.10 for GNU/Linux released"
-permalink: tor-browser-bundle-1010-gnulinux-released
+permalink: blog/tor-browser-bundle-1010-gnulinux-released
 date: 2010-08-23
 author: erinn
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles (security release)"
-permalink: new-tor-browser-bundles-security-release
+permalink: blog/new-tor-browser-bundles-security-release
 date: 2012-05-04
 author: erinn
 category: blog

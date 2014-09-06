@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser 3.5.2.1 is released"
-permalink: tor-browser-3521-released
+permalink: blog/tor-browser-3521-released
 date: 2014-02-15
 author: mikeperry
 category: blog
@@ -17,8 +17,8 @@ Please see the [TBB FAQ listing](https://www.torproject.org/docs/faq.html.en#TBB
 Here is the list of changes since 3.5.2. The [3.x ChangeLog](https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/refs/heads/master:/Bundle-Data/Docs/ChangeLog.txt) is also available.
 
 - All Platforms
-  - Bug [10895](https://bugs.torproject.org/10895): Fix broken localized bundles 
+  - Bug [10895](https://bugs.torproject.org/10895): Fix broken localized bundles
 
 - Windows:
-  - Bug [10323](https://bugs.torproject.org/10323): Remove unneeded gcc/libstdc++ libraries from dist 
+  - Bug [10323](https://bugs.torproject.org/10323): Remove unneeded gcc/libstdc++ libraries from dist
 

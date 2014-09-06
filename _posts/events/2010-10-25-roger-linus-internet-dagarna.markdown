@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger, Linus at Internet Dagarna "
-permalink: roger-linus-internet-dagarna
+permalink: /events/roger-linus-internet-dagarna
 date: 2010-10-25
 startdate: 2010-10-25
 enddate: 2010-10-27

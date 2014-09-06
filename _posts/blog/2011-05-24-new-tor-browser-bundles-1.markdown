@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles"
-permalink: new-tor-browser-bundles-1
+permalink: blog/new-tor-browser-bundles-1
 date: 2011-05-24
 author: erinn
 category: blog
@@ -14,7 +14,7 @@ All of the alpha Tor Browser Bundles have been updated to the latest Tor 0.2.2.2
 
 **Firefox 3.6 Tor Browser Bundles**
 
-**Linux bundles**  
+**Linux bundles**
 **1.1.9: Released 2011-05-19**
 
 - Update Tor to 0.2.2.27-beta
@@ -22,7 +22,7 @@ All of the alpha Tor Browser Bundles have been updated to the latest Tor 0.2.2.2
 - Update BetterPrivacy to 1.50
 - Update HTTPS Everywhere to 0.9.9.development.5
 
-**OS X bundle**  
+**OS X bundle**
 **1.0.17: Released 2011-05-19**
 
 - Update Tor to 0.2.2.27-beta

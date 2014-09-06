@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Firefox security bug (proxy-bypass) in current TBBs"
-permalink: firefox-security-bug-proxy-bypass-current-tbbs
+permalink: blog/firefox-security-bug-proxy-bypass-current-tbbs
 date: 2012-05-02
 author: rransom
 category: blog

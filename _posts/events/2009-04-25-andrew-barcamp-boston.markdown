@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at BarCamp Boston"
-permalink: andrew-barcamp-boston
+permalink: /events/andrew-barcamp-boston
 date: 2009-04-25
 startdate: 2009-04-25
 enddate: 2009-04-25

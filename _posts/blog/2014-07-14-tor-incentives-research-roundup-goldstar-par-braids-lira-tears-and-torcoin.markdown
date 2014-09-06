@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor incentives research roundup: GoldStar, PAR, BRAIDS, LIRA, TEARS, and TorCoin"
-permalink: tor-incentives-research-roundup-goldstar-par-braids-lira-tears-and-torcoin
+permalink: blog/tor-incentives-research-roundup-goldstar-par-braids-lira-tears-and-torcoin
 date: 2014-07-14
 author: robgjansen
 category: blog

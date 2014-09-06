@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Firefox 4 Tor Browser Bundles for GNU/Linux"
-permalink: firefox-4-tor-browser-bundles-gnulinux
+permalink: blog/firefox-4-tor-browser-bundles-gnulinux
 date: 2011-04-01
 author: erinn
 category: blog

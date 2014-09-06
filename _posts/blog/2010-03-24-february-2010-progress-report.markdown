@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "February 2010 Progress Report"
-permalink: february-2010-progress-report
+permalink: blog/february-2010-progress-report
 date: 2010-03-24
 author: phobos
 category: blog
@@ -18,7 +18,7 @@ tags: ["advocacy", "performance enhancements", "progress report"]
 - On February 18th, Tor for the Nokia Maemo mobile platform was announced. [https://blog.torproject.org/blog/tor-nokia-n900-maemo-gsm-telephone](https://blog.torproject.org/blog/tor-nokia-n900-maemo-gsm-telephone "https://blog.torproject.org/blog/tor-nokia-n900-maemo-gsm-telephone").
 - On February 7th, volunteers released a new beta of the Amnesia LiveCD, version 0.4.2. Amnesia is the merging of two projects, one of which is the Incognito LiveCD.
 
-**Design, develop, and implement enhancements that make  
+**Design, develop, and implement enhancements that make
 Tor a better tool for users in censored countries.**
 
 Work continues to improve the Tor ports for Android, Maemo, and iPhone.
@@ -46,20 +46,20 @@ Roger also finished the first draft of his “Ten things to look for in tools th
 - We worked with Dave Dittrich and other researchers in the botnet community to investigate a set of suspicious Tor relays that appeared to be associated with a bot network the researchers were tracking. We eventually decided to cut these suspicious relays out of the Tor network.
 - We talked a little bit with the fellow writing a circumvention tool called Puff. On the one hand, it looks like yet another centralized proxy where the operator could screw the users but promises not to. On the other hand, he seems technically savvy and he seems to really care about doing the right thing. We should talk with him more to help him improve the safety that his service can provide.
 
-**Bridge relay and bridge authority work.**  
+**Bridge relay and bridge authority work.**
 We’re currently researching how to turn every tor client into a bridge by default, if the client finds itself reachable externally. This will dramatically increase the available bridges. There are some new attacks and challenges to overcome before this can be deployed as part of a -stable release, but we expect by Q3 2010 to have this into -alpha releases.
 
-**Scalability, load balancing, directory overhead, efficiency.**  
+**Scalability, load balancing, directory overhead, efficiency.**
 From the 0.2.2.9-alpha changelog:
 
 > We were selecting our guards uniformly at random, and then weighting which of our guards we’d use uniformly at random. This imbalance meant that Tor clients were severely limited on throughput (and probably latency too) by the first hop in their circuit. Now we select guards weighted by currently advertised bandwidth. We also automatically discard guards picked using the old algorithm. Fixes bug 1217; bugfix on 0.2.1.3-alpha. Found by Mike Perry.
 
-**More reliable (e.g. split) download mechanism.**  
+**More reliable (e.g. split) download mechanism.**
 Enhanced the metrics portal with numbers from the get-tor email autoresponder, [http://metrics.torproject.org/gettor-graphs.html](http://metrics.torproject.org/gettor-graphs.html "http://metrics.torproject.org/gettor-graphs.html").
 
-**Footprints from Tor Browser Bundle.**  
+**Footprints from Tor Browser Bundle.**
 We’ve picked up the work towards a Tor Browser Bundle for OS X and Linux, and hope to have experimental bundles for at least one of those platforms ready in March. Soon after they’re ready for testing, we’ll want to start looking at how footprints from running the bundle differ on each platform.
 
-**Translation work, ultimately a browser-based approach.**  
+**Translation work, ultimately a browser-based approach.**
 Translated content updates for Torbutton, Tor Browser, Website, General Documentation, Vidalia interface, and TorCheck in Chinese, German, French, Italian, Dutch, Norwegian, Polish, Russian, Arabic, Farsi, Burmese, Spanish, Swedish, and Turkish.
 

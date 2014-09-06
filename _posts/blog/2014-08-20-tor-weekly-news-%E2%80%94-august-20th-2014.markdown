@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — August 20th, 2014"
-permalink: tor-weekly-news-%E2%80%94-august-20th-2014
+permalink: blog/tor-weekly-news-%E2%80%94-august-20th-2014
 date: 2014-08-20
 author: harmony
 category: blog
@@ -61,7 +61,7 @@ The help desk has been asked if it is possible to set up an anonymous blog using
 The Tor StackExchange site is looking for another [friendly and helpful moderator](https://meta.tor.stackexchange.com/q/207/88). Moderators need to take care of flagged items (spam, me-too comments, etc.), and are liaisons between the community and StackExchange’s community team. So, if you’re interested, have a look at the [theory of moderation](http://blog.stackoverflow.com/2009/05/a-theory-of-moderation/) and post an answer to the question at the Tor StackExchange Meta site.
 
 * * *
-This issue of Tor Weekly News has been assembled by Lunar, harmony, David Fifield, qbi, Matt Pagan, Sebastian Hahn, Ximin Luo, and dope457. 
+This issue of Tor Weekly News has been assembled by Lunar, harmony, David Fifield, qbi, Matt Pagan, Sebastian Hahn, Ximin Luo, and dope457.
 
 Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the [project page](https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews), write down your name and subscribe to the [team mailing list](https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team) if you want to get involved!
 

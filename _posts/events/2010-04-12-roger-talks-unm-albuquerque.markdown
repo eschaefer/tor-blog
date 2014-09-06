@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger talks at UNM, Albuquerque"
-permalink: roger-talks-unm-albuquerque
+permalink: /events/roger-talks-unm-albuquerque
 date: 2010-04-12
 startdate: 2010-04-12
 enddate: 2010-04-12

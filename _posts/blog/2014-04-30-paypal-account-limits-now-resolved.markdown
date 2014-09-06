@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Paypal Account Limits now resolved"
-permalink: paypal-account-limits-now-resolved
+permalink: blog/paypal-account-limits-now-resolved
 date: 2014-04-30
 author: phobos
 category: blog

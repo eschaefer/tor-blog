@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Politically motivated censorship in Bethlehem, Palestine"
-permalink: politically-motivated-censorship-bethlehem-palestine
+permalink: blog/politically-motivated-censorship-bethlehem-palestine
 date: 2012-04-23
 author: art
 category: blog

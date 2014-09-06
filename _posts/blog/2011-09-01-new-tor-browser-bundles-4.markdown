@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles"
-permalink: new-tor-browser-bundles-4
+permalink: blog/new-tor-browser-bundles-4
 date: 2011-09-01
 author: erinn
 category: blog
@@ -31,6 +31,6 @@ For the full saga, read:
 - **OS X specific:** Rebuild 32-bit binaries with backwards compatibility options so TBB works on OSX 10.5 (closes: #3671)
 - Update Libevent to 2.0.14-stable
 - Update torbrowser.version string in prefs.js to have more information (see #3504)
-- Enable internationalized bundles by adding and changing the  
+- Enable internationalized bundles by adding and changing the
  general.useragent.locale pref in prefs.js
 

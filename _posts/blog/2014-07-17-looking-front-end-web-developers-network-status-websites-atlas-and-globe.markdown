@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Looking for front-end web developers for network status websites Atlas and Globe"
-permalink: looking-front-end-web-developers-network-status-websites-atlas-and-globe
+permalink: blog/looking-front-end-web-developers-network-status-websites-atlas-and-globe
 date: 2014-07-17
 author: karsten
 category: blog

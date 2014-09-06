@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Updated Tor Cloud images with fix for Tor upgrades"
-permalink: updated-tor-cloud-images-fix-tor-upgrades
+permalink: blog/updated-tor-cloud-images-fix-tor-upgrades
 date: 2012-08-10
 author: Runa
 category: blog
@@ -16,8 +16,8 @@ If you are already running a Tor Cloud bridge, you will need to either manually 
 
 To manually update your image, do the following:
 
-0. Log on with SSH  
-1. Open /etc/apt/apt.conf.d/50unattended-upgrades  
-2. Add the line: Dpkg::Options { --force-confold; }  
+0. Log on with SSH
+1. Open /etc/apt/apt.conf.d/50unattended-upgrades
+2. Add the line: Dpkg::Options { --force-confold; }
 3. Save and exit
 

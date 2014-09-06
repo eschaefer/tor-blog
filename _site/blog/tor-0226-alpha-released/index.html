@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor 0.2.2.6-alpha released</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor 0.2.2.6-alpha released</h2>
+<p class="meta">03 Dec 2009</p>
+
+<div class="event">
+<p>On November 19, we released the latest in the Tor alpha series, version 0.2.2.6-alpha. This release lays the groundwork for many upcoming features:
+support for the new lower-footprint &quot;microdescriptor&quot; directory design,
+future-proofing our consensus format against new hash functions or
+other changes, and an Android port. It also makes Tor compatible with
+the upcoming OpenSSL 0.9.8l release, and fixes a variety of bugs.</p>
+
+<p>It can be downloaded at <a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+
+<p><strong>Major features:</strong></p>
+
+<ul>
+<li>Directory authorities can now create, vote on, and serve multiple
+parallel formats of directory data as part of their voting process.
+Partially implements Proposal 162: &quot;Publish the consensus in
+multiple flavors&quot;.</li>
+<li>Directory authorities can now agree on and publish small summaries
+of router information that clients can use in place of regular
+server descriptors. This transition will eventually allow clients
+to use far less bandwidth for downloading information about the
+network. Begins the implementation of Proposal 158: &quot;Clients
+download consensus + microdescriptors&quot;.</li>
+<li>The directory voting system is now extensible to use multiple hash
+algorithms for signatures and resource selection. Newer formats
+are signed with SHA256, with a possibility for moving to a better
+hash algorithm in the future.</li>
+<li>New DisableAllSwap option. If set to 1, Tor will attempt to lock all
+current and future memory pages via mlockall(). On supported
+platforms (modern Linux and probably BSD but not Windows or OS X),
+this should effectively disable any and all attempts to page out
+memory. This option requires that you start your Tor as root --
+if you use DisableAllSwap, please consider using the User option
+to properly reduce the privileges of your Tor.</li>
+<li>Numerous changes, bugfixes, and workarounds from Nathan Freitas
+to help Tor build correctly for Android phones.</li>
+</ul>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Work around a security feature in OpenSSL 0.9.8l that prevents our
+handshake from working unless we explicitly tell OpenSSL that we
+are using SSL renegotiation safely. We are, but OpenSSL 0.9.8l
+won&#39;t work unless we say we are.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Fix a crash bug when trying to initialize the evdns module in
+Libevent 2. Bugfix on 0.2.1.16-rc.</li>
+<li>Stop logging at severity &#39;warn&#39; when some other Tor client tries
+to establish a circuit with us using weak DH keys. It&#39;s a protocol
+violation, but that doesn&#39;t mean ordinary users need to hear about
+it. Fixes the bug part of bug 1114. Bugfix on 0.1.0.13.</li>
+<li>Do not refuse to learn about authority certs and v2 networkstatus
+documents that are older than the latest consensus. This bug might
+have degraded client bootstrapping. Bugfix on 0.2.0.10-alpha.
+Spotted and fixed by xmux.</li>
+<li>Fix numerous small code-flaws found by Coverity Scan Rung 3.</li>
+<li>If all authorities restart at once right before a consensus vote,
+nobody will vote about &quot;Running&quot;, and clients will get a consensus
+with no usable relays. Instead, authorities refuse to build a
+consensus if this happens. Bugfix on 0.2.0.10-alpha; fixes bug 1066.</li>
+<li>If your relay can&#39;t keep up with the number of incoming create
+cells, it would log one warning per failure into your logs. Limit
+warnings to 1 per minute. Bugfix on 0.0.2pre10; fixes bug 1042.</li>
+<li>Bridges now use &quot;reject *:*&quot; as their default exit policy. Bugfix
+on 0.2.0.3-alpha; fixes bug 1113.</li>
+<li>Fix a memory leak on directory authorities during voting that was
+introduced in 0.2.2.1-alpha. Found via valgrind.</li>
+</ul>
+
+<p>The original announcement can be found at <a href="http://archives.seul.org/or/talk/Nov-2009/msg00106.html" title="http://archives.seul.org/or/talk/Nov-2009/msg00106.html">http://archives.seul.org/or/talk/Nov-2009/msg00106.html</a></p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Kelley and Karen @ Knight Foundation Summer Challenge Event"
-permalink: kelley-and-karen-knight-foundation-summer-challenge-event
+permalink: /events/kelley-and-karen-knight-foundation-summer-challenge-event
 date: 2013-08-26
 startdate: 2013-08-26
 enddate: 2013-08-27

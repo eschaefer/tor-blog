@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor speaking at DEF CON 18"
-permalink: tor-speaking-def-con-18
+permalink: /events/tor-speaking-def-con-18
 date: 2010-07-30
 startdate: 2010-07-30
 enddate: 2010-08-01

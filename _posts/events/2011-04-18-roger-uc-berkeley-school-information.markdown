@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger at UC Berkeley School of Information"
-permalink: roger-uc-berkeley-school-information
+permalink: /events/roger-uc-berkeley-school-information
 date: 2011-04-18
 startdate: 2011-04-18
 enddate: 2011-04-18

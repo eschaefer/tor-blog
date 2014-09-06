@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "We need your good Tor stories"
-permalink: we-need-your-good-tor-stories
+permalink: blog/we-need-your-good-tor-stories
 date: 2011-08-17
 author: phobos
 category: blog

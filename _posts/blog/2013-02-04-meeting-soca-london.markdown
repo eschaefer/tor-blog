@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Meeting With SOCA in London"
-permalink: meeting-soca-london
+permalink: blog/meeting-soca-london
 date: 2013-02-04
 author: Runa
 category: blog

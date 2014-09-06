@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Trip report, ACM CCS/WPES"
-permalink: trip-report-acm-ccswpes
+permalink: blog/trip-report-acm-ccswpes
 date: 2012-12-17
 author: arma
 category: blog

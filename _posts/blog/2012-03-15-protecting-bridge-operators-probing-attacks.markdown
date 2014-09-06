@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Protecting bridge operators from probing attacks"
-permalink: protecting-bridge-operators-probing-attacks
+permalink: blog/protecting-bridge-operators-probing-attacks
 date: 2012-03-15
 author: sjmurdoch
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Tor Project's position on the draft Communications Data Bill"
-permalink: tor-projects-position-draft-communications-data-bill
+permalink: blog/tor-projects-position-draft-communications-data-bill
 date: 2012-11-29
 author: sjmurdoch
 category: blog

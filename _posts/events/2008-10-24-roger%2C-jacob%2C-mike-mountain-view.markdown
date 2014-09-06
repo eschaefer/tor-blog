@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger, Jacob, Mike in Mountain View"
-permalink: roger%2C-jacob%2C-mike-mountain-view
+permalink: /events/roger%2C-jacob%2C-mike-mountain-view
 date: 2008-10-24
 startdate: 2008-10-24
 enddate: 2008-10-26

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tails 0.7.2 Released"
-permalink: tails-072-released
+permalink: blog/tails-072-released
 date: 2011-06-14
 author: phobos
 category: blog
@@ -15,9 +15,9 @@ An update to the fully anonymous operating system, Tails, is now available. Vers
           o Disable Torbutton's external application launch warning. ... which advises using Tails. Tails is running Tails.<br>
           o FoxyProxy: install from Debian instead of the older one we previously shipped.</cite>
 
-\* Software  
- o Upgrade Linux kernel to Debian's 2.6.32-34squeeze1: fixes tons of bugs, closes a few security holes at well.  
- o haveged: install an official Debian backport instead of a custom backport.  
+\* Software
+ o Upgrade Linux kernel to Debian's 2.6.32-34squeeze1: fixes tons of bugs, closes a few security holes at well.
+ o haveged: install an official Debian backport instead of a custom backport.
  o unrar: install the version from Debian's non-free repository. Users report unrar-free does not work well enough.
 
 Plus the usual bunch of minor bug reports and improvements. It can be downloaded from [http://tails.boum.org/download/](http://tails.boum.org/download/ "http://tails.boum.org/download/") or via bittorrent to save everyone some bandwidth.

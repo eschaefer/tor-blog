@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Investigating http proxy performance with Tor"
-permalink: investigating-http-proxy-performance-tor
+permalink: blog/investigating-http-proxy-performance-tor
 date: 2009-08-19
 author: phobos
 category: blog
@@ -27,15 +27,15 @@ So I did it myself, in a loose manner. I wanted to quantify "feels faster".
 The raw data from all the testing is :
 
 - Tamper Data as xml,
-- proxy config files, 
+- proxy config files,
 - and results in a spreadsheet.
 
 This is all contained in [http://freehaven.net/~phobos/polipo-v-privoxy.tar.gz](http://freehaven.net/~phobos/polipo-v-privoxy.tar.gz "http://freehaven.net/~phobos/polipo-v-privoxy.tar.gz") {.asc). There is a README as well. And yes, the ruby script is a quick and dirty hack.
 
 I tested a few scenarios:
 
-1) native [polipo](http://www.pps.jussieu.fr/~jch/software/polipo/) and [privoxy](http://www.privoxy.org/) without using Tor.  
-2) polipo and privoxy forwarding to Tor localhost:9050.  
+1) native [polipo](http://www.pps.jussieu.fr/~jch/software/polipo/) and [privoxy](http://www.privoxy.org/) without using Tor.
+2) polipo and privoxy forwarding to Tor localhost:9050.
 3) firefox socks5 direct to Tor via localhost:9050.
 
 The summary of results:

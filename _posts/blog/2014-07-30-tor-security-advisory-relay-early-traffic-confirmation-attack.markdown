@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor security advisory: \"relay early\" traffic confirmation attack"
-permalink: tor-security-advisory-relay-early-traffic-confirmation-attack
+permalink: blog/tor-security-advisory-relay-early-traffic-confirmation-attack
 date: 2014-07-30
 author: arma
 category: blog

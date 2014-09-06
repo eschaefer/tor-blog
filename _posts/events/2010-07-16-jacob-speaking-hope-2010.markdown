@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Jacob speaking at HOPE 2010"
-permalink: jacob-speaking-hope-2010
+permalink: /events/jacob-speaking-hope-2010
 date: 2010-07-16
 startdate: 2010-07-16
 enddate: 2010-07-18

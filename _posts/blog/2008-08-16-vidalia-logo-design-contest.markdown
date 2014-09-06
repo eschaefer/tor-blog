@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Vidalia Logo Design Contest"
-permalink: vidalia-logo-design-contest
+permalink: blog/vidalia-logo-design-contest
 date: 2008-08-16
 author: Anonymous
 category: blog
@@ -14,10 +14,10 @@ The logo will be used in the Vidalia software and related installers, on the web
 
 Here's the overall timeline for the contest:
 
-- August 15 – August 22: Entries may be submitted at the [Worth1000 contest page](http://www.worth1000.com/contest.asp?contest_id=20680). 
+- August 15 – August 22: Entries may be submitted at the [Worth1000 contest page](http://www.worth1000.com/contest.asp?contest_id=20680).
 - August 23 – August 24: Everyone is welcome to review the submissions received and vote on their favorite design. Even if you didn't submit anything, you can still vote!
-- August 25 – August 31: The final winner will be announced by August 31 at the latest. 
+- August 25 – August 31: The final winner will be announced by August 31 at the latest.
 
-Late entries will not be eligible for the cash prize, so be sure to get your  
+Late entries will not be eligible for the cash prize, so be sure to get your
 submission in by August 22!
 

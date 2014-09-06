@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Vidalia 0.2.2 Released</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Vidalia 0.2.2 Released</h2>
+<p class="meta">15 Aug 2009</p>
+
+<div class="event">
+<p>Vidalia 0.2.2 is released. It addresses an issue with openssl which causes the geoip lookups to fail on various versions of Windows. It also switches from the Nullsoft Installer to the Microsoft System Installer for better compatibility with Microsoft Windows.</p>
+
+<p>There are now separate Apple OS X builds, one for PowerPC architectures and one for i386 architectures. No more Universal binary bloat to download.</p>
+
+<p>The changes are:</p>
+
+<ul>
+<li>When the user clicks &quot;Browse&quot; in the Advanced settings page to locate
+a new torrc, set the initial directory shown in the file dialog to the
+current location of the user&#39;s torrc. (Ticket #505)</li>
+<li>Use &#39;ditto&#39; to strip the architectures we don&#39;t want from the Qt
+frameworks installed into the app bundle with the dist-osx,
+dist-osx-bundle and dist-osx-split-bundle build targets.</li>
+<li>Fix a bug in the CMakeLists.txt files for ts2po and po2ts that caused
+build errors on Panther for those two tools.</li>
+<li>Include rebuilt OpenSSL libraries in the Windows packages that are
+built with the static (/MT) version of the Microsoft Visual C++
+Runtime. Otherwise, we would require users to install the MSVC
+Redistributable, which doesn&#39;t work for portable installations such as
+the Tor Browser Bundle.</li>
+<li>Remove the NSIS file for the Vidalia installer since we now ship
+MSI-based installers on Windows.</li>
+</ul>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

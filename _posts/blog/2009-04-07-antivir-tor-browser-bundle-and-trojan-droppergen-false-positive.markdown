@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AntiVir, Tor Browser Bundle, and trojan Dropper.Gen false positive"
-permalink: antivir-tor-browser-bundle-and-trojan-droppergen-false-positive
+permalink: blog/antivir-tor-browser-bundle-and-trojan-droppergen-false-positive
 date: 2009-04-07
 author: phobos
 category: blog

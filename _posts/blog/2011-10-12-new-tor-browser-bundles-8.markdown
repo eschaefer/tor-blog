@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles"
-permalink: new-tor-browser-bundles-8
+permalink: blog/new-tor-browser-bundles-8
 date: 2011-10-12
 author: erinn
 category: blog
@@ -18,6 +18,6 @@ The Tor Browser Bundles have been updated to Vidalia 0.2.15. The OS X and Linux 
 - Update Torbutton to 1.4.4.1
 - Update NoScript to 2.1.4
 - Remove trailing dash from Windows version number (closes: #4160)
-- Make Tor Browser (Aurora) fail closed when not launched with a TBB profile  
+- Make Tor Browser (Aurora) fail closed when not launched with a TBB profile
  (closes: #4192)
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "July 2010 Progress Report"
-permalink: july-2010-progress-report
+permalink: blog/july-2010-progress-report
 date: 2010-08-12
 author: phobos
 category: blog
@@ -38,11 +38,11 @@ tags: ["alpha releases", "bug fixes", "development", "enhancements", "orbot", "p
 **Design, develop, and implement enhancements that makeTor a better tool for users in censored countries.**
 
 - We worked with some Nigerians to determine that the Nigerian government is not mandating Internet censorship. Rather, a few ISPs in Nigeria have closed loopholes that allowed some people to obtain Internet access without paying for an account. The blog post,subsequent comments, and research results are at [https://blog.torproject.org/blog/dear-nigerians-help-us-help-you](https://blog.torproject.org/blog/dear-nigerians-help-us-help-you "https://blog.torproject.org/blog/dear-nigerians-help-us-help-you").
-- Jacob, Robert Hogan, and Damon McCoy submitted a proposal to separate streams by port or host from the Tor client. The full proposal can be read at [http://archives.seul.org/or/dev/Jul-2010/msg00021.html](http://archives.seul.org/or/dev/Jul-2010/msg00021.html "http://archives.seul.org/or/dev/Jul-2010/msg00021.html"). The motivation for this proposal is as follows:  
+- Jacob, Robert Hogan, and Damon McCoy submitted a proposal to separate streams by port or host from the Tor client. The full proposal can be read at [http://archives.seul.org/or/dev/Jul-2010/msg00021.html](http://archives.seul.org/or/dev/Jul-2010/msg00021.html "http://archives.seul.org/or/dev/Jul-2010/msg00021.html"). The motivation for this proposal is as follows:
 > Streams are currently attached to circuits without regard to their content, destination host,or destination port. We propose two options, IsolateStreamsByPort and IsolateStreamsByHost to change the default behavior.
-> 
+>
 > The contents of some streams will always have revealing plain text information; these streamsshould be treated diﬀerently than other streams that may or may not have unencrypted PII content. DNS, with the exception of DNSCurve, is always unencrypted. It is reasonable to assume that other protocols may exist that have a similar issue and may cause user concern. It is also the case that we must balance network load issues and stream privacy. The Tor network will not currently scale to one circuit per connection nor should it anytime soon.
-> 
+>
 > Circuits are currently created with a few constraints and are rotated within a reasonable timewindow. This allows a rogue exit nodes to correlate all streams on a given circuit.
 - Continuing research into how the Chinese firewall is currently able to block 90% of the Tor relays and bridges. It seems the firewall is configured to block specific IP Address and TCPPort combinations, as changing combinations on individual IP addresses results in updates to the blocking scheme. The blocking updates in the firewall are possibly updated every two weeks. An interesting area of research would be to do a technical analysis of blocking methods around the world on both landline and mobile Internet connections.
 
@@ -61,11 +61,11 @@ tags: ["alpha releases", "bug fixes", "development", "enhancements", "orbot", "p
 - Jacob gave a talk about Tor and Internet Circumvention at DEF CON 18 in Las Vegas, [http://defcon.org/html/defcon-18/dc-18-index.html](http://defcon.org/html/defcon-18/dc-18-index.html "http://defcon.org/html/defcon-18/dc-18-index.html").
 - Roger’s advice on choosing a circumvention system was translated and published in Volume 2 of the China Rights Forum, [http://www.hrichina.org/public/contents/category?cid=175033](http://www.hrichina.org/public/contents/category?cid=175033 "http://www.hrichina.org/public/contents/category?cid=175033").
 
-**Preconfigured privacy (circumvention) bundles for USB or LiveCD.**  
-Erinn continues to work on a Tor Browser Bundle for Apple’s OS X. The Apple TBB is turning into a very tricky item to produce. Even with proper sandboxing support, the TBB leaves a large number of modified files behind due to the way Apple handles dmgs, and running binaries. Compounding progress is the way Firefox integrates into the system, resulting in code patches to the Firefox source.  
+**Preconfigured privacy (circumvention) bundles for USB or LiveCD.**
+Erinn continues to work on a Tor Browser Bundle for Apple’s OS X. The Apple TBB is turning into a very tricky item to produce. Even with proper sandboxing support, the TBB leaves a large number of modified files behind due to the way Apple handles dmgs, and running binaries. Compounding progress is the way Firefox integrates into the system, resulting in code patches to the Firefox source.
 Erinn continues to improve Tor Browser Bundle for Linux with feedback from initial users and other volunteer developers.
 
-**Bridge relay and bridge authority work.**  
+**Bridge relay and bridge authority work.**
 Tor now has another developer working on bridge authority and bridge database work. The goal is to be able to work down the list of items at [https://trac.torproject.org/projects/tor/wiki/projects/BridgeDB](https://trac.torproject.org/projects/tor/wiki/projects/BridgeDB "https://trac.torproject.org/projects/tor/wiki/projects/BridgeDB") over the next three months.
 
 **Scalability, load balancing, directory overhead, eﬃciency.**
@@ -80,12 +80,12 @@ Tor now has another developer working on bridge authority and bridge database wo
   3. Publish a summary of what data and tools we have already, and what data and tools we hope to have. Then begin collaborating (ongoing) with the other researchers in the Anonymous Communications field to integrate our data and tools into their work so they can solve the problems we’re actually seeing rather than the problems they speculate we might have.
   4. Instrument Tor relays to track resource load, including queue sizes, average cell latency, and number of active connections. Safely aggregate these results, then publish ongoing snapshots in our public dataset, and integrate them into our metrics website.
 
-**More reliable (e.g. split) download mechanism.**  
+**More reliable (e.g. split) download mechanism.**
 Erinn and Steven are working on an automated building system for packages. This will enable quicker, more reliable releases. The build system will also enable us to produce nightly packages of the current working codebases for Tor and related software.
 
-**Footprints from Tor Browser Bundle.**  
+**Footprints from Tor Browser Bundle.**
 Erinn continues work on footprints of the Tor Browser Bundle for Linux and Apple OS X.
 
-**Translation work, ultimately a browser-based approach.**  
+**Translation work, ultimately a browser-based approach.**
 Updates to documentation and website in German, Russian, Polish, Swedish, Farsi, Turkish, Norwegian, French, Italian, Spanish, and Albanian.
 

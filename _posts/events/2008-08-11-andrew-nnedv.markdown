@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at NNEDV"
-permalink: andrew-nnedv
+permalink: /events/andrew-nnedv
 date: 2008-08-11
 startdate: 2008-08-11
 enddate: 2008-08-11

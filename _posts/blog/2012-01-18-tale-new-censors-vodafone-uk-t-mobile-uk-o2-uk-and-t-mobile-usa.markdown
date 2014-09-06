@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A tale of new censors - Vodafone UK, T-Mobile UK, O2 UK, and T-Mobile USA"
-permalink: tale-new-censors-vodafone-uk-t-mobile-uk-o2-uk-and-t-mobile-usa
+permalink: blog/tale-new-censors-vodafone-uk-t-mobile-uk-o2-uk-and-t-mobile-usa
 date: 2012-01-18
 author: ioerror
 category: blog
@@ -22,7 +22,7 @@ This kind of censorship raises all kinds of interesting questions. I suspect it 
 
 Similarly, when a user on the UK Vodafone network visits [http://www.torproject.org/](http://www.torproject.org/ "http://www.torproject.org/") they are greeted by [a block page as well](https://blog.torproject.org/files/www.torproject.org-vodafone.png). You can visit this [block page](http://online.vodafone.co.uk/dispatch/Portal/ContentControlServlet?type=restricted) without directly using their networks. Detecting their filters is straightforward and we see tampering at the sixth hop.
 
-Here is a tcptraceroute to TCP port 80 of torproject.org from an Ubuntu machine connected to the Internet via Vodafone UK:  
+Here is a tcptraceroute to TCP port 80 of torproject.org from an Ubuntu machine connected to the Internet via Vodafone UK:
 `
 Tracing the path to www.torproject.org (86.59.30.36) on TCP port 80 (www), 30 hops max
  1 192.168.1.1 2.379 ms 1.011 ms 1.313 ms
@@ -33,7 +33,7 @@ Tracing the path to www.torproject.org (86.59.30.36) on TCP port 80 (www), 30 ho
  6 www.torproject.org (86.59.30.36) [open] 77.927 ms 152.599 ms 96.399 ms
 `
 
-Here is a normal traceroute to torproject.org from an Ubuntu machine connected to the internet via Vodafone UK:  
+Here is a normal traceroute to torproject.org from an Ubuntu machine connected to the internet via Vodafone UK:
 `
 traceroute to www.torproject.org (86.59.30.36), 30 hops max, 60 byte packets
  1 192.168.1.1 (192.168.1.1) 9.669 ms 9.583 ms 9.460 ms
@@ -57,7 +57,7 @@ traceroute to www.torproject.org (86.59.30.36), 30 hops max, 60 byte packets
 
 We've additionally found that pre-paid T-Mobile UK accounts also experience censorship that is similar to T-Mobile USA. Detection of their filter is possible with some of the techniques that I've demonstrated, and it is quite trivial to see that TCP port 80 and 443 are treated in a special way.
 
-Here is a tcptraceroute to TCP port 80 of torproject.org from an Ubuntu machine connected to the Internet via T-Mobile UK:  
+Here is a tcptraceroute to TCP port 80 of torproject.org from an Ubuntu machine connected to the Internet via T-Mobile UK:
 `
 Tracing the path to torproject.org (38.229.72.14) on TCP port 80 (www), 30 hops max
  1 * * *
@@ -67,7 +67,7 @@ Tracing the path to torproject.org (38.229.72.14) on TCP port 80 (www), 30 hops 
  5 vescum.torproject.org (38.229.72.14) [open] 459.935 ms 659.964 ms 449.849 ms
 `
 
-Here is a tcptraceroute to TCP port 443 of torproject.org from an Ubuntu machine connected to the Internet via T-Mobile UK:  
+Here is a tcptraceroute to TCP port 443 of torproject.org from an Ubuntu machine connected to the Internet via T-Mobile UK:
 `
 Tracing the path to torproject.org (86.59.30.36) on TCP port 443 (https), 30 hops max
  1 * * *
@@ -87,7 +87,7 @@ Tracing the path to torproject.org (86.59.30.36) on TCP port 443 (https), 30 hop
 15 www.torproject.org (86.59.30.36) [open] 419.869 ms 469.997 ms 479.839 ms
 `
 
-Compare with a normal traceroute to torproject.org from an Ubuntu machine connected to the Internet via T-Mobile UK:  
+Compare with a normal traceroute to torproject.org from an Ubuntu machine connected to the Internet via T-Mobile UK:
 `
 traceroute to torproject.org (38.229.72.14), 30 hops max, 60 byte packets
  1 * * *

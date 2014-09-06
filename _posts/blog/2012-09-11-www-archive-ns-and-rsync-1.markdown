@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "www, archive, ns, and rsync +1"
-permalink: www-archive-ns-and-rsync-1
+permalink: blog/www-archive-ns-and-rsync-1
 date: 2012-09-11
 author: phobos
 category: blog

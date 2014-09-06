@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser Bundle Updates"
-permalink: tor-browser-bundle-updates
+permalink: blog/tor-browser-bundle-updates
 date: 2010-06-01
 author: phobos
 category: blog

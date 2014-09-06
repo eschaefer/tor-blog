@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Weather Change"
-permalink: weather-change
+permalink: blog/weather-change
 date: 2011-01-29
 author: phobos
 category: blog

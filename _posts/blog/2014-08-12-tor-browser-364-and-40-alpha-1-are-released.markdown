@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser 3.6.4 and 4.0-alpha-1 are released"
-permalink: tor-browser-364-and-40-alpha-1-are-released
+permalink: blog/tor-browser-364-and-40-alpha-1-are-released
 date: 2014-08-12
 author: erinn
 category: blog
@@ -22,7 +22,7 @@ Here is the complete changelog for 3.6.4:
   - Backported Tor Patches:
 
     - Bug 11654: Properly apply the fix for malformed bug11156 log message
-    - Bug 11200: Fix a hang during bootstrap introduced in the initial  
+    - Bug 11200: Fix a hang during bootstrap introduced in the initial
  bug11200 patch.
   - Update NoScript to 2.6.8.36
 
@@ -69,13 +69,13 @@ This release also features Tor 0.2.5.6, and some new defaults for NoScript to ma
   - Bug 10819: Create a preference to enable/disable third party isolation
   - Backported Tor Patches:
 
-    - Bug 11200: Fix a hang during bootstrap introduced in the initial  
+    - Bug 11200: Fix a hang during bootstrap introduced in the initial
  bug11200 patch.
 - **Tor Browser 4.0-alpha-1 -- Linux Changes**
 
   - Bug 10178: Make it easier to set an alternate Tor control port and password
   - Bug 11102: Set Window Class to "Tor Browser" to aid in Desktop navigation
-  - Bug 12249: Don't create PT debug files anymore 
+  - Bug 12249: Don't create PT debug files anymore
 
 The list of [frequently encountered known issues](https://trac.torproject.org/projects/tor/query?keywords=~tbb-helpdesk-frequent&status=!closed) is also available in our bug tracker.
 

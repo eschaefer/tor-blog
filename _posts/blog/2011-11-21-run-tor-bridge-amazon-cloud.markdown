@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Run Tor as a bridge in the Amazon Cloud"
-permalink: run-tor-bridge-amazon-cloud
+permalink: blog/run-tor-bridge-amazon-cloud
 date: 2011-11-21
 author: Runa
 category: blog
@@ -20,9 +20,9 @@ To help new customers get started in the cloud, Amazon is introducing a free usa
 
 For more information, see the [Tor Cloud](https://cloud.torproject.org/) website.
 
-**UPDATE** : Some users have asked about the AWS free usage tier and pointed out that it only includes 15 GB of bandwidth out per month. I have updated the Tor Cloud website (changes should go live soon) with the following:  
-_  
-The Tor Cloud images have been configured to use no more than 40 GB of bandwidth out per month. We have estimated that customers who do not qualify for the free usage tier will pay up to $30 a month. Customers who qualify for the free usage tier, but who run bridges that use more than 15 GB of bandwidth out per month, will pay up to $3 per month.  
-_  
+**UPDATE** : Some users have asked about the AWS free usage tier and pointed out that it only includes 15 GB of bandwidth out per month. I have updated the Tor Cloud website (changes should go live soon) with the following:
+_
+The Tor Cloud images have been configured to use no more than 40 GB of bandwidth out per month. We have estimated that customers who do not qualify for the free usage tier will pay up to $30 a month. Customers who qualify for the free usage tier, but who run bridges that use more than 15 GB of bandwidth out per month, will pay up to $3 per month.
+_
 I hope that this better clarifies the cost of running a bridge in the Amazon cloud, let me know if you have any questions.
 

@@ -22,7 +22,7 @@
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
-            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
             <h1 class="brand-title">The Tor Project Blog</h1>
             <h2 class="brand-tagline">News and events from Tor</h2>
 
@@ -44,35 +44,35 @@
 
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
+
             <!-- A wrapper for all the blog posts -->
-            <div class="posts">
-                <h1 class="content-subhead">Recent Posts</h1>
+<div class="posts">
 
-
-               <div id="home">
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tails-09-released">Tails 0.9 Released</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">anonymous operating system</a>
-            
-              <a class="post-category post-category-js" href="#">tails</a>
-             |
-            16 Nov 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>The latest version of the anonymous operating system Tails is now available.</p>
+  <h1 class="content-subhead">Recent Posts</h1>
+  <div id="home">
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tails-09-released">Tails 0.9 Released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymous operating system</a>
+              
+                <a class="post-category post-category-js" href="#">tails</a>
+               |
+              16 Nov 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>The latest version of the anonymous operating system Tails is now available.</p>
 
 <p>Notable user-visible changes include:</p>
 
 <h2>Tor</h2>
 
 <ul>
-<li>Upgrade to 0.2.2.34. This fixes CVE-2011-2768 and CVE-2011-2769 which prompted for manual updates for users of Tails 0.8.1.<br></li>
+<li>Upgrade to 0.2.2.34. This fixes CVE-2011-2768 and CVE-2011-2769 which prompted for manual updates for users of Tails 0.8.1.</li>
 <li><p>Suppress Tor&#39;s warning about applications doing their own DNS lookups. Some users have reported concerns about these warnings, but it should be noted that they are completely harmless inside Tails as its system DNS resolver is Torified.</p>
 
 <ul>
@@ -83,26 +83,26 @@
 <h2>Iceweasel</h2>
 
 <ul>
-<li>Upgrade to 3.5.16-11 ((fixes CVE-2011-3647, CVE-2011-3648, CVE-2011-3650).<br></li>
-<li>Torbutton: upgrade to 1.4.4.1-1, including support for the in-browser &quot;New identity&quot; feature.<br></li>
-<li>FireGPG: upgrade to 0.8-1+tails2. Users are notified that the FireGPG Text Editor is the only safe place for performing cryptographic operations, and these operations has been disabled in other places. Performing them outside of the editor opens up several severe attacks through JavaScript (e.g. leaking plaintext when decrypting, signing messages written by the attacker).<br></li>
+<li>Upgrade to 3.5.16-11 ((fixes CVE-2011-3647, CVE-2011-3648, CVE-2011-3650).</li>
+<li>Torbutton: upgrade to 1.4.4.1-1, including support for the in-browser &quot;New identity&quot; feature.</li>
+<li>FireGPG: upgrade to 0.8-1+tails2. Users are notified that the FireGPG Text Editor is the only safe place for performing cryptographic operations, and these operations has been disabled in other places. Performing them outside of the editor opens up several severe attacks through JavaScript (e.g. leaking plaintext when decrypting, signing messages written by the attacker).</li>
 <li>Replace CS Lite with Cookie Monster for cookie management. Cookie Monster has an arguably nicer interface, is being actively maintained and is packaged in Debian.</li>
 </ul>
 
 <h2>Software</h2>
 
 <ul>
-<li>Install MAT, the Metadata Anonymisation Toolkit. Its goal is to remove file metadata which otherwise could leak information about you in the documents and media files you publish. This is the result of a Tails developer&#39;s suggestion for GSoC 2011, although it ended up being mentored by The Tor Project.<br></li>
-<li>Upgrade WhisperBack to 1.5~rc1. Users are guided how to send their bug reports through alternative channels upon errors sending them. This will make bug reporting easier when there&#39;s no network connection available.<br></li>
+<li>Install MAT, the Metadata Anonymisation Toolkit. Its goal is to remove file metadata which otherwise could leak information about you in the documents and media files you publish. This is the result of a Tails developer&#39;s suggestion for GSoC 2011, although it ended up being mentored by The Tor Project.</li>
+<li>Upgrade WhisperBack to 1.5~rc1. Users are guided how to send their bug reports through alternative channels upon errors sending them. This will make bug reporting easier when there&#39;s no network connection available.</li>
 <li>Upgrade TrueCrypt to 7.1.</li>
 </ul>
 
 <h2>Miscellaneous</h2>
 
 <ul>
-<li>The date and time setting system was completely reworked. This should prevent time syncing issues that may prevent Tor from working properly, which some users have reported. The new system will not leave a fingerprintable network signature, like the old system did. Previously that signature could be used to identify who is using Tails (but not deanonymize them).<br></li>
-<li>Erase memory at shutdown: run many instances of the memory wiper. Due to architectural limitations of i386 a process cannot access all memory at the same time, and hence a single memory wipe instance cannot clear all memory.<br></li>
-<li>Saner keyboard layouts for Arabic and Russian.<br></li>
+<li>The date and time setting system was completely reworked. This should prevent time syncing issues that may prevent Tor from working properly, which some users have reported. The new system will not leave a fingerprintable network signature, like the old system did. Previously that signature could be used to identify who is using Tails (but not deanonymize them).</li>
+<li>Erase memory at shutdown: run many instances of the memory wiper. Due to architectural limitations of i386 a process cannot access all memory at the same time, and hence a single memory wipe instance cannot clear all memory.</li>
+<li>Saner keyboard layouts for Arabic and Russian.</li>
 <li>Use Plymouth text-only splash screen at boot time.</li>
 </ul>
 
@@ -112,26 +112,26 @@
 
 <p>Download from here, <a href="http://tails.boum.org/download/index.en.html" title="http://tails.boum.org/download/index.en.html">http://tails.boum.org/download/index.en.html</a></p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/new-tor-browser-bundles-9">New Tor Browser Bundles</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">erinn</a> under
-            
-              <a class="post-category post-category-js" href="#">firefox updates</a>
-            
-              <a class="post-category post-category-js" href="#">tbb</a>
-            
-              <a class="post-category post-category-js" href="#">tor browser bundle</a>
-             |
-            12 Nov 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>The Tor Browser Bundles have been updated to Firefox 8. There was a slight delay as we adjusted to their new add-on management scheme, but everything should be working normally now. Please let us know if you have any issues!</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-9">New Tor Browser Bundles</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">firefox updates</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+               |
+              12 Nov 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>The Tor Browser Bundles have been updated to Firefox 8. There was a slight delay as we adjusted to their new add-on management scheme, but everything should be working normally now. Please let us know if you have any issues!</p>
 
 <p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
 
@@ -144,51 +144,51 @@
 <li>Add extensions.autoDisableScopes to allow TBB&#39;s Firefox to launch with its extensions enabled</li>
 </ul>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/october-2011-progress-report">October 2011 Progress Report</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">advocacy</a>
-            
-              <a class="post-category post-category-js" href="#">progress report</a>
-            
-              <a class="post-category post-category-js" href="#">rejoice in your anonymity</a>
-            
-              <a class="post-category post-category-js" href="#">tails</a>
-            
-              <a class="post-category post-category-js" href="#">tor releases</a>
-             |
-            10 Nov 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>The October 2011 Progress report is available in <a href="https://archive.torproject.org/monthly-report-archive/2011-October-Monthly-Report.pdf">PDF</a> and <a href="https://archive.torproject.org/monthly-report-archive/2011-October-Monthly-Report.txt">text</a> formats. It contains details of the six major releases, new censorship events in China, and results of a concerted effort to work on hiding Tor&#39;s network signature, amongst other progress.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/october-2011-progress-report">October 2011 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">rejoice in your anonymity</a>
+              
+                <a class="post-category post-category-js" href="#">tails</a>
+              
+                <a class="post-category post-category-js" href="#">tor releases</a>
+               |
+              10 Nov 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>The October 2011 Progress report is available in <a href="https://archive.torproject.org/monthly-report-archive/2011-October-Monthly-Report.pdf">PDF</a> and <a href="https://archive.torproject.org/monthly-report-archive/2011-October-Monthly-Report.txt">text</a> formats. It contains details of the six major releases, new censorship events in China, and results of a concerted effort to work on hiding Tor&#39;s network signature, amongst other progress.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/moving-tor-datagram-transport">Moving Tor to a datagram transport</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">sjmurdoch</a> under
-            
-              <a class="post-category post-category-js" href="#">datagram</a>
-            
-              <a class="post-category post-category-js" href="#">performance improvements</a>
-            
-              <a class="post-category post-category-js" href="#">tls</a>
-             |
-            07 Nov 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Tor currently transports data over encrypted TLS tunnels between nodes, in turn carried by TCP. This has worked reasonably well, but recent research has shown that it might not be the best option, particularly for performance.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/moving-tor-datagram-transport">Moving Tor to a datagram transport</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">sjmurdoch</a> under
+              
+                <a class="post-category post-category-js" href="#">datagram</a>
+              
+                <a class="post-category post-category-js" href="#">performance improvements</a>
+              
+                <a class="post-category post-category-js" href="#">tls</a>
+               |
+              07 Nov 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Tor currently transports data over encrypted TLS tunnels between nodes, in turn carried by TCP. This has worked reasonably well, but recent research has shown that it might not be the best option, particularly for performance.</p>
 
 <p>For example, when a packet gets dropped or corrupted on a link between two Tor nodes, TCP will cause the packet to be retransmitted eventually. However, in the meantime, all circuits passing through this pair of nodes will be stalled, not only the circuit corresponding to the packet which was dropped.</p>
 
@@ -200,77 +200,78 @@
 
 <p>The document, “ <a href="http://www.cl.cam.ac.uk/%7Esjm217/papers/tor11datagramcomparison.pdf">Comparison of Tor Datagram Designs</a>”, is now available (with source in <a href="https://gitweb.torproject.org/sjm217/torspec.git/tree/datagram_comparison:/proposals/ideas/xxx-datagram-comparison">git</a>), and I would welcome comments. Over the next few months I&#39;ll be working on building and evaluating prototypes for these schemes, and I will be incorporating feedback from the Tor community into the process.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-0237-alpha-out">Tor 0.2.3.7-alpha is out</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">erinn</a> under
-            
-              <a class="post-category post-category-js" href="#">alpha releases</a>
-            
-              <a class="post-category post-category-js" href="#">bug fixes</a>
-            
-              <a class="post-category post-category-js" href="#">relays</a>
-            
-              <a class="post-category post-category-js" href="#">tor</a>
-             |
-            31 Oct 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Tor 0.2.3.7-alpha fixes a crash bug in 0.2.3.6-alpha introduced by the new v3 handshake. It also resolves yet another bridge address enumeration issue.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-0237-alpha-out">Tor 0.2.3.7-alpha is out</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha releases</a>
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">relays</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              31 Oct 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Tor 0.2.3.7-alpha fixes a crash bug in 0.2.3.6-alpha introduced by the new v3 handshake. It also resolves yet another bridge address enumeration issue.</p>
 
 <p>All packages are updated, with the exception of the OS X PPC packages. The build machine is down and packages will be built as soon as it is back online.</p>
 
 <p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
 
-<p>Changes in version 0.2.3.7-alpha - 2011-10-30<br>
+<p>Changes in version 0.2.3.7-alpha - 2011-10-30
 <strong>Major bugfixes:</strong></p>
 
 <ul>
-<li>If we mark an OR connection for close based on a cell we process,<br>
-don&#39;t process any further cells on it. We already avoid further<br>
-reads on marked-for-close connections, but now we also discard the<br>
-cells we&#39;d already read. Fixes bug 4299; bugfix on 0.2.0.10-alpha,<br>
-which was the first version where we might mark a connection for<br>
+<li>If we mark an OR connection for close based on a cell we process,
+don&#39;t process any further cells on it. We already avoid further
+reads on marked-for-close connections, but now we also discard the
+cells we&#39;d already read. Fixes bug 4299; bugfix on 0.2.0.10-alpha,
+which was the first version where we might mark a connection for
 close based on processing a cell on it.</li>
-<li>Fix a double-free bug that would occur when we received an invalid<br>
-certificate in a CERT cell in the new v3 handshake. Fixes bug 4343;<br>
+<li>Fix a double-free bug that would occur when we received an invalid
+certificate in a CERT cell in the new v3 handshake. Fixes bug 4343;
 bugfix on 0.2.3.6-alpha.</li>
-<li>Bridges no longer include their address in NETINFO cells on outgoing<br>
-OR connections, to allow them to blend in better with clients.<br>
-Removes another avenue for enumerating bridges. Reported by<br>
-&quot;troll_un&quot;. Fixes bug 4348; bugfix on 0.2.0.10-alpha, when NETINFO<br>
+<li>Bridges no longer include their address in NETINFO cells on outgoing
+OR connections, to allow them to blend in better with clients.
+Removes another avenue for enumerating bridges. Reported by
+&quot;troll_un&quot;. Fixes bug 4348; bugfix on 0.2.0.10-alpha, when NETINFO
 cells were introduced.</li>
 </ul>
 
 <p><strong>Trivial fixes:</strong></p>
 
 <ul>
-<li>Fixed a typo in a hibernation-related log message. Fixes bug 4331;<br>
+<li>Fixed a typo in a hibernation-related log message. Fixes bug 4331;
 bugfix on 0.2.2.23-alpha; found by &quot;tmpname0901&quot;.</li>
 </ul>
 </p>
-      </div>
-    </section>
-  
+        </div>
+      </section>
+    
 
-   <!-- Pagination links -->
-  <div class="pagination">
-    
-      <a href="/blog/page62" class="previous">Previous</a>
-    
-    <span class="page_number ">Page: 63 of 133</span>
-    
-      <a href="/blog/page64" class="next">Next</a>
-    
+     <!-- Pagination links -->
+    <div class="pagination">
+      
+        <a href="/blog/page62" class="previous">Previous</a>
+      
+      <span class="page_number ">Page: 63 of 133</span>
+      
+        <a href="/blog/page64" class="next">Next</a>
+      
+    </div>
   </div>
+
 </div>
 
-            </div>
 
             <div class="footer">
                 <div class="pure-menu pure-menu-horizontal pure-menu-open">

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A weekend at New England Give Camp"
-permalink: weekend-new-england-give-camp
+permalink: blog/weekend-new-england-give-camp
 date: 2013-04-29
 author: phobos
 category: blog

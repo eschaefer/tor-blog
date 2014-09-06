@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Personal Democracy Forum"
-permalink: personal-democracy-forum
+permalink: /events/personal-democracy-forum
 date: 2012-06-11
 startdate: 2012-06-11
 enddate: 2012-06-12

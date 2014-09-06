@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — November 27th, 2013"
-permalink: tor-weekly-news-%E2%80%94-november-27th-2013
+permalink: blog/tor-weekly-news-%E2%80%94-november-27th-2013
 date: 2013-11-27
 author: lunar
 category: blog
@@ -50,7 +50,7 @@ Kevin Dyer [announced](https://lists.torproject.org/pipermail/tor-dev/2013-Novem
 
 Echoing the tor-talk thread summarized above, multiple people asked whether or not the Tor Project could recommend the Safeplug device.
 
-An OS X user asked if it was always necessary to open the Tor Browser folder in order to start the Tor Browser Bundle. It is possible to create an alias in Mac OS or a shortcut in Windows to the “Start Tor Browser” script and place that alias or shortcut in a convenient place,  
+An OS X user asked if it was always necessary to open the Tor Browser folder in order to start the Tor Browser Bundle. It is possible to create an alias in Mac OS or a shortcut in Windows to the “Start Tor Browser” script and place that alias or shortcut in a convenient place,
 such as the Desktop.
 
 * * *

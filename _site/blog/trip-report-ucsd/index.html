@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Trip report, UCSD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Trip report, UCSD</h2>
+<p class="meta">28 Aug 2010</p>
+
+<div class="event">
+<p>On Sunday (8/22) through Wednesday (8/25), I visited the Tor research group at <a href="http://www-cse.ucsd.edu/">UCSD</a> as part of my ongoing plans to help academic research groups <a href="https://www.torproject.org/research">better understand Tor and its research problems</a>. Damon McCoy has a fellowship (postdoc) there for last year and this coming year, and he&#39;s brought Kevin Bauer in from UColorado from now until December. They have two systems profs with congestion control background (Stefan Savage and Geoff Voelker) interested in helping them work on Tor and performance.</p>
+
+<p>Kevin is planning to spend the next year on Tor performance work, as the last chapter of his thesis. He&#39;s also applied to <a href="https://blog.torproject.org/blog/tor-related-research-positions-university-waterloo">Ian Goldberg&#39;s postdoc position at Waterloo</a>. He seems like a smart and dedicated guy; I&#39;d be excited if Ian picks him.</p>
+
+<p>I spent most of my time walking Damon and Kevin through Tor&#39;s current congestion control levels -- explaining what Tor does, as well as what I think is actually resulting from each of these components. Kevin has lots of notes, and if all goes well that will seed the core of a &quot;Why else is Tor slow&quot; whitepaper over the coming months, as a sequel to <a href="https://blog.torproject.org/blog/why-tor-is-slow">the original</a>.</p>
+
+<p>Kevin wants to work on figuring out how to better tune all the knobs Tor has, but he also wants to work on a new design for an ipsec-based Tor protocol (we ruled out DTLS as not being in broad enough use; that leaves ipsec). I want both, so I&#39;d be fine with either one. The UCSD systems group has a simulation engine called <a href="https://modelnet.sysnet.ucsd.edu/">ModelNet</a> that is apparently really good at simulating actual networks. Kevin is going to try to get a separate Tor network going with modelnet as its glue, and then he&#39;ll be in a better position to do more controlled experiments.</p>
+
+<p>At the same time I think he&#39;d be in better shape thinking about Tor performance if he messes around with a live Tor relay enough to figure out where its bottlenecks are. I gave him a list of 10 or so potential problems, and each of them is probably a big problem in some contexts (e.g. under certain amounts of load) but maybe not in others. The current intuition is that Tor has grown a lot of knobs that may be orthogonal to whether we are using TCP or something else as transport, and analyzing the performance of a naive design that uses something else as transport but doesn&#39;t consider the knobs will likely result in a bad comparison. To say it differently, some of the knobs we have now (e.g. circuit priorities) would still be useful even if we change our transport, but others might no longer be needed, or might need to be different. Many fine open research questions.</p>
+
+<p>I also got a chance to explain enough of Tor to Stefan that he has a good understanding of Tor&#39;s overall design. He&#39;s still digesting what advice he might have for us, but his initial impression is that it&#39;s not clear that end-to-end TCP will perform well for our situation, nor is it clear that thousands of parallel TCP sessions between each pairwise Tor relay over UDP over some datagram link encryption ( <a href="http://freehaven.net/anonbib/#reardon-thesis">Joel Reardon&#39;s design</a>) will perform well either.</p>
+
+<p>While there, I did a CSE symposium talk that went very well:
+ <a href="http://freehaven.net/%7Earma/slides-ucsd10.pdf" title="http://freehaven.net/~arma/slides-ucsd10.pdf">http://freehaven.net/~arma/slides-ucsd10.pdf</a>
+It was scheduled for an hour, but everybody stayed for 90 minutes, and the crowd was really excited. I invited Chris Davis to the talk, plus the lunch afterward, plus some of the brainstorming after that. Hopefully a better-informed Chris will come in handy in some way in the future. :)</p>
+
+<p>I also talked to Mihir Bellare, a well-known crypto prof, for a few hours. He had a postdoc and a grad student who were excited to learn more about our research problems. Maybe they will help Damon and Kevin redesign a packet-based encryption scheme (where you send an IV and checksum in every packet, to tolerate lost packets and out-of-order packets), like what <a href="http://freehaven.net/anonbib/#freedom21-security">Freedom</a> designed long ago but never shared very well with the rest of the world.</p>
+
+<p>I also had dinner with KC Claffy, one of the people from <a href="http://www.caida.org/home/">CAIDA</a>, a separate org affiliated with UCSD that focuses on Internet data measurement and the privacy/security/policy/analysis issues that go along with that. She was really interested to learn more about our <a href="http://metrics.torproject.org/papers.html">WECSR workshop paper</a>. One of the deliverables they&#39;ve promised their funders soon is a comparison of various GeoIP databases. I told her about Karsten&#39;s <a href="http://metrics.torproject.org/papers/geoipdbcomp-2009-10-23.pdf">preliminary work there</a>, and I should probably follow up.</p>
+
+<p>I met with Harsha Madhyastha, a soon-to-be-first-year-prof at UC Riverside, who wrote &quot;iPlane&quot; as his thesis. <a href="http://iplane.cs.washington.edu/">iPlane</a> is a database / set of scripts that let you (among other things) predict latency between two points on the Internet. I gave him a big pile of research questions around choosing more efficient paths through the Tor network vs the anonymity implications of even-less-uniform path selection; and the AS-level or country-level path selection questions; and <a href="http://freehaven.net/anonbib/#tissec-latency-leak">Nick Hopper&#39;s latency attack paper</a> and the questions we still have around it. Perhaps one of his grad students will pick up one of the topics.</p>
+
+<p>Overall, it was a good use of a couple of days. I&#39;ll plan to follow-up in person sometime in the next 6-12 months, either with a trip to UCSD or a trip to Colorado (where Kevin is returning after his brief stint as research staff).</p>
+
+<p>I should get my act together and answer Nick Hopper&#39;s invitation to come spend a similar couple of days at UMN, to get his research group more <a href="https://www.torproject.org/research">up to speed</a> on what needs doing.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

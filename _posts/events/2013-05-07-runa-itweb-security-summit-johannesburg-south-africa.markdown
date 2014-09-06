@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Runa @ ITWeb Security Summit, Johannesburg, South Africa"
-permalink: runa-itweb-security-summit-johannesburg-south-africa
+permalink: /events/runa-itweb-security-summit-johannesburg-south-africa
 date: 2013-05-07
 startdate: 2013-05-07
 enddate: 2013-05-08

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Democracy, Dissent, and Digital Media in the Arab World"
-permalink: democracy-dissent-and-digital-media-arab-world
+permalink: /events/democracy-dissent-and-digital-media-arab-world
 date: 2011-03-01
 startdate: 2011-03-01
 enddate: 2011-03-01

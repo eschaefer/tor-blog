@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Winnipeg CryptoParty Talking Tor"
-permalink: winnipeg-cryptoparty-talking-tor
+permalink: /events/winnipeg-cryptoparty-talking-tor
 date: 2013-09-28
 startdate: 2013-09-28
 enddate: 2013-09-28

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — June 11th, 2014"
-permalink: tor-weekly-news-%E2%80%94-june-11th-2014
+permalink: blog/tor-weekly-news-%E2%80%94-june-11th-2014
 date: 2014-06-11
 author: harmony
 category: blog

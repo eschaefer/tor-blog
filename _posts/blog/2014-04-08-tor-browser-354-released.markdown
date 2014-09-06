@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser 3.5.4 is Released"
-permalink: tor-browser-354-released
+permalink: blog/tor-browser-354-released
 date: 2014-04-08
 author: mikeperry
 category: blog

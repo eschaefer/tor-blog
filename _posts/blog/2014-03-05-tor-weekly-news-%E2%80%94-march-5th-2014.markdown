@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — March 5th, 2014"
-permalink: tor-weekly-news-%E2%80%94-march-5th-2014
+permalink: blog/tor-weekly-news-%E2%80%94-march-5th-2014
 date: 2014-03-05
 author: lunar
 category: blog
@@ -56,7 +56,7 @@ Patrick Schleizer [announced](https://lists.torproject.org/pipermail/tor-talk/20
 
 Kelley Misata wrote up an [account](https://lists.torproject.org/pipermail/tor-reports/2014-March/000470.html) of her talk “Journalists — Staying Safe in a Digital World”, which she delivered at the Computer-Assisted Reporting Conference in Baltimore.
 
-Having co-authored [a paper in 2012 on usability issues connected with  
+Having co-authored [a paper in 2012 on usability issues connected with
 the Tor Browser Bundle](http://petsymposium.org/2012/papers/hotpets12-1-usability.pdf), Greg Norcie [drew attention](https://lists.torproject.org/pipermail/tor-talk/2014-February/032205.html) to a follow-up study named [Why Johnny Can’t Blow the Whistle](http://www.norcie.com/papers/torUSEC.pdf),  which focuses on verifying the conclusions of the earlier tests while exploring a number of other possible usability improvements. The study was, however, carried out before the release of Tor Browser version 3, which improved the bundle’s usability based on earlier suggestions.
 
 Mac OS X users will be thrilled to learn that the next Tor Browser Bundle will be [shipped as a DMG (disk image)](https://people.torproject.org/~mikeperry/images/TBBDMG.png) instead of the [previous unusual .ZIP archive](https://bugs.torproject.org/4261).
@@ -73,7 +73,7 @@ Fortasse [started a discussion](https://lists.torproject.org/pipermail/tor-talk/
 
 anonym [has been busy](https://mailman.boum.org/pipermail/tails-dev/2014-February/005023.html) adapting the configuration interface from the Tor Browser — called “Tor Launcher” — to Tails’ needs. Preliminary results can already be seen in the [images built from the experimental branch](http://nightly.tails.boum.org/build_Tails_ISO_experimental/).
 
-Ramo [wrote](https://lists.torproject.org/pipermail/tor-relays/2014-March/004007.html) to announce their [Nagios plugin project](https://github.com/goodvikings/tor_nagios/) to the relay operator community. Lunar pointed out a complementary probe named  
+Ramo [wrote](https://lists.torproject.org/pipermail/tor-relays/2014-March/004007.html) to announce their [Nagios plugin project](https://github.com/goodvikings/tor_nagios/) to the relay operator community. Lunar pointed out a complementary probe named
  [check\_tor.py](http://anonscm.debian.org/gitweb/?p=users/lunar/check_tor.git;a=blob;f=README;hb=HEAD).
 
 Virgil Griffith sent a [draft proposal](https://lists.torproject.org/pipermail/tor-dev/2014-February/006344.html) for changes to improve the latency of hidden services when using the “Tor2web” mode. Roger Dingledine [commented](https://lists.torproject.org/pipermail/tor-dev/2014-March/006347.html) that one of the proposed changes actually opened a new research question regarding the actual latency benefits.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "HTTPS Everywhere Firefox addon helps you encrypt web traffic"
-permalink: https-everywhere-firefox-addon-helps-you-encrypt-web-traffic
+permalink: blog/https-everywhere-firefox-addon-helps-you-encrypt-web-traffic
 date: 2010-06-18
 author: mikeperry
 category: blog

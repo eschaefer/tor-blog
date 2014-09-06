@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Thank you to our donors"
-permalink: thank-you-our-donors
+permalink: blog/thank-you-our-donors
 date: 2011-12-28
 author: phobos
 category: blog

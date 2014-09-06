@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor IM Browser Bundle discontinued temporarily"
-permalink: tor-im-browser-bundle-discontinued-temporarily
+permalink: blog/tor-im-browser-bundle-discontinued-temporarily
 date: 2011-04-13
 author: erinn
 category: blog

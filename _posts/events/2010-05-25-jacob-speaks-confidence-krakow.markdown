@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Jacob speaks at Confidence Krakow"
-permalink: jacob-speaks-confidence-krakow
+permalink: /events/jacob-speaks-confidence-krakow
 date: 2010-05-25
 startdate: 2010-05-25
 enddate: 2010-05-26

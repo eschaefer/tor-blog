@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Iran blocks Tor; Tor releases same-day fix"
-permalink: iran-blocks-tor-tor-releases-same-day-fix
+permalink: blog/iran-blocks-tor-tor-releases-same-day-fix
 date: 2011-09-14
 author: arma
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor 0.2.4.16-rc packages and updated stable Tor Browser Bundles"
-permalink: new-tor-02416-rc-packages-and-updated-stable-tor-browser-bundles
+permalink: blog/new-tor-02416-rc-packages-and-updated-stable-tor-browser-bundles
 date: 2013-08-13
 author: erinn
 category: blog
@@ -14,12 +14,12 @@ There's a new [Tor 0.2.4.16-rc](https://lists.torproject.org/pipermail/tor-talk/
 
 **Tor Browser Bundle (2.3.25-12)**
 
-- Re-add the locale pref to the Firefox prefs file to allow for localization  
+- Re-add the locale pref to the Firefox prefs file to allow for localization
  of bundles again (closes: #9436)
 
 **Tor Browser Bundle (2.4.16-beta-1)**
 
 - Update Tor to 0.2.4.16-rc
-- Re-add the locale pref to the Firefox prefs file to allow for localization  
+- Re-add the locale pref to the Firefox prefs file to allow for localization
  of bundles again (closes: #9436)
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Denial of Service Attacks and Defenses"
-permalink: new-tor-denial-service-attacks-and-defenses
+permalink: blog/new-tor-denial-service-attacks-and-defenses
 date: 2014-01-25
 author: robgjansen
 category: blog

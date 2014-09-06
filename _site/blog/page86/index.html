@@ -22,7 +22,7 @@
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
-            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
             <h1 class="brand-title">The Tor Project Blog</h1>
             <h2 class="brand-tagline">News and events from Tor</h2>
 
@@ -44,28 +44,28 @@
 
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
+
             <!-- A wrapper for all the blog posts -->
-            <div class="posts">
-                <h1 class="content-subhead">Recent Posts</h1>
+<div class="posts">
 
-
-               <div id="home">
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/boston-tor-hackers-join-us-saturday-january-15th">Boston Tor Hackers, join us Saturday, January 15th</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">boston hackfest</a>
-            
-              <a class="post-category post-category-js" href="#">center for future civic media</a>
-             |
-            05 Jan 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>We&#39;re holding a Tor hackfest on Saturday, January 15th. The bulk of the Tor developers are in town and coming to this event.</p>
+  <h1 class="content-subhead">Recent Posts</h1>
+  <div id="home">
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/boston-tor-hackers-join-us-saturday-january-15th">Boston Tor Hackers, join us Saturday, January 15th</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">boston hackfest</a>
+              
+                <a class="post-category post-category-js" href="#">center for future civic media</a>
+               |
+              05 Jan 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>We&#39;re holding a Tor hackfest on Saturday, January 15th. The bulk of the Tor developers are in town and coming to this event.</p>
 
 <p>We&#39;ll be meeting starting at 10 AM in the new Media Lab building (E14), room 244, thanks to the <a href="http://civic.mit.edu/">Center for Future Civic Media at MIT</a>. We&#39;re hoping to provide pizza and drinks for lunch. We may finish up and move to Grendel&#39;s Den for dinner.</p>
 
@@ -75,57 +75,57 @@
 
 <p>Hope to see you on Saturday!</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-02220-alpha-out-security-patches">Tor 0.2.2.20-alpha is out (security patches)</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">bug fixes</a>
-            
-              <a class="post-category post-category-js" href="#">enhancements</a>
-            
-              <a class="post-category post-category-js" href="#">security advisory</a>
-             |
-            20 Dec 2010
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Tor 0.2.2.20-alpha does some code cleanup to reduce the risk of remotely<br>
-exploitable bugs. Thanks to Willem Pinckaers for notifying us of the<br>
-issue. The Common Vulnerabilities and Exposures project has assigned<br>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-02220-alpha-out-security-patches">Tor 0.2.2.20-alpha is out (security patches)</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">enhancements</a>
+              
+                <a class="post-category post-category-js" href="#">security advisory</a>
+               |
+              20 Dec 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Tor 0.2.2.20-alpha does some code cleanup to reduce the risk of remotely
+exploitable bugs. Thanks to Willem Pinckaers for notifying us of the
+issue. The Common Vulnerabilities and Exposures project has assigned
 CVE-2010-1676 to this issue.</p>
 
-<p>We also fix a variety of other significant bugs, change the IP address<br>
-for one of our directory authorities, and update the minimum version<br>
+<p>We also fix a variety of other significant bugs, change the IP address
+for one of our directory authorities, and update the minimum version
 that Tor relays must run to join the network.</p>
 
 <p>All Tor users should upgrade.</p>
 
 <p><a href="https://www.torproject.org/download/download" title="https://www.torproject.org/download/download">https://www.torproject.org/download/download</a></p>
 
-<p>Changes in version 0.2.2.20-alpha - 2010-12-17<br>
+<p>Changes in version 0.2.2.20-alpha - 2010-12-17
 <strong>Major bugfixes:</strong></p>
 
 <ul>
-<li>Fix a remotely exploitable bug that could be used to crash instances<br>
-of Tor remotely by overflowing on the heap. Remote-code execution<br>
-hasn&#39;t been confirmed, but can&#39;t be ruled out. Everyone should<br>
+<li>Fix a remotely exploitable bug that could be used to crash instances
+of Tor remotely by overflowing on the heap. Remote-code execution
+hasn&#39;t been confirmed, but can&#39;t be ruled out. Everyone should
 upgrade. Bugfix on the 0.1.1 series and later.</li>
-<li>Fix a bug that could break accounting on 64-bit systems with large<br>
-time_t values, making them hibernate for impossibly long intervals.<br>
+<li>Fix a bug that could break accounting on 64-bit systems with large
+time_t values, making them hibernate for impossibly long intervals.
 Fixes bug 2146. Bugfix on 0.0.9pre6; fix by boboper.</li>
-<li>Fix a logic error in directory_fetches_from_authorities() that<br>
-would cause all _non_-exits refusing single-hop-like circuits<br>
-to fetch from authorities, when we wanted to have _exits_ fetch<br>
-from authorities. Fixes more of 2097. Bugfix on 0.2.2.16-alpha;<br>
+<li>Fix a logic error in directory_fetches_from_authorities() that
+would cause all _non_-exits refusing single-hop-like circuits
+to fetch from authorities, when we wanted to have _exits_ fetch
+from authorities. Fixes more of 2097. Bugfix on 0.2.2.16-alpha;
 fix by boboper.</li>
-<li>Fix a stream fairness bug that would cause newer streams on a given<br>
-circuit to get preference when reading bytes from the origin or<br>
-destination. Fixes bug 2210. Fix by Mashael AlSabah. This bug was<br>
+<li>Fix a stream fairness bug that would cause newer streams on a given
+circuit to get preference when reading bytes from the origin or
+destination. Fixes bug 2210. Fix by Mashael AlSabah. This bug was
 introduced before the first Tor release, in svn revision r152.</li>
 </ul>
 
@@ -138,14 +138,14 @@ introduced before the first Tor release, in svn revision r152.</li>
 <p><strong>Minor bugfixes:</strong></p>
 
 <ul>
-<li>Avoid crashes when AccountingMax is set on clients. Fixes bug 2235.<br>
+<li>Avoid crashes when AccountingMax is set on clients. Fixes bug 2235.
 Bugfix on 0.2.2.18-alpha. Diagnosed by boboper.</li>
-<li>Fix an off-by-one error in calculating some controller command<br>
-argument lengths. Fortunately, this mistake is harmless since<br>
-the controller code does redundant NUL termination too. Found by<br>
+<li>Fix an off-by-one error in calculating some controller command
+argument lengths. Fortunately, this mistake is harmless since
+the controller code does redundant NUL termination too. Found by
 boboper. Bugfix on 0.1.1.1-alpha.</li>
-<li>Do not dereference NULL if a bridge fails to build its<br>
-extra-info descriptor. Found by an anonymous commenter on<br>
+<li>Do not dereference NULL if a bridge fails to build its
+extra-info descriptor. Found by an anonymous commenter on
 Trac. Bugfix on 0.2.2.19-alpha.</li>
 </ul>
 
@@ -153,50 +153,50 @@ Trac. Bugfix on 0.2.2.19-alpha.</li>
 
 <ul>
 <li>Update to the December 1 2010 Maxmind GeoLite Country database.</li>
-<li>Directory authorities now reject relays running any versions of<br>
-Tor between 0.2.1.3-alpha and 0.2.1.18 inclusive; they have<br>
-known bugs that keep RELAY_EARLY cells from working on rendezvous<br>
+<li>Directory authorities now reject relays running any versions of
+Tor between 0.2.1.3-alpha and 0.2.1.18 inclusive; they have
+known bugs that keep RELAY_EARLY cells from working on rendezvous
 circuits. Followup to fix for bug 2081.</li>
-<li>Directory authorities now reject relays running any version of Tor<br>
-older than 0.2.0.26-rc. That version is the earliest that fetches<br>
+<li>Directory authorities now reject relays running any version of Tor
+older than 0.2.0.26-rc. That version is the earliest that fetches
 current directory information correctly. Fixes bug 2156.</li>
-<li>Report only the top 10 ports in exit-port stats in order not to<br>
-exceed the maximum extra-info descriptor length of 50 KB. Implements<br>
+<li>Report only the top 10 ports in exit-port stats in order not to
+exceed the maximum extra-info descriptor length of 50 KB. Implements
 task 2196.</li>
 </ul>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-02128-released-security-patches">Tor 0.2.1.28 is released (security patches)</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">bug fixes</a>
-            
-              <a class="post-category post-category-js" href="#">enhancements</a>
-            
-              <a class="post-category post-category-js" href="#">security advisory</a>
-             |
-            20 Dec 2010
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Tor 0.2.1.28 does some code cleanup to reduce the risk of remotely<br>
-exploitable bugs. Thanks to Willem Pinckaers for notifying us of the<br>
-issue. The Common Vulnerabilities and Exposures project has assigned<br>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-02128-released-security-patches">Tor 0.2.1.28 is released (security patches)</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">enhancements</a>
+              
+                <a class="post-category post-category-js" href="#">security advisory</a>
+               |
+              20 Dec 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Tor 0.2.1.28 does some code cleanup to reduce the risk of remotely
+exploitable bugs. Thanks to Willem Pinckaers for notifying us of the
+issue. The Common Vulnerabilities and Exposures project has assigned
 CVE-2010-1676 to this issue.</p>
 
-<p>We also took this opportunity to change the IP address for one of our<br>
+<p>We also took this opportunity to change the IP address for one of our
 directory authorities, and to update the geoip database we ship.</p>
 
 <p>All Tor users should upgrade.</p>
 
 <p><a href="https://www.torproject.org/download/download" title="https://www.torproject.org/download/download">https://www.torproject.org/download/download</a></p>
 
-<p>Changes in version 0.2.1.28 - 2010-12-17<br>
+<p>Changes in version 0.2.1.28 - 2010-12-17
 <strong>Major bugfixes:</strong></p>
 
 <ul>
@@ -215,42 +215,42 @@ directory authorities, and to update the geoip database we ship.</p>
 <li>Update to the December 1 2010 Maxmind GeoLite Country database.</li>
 </ul>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/november-2010-progress-report">November 2010 Progress Report</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">enhancements</a>
-            
-              <a class="post-category post-category-js" href="#">fixes</a>
-            
-              <a class="post-category post-category-js" href="#">progress report</a>
-            
-              <a class="post-category post-category-js" href="#">translations</a>
-             |
-            16 Dec 2010
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p><strong>New Releases</strong></p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/november-2010-progress-report">November 2010 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">enhancements</a>
+              
+                <a class="post-category post-category-js" href="#">fixes</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">translations</a>
+               |
+              16 Dec 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p><strong>New Releases</strong></p>
 
 <ul>
 <li>On November 16 we released the latest in the Tor -alpha series. Tor 0.2.2.18-alpha fixes several crash bugs that have been nagging us lately, makes unpublished bridge relays able to detect their IP address, and fixes a wide variety of other bugs to get us much closer to a stable release. <a href="https://blog.torproject.org/blog/tor-02218-alpha-available" title="https://blog.torproject.org/blog/tor-02218-alpha-available">https://blog.torproject.org/blog/tor-02218-alpha-available</a></li>
 <li>On November 23, we released the latest in the Tor -stable series. Tor 0.2.1.27 makes relays work with OpenSSL 0.9.8p and 1.0.0.b --yet another OpenSSL security patch broke its compatibility with Tor. We also took this opportunity to fix several crash bugs, integrate a new directory authority, and update the bundled GeoIP database. <a href="https://blog.torproject.org/blog/tor-02127-released" title="https://blog.torproject.org/blog/tor-02127-released">https://blog.torproject.org/blog/tor-02127-released</a></li>
 <li>On November 21, we released the latest in the Tor -alpha series. Yet another OpenSSL security patch broke its compatibility with Tor: Tor 0.2.2.19-alpha makes relays work with OpenSSL 0.9.8p and 1.0.0.b. <a href="https://blog.torproject.org/blog/tor-02219-alpha-out" title="https://blog.torproject.org/blog/tor-02219-alpha-out">https://blog.torproject.org/blog/tor-02219-alpha-out</a></li>
-<li>On November 26, we released updated Tor Browser Bundles. There are new<br>
-browser bundles out with the updated Tor versions (0.2.2.19-alpha and 0.2.1.27)<br>
+<li>On November 26, we released updated Tor Browser Bundles. There are new
+browser bundles out with the updated Tor versions (0.2.2.19-alpha and 0.2.1.27)
 that work with the latest OpenSSL. <a href="https://blog.torproject.org/blog/new-tor-browser-bundle-packages" title="https://blog.torproject.org/blog/new-tor-browser-bundle-packages">https://blog.torproject.org/blog/new-tor-browser-bundle-packages</a></li>
-<li>On November 30th, we released the latest Arm relay monitor. Damian writes,<br>
-&quot;What&#39;s new since August of 2009, you ask? Lots. The project has been under<br>
-very active development, continuing to add usability improvements to make relay<br>
-operation nicer and less error prone. If you&#39;re really curious what I&#39;ve been up<br>
-to this last year then it&#39;s all available in the change log.&quot;<br>
-For those unfamiliar, arm is a terminal monitor for Tor relays and, to a growing<br>
+<li>On November 30th, we released the latest Arm relay monitor. Damian writes,
+&quot;What&#39;s new since August of 2009, you ask? Lots. The project has been under
+very active development, continuing to add usability improvements to make relay
+operation nicer and less error prone. If you&#39;re really curious what I&#39;ve been up
+to this last year then it&#39;s all available in the change log.&quot;
+For those unfamiliar, arm is a terminal monitor for Tor relays and, to a growing
 extent, end users. <a href="https://blog.torproject.org/blog/arm-release-140" title="https://blog.torproject.org/blog/arm-release-140">https://blog.torproject.org/blog/arm-release-140</a></li>
 </ul>
 
@@ -258,19 +258,19 @@ extent, end users. <a href="https://blog.torproject.org/blog/arm-release-140" ti
 
 <ul>
 <li>We released our first ever Annual Report for 2009. It highlights what we&#39;ve accomplished in 2009. <a href="https://www.torproject.org/about/financials.html.en" title="https://www.torproject.org/about/financials.html.en">https://www.torproject.org/about/financials.html.en</a></li>
-<li>Andrew presented to the U.S. Dept of Commerce Information Systems Technical<br>
-Advisory Committee (ISTAC) about Tor and its relation to US Export Controls.<br>
-More about ISTAC can be found here, <a href="http://tac.bis.doc.gov/ischart.htm" title="http://tac.bis.doc.gov/ischart.htm">http://tac.bis.doc.gov/ischart.htm</a>.<br>
+<li>Andrew presented to the U.S. Dept of Commerce Information Systems Technical
+Advisory Committee (ISTAC) about Tor and its relation to US Export Controls.
+More about ISTAC can be found here, <a href="http://tac.bis.doc.gov/ischart.htm" title="http://tac.bis.doc.gov/ischart.htm">http://tac.bis.doc.gov/ischart.htm</a>.
 Andrew&#39;s presentation can be found at <a href="https://svn.torproject.org/svn/projects/presentations/2010-11-03-ISTAC-tor-circumvention-overview.pdf" title="https://svn.torproject.org/svn/projects/presentations/2010-11-03-ISTAC-tor-circumvention-overview.pdf">https://svn.torproject.org/svn/projects/presentations/2010-11-03-ISTAC-t...</a></li>
 <li>Linus and Erinn attended FSCONS as a guest speaker in Sweden, <a href="http://fscons.org/" title="http://fscons.org/">http://fscons.org/</a>. Erinn was invited back to be a main speaker next year. Linus&#39; presentation can be found at <a href="https://svn.torproject.org/svn/projects/presentations/FSCONS-2010.pdf" title="https://svn.torproject.org/svn/projects/presentations/FSCONS-2010.pdf">https://svn.torproject.org/svn/projects/presentations/FSCONS-2010.pdf</a>.</li>
-<li>Erinn spoke at Codebits in Portugal about Tor, Free Software, and Anonymity,<br>
+<li>Erinn spoke at Codebits in Portugal about Tor, Free Software, and Anonymity,
 <a href="http://codebits.eu/" title="http://codebits.eu/">http://codebits.eu/</a>. Her presentation can be found at <a href="https://svn.torproject.org/svn/projects/presentations/2010-11-Codebits.pdf" title="https://svn.torproject.org/svn/projects/presentations/2010-11-Codebits.pdf">https://svn.torproject.org/svn/projects/presentations/2010-11-Codebits.p...</a>.</li>
 <li>Andrew was interviewed for Internet Evolution, <a href="http://www.internetevolution.com/radio.asp?doc_id=196479" title="http://www.internetevolution.com/radio.asp?doc\_id=196479">http://www.internetevolution.com/radio.asp?doc_id=196479</a> about Tor and online anonymity.</li>
 <li>Roger visited Nick Hopper&#39;s research group at UMN, <a href="http://www-users.cs.umn.edu/%7Ehopper/" title="http://www-users.cs.umn.edu/~hopper/">http://www-users.cs.umn.edu/~hopper/</a>. He helped with a number of areas around a Tor simulator, how to anonymously collect Tor internal statistics, effect of guard nodes on security, how to model Tor user behavior, overlaying a censorship resistant publishing system, and some ideas on how to better count tor users anonymously.</li>
 <li>Jake and Karen attended a training held with Human Rights Watch and Access.</li>
 </ul>
 
-<p><strong>Bridge relay work</strong><br>
+<p><strong>Bridge relay work</strong>
 Mike&#39;s initial research into bridges shows that we get 700-800 new bridges a day, but around 500 of them stay online and are reliable enough to give to users. We are developing ways to create more bridges through packaging that turns users into a bridge by default, a hardware router that acts as a bridge and transparent tor proxy, and creating images for cloud computing providers such as Amazon, Rackspace, and Microsoft. We&#39;re tracking the progress of these projects at:</p>
 
 <ul>
@@ -282,48 +282,48 @@ Mike&#39;s initial research into bridges shows that we get 700-800 new bridges a
 <p><strong>Scalability, load balancing, directory overhead, efficiency</strong></p>
 
 <ul>
-<li>Sebastian and Nick spent some time debugging and resolving the issues with the OpenSSL changes to address a security announcement. The results of this work<br>
+<li>Sebastian and Nick spent some time debugging and resolving the issues with the OpenSSL changes to address a security announcement. The results of this work
 is included in the Tor 0.2.1.27 and 0.2.2.19-alpha releases. Initially, we did not see any direct relevance to Tor: <a href="https://blog.torproject.org/blog/new-openssl-vulnerability-tor-not-affected" title="https://blog.torproject.org/blog/new-openssl-vulnerability-tor-not-affected">https://blog.torproject.org/blog/new-openssl-vulnerability-tor-not-affec...</a></li>
 <li>Karsten implemented the new user number estimate based on directory requests to many directory mirrors in the metrics portal, <a href="https://metrics.torproject.org/users.html" title="https://metrics.torproject.org/users.html">https://metrics.torproject.org/users.html</a>.</li>
 <li>Karsten finished tech report on estimating user numbers together with Sebastian and with very helpful comments from Roger and Thomas. The report is available on the metrics website, <a href="https://metrics.torproject.org/papers.html#techreports" title="https://metrics.torproject.org/papers.html#techreports">https://metrics.torproject.org/papers.html#techreports</a> and the specific report is at <a href="https://metrics.torproject.org/papers/countingusers-2010-11-30.pdf" title="https://metrics.torproject.org/papers/countingusers-2010-11-30.pdf">https://metrics.torproject.org/papers/countingusers-2010-11-30.pdf</a>.</li>
-<li>Karsten implemented a few Tor patches, most of them related to metrics, that<br>
+<li>Karsten implemented a few Tor patches, most of them related to metrics, that
 were kindly reviewed and merged by Nick: made log granularity configurable (#1668, 0.2.3.x); included GeoIP database identifier in extra-info descriptors (#1883, 0.2.3.x); turned on dirreq-stats by default (#2174, 0.2.3.x); fixed a bug where fast relays exceeded the 50K limit for extra-info descriptors (#2183, 0.2.2.x); reduced exit-stats to top 10 ports (#2196, 0.2.2.x).</li>
 <li>Karsten implemented a few metrics website improvements: all servlets use a database connection pool for their queries; ExoneraTor uses the database tables instead of files; we upgraded to R 2.11.1 after finding out that the reshape package has a problem with large POSIXlt vectors.</li>
-<li>Karsten fixed the Python version of the VisiTor script that was contributed by Kiyoto Tamura. </li>
-<li>Nick did some multithreaded crypto hacking, wrote the missing code to have clients fetch microdescriptors, and spent a good while longer bughunting in Tor,<br>
+<li>Karsten fixed the Python version of the VisiTor script that was contributed by Kiyoto Tamura.</li>
+<li>Nick did some multithreaded crypto hacking, wrote the missing code to have clients fetch microdescriptors, and spent a good while longer bughunting in Tor,
 particularly for issues related to brokenness in and around openssl.</li>
 <li>Nick also spent a while chasing down more lingering Libevent bugs that don&#39;t affect Tor directly; having Libevent useful for more people means that we get more contributors for the Libevent codebase, which in turn helps Tor indirectly. Tor is heavily dependent on libevent, therefore the better libevent becomes, the better Tor becomes.</li>
 </ul>
 
-<p><strong>Translations</strong><br>
+<p><strong>Translations</strong>
 We are migrating all translation work over to <a href="https://www.transifex.net/projects/p/torproject/" title="https://www.transifex.net/projects/p/torproject/">https://www.transifex.net/projects/p/torproject/</a>. Runa spent the month preparing the po/pot files for migration, committing translations still residing in pootle at translation.torproject.org.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/new-tor-browser-bundle-packages-0">New Tor Browser Bundle packages</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">erinn</a> under
-            
-              <a class="post-category post-category-js" href="#">bug fixes</a>
-            
-              <a class="post-category post-category-js" href="#">firefox updates</a>
-            
-              <a class="post-category post-category-js" href="#">https everywhere</a>
-            
-              <a class="post-category post-category-js" href="#">polipo</a>
-            
-              <a class="post-category post-category-js" href="#">tbb</a>
-            
-              <a class="post-category post-category-js" href="#">tor browser bundle</a>
-             |
-            15 Dec 2010
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p><strong>Linux Bundles</strong></p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundle-packages-0">New Tor Browser Bundle packages</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">firefox updates</a>
+              
+                <a class="post-category post-category-js" href="#">https everywhere</a>
+              
+                <a class="post-category post-category-js" href="#">polipo</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+               |
+              15 Dec 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p><strong>Linux Bundles</strong></p>
 
 <p><strong>Important:</strong> Polipo has been removed from the Linux Tor Browser Bundle. Please read the full changelog and <a href="https://trac.torproject.org">report bugs</a> if you have any problems.</p>
 
@@ -335,17 +335,17 @@ We are migrating all translation work over to <a href="https://www.transifex.net
 <li><p>Update HTTPS Everywhere to 0.9.9.development.1</p>
 
 <ul>
-<li>This version of HTTPS-Everywhere is patched to include a fix for bug #2096 which<br>
-prevented globally installed versions of the extension from working. It also<br>
-includes better protection from Firesheep. See the changelog here:<br>
+<li>This version of HTTPS-Everywhere is patched to include a fix for bug #2096 which
+prevented globally installed versions of the extension from working. It also
+includes better protection from Firesheep. See the changelog here:
 <a href="https://www.eff.org/files/Changelog.txt" title="https://www.eff.org/files/Changelog.txt">https://www.eff.org/files/Changelog.txt</a></li>
 </ul></li>
 <li><p>Add Chris Davis&#39;s patch</p>
 
 <ul>
-<li>This patch improves Firefox&#39;s SOCKS support and eliminates the need for Polipo, so<br>
-Torbutton has been reconfigured to just use a SOCKS proxy. Polipo has been removed<br>
-entirely from this release of the Tor Browser Bundle. If this causes you problems,<br>
+<li>This patch improves Firefox&#39;s SOCKS support and eliminates the need for Polipo, so
+Torbutton has been reconfigured to just use a SOCKS proxy. Polipo has been removed
+entirely from this release of the Tor Browser Bundle. If this causes you problems,
 please file a bug: <a href="https://trac.torproject.org/projects/tor" title="https://trac.torproject.org/projects/tor">https://trac.torproject.org/projects/tor</a></li>
 </ul></li>
 <li><p>Rebuild all binaries against glibc 2.7 so they work for older distros again</p></li>
@@ -361,9 +361,9 @@ please file a bug: <a href="https://trac.torproject.org/projects/tor" title="htt
 <li>Update HTTPS-Everywhere to 0.9.9.development.1
 
 <ul>
-<li>This version of HTTPS-Everywhere is patched to include a fix for bug #2096 which<br>
-prevented globally installed versions of the extension from working. It also<br>
-includes better protection from Firesheep. See the changelog here:<br>
+<li>This version of HTTPS-Everywhere is patched to include a fix for bug #2096 which
+prevented globally installed versions of the extension from working. It also
+includes better protection from Firesheep. See the changelog here:
 <a href="https://www.eff.org/files/Changelog.txt" title="https://www.eff.org/files/Changelog.txt">https://www.eff.org/files/Changelog.txt</a></li>
 </ul></li>
 </ul>
@@ -377,30 +377,31 @@ includes better protection from Firesheep. See the changelog here:<br>
 <li>Update HTTPS-Everywhere to 0.9.9.development.1
 
 <ul>
-<li>This version of HTTPS-Everywhere is patched to include a fix for bug #2096 which<br>
-prevented globally installed versions of the extensions from working. It also<br>
-includes better protection from Firesheep. See the changelog here:<br>
+<li>This version of HTTPS-Everywhere is patched to include a fix for bug #2096 which
+prevented globally installed versions of the extensions from working. It also
+includes better protection from Firesheep. See the changelog here:
 <a href="https://www.eff.org/files/Changelog.txt" title="https://www.eff.org/files/Changelog.txt">https://www.eff.org/files/Changelog.txt</a></li>
 </ul></li>
 </ul>
 </p>
-      </div>
-    </section>
-  
+        </div>
+      </section>
+    
 
-   <!-- Pagination links -->
-  <div class="pagination">
-    
-      <a href="/blog/page85" class="previous">Previous</a>
-    
-    <span class="page_number ">Page: 86 of 133</span>
-    
-      <a href="/blog/page87" class="next">Next</a>
-    
+     <!-- Pagination links -->
+    <div class="pagination">
+      
+        <a href="/blog/page85" class="previous">Previous</a>
+      
+      <span class="page_number ">Page: 86 of 133</span>
+      
+        <a href="/blog/page87" class="next">Next</a>
+      
+    </div>
   </div>
+
 </div>
 
-            </div>
 
             <div class="footer">
                 <div class="pure-menu pure-menu-horizontal pure-menu-open">

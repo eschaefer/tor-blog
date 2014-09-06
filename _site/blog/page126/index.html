@@ -22,7 +22,7 @@
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
-            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
             <h1 class="brand-title">The Tor Project Blog</h1>
             <h2 class="brand-tagline">News and events from Tor</h2>
 
@@ -44,34 +44,34 @@
 
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
+
             <!-- A wrapper for all the blog posts -->
-            <div class="posts">
-                <h1 class="content-subhead">Recent Posts</h1>
+<div class="posts">
 
-
-               <div id="home">
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-0.2.1.7-alpha-released">Tor 0.2.1.7-alpha released</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">alpha release</a>
-            
-              <a class="post-category post-category-js" href="#">bugfix</a>
-            
-              <a class="post-category post-category-js" href="#">bugs</a>
-             |
-            21 Nov 2008
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Tor 0.2.1.7-alpha fixes a major security problem in Debian and Ubuntu<br>
-packages (and maybe other packages) noticed by Theo de Raadt, fixes<br>
-a smaller security flaw that might allow an attacker to access local<br>
-services, adds better defense against DNS poisoning attacks on exit<br>
-relays, further improves hidden service performance, and fixes a variety<br>
+  <h1 class="content-subhead">Recent Posts</h1>
+  <div id="home">
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-0.2.1.7-alpha-released">Tor 0.2.1.7-alpha released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha release</a>
+              
+                <a class="post-category post-category-js" href="#">bugfix</a>
+              
+                <a class="post-category post-category-js" href="#">bugs</a>
+               |
+              21 Nov 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Tor 0.2.1.7-alpha fixes a major security problem in Debian and Ubuntu
+packages (and maybe other packages) noticed by Theo de Raadt, fixes
+a smaller security flaw that might allow an attacker to access local
+services, adds better defense against DNS poisoning attacks on exit
+relays, further improves hidden service performance, and fixes a variety
 of other issues.</p>
 
 <p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
@@ -81,117 +81,117 @@ of other issues.</p>
 <p><strong>Security fixes:</strong></p>
 
 <ul>
-<li>The &quot;ClientDNSRejectInternalAddresses&quot; config option wasn&#39;t being<br>
-consistently obeyed: if an exit relay refuses a stream because its<br>
-exit policy doesn&#39;t allow it, we would remember what IP address<br>
-the relay said the destination address resolves to, even if it&#39;s<br>
+<li>The &quot;ClientDNSRejectInternalAddresses&quot; config option wasn&#39;t being
+consistently obeyed: if an exit relay refuses a stream because its
+exit policy doesn&#39;t allow it, we would remember what IP address
+the relay said the destination address resolves to, even if it&#39;s
 an internal IP address. Bugfix on 0.2.0.7-alpha; patch by rovv.</li>
-<li>The &quot;User&quot; and &quot;Group&quot; config options did not clear the<br>
-supplementary group entries for the Tor process. The &quot;User&quot; option<br>
-is now more robust, and we now set the groups to the specified<br>
-user&#39;s primary group. The &quot;Group&quot; option is now ignored. For more<br>
-detailed logging on credential switching, set CREDENTIAL_LOG_LEVEL<br>
-in common/compat.c to LOG_NOTICE or higher. Patch by Jacob Appelbaum<br>
+<li>The &quot;User&quot; and &quot;Group&quot; config options did not clear the
+supplementary group entries for the Tor process. The &quot;User&quot; option
+is now more robust, and we now set the groups to the specified
+user&#39;s primary group. The &quot;Group&quot; option is now ignored. For more
+detailed logging on credential switching, set CREDENTIAL_LOG_LEVEL
+in common/compat.c to LOG_NOTICE or higher. Patch by Jacob Appelbaum
 and Steven Murdoch. Bugfix on 0.0.2pre14. Fixes bug 848.</li>
-<li>Do not use or believe expired v3 authority certificates. Patch<br>
+<li>Do not use or believe expired v3 authority certificates. Patch
 from Karsten. Bugfix in 0.2.0.x. Fixes bug 851.</li>
 </ul>
 
 <p><strong>Minor features:</strong></p>
 
 <ul>
-<li>Now NodeFamily and MyFamily config options allow spaces in<br>
-identity fingerprints, so it&#39;s easier to paste them in.<br>
+<li>Now NodeFamily and MyFamily config options allow spaces in
+identity fingerprints, so it&#39;s easier to paste them in.
 Suggested by Lucky Green.</li>
-<li>Implement the 0x20 hack to better resist DNS poisoning: set the<br>
-case on outgoing DNS requests randomly, and reject responses that do<br>
-not match the case correctly. This logic can be disabled with the<br>
-ServerDNSRamdomizeCase setting, if you are using one of the 0.3%<br>
-of servers that do not reliably preserve case in replies. See<br>
-&quot;Increased DNS Forgery Resistance through 0x20-Bit Encoding&quot;<br>
+<li>Implement the 0x20 hack to better resist DNS poisoning: set the
+case on outgoing DNS requests randomly, and reject responses that do
+not match the case correctly. This logic can be disabled with the
+ServerDNSRamdomizeCase setting, if you are using one of the 0.3%
+of servers that do not reliably preserve case in replies. See
+&quot;Increased DNS Forgery Resistance through 0x20-Bit Encoding&quot;
 for more info.</li>
-<li>Preserve case in replies to DNSPort requests in order to support<br>
+<li>Preserve case in replies to DNSPort requests in order to support
 the 0x20 hack for resisting DNS poisoning attacks.</li>
 </ul>
 
 <p><strong>Hidden service performance improvements:</strong></p>
 
 <ul>
-<li>When the client launches an introduction circuit, retry with a<br>
+<li>When the client launches an introduction circuit, retry with a
 new circuit after 30 seconds rather than 60 seconds.</li>
-<li>Launch a second client-side introduction circuit in parallel<br>
+<li>Launch a second client-side introduction circuit in parallel
 after a delay of 15 seconds (based on work by Christian Wilms).</li>
-<li>Hidden services start out building five intro circuits rather<br>
-than three, and when the first three finish they publish a service<br>
-descriptor using those. Now we publish our service descriptor much<br>
+<li>Hidden services start out building five intro circuits rather
+than three, and when the first three finish they publish a service
+descriptor using those. Now we publish our service descriptor much
 faster after restart.</li>
 </ul>
 
 <p><strong>Minor bugfixes:</strong></p>
 
 <ul>
-<li>Minor fix in the warning messages when you&#39;re having problems<br>
-bootstrapping; also, be more forgiving of bootstrap problems when<br>
+<li>Minor fix in the warning messages when you&#39;re having problems
+bootstrapping; also, be more forgiving of bootstrap problems when
 we&#39;re still making incremental progress on a given bootstrap phase.</li>
-<li>When we&#39;re choosing an exit node for a circuit, and we have<br>
-no pending streams, choose a good general exit rather than one that<br>
+<li>When we&#39;re choosing an exit node for a circuit, and we have
+no pending streams, choose a good general exit rather than one that
 supports &quot;all the pending streams&quot;. Bugfix on 0.1.1.x. Fix by rovv.</li>
-<li>Send a valid END cell back when a client tries to connect to a<br>
-nonexistent hidden service port. Bugfix on 0.1.2.15. Fixes bug<br>
+<li>Send a valid END cell back when a client tries to connect to a
+nonexistent hidden service port. Bugfix on 0.1.2.15. Fixes bug
 
 <ol>
 <li>Patch from rovv.</li>
 </ol></li>
-<li>If a broken client asks a non-exit router to connect somewhere,<br>
-do not even do the DNS lookup before rejecting the connection.<br>
+<li>If a broken client asks a non-exit router to connect somewhere,
+do not even do the DNS lookup before rejecting the connection.
 Fixes another case of bug 619. Patch from rovv.</li>
-<li>Fix another case of assuming, when a specific exit is requested,<br>
-that we know more than the user about what hosts it allows.<br>
+<li>Fix another case of assuming, when a specific exit is requested,
+that we know more than the user about what hosts it allows.
 Fixes another case of bug 752. Patch from rovv.</li>
-<li>Check which hops rendezvous stream cells are associated with to<br>
-prevent possible guess-the-streamid injection attacks from<br>
-intermediate hops. Fixes another case of bug 446. Based on patch<br>
+<li>Check which hops rendezvous stream cells are associated with to
+prevent possible guess-the-streamid injection attacks from
+intermediate hops. Fixes another case of bug 446. Based on patch
 from rovv.</li>
-<li>Avoid using a negative right-shift when comparing 32-bit<br>
+<li>Avoid using a negative right-shift when comparing 32-bit
 addresses. Possible fix for bug 845 and bug 811.</li>
-<li>Make the assert_circuit_ok() function work correctly on circuits that<br>
+<li>Make the assert_circuit_ok() function work correctly on circuits that
 have already been marked for close.</li>
-<li>Fix read-off-the-end-of-string error in unit tests when decoding<br>
+<li>Fix read-off-the-end-of-string error in unit tests when decoding
 introduction points.</li>
-<li>Fix uninitialized size field for memory area allocation: may improve<br>
+<li>Fix uninitialized size field for memory area allocation: may improve
 memory performance during directory parsing.</li>
-<li>Treat duplicate certificate fetches as failures, so that we do<br>
+<li>Treat duplicate certificate fetches as failures, so that we do
 not try to re-fetch an expired certificate over and over and over.</li>
-<li>Do not say we&#39;re fetching a certificate when we&#39;ll in fact skip it<br>
+<li>Do not say we&#39;re fetching a certificate when we&#39;ll in fact skip it
 because of a pending download.</li>
 </ul>
 
 <p>The original announcement can be found at <a href="http://archives.seul.org/or/talk/Nov-2008/msg00229.html" title="http://archives.seul.org/or/talk/Nov-2008/msg00229.html">http://archives.seul.org/or/talk/Nov-2008/msg00229.html</a></p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/five-years-exit-node-operator">Five Years as an Exit Node Operator</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">exit node</a>
-            
-              <a class="post-category post-category-js" href="#">exit relay</a>
-            
-              <a class="post-category post-category-js" href="#">hugging dmca notices</a>
-            
-              <a class="post-category post-category-js" href="#">operator experiences</a>
-            
-              <a class="post-category post-category-js" href="#">tor is benign</a>
-             |
-            11 Nov 2008
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>The official version of <a href="https://www.torproject.org/faq-abuse.html.en#TypicalAbuses">&quot;What to expect&quot;</a> when running a Tor exit relay is fairly brief. This post will be verbose.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/five-years-exit-node-operator">Five Years as an Exit Node Operator</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">exit node</a>
+              
+                <a class="post-category post-category-js" href="#">exit relay</a>
+              
+                <a class="post-category post-category-js" href="#">hugging dmca notices</a>
+              
+                <a class="post-category post-category-js" href="#">operator experiences</a>
+              
+                <a class="post-category post-category-js" href="#">tor is benign</a>
+               |
+              11 Nov 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>The official version of <a href="https://www.torproject.org/faq-abuse.html.en#TypicalAbuses">&quot;What to expect&quot;</a> when running a Tor exit relay is fairly brief. This post will be verbose.</p>
 
 <p>I&#39;ve been running a node since 2003. I first started off running a node in Xen on a server at a colocation datacenter with an un-metered line. The dual Xeon kept up with the demands fairly well. I ran it with the default exit policy with open irc ports. Things went smoothly for many months until my ISP called. The Abuse Department said my IP was reported in a mass irc bot attack against <a href="http://www.dal.net/">DalNet</a>. I spent some time on the phone explaining Tor, explaining how it&#39;s an anonymizing proxy, and how it&#39;s used for good in the world. I highlighted that of the megabits of bandwidth it provided 7x24 for many months, this was the first issue. They asked that I block irc ports, and all would be well. I modified the exit policy to block irc ports.</p>
 
@@ -211,28 +211,28 @@ because of a pending download.</li>
 
 <p>In total, I&#39;ve received around 50 DMCA infringement notices, 20 abuse complaints, and zero visits from the Feds. After 5 years, I must have transferred petabytes of normal Tor traffic. Hopefully, I&#39;ve helped users in restrictive environments see the unfiltered Internet. Or helped people keep their privacy and anonymity intact while online. Sorry to disappoint you if you were expecting SWAT teams and black helicopters and mad car chases through the streets. Real life is much more boring.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/carnival-data-retention-expands">The carnival of data retention expands</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">black boxes</a>
-            
-              <a class="post-category post-category-js" href="#">data retention</a>
-            
-              <a class="post-category post-category-js" href="#">logging</a>
-            
-              <a class="post-category post-category-js" href="#">UK</a>
-             |
-            08 Nov 2008
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>We&#39;ve <a href="https://blog.torproject.org/blog/tor,-germany,-and-data-retention">already asked</a> about how to handle the forthcoming data retention directive in Germany.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/carnival-data-retention-expands">The carnival of data retention expands</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">black boxes</a>
+              
+                <a class="post-category post-category-js" href="#">data retention</a>
+              
+                <a class="post-category post-category-js" href="#">logging</a>
+              
+                <a class="post-category post-category-js" href="#">UK</a>
+               |
+              08 Nov 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>We&#39;ve <a href="https://blog.torproject.org/blog/tor,-germany,-and-data-retention">already asked</a> about how to handle the forthcoming data retention directive in Germany.</p>
 
 <p>A few more governments are either heading down that path, or already there:</p>
 
@@ -245,20 +245,20 @@ because of a pending download.</li>
 
 <p>I suspect we&#39;ll see proposals for this in the USA soon enough.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/anonymity-internet-not-going-away.">Anonymity on the Internet is not going away.</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-             |
-            08 Nov 2008
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>A few people have told me about <a href="http://www.techradar.com/news/computing/will-the-internet-always-be-anonymous--482519">this TechRadar</a> story. The implication is that the US Air Force is going to <a href="https://www.fbo.gov/index?print_preview=1&amp;s=opportunity&amp;mode=form&amp;id=e72854d6e3c1a044038563ef1e0fdfa6&amp;tab=core&amp;tabmode=list&amp;cck=1&amp;au=&amp;ck=">do away</a> with the anonymity of the Internet. In reality, I think these people are looking for Tor&#39;s opinion on this sort of &quot;news&quot;. Rather than pick apart the silliness of the statements, a few things bothered me about the TechRadar article; which I&#39;ve already heard many times.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/anonymity-internet-not-going-away.">Anonymity on the Internet is not going away.</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+               |
+              08 Nov 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>A few people have told me about <a href="http://www.techradar.com/news/computing/will-the-internet-always-be-anonymous--482519">this TechRadar</a> story. The implication is that the US Air Force is going to <a href="https://www.fbo.gov/index?print_preview=1&amp;s=opportunity&amp;mode=form&amp;id=e72854d6e3c1a044038563ef1e0fdfa6&amp;tab=core&amp;tabmode=list&amp;cck=1&amp;au=&amp;ck=">do away</a> with the anonymity of the Internet. In reality, I think these people are looking for Tor&#39;s opinion on this sort of &quot;news&quot;. Rather than pick apart the silliness of the statements, a few things bothered me about the TechRadar article; which I&#39;ve already heard many times.</p>
 
 <p>Let&#39;s tackle the misnomer that the Internet is inherently anonymous. This quote states the &quot;common wisdom&quot;:</p>
 
@@ -282,26 +282,26 @@ because of a pending download.</li>
 
 <p>Anonymity is a defense against the tyranny of the majority. There are <a href="https://www.torproject.org/torusers">many, many valid uses</a> of anonymity tools, such as Tor. The belief that anonymous tools exist only for the edges of societies is narrow-minded. The tools exist and are used by all. Much like the Internet, the tools can be used for good or bad. The negative uses of such tools typically generate huge headlines, but not the positive uses. Raising the profile of the positive uses of anonymity tools, such as Tor, is one of our challenges.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/os-x-vidalia-bundle-thoughts">OS X Vidalia Bundle Thoughts</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">apple os x</a>
-            
-              <a class="post-category post-category-js" href="#">installation</a>
-            
-              <a class="post-category post-category-js" href="#">vidalia bundle</a>
-             |
-            30 Oct 2008
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>A few weeks ago, I watched some non-technical OS X users attempt to install the Vidalia-Tor Bundle. Many of them tried to drag the installation package to Applications. A few were surprised it required an installation at all.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/os-x-vidalia-bundle-thoughts">OS X Vidalia Bundle Thoughts</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">apple os x</a>
+              
+                <a class="post-category post-category-js" href="#">installation</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia bundle</a>
+               |
+              30 Oct 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>A few weeks ago, I watched some non-technical OS X users attempt to install the Vidalia-Tor Bundle. Many of them tried to drag the installation package to Applications. A few were surprised it required an installation at all.</p>
 
 <p>In <a href="http://trac.vidalia-project.net/browser/vidalia/trunk/pkg/osx">Vidalia trunk</a> I committed a different way to install Vidalia, Tor, and Polipo. In this new dmg, you just open it up and drag the Vidalia icon into Applications. You now have Tor, Vidalia, and Polipo pre-configured and running completely out of Applications. While this works well for users that never installed Tor/Vidalia before, it doesn&#39;t work so well for existing installations.</p>
 
@@ -313,23 +313,24 @@ because of a pending download.</li>
 
 <p>Thoughts on ways to make the OS X install easier, ostensibly via drag and drop install? Or is the effort to create a TBB for OS X a better use of resources?</p>
 </p>
-      </div>
-    </section>
-  
+        </div>
+      </section>
+    
 
-   <!-- Pagination links -->
-  <div class="pagination">
-    
-      <a href="/blog/page125" class="previous">Previous</a>
-    
-    <span class="page_number ">Page: 126 of 133</span>
-    
-      <a href="/blog/page127" class="next">Next</a>
-    
+     <!-- Pagination links -->
+    <div class="pagination">
+      
+        <a href="/blog/page125" class="previous">Previous</a>
+      
+      <span class="page_number ">Page: 126 of 133</span>
+      
+        <a href="/blog/page127" class="next">Next</a>
+      
+    </div>
   </div>
+
 </div>
 
-            </div>
 
             <div class="footer">
                 <div class="pure-menu pure-menu-horizontal pure-menu-open">

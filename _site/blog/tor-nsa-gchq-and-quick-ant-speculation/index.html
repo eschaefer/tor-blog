@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor, NSA, GCHQ, and QUICK ANT Speculation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor, NSA, GCHQ, and QUICK ANT Speculation</h2>
+<p class="meta">11 Sep 2013</p>
+
+<div class="event">
+<p>Many Tor users and various press organizations are asking about <a href="https://people.torproject.org/%7Eandrew/2013-09-10-quick-ant-tor-events-qfd.png">one slide in a Brazillian TV broadcast</a>. A graduate student in law and computer science at Stanford University, Jonathan Mayer, then <a href="https://twitter.com/jonathanmayer/status/377292928718499841">speculated on what this &quot;QUICK ANT&quot; could be</a>. Since then, we&#39;ve heard all sorts of theories.</p>
+
+<p>We&#39;ve seen the same slides as you and Jonathan Mayer have seen. It&#39;s not clear what the NSA or GCHQ can or cannot do. It&#39;s not clear if they are &quot;cracking&quot; the various crypto used in Tor, or merely tracking Tor exit relays, Tor relays as a whole, or run their own private Tor network.</p>
+
+<p>What we do know is that if someone can watch the entire Internet all at once, they can watch traffic enter tor and exit tor. This likely de-anonymizes the Tor user. We <a href="https://www.torproject.org/docs/faq.html.en#AttacksOnOnionRouting">describe the problem as part of our FAQ</a>.</p>
+
+<p>We think the most likely explanation here is that they have some &quot;Tor flow detector&quot; scripts that let them pick Tor flows out of a set of flows they&#39;re looking at. This is basically the same problem as the blocking-resistance problem — they could do it by IP address (&quot;that&#39;s a known Tor relay&quot;), or by traffic fingerprint (&quot;that looks like TLS but look here and here how it&#39;s different&quot;), etc.</p>
+
+<p>It&#39;s unlikely to have anything to do with deanonymizing Tor users, except insofar as they might have traffic flows from both sides of the circuit in their database. However, without concrete details, we can only speculate as well. We&#39;d rather spend our time developing Tor and conducting research to make a better Tor.</p>
+
+<p>Thanks to Roger and Lunar for edits and feedback on this post.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

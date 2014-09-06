@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Call for papers: Free and Open Communications on the Internet (FOCI) Workshop"
-permalink: call-papers-free-and-open-communications-internet-foci-workshop
+permalink: blog/call-papers-free-and-open-communications-internet-foci-workshop
 date: 2012-03-22
 author: arma
 category: blog

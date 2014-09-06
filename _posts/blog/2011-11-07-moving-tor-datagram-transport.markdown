@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Moving Tor to a datagram transport"
-permalink: moving-tor-datagram-transport
+permalink: blog/moving-tor-datagram-transport
 date: 2011-11-07
 author: sjmurdoch
 category: blog

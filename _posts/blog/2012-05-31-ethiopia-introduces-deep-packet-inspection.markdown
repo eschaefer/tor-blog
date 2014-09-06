@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ethiopia Introduces Deep Packet Inspection"
-permalink: ethiopia-introduces-deep-packet-inspection
+permalink: blog/ethiopia-introduces-deep-packet-inspection
 date: 2012-05-31
 author: Runa
 category: blog

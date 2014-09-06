@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at University College of London"
-permalink: andrew-university-college-london
+permalink: /events/andrew-university-college-london
 date: 2011-05-16
 startdate: 2011-05-16
 enddate: 2011-05-16

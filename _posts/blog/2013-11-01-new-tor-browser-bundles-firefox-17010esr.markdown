@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles with Firefox 17.0.10esr"
-permalink: new-tor-browser-bundles-firefox-17010esr
+permalink: blog/new-tor-browser-bundles-firefox-17010esr
 date: 2013-11-01
 author: erinn
 category: blog
@@ -14,7 +14,7 @@ tags: ["firefox updates", "tbb", "torbrowser"]
 
 **Tor Browser Bundle (2.3.25-14)**
 
-- Update Firefox to 17.0.10esr  
+- Update Firefox to 17.0.10esr
  [https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#f...](https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.10 "https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.10")
 - Update LibPNG to 1.6.6
 - Update NoScript to 2.6.8.4
@@ -31,7 +31,7 @@ tags: ["firefox updates", "tbb", "torbrowser"]
 
 **Tor Browser Bundle (2.4.17-rc-1)**
 
-- Update Firefox to 17.0.10esr  
+- Update Firefox to 17.0.10esr
  [https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#f...](https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.10 "https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.10")
 - Update LibPNG to 1.6.6
 - Update NoScript to 2.6.8.4

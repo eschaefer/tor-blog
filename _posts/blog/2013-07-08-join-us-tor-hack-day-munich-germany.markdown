@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "JOIN US - Tor Hack Day, Munich, Germany"
-permalink: join-us-tor-hack-day-munich-germany
+permalink: blog/join-us-tor-hack-day-munich-germany
 date: 2013-07-08
 author: kelley
 category: blog
@@ -14,9 +14,9 @@ The agenda and conversations will be determined by you and Tor's team of develop
 
 This event is open to the public and free of charge - no RSVP necessary.
 
-Friday, July 26, 2013  
-Start Time: 10:00 am  
-Location: LRZ building, Sminarraum (H.E. 008), Bolzmannstrabe 1, 85748 Garching,  
+Friday, July 26, 2013
+Start Time: 10:00 am
+Location: LRZ building, Sminarraum (H.E. 008), Bolzmannstrabe 1, 85748 Garching,
 Germany. NOTE: the room is to the right of the main entrance.
 
 For questions please contact [execdir@torproject.org](mailto:execdir@torproject.org)

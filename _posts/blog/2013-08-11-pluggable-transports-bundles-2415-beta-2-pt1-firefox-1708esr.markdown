@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Pluggable transports bundles 2.4.15-beta-2-pt1 with Firefox 17.0.8esr"
-permalink: pluggable-transports-bundles-2415-beta-2-pt1-firefox-1708esr
+permalink: blog/pluggable-transports-bundles-2415-beta-2-pt1-firefox-1708esr
 date: 2013-08-11
 author: dcf
 category: blog

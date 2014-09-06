@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The lifecycle of a new relay"
-permalink: lifecycle-of-a-new-relay
+permalink: blog/lifecycle-of-a-new-relay
 date: 2013-09-11
 author: arma
 category: blog
@@ -14,7 +14,7 @@ I hope this summary will be useful for relay operators. It also provides backgro
 
 A new relay, assuming it is reliable and has plenty of bandwidth, goes through four phases: the unmeasured phase (days 0-3) where it gets roughly no use, the remote-measurement phase (days 3-8) where load starts to increase, the ramp-up guard phase (days 8-68) where load counterintuitively drops and then rises higher, and the steady-state guard phase (days 68+).
 
-[  
+[
  ![The phases of a new relay](https://people.torproject.org/~arma/lifecycle-blog.png)](https://people.torproject.org/~arma/lifecycle-blog.png)
 
 **Phase one: unmeasured (days 0-3).**

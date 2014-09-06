@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Vidalia: get involved!"
-permalink: vidalia-get-involved
+permalink: blog/vidalia-get-involved
 date: 2011-04-12
 author: chiiph
 category: blog
@@ -14,7 +14,7 @@ The other day I was contacted by paulproteus in the #vidalia IRC channel about a
 
 **The idea**
 
-Open Source projects live and die depending on contributors and people that want to see the project evolve, but this isn't so easy sometimes.  
+Open Source projects live and die depending on contributors and people that want to see the project evolve, but this isn't so easy sometimes.
 The guys behind the Build It initiative have a theory about this difficulty:
 
 > "...lots of users of free desktop software want to get involved in customizing or contributing to the project's development, but they haven't gotten to the first step of getting the program to compile."

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Quick thoughts on tor2web"
-permalink: quick-thoughts-tor2web
+permalink: blog/quick-thoughts-tor2web
 date: 2008-12-16
 author: phobos
 category: blog

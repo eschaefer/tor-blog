@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew speaking at IEEE Boston Chapter"
-permalink: andrew-speaking-ieee-boston-chapter
+permalink: /events/andrew-speaking-ieee-boston-chapter
 date: 2012-03-19
 startdate: 2012-03-19
 enddate: 2012-03-19

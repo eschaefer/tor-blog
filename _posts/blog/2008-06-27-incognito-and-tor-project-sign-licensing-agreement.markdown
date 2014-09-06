@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Incognito and The Tor Project sign a licensing agreement"
-permalink: incognito-and-tor-project-sign-licensing-agreement
+permalink: blog/incognito-and-tor-project-sign-licensing-agreement
 date: 2008-06-27
 author: phobos
 category: blog
@@ -14,6 +14,6 @@ At the core of this anonymity is the Tor software and network. In recognition 
 
 Incognito has the right to use the Tor name and the Tor onion logo as needed. The high quality graphics will improve the user experience. The usage of the Tor brand will only further reinforce that Incognito is a legitimate solution using the Tor software.
 
-We welcome the further cooperation and collaboration between Incognito and The  
+We welcome the further cooperation and collaboration between Incognito and The
 Tor Project.
 

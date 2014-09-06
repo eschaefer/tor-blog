@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Conversation with a European Donor"
-permalink: conversation-european-donor
+permalink: blog/conversation-european-donor
 date: 2009-12-03
 author: phobos
 category: blog
@@ -19,7 +19,7 @@ The answer is,
 We continued to discuss the surveillance society that is the UK, and how the UK government is happy to export it to the rest of Europe. Governments are also large and complex. Many times one part of the government proposes and starts to roll out some policy or law, only to have another branch work to stop it. An unrelated, but classic example of this is,
 
 > Anyway, you are right about your characterization of governmental organizations; just look at this link and try not to laugh too loudly:
-> 
+>
 > [http://news.bbc.co.uk/2/hi/uk\_news/politics/8379759.stm](http://news.bbc.co.uk/2/hi/uk_news/politics/8379759.stm "http://news.bbc.co.uk/2/hi/uk\_news/politics/8379759.stm")
 
 It's great to hear from normal people that they are concerned about what is going on in their country. And that they are taking both tacts of supporting technological and political organizations that are working to address these laws. Not everyone has to be an activist to care about what's happening to the Internet.

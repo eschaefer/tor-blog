@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — June 4th, 2014"
-permalink: tor-weekly-news-%E2%80%94-june-4th-2014
+permalink: blog/tor-weekly-news-%E2%80%94-june-4th-2014
 date: 2014-06-04
 author: lunar
 category: blog
@@ -16,7 +16,7 @@ The [Tails live system](https://tails.boum.org/) is a [Debian derivative](https:
 
 The first Tails releases were based on Debian [Lenny](https://www.debian.org/releases/lenny/) (2009-2012); since version 0.7, Tails has been based on Debian [Squeeze](https://www.debian.org/releases/squeeze/) (2011-). Meanwhile, Debian has released a new stable version dubbed [Wheezy](https://www.debian.org/releases/wheezy/), and the upcoming Tails 1.1 will be the first release to be based on the latter.
 
-The general set of features should not change much from the previous Tails release, but almost every software component has been updated. On  
+The general set of features should not change much from the previous Tails release, but almost every software component has been updated. On
 May 30th, the Tails team [released a beta image](https://tails.boum.org/news/test_1.1-beta1/); given the number of changes, testing is even more welcome than usual.
 
 Testers can also try out the new UEFI support, which enables Tails to boot on recent hardware and on Macs.

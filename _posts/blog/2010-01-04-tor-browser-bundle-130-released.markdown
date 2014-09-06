@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser Bundle 1.3.0 Released"
-permalink: tor-browser-bundle-130-released
+permalink: blog/tor-browser-bundle-130-released
 date: 2010-01-04
 author: phobos
 category: blog
@@ -16,11 +16,11 @@ Torbutton 1.2.4 fixes a number of privacy and anonymity issues with the Firefox 
 
 The official changelog is:
 
-- upgrade Firefox to 3.5.6  
-- update Pidgin to 2.6.4  
+- upgrade Firefox to 3.5.6
+- update Pidgin to 2.6.4
 - update Torbutton to 1.2.4
 
-Feel free to file bugs at  
+Feel free to file bugs at
  [https://bugs.torproject.org/flyspray/index.php?tasks=all&project=4](https://bugs.torproject.org/flyspray/index.php?tasks=all&project=4 "https://bugs.torproject.org/flyspray/index.php?tasks=all&project=4").
 
 The original announcement is at [http://archives.seul.org/or/talk/Jan-2010/msg00037.html](http://archives.seul.org/or/talk/Jan-2010/msg00037.html "http://archives.seul.org/or/talk/Jan-2010/msg00037.html")

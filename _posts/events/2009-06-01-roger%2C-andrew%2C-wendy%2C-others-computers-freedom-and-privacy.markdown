@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger, Andrew, Wendy, others at Computers Freedom and Privacy"
-permalink: roger%2C-andrew%2C-wendy%2C-others-computers-freedom-and-privacy
+permalink: /events/roger%2C-andrew%2C-wendy%2C-others-computers-freedom-and-privacy
 date: 2009-06-01
 startdate: 2009-06-01
 enddate: 2009-06-04

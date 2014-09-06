@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Stockholm Internet Forum Trip Report and Clarifications"
-permalink: stockholm-internet-forum-trip-report-and-clarifications
+permalink: blog/stockholm-internet-forum-trip-report-and-clarifications
 date: 2012-04-22
 author: phobos
 category: blog
@@ -28,47 +28,47 @@ Overall, the trip to Sweden was successful. And I hope these five points clarify
 
 * * *
 
-1. 
+1.
 
 [http://www.stockholminternetforum.se/](http://www.stockholminternetforum.se/ "http://www.stockholminternetforum.se/") ↩
 
-2. 
+2.
 
 [http://www.sida.se/](http://www.sida.se/ "http://www.sida.se/") ↩
 
-3. 
+3.
 
 [http://www.regeringen.se/sb/d/7437](http://www.regeringen.se/sb/d/7437 "http://www.regeringen.se/sb/d/7437") ↩
 
-4. 
+4.
 
 [https://www.dfri.se/](https://www.dfri.se/ "https://www.dfri.se/") ↩
 
-5. 
+5.
 
 [http://www.teliasonera.com](http://www.teliasonera.com "http://www.teliasonera.com") ↩
 
-6. 
+6.
 
 [http://www.ohchr.org/EN/Issues/FreedomOpinion/Pages/OpinionIndex.aspx](http://www.ohchr.org/EN/Issues/FreedomOpinion/Pages/OpinionIndex.aspx "http://www.ohchr.org/EN/Issues/FreedomOpinion/Pages/OpinionIndex.aspx") ↩
 
-7. 
+7.
 
 [http://www.onion-router.net/](http://www.onion-router.net/ "http://www.onion-router.net/") ↩
 
-8. 
+8.
 
 [https://www.torproject.org/about/financials.html.en](https://www.torproject.org/about/financials.html.en "https://www.torproject.org/about/financials.html.en") ↩
 
-9. 
+9.
 
 [https://www.torproject.org/about/corepeople.html.en](https://www.torproject.org/about/corepeople.html.en "https://www.torproject.org/about/corepeople.html.en") ↩
 
-10. 
+10.
 
 [https://www.torproject.org/about/jobs.html.en](https://www.torproject.org/about/jobs.html.en "https://www.torproject.org/about/jobs.html.en") ↩
 
-11. 
+11.
 
 [https://media.torproject.org/video/](https://media.torproject.org/video/ "https://media.torproject.org/video/") ↩
 

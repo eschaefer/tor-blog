@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — August, 14th 2013"
-permalink: tor-weekly-news-%E2%80%94-august-14th-2013
+permalink: blog/tor-weekly-news-%E2%80%94-august-14th-2013
 date: 2013-08-14
 author: lunar
 category: blog
@@ -12,7 +12,7 @@ Welcome to the seventh issue of Tor Weekly News, the weekly newsletter that cove
 
 # New Tor Browser Bundle releases
 
-Mozilla released [Firefox version 17.0.8esr](https://www.mozilla.org/en-US/firefox/17.0.8/releasenotes/) on August 6th, fixing several release critical bugs. Three days later, the stable, beta and alpha versions of the Tor Browser Bundle were updated, along with Tails  
+Mozilla released [Firefox version 17.0.8esr](https://www.mozilla.org/en-US/firefox/17.0.8/releasenotes/) on August 6th, fixing several release critical bugs. Three days later, the stable, beta and alpha versions of the Tor Browser Bundle were updated, along with Tails
 (see below).
 
 The stable 2.3.25-11 and 2.4.15-beta-2 also updates HTTPS Everywhere, PDF.js, NoScript and libpng to their latest version. Both bundles had a localization issue which was fixed in the subsequently [released 2.3.25-12 and 2.4.16-beta-1](https://blog.torproject.org/blog/new-tor-02416-rc-packages-and-updated-stable-tor-browser-bundles).
@@ -43,13 +43,13 @@ Erinn Clark has updated the [beta version of the Tor Browser Bundle](https://blo
 
 [Last week events](https://blog.torproject.org/blog/tor-weekly-news-%E2%80%94-august-7th-2013) sparked a good amount of discussions on Tor Browser usability. Several discussions on tor-talk and in other places revolved around the idea that “JavaScript should be disabled by default”. scarp wrote a [good summary](https://lists.torproject.org/pipermail/tor-talk/2013-August/029266.html) on why it is not so simple: “I understand that JavaScript was enabled globally in the Tor Browser Bundle for usability reasons as well as to prevent browser fingerprinting. […] If the torproject were to disable it by default, that would not ensure that users are protected in the future by similar methods. Sites can be written in a way that if you do not allow JavaScript they simply won’t work at all. If I was writing an exploit I’d do this to frustrate users so hopefully they enable JavaScript and accept my exploit.“ Roger Dingledine also [improved](https://lists.torproject.org/pipermail/tor-talk/2013-August/029364.html) the [relevant question in Tor FAQ](https://www.torproject.org/docs/faq.html.en#TBBJavaScriptEnabled).
 
-One possible solution to satisfy contradicting requirements would be to  
-add a “ [security slider](https://bugs.torproject.org/9387)” that would allow users to easily trade off  
+One possible solution to satisfy contradicting requirements would be to
+add a “ [security slider](https://bugs.torproject.org/9387)” that would allow users to easily trade off
 web compatibility over security. The slider would have three or four different positions that would gradually deactivate more and more features of the browser. One has to understand that the “most secure” should probably disable loading of any pictures. This also impacts the Tor Browser anonymity set but this is probably a trade off that can be afforded given the actual size of the Tor Browser user base.
 
 scarp had also pined another big usability problem related to updating: “This exploit wasn’t new. […] Users running the latest Tor Browser Bundle didn’t have any issues as their browsers had been patched. It is inappropriate for a web browser to not be automatically updated.” Nick Mathewson [recapitulated](https://lists.torproject.org/pipermail/tor-dev/2013-August/005228.html) the [latest plan](https://trac.torproject.org/projects/tor/wiki/org/meetings/2013SummerDevMeeting/BundleUpdatePlan) that was discussed during the last summer dev. meeting to simply build upon Firefox update mechanism. The next step is to do a proper review. Hopefully, given it is “mature and widespread” and has been “proven to update Firefox”, we will not “run screaming for the hills” when looking at the disadvantages.
 
-On a more general level, an [unexpected comment](https://twitter.com/BrendanEich/status/364265592112414720) came from Brendan Eich (Mozilla’s chief technology officer) on Twitter: “Maybe we should just adopt, support, and bundle Tor in Firefox...” David Dahl subsequently opened a [bug report in Mozilla’s tracker](https://bugzilla.mozilla.org/show_bug.cgi?id=901614) to discuss a way forward. Mike Perry [commented on a thread on the liberationtech mailing list](https://mailman.stanford.edu/pipermail/liberationtech/2013-August/010650.html): “In short, I am excited by this news, and I look forward to improving our communication and cooperation with Mozilla  
+On a more general level, an [unexpected comment](https://twitter.com/BrendanEich/status/364265592112414720) came from Brendan Eich (Mozilla’s chief technology officer) on Twitter: “Maybe we should just adopt, support, and bundle Tor in Firefox...” David Dahl subsequently opened a [bug report in Mozilla’s tracker](https://bugzilla.mozilla.org/show_bug.cgi?id=901614) to discuss a way forward. Mike Perry [commented on a thread on the liberationtech mailing list](https://mailman.stanford.edu/pipermail/liberationtech/2013-August/010650.html): “In short, I am excited by this news, and I look forward to improving our communication and cooperation with Mozilla
 on this front.”
 
 # Tails 2013 summit
@@ -84,10 +84,10 @@ A new round of GSoC reports arrived to the tor-dev mailing list: Johannes Fürma
 
 More reports came from the July 2013 wave: the [Tor Help Desk](https://lists.torproject.org/pipermail/tor-reports/2013-August/000310.html) by Runa Sandvik, and [Moritz Bartl](https://lists.torproject.org/pipermail/tor-reports/2013-August/000311.html).
 
-Andrew Lewman gave a talk during the US National Network to End Domestic  
-Violence’s (NNEDV) annual technology summit. His [presentation](https://svn.torproject.org/svn/projects/presentations/2013-07-30-NNEDV-Presentation.pdf)  
-covered “a quick overview of Tor, why I’m here talking about domestic  
-violence and intimate partner abuse, and what we’re doing to help.”. Be  
+Andrew Lewman gave a talk during the US National Network to End Domestic
+Violence’s (NNEDV) annual technology summit. His [presentation](https://svn.torproject.org/svn/projects/presentations/2013-07-30-NNEDV-Presentation.pdf)
+covered “a quick overview of Tor, why I’m here talking about domestic
+violence and intimate partner abuse, and what we’re doing to help.”. Be
 sure to read [his report](https://blog.torproject.org/blog/nnedv-tech-summit-2013-report) in full.
 
 Thanks to [Paul Templeton from CoffsWiFi](https://lists.torproject.org/pipermail/tor-commits/2013-August/060352.html), and [nsane](https://lists.torproject.org/pipermail/tor-commits/2013-August/060583.html) for running new Tor website mirrors.

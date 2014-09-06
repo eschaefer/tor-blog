@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "PRISM vs Tor"
-permalink: prism-vs-tor
+permalink: blog/prism-vs-tor
 date: 2013-06-09
 author: mikeperry
 category: blog

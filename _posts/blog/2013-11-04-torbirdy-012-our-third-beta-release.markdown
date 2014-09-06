@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "TorBirdy: 0.1.2 - Our third beta release!"
-permalink: torbirdy-012-our-third-beta-release
+permalink: blog/torbirdy-012-our-third-beta-release
 date: 2013-11-04
 author: ioerror
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Major changes to OS X Vidalia Bundle with 0.2.2.1-alpha"
-permalink: major-changes-os-x-vidalia-bundle-0221alpha
+permalink: blog/major-changes-os-x-vidalia-bundle-0221alpha
 date: 2009-09-03
 author: phobos
 category: blog
@@ -16,7 +16,7 @@ There has been a lot of testing since this [test release](http://blog.torproject
 
 The changes are:
 
-> - Upgrade Vidalia from 0.1.15 to 0.2.3 in the Windows and OS X installer bundles. See [https://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.2.3/CHAN...](https://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.2.3/CHANGELOG "https://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.2.3/CHANGELOG") for details of what's new in Vidalia 0.2.3.  
-> - OS X Vidalia Bundle: move to Polipo 1.0.4 with Tor specific configuration file, rather than the old Privoxy.  
-> - OS X Vidalia Bundle: Vidalia, Tor, and Polipo are compiled as x86-only for better compatibility with OS X 10.6, aka Snow Leopard.  
+> - Upgrade Vidalia from 0.1.15 to 0.2.3 in the Windows and OS X installer bundles. See [https://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.2.3/CHAN...](https://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.2.3/CHANGELOG "https://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.2.3/CHANGELOG") for details of what's new in Vidalia 0.2.3.
+> - OS X Vidalia Bundle: move to Polipo 1.0.4 with Tor specific configuration file, rather than the old Privoxy.
+> - OS X Vidalia Bundle: Vidalia, Tor, and Polipo are compiled as x86-only for better compatibility with OS X 10.6, aka Snow Leopard.
 > - OS X Vidalia Bundle: The multi-package installer is now replaced by a simple drag and drop to the /Applications folder. This change occurred with the upgrade to Vidalia 0.2.3.

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Update on Internet censorship in Iran</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Update on Internet censorship in Iran</h2>
+<p class="meta">21 Jan 2011</p>
+
+<div class="event">
+<p>Here&#39;s a quick update on what we&#39;re seeing from Tor clients in Iran. This is an update to <a href="https://blog.torproject.org/blog/new-blocking-activity-iran" title="https://blog.torproject.org/blog/new-blocking-activity-iran">https://blog.torproject.org/blog/new-blocking-activity-iran</a>. It appears that one of the five Iranian ISPs is experimenting in blocking censorship circumvention tools; such as Tor, Freegate, Ultrasurf, and Hot Spot Shield. There have been reports that this update to censorship technologies was coming soon, <a href="https://www.azadcyber.info/articles/1560" title="https://www.azadcyber.info/articles/1560">https://www.azadcyber.info/articles/1560</a>.</p>
+
+<p>Previously, we had data suggesting that ssl-connections were being throttled or experiencing a forced reduced-throughput. It seems this is no longer the case. A simple IP address access list is used to stop access to the public Tor nodes, as well as many Tor bridges. An example of this blocklist on the Iranian Tor users:</p>
+
+<p><img src="https://blog.torproject.org/files/direct-users-2011-01-21-ir-2010-10-23.png" alt=""></p>
+
+<p>and</p>
+
+<p><img src="https://blog.torproject.org/files/bridge-users-2011-01-21-ir-2010-10-23.png" alt=""></p>
+
+<p>We are seeing success in users choosing to configure their Tor clients to use a <a href="https://www.torproject.org/docs/proxychain">socks or https proxy</a> and then connecting to the public Tor network. The trick here is that Iranian tor users now look to be coming from wherever the open proxy is located. A few volunteers in Europe and SE Asia have setup <a href="http://www.inet.no/dante/">proxy servers</a> restricted to Iranian IP space.</p>
+
+<p>On a more technical level, here&#39;s what we were seeing last week for ssl manipulation, <a href="https://blog.torproject.org/files/https-traffic-flow.txt" title="https://blog.torproject.org/files/https-traffic-flow.txt">https://blog.torproject.org/files/https-traffic-flow.txt</a>. What&#39;s interesting is the tor-server to client communication is with a TTL of 40. The TLSv1 Encrypted Alert is from the tor-server, except the TTL is 39. Unless the tor-server suddenly jumped one hop further from the client, something intercepted the connection and injected that packet on behalf of the tor-server.</p>
+
+<p>This week we&#39;re seeing straight IP blocking after the ssl handshake starts, <a href="https://blog.torproject.org/files/ip-blocking.txt" title="https://blog.torproject.org/files/ip-blocking.txt">https://blog.torproject.org/files/ip-blocking.txt</a>. In both cases, this is to the same tor bridge from the same tor client as before.</p>
+
+<p>In a short few months, Iran has vastly improved the sophistication of their censorship technologies. Right now, the best option is to use tor through open socks/https proxies. A risk is the open proxies can see you are using tor, but cannot see the traffic passing through the open proxy, for everything is wrapped in layers of encryption by Tor. However, it appears the Iranian Potato Wall can detect Tor or not in any case by analyzing the traffic on the wire. We have reports this is true for other circumvention tools as well.</p>
+
+<p>I thank the many people that have taken risks to share data with us.</p>
+
+<p><thead><tr>
+<th>Attachment</th>
+<th>Size</th> </tr></thead><tbody>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/direct-users-2011-01-21-ir-2010-10-23.png">direct-users-2011-01-21-ir-2010-10-23.png</a></td>
+<td>14.75 KB</td> </tr>
+ <tr class="even">
+<td><a href="https://blog.torproject.org/files/bridge-users-2011-01-21-ir-2010-10-23.png">bridge-users-2011-01-21-ir-2010-10-23.png</a></td>
+<td>11.93 KB</td> </tr>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/https-traffic-flow.txt">https-traffic-flow.txt</a></td>
+<td>3.6 KB</td> </tr>
+ <tr class="even">
+<td><a href="https://blog.torproject.org/files/ip-blocking.txt">ip-blocking.txt</a></td>
+<td>3.58 KB</td> </tr>
+</tbody></p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

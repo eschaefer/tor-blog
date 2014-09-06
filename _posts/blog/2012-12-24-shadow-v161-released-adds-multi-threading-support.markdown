@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Shadow v1.6.1 released, adds multi-threading support"
-permalink: shadow-v161-released-adds-multi-threading-support
+permalink: blog/shadow-v161-released-adds-multi-threading-support
 date: 2012-12-24
 author: arma
 category: blog

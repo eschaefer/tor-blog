@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Iran partially blocks encrypted network traffic"
-permalink: iran-partially-blocks-encrypted-network-traffic
+permalink: blog/iran-partially-blocks-encrypted-network-traffic
 date: 2012-02-10
 author: phobos
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger @ Usenix Security Symposium, San Diego, CA"
-permalink: roger-usenix-security-symposium-san-diego-ca
+permalink: /events/roger-usenix-security-symposium-san-diego-ca
 date: 2014-08-20
 startdate: 2014-08-20
 enddate: 2014-08-22

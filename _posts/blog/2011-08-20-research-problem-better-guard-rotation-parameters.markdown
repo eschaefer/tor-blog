@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Research problem: better guard rotation parameters"
-permalink: research-problem-better-guard-rotation-parameters
+permalink: blog/research-problem-better-guard-rotation-parameters
 date: 2011-08-20
 author: arma
 category: blog
@@ -24,9 +24,9 @@ Research question three: how do these answers change as we vary G? Right now we 
 
 Research question four: how would these answers change if we make the cutoffs for getting the Guard flag more liberal, and/or change how we choose what nodes become guards? After all, Tor's anonymity is based on the [diversity of entry and exit points](https://blog.torproject.org/blog/research-problem-measuring-safety-tor-network), and while it may be tough to get around exit relay scarcity, my theory is that our artificial entry point scarcity (because our requirements are overly strict) is needlessly hurting the anonymity Tor can offer.
 
-Our current algorithm for guard selection has three requirements:  
-1) The relay needs to have first appeared longer ago than 12.5% of the relays, or 8 days ago, whichever is shorter.  
-2) The relay needs to advertise at least the median bandwidth in the network, or 250KB/s, whichever is smaller.  
+Our current algorithm for guard selection has three requirements:
+1) The relay needs to have first appeared longer ago than 12.5% of the relays, or 8 days ago, whichever is shorter.
+2) The relay needs to advertise at least the median bandwidth in the network, or 250KB/s, whichever is smaller.
 3) The relay needs to have at least the median weighted-fractional-uptime of relays in the network, or 98% WFU, whichever is smaller. (For WFU, the clock starts ticking when we first hear about the relay; we track the percentage of that time the relay has been up, discounting values by 95% every 12 hours.)
 
 Today's guard cutoffs in practice are "was first sighted at least 8 days ago, advertises 100KB/s of bandwidth, and has 98% WFU."

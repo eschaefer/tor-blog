@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor at SourceBarcelona"
-permalink: tor-sourcebarcelona
+permalink: /events/tor-sourcebarcelona
 date: 2010-09-21
 startdate: 2010-09-21
 enddate: 2010-09-22

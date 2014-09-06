@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Damian @ LinuxFest NW"
-permalink: damian-linuxfest-nw
+permalink: /events/damian-linuxfest-nw
 date: 2013-04-27
 startdate: 2013-04-27
 enddate: 2013-04-28

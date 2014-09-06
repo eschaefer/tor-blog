@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Using Tor hidden services for good"
-permalink: using-tor-good
+permalink: blog/using-tor-good
 date: 2012-01-08
 author: phobos
 category: blog
@@ -10,7 +10,7 @@ tags: ["arab spring", "controversial content hosting", "globaleaks", "hidden ser
 
 Getting good stories for Tor successes is tricky, because if Tor is doing its job, nobody notices. I know a lot of people who have really interesting Tor success stories and have no interest in telling the world who they are and how they managed (until that moment when everybody is reading about them, that is) to stay safe.
 
-Still, there are a bunch of other stories out there that haven't been documented as well. For example, I really like Nasser's story about his experiences in Mauritania:  
+Still, there are a bunch of other stories out there that haven't been documented as well. For example, I really like Nasser's story about his experiences in Mauritania:
  [http://www.technologyreview.com/computing/22427/page4/](http://www.technologyreview.com/computing/22427/page4/ "http://www.technologyreview.com/computing/22427/page4/")
 
 Hidden services have gotten less broad attention from the Tor user base, since most people who install Tor have a website in mind like twitter or indymedia that they want to visit safely. Some good use cases that we've seen for hidden services in particular include:
@@ -25,8 +25,8 @@ Hidden services have gotten less broad attention from the Tor user base, since m
 
 That's a start. It is certainly the case that we (Tor) spend most of our time making the technology better, and not so much of our time figuring out how to market it and change the world's perception on whether being safe online is worthwhile. Please help. :)
 
-You might also like  
- [https://torproject.org/about/torusers.html.en](https://torproject.org/about/torusers.html.en "https://torproject.org/about/torusers.html.en")  
+You might also like
+ [https://torproject.org/about/torusers.html.en](https://torproject.org/about/torusers.html.en "https://torproject.org/about/torusers.html.en")
  [https://blog.torproject.org/blog/we-need-your-good-tor-stories](https://blog.torproject.org/blog/we-need-your-good-tor-stories "https://blog.torproject.org/blog/we-need-your-good-tor-stories")
 
 This blog post was adapted from an email to tor-talk by Roger. See the original email at [https://lists.torproject.org/pipermail/tor-talk/2011-November/021997.htm...](https://lists.torproject.org/pipermail/tor-talk/2011-November/021997.html "https://lists.torproject.org/pipermail/tor-talk/2011-November/021997.html")

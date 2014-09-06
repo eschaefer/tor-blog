@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Research problem: adaptive throttling of Tor clients by entry guards"
-permalink: research-problem-adaptive-throttling-tor-clients-entry-guards
+permalink: blog/research-problem-adaptive-throttling-tor-clients-entry-guards
 date: 2010-09-20
 author: arma
 category: blog

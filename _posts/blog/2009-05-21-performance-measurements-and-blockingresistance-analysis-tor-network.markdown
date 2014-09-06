@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Performance measurements and blocking-resistance analysis in the Tor network"
-permalink: performance-measurements-and-blockingresistance-analysis-tor-network
+permalink: blog/performance-measurements-and-blockingresistance-analysis-tor-network
 date: 2009-05-21
 author: karsten
 category: blog

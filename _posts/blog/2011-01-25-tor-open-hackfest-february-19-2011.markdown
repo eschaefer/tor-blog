@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Open Hackfest: February 19, 2011"
-permalink: tor-open-hackfest-february-19-2011
+permalink: blog/tor-open-hackfest-february-19-2011
 date: 2011-01-25
 author: phobos
 category: blog
@@ -14,6 +14,6 @@ We'll be meeting starting at 10 AM in the new Media Lab building (E14), thanks t
 
 Map: [http://whereis.mit.edu/?go=E14](http://whereis.mit.edu/?go=E14 "http://whereis.mit.edu/?go=E14")
 
-Please attend if you have some interest in programming, advocacy, marketing, or research with Tor, or are willing to be persuaded to entertain an interest. :) Tor's a small project (in terms of number of developers) that could really use your help.  
+Please attend if you have some interest in programming, advocacy, marketing, or research with Tor, or are willing to be persuaded to entertain an interest. :) Tor's a small project (in terms of number of developers) that could really use your help.
 Hope to see you on Saturday!
 

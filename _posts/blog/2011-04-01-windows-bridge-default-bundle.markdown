@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Windows Bridge-by-Default Bundle"
-permalink: windows-bridge-default-bundle
+permalink: blog/windows-bridge-default-bundle
 date: 2011-04-01
 author: erinn
 category: blog

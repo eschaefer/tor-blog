@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles with Firefox 17.0.3esr"
-permalink: new-tor-browser-bundles-firefox-1703esr
+permalink: blog/new-tor-browser-bundles-firefox-1703esr
 date: 2013-02-22
 author: erinn
 category: blog
@@ -22,23 +22,23 @@ We've updated all of the bundles with Firefox 17.0.3esr. This includes significa
 - Update NoScript to 2.6.5.7
 - Firefox patch changes:
 
-  - Exempt remote @font-face fonts from font limits (and prefer them).  
+  - Exempt remote @font-face fonts from font limits (and prefer them).
  (closes: [#8270](https://trac.torproject.org/projects/tor/ticket/8270))
 
-    - Remote fonts (aka "User Fonts") are not a fingerprinting threat, so  
- they should not count towards our CSS font count limits. Moreover,  
- if a CSS font-family rule lists any remote fonts, those fonts are  
- preferred over the local fonts, so we do not reduce the font count  
+    - Remote fonts (aka "User Fonts") are not a fingerprinting threat, so
+ they should not count towards our CSS font count limits. Moreover,
+ if a CSS font-family rule lists any remote fonts, those fonts are
+ preferred over the local fonts, so we do not reduce the font count
  for that rule.
     - This vastly improves rendering and typography for many websites.
   - Disable WebRTC in Firefox build options. (closes: [#8178](https://trac.torproject.org/projects/tor/ticket/8178))
 
-    - WebRTC isn't slated to be enabled until Firefox 18, but the code  
- was getting compiled in already and is capable of creating UDP Sockets  
- and bypassing Tor. We disable it from build as a safety measure. 
+    - WebRTC isn't slated to be enabled until Firefox 18, but the code
+ was getting compiled in already and is capable of creating UDP Sockets
+ and bypassing Tor. We disable it from build as a safety measure.
   - Move prefs.js into omni.ja and extension-overrides. (closes: [#3944](https://trac.torproject.org/projects/tor/ticket/3944))
 
-    - This causes our browser pref changes to appear as defaults. It also  
+    - This causes our browser pref changes to appear as defaults. It also
  means that future updates of TBB should preserve user pref settings.
   - Fix a use-after-free that caused crashing on MacOS (closes: [#8234](https://trac.torproject.org/projects/tor/ticket/8234))
   - Eliminate several redundant, useless, and deprecated Firefox pref settings
@@ -46,9 +46,9 @@ We've updated all of the bundles with Firefox 17.0.3esr. This includes significa
   - Use Firefox's click-to-play barrier for plugins instead of NoScript
   - Set the Tor SOCKS+Control ports to 9150, 9151 respectively on all platforms
 
-    - This fixes a SOCKS race condition with our SOCKS autoport configuration  
- and HTTPS-Everywhere's Tor test. Firefox 17 appears to cache proxy  
- settings per URL now, which resulted in a proxy error for  
+    - This fixes a SOCKS race condition with our SOCKS autoport configuration
+ and HTTPS-Everywhere's Tor test. Firefox 17 appears to cache proxy
+ settings per URL now, which resulted in a proxy error for
  check.torproject.org if we lost the race.
 - Torbutton was updated to 1.5.0. The following issues were fixed:
 
@@ -86,23 +86,23 @@ The following Firefox patch changes are also included in this release:
 - Update NoScript to 2.6.5.7
 - Firefox patch changes:
 
-  - Exempt remote @font-face fonts from font limits (and prefer them).  
+  - Exempt remote @font-face fonts from font limits (and prefer them).
  (closes: [#8270](https://trac.torproject.org/projects/tor/ticket/))
 
-    - Remote fonts (aka "User Fonts") are not a fingerprinting threat, so  
- they should not count towards our CSS font count limits. Moreover,  
- if a CSS font-family rule lists any remote fonts, those fonts are  
- preferred over the local fonts, so we do not reduce the font count  
+    - Remote fonts (aka "User Fonts") are not a fingerprinting threat, so
+ they should not count towards our CSS font count limits. Moreover,
+ if a CSS font-family rule lists any remote fonts, those fonts are
+ preferred over the local fonts, so we do not reduce the font count
  for that rule.
     - This vastly improves rendering and typography for many websites.
   - Disable WebRTC in Firefox build options. (closes: [#8178](https://trac.torproject.org/projects/tor/ticket/8178))
 
-    - WebRTC isn't slated to be enabled until Firefox 18, but the code  
- was getting compiled in already and is capable of creating UDP Sockets  
- and bypassing Tor. We disable it from build as a safety measure. 
+    - WebRTC isn't slated to be enabled until Firefox 18, but the code
+ was getting compiled in already and is capable of creating UDP Sockets
+ and bypassing Tor. We disable it from build as a safety measure.
   - Move prefs.js into omni.ja and extension-overrides. (closes: [#3944](https://trac.torproject.org/projects/tor/ticket/3944))
 
-    - This causes our browser pref changes to appear as defaults. It also  
+    - This causes our browser pref changes to appear as defaults. It also
  means that future updates of TBB should preserve user pref settings.
   - Fix a use-after-free that caused crashing on MacOS (closes: [#8234](https://trac.torproject.org/projects/tor/ticket/8234))
   - Eliminate several redundant, useless, and deprecated Firefox pref settings
@@ -110,9 +110,9 @@ The following Firefox patch changes are also included in this release:
   - Use Firefox's click-to-play barrier for plugins instead of NoScript
   - Set the Tor SOCKS+Control ports to 9150, 9151 respectively on all platforms
 
-    - This fixes a SOCKS race condition with our SOCKS autoport configuration  
- and HTTPS-Everywhere's Tor test. Firefox 17 appears to cache proxy  
- settings per URL now, which resulted in a proxy error for  
+    - This fixes a SOCKS race condition with our SOCKS autoport configuration
+ and HTTPS-Everywhere's Tor test. Firefox 17 appears to cache proxy
+ settings per URL now, which resulted in a proxy error for
  check.torproject.org if we lost the race.
 - Torbutton was updated to 1.5.0. The following issues were fixed:
 

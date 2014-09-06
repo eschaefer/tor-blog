@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Trip report, Arab Bloggers Meeting, Oct 3-7"
-permalink: trip-report-arab-bloggers-meeting-oct-3-7
+permalink: blog/trip-report-arab-bloggers-meeting-oct-3-7
 date: 2011-10-16
 author: arma
 category: blog
@@ -20,7 +20,7 @@ We did a three-hour general security and privacy Q&A on the second workshop day,
 
 Syria and Israel seem to be the scariest adversaries in the area right now, in terms of oppression technology and willingness to use it. Or said another way, if you live in Syria or Palestine, you are especially screwed. We heard some really sad and disturbing stories; but those stories aren't mine to tell here.
 
-We helped to explain the implications of the 54 gigs of Bluecoat logs that got published from inside Syria, detailing URLs and the IP addresses that fetched them. (The IP addresses were scrubbed from the published version of the logs, but the URLs, user agents, timestamps, etc still contain quite sensitive info.)  
+We helped to explain the implications of the 54 gigs of Bluecoat logs that got published from inside Syria, detailing URLs and the IP addresses that fetched them. (The IP addresses were scrubbed from the published version of the logs, but the URLs, user agents, timestamps, etc still contain quite sensitive info.)
  [http://advocacy.globalvoicesonline.org/2011/10/10/bluecoat-us-technology...](http://advocacy.globalvoicesonline.org/2011/10/10/bluecoat-us-technology-surveilling-syrian-citizens-online/ "http://advocacy.globalvoicesonline.org/2011/10/10/bluecoat-us-technology-surveilling-syrian-citizens-online/")
 
 Perhaps most interesting in the Bluecoat logs is the evidence of Bluecoat devices phoning home to get updates. So much for Bluecoat's claims that they don't provide support to Syria. If the US government chose to enforce its existing laws against American companies selling surveillance tools to Syria, it would be a great step toward making Tor users safer in Syria right now: no doubt Syria has some smart people who can configure things locally, but it's way worse when Silicon Valley engineers provide new filter rules to detect protocols like Tor for no additional charge.

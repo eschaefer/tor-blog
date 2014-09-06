@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Updated packages for PowerPC-only OS X"
-permalink: updated-packages-powerpconly-os-x
+permalink: blog/updated-packages-powerpconly-os-x
 date: 2009-07-24
 author: phobos
 category: blog

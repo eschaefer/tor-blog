@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Measuring Tunisian Tor Usage"
-permalink: measuring-tunisian-tor-usage
+permalink: blog/measuring-tunisian-tor-usage
 date: 2011-01-07
 author: phobos
 category: blog
@@ -14,10 +14,10 @@ Out of interest, I wondered how Tor usage in Tunisia has fared over 2010. I wond
 
 It appears we're having an impact in Tunisia. More help is needed.
 
-This is graph of Tor clients directly connecting to the rest of the network:  
+This is graph of Tor clients directly connecting to the rest of the network:
  ![](https://blog.torproject.org/files/direct-users-2010-12-31-tn-2010-01-01.png)
 
-This is a graph of Tor clients connecting through bridges to the rest of the network:  
+This is a graph of Tor clients connecting through bridges to the rest of the network:
  ![](https://blog.torproject.org/files/bridge-users-2010-12-31-tn-2010-01-01.png)
 
 <thead><tr>

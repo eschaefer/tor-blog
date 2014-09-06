@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger @ NSF WATCH Seminar Series, Arlington, VA"
-permalink: roger-nsf-watch-seminar-series-arlington-va
+permalink: /events/roger-nsf-watch-seminar-series-arlington-va
 date: 2014-01-14
 startdate: 2014-01-14
 enddate: 2014-01-14

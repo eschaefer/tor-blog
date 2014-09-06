@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Two incentive designs for Tor"
-permalink: two-incentive-designs-tor
+permalink: blog/two-incentive-designs-tor
 date: 2009-01-17
 author: arma
 category: blog

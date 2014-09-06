@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>TorCtl Deprecation and Stem Plans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>TorCtl Deprecation and Stem Plans</h2>
+<p class="meta">31 Dec 2012</p>
+
+<div class="event">
+<p>Hi all. Just a friendly heads up concerning a couple things going on in our python controller space.</p>
+
+<p>The first is that Mike and I have decided to deprecate <a href="https://gitweb.torproject.org/pytorctl.git">TorCtl</a> and make it a part of TorFlow (the framework used to support the Bandwidth Authorities and SoaT). The TorCtl codebase has largely been frozen for years out of concern for the stability of the Bandwidth Authorities (which lack any tests).</p>
+
+<p>If you&#39;re writing scripts or controller applications for Tor then you&#39;re encouraged to move to either...</p>
+
+<h2></h2>
+
+<h2><a href="https://stem.torproject.org/">Stem</a></h2>
+
+<p>Library with a similar design to TorCtl, but friendlier APIs and documentation. This has reached feature parity with TorCtl and is still being actively developed, so if there&#39;s something it can do to better suit your needs then please let me know!</p>
+
+<h2></h2>
+
+<h2><a href="https://txtorcon.readthedocs.org/">Txtorcon</a></h2>
+
+<p>Twisted controller library written by Meejah, and used in projects like Ooni Probe.</p>
+
+<p>Both of these libraries have extensive test suites and are being very actively maintained.</p>
+
+<hr>
+
+<p>The second part are my plans regarding Stem. As of early December we&#39;ve reached feature completion, covering just about everything in the control-spec and dir-spec.</p>
+
+<p>Next up is migrating our controllers. So far we&#39;ve moved <a href="http://www.atagar.com/arm/">arm</a> (the largest python controller we have) and the <a href="https://gitweb.torproject.org/atagar/tor-utils.git/blob/HEAD:/consensusTracker.py">consensus-tracker</a>. Other controllers we have queued up to move are TorBEL, Tor Weather, and the control interpretor.</p>
+
+<p>I&#39;ve avoided making an initial release announcement for stem because until we have actual users of the library we won&#39;t be sure that we nailed a nice, intuitive API (and hence, can&#39;t promise that it&#39;ll be frozen).</p>
+
+<p>On reflection this is letting the perfect be the enemy of the good. Stem&#39;s API is unlikely to change substantially, and holding off on an initial release poses a chicken-and-egg situation. Users want a frozen API before using stem, but we need users before feeling confident enough to lock down the API.</p>
+
+<p>So here&#39;s what I propose. For the next couple months stem will have an open beta. If you&#39;d like to have input on the future of our python controller space then please give Stem a try and <a href="http://www.atagar.com/contact/">tell me the following</a>...</p>
+
+<h2></h2>
+
+<p>What pain points did you encounter? Is there anything that you&#39;d like to see changed or that we&#39;re missing?</p>
+
+<h2></h2>
+
+<p>If your project is public then please tell me where I can find your code. I&#39;ll review it, both to suggest improvements and see how we can tweak stem to better suit your needs.</p>
+
+<p>In the unlikely event we make a backward incompatible change I&#39;ll check with the beta participants to be sure we don&#39;t break anyone (and submit fixes if we do).</p>
+
+<p>Cheers! -Damian (atagar on irc)</p>
+
+<p>PS. Many thanks to Ravi, Sean, Eoin, Beck, Erik, Megan, Sathyanarayanan, and everyone else who has helped stem get to this point. Happy New Year!</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

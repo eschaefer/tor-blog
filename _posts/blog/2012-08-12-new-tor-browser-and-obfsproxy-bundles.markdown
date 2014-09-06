@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser and Obfsproxy Bundles"
-permalink: new-tor-browser-and-obfsproxy-bundles
+permalink: blog/new-tor-browser-and-obfsproxy-bundles
 date: 2012-08-12
 author: erinn
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger @ USENIX Security Symposium, Washington, DC"
-permalink: roger-usenix-security-symposium-washington-dc
+permalink: /events/roger-usenix-security-symposium-washington-dc
 date: 2013-08-14
 startdate: 2013-08-14
 enddate: 2013-08-16

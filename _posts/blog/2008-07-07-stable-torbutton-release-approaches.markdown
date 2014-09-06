@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Stable Torbutton Release Approaches"
-permalink: stable-torbutton-release-approaches
+permalink: blog/stable-torbutton-release-approaches
 date: 2008-07-07
 author: mikeperry
 category: blog

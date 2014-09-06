@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Florence Hackfest"
-permalink: florence-hackfest
+permalink: /events/florence-hackfest
 date: 2012-07-05
 startdate: 2012-07-05
 enddate: 2012-07-06

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Research problem: adaptive throttling of Tor clients by entry guards</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Research problem: adaptive throttling of Tor clients by entry guards</h2>
+<p class="meta">20 Sep 2010</p>
+
+<div class="event">
+<p>Looking for a paper topic (or a thesis topic)? Here&#39;s a Tor research area that needs more attention. The short version is: if we prevent the really loud users from using too much of the Tor network, how much can it help?</p>
+
+<p>We&#39;ve instrumented Tor&#39;s entry relays so they can rate-limit connections from users, and we&#39;ve instrumented the directory authorities so they can change the rate-limiting parameters globally across the network. Which parameter values improve performance for the Tor network as a whole? How should relays adapt their rate-limiting parameters based on their capacity and based on the network load they see, and what rate-limiting algorithms will work best?</p>
+
+<p>We&#39;d love to <a href="https://www.torproject.org/research">work with you</a> to help answer these questions.</p>
+
+<p><strong>Background:</strong></p>
+
+<p>One of the reasons why Tor is slow is that some people use it for file-sharing or other high-volume transfers. That means if you want to get your instant message cell through, it sometimes needs to wait in line behind a pile of other cells — leading to high latency and, maybe even worse, highly variable latency.</p>
+
+<p>One way to improve the situation is Can and Goldberg&#39;s <a href="http://www.cypherpunks.ca/%7Eiang/pubs/ewma-ccs.pdf">&quot;An Improved Algorithm for Tor Circuit Scheduling&quot;</a>, to be presented next month at ACM CCS 2010 and already integrated into Tor as of 0.2.2.11-alpha. The idea is to track how many cells the relay has handled for each circuit lately, and give priority to cells from quieter circuits.</p>
+
+<p>But while that puts some cells in front of others, it can only work so many miracles: if many cells have been placed in front of your cell it still has to wait, and the more overall load there is in the network, the more often that will happen.</p>
+
+<p>Which leads to the research problem: if we work to keep the really loud flows off the network in the first place, how much can it help?</p>
+
+<p>Tor 0.2.2.15-alpha lets you set the PerConnBWRate and PerConnBWBurst config options in your relay, to use <a href="http://en.wikipedia.org/wiki/Token_bucket">token buckets</a> to rate limit connections from non-relays. Tor 0.2.2.16-alpha added the capability for the directory authorities to broadcast network-wide token bucket parameters, so we can change how much throttling there is and then observe the results on the network.</p>
+
+<p>So the first question is to model how this should work to improve performance at a single entry guard. Say we do periodic performance tests fetching files of size 50KB, 1MB, and 5MB using that relay as our first hop, and say the relay sets PerConnBWRate to 5KB/s and PerConnBWBurst to 2MB. That is, bursts of up to 2 megabytes on the connection are unthrottled, but after that it&#39;s squeezed to a long-term average of 5 kilobytes per second, until the flow lets up at which point the allowed burst slowly builds back up to 2MB. We would expect the 5MB tests to show horrible performance, since they&#39;ll need at least 3000/5=600 seconds to fetch the last 3MB of the file. We would expect the 50KB and 1MB tests to look <em>better</em>, though: if we&#39;re squeezing out the really big flows, there&#39;s more space for what&#39;s left.</p>
+
+<p>We actually performed this <a href="https://trac.torproject.org/projects/tor/ticket/1750">experiment</a>, using Sebastian&#39;s relay fluxe3. You can see here his performance graphs over time. The black dots are individual fetches, the y axis is how many seconds it took to fetch the file, and the x axis is time (the green-shaded areas are when the feature is turned on). Don&#39;t pay too much attention to the blue smoothing line; it&#39;s probably not matching the actual distribution well.</p>
+
+<p><a href="http://sebastianhahn.net/tor/torperf.png"><img src="https://blog.torproject.org/files/1750-torperf-experiment3.png" alt=""></a></p>
+
+<p>Here are the cumulative distribution functions for the same data. The performance gets significantly better both for the 50KB and the 1MB downloads, and as expected gets significantly worse for the 5MB downloads:</p>
+
+<p><a href="https://trac.torproject.org/projects/tor/attachment/ticket/1750/torperf-experiment-ecdf.png"><img src="https://blog.torproject.org/files/1750-torperf-experiment-ecdf2.png" alt=""></a></p>
+
+<p>Here&#39;s the raw data: <a href="http://siv.sunet.se/sebastian/50kb.data">50kb</a>, <a href="http://siv.sunet.se/sebastian/1mb.data">1mb</a>, <a href="http://siv.sunet.se/sebastian/5mb.data">5mb</a>. See the <a href="https://gitweb.torproject.org/torperf.git/blob_plain/HEAD:/measurements-HOWTO">Torperf howto</a> for help interpreting it.</p>
+
+<p>So far so good; we&#39;ve done the proof of concept, and now we need a research group to step in, make it rigorous, and help tackle the real research questions.</p>
+
+<p>The next question is: how well does this trick work under various conditions? It would seem that if there&#39;s plenty of spare bandwidth on the relay, it should have little effect. If we choose parameters that are too lenient, it also would have little effect. But choosing parameters that are too low will hurt normal web browsing users too. Are there rate and burst values that would cleanly separate web browsers from bulk downloaders? Will certain relays (that is, relays with certain characteristics) provide clearer performance improvements than others?</p>
+
+<p>How often is it the case, for various relay capacities and various user loads, that at least one connection is being throttled? The CDFs appear to show improved performance spread out pretty evenly relative to download time. What statistics should we make relays track over time so we can get a better intuition about the load they&#39;re really seeing?</p>
+
+<p>Now is where it gets tricky. If we&#39;re only thinking about one relay turning on this feature in a vacuum, then if that relay has enough capacity to handle all its flows, it should — no sense slowing down <em>anybody</em> if you can handle all the traffic. But instead think of the entire Tor network as a system: your Tor requests might also slow down because a loud Tor flow entered at some other relay and is colliding with yours somewhere along the path. So there&#39;s a reason to squeeze incoming connections even if you have enough capacity to handle them: to reduce the effects of bottlenecks elsewhere in the system. If all relays squeeze client connections, what changes in the performance test results do we expect to see for various rate limiting parameter values?</p>
+
+<p>We have the capability of doing network-wide experiments to validate your theory, by putting the rate and burst in the hourly networkstatus consensus and letting relays pick it up from there. That is, you can modify the global network-wide parameters and then observe the effects in the network. Note that the experiment will be complicated by the fact that only relays running a sufficiently recent version of Tor will honor the parameters; that fraction should increase significantly when Tor 0.2.2.x becomes the new stable release (sometime in late 2010).</p>
+
+<p>And finally, once you have a good intuition about how throttling flows at point X affects flow performance at point Y, we get to the really hard research questions. It&#39;s probably the case that no fixed network-wide rate limiting parameters are going to provide optimal behavior: the parameters ought to be a function of the load patterns on the network and of the capacity of the given relay. Should relays track the flows they&#39;ve seen recently and adapt their throttling parameters over time? Is there some flow distribution that relays can learn the parameters of, such that we e.g. throttle the loudest 10% of flows? Can we approximate optimal behavior when relays base their parameters on only the local behavior they see, or do we need a more global view of the system to choose good parameters? And what does &quot;optimal&quot; mean here anyway? Or said another way, how much flexibility do we have to define optimal, or do the facts here railroad us into prefering certain definitions?</p>
+
+<p>What are the anonymity implications of letting the behavior of user A influence the performance of user B, in the local-view case or the global-view case? We could imagine active attacks that aim to influence the parameters; can those impact anonymity?</p>
+
+<p>As a nice side effect, this feature may provide a defense against Sambuddho&#39;s <a href="http://cs.gmu.edu/%7Eastavrou/research/timing_esorics10.pdf">bandwidth-based link congestion attack</a>, which relies on a sustained high-volume flow — if the attack ever gets precise enough that we can try out our defense and compare.</p>
+
+<p>Here are some other constraints to keep in mind:</p>
+
+<ul>
+<li><p>We need the Burst to be big enough to handle directory fetches (up to a megabyte or two), or things will get really ugly because clients will get slowed down while bootstrapping.</p></li>
+<li><p>Mike&#39;s <a href="https://blog.torproject.org/blog/torflow-node-capacity-integrity-and-reliability-measurements-hotpets">bandwidth authority</a> measurement <a href="https://svn.torproject.org/svn/torflow/trunk/NetworkScanners/BwAuthority/README.BwAuthorities">scripts</a> send traffic over relays to discover their actual capacity relative to their advertised capacity. The larger the claimed capacity, the more they send — up to several megabytes for the fast relays. If relays throttle these bandwidth tests, the directory authorities will assign less traffic to them, making them appear to provide better performance when in fact they&#39;re just being less useful to the network. This is an example of a case where it would be easy to misinterpret your results if you don&#39;t understand the rest of the Tor system. A short-term workaround would be to turn the bandwidth authority Tors into relays so they don&#39;t get throttled.</p></li>
+<li><p>You&#39;ll want to do experiments on an established relay with the Guard flag, or it probably won&#39;t see many client connections except for clients fetching directory updates. Note that the longer a relay has had the Guard flag, the more users it will have attracted; but after a month this effect falls off.</p></li>
+<li><p>Thinking from an economic perspective, it may turn out that the performance for a given user doesn&#39;t actually get better if we throttle the high-volume users, yet we&#39;ve still improved things. That is, if the available capacity of the Tor network improves and thus it is supporting more users, we&#39;ve made a better Tor network even if we didn&#39;t make it faster for individual users. Fortunately, this feedback effect shouldn&#39;t happen for short-term experiments; but it&#39;s something to keep in mind for the long term.</p></li>
+<li><p>It sure would be nice if whatever rate limiting algorithm you recommend is efficient to calculate and update over time. Some relays are seeing tens of thousands of users, and can&#39;t afford much processing time on each.</p></li>
+</ul>
+
+<p><thead><tr>
+<th>Attachment</th>
+<th>Size</th> </tr></thead><tbody>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/1750-torperf-experiment-ecdf2.png">1750-torperf-experiment-ecdf2.png</a></td>
+<td>30.57 KB</td> </tr>
+ <tr class="even">
+<td><a href="https://blog.torproject.org/files/1750-torperf-experiment3.png">1750-torperf-experiment3.png</a></td>
+<td>61.19 KB</td> </tr>
+</tbody></p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

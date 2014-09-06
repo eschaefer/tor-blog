@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A visit to Iceland"
-permalink: visit-iceland
+permalink: blog/visit-iceland
 date: 2011-05-22
 author: phobos
 category: blog

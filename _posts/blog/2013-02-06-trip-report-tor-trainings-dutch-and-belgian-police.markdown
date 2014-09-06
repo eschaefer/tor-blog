@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Trip report: Tor trainings for the Dutch and Belgian police"
-permalink: trip-report-tor-trainings-dutch-and-belgian-police
+permalink: blog/trip-report-tor-trainings-dutch-and-belgian-police
 date: 2013-02-06
 author: arma
 category: blog

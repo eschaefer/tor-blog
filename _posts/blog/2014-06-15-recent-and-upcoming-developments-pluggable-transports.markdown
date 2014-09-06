@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "On recent and upcoming developments in Pluggable Transports"
-permalink: recent-and-upcoming-developments-pluggable-transports
+permalink: blog/recent-and-upcoming-developments-pluggable-transports
 date: 2014-06-15
 author: asn
 category: blog
@@ -63,13 +63,13 @@ Also, since the [recent Google block in China](https://en.greatfire.org/blog/201
 PTs are not very good at IPv6 yet. We identified some of [the](https://trac.torproject.org/projects/tor/ticket/12138) [open](https://trac.torproject.org/projects/tor/ticket/11211) [issues](https://trac.torproject.org/projects/tor/ticket/7961) and hopefully we will fix them too.
 
 * * *
-  
-  
+
+
 
 And that's that for now.
 
 Till next time, enjoy life and give thanks and praises :)
 
-(For what it's worth, this was originally a post in the [tor-talk] mailing list:  
+(For what it's worth, this was originally a post in the [tor-talk] mailing list:
  [https://lists.torproject.org/pipermail/tor-talk/2014-June/033296.html](https://lists.torproject.org/pipermail/tor-talk/2014-June/033296.html "https://lists.torproject.org/pipermail/tor-talk/2014-June/033296.html"))
 

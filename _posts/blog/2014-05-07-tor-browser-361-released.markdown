@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser 3.6.1 is released"
-permalink: tor-browser-361-released
+permalink: blog/tor-browser-361-released
 date: 2014-05-07
 author: mikeperry
 category: blog
@@ -21,7 +21,7 @@ Here is the complete changelog:
   - Update NoScript to 2.6.8.22
   - Bug [11658](https://trac.torproject.org/projects/tor/ticket/11658): Fix proxy configuration for non-Pluggable Transports users
   - Backport Pending Tor Patches:
-    - Bug [8402](https://trac.torproject.org/projects/tor/ticket/8402): Allow Tor proxy configuration while PTs are present 
+    - Bug [8402](https://trac.torproject.org/projects/tor/ticket/8402): Allow Tor proxy configuration while PTs are present
 
-  - Note: The Pluggable Transports themselves have not been updated to support proxy configuration yet. 
+  - Note: The Pluggable Transports themselves have not been updated to support proxy configuration yet.
 

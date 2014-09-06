@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor @ Stockholm Internet Forum"
-permalink: tor-stockholm-internet-forum
+permalink: /events/tor-stockholm-internet-forum
 date: 2014-05-27
 startdate: 2014-05-27
 enddate: 2014-05-29

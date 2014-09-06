@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew talking to International Modern Media Institute"
-permalink: andrew-talking-international-modern-media-institute
+permalink: /events/andrew-talking-international-modern-media-institute
 date: 2011-05-11
 startdate: 2011-05-11
 enddate: 2011-05-11

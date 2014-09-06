@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles (and other packaging updates)"
-permalink: new-tor-browser-bundles-and-other-packaging-updates
+permalink: blog/new-tor-browser-bundles-and-other-packaging-updates
 date: 2011-05-03
 author: erinn
 category: blog
@@ -12,9 +12,9 @@ tags: ["bug fixes", "firefox", "releases", "tbb", "tor", "tor browser", "tor bro
 
 The alpha Vidalia bundles have also been updated with the latest [Torbutton 1.3.3-alpha](https://lists.torproject.org/pipermail/tor-talk/2011-May/020267.html) which has itself been updated to work with the latest Firefox 4.0.1 release and has this notable feature:
 
-> When used with Firefox 4 or the alpha Tor Browser Bundles, it also  
-> features support for youtube videos in HTML5, but you must currently  
-> opt-in for youtube to provide you with HTML5 video as opposed to  
+> When used with Firefox 4 or the alpha Tor Browser Bundles, it also
+> features support for youtube videos in HTML5, but you must currently
+> opt-in for youtube to provide you with HTML5 video as opposed to
 > flash: http://www.youtube.com/html5
 
 Tor Browser Bundle changelogs follow.
@@ -30,13 +30,13 @@ Tor Browser Bundle changelogs follow.
 - Update zlib to 1.2.5
 - Update OpenSSL to 1.0.0d
 
-**Tor Browser Bundle for Linux**  
+**Tor Browser Bundle for Linux**
 1.1.8: Released 2011-04-30
 
 - Update Tor to 0.2.2.25-alpha
 - Update Firefox to 3.6.17
 
-**Tor Browser Bundle for OS X**  
+**Tor Browser Bundle for OS X**
 1.0.16: Released 2011-04-30
 
 - Update Tor to 0.2.2.25-alpha

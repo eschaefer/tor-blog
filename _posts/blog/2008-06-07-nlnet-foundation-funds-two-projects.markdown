@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The NLnet Foundation funds two projects"
-permalink: nlnet-foundation-funds-two-projects
+permalink: blog/nlnet-foundation-funds-two-projects
 date: 2008-06-07
 author: phobos
 category: blog

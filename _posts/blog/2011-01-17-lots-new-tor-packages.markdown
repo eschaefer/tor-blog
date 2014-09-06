@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Lots of new Tor packages"
-permalink: lots-new-tor-packages
+permalink: blog/lots-new-tor-packages
 date: 2011-01-17
 author: erinn
 category: blog
@@ -24,18 +24,18 @@ If you encounter any problems, please file a bug on our [bug tracker](https://tr
 
 **Tor Browser Bundles**
 
-**Windows Bundles**  
+**Windows Bundles**
 **1.3.17: Released 2011-01-16**
 
 - Update Tor to 0.2.1.29
 
-**Linux Bundles**  
+**Linux Bundles**
 **1.1.3: Released 2011-01-16**
 
 - Update Tor to 0.2.2.21-alpha
 - Update NoScript to 2.0.9.3
 
-**OS X Bundles**  
+**OS X Bundles**
 **1.0.10: Released 2011-01-16**
 
 - Update Tor to 0.2.2.21-alpha

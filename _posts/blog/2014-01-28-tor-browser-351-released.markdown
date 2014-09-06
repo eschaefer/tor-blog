@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser 3.5.1 is released"
-permalink: tor-browser-351-released
+permalink: blog/tor-browser-351-released
 date: 2014-01-28
 author: mikeperry
 category: blog
@@ -24,19 +24,19 @@ Here is the list of changes since 3.5.1. The [3.x ChangeLog](https://gitweb.torp
   - Bug 10537: Build an Arabic version of TBB 3.5
   - Update Torbutton to 1.6.5.5
     - Bug 9486: Clear NoScript Temporary Permissions on New Identity
-    - Include Arabic translations 
+    - Include Arabic translations
 
   - Update Tor Launcher to 0.2.4.3
-    - Include Arabic translations 
+    - Include Arabic translations
 
   - Update Tor to 0.2.4.20
   - Update OpenSSL to 1.0.1f
   - Update NoScript to 2.6.8.12
-  - Update HTTPS-Everywhere to 3.4.5 
+  - Update HTTPS-Everywhere to 3.4.5
 
 - Windows
-  - Bug 9259: Enable Accessibility (screen reader) support 
+  - Bug 9259: Enable Accessibility (screen reader) support
 
 - Mac
-  - misc: Update bundle version field in Info.plist (for MacUpdates service) 
+  - misc: Update bundle version field in Info.plist (for MacUpdates service)
 

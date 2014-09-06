@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles (updated for Linux again)"
-permalink: new-tor-browser-bundles-updated-linux-again
+permalink: blog/new-tor-browser-bundles-updated-linux-again
 date: 2012-03-18
 author: erinn
 category: blog

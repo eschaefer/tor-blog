@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Forensic Analysis of Tor on Linux"
-permalink: forensic-analysis-tor-linux
+permalink: blog/forensic-analysis-tor-linux
 date: 2013-04-13
 author: Runa
 category: blog

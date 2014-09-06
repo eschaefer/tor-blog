@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Thoughts on user generated t-shirts?"
-permalink: thoughts-on-user-generated-t-shirts
+permalink: blog/thoughts-on-user-generated-t-shirts
 date: 2009-10-12
 author: phobos
 category: blog

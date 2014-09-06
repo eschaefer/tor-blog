@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "TorCheck rewritten and relaunched!"
-permalink: torcheck-rewritten-and-relaunched%21
+permalink: blog/torcheck-rewritten-and-relaunched%21
 date: 2008-05-01
 author: ioerror
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hidden Services, Current Events, and Freedom Hosting"
-permalink: hidden-services-current-events-and-freedom-hosting
+permalink: blog/hidden-services-current-events-and-freedom-hosting
 date: 2013-08-04
 author: phobos
 category: blog
@@ -18,7 +18,7 @@ Hidden service addresses, aka the dot onion domain, are cryptographically and au
 
 There is no central repository nor registry of addresses. The dot onion address is both the name and routing address for the services hosted at the dot onion. The Tor network uses the .onion-address to direct requests to the hidden server and route back the data from the hidden server to the anonymous user. The design of the Tor network ensures that the user can not know where the server is located and the server can not find out the IP-address of the user, except by intentional malicious means like hidden tracking code embedded in the web pages delivered by the server. Additionally, the design of the Tor network, which is run by thousands of volunteers, ensures that it is impossible to censor or block certain .onion-addresses.
 
-The person, or persons, who run Freedom Hosting are in no way affiliated or connected to The Tor Project, Inc., the organization coordinating the development of the Tor software and research. In the past, adversarial organizations have skipped trying to break Tor hidden services and instead attacked the software running at the server behind the dot onion address. Exploits for PHP, Apache, MySQL, and other software are far more common than exploits for Tor. The current news indicates that someone has exploited the software behind Freedom Hosting. From what is known so far, the breach was used to configure the server in a way that it injects some sort of javascript exploit in the web pages delivered to users. This exploit is used to load a malware payload to infect user's computers. The malware payload could be trying to exploit potential bugs in Firefox 17 ESR, on which our [Tor Browser](https://www.torproject.org/projects/torbrowser) is based. We're investigating these bugs and will fix  
+The person, or persons, who run Freedom Hosting are in no way affiliated or connected to The Tor Project, Inc., the organization coordinating the development of the Tor software and research. In the past, adversarial organizations have skipped trying to break Tor hidden services and instead attacked the software running at the server behind the dot onion address. Exploits for PHP, Apache, MySQL, and other software are far more common than exploits for Tor. The current news indicates that someone has exploited the software behind Freedom Hosting. From what is known so far, the breach was used to configure the server in a way that it injects some sort of javascript exploit in the web pages delivered to users. This exploit is used to load a malware payload to infect user's computers. The malware payload could be trying to exploit potential bugs in Firefox 17 ESR, on which our [Tor Browser](https://www.torproject.org/projects/torbrowser) is based. We're investigating these bugs and will fix
 them if we can.
 
 As for now, one of multiple hidden service hosting companies appears to be down. There are lots of rumors and speculation as to what's happened. We're reading the same news and threads you are and don't have any insider information. We'll keep you updated as details become available.

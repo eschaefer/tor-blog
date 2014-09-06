@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Weekly News — September, 11th 2013</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor Weekly News — September, 11th 2013</h2>
+<p class="meta">11 Sep 2013</p>
+
+<div class="event">
+<p>Welcome to the eleventh issue of Tor Weekly News, the weekly newsletter that covers what is happening in the taut Tor community.</p>
+
+<h1>tor 0.2.4.17-rc is out</h1>
+
+<p>There are now <a href="http://blog.fox-it.com/2013/09/05/large-botnet-cause-of-recent-tor-network-overload/">confirmations</a> that the sudden influx of Tor clients which <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029822.html">started mid-August</a> is indeed coming from a botnet. “I guess all that work we’ve been doing on scalability was a good idea,” wrote Roger Dingledine in a blog post about <a href="https://blog.torproject.org/blog/how-to-handle-millions-new-tor-clients">how to handle millions of new Tor clients</a>.</p>
+
+<p>On September 5th, Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029857.html">announced the release of the third release candidate for the tor 0.2.4 series</a>. This is an emergency release “to help us tolerate the massive influx of users: 0.2.4 clients using the new (faster and safer) ‘NTor’ circuit-level handshakes now effectively <a href="https://bugs.torproject.org/9574">jump the queue</a> compared to the 0.2.3 clients using ‘TAP’ handshakes”.</p>
+
+<p>It also contains several minor bugfixes and some new status messages for better monitoring of the current situation.</p>
+
+<p>Roger <a href="https://lists.torproject.org/pipermail/tor-relays/2013-September/002701.html">asked relay operators to upgrade</a> to 0.2.4.17-rc : “the more relays that upgrade to 0.2.4.17-rc, the more stable and fast Tor will be for 0.2.4 users, despite the huge circuit overload that the network is seeing.”</p>
+
+<p>For relays running Debian or Ubuntu, upgrading to the development branch can be done using the <a href="https://www.torproject.org/docs/debian.html.en#development">Tor project’s package repository</a>. <a href="https://blog.torproject.org/blog/new-tor-02417-rc-packages">New versions of the beta branch of the Tor Browser Bundle</a> are also available since September 6th. The next Tails release, scheduled for <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003622.html">September 19th</a> will <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003621.html">also contain tor 0.2.4.17-rc</a>.</p>
+
+<p>Hopefully, this will be the last release candidate. What looks missing at this point to declare the 0.2.4.x series stable is simply enough time to finish the release notes.</p>
+
+<h1>The future of Tor cryptography</h1>
+
+<p>After the last round of revelations from Edward Snowden, <a href="https://www.schneier.com/blog/archives/2013/09/the_nsa_is_brea.html">described as “explosive” by Bruce Schneier</a>, several threads started on the tor-talk mailing list to discuss Tor cryptography.</p>
+
+<p>A lot of what has been written is speculative at this point. But some have <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029917.html">raised concerns</a> about 1024 bit <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie–Hellman key exchange</a>. This has already been addressed with the introduction of the <a href="https://gitweb.torproject.org/torspec.git/blob_plain/HEAD:/proposals/216-ntor-handshake.txt">“ntor” handshake</a> in 0.2.4 and Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029930.html">encourages everybody to upgrade</a>.</p>
+
+<p><a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029927.html">Another thread</a> prompted Nick to <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029941.html">summarize</a> his views on the future of Tor cryptography. Regarding public keys, “with Tor 0.2.4, forward secrecy uses 256-bit ECC, which is certainly better, but RSA-1024 is still used in some places for signatures. I want to fix all that in 0.2.5 — see <a href="https://gitweb.torproject.org/torspec.git/blob_plain/HEAD:/proposals/220-ecc-id-keys.txt">proposal 220</a>, and George Kadianakis’ draft hidden service improvements ( <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005279.html">descriptors</a>, <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005280.html">identity keys</a>), and so forth.” Regarding symmetric keys, Nick wrote: “We’re using AES128. I’m hoping to move to XSalsa20 or something like it.” In response to a query, Nick clarifies that he doesn’t think AES is broken: only hard to implement right, and only provided in TLS in concert with modes that are somewhat (GCM) or fairly (CBC) problematic.</p>
+
+<p>The effort to design better cryptography for the Tor protocols is not new. More than a year ago, Nick Mathewson presented <a href="https://gitweb.torproject.org/torspec.git/blob_plain/HEAD:/proposals/202-improved-relay-crypto.txt">proposal 202</a> outlining two possible new relay encryption protocols for Tor cells. Nick mentioned that he’s waiting for a promising paper to get finished here before implementation.</p>
+
+<p>A <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029933.html">third question was raised</a> regarding the trust in algorithms certified by the <a href="https://en.wikipedia.org/wiki/National_Institute_of_Standards_and_Technology">US NIST</a>. Nick’s speculations put aside, he also <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029937.html">emphasized</a> that several NIST algorithms were “hard to implement correctly”.</p>
+
+<p>Nick also <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029929.html">plans to change more algorithms</a>: “Over the 0.2.5 series, I want to move even more things (including hidden services) to curve25519 and its allies for public key crypto. I also want to add more hard-to-implement-wrong protocols to our mix: Salsa20 is looking like a much better choice to me than AES nowadays, for instance.”</p>
+
+<p>Nick concluded one of his emails with the words: “these are interesting times for crypto”, which sounds like a good way to put it.</p>
+
+<h1>Toward a better performance measurement tool</h1>
+
+<p>“I just finished […] sketching out the requirements and a software design for a new Torperf implementation“ <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005386.html">announced</a> Karsten Loesing on the tor-dev mailing list.</p>
+
+<p>The report begins with: “Four years ago, we presented a simple tool to measure performance of the Tor network. This tool, called Torperf, requests static files of three different sizes over the Tor network and logs timestamps of various request substeps. These data turned out to be quite useful to observe user-perceived network <a href="https://metrics.torproject.org/performance.html">performance over time</a>. However, static file downloads are not the typical use case of a user browsing the web using Tor, so absolute numbers are not very meaningful. Also, Torperf consists of a bunch of shell scripts which makes it neither very user-friendly to set up and run, nor extensible to cover new use cases.”</p>
+
+<p>The specification lays out the various requirements for the new tool, and details several experiments like visiting high profile websites with an automated graphical web browser, downloading static files, crafting a canonical web page, measuring hidden service performance, and checking on upload capacity.</p>
+
+<p>Karsten added “neither the requirements nor the software design are set in stone, and the implementation, well, does not exist yet. Plenty of options for giving feedback and helping out, and most parts don’t even require specific experience with hacking on Tor. Just in case somebody’s looking for an introductory Tor project to hack on.”</p>
+
+<p>Sathya already <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005388.html">wrote</a> that this was enough material to get the implementation started. The project needs enough work that anyone interested should get involved. Feel free to join him!</p>
+
+<h1>More monthly status reports for August 2013</h1>
+
+<p>The wave of regular monthly reports from Tor project members continued this week with <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000326.html">Sukhbir Singh</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000327.html">Matt Pagan</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000328.html">Ximin Luo</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000329.html">mrphs</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000330.html">Pearl Crescent</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000331.html">Andrew Lewman</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000332.html">Mike Perry</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000333.html">Kelley Misata</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000334.html">Nick Mathewson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000335.html">Jason Tsai</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000336.html">Tails</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000337.html">Aaron</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000338.html">Damian Johnson</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Not all new Tor users are computer programs! According to their <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000336.html">latest report</a>, Tails is now booted twice as much as it was six months ago (from 100,865 to 190,521 connections to the security feed).</p>
+
+<p>Thanks to <a href="http://enn.lu/">Frenn vun der Enn</a> for setting up a <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-September/000351.html">new mirror</a> of the Tor project website.</p>
+
+<p>With the Google Summer of Code ending in two weeks, the students have sent their penultimate reports: Kostas Jakeliunas for the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005380.html">Searchable metrics archive</a>, Johannes Fürmann for <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005394.html">EvilGenius</a>, Hareesan for the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005409.html">Steganography Browser Extension</a>, and Cristian-Matei Toader for <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005412.html">Tor capabilities </a>.</p>
+
+<p>Damian Johnson <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000338.html">announced</a> that he had completed the rewrite of <a href="https://gitweb.torproject.org/doctor.git">DocTor</a> in Python, “a service that pulls hourly consensus information and checks it for a host of issues (directory authority outages, expiring certificates, etc). In the case of a problem it notifies
+ <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-consensus-health">tor-consensus-health@</a>, and we in turn give the authority operator a heads up.”</p>
+
+<p>Matt Pagan has <a href="https://svn.torproject.org/cgi-bin/viewvc.cgi/Tor?view=revision&amp;revision=26333">migrated</a> several <a href="https://www.torproject.org/docs/faq.html">Frequently-Asked Questions</a> from the wiki to the official Tor website. This should enable more users to find the answers they need!</p>
+
+<p>In his <a href="https://lists.torproject.org/pipermail/tor-relays/2013-August/002477.html">previous call for help to collect more statistics</a>, addressed to bridge operators, George Kadianakis forgot to mention that an extra line with “ExtORPort 6669” <a href="https://lists.torproject.org/pipermail/tor-relays/2013-September/002691.html">needed to be added to the tor configuration file</a>. Make sure you do have it if you are running a bridge on the tor master branch.</p>
+
+<p>For the upgrade of tor to the 0.2.4.x series in Tails, a tester <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003617.html">spotted a regression</a> while “playing with an ISO built from experimental, thanks to our Jenkins autobuilder”. This marks a significant milestone in the work on <a href="https://labs.riseup.net/code/issues/5324">automated builds</a> done by several members of the Tails team in the course of the last year!</p>
+
+<p>Tails’ <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003566.html">next “low-hanging fruit” session</a> will be on September 21st at 08:00 UTC. Mark the date if you want to get involved!</p>
+
+<p>David Fifield gave some tips on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005402.html">how to setup a test infrastructure</a> for <a href="https://crypto.stanford.edu/flashproxy/">flash proxy</a>.</p>
+
+<p>Marek Majkowski <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005403.html">reported</a> on how one can use his <a href="https://github.com/majek/fluxcapacitor.git">fluxcapacitor</a> tool to get a test Tor network started with <a href="https://gitweb.torproject.org/chutney.git">Chutney</a> ready in only 6.5 seconds. A vast improvement over the 5 minutes he <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005413.html">initially</a> had to wait!</p>
+
+<p>Eugen Leitl <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029856.html">drew attention</a> to a <a href="http://cryptome.org/2013/09/tor-analysis-hidden-services.pdf">new research paper</a> which aims to analyze the content and popularity of Hidden Services by Alex Biryukov, Ivan Pustogarov, and Ralf-Philipp Weinmann from the University of Luxembourg.</p>
+
+<h1>Tor Help Desk roundup</h1>
+
+<p>The Tor help desk had a number of emails this week asking about the recent stories in the New York Times, the Guardian, and ProPublica regarding NSA’s cryptographic capabilities. Some users asked whether there was a backdoor in Tor. Others asked if Tor’s crypto was broken.</p>
+
+<p>There is absolutely no backdoor in Tor. Tor project members have been <a href="https://blog.torproject.org/blog/calea-2-and-tor">vocal in the past</a> about how tremendously irresponsible it would be to backdoor our users. As it is a frequently-asked question, users have been encouraged to read <a href="http://www.torproject.org/docs/faq.html.en#Backdoor">how the project would respond to institutional pressure</a>.</p>
+
+<p>The Tor project does not have any more facts about NSA’s cryptanalysis capabilities than what has been published in newspapers. Even if there is no actual evidence that Tor encryption is actually broken, the idea is to remain on the safe side by using more trusted algorithms for the Tor protocols. See above for a more detailed write-up.</p>
+
+<h1>Help the Tor community!</h1>
+
+<p>Tor is about protecting everyone’s freedom and privacy. There are <a href="https://www.torproject.org/getinvolved/volunteer.html.en">many ways to help</a> but getting involved in such a busy community can be daunting. Here’s a selection of tasks on which one could get started:</p>
+
+<p><a href="https://bugs.torproject.org/9698">Get tor to log the source of control port connections</a>. It would help in developing controller applications or libraries (like Stem ) to know which program is responsible for a given access to the control facilities of the tor daemon. Knowledge required: C programming, basic understanding of network sockets.</p>
+
+<p><a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005417.html">Diagnose what is currently wrong with Tor Cloud images</a>. <a href="https://cloud.torproject.org/">Tor Cloud</a> is an easy way to deploy bridges and it looks like the automatic upgrade procedure caused problems. Let’s make these virtual machines useful again for censored users. Knowledge required: basic understanding of Ubuntu system administration.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, dope457, mttp, malaparte, harmony, Karsten Loesing, and Nick Mathewson.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

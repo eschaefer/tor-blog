@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew interview at Internet Evolution"
-permalink: andrew-interview-internet-evolution
+permalink: /events/andrew-interview-internet-evolution
 date: 2010-11-11
 startdate: 2010-11-11
 enddate: 2010-11-11

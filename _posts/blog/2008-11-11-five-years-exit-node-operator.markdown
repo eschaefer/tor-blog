@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Five Years as an Exit Node Operator"
-permalink: five-years-exit-node-operator
+permalink: blog/five-years-exit-node-operator
 date: 2008-11-11
 author: phobos
 category: blog

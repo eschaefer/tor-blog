@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Protecting your Internet traffic in volatile times"
-permalink: protecting-your-internet-traffic-volatile-times
+permalink: blog/protecting-your-internet-traffic-volatile-times
 date: 2011-02-02
 author: phobos
 category: blog

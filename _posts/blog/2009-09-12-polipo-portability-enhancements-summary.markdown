@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Polipo Portability Enhancements Summary"
-permalink: polipo-portability-enhancements-summary
+permalink: blog/polipo-portability-enhancements-summary
 date: 2009-09-12
 author: chrisd
 category: blog

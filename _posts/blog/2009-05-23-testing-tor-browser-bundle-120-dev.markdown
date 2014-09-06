@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Testing Tor Browser Bundle 1.2.0-dev"
-permalink: testing-tor-browser-bundle-120-dev
+permalink: blog/testing-tor-browser-bundle-120-dev
 date: 2009-05-23
 author: phobos
 category: blog

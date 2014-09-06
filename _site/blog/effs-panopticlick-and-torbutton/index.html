@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>EFF's Panopticlick and Torbutton</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>EFF's Panopticlick and Torbutton</h2>
+<p class="meta">29 Jan 2010</p>
+
+<div class="event">
+<p>The EFF has recently released a <a href="http://panopticlick.eff.org/">browser fingerprinting test suite</a> that they call <a href="http://panopticlick.eff.org/about.php">Panopticlick</a>. The idea is that in normal operation, your browser leaks a lot of information about its configuration which <a href="https://www.eff.org/deeplinks/2010/01/tracking-by-user-agent">can be used to uniquely fingerprint you</a> independent of your cookies.</p>
+
+<p>Because of how EFF&#39;s testing tool functions, it has created some confusion and concern among Tor users, so I wanted to make a few comments to try to clear things up.</p>
+
+<p>First off, Torbutton has defended against <a href="https://www.torproject.org/torbutton/design/#attacks">these and other types of attacks</a> since the 1.2.0 series began. We make the User Agent of all Torbutton users uniform, we block all plugins both to prevent proxy bypass conditions and to block subtler forms of plugin tracking, we round screen resolution down to 50 pixel multiples, we set the timezone to GMT, and we clear and disable DOM Storage.</p>
+
+<p>In fact, based on <a href="https://www.torproject.org/torbutton/design/#id2530601">my display resolution calculations</a>, we should only be presenting just over 7 bits of information to fingerprint Tor users, and this is only in the form of window size, which for most users either changes from day to day, or is set to a common maximized display size.</p>
+
+<p>Why then does EFF&#39;s page tend to tell Tor users that they are unique amongst the hundreds of thousands of users that have been fingerprinted so far? The answer has largely to do with selection bias. The majority of visitors to EFF&#39;s site are likely not Tor users. Thus Torbutton&#39;s protection mechanisms tend to make Tor users stand out as unique amongst the rest of the web. This is not as bad as it seems. Torbutton&#39;s protection mechanisms are only meant to make all Tor users look uniform amongst themselves, not to make them look like the rest of web users. After all, Tor users are already identifiable because they appear from <a href="https://www.torproject.org/tordnsel/">easily recognizable Tor exit node IP addresses</a>.</p>
+
+<p>What&#39;s more is that these protections are of course not enabled while Tor is disabled. In fact, one of <a href="https://www.torproject.org/torbutton/design/#requirements">Torbutton&#39;s design requirements</a> is to not provide any evidence that you are a Tor user during normal operation.</p>
+
+<p>I&#39;d like to commend the EFF for bringing these web fingerprinting details to the public eye in a way that I unfortunately was unable to do when I first developed protections for them.</p>
+
+<p>However, I wish that they also included or at least referenced <a href="http://whattheinternetknowsaboutyou.com/">url history disclosure information</a> with their tool. After all, if you have history enabled (and you haven&#39;t set Torbutton to block history reads during Non-Tor usage), each URL you visit adds <a href="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy">another bit</a> to the set that can be used to fingerprint you. Often bits that are extremely sensitive, such as which diseases and genetic conditions you have based on your <a href="http://en.wikipedia.org/wiki/Category:Diseases_and_disorders">Wikipedia</a> or <a href="https://www.google.com/health/">Google Health</a> url history. I am convinced that it is only a matter of time before the ad networks begin mining this data to provide targeted ads for over-the-counter and prescription medications and to sell this data to other marketing and insurance firms, if they don&#39;t do it already.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

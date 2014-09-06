@@ -1,10 +1,10 @@
 ---
 layout: event
 title: "Andrew at CIMA/NED Panel"
-permalink: andrew-cimaned-panel
+permalink: /events/andrew-cimaned-panel
 date: 2009-07-07
 startdate: 2009-07-07
-enddate: 
+enddate:
 author: admin
 category: event
 ---

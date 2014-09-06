@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor security advisory: Old Tor Browser Bundles vulnerable"
-permalink: tor-security-advisory-old-tor-browser-bundles-vulnerable
+permalink: blog/tor-security-advisory-old-tor-browser-bundles-vulnerable
 date: 2013-08-05
 author: arma
 category: blog
@@ -19,6 +19,6 @@ This vulnerability was [fixed in Firefox 17.0.7 ESR](https://blog.mozilla.org/se
 
 Tor Browser Bundle users should ensure they're running a recent enough bundle version, and consider taking further security precautions.
 
-Read the full advisory here:  
+Read the full advisory here:
  [https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.h...](https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html "https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html")
 

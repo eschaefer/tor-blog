@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Stockholm May 2014 Trip Report"
-permalink: stockholm-may-2014-trip-report
+permalink: blog/stockholm-may-2014-trip-report
 date: 2014-05-30
 author: phobos
 category: blog
@@ -20,13 +20,13 @@ I spent the rest of the week meeting with some people from potential partners, d
 
 All in all, a successful trip and great time in Sweden.
 
-1. [http://www.stockholminternetforum.se/](http://www.stockholminternetforum.se/ "http://www.stockholminternetforum.se/")  
-2. [https://cyberpanopticonsif.wordpress.com/](https://cyberpanopticonsif.wordpress.com/ "https://cyberpanopticonsif.wordpress.com/")  
-3. [https://www.dfri.se/](https://www.dfri.se/ "https://www.dfri.se/")  
-4. [http://andrewlewman.smugmug.com/SIF14-Panopticon-Panel/](http://andrewlewman.smugmug.com/SIF14-Panopticon-Panel/ "http://andrewlewman.smugmug.com/SIF14-Panopticon-Panel/")  
-5. [https://en.wikipedia.org/wiki/Burkina\_Faso](https://en.wikipedia.org/wiki/Burkina_Faso "https://en.wikipedia.org/wiki/Burkina\_Faso")  
-6. [http://sarahcortes.is/](http://sarahcortes.is/ "http://sarahcortes.is/")  
-7. [http://www.government.se/sb/d/13510](http://www.government.se/sb/d/13510 "http://www.government.se/sb/d/13510")  
+1. [http://www.stockholminternetforum.se/](http://www.stockholminternetforum.se/ "http://www.stockholminternetforum.se/")
+2. [https://cyberpanopticonsif.wordpress.com/](https://cyberpanopticonsif.wordpress.com/ "https://cyberpanopticonsif.wordpress.com/")
+3. [https://www.dfri.se/](https://www.dfri.se/ "https://www.dfri.se/")
+4. [http://andrewlewman.smugmug.com/SIF14-Panopticon-Panel/](http://andrewlewman.smugmug.com/SIF14-Panopticon-Panel/ "http://andrewlewman.smugmug.com/SIF14-Panopticon-Panel/")
+5. [https://en.wikipedia.org/wiki/Burkina\_Faso](https://en.wikipedia.org/wiki/Burkina_Faso "https://en.wikipedia.org/wiki/Burkina\_Faso")
+6. [http://sarahcortes.is/](http://sarahcortes.is/ "http://sarahcortes.is/")
+7. [http://www.government.se/sb/d/13510](http://www.government.se/sb/d/13510 "http://www.government.se/sb/d/13510")
 8. [https://svn.torproject.org/svn/projects/presentations/2014-05-26-Sida-Pr...](https://svn.torproject.org/svn/projects/presentations/2014-05-26-Sida-Presentation.pdf "https://svn.torproject.org/svn/projects/presentations/2014-05-26-Sida-Presentation.pdf")
 
 Originally sent to the [Tor-reports](https://lists.torproject.org/pipermail/tor-reports/2014-May/000538.html) mailing list.

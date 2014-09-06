@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Sebastian @ CryptoParty in Frankfurt, Germany"
-permalink: sebastian-cryptoparty-frankfurt-germany
+permalink: /events/sebastian-cryptoparty-frankfurt-germany
 date: 2013-05-19
 startdate: 2013-05-19
 enddate: 2013-05-19

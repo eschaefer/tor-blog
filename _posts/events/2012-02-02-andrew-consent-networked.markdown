@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at Consent of the Networked"
-permalink: andrew-consent-networked
+permalink: /events/andrew-consent-networked
 date: 2012-02-02
 startdate: 2012-02-02
 enddate: 2012-02-02

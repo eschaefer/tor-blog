@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Installing and using Tor"
-permalink: installing-and-using-tor
+permalink: blog/installing-and-using-tor
 date: 2009-11-20
 author: phobos
 category: blog

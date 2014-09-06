@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Circumvention and Anonymity"
-permalink: circumvention-and-anonymity
+permalink: blog/circumvention-and-anonymity
 date: 2009-01-12
 author: phobos
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Firefox Private Browsing Mode, Torbutton, and Fingerprinting"
-permalink: firefox-private-browsing-mode-torbutton-and-fingerprinting
+permalink: blog/firefox-private-browsing-mode-torbutton-and-fingerprinting
 date: 2010-06-30
 author: mikeperry
 category: blog

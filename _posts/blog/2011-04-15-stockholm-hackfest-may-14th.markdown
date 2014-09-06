@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Stockholm Hackfest, May 14th"
-permalink: stockholm-hackfest-may-14th
+permalink: blog/stockholm-hackfest-may-14th
 date: 2011-04-15
 author: phobos
 category: blog

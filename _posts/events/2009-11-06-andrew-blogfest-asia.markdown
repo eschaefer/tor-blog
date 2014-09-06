@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at Blogfest Asia"
-permalink: andrew-blogfest-asia
+permalink: /events/andrew-blogfest-asia
 date: 2009-11-06
 startdate: 2009-11-06
 enddate: 2009-11-11

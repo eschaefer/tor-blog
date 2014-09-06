@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Check Outage on 03 and 04 July 2013"
-permalink: tor-check-outage-03-and-04-july-2013
+permalink: blog/tor-check-outage-03-and-04-july-2013
 date: 2013-07-04
 author: phobos
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger does talk at Drexel University"
-permalink: roger-talk-drexel
+permalink: /events/roger-talk-drexel
 date: 2009-10-19
 startdate: 2009-10-19
 enddate: 2009-10-19

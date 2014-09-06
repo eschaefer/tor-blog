@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — January 8th, 2014"
-permalink: tor-weekly-news-%E2%80%94-january-8th-2014
+permalink: blog/tor-weekly-news-%E2%80%94-january-8th-2014
 date: 2014-01-08
 author: lunar
 category: blog
@@ -14,7 +14,7 @@ Welcome to the first issue for the year 2014 of Tor Weekly News, the [weekly new
 
 The Chaos Computer Club held its [thirtieth congress](https://events.ccc.de/congress/2013/) in Hamburg, Germany during the days and nights of December 26th-30th. The congress had over 9,000 participants. The topic of pervasive surveillance was more present than ever, and Tor was a common answer to many questions.
 
-“We are living in interesting times” was the subtitle of Jacob Appelbaum  
+“We are living in interesting times” was the subtitle of Jacob Appelbaum
 and Roger Dingledine’s [talk for this year](http://media.ccc.de/browse/congress/2013/30C3_-_5423_-_en_-_saal_1_-_201312272030_-_the_tor_network_-_jacob_-_arma.html). Their tour of what happened to Tor in the past years and more importantly in the past months was seen by more than 3,000 attendees in Hamburg and a couple more from the live stream and recordings. Later on, Sophie Bayerlein had decorated a wall with her [visual summary of the talk](https://events.ccc.de/congress/2013/wiki/Projects:VisualNotes#The_TOR_Project).
 
 The talk was quickly followed by a “How to help Tor?” workshop. Lunar [reported](https://lists.torproject.org/pipermail/tor-reports/2014-January/000420.html) “an overwhelming success as more than 200 people showed up. We were not prepared for helping so many folks waiting to learn how they can help Tor. It still created interesting discussions, I believe, and I hope we will find ways to interact more with the larger community in the upcoming weeks, especially concerning outreach to the general public.”

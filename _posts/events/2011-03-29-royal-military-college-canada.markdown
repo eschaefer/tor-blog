@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Royal Military College of Canada"
-permalink: royal-military-college-canada
+permalink: /events/royal-military-college-canada
 date: 2011-03-29
 startdate: 2011-03-29
 enddate: 2011-03-30

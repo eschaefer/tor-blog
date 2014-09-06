@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at Hakkavélin"
-permalink: andrew-hakkav%C3%A9lin
+permalink: /events/andrew-hakkav%C3%A9lin
 date: 2011-05-12
 startdate: 2011-05-12
 enddate: 2011-05-12

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Real Name Internet versus Reality"
-permalink: real-name-internet-versus-reality
+permalink: blog/real-name-internet-versus-reality
 date: 2011-07-31
 author: phobos
 category: blog

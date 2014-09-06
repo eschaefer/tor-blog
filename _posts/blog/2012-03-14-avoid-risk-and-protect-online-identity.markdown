@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Avoid risk and protect online identity"
-permalink: avoid-risk-and-protect-online-identity
+permalink: blog/avoid-risk-and-protect-online-identity
 date: 2012-03-14
 author: Runa
 category: blog

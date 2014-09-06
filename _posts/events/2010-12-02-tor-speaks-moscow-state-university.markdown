@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor speaks at Moscow State University"
-permalink: tor-speaks-moscow-state-university
+permalink: /events/tor-speaks-moscow-state-university
 date: 2010-12-02
 startdate: 2010-12-02
 enddate: 2010-12-02

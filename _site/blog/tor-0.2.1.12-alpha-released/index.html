@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor 0.2.1.12-alpha is released</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor 0.2.1.12-alpha is released</h2>
+<p class="meta">10 Feb 2009</p>
+
+<div class="event">
+<p>Tor 0.2.1.12-alpha features several more security-related fixes. You
+should upgrade, especially if you run an exit relay (remote crash) or
+a directory authority (remote infinite loop), or you&#39;re on an older
+(pre-XP) or not-recently-patched Windows (remote exploit). It also
+includes a big pile of minor bugfixes and cleanups.</p>
+
+<p><a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+
+<p>Changes in version 0.2.1.12-alpha - 2009-02-08
+<strong>Security fixes:</strong></p>
+
+<ul>
+<li>Fix an infinite-loop bug on handling corrupt votes under certain
+circumstances. Bugfix on 0.2.0.8-alpha.</li>
+<li>Fix a temporary DoS vulnerability that could be performed by
+a directory mirror. Bugfix on 0.2.0.9-alpha; reported by lark.</li>
+<li>Avoid a potential crash on exit nodes when processing malformed
+input. Remote DoS opportunity. Bugfix on 0.2.1.7-alpha.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Let controllers actually ask for the &quot;clients_seen&quot; event for
+getting usage summaries on bridge relays. Bugfix on 0.2.1.10-alpha;
+reported by Matt Edman.</li>
+<li>Fix a compile warning on OSX Panther. Fixes bug 913; bugfix against
+0.2.1.11-alpha.</li>
+<li>Fix a bug in address parsing that was preventing bridges or hidden
+service targets from being at IPv6 addresses.</li>
+<li>Solve a bug that kept hardware crypto acceleration from getting
+enabled when accounting was turned on. Fixes bug 907. Bugfix on
+0.0.9pre6.</li>
+<li>Remove a bash-ism from configure.in to build properly on non-Linux
+platforms. Bugfix on 0.2.1.1-alpha.</li>
+<li>Fix code so authorities _actually_ send back X-Descriptor-Not-New
+headers. Bugfix on 0.2.0.10-alpha.</li>
+<li>Don&#39;t consider expiring already-closed client connections. Fixes
+bug 893. Bugfix on 0.0.2pre20.</li>
+<li>Fix another interesting corner-case of bug 891 spotted by rovv:
+Previously, if two hosts had different amounts of clock drift, and
+one of them created a new connection with just the wrong timing,
+the other might decide to deprecate the new connection erroneously.
+Bugfix on 0.1.1.13-alpha.</li>
+<li>Resolve a very rare crash bug that could occur when the user forced
+a nameserver reconfiguration during the middle of a nameserver
+probe. Fixes bug 526. Bugfix on 0.1.2.1-alpha.</li>
+<li>Support changing value of ServerDNSRandomizeCase during SIGHUP.
+Bugfix on 0.2.1.7-alpha.</li>
+<li>If we&#39;re using bridges and our network goes away, be more willing
+to forgive our bridges and try again when we get an application
+request. Bugfix on 0.2.0.x.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Support platforms where time_t is 64 bits long. (Congratulations,
+NetBSD!) Patch from Matthias Drochner.</li>
+<li>Add a &#39;getinfo status/clients-seen&#39; controller command, in case
+controllers want to hear clients_seen events but connect late.</li>
+</ul>
+
+<p><strong>Build changes:</strong></p>
+
+<ul>
+<li>Disable GCC&#39;s strict alias optimization by default, to avoid the
+likelihood of its introducing subtle bugs whenever our code violates
+the letter of C99&#39;s alias rules.</li>
+</ul>
+
+<p>The original announcement can be found at <a href="http://archives.seul.org/or/talk/Feb-2009/msg00054.html" title="http://archives.seul.org/or/talk/Feb-2009/msg00054.html">http://archives.seul.org/or/talk/Feb-2009/msg00054.html</a></p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

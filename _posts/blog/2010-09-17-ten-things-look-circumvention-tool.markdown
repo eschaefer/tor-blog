@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ten Things to Look for in a Circumvention Tool"
-permalink: ten-things-look-circumvention-tool
+permalink: blog/ten-things-look-circumvention-tool
 date: 2010-09-17
 author: phobos
 category: blog

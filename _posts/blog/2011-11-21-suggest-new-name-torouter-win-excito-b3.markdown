@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Suggest a new name for the Torouter, win an Excito B3"
-permalink: suggest-new-name-torouter-win-excito-b3
+permalink: blog/suggest-new-name-torouter-win-excito-b3
 date: 2011-11-21
 author: Runa
 category: blog

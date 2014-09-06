@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Improvements on Hidden Service Performance -- or not?"
-permalink: improvements-hidden-service-performance-or-not%3F
+permalink: blog/improvements-hidden-service-performance-or-not%3F
 date: 2009-01-15
 author: karsten
 category: blog

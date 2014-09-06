@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Reading links, 21 March 2011 edition"
-permalink: reading-links-21-march-2011-edition
+permalink: blog/reading-links-21-march-2011-edition
 date: 2011-03-22
 author: phobos
 category: blog

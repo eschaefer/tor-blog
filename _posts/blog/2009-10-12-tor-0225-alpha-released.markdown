@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor 0.2.2.5-alpha released"
-permalink: tor-0225-alpha-released
+permalink: blog/tor-0225-alpha-released
 date: 2009-10-12
 author: phobos
 category: blog
@@ -24,6 +24,6 @@ It contains:
 
 **Code simplifications and refactorings**
 
-- Numerous changes, bugfixes, and workarounds from Nathan Freitas  
+- Numerous changes, bugfixes, and workarounds from Nathan Freitas
  to help Tor build correctly for Android phones.
 

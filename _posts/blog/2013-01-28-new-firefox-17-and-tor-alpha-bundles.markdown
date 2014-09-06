@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Firefox 17 and Tor alpha bundles"
-permalink: new-firefox-17-and-tor-alpha-bundles
+permalink: blog/new-firefox-17-and-tor-alpha-bundles
 date: 2013-01-28
 author: erinn
 category: blog
@@ -25,7 +25,7 @@ All of the Tor packages have been updated with Tor 0.2.4.9-alpha as well.
 - Update Torbutton to 1.5.0pre-alpha
 - Update NoScript to 2.6.4.3
 - Update HTTPS-Everywhere to 4.0development.5
-- Add Mozilla's PDF.js extension to give people the ability to read PDFs in  
+- Add Mozilla's PDF.js extension to give people the ability to read PDFs in
  TBB
 - Prevent TBB from trying to access the X session manager (closes: #5261)
 

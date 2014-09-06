@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>How to read our China usage graphs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>How to read our China usage graphs</h2>
+<p class="meta">17 Mar 2014</p>
+
+<div class="event">
+<p>Recently somebody asked me why our usage numbers in China are so low. More precisely, his question was &quot;How do I read <a href="https://metrics.torproject.org/users.html?graph=userstats-bridge-country&amp;start=2011-10-18&amp;end=2014-01-16&amp;country=cn#userstats-bridge-country">this graph</a> in any way other than &#39;Tor is effectively blocked in China&#39;?&quot; After writing up an answer for him, I realized I should share it with the rest of the Tor community too.</p>
+
+<p>The correct interpretation of the graph is &quot;obfs3 bridges have not been deployed enough to keep up with the demand in China&quot;. So it isn&#39;t that Tor is blocked — it&#39;s that we haven&#39;t done much of a deployment for obfs3 bridges or ScrambleSuit bridges, which are the latest steps in the arms race.</p>
+
+<p>The short explanation is that <a href="https://svn.torproject.org/svn/projects/design-paper/blocking.html#sec:network-fingerprint">the old vanilla SSL Tor transport</a> doesn&#39;t work in China anymore due to their <a href="http://freehaven.net/anonbib/#foci12-winter">active probing infrastructure</a>. The <a href="https://gitweb.torproject.org/pluggable-transports/obfsproxy.git/blob/HEAD:/doc/obfs2/obfs2-protocol-spec.txt">obfs2 transport</a> doesn&#39;t work anymore either, for the same reason. The <a href="https://gitweb.torproject.org/pluggable-transports/obfsproxy.git/blob/HEAD:/doc/obfs3/obfs3-protocol-spec.txt">obfs3 transport</a> works great for now, and thousands of people are happily using it — and some of those people aren&#39;t reflected in the graphs you see (I&#39;ll explain that more below).</p>
+
+<p>The medium-length explanation is that we&#39;ve been leading and coordinating the international research effort at understanding how to design and analyze <a href="https://www.torproject.org/docs/pluggable-transports">transports that resist both DPI and active probing</a>, and approximately none of these approaches have been deployed at a large scale yet. So it doesn&#39;t make sense to say that Tor is blocked in China, because it mischaracterizes Tor as a static protocol. &quot;Tor&quot; when it comes to censorship circumvention is a toolbox of options — some of them work in China, some don&#39;t. The ones that work (i.e. that should resist both DPI and active probing) haven&#39;t been rolled out very widely, in large part because we have funders who care about the research side but we have nobody who funds the operations, deployment, or scale-up side.</p>
+
+<p>The long explanation is that it comes down to three issues:</p>
+
+<p>First, there are some technical steps we haven&#39;t finished deploying in terms of collecting statistics about users of <a href="https://www.torproject.org/docs/bridges">bridges</a> + <a href="https://www.torproject.org/docs/pluggable-transports">pluggable transports</a>. The reason is that the server side of the pluggable transport needs to inform the Tor bridge what country the user was from, so the Tor bridge can include that in its (aggregated, anonymized) <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/196-transport-control-ports.txt">stats that it publishes to the metrics portal</a>. We&#39;ve now built most of the pieces, but most of the deployed bridges aren&#39;t running the new code yet. So the older bridges that are reporting their user statistics aren&#39;t seeing very many users from China, while the bridges that *aren&#39;t* reporting their user statistics, which are the ones that offer the newer pluggable transports, aren&#39;t well-represented in the graph. We have some nice volunteers looking into <a href="https://trac.torproject.org/projects/tor/ticket/10680">what fraction of deployed obfs3 bridges don&#39;t have this new &#39;extended ORPort&#39; feature</a>. But (and you might notice the trend here) we don&#39;t have any funders currently who care about counting bridge users in China.</p>
+
+<p>Second, we need to get more addresses. One approach is to get them from volunteers who sign up their computer as a bridge. That provides great sustainability in terms of community involvement (we did a similar push for obfs2 bridges back when Iran was messing with SSL, and got enough to make a real difference at the time), but one address per volunteer doesn&#39;t scale very well. The intuition is that the primary resource that relays volunteer is bandwidth, whereas the primary resource that bridges volunteer is their address — and while bandwidth is an ongoing contribution, once your IP address gets blocked then your contribution has ended, at least for the country that blocked it, or until you get another address via DHCP, etc. The more scalable approaches to getting bridge addresses involve coordinating with ISPs and network operators, and/or designs like <a href="https://crypto.stanford.edu/flashproxy/">Flashproxy</a> to make it really easy for users to sign up their address. I describe these ideas more in &quot;approach four&quot; and &quot;approach five&quot; of the <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">Strategies for getting more bridge addresses</a> blog post. But broad deployment of those approaches is again an operational thing, and we don&#39;t have any funded projects currently for doing it.</p>
+
+<p>Third, we need ways of letting people learn about bridges and use them without getting them noticed. We used to think the arms race here was &quot;how do you give out addresses such that the good guys can learn a few while the bad guys can&#39;t learn all of them&quot;, a la the bridges.torproject.org question. But it&#39;s increasingly clear that scanning resistance will be the name of the game in China: your transport has to not only blend in with many other flows (to drive up the number of scans they have to launch), but also when they connect to that endpoint and speak your protocol, your service needs to look unobjectionable there as well. Some combination of <a href="http://www.cs.kau.se/philwint/scramblesuit/">ScrambleSuit</a> and <a href="https://fteproxy.org/">FTE</a> are great starts here, but it sure is a good thing that the research world has been working on so many prototype designs lately.</p>
+
+<p>So where does that leave us? It would be neat to think about a broad deployment and operations plan here. I would want to do it in conjunction with some other groups, like Team Cymru on the technical platform side and some on-the-ground partner groups for distributing bridge addresses more effectively among social networks. We&#39;ve made some good progress on the underlying technologies that would increase the success chances of such a deployment — though we&#39;ve mostly been doing it using volunteers in our spare time on the side, so it&#39;s slower going than it could be. And several other groups (e.g. <a href="https://blog.torservers.net/20131213/torservers-awarded-250000-by-digital-defenders.html">torservers.net</a>) have recently gotten funding for deploying Tor bridges, so maybe we could combine well with them.</p>
+
+<p>In any case it won&#39;t be a quick and simple job, since all these pieces have to come together. It&#39;s increasingly clear that just getting addresses should be the easy part of this. It&#39;s how you give them out, and what you run on the server side to defeat China&#39;s scanning, that still look like the two tough challenges for somebody trying to scale up their circumvention tool design.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "iSEC Partners Conducts Tor Browser Hardening Study"
-permalink: isec-partners-conducts-tor-browser-hardening-study
+permalink: blog/isec-partners-conducts-tor-browser-hardening-study
 date: 2014-08-19
 author: mikeperry
 category: blog

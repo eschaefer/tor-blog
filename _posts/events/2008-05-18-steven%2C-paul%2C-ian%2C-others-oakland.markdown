@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Steven, Paul, Ian, others at Oakland"
-permalink: steven%2C-paul%2C-ian%2C-others-oakland
+permalink: /events/steven%2C-paul%2C-ian%2C-others-oakland
 date: 2008-05-18
 startdate: 2008-05-18
 enddate: 2008-05-22

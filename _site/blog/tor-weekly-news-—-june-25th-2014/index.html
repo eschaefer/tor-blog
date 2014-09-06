@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Weekly News — June 25th, 2014</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor Weekly News — June 25th, 2014</h2>
+<p class="meta">25 Jun 2014</p>
+
+<div class="event">
+<p>Welcome to the twenty-fifth issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the community around Tor, the “ <a href="https://lists.torproject.org/pipermail/tor-talk/2014-June/033358.html">fine-meshed net</a>”.</p>
+
+<h1>Tor 0.2.5.5-alpha is out</h1>
+
+<p>Tor 0.2.5.5-alpha was <a href="https://lists.torproject.org/pipermail/tor-talk/2014-June/033347.html">released</a>, fixing “a wide variety of remaining issues in the Tor 0.2.5.x release series, including a couple of DoS issues, some performance regressions, a large number of bugs affecting the Linux seccomp2 sandbox code, and various other bugfixes”, in Nick Mathewson’s words. Among the major security improvements is an adjustment to the way Tor decides when to close TLS connections, which “should improve Tor’s resistance against some kinds of traffic analysis, and lower some overhead from needlessly closed connections”.</p>
+
+<p>You can download the <a href="https://www.torproject.org/dist/">source tarball</a>, or install the package by following the <a href="https://www.torproject.org/docs/installguide">instructions for your system</a>. This release is also now available in the <a href="http://packages.qa.debian.org/t/tor/news/20140619T120436Z.html">Debian</a> and <a href="https://www.torproject.org/docs/debian.html.en#development">Tor Project</a> repositories.</p>
+
+<h1>Debian Wheezy’s tor version to be updated</h1>
+
+<p>Following a <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=751977">suggestion by Peter Palfrader</a>, Debian developers are preparing to update the version of tor found in the Debian stable repositories from 0.2.3.25 to 0.2.4.22. Among the chief motives for doing so is that “about a quarter of the Tor network (just considering the relays, not any clients), is on 0.2.3.25, presumably because they run Debian stable. If they all upgraded to the 0.2.4.x tree, the network as a whole would become a lot more secure as 0.2.4.x allows clients to use stronger crypto for connections built through these nodes.” Other benefits, including the various measures taken to defend against OpenSSL vulnerabilities discovered earlier this year, make this an attractive proposal.</p>
+
+<p>The <a href="https://lists.debian.org/debian-changes/2014/06/msg00072.html">update</a> will be shipped in the forthcoming point release (7.6) of Debian Wheezy, on July 12th.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Building on the <a href="https://lists.torproject.org/pipermail/tor-qa/2014-May/000414.html">May release</a> of experimental Tor Browsers hardened with AddressSanitizer (ASan), Georg Koppen <a href="https://lists.torproject.org/pipermail/tor-qa/2014-June/000428.html">announced</a> a new set of experimental Linux builds that include both AddressSanitizer and Undefined Behaviour Sanitizer (UBSan), asking for testing and feedback. See Georg’s message for download and build instructions, as well as a couple of known issues.</p>
+
+<p>Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-talk/2014-June/033376.html">reminded</a> Tor users, relay operators, and especially hidden service administrators that tor’s 0.2.2 series is no longer supported, and many features will soon stop working entirely; if you are affected, then please upgrade!</p>
+
+<p>Several of Tor’s Google Summer of Code students submitted their regular progress reports: Daniel Martí on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-June/007030.html">implementation of consensus diffs</a>, Mikhail Belous on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-June/007034.html">multicore tor daemon</a>, Juha Nurmi on the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-June/000564.html">ahmia.fi project</a>, Zack Mullaly on the <a href="https://lists.eff.org/pipermail/https-everywhere/2014-June/002147.html">HTTPS Everywhere secure ruleset update mechanism</a>, Amogh Pradeep on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-June/007036.html">Orbot+Orfox project</a>, Sreenatha Bhatlapenumarthi on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-June/007037.html">Tor Weather rewrite</a>, Marc Juarez on the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-June/000567.html">link-padding pluggable transport development</a>, Israel Leiva on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-June/007039.html">GetTor revamp</a>, Quinn Jarrell on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-June/007040.html">pluggable transport combiner</a>, Kostas Jakeliunas on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-June/007041.html">BridgeDB Twitter Distributor</a>, and Noah Rahman on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-June/007043.html">Stegotorus security enhancement</a>.</p>
+
+<p>Researchers from the Internet Geographies project at the Oxford Internet Institute <a href="http://geography.oii.ox.ac.uk/?page=tor">produced a cartogram</a> of Tor users by country, using archived data freely available from the Tor Project’s <a href="https://metrics.torproject.org">own Metrics portal</a>, along with an analysis of the resulting image. “As ever more governments seek to control and censor online activities, users face a choice to either perform their connected activities in ways that adhere to official policies, or to use anonymity to bring about a freer and more open Internet”, they conclude.</p>
+
+<p>Andrew Lewman <a href="https://lists.torproject.org/pipermail/tor-relays/2014-June/004752.html">reported</a> that users with email addresses at Yahoo and AOL have been removed from the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-relays">tor-relays mailing list</a>, as these addresses have been bouncing list emails.</p>
+
+<p>Thanks to the <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-June/000617.html">FoDT.it webteam</a> and <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-June/000619.html">Maxanoo</a> for running mirrors of the Tor Project’s website!</p>
+
+<p>fr33tux <a href="https://lists.torproject.org/pipermail/tor-talk/2014-June/033337.html">shared</a> the <a href="http://fr33tux.org/data/prez.pdf">slides</a> for a French-language presentation on Tor, delivered at Université de technologie Belfort-Montbéliard. The source code (in the LaTeX markup language) is <a href="http://git.fr33tux.org/conference_tor_utbm.git">also available</a>: “feel free to borrow whatever you want from it!”</p>
+
+<p>Thanks to Ximin Luo, the server component of <a href="https://crypto.stanford.edu/flashproxy/">Flashproxy</a> is now available in Debian in the <a href="https://packages.debian.org/sid/pt-websocket">“pt-websocket” package</a>.</p>
+
+<p>A couple of weeks ago, Roger Dingledine wondered “how many relays are firewalling certain outbound ports (and thus messing with connectivity inside the Tor network)”. ra has just <a href="https://bugs.torproject.org/12131#comment:11">published the results</a> of a three-week-long test of the interconnectivity between 6730 relays. Contacting the operators of problematic relays is probably the next step for those who wish to keep the network at its best.</p>
+
+<p>George Kadianakis slipped on his storyteller costume to <a href="https://lists.torproject.org/pipermail/tor-dev/2014-June/007042.html">guide us</a> through layers of the Tor core, motivated by the quest for knowledge. That accursed riddle, “Why does Roger have so many guards?”, now has an answer. Be prepared for a “beautiful stalagmite” and the “truly amazing” nature of Tor!</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>If the Tor Browser stalls while “loading the network status”, please double-check that the system clock is accurate; the same goes for the timezone and daylight saving time settings. Tor needs an accurate clock in order to prevent several classes of attacks on its protocol. It won’t work properly when the local time does not match the one used by other network participants.</p>
+
+<h1>Easy development tasks to get involved with</h1>
+
+<p>When the tor daemon is configured to open a SOCKS port on a public address, it warns about this possible configuration problem twice: once when it reads the configuration file, and a second time when it opens the listener. One warning should be enough. We had a friendly volunteer two years ago who sketched out possible fixes and even wrote a patch, but then concluded that his patch had a problem and went away. If you’re up to some digging into tor’s configuration file handling, and want to clean up a two-year-old patch potentially to be included in tor 0.2.6, please <a href="https://bugs.torproject.org/4019">find the details in the ticket</a>. It’s tagged as easy, so how hard can it be?</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by harmony, Lunar, Matt Pagan, Karsten Loesing, and Roger Dingledine.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

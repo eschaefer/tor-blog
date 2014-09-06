@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Overhead from directory info: past, present, future"
-permalink: overhead-directory-info%3A-past%2C-present%2C-future
+permalink: blog/overhead-directory-info%3A-past%2C-present%2C-future
 date: 2009-02-16
 author: arma
 category: blog

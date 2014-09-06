@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger @ PETS 2013, Bloomington, IN"
-permalink: roger-pets-2013-bloomington
+permalink: /events/roger-pets-2013-bloomington
 date: 2013-07-10
 startdate: 2013-07-10
 enddate: 2013-07-12

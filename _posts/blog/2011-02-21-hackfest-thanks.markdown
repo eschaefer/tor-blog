@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hackfest Thanks"
-permalink: hackfest-thanks
+permalink: blog/hackfest-thanks
 date: 2011-02-21
 author: phobos
 category: blog

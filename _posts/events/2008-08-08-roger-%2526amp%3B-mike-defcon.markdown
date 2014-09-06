@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger & Mike at DEFCON"
-permalink: roger-%2526amp%3B-mike-defcon
+permalink: /events/roger-%2526amp%3B-mike-defcon
 date: 2008-08-08
 startdate: 2008-08-08
 enddate: 2008-08-11

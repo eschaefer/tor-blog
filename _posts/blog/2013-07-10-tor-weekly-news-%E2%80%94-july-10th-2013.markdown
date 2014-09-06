@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — July, 10th 2013"
-permalink: tor-weekly-news-%E2%80%94-july-10th-2013
+permalink: blog/tor-weekly-news-%E2%80%94-july-10th-2013
 date: 2013-07-10
 author: lunar
 category: blog
@@ -17,7 +17,7 @@ On July 3rd, Roger Dingledine [announced the release of Tor 0.2.4.15-rc](https:/
 Some highlights of [changes from 0.2.3.x](https://gitweb.torproject.org/tor.git/blob/b13c6becc:/ChangeLog):
 
 - bridges now report the pluggable transports they support to the bridge authority ( [#3589](https://bugs.torproject.org/3589)),
-- 
+-
 - IPv6 support ( [#5534](https://bugs.torproject.org/5534), [#5535](https://bugs.torproject.org/5535), [#6362](https://bugs.torproject.org/6362), [#6363](https://bugs.torproject.org/6363)),
 - automatically forward the TCP ports of pluggable transport proxies using tor-fw-helper if PortForwarding is enabled ( [#6522](https://bugs.torproject.org/6522)),
 - switch to a nonrecursive Makefile structure. Where available, now use automake’s “silent” make rules by default ( [#4567](https://bugs.torproject.org/4567)),

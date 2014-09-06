@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser Bundle 3.5 is released"
-permalink: tor-browser-bundle-35-released
+permalink: blog/tor-browser-bundle-35-released
 date: 2013-12-19
 author: mikeperry
 category: blog
@@ -29,8 +29,8 @@ The set of changes since the 3.5rc1 release is:
 - All Platforms
   - Update Tor to 0.2.4.19
   - Update Tor Launcher to 0.2.4.2
-    - Bug 10382: Fix a Tor Launcher hang on TBB exit 
+    - Bug 10382: Fix a Tor Launcher hang on TBB exit
 
   - Update Torbutton to 1.6.5.2
-    - Misc: Switch update download URL back to download-easy 
+    - Misc: Switch update download URL back to download-easy
 

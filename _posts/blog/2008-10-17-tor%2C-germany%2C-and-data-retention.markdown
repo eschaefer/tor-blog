@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor, Germany, and Data Retention"
-permalink: tor%2C-germany%2C-and-data-retention
+permalink: blog/tor%2C-germany%2C-and-data-retention
 date: 2008-10-17
 author: arma
 category: blog
@@ -14,7 +14,7 @@ With the "enforcement" phase of Germany's data retention law coming into effect 
 - What exactly will German ISPs log, and who is supposed to have access to it?
 - What suggestions should we give to German Tor relay operators, and German privacy advocates in general, about how they should fight this law without putting themselves too much at risk?
 
-I propose some technical changes to Tor in this or-dev post:  
+I propose some technical changes to Tor in this or-dev post:
  [http://archives.seul.org/or/dev/Oct-2008/msg00001.html](http://archives.seul.org/or/dev/Oct-2008/msg00001.html "http://archives.seul.org/or/dev/Oct-2008/msg00001.html")
 
 Stay tuned for the policy suggestions -- perhaps we'll cover those at 25C3!

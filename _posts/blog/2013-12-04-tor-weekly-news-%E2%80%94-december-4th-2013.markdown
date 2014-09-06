@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — December 4th, 2013"
-permalink: tor-weekly-news-%E2%80%94-december-4th-2013
+permalink: blog/tor-weekly-news-%E2%80%94-december-4th-2013
 date: 2013-12-04
 author: lunar
 category: blog
@@ -60,7 +60,7 @@ The Electronic Frontier Foundation helped a student group in Iowa convince their
 
 # Tor help desk roundup
 
-Multiple users asked about using Tor for PC gaming. Tor can only transport TCP, which is how web pages are transmitted. Many video games rely on UDP or other protocols to transport data because of the lower latency. Information these games transport over protocols besides TCP would not be sent over Tor. Also any software used with Tor needs to be tested for proxy obedience. Untested applications might send information without using Tor even if they appear to be configured correctly, and  
+Multiple users asked about using Tor for PC gaming. Tor can only transport TCP, which is how web pages are transmitted. Many video games rely on UDP or other protocols to transport data because of the lower latency. Information these games transport over protocols besides TCP would not be sent over Tor. Also any software used with Tor needs to be tested for proxy obedience. Untested applications might send information without using Tor even if they appear to be configured correctly, and
 without the user realizing it.
 
 * * *

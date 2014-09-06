@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Firefox 4 Tor Browser Bundle for Windows"
-permalink: firefox-4-tor-browser-bundle-windows
+permalink: blog/firefox-4-tor-browser-bundle-windows
 date: 2011-04-24
 author: erinn
 category: blog

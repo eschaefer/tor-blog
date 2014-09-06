@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GSoC 2011: tails-greeter - boot menu for TAILS"
-permalink: gsoc-2011-tails-greeter-boot-menu-tails
+permalink: blog/gsoc-2011-tails-greeter-boot-menu-tails
 date: 2011-09-16
 author: max
 category: blog

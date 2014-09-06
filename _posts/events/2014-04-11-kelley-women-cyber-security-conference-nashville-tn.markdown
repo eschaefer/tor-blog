@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Kelley @ Women in Cyber Security Conference, Nashville, TN"
-permalink: kelley-women-cyber-security-conference-nashville-tn
+permalink: /events/kelley-women-cyber-security-conference-nashville-tn
 date: 2014-04-11
 startdate: 2014-04-11
 enddate: 2014-04-12

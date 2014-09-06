@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Research problems: Ten ways to discover Tor bridges"
-permalink: research-problems-ten-ways-discover-tor-bridges
+permalink: blog/research-problems-ten-ways-discover-tor-bridges
 date: 2011-10-31
 author: arma
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — July 30th, 2014"
-permalink: tor-weekly-news-%E2%80%94-july-30th-2014
+permalink: blog/tor-weekly-news-%E2%80%94-july-30th-2014
 date: 2014-07-30
 author: lunar
 category: blog
@@ -60,7 +60,7 @@ While working on guard nodes, George Kadianakis realized that “the data struct
 
 Mike Perry [posted](https://lists.torproject.org/pipermail/tor-dev/2014-July/007246.html) “a summary of the primitives that Marc Juarez aims to implement for his Google Summer of Code project on prototyping defenses for Website Traffic Fingerprinting and follow-on research”. Be sure to have a look if you want to help prevent website fingerprint attacks.
 
-A new draft proposal “for making all relays also be directory servers (by default)” has been [submitted](https://lists.torproject.org/pipermail/tor-dev/2014-July/007247.html) by Matthew Finkel. Among the motivations, Matthew wrote: “In a network where every router is a  
+A new draft proposal “for making all relays also be directory servers (by default)” has been [submitted](https://lists.torproject.org/pipermail/tor-dev/2014-July/007247.html) by Matthew Finkel. Among the motivations, Matthew wrote: “In a network where every router is a
 directory server, the profiling and partitioning attack vector is reduced to the guard (for clients who use them), which is already in a privileged position for this. In addition, with the increased set size, relay descriptors and documents are more readily available and it diversifies the providers.” This change might make the transition to a single guard safer. Feedback welcome!
 
 Noah Rahman [reported](https://lists.torproject.org/pipermail/tor-dev/2014-July/007248.html) on the progress of the Stegotorus Google Summer of Code project.

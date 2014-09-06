@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles"
-permalink: new-tor-browser-bundles-0
+permalink: blog/new-tor-browser-bundles-0
 date: 2011-03-24
 author: erinn
 category: blog
@@ -12,13 +12,13 @@ All of the Tor Browser Bundles have been updated with Firefox 3.6.16 and the alp
 
 [https://torproject.org/download/download](https://torproject.org/download/download "https://torproject.org/download/download")
 
-**Windows bundles**  
+**Windows bundles**
 **1.3.21: Released 2011-03-23**
 
 - Update Firefox to 3.6.16
 - Update HTTPS-Everywhere to 0.9.9.development.4
 
-**Linux bundles**  
+**Linux bundles**
 **1.1.6: Released 2011-03-23**
 
 - Update Firefox to 3.6.16
@@ -27,7 +27,7 @@ All of the Tor Browser Bundles have been updated with Firefox 3.6.16 and the alp
 - Update HTTPS-Everywhere to 0.9.9.development.4
 - Update BetterPrivacy to 1.49
 
-**OS X bundle**  
+**OS X bundle**
 **1.0.14: Released 2011-03-23**
 
 - Update Firefox to 3.6.16

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "OS X Vidalia Bundle Thoughts"
-permalink: os-x-vidalia-bundle-thoughts
+permalink: blog/os-x-vidalia-bundle-thoughts
 date: 2008-10-30
 author: phobos
 category: blog

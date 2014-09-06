@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Online Anonymity Debate in South Korea"
-permalink: online-anonymity-debate-south-korea
+permalink: blog/online-anonymity-debate-south-korea
 date: 2008-10-17
 author: phobos
 category: blog

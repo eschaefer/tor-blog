@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Research problem: Five ways to test bridge reachability"
-permalink: research-problem-five-ways-test-bridge-reachability
+permalink: blog/research-problem-five-ways-test-bridge-reachability
 date: 2011-12-01
 author: arma
 category: blog

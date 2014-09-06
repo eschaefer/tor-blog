@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Dear Nigerians, help us help you."
-permalink: dear-nigerians-help-us-help-you
+permalink: blog/dear-nigerians-help-us-help-you
 date: 2010-06-29
 author: phobos
 category: blog

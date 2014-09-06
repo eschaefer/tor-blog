@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Pluggable Transports bundles 0.2.4.11-alpha (flashproxy + obfsproxy)"
-permalink: new-pluggable-transports-bundles-02411-alpha-flashproxy-obfsproxy
+permalink: blog/new-pluggable-transports-bundles-02411-alpha-flashproxy-obfsproxy
 date: 2013-03-19
 author: asn
 category: blog

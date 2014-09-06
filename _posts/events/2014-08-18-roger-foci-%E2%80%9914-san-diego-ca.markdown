@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger @ FOCI ’14, San Diego, CA"
-permalink: roger-foci-%E2%80%9914-san-diego-ca
+permalink: /events/roger-foci-%E2%80%9914-san-diego-ca
 date: 2014-08-18
 startdate: 2014-08-18
 enddate: 2014-08-18

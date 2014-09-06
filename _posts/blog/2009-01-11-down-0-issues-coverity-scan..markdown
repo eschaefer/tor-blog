@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Down to 0 issues on Coverity Scan."
-permalink: down-0-issues-coverity-scan.
+permalink: blog/down-0-issues-coverity-scan.
 date: 2009-01-11
 author: nickm
 category: blog

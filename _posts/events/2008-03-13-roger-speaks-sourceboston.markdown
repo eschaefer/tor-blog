@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger speaks at SourceBoston"
-permalink: roger-speaks-sourceboston
+permalink: /events/roger-speaks-sourceboston
 date: 2008-03-13
 startdate: 2008-03-13
 enddate: 2008-03-13

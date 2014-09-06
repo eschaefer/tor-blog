@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Boston Tor Hackers:  Join us Sunday September 19th"
-permalink: boston-tor-hackers-join-us-sunday-september-19th
+permalink: blog/boston-tor-hackers-join-us-sunday-september-19th
 date: 2010-09-15
 author: phobos
 category: blog

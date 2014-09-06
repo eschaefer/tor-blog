@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Trip report, October FBI conference"
-permalink: trip-report-october-fbi-conference
+permalink: blog/trip-report-october-fbi-conference
 date: 2012-12-16
 author: arma
 category: blog
@@ -12,7 +12,7 @@ In October I attended an FBI conference, as part of my work to try to keep Tor o
 
 Overall, we've been doing a pretty good job at teaching US-based law enforcement about Tor. At the end of the conference, one of the FBI agents took me aside and asked "surely you have \*some\* sort of way of tracking your users?" When I pointed at various of his FBI colleagues in the room who had told me they use Tor every day for their work, and asked if he'd be comfortable if we had a way of tracing \*them\*, I think he got it.
 
-I met a nice man from the DEA who worked on the "Farmer's Market" bust. This was in the news a lot back in April, where apparently some people were selling drugs online, and using a Tor hidden service for their website. At the time I thought the news stories could be summarized simply as "idiot drug sellers accept paypal payments, get busted." It turns out they were pretty smart about how to accept paypal payments — they just had random Americans receive the paypal payments, take a cut, and then turn them into a Panama-based digital currency, and the Panama company didn't want to help trace where the money went. The better summary for the news stories should actually have been "idiot drug sellers use hushmail, get busted." Way before they switched to a Tor hidden service, the two main people used Hushmail to communicate. After a subpoena (and apparently a lot of patience since Canada still isn't quite the same as the US), Hushmail rolled over and gave up copies of all the emails. Many more details here:  
+I met a nice man from the DEA who worked on the "Farmer's Market" bust. This was in the news a lot back in April, where apparently some people were selling drugs online, and using a Tor hidden service for their website. At the time I thought the news stories could be summarized simply as "idiot drug sellers accept paypal payments, get busted." It turns out they were pretty smart about how to accept paypal payments — they just had random Americans receive the paypal payments, take a cut, and then turn them into a Panama-based digital currency, and the Panama company didn't want to help trace where the money went. The better summary for the news stories should actually have been "idiot drug sellers use hushmail, get busted." Way before they switched to a Tor hidden service, the two main people used Hushmail to communicate. After a subpoena (and apparently a lot of patience since Canada still isn't quite the same as the US), Hushmail rolled over and gave up copies of all the emails. Many more details here:
 http://www.scribd.com/doc/89690597/Willemsindictment-Filed-045
 
 I should still note that Tor doesn't introduce any magic new silver bullet that causes criminals to be uncatchable when before they weren't. The Farmer's Market people ran their webserver in some other foreign country before they switched to a Tor hidden service, and just the fact that the country didn't want to cooperate in busting them was enough to make that a dead end. Jurisdictional arbitrage is alive and well in the world.

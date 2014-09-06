@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger @ DIMACS, Rutgers University"
-permalink: roger-dimacs-rutgers-university
+permalink: /events/roger-dimacs-rutgers-university
 date: 2013-05-30
 startdate: 2013-05-30
 enddate: 2013-05-31

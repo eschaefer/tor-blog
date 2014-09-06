@@ -1,10 +1,10 @@
 ---
 layout: event
 title: "Researchers & Practitioners Meetup @ PETS, Amsterdam"
-permalink: researchers-practitioners-meetup-pets-amsterdam
+permalink: /events/researchers-practitioners-meetup-pets-amsterdam
 date: 2014-07-15
 startdate: 2014-07-15
-enddate: 
+enddate:
 author: admin
 category: event
 ---
@@ -17,9 +17,9 @@ Costs will be covered by the [Renewable Freedom Foundation](http://www.renewable
 
 The rooms are in [Science Park 904, University of Amsterdam](http://www.uva.nl/en/about-the-uva/the-uva-in-amsterdam/locations/content/sciencepark/science-park.html):
 
-University of Amsterdam  
-Science Park 904  
-1098 XH Amsterdam  
+University of Amsterdam
+Science Park 904
+1098 XH Amsterdam
 (OpenStreetMap)
 
 The Main meeting room is B1.23, a computer lab on the first floor with movable desks on wheels. The room is publicly accessible so people do not need to go to the reception desk but can walk straight to B1.23. The second room is B1.45C, a meeting room for max 16 people. Both rooms have projectors and whiteboards.

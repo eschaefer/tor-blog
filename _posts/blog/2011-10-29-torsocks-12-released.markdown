@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Torsocks 1.2 Released"
-permalink: torsocks-12-released
+permalink: blog/torsocks-12-released
 date: 2011-10-29
 author: mwenge
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Jake @ Oslo Freedom Forum, Oslo, Norway"
-permalink: jake-oslo-freedom-forum-oslo-norway
+permalink: /events/jake-oslo-freedom-forum-oslo-norway
 date: 2013-05-13
 startdate: 2013-05-13
 enddate: 2013-05-15

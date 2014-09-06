@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Lunar @ LSM 2014, Montpellier, France"
-permalink: lunar-lsm-2014-montpellier-france
+permalink: /events/lunar-lsm-2014-montpellier-france
 date: 2014-07-05
 startdate: 2014-07-05
 enddate: 2014-07-11

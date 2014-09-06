@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "November 2009 Progress Report"
-permalink: november-2009-progress-report
+permalink: blog/november-2009-progress-report
 date: 2009-12-15
 author: phobos
 category: blog
@@ -18,7 +18,7 @@ On November 20th, we released Tor Browser Bundle 1.2.10. [https://blog.torprojec
 
 On November 19th, we released Tor 0.2.2.6-alpha. [https://blog.torproject.org/blog/tor-0226-alpha-released](https://blog.torproject.org/blog/tor-0226-alpha-released "https://blog.torproject.org/blog/tor-0226-alpha-released")
 
-**Design, develop, and implement enhancements that make  
+**Design, develop, and implement enhancements that make
 Tor a better tool for users in censored countries.**
 
 Roger met with his class at KAIST working on bridge deployment strategies. A few teams developed some creative strategies. Roger is continuing to work with the leading teams to further refine their ideas before publishing.
@@ -35,7 +35,7 @@ Improved our email autoresponder, get-tor, to handle non-english character sets.
 - Karen met with National Iranian-American Council, [http://www.niacouncil.org/](http://www.niacouncil.org/ "http://www.niacouncil.org/"), to discuss ways Tor can help NIAC succeed in helping improve Human Rights and Democracy in Iran.
 - Andrew had a conversation with Freedom House which resulted in some instructional videos being produced to help users install and configure Tor. [https://blog.torproject.org/blog/installing-and-using-tor](https://blog.torproject.org/blog/installing-and-using-tor "https://blog.torproject.org/blog/installing-and-using-tor")
 
-**Bridge relay and bridge authority work.**  
+**Bridge relay and bridge authority work.**
 We distributed bridge addresses to networks of people in China and Iran to let Tor users continue to work without issues.
 
 Karsten worked to remove sensitive data from collected meta-data about bridges. We can publish our bridge data archives to [http://archive.torproject.org](http://archive.torproject.org "http://archive.torproject.org") soon. This data could help understand bridge quantity, usage of bridges around the world, and other information from possible data analysis.
@@ -44,7 +44,7 @@ Karsten worked to remove sensitive data from collected meta-data about bridges. 
 
 Included in the Tor 0.2.2.6-alpha release is the beginning of microdescriptors.
 
-> Directory authorities can now agree on and publish small summaries of router information that clients can use in place of regular server descriptors. This transition will eventually allow clients to use far less bandwidth for downloading information about the network. Begins the implementation of Proposal 158: ”Clients  
+> Directory authorities can now agree on and publish small summaries of router information that clients can use in place of regular server descriptors. This transition will eventually allow clients to use far less bandwidth for downloading information about the network. Begins the implementation of Proposal 158: ”Clients
 > download consensus + microdescriptors”.
 
 **More reliable (e.g. split) download mechanism.**

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Communications Data Bill Committee publishes report"
-permalink: communications-data-bill-committee-publishes-report
+permalink: blog/communications-data-bill-committee-publishes-report
 date: 2012-12-11
 author: sjmurdoch
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Shutting down the Vidalia GeoIP mapping server"
-permalink: shutting-down-vidalia-geoip-mapping-server
+permalink: blog/shutting-down-vidalia-geoip-mapping-server
 date: 2010-10-01
 author: phobos
 category: blog

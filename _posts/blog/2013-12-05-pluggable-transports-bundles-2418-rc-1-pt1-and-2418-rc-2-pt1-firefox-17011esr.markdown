@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Pluggable transports bundles 2.4.18-rc-1-pt1 and 2.4.18-rc-2-pt1 with Firefox 17.0.11esr"
-permalink: pluggable-transports-bundles-2418-rc-1-pt1-and-2418-rc-2-pt1-firefox-17011esr
+permalink: blog/pluggable-transports-bundles-2418-rc-1-pt1-and-2418-rc-2-pt1-firefox-17011esr
 date: 2013-12-05
 author: dcf
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing the Tor Store"
-permalink: announcing-tor-store
+permalink: blog/announcing-tor-store
 date: 2010-03-29
 author: phobos
 category: blog

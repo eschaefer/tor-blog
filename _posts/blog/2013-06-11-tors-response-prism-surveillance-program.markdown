@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor's Response to Prism Surveillance Program"
-permalink: tors-response-prism-surveillance-program
+permalink: blog/tors-response-prism-surveillance-program
 date: 2013-06-11
 author: kelley
 category: blog
@@ -14,7 +14,7 @@ The Tor Project is a nonprofit 501(c)(3) organization dedicated to providing too
 
 Today, as always, the team at Tor remains committed to building innovative, sustainable technology solutions to help keep the doors to freedom of expression open.
 
-For more on our view on this situation visit also our blog post:  
+For more on our view on this situation visit also our blog post:
  [https://blog.torproject.org/blog/prism-vs-tor](https://blog.torproject.org/blog/prism-vs-tor "https://blog.torproject.org/blog/prism-vs-tor").
 
 For further questions please contact us at [execdir@torproject.org](mailto:execdir@torproject.org).

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>The lifecycle of a new relay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>The lifecycle of a new relay</h2>
+<p class="meta">11 Sep 2013</p>
+
+<div class="event">
+<p>Many people set up new fast relays and then wonder why their bandwidth is not fully loaded instantly. In this post I&#39;ll walk you through the lifecycle of a new fast <a href="https://www.torproject.org/docs/faq#ExitPolicies">non-exit</a> relay, since Tor&#39;s bandwidth estimation and load balancing has gotten much more complicated in recent years. I should emphasize that the descriptions here are in part anecdotal — at the end of the post I ask some research questions that will help us make better sense of what&#39;s going on.</p>
+
+<p>I hope this summary will be useful for relay operators. It also provides background for understanding some of the anonymity analysis research papers that people have been asking me about lately. In an upcoming blog post, I&#39;ll explain why we need to raise the guard rotation period (and what that means) to improve Tor&#39;s anonymity. [Edit: <a href="https://blog.torproject.org/blog/improving-tors-anonymity-changing-guard-parameters">here is that blog post</a>]</p>
+
+<p>A new relay, assuming it is reliable and has plenty of bandwidth, goes through four phases: the unmeasured phase (days 0-3) where it gets roughly no use, the remote-measurement phase (days 3-8) where load starts to increase, the ramp-up guard phase (days 8-68) where load counterintuitively drops and then rises higher, and the steady-state guard phase (days 68+).</p>
+
+<p><a href="https://people.torproject.org/%7Earma/lifecycle-blog.png">
+ <img src="https://people.torproject.org/%7Earma/lifecycle-blog.png" alt="The phases of a new relay"></a></p>
+
+<p><strong>Phase one: unmeasured (days 0-3).</strong></p>
+
+<p>When your relay first starts, it does a bandwidth self-test: it builds four circuits into the Tor network and back to itself, and then sends 125KB over each circuit. This step bootstraps Tor&#39;s passive bandwidth measurement system, which estimates your bandwidth as the largest burst you&#39;ve done over a 10 second period. So if all goes well, your first self-measurement is 4*125K/10 = 50KB/s. Your relay publishes this number in your relay descriptor.</p>
+
+<p>The <a href="https://www.torproject.org/docs/faq#KeyManagement">directory authorities</a> list your relay in the network consensus, and clients get good performance (and balance load across the network) by choosing relays proportional to the bandwidth number listed in the consensus.</p>
+
+<p>Originally, the directory authorities would just use whatever bandwidth estimate you claimed in your relay descriptor. As you can imagine, that approach made it <a href="http://freehaven.net/anonbib/#bauer:wpes2007">cheap</a> for even a small adversary to attract a lot of traffic by simply lying. In 2009, Mike Perry deployed the <a href="https://blog.torproject.org/blog/torflow-node-capacity-integrity-and-reliability-measurements-hotpets">&quot;bandwidth authority&quot;</a> scripts, where a group of fast computers around the Internet (called bwauths) do active measurements of each relay, and the directory authorities <a href="https://gitweb.torproject.org/torflow.git/blob/HEAD:/NetworkScanners/BwAuthority/README.BwAuthorities">adjust the consensus bandwidth up or down</a> depending on how the relay compares to other relays that advertise similar speeds. (Technically, we call the consensus number a &quot;weight&quot; rather than a bandwidth, since it&#39;s all about how your relay&#39;s number compares to the other numbers, and once we start adjusting them they aren&#39;t really bandwidths anymore.)</p>
+
+<p>The bwauth approach isn&#39;t ungameable, but it&#39;s a lot better than the old design. Earlier this year we plugged another vulnerability by capping your consensus weight to 20KB until a threshold of bwauths have an opinion about your relay — otherwise there was a <a href="https://trac.torproject.org/projects/tor/ticket/2286">several-day window</a> where we would use your claimed value because we didn&#39;t have anything better to use.</p>
+
+<p>So that&#39;s phase one: your new relay gets basically no use for the first few days of its life because of the low 20KB cap, while it waits for a threshold of bwauths to measure it.</p>
+
+<p><strong>Phase two: remote measurement (days 3-8).</strong></p>
+
+<p>Remember how I said the bwauths adjust your consensus weight based on how you compare to similarly-sized relays? At the beginning of this phase your relay hasn&#39;t seen much traffic, so your peers are the other relays who haven&#39;t seen (or can&#39;t handle) much traffic. Over time though, a few clients will build circuits through your relay and push some traffic, and the passive bandwidth measurement will provide a new larger estimate. Now the bwauths will compare you to your new (faster) peers, giving you a larger consensus weight, thus driving more clients to use you, in turn raising your bandwidth estimate, and so on.</p>
+
+<p>Tor clients generally make three-hop circuits (that is, paths that go through three relays). The first position in the path, called the guard relay, is special because it helps protect against a certain anonymity-breaking attack. Here&#39;s the attack: if you keep picking new paths at random, and the adversary runs a few relays, then over time the chance drops to zero that *every single path you&#39;ve made* is safe from the adversary. The <a href="http://freehaven.net/anonbib/#hs-attack06">defense</a> is to choose a small number of relays (called guards) and always use one of them for your first hop — either you chose wrong, and one of your guards is run by the adversary and you lose on many of your paths; or you chose right and all of your paths are safe. Read the <a href="https://www.torproject.org/docs/faq#EntryGuards">Guard FAQ</a> for more details.</p>
+
+<p>Only <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/dir-spec.txt#l1768">stable and reliable</a> relays can be used as guards, so no clients are willing to use your brand new relay as their first hop. And since in this story you chose to set up a non-exit relay (so you won&#39;t be the one actually making connections to external services like websites), no clients will use it as their third hop either. That means all of your relay&#39;s traffic is coming from being the second hop in circuits.</p>
+
+<p>So that&#39;s phase two: once the bwauths have measured you and the directory authorities lift the 20KB cap, you&#39;ll attract more and more traffic, but it will still be limited because you&#39;ll only ever be a middle hop.</p>
+
+<p><strong>Phase three: Ramping up as a guard relay (days 8-68).</strong></p>
+
+<p>This is the point where I should introduce consensus flags. Directory authorities assign the <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/dir-spec.txt#l1685">Guard flag</a> to relays based on three characteristics: &quot;bandwidth&quot; (they need to have a large enough consensus weight), &quot;weighted fractional uptime&quot; (they need to be working most of the time), and &quot;time known&quot; (to make attacks more expensive, we don&#39;t want to give the Guard flag to relays that haven&#39;t been around a while first). This last characteristic is most relevant here: on today&#39;s Tor network, you&#39;re first eligible for the Guard flag on day eight.</p>
+
+<p>Clients will only be willing to pick you for their first hop if you have the &quot;Guard&quot; flag. But here&#39;s the catch: once you get the Guard flag, all the rest of the clients back off from using you for their middle hops, because when they see the Guard flag, they assume that you have plenty of load already from clients using you as their first hop. Now, that assumption will become true in the steady-state (that is, once enough clients have chosen you as their guard node), but counterintuitively, as soon as you get the Guard flag you&#39;ll see a dip in traffic.</p>
+
+<p>Why do clients avoid using relays with the Guard flag for their middle hop? Clients look at the scarcity of guard capacity, and the scarcity of exit capacity, and proportionally avoid using relays for positions in the path that aren&#39;t scarce. That way we <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/dir-spec.txt#l2014">allocate available resources best</a>: relays with the Exit flag are used mostly for exiting when they&#39;re scarce, and relays with the Guard flag are used mostly for entering when they&#39;re scarce.</p>
+
+<p>It isn&#39;t optimal to allow this temporary dip in traffic (since we&#39;re not taking advantage of resources that you&#39;re trying to contribute), but it&#39;s a short period of time overall: clients rotate their guards nodes every 4-8 weeks, so pretty soon some of them will rotate onto your relay.</p>
+
+<p>To be clear, there are two reasons why we have clients rotate their guard relays, and the reasons are two sides of the same coin: first is the above issue where new guards wouldn&#39;t see much use (since only new clients, picking their guards for the first time, would use a new guard), and second is that old established guards would accrue an ever-growing load since they&#39;d have the traffic from all the clients that ever picked them as their guard.</p>
+
+<p>One of the reasons for this blog post is to give you background so when I later explain why we need to extend the guard rotation period to many months, you&#39;ll understand why we can&#39;t just crank up the number without also <a href="https://trac.torproject.org/projects/tor/ticket/9321">changing some other parts of the system</a> to keep up. Stay tuned for more details there, or if you don&#39;t want to wait you can read the <a href="https://blog.torproject.org/blog/research-problem-better-guard-rotation-parameters">original research questions</a> and the followup research papers by <a href="http://freehaven.net/anonbib/#wpes12-cogs">Elahi et al</a> and <a href="http://freehaven.net/anonbib/#ccs2013-usersrouted">Johnson et al</a>.</p>
+
+<p><strong>Phase four: Steady-state guard relay (days 68+).</strong></p>
+
+<p>Once your relay has been a Guard for the full guard rotation period (up to 8 weeks in Tor 0.1.1.11-alpha through 0.2.4.11-alpha, and up to 12 weeks in Tor 0.2.4.12-alpha and later), it should reach steady-state where the number of clients dropping it from their guard list balances the number of clients adding it to their guard list.</p>
+
+<p><strong>Research question: what do these phases look like with real-world data?</strong></p>
+
+<p>All of the above explanations, including the graphs, are just based on anecdotes from relay operators and from ad hoc examination of consensus weights.</p>
+
+<p>Here&#39;s a great class project or thesis topic: using our publically available <a href="https://metrics.torproject.org/data.html">Tor network metrics data</a>, track the growth pattern of consensus weights and bandwidth load for new relays. Do they match the phases I&#39;ve described here? Are the changes inside a given phase linear like in the graphs above, or do they follow some other curve?</p>
+
+<p>Are there trends over time, e.g. it used to take less time to ramp up? How long are the phases in reality — for example, does it really take three days before the bwauths have a measurement for new relays?</p>
+
+<p>How does the scarcity of Guard or Exit capacity influence the curves or trends? For example, when guard capacity is less scarce, we expect the traffic dip at the beginning of phase three to be less pronounced.</p>
+
+<p>How different were things before we added the 20KB cap in the first phase, or before we did remote measurements at all?</p>
+
+<p>Are the phases, trends, or curves different for exit relays than for non-exit relays?</p>
+
+<p>The &quot;steady-state&quot; phase assumes a constant number of Tor users: in situations where many new users appear (like the <a href="https://blog.torproject.org/blog/how-to-handle-millions-new-tor-clients">botnet invasion in August 2013</a>), current guards will get unbalanced. How quickly and smoothly does the network rebalance as clients shift guards after that?</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,10 +1,10 @@
 ---
 layout: event
 title: "Jacob at Digital Security and Tactics For (and By) Anti Authoritarians"
-permalink: jacob-digital-security-and-tactics-and-anti-authoritarians
+permalink: /events/jacob-digital-security-and-tactics-and-anti-authoritarians
 date: 2010-03-12
 startdate: 2010-03-12
-enddate: 
+enddate:
 author: admin
 category: event
 ---

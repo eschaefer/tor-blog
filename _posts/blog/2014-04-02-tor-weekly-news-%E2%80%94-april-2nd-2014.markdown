@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — April 2nd, 2014"
-permalink: tor-weekly-news-%E2%80%94-april-2nd-2014
+permalink: blog/tor-weekly-news-%E2%80%94-april-2nd-2014
 date: 2014-04-02
 author: lunar
 category: blog
@@ -12,7 +12,7 @@ Welcome to the thirteenth issue of Tor Weekly News in 2014, the [weekly newslett
 
 # Tor Project website redesign takes two steps forward
 
-Andrew Lewman put out two calls for help with the ongoing Tor Project  
+Andrew Lewman put out two calls for help with the ongoing Tor Project
 website redesign: [one for the sponsor page](https://lists.torproject.org/pipermail/www-team/2014-March/000238.html), and [another for the download area](https://lists.torproject.org/pipermail/www-team/2014-March/000249.html). Both were immediately met with proposals and design suggestions from the www-team mailing list: Olssy produced [two mock-ups](http://tor.harrytuttle.net/) of the sponsorship page as possible models for further work, while William Papper and Lance Tuller have been [working on a repository](https://github.com/wpapper/tor-download-web) for the download page, with comments from other list members on topics such as the use of Javascript and possible layout decisions.
 
 If you’d like to give the website redesign further momentum, please see the [dedicated project page on the wiki](https://trac.torproject.org/projects/tor/wiki/Website) for open tickets and advice on how to contribute, then come to the [www-team mailing list](https://lists.torproject.org/cgi-bin/mailman/listinfo/www-team) and join in!
@@ -83,6 +83,6 @@ Furthermore, if you happen to visit the site, check the list of [unanswered ques
 
 This issue of Tor Weekly News has been assembled by Lunar, harmony, David Fifield, Matt Pagan, qbi and Karsten Loesing.
 
-Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report  
+Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report
 important news. Please see the [project page](https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews), write down your name and subscribe to the [team mailing list](https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team) if you want to get involved!
 

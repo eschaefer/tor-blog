@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Start of a Tor Legal Support Directory"
-permalink: start-tor-legal-support-directory
+permalink: blog/start-tor-legal-support-directory
 date: 2010-01-12
 author: phobos
 category: blog
@@ -16,38 +16,38 @@ If you'd like to add your name to this list, please let me know.
 
 The current list of legal support organizations by country is:
 
-**Finland** :  
-Turre Legal  
- [http://www.turre.com/](http://www.turre.com/ "http://www.turre.com/")  
-Fax +358985657006  
-contact person: Herkko Hietanen  
+**Finland** :
+Turre Legal
+ [http://www.turre.com/](http://www.turre.com/ "http://www.turre.com/")
+Fax +358985657006
+contact person: Herkko Hietanen
  [http://www.turre.com/lawyers/](http://www.turre.com/lawyers/ "http://www.turre.com/lawyers/")
 
-**The Netherlands** :  
-Bits of Freedom  
+**The Netherlands** :
+Bits of Freedom
  [http://www.bof.nl](http://www.bof.nl "http://www.bof.nl")
 
-**Australia** :  
-Electronic Frontier Australia  
- [http://www.efa.org.au/](http://www.efa.org.au/ "http://www.efa.org.au/")  
-email: [email@efa.org.au](mailto:email@efa.org.au)  
-Phone: +61 2 9011 1088  
+**Australia** :
+Electronic Frontier Australia
+ [http://www.efa.org.au/](http://www.efa.org.au/ "http://www.efa.org.au/")
+email: [email@efa.org.au](mailto:email@efa.org.au)
+Phone: +61 2 9011 1088
 Fax: +61 2 8002 400
 
-**Germany, Switzerland, Austria** :  
-Chaos Computer Club  
- [http://www.ccc.de/](http://www.ccc.de/ "http://www.ccc.de/")  
+**Germany, Switzerland, Austria** :
+Chaos Computer Club
+ [http://www.ccc.de/](http://www.ccc.de/ "http://www.ccc.de/")
  [anonymizer@ccc.de](mailto:anonymizer@ccc.de)
 
-Zwiebelfreunde e.V.  
- [http://www.zwiebelfreunde.de/](http://www.zwiebelfreunde.de/ "http://www.zwiebelfreunde.de/")  
+Zwiebelfreunde e.V.
+ [http://www.zwiebelfreunde.de/](http://www.zwiebelfreunde.de/ "http://www.zwiebelfreunde.de/")
  [support@torservers.net](mailto:support@torservers.net)
 
-**United States** :  
-Electronic Frontier Foundation  
- [http://www.eff.org/about/contact](http://www.eff.org/about/contact "http://www.eff.org/about/contact")  
+**United States** :
+Electronic Frontier Foundation
+ [http://www.eff.org/about/contact](http://www.eff.org/about/contact "http://www.eff.org/about/contact")
  [information@eff.org](mailto:information@eff.org)
 
-**Switzerland** :  
+**Switzerland** :
  [http://www.privacyfoundation.ch](http://www.privacyfoundation.ch "http://www.privacyfoundation.ch")
 

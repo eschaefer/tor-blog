@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Transparency, openness, and our 2012 financial docs"
-permalink: transparency-openness-and-our-2012-financial-docs
+permalink: blog/transparency-openness-and-our-2012-financial-docs
 date: 2013-08-20
 author: phobos
 category: blog

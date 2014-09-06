@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Civil Rights Defenders, Defender's Days"
-permalink: civil-rights-defenders-defenders-days
+permalink: /events/civil-rights-defenders-defenders-days
 date: 2014-04-01
 startdate: 2014-04-01
 enddate: 2014-04-04

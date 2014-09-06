@@ -1,10 +1,10 @@
 ---
 layout: event
 title: "Tor at FSCONS"
-permalink: tor-fscons
+permalink: /events/tor-fscons
 date: 2010-11-05
 startdate: 2010-11-05
-enddate: 
+enddate:
 author: admin
 category: event
 ---

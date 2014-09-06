@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — February 4th, 2014"
-permalink: tor-weekly-news-%E2%80%94-february-4th-2014
+permalink: blog/tor-weekly-news-%E2%80%94-february-4th-2014
 date: 2014-02-05
 author: lunar
 category: blog
@@ -38,7 +38,7 @@ Please join the discussion if you have ideas to share!
 
 [Mumble](http://mumble.sourceforge.net/) is a “low-latency, high quality voice chat software primarily intended for use while gaming”.
 
-It’s proven to be a reliable solution for voice chat among multiple parties over Tor. Matt and Colin have worked on a documentation on how to [setup both the client and the server side](https://trac.torproject.org/projects/tor/wiki/doc/TorifyHOWTO/Mumble) for Tor users.  
+It’s proven to be a reliable solution for voice chat among multiple parties over Tor. Matt and Colin have worked on a documentation on how to [setup both the client and the server side](https://trac.torproject.org/projects/tor/wiki/doc/TorifyHOWTO/Mumble) for Tor users.
 But the client is currently safely usable only on Linux system with torsocks and on Tails. On other operating systems, the Mumble client will unfortunately [leak the address of the server to the local DNS resolver](https://github.com/mumble-voip/mumble/issues/1033).
 
 The changes that need to be made to the Mumble code are less trivial than one would think. Matt describe the issue in more details in his [call for help](https://lists.torproject.org/pipermail/tor-dev/2014-January/006158.html). Have a look if you are up to some C++/Qt hacking.

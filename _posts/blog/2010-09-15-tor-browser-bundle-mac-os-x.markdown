@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser Bundle for Mac OS X"
-permalink: tor-browser-bundle-mac-os-x
+permalink: blog/tor-browser-bundle-mac-os-x
 date: 2010-09-15
 author: erinn
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "CIMA/NED Panel on Iran and New Media"
-permalink: cimaned-panel-iran-and-new-media
+permalink: blog/cimaned-panel-iran-and-new-media
 date: 2009-07-14
 author: phobos
 category: blog

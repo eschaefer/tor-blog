@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Web Developers and Firefox Hackers: Help us with Firefox 4"
-permalink: web-developers-and-firefox-hackers-help-us-firefox-4
+permalink: blog/web-developers-and-firefox-hackers-help-us-firefox-4
 date: 2011-03-26
 author: mikeperry
 category: blog

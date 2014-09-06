@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — February 12th, 2014"
-permalink: tor-weekly-news-%E2%80%94-february-12th-2014
+permalink: blog/tor-weekly-news-%E2%80%94-february-12th-2014
 date: 2014-02-12
 author: lunar
 category: blog
@@ -78,6 +78,6 @@ fred set up a relay on a Windows machine where µTorrent is used besides Tor. Wh
 
 This issue of Tor Weekly News has been assembled by Lunar, Matt Pagan, Paul Feitzinger, qbi, Roger Dingledine and Karsten Loesing.
 
-Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the [project page](https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews), write down your name and subscribe to the [team mailing list](https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team) if you want to  
+Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the [project page](https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews), write down your name and subscribe to the [team mailing list](https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team) if you want to
 get involved!
 

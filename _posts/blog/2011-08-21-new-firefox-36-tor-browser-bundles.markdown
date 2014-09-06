@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Firefox 3.6 Tor Browser Bundles"
-permalink: new-firefox-36-tor-browser-bundles
+permalink: blog/new-firefox-36-tor-browser-bundles
 date: 2011-08-21
 author: rransom
 category: blog
@@ -14,14 +14,14 @@ We are currently building new versions of the experimental Tor Browser Bundles, 
 
 [https://www.torproject.org/download/download](https://www.torproject.org/download/download "https://www.torproject.org/download/download")
 
-**Windows bundle**  
+**Windows bundle**
 **1.3.27: Released 2011-08-19**
 
 - Update Firefox to 3.6.20
 - Update Libevent to 2.0.13-stable
 - Update HTTPS-Everywhere to 1.0.0development.5
 
-**OS X bundle**  
+**OS X bundle**
 **1.0.23: Released 2011-08-19**
 
 - Update Tor to 0.2.2.31-rc
@@ -31,7 +31,7 @@ We are currently building new versions of the experimental Tor Browser Bundles, 
 - Update HTTPS-Everywhere to 1.0.0development.5
 - Remove BetterPrivacy until we can figure out how to make it safe in all bundles (see [#3597](https://trac.torproject.org/projects/tor/ticket/3597))
 
-**Linux bundle**  
+**Linux bundle**
 **1.1.13: Released 2011-08-19**
 
 - Update Tor to 0.2.2.31-rc

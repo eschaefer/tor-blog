@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Training Journalists in Istanbul"
-permalink: training-journalists-istanbul
+permalink: blog/training-journalists-istanbul
 date: 2013-02-04
 author: Runa
 category: blog

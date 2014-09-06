@@ -22,7 +22,7 @@
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
-            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
             <h1 class="brand-title">The Tor Project Blog</h1>
             <h2 class="brand-tagline">News and events from Tor</h2>
 
@@ -44,30 +44,30 @@
 
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
+
             <!-- A wrapper for all the blog posts -->
-            <div class="posts">
-                <h1 class="content-subhead">Recent Posts</h1>
+<div class="posts">
 
-
-               <div id="home">
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/measuring-tor-and-iran-part-two">Measuring Tor and Iran (Part two)</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">karsten</a> under
-            
-              <a class="post-category post-category-js" href="#">bridges</a>
-            
-              <a class="post-category post-category-js" href="#">iran</a>
-            
-              <a class="post-category post-category-js" href="#">metrics</a>
-             |
-            01 Jul 2009
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Two weeks ago we posted early measurements about the <a href="https://blog.torproject.org/blog/measuring-tor-and-iran">growth of Tor usage in Iran</a>. Since then we have improved our math, and used more data sources. This work is part of our <a href="https://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network">metrics project</a>, where we&#39;re learning about the Tor network to improve its availability and performance while keeping our users safe.</p>
+  <h1 class="content-subhead">Recent Posts</h1>
+  <div id="home">
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/measuring-tor-and-iran-part-two">Measuring Tor and Iran (Part two)</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">karsten</a> under
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">iran</a>
+              
+                <a class="post-category post-category-js" href="#">metrics</a>
+               |
+              01 Jul 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Two weeks ago we posted early measurements about the <a href="https://blog.torproject.org/blog/measuring-tor-and-iran">growth of Tor usage in Iran</a>. Since then we have improved our math, and used more data sources. This work is part of our <a href="https://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network">metrics project</a>, where we&#39;re learning about the Tor network to improve its availability and performance while keeping our users safe.</p>
 
 <p>The first graph shows the estimated number of new and returning Tor clients per day coming from China and Iran. So for example, there were around 7800 new and returning Iranian Tor users on June 24. By &quot;returning&quot;, we mean Tor clients that were off for at least several days, so they didn&#39;t have cached directory information. We added China as a comparison for the Iran numbers: you can see the results of the recent <a href="http://rconversation.blogs.com/rconversation/2009/06/chinas-censorship-blowback.html">Green Dam fiasco and attempts to block Google services</a>. Many more details and math are <a href="https://git.torproject.org/checkout/metrics/master/report/dirreq/directory-requests-2009-06-26.pdf">here</a>.</p>
 
@@ -90,136 +90,136 @@
 <td>21.44 KB</td> </tr>
 </tbody></p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-02035stable-released">Tor 0.2.0.35-stable released</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">bug fixes</a>
-            
-              <a class="post-category post-category-js" href="#">hidden service fixes</a>
-            
-              <a class="post-category post-category-js" href="#">stable release</a>
-             |
-            26 Jun 2009
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Tor 0.2.0.35 fixes a big bug that was causing Tor relays with dynamic<br>
-IP addresses to disappear from the network. It also fixes a rare crash<br>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-02035stable-released">Tor 0.2.0.35-stable released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">hidden service fixes</a>
+              
+                <a class="post-category post-category-js" href="#">stable release</a>
+               |
+              26 Jun 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Tor 0.2.0.35 fixes a big bug that was causing Tor relays with dynamic
+IP addresses to disappear from the network. It also fixes a rare crash
 bug on fast exit relays.</p>
 
 <p><a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a></p>
 
-<p>Changes in version 0.2.0.35 - 2009-06-24<br>
+<p>Changes in version 0.2.0.35 - 2009-06-24
 <strong>Security fix:</strong></p>
 
 <ul>
-<li>Avoid crashing in the presence of certain malformed descriptors.<br>
+<li>Avoid crashing in the presence of certain malformed descriptors.
 Found by lark, and by automated fuzzing.</li>
-<li>Fix an edge case where a malicious exit relay could convince a<br>
-controller that the client&#39;s DNS question resolves to an internal IP<br>
+<li>Fix an edge case where a malicious exit relay could convince a
+controller that the client&#39;s DNS question resolves to an internal IP
 address. Bug found and fixed by &quot;optimist&quot;; bugfix on 0.1.2.8-beta.</li>
 </ul>
 
 <p><strong>Major bugfixes:</strong></p>
 
 <ul>
-<li>Finally fix the bug where dynamic-IP relays disappear when their<br>
-IP address changes: directory mirrors were mistakenly telling<br>
-them their old address if they asked via begin_dir, so they<br>
-never got an accurate answer about their new address, so they<br>
-just vanished after a day. For belt-and-suspenders, relays that<br>
-don&#39;t set Address in their config now avoid using begin_dir for<br>
+<li>Finally fix the bug where dynamic-IP relays disappear when their
+IP address changes: directory mirrors were mistakenly telling
+them their old address if they asked via begin_dir, so they
+never got an accurate answer about their new address, so they
+just vanished after a day. For belt-and-suspenders, relays that
+don&#39;t set Address in their config now avoid using begin_dir for
 all direct connections. Should fix bugs 827, 883, and 900.</li>
-<li>Fix a timing-dependent, allocator-dependent, DNS-related crash bug<br>
-that would occur on some exit nodes when DNS failures and timeouts<br>
+<li>Fix a timing-dependent, allocator-dependent, DNS-related crash bug
+that would occur on some exit nodes when DNS failures and timeouts
 occurred in certain patterns. Fix for bug 957.</li>
 </ul>
 
 <p><strong>Minor bugfixes:</strong></p>
 
 <ul>
-<li>When starting with a cache over a few days old, do not leak<br>
-memory for the obsolete router descriptors in it. Bugfix on<br>
+<li>When starting with a cache over a few days old, do not leak
+memory for the obsolete router descriptors in it. Bugfix on
 0.2.0.33; fixes bug 672.</li>
-<li>Hidden service clients didn&#39;t use a cached service descriptor that<br>
-was older than 15 minutes, but wouldn&#39;t fetch a new one either,<br>
-because there was already one in the cache. Now, fetch a v2<br>
-descriptor unless the same descriptor was added to the cache within<br>
+<li>Hidden service clients didn&#39;t use a cached service descriptor that
+was older than 15 minutes, but wouldn&#39;t fetch a new one either,
+because there was already one in the cache. Now, fetch a v2
+descriptor unless the same descriptor was added to the cache within
 the last 15 minutes. Fixes bug 997; reported by Marcus Griep.</li>
 </ul>
 
 <p>The original announcement can be found at <a href="http://archives.seul.org/or/announce/Jun-2009/msg00000.html" title="http://archives.seul.org/or/announce/Jun-2009/msg00000.html">http://archives.seul.org/or/announce/Jun-2009/msg00000.html</a></p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-browser-bundle-122-released">Tor Browser Bundle 1.2.2 Released</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">pidgin updates</a>
-            
-              <a class="post-category post-category-js" href="#">tor browser bundle</a>
-            
-              <a class="post-category post-category-js" href="#">yahoo fixes</a>
-             |
-            24 Jun 2009
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Tor Browser Bundle 1.2.2 is now available. The only change is an update to Pidgin to version 2.5.7. The Pidgin <a href="http://developer.pidgin.im/wiki/ChangeLog">changelog</a> has more information.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-122-released">Tor Browser Bundle 1.2.2 Released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">pidgin updates</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">yahoo fixes</a>
+               |
+              24 Jun 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Tor Browser Bundle 1.2.2 is now available. The only change is an update to Pidgin to version 2.5.7. The Pidgin <a href="http://developer.pidgin.im/wiki/ChangeLog">changelog</a> has more information.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-02116rc-release-candidate-now-available">Tor 0.2.1.16-rc Release Candidate now available</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">bug fixes</a>
-            
-              <a class="post-category post-category-js" href="#">hidden service fixes</a>
-            
-              <a class="post-category post-category-js" href="#">release candidate</a>
-            
-              <a class="post-category post-category-js" href="#">security fixes</a>
-             |
-            24 Jun 2009
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Tor 0.2.1.16-rc speeds up performance for fast exit relays, and fixes<br>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-02116rc-release-candidate-now-available">Tor 0.2.1.16-rc Release Candidate now available</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">hidden service fixes</a>
+              
+                <a class="post-category post-category-js" href="#">release candidate</a>
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+               |
+              24 Jun 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Tor 0.2.1.16-rc speeds up performance for fast exit relays, and fixes
 a bunch of minor bugs.</p>
 
 <p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
 
-<p>Changes in version 0.2.1.16-rc - 2009-06-20<br>
+<p>Changes in version 0.2.1.16-rc - 2009-06-20
 <strong>Security fixes:</strong></p>
 
 <ul>
-<li>Fix an edge case where a malicious exit relay could convince a<br>
-controller that the client&#39;s DNS question resolves to an internal IP<br>
+<li>Fix an edge case where a malicious exit relay could convince a
+controller that the client&#39;s DNS question resolves to an internal IP
 address. Bug found and fixed by &quot;optimist&quot;; bugfix on 0.1.2.8-beta.</li>
 </ul>
 
 <p><strong>Major performance improvements (on 0.2.0.x):</strong></p>
 
 <ul>
-<li>Disable and refactor some debugging checks that forced a linear scan<br>
-over the whole server-side DNS cache. These accounted for over 50%<br>
-of CPU time on a relatively busy exit node&#39;s gprof profile. Found<br>
+<li>Disable and refactor some debugging checks that forced a linear scan
+over the whole server-side DNS cache. These accounted for over 50%
+of CPU time on a relatively busy exit node&#39;s gprof profile. Found
 by Jacob.</li>
-<li>Disable some debugging checks that appeared in exit node profile<br>
+<li>Disable some debugging checks that appeared in exit node profile
 data.</li>
 </ul>
 
@@ -227,64 +227,64 @@ data.</li>
 
 <ul>
 <li>Update to the &quot;June 3 2009&quot; ip-to-country file.</li>
-<li>Do not have tor-resolve automatically refuse all .onion addresses;<br>
+<li>Do not have tor-resolve automatically refuse all .onion addresses;
 if AutomapHostsOnResolve is set in your torrc, this will work fine.</li>
 </ul>
 
 <p><strong>Minor bugfixes (on 0.2.0.x):</strong></p>
 
 <ul>
-<li>Log correct error messages for DNS-related network errors on<br>
+<li>Log correct error messages for DNS-related network errors on
 Windows.</li>
-<li>Fix a race condition that could cause crashes or memory corruption<br>
-when running as a server with a controller listening for log<br>
+<li>Fix a race condition that could cause crashes or memory corruption
+when running as a server with a controller listening for log
 messages.</li>
-<li>Avoid crashing when we have a policy specified in a DirPolicy or<br>
-SocksPolicy or ReachableAddresses option with ports set on it,<br>
+<li>Avoid crashing when we have a policy specified in a DirPolicy or
+SocksPolicy or ReachableAddresses option with ports set on it,
 and we re-load the policy. May fix bug 996.</li>
-<li>Hidden service clients didn&#39;t use a cached service descriptor that<br>
-was older than 15 minutes, but wouldn&#39;t fetch a new one either,<br>
-because there was already one in the cache. Now, fetch a v2<br>
-descriptor unless the same descriptor was added to the cache within<br>
+<li>Hidden service clients didn&#39;t use a cached service descriptor that
+was older than 15 minutes, but wouldn&#39;t fetch a new one either,
+because there was already one in the cache. Now, fetch a v2
+descriptor unless the same descriptor was added to the cache within
 the last 15 minutes. Fixes bug 997; reported by Marcus Griep.</li>
 </ul>
 
 <p><strong>Minor bugfixes (on 0.2.1.x):</strong></p>
 
 <ul>
-<li>Don&#39;t warn users about low port and hibernation mix when they<br>
-provide a *ListenAddress directive to fix that. Bugfix on<br>
+<li>Don&#39;t warn users about low port and hibernation mix when they
+provide a *ListenAddress directive to fix that. Bugfix on
 0.2.1.15-rc.</li>
-<li>When switching back and forth between bridge mode, do not start<br>
+<li>When switching back and forth between bridge mode, do not start
 gathering GeoIP data until two hours have passed.</li>
-<li>Do not complain that the user has requested an excluded node as<br>
-an exit when the node is not really an exit. This could happen<br>
-because the circuit was for testing, or an introduction point.<br>
+<li>Do not complain that the user has requested an excluded node as
+an exit when the node is not really an exit. This could happen
+because the circuit was for testing, or an introduction point.
 Fix for bug 984.</li>
 </ul>
 
 <p>The original announcement can be found at <a href="http://archives.seul.org/or/talk/Jun-2009/msg00288.html" title="http://archives.seul.org/or/talk/Jun-2009/msg00288.html">http://archives.seul.org/or/talk/Jun-2009/msg00288.html</a></p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/recent-growth-tor-network">On the Recent Growth of the Tor Network</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">karsten</a> under
-            
-              <a class="post-category post-category-js" href="#">bridges</a>
-            
-              <a class="post-category post-category-js" href="#">metrics</a>
-            
-              <a class="post-category post-category-js" href="#">performance</a>
-             |
-            23 Jun 2009
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>In the past few days the Tor network is seeing a lot of new users <a href="https://blog.torproject.org/blog/measuring-tor-and-iran">coming from Iran</a>. At the same time we have heard from many people who want to support the Tor network by setting up more relays and <a href="https://www.torproject.org/bridges">bridges</a>. Now we wanted to know, are these just promises, or did the network really grow? Here are the results:</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/recent-growth-tor-network">On the Recent Growth of the Tor Network</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">karsten</a> under
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">metrics</a>
+              
+                <a class="post-category post-category-js" href="#">performance</a>
+               |
+              23 Jun 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>In the past few days the Tor network is seeing a lot of new users <a href="https://blog.torproject.org/blog/measuring-tor-and-iran">coming from Iran</a>. At the same time we have heard from many people who want to support the Tor network by setting up more relays and <a href="https://www.torproject.org/bridges">bridges</a>. Now we wanted to know, are these just promises, or did the network really grow? Here are the results:</p>
 
 <p>The number of relays has grown by 359 or 24% to now 1827 relays within only one week to the highest <a href="https://git.torproject.org/checkout/metrics/master/report/dirarch/dirarch-2009-06-22.pdf">number of relays</a> the network has ever seen. Likewise, the <a href="https://git.torproject.org/checkout/metrics/master/report/bridges/bridges-2009-06-22.pdf">number of bridges</a> has increased by an incredible 69 % from 255 to 432 within one week. Awesome!</p>
 
@@ -305,23 +305,24 @@ Fix for bug 984.</li>
 <td>15.02 KB</td> </tr>
 </tbody></p>
 </p>
-      </div>
-    </section>
-  
+        </div>
+      </section>
+    
 
-   <!-- Pagination links -->
-  <div class="pagination">
-    
-      <a href="/blog/page113" class="previous">Previous</a>
-    
-    <span class="page_number ">Page: 114 of 133</span>
-    
-      <a href="/blog/page115" class="next">Next</a>
-    
+     <!-- Pagination links -->
+    <div class="pagination">
+      
+        <a href="/blog/page113" class="previous">Previous</a>
+      
+      <span class="page_number ">Page: 114 of 133</span>
+      
+        <a href="/blog/page115" class="next">Next</a>
+      
+    </div>
   </div>
+
 </div>
 
-            </div>
 
             <div class="footer">
                 <div class="pure-menu pure-menu-horizontal pure-menu-open">

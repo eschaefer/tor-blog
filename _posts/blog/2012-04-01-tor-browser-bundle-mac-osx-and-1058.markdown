@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser Bundle, Mac OSX and 10.5.8"
-permalink: tor-browser-bundle-mac-osx-and-1058
+permalink: blog/tor-browser-bundle-mac-osx-and-1058
 date: 2012-04-01
 author: phobos
 category: blog

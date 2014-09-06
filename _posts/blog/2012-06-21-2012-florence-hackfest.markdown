@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "2012 Florence Hackfest"
-permalink: 2012-florence-hackfest
+permalink: blog/2012-florence-hackfest
 date: 2012-06-21
 author: phobos
 category: blog

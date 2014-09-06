@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles and alpha bundles"
-permalink: new-tor-browser-bundles-and-alpha-bundles
+permalink: blog/new-tor-browser-bundles-and-alpha-bundles
 date: 2012-10-23
 author: erinn
 category: blog

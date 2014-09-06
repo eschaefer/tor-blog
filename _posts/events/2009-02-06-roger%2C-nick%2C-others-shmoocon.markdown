@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger, Nick, others at Shmoocon"
-permalink: roger%2C-nick%2C-others-shmoocon
+permalink: /events/roger%2C-nick%2C-others-shmoocon
 date: 2009-02-06
 startdate: 2009-02-06
 enddate: 2009-02-08

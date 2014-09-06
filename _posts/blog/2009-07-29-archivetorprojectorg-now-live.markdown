@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "archive.torproject.org is now live"
-permalink: archivetorprojectorg-now-live
+permalink: blog/archivetorprojectorg-now-live
 date: 2009-07-29
 author: phobos
 category: blog

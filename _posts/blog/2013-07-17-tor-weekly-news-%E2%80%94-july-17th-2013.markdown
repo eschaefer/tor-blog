@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — July, 17th 2013"
-permalink: tor-weekly-news-%E2%80%94-july-17th-2013
+permalink: blog/tor-weekly-news-%E2%80%94-july-17th-2013
 date: 2013-07-17
 author: lunar
 category: blog
@@ -32,7 +32,7 @@ During the next two days, researchers presented the selected papers. Two of them
 
 Mashael Alsabah, Kevin Bauer, Tariq Elahi, and Ian Goldberg presented [Conflux](http://freehaven.net/anonbib/papers/pets2013/paper_65.pdf), “a dynamic traffic-splitting approach that assigns traffic to an overlay path based on its measured latency. […] Conflux considerably increases performance for clients using low-bandwidth bridges.” [A thread on tor-talk](https://lists.torproject.org/pipermail/tor-talk/2013-July/028950.html) discusses effects of Conflux on website fingerprinting.
 
-John Geddes, Rob Jansen, and Nicholas Hopper studied [balancing performance with anonymity in Tor](http://freehaven.net/anonbib/papers/pets2013/paper_80.pdf). They have “investigated the effects of proposed [performance enhancing] modifications on attacks that rely on network measurements as a side channel.” The paper concluded with “an analysis of the total reduction in anonymity that clients face due to  
+John Geddes, Rob Jansen, and Nicholas Hopper studied [balancing performance with anonymity in Tor](http://freehaven.net/anonbib/papers/pets2013/paper_80.pdf). They have “investigated the effects of proposed [performance enhancing] modifications on attacks that rely on network measurements as a side channel.” The paper concluded with “an analysis of the total reduction in anonymity that clients face due to
 each proposed mechanism.”
 
 Other papers are relevant to the wider set of Tor problems:

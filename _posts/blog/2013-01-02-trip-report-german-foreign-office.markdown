@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "Trip report, German Foreign Office"
-permalink: trip-report-german-foreign-office
+permalink: blog/trip-report-german-foreign-office
 date: 2013-01-02
 author: arma
 category: blog
 tags: ["conference", "internet censorship", "trip report"]
 ---
 
-In September, Karen and I attended a conference at the German Foreign Office to help  
-them decide what role Germany and the EU should have at regulating the sale of censorship and surveillance tools to dictators:  
+In September, Karen and I attended a conference at the German Foreign Office to help
+them decide what role Germany and the EU should have at regulating the sale of censorship and surveillance tools to dictators:
  [http://internethumanrights.org/ihrberlin2012/](http://internethumanrights.org/ihrberlin2012/ "http://internethumanrights.org/ihrberlin2012/")
 
 Highlights:

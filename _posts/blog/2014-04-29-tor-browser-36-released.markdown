@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser 3.6 is released"
-permalink: tor-browser-36-released
+permalink: blog/tor-browser-36-released
 date: 2014-04-29
 author: mikeperry
 category: blog
@@ -36,7 +36,7 @@ Here is the complete changelog since TBB 3.5.4:
     - Bug [10610](https://trac.torproject.org/projects/tor/ticket/10610): Clarify wizard UI text describing obstacles/blocking
     - Bug [11074](https://trac.torproject.org/projects/tor/ticket/11074): Support Tails use case (XULRunner and optional customizations)
     - Bug [11482](https://trac.torproject.org/projects/tor/ticket/11482): Hide bridge settings prompt if no default bridges.
-    - Bug [11484](https://trac.torproject.org/projects/tor/ticket/11484): Show help button even if no default bridges. 
+    - Bug [11484](https://trac.torproject.org/projects/tor/ticket/11484): Show help button even if no default bridges.
   - Update Torbutton to 1.6.9.0:
 
     - Bug [11242](https://trac.torproject.org/projects/tor/ticket/11242): Fix improper "update needed" message after in-place upgrade.
@@ -44,7 +44,7 @@ Here is the complete changelog since TBB 3.5.4:
     - Bug [9901](https://trac.torproject.org/projects/tor/ticket/9901): Fix browser freeze due to content type sniffing
     - Bug [10611](https://trac.torproject.org/projects/tor/ticket/10611): Add Swedish (sv) to extra locales to update
     - Bug [7439](https://trac.torproject.org/projects/tor/ticket/7439): Improve download warning dialog text.
-    - Bug [11384](https://trac.torproject.org/projects/tor/ticket/11384): Completely remove hidden toggle menu item. 
+    - Bug [11384](https://trac.torproject.org/projects/tor/ticket/11384): Completely remove hidden toggle menu item.
   - Backport Pending Tor Patches:
 
     - Bug [9665](https://trac.torproject.org/projects/tor/ticket/9665): Report a bootstrap error if all bridges are unreachable
@@ -56,14 +56,14 @@ Here is the complete changelog since TBB 3.5.4:
 
 - Mac:
   - Bug [4261](https://trac.torproject.org/projects/tor/ticket/4261): Use DMG instead of ZIP for Mac packages
-  - Bug [9308](https://trac.torproject.org/projects/tor/ticket/9308): Prevent install path from leaking in some JS exceptions on Mac and Windows 
+  - Bug [9308](https://trac.torproject.org/projects/tor/ticket/9308): Prevent install path from leaking in some JS exceptions on Mac and Windows
 
 - Linux:
   - Bug [11190](https://trac.torproject.org/projects/tor/ticket/11190): Switch linux PT build process to python2
-  - Bug [10383](https://trac.torproject.org/projects/tor/ticket/10383): Enable NIST P224 and P256 accel support for 64bit builds. 
+  - Bug [10383](https://trac.torproject.org/projects/tor/ticket/10383): Enable NIST P224 and P256 accel support for 64bit builds.
 
 - Windows:
-  - Bug [9308](https://trac.torproject.org/projects/tor/ticket/9308): Prevent install path from leaking in some JS exceptions on Mac and Windows 
+  - Bug [9308](https://trac.torproject.org/projects/tor/ticket/9308): Prevent install path from leaking in some JS exceptions on Mac and Windows
 
 Here is the changelog since the 3.6-beta-2:
 
@@ -71,19 +71,19 @@ Here is the changelog since the 3.6-beta-2:
   - Update Firefox to 24.5.0esr
   - Update Tor Launcher to 0.2.5.4
     - Bug [11482](https://trac.torproject.org/projects/tor/ticket/11482): Hide bridge settings prompt if no default bridges.
-    - Bug [11484](https://trac.torproject.org/projects/tor/ticket/11484): Show help button even if no default bridges. 
+    - Bug [11484](https://trac.torproject.org/projects/tor/ticket/11484): Show help button even if no default bridges.
 
   - Update Torbutton to 1.6.9.0
     - Bug [7439](https://trac.torproject.org/projects/tor/ticket/7439): Improve download warning dialog text.
-    - Bug [11384](https://trac.torproject.org/projects/tor/ticket/11384): Completely remove hidden toggle menu item. 
+    - Bug [11384](https://trac.torproject.org/projects/tor/ticket/11384): Completely remove hidden toggle menu item.
 
   - Update NoScript to 2.6.8.20
   - Update fte transport to 0.2.13
   - Backport Pending Tor Patches:
-    - Bug [11156](https://trac.torproject.org/projects/tor/ticket/11156): Additional obfsproxy startup error message fixes 
+    - Bug [11156](https://trac.torproject.org/projects/tor/ticket/11156): Additional obfsproxy startup error message fixes
 
-  - Bug [11586](https://trac.torproject.org/projects/tor/ticket/11586): Include license files for component software in Docs directory. 
+  - Bug [11586](https://trac.torproject.org/projects/tor/ticket/11586): Include license files for component software in Docs directory.
 
 - Windows and Mac:
-  - Bug [9308](https://trac.torproject.org/projects/tor/ticket/9308): Prevent install path from leaking in some JS exceptions on Mac and Windows builds 
+  - Bug [9308](https://trac.torproject.org/projects/tor/ticket/9308): Prevent install path from leaking in some JS exceptions on Mac and Windows builds
 

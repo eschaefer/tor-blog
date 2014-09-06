@@ -22,7 +22,7 @@
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
-            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
             <h1 class="brand-title">The Tor Project Blog</h1>
             <h2 class="brand-tagline">News and events from Tor</h2>
 
@@ -44,30 +44,30 @@
 
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
+
             <!-- A wrapper for all the blog posts -->
-            <div class="posts">
-                <h1 class="content-subhead">Recent Posts</h1>
+<div class="posts">
 
-
-               <div id="home">
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/february-2010-progress-report">February 2010 Progress Report</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">advocacy</a>
-            
-              <a class="post-category post-category-js" href="#">performance enhancements</a>
-            
-              <a class="post-category post-category-js" href="#">progress report</a>
-             |
-            24 Mar 2010
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p><strong>New releases</strong></p>
+  <h1 class="content-subhead">Recent Posts</h1>
+  <div id="home">
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/february-2010-progress-report">February 2010 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">performance enhancements</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+               |
+              24 Mar 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p><strong>New releases</strong></p>
 
 <ul>
 <li>On February 13, we released a new stable version of Tor, 0.2.1.23. Tor 0.2.1.23 fixes a huge client-side performance bug, makes Tor work again on the latest OS X, and updates the location of a directory authority.</li>
@@ -79,7 +79,7 @@
 <li>On February 7th, volunteers released a new beta of the Amnesia LiveCD, version 0.4.2. Amnesia is the merging of two projects, one of which is the Incognito LiveCD.</li>
 </ul>
 
-<p><strong>Design, develop, and implement enhancements that make<br>
+<p><strong>Design, develop, and implement enhancements that make
 Tor a better tool for users in censored countries.</strong></p>
 
 <p>Work continues to improve the Tor ports for Android, Maemo, and iPhone.</p>
@@ -109,43 +109,43 @@ Tor a better tool for users in censored countries.</strong></p>
 <li>We talked a little bit with the fellow writing a circumvention tool called Puff. On the one hand, it looks like yet another centralized proxy where the operator could screw the users but promises not to. On the other hand, he seems technically savvy and he seems to really care about doing the right thing. We should talk with him more to help him improve the safety that his service can provide.</li>
 </ul>
 
-<p><strong>Bridge relay and bridge authority work.</strong><br>
+<p><strong>Bridge relay and bridge authority work.</strong>
 We’re currently researching how to turn every tor client into a bridge by default, if the client finds itself reachable externally. This will dramatically increase the available bridges. There are some new attacks and challenges to overcome before this can be deployed as part of a -stable release, but we expect by Q3 2010 to have this into -alpha releases.</p>
 
-<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong><br>
+<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong>
 From the 0.2.2.9-alpha changelog:</p>
 
 <blockquote>
 <p>We were selecting our guards uniformly at random, and then weighting which of our guards we’d use uniformly at random. This imbalance meant that Tor clients were severely limited on throughput (and probably latency too) by the first hop in their circuit. Now we select guards weighted by currently advertised bandwidth. We also automatically discard guards picked using the old algorithm. Fixes bug 1217; bugfix on 0.2.1.3-alpha. Found by Mike Perry.</p>
 </blockquote>
 
-<p><strong>More reliable (e.g. split) download mechanism.</strong><br>
+<p><strong>More reliable (e.g. split) download mechanism.</strong>
 Enhanced the metrics portal with numbers from the get-tor email autoresponder, <a href="http://metrics.torproject.org/gettor-graphs.html" title="http://metrics.torproject.org/gettor-graphs.html">http://metrics.torproject.org/gettor-graphs.html</a>.</p>
 
-<p><strong>Footprints from Tor Browser Bundle.</strong><br>
+<p><strong>Footprints from Tor Browser Bundle.</strong>
 We’ve picked up the work towards a Tor Browser Bundle for OS X and Linux, and hope to have experimental bundles for at least one of those platforms ready in March. Soon after they’re ready for testing, we’ll want to start looking at how footprints from running the bundle differ on each platform.</p>
 
-<p><strong>Translation work, ultimately a browser-based approach.</strong><br>
+<p><strong>Translation work, ultimately a browser-based approach.</strong>
 Translated content updates for Torbutton, Tor Browser, Website, General Documentation, Vidalia interface, and TorCheck in Chinese, German, French, Italian, Dutch, Norwegian, Polish, Russian, Arabic, Farsi, Burmese, Spanish, Swedish, and Turkish.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-google-summer-code-2010">Tor in Google Summer of Code 2010</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">karsten</a> under
-            
-              <a class="post-category post-category-js" href="#">gsoc</a>
-            
-              <a class="post-category post-category-js" href="#">gsoc2010</a>
-             |
-            23 Mar 2010
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Interested in coding on Tor and getting paid for it by Google? If you are a student, we have good news for you: We have been <a href="http://socghop.appspot.com/gsoc/program/accepted_orgs/google/gsoc2010">accepted</a> as a mentoring organization for <a href="http://socghop.appspot.com/gsoc/program/home/google/gsoc2010">Google Summer of Code 2010</a> together with <a href="https://www.eff.org/">The Electronic Frontier Foundation</a>! Woo!</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-google-summer-code-2010">Tor in Google Summer of Code 2010</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">karsten</a> under
+              
+                <a class="post-category post-category-js" href="#">gsoc</a>
+              
+                <a class="post-category post-category-js" href="#">gsoc2010</a>
+               |
+              23 Mar 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Interested in coding on Tor and getting paid for it by Google? If you are a student, we have good news for you: We have been <a href="http://socghop.appspot.com/gsoc/program/accepted_orgs/google/gsoc2010">accepted</a> as a mentoring organization for <a href="http://socghop.appspot.com/gsoc/program/home/google/gsoc2010">Google Summer of Code 2010</a> together with <a href="https://www.eff.org/">The Electronic Frontier Foundation</a>! Woo!</p>
 
 <p>Here are the facts: The summer of code gives you the opportunity to work on your own Tor-related coding project with one of the Tor developers as your mentor. You can apply for a coding project related to Tor itself or to one of its many <a href="https://www.torproject.org/projects/">supplemental projects</a> (as well as for an <a href="https://www.eff.org/gsoc2010">EFF-related project</a>). Your mentor will help you when you&#39;re stuck with your project and guide you in becoming part of the Tor community. Google pays you 4,500 USD for the three months of your project, so that you can focus on coding and don&#39;t have to worry about how to pay your bills.</p>
 
@@ -155,26 +155,26 @@ Translated content updates for Torbutton, Tor Browser, Website, General Document
 
 <p>We are looking forward to discussing your project idea with you!</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/blog-problems">Blog problems</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">blog overload</a>
-            
-              <a class="post-category post-category-js" href="#">comment apocalypse</a>
-            
-              <a class="post-category post-category-js" href="#">data flood</a>
-             |
-            14 Mar 2010
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>As you may have noticed, the blog is having problems keeping up with the load. It seems the blog has become very popular over the past month. Even with caching enabled, the blog can&#39;t keep up. Another reason for the issues is that we&#39;re caught in a tricky balance between making the CAPTCHA easy to pass for humans with legitimate comments versus automated comment spammers. And then there are the human comment spammers which can pass any CAPTCHA we put up with varying degrees of success. We&#39;re up to hundreds of spam comments per day. We don&#39;t want to use a third party CAPTCHA or comment service because then we&#39;re giving up all our viewers to their tracking mechanisms. There&#39;s already enough surveillance on the Internet. Therefore, comments are disabled for the next day while we assess the load on the blog.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/blog-problems">Blog problems</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">blog overload</a>
+              
+                <a class="post-category post-category-js" href="#">comment apocalypse</a>
+              
+                <a class="post-category post-category-js" href="#">data flood</a>
+               |
+              14 Mar 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>As you may have noticed, the blog is having problems keeping up with the load. It seems the blog has become very popular over the past month. Even with caching enabled, the blog can&#39;t keep up. Another reason for the issues is that we&#39;re caught in a tricky balance between making the CAPTCHA easy to pass for humans with legitimate comments versus automated comment spammers. And then there are the human comment spammers which can pass any CAPTCHA we put up with varying degrees of success. We&#39;re up to hundreds of spam comments per day. We don&#39;t want to use a third party CAPTCHA or comment service because then we&#39;re giving up all our viewers to their tracking mechanisms. There&#39;s already enough surveillance on the Internet. Therefore, comments are disabled for the next day while we assess the load on the blog.</p>
 
 <p>We are working on forums, right now they are tied up in making sure they are functional without javascript. We will announce and release them when they are ready.</p>
 
@@ -182,30 +182,30 @@ Translated content updates for Torbutton, Tor Browser, Website, General Document
 
 <p>Thanks for your understanding.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/china-blocking-tor-round-two">China blocking Tor:  Round Two</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">bridge blocking</a>
-            
-              <a class="post-category post-category-js" href="#">censorship</a>
-            
-              <a class="post-category post-category-js" href="#">china</a>
-            
-              <a class="post-category post-category-js" href="#">great firewall</a>
-            
-              <a class="post-category post-category-js" href="#">relay blocking</a>
-             |
-            12 Mar 2010
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Experts in China tell us Tor is not being singled out, that all &quot;circumvention&quot; tools are being subjected to the censorship regime of the Great Firewall of China as politically sensitive anniversaries come about. We also hear people in China need <a href="http://en.wikipedia.org/wiki/Human_flesh_search_engine">their privacy too</a>, even if they never leave the Chinese Internet.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/china-blocking-tor-round-two">China blocking Tor:  Round Two</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bridge blocking</a>
+              
+                <a class="post-category post-category-js" href="#">censorship</a>
+              
+                <a class="post-category post-category-js" href="#">china</a>
+              
+                <a class="post-category post-category-js" href="#">great firewall</a>
+              
+                <a class="post-category post-category-js" href="#">relay blocking</a>
+               |
+              12 Mar 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Experts in China tell us Tor is not being singled out, that all &quot;circumvention&quot; tools are being subjected to the censorship regime of the Great Firewall of China as politically sensitive anniversaries come about. We also hear people in China need <a href="http://en.wikipedia.org/wiki/Human_flesh_search_engine">their privacy too</a>, even if they never leave the Chinese Internet.</p>
 
 <p>However, it appears China is getting better at blocking Tor. Here&#39;s a graph of returning users to the Tor Network from China:</p>
 
@@ -230,22 +230,22 @@ Translated content updates for Torbutton, Tor Browser, Website, General Document
 <td>14.8 KB</td> </tr>
 </tbody></p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-android">Tor on Android</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">ioerror</a> under
-            
-              <a class="post-category post-category-js" href="#">android mobile phone linux</a>
-             |
-            04 Mar 2010
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>The Tor Project has been working very closely with <a href="http://openideals.com/">Nathan Freitas</a> and <a href="http://openideals.com/guardian/">The Guardian Project</a> to create an Android release. This is an early beta release and is not yet suitable for high security needs. The Android web browser is not protected by Torbutton and we have not yet developed an anonymous browser on the Android platform. Please be cautious with this release, it&#39;s probably pretty fragile and it&#39;s certainly not ready for serious use.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-android">Tor on Android</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">ioerror</a> under
+              
+                <a class="post-category post-category-js" href="#">android mobile phone linux</a>
+               |
+              04 Mar 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>The Tor Project has been working very closely with <a href="http://openideals.com/">Nathan Freitas</a> and <a href="http://openideals.com/guardian/">The Guardian Project</a> to create an Android release. This is an early beta release and is not yet suitable for high security needs. The Android web browser is not protected by Torbutton and we have not yet developed an anonymous browser on the Android platform. Please be cautious with this release, it&#39;s probably pretty fragile and it&#39;s certainly not ready for serious use.</p>
 
 <p>We&#39;ve codenamed the Tor on Android project Orbot; Orbot is a single Android package that provides a new Tor controller, Privoxy as our trusty little HTTP proxy, libevent, and Tor itself. This Android package is using the C reference implementation of Tor. Orbot should be orders of magnitude safer than other Tor implementations on Android and it&#39;s our official release. Everything you&#39;ll need for using Tor is in the package. :-)</p>
 
@@ -257,28 +257,28 @@ Translated content updates for Torbutton, Tor Browser, Website, General Document
 
 <p>Our official builds are available from our website. As per our usual style of package releases, we&#39;re releasing <a href="https://www.torproject.org/dist/android/0.2.2.9-alpha-orbot-0.0.2.apk">the .apk package</a> with <a href="https://www.torproject.org/dist/android/0.2.2.9-alpha-orbot-0.0.2.apk.asc">gpg signatures</a>.</p>
 
-<p>If you&#39;d simply like the latest Android package, please visit this url:<br>
+<p>If you&#39;d simply like the latest Android package, please visit this url:
  <a href="http://www.torproject.org/dist/android/alpha-orbot-latest.apk">http://www.torproject.org/dist/android/alpha-orbot-latest.apk</a></p>
 
-<p>If you have the barcode scanner, you&#39;ll be able to directly load the<br>
+<p>If you have the barcode scanner, you&#39;ll be able to directly load the
 latest package by scanning the following QR code:</p>
 
 <p><img src="https://blog.torproject.org/files/orbot-qr-code-latest.png" alt=""></p>
 
-<p>We plan to release Orbot in the Google Market in the near future. The<br>
-Orbot package you install from our website and the application in the<br>
-Market should be identical. In addition to the GPG signature, the .apk<br>
-files contain a digital signature. If you&#39;re feeling reasonably<br>
-paranoid, it&#39;s probably a fine idea to download the .apk from our<br>
-website, check the GPG signature, and then install the package on your<br>
+<p>We plan to release Orbot in the Google Market in the near future. The
+Orbot package you install from our website and the application in the
+Market should be identical. In addition to the GPG signature, the .apk
+files contain a digital signature. If you&#39;re feeling reasonably
+paranoid, it&#39;s probably a fine idea to download the .apk from our
+website, check the GPG signature, and then install the package on your
 device manually.</p>
 
-<p>If you&#39;d like to reproduce our builds from source, we&#39;ve documented the<br>
-build process in<br>
+<p>If you&#39;d like to reproduce our builds from source, we&#39;ve documented the
+build process in
  <a href="https://svn.torproject.org/svn/projects/android/trunk/Orbot/BUILD">our subversion repository</a>.</p>
 
-<p>If you&#39;d like to read more about Orbot, we suggest you check out the<br>
-source and start hacking around:<br>
+<p>If you&#39;d like to read more about Orbot, we suggest you check out the
+source and start hacking around:
 svn co <a href="https://svn.torproject.org/svn/projects/android/trunk/" title="https://svn.torproject.org/svn/projects/android/trunk/">https://svn.torproject.org/svn/projects/android/trunk/</a> android/</p>
 
 <p><thead><tr>
@@ -289,23 +289,24 @@ svn co <a href="https://svn.torproject.org/svn/projects/android/trunk/" title="h
 <td>426 bytes</td> </tr>
 </tbody></p>
 </p>
-      </div>
-    </section>
-  
+        </div>
+      </section>
+    
 
-   <!-- Pagination links -->
-  <div class="pagination">
-    
-      <a href="/blog/page97" class="previous">Previous</a>
-    
-    <span class="page_number ">Page: 98 of 133</span>
-    
-      <a href="/blog/page99" class="next">Next</a>
-    
+     <!-- Pagination links -->
+    <div class="pagination">
+      
+        <a href="/blog/page97" class="previous">Previous</a>
+      
+      <span class="page_number ">Page: 98 of 133</span>
+      
+        <a href="/blog/page99" class="next">Next</a>
+      
+    </div>
   </div>
+
 </div>
 
-            </div>
 
             <div class="footer">
                 <div class="pure-menu pure-menu-horizontal pure-menu-open">

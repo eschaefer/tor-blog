@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "On the Recent Growth of the Tor Network"
-permalink: recent-growth-tor-network
+permalink: blog/recent-growth-tor-network
 date: 2009-06-23
 author: karsten
 category: blog

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Weekly News — October 2nd, 2013</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor Weekly News — October 2nd, 2013</h2>
+<p class="meta">02 Oct 2013</p>
+
+<div class="event">
+<p>Welcome to the fourteenth issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the much-discussed Tor community.</p>
+
+<h1>Tor Browser Bundle 3.0alpha4 released</h1>
+
+<p>On September 28<sup>th</sup>, Mike Perry released the <a href="https://blog.torproject.org/blog/tor-browser-bundle-30alpha4-released">fourth alpha of the new Tor Browser Bundle 3.0 series</a>. The main highlights of this series are the important usability improvements that integrate Tor configuration and control into the browser itself, rather than relying on the unmaintained Vidalia interface.</p>
+
+<p>The latest iteration is based on Firefox 17.0.9esr, which brings with it a lot of important security fixes. It also fixes a fingerprinting issue by randomizing the timestamp sent when establishing an HTTPS connection.</p>
+
+<p>Two small but important usability improvements in the new Tor Launcher component were made: users can now directly copy and paste “bridge” lines from the <a href="https://bridges.torproject.org/">bridge database</a>, while clock-skews that would prevent Tor from functioning properly are now reported to users.</p>
+
+<p>Download your copy, test it, and report any problems you find. If you&#39;re feeling adventurous, you can also try out the crucial new security process by <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build">independently reproducing the binaries</a> from the publicly-reviewable source code.</p>
+
+<h1>Tor mini-hackathon at GNU 30<sup>th</sup> anniversary</h1>
+
+<p>The Tor mini-hackathon at the <a href="https://www.gnu.org/gnu30/">GNU 30th anniversary event</a> took place over the weekend, and Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/030238.html">sent out a brief report</a> on how things went. As well as working on proposal 220, which involves improvements to Tor server identity keys, Nick merged some small patches into the Tor mainline branch, and collected promises of several more to come. He also directed a few enquiring minds towards Tor&#39;s online community, saying “I hope we’ll be seeing more of some of the folks I talked to on our mailing lists and IRC channels soon”.</p>
+
+<h1>Tor Stack Exchange page in private beta</h1>
+
+<p>The <a href="http://tor.stackexchange.com">Tor Stack Exchange page</a>, which <a href="http://area51.stackexchange.com/proposals/56447/tor-online-anonymity-privacy-and-security">reached 100% commitment</a> last week, has now been moved into the ‘private beta’ stage. Runa Sandvik <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/030187.html">clarified</a> that “the purpose behind it is to ensure that users who committed to the site’s proposal have a chance to start asking and answering questions, as well as help with the initial community building activities that will define and shape the site”. She added that “the more experts who participate in the private beta, the more certain it is that our page will move on to the next stage (i.e. the public beta).”</p>
+
+<p>Fruitful discussions are already taking place: Karsten Loesing wrote to the wider community on the question of <a href="https://lists.torproject.org/pipermail/tor-relays/2013-September/002936.html">what to do about contact information for bridge operators</a> after it was posed on Stack Exchange.</p>
+
+<p>Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005519.html">put out a call</a> for Tor developers and anonymity researchers to participate in answering questions on the site, adding “Steven, Philipp, Jens, and I can&#39;t do it by ourselves.” If you have expert knowledge to contribute, please send an email to <a href="mailto:help@rt.torproject.org">help@rt.torproject.org</a> to get an invitation!</p>
+
+<h1>liballium: Pluggable Transports utility library in C</h1>
+
+<p>Yawning Angel announced a new library to ease the task of writing <a href="https://www.torproject.org/docs/pluggable-transports.html">pluggable transports</a>. liballium is a “simple library that handles the Tor Pluggable Transport Configuration protocol. The idea is for this library to be the C/C++ equivalent to <a href="https://gitweb.torproject.org/pluggable-transports/pyptlib.git">pyptlib</a> (and maybe more, depending on how much time I have to work on it).”</p>
+
+<p>The <a href="https://github.com/Yawning/liballium">code is available</a> for review featuring “a reasonably well commented example.”</p>
+
+<p>Feel free to follow up with “questions, comments, feedback”!</p>
+
+<h1>Tor Help Desk Roundup</h1>
+
+<p>Multiple users wrote to the help desk asking for guidance setting up hidden service sites. The most straightforward documentation for hidden services is in the <a href="https://www.torproject.org/docs/faq.html.en#torrc">torrc file</a> itself. A <a href="https://www.torproject.org/docs/tor-hidden-service.html.en">more in-depth guide</a> can be found on the Tor Project website. The website also documents how <a href="https://www.torproject.org/docs/hidden-services.html.en">hidden services work</a>. Technical details can be found in the <a href="https://gitweb.torproject.org/torspec.git?a=blob_plain;hb=HEAD;f=rend-spec.txt">Rendezvous Specification document</a>.</p>
+
+<h1>Monthly status reports for September 2013</h1>
+
+<p>The wave of regular monthly reports from Tor project members for the month of September has begun. <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000341.html">Runa Sandvik</a> released her report first, followed by reports from <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000342.html">Damian Johnson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000343.html">Philipp Winter</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000344.html">Sherief Alaa</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000345.html">Noel David Torres Taño</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Mike Perry published his <a href="http://pgp.mit.edu:11371/pks/lookup?op=get&amp;search=0x29846B3C683686CC">new GPG public key</a>, <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005518.html">adding</a>: “this new key will be used to sign email from me going forward, and will be used to sign software releases until such time as I get around to creating a second set of keys on a hardware token for that purpose”.</p>
+
+<p>David Fifield <a href="https://blog.torproject.org/blog/pluggable-transports-bundles-2417-beta-2-pt3-firefox-1709esr">updated the Pluggable Transports bundles using the latest Tor Browser Bundle</a>. In order to benefit from the improvements and security fixes, please update!</p>
+
+<p>intrigeri sent a <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003719.html">release schedule for Tails 0.21</a>. The first release candidate should be out on October 20th.</p>
+
+<p>Roger Dingledine sent out “a list of criteria to consider when evaluating pluggable transports for readiness of deployment to users”, asking for comments on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005528.html">his initial draft</a>.</p>
+
+<p>If you have the necessary hardware and want to help Tails out, please test two upcoming features: <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003744.html">persistent printer settings</a> and <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003757.html">support for more SD card readers</a> (the “sdio” type).</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by harmony, Lunar, dope457, and Matt Pagan.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

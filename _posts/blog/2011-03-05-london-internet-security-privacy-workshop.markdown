@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "London Internet Security & Privacy Workshop"
-permalink: london-internet-security-privacy-workshop
+permalink: blog/london-internet-security-privacy-workshop
 date: 2011-03-05
 author: phobos
 category: blog

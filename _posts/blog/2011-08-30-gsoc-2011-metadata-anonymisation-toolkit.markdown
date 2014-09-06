@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GSoC 2011: Metadata Anonymisation Toolkit"
-permalink: gsoc-2011-metadata-anonymisation-toolkit
+permalink: blog/gsoc-2011-metadata-anonymisation-toolkit
 date: 2011-08-30
 author: jvoisin
 category: blog
@@ -12,7 +12,7 @@ This is a guest blog from one of our 2011 Google summer of code students, jvoisi
 
 It's the end of the [GSoC](https://code.google.com/soc/). It was a really nice experience, I learned a lot, met a lot of nice people on irc, and earned some money.
 
-My project was to create a [Metadata Anonymisation Toolkit](https://gitweb.torproject.org/user/jvoisin/mat.git) (MAT), to improve privacy of online file publications. First, I heavily based my code on [hachoir](https://bitbucket.org/haypo/hachoir/wiki/Home) (a nice, but a slightly complex library), but now, must of the formats that the MAT supports do not use hachoir.  
+My project was to create a [Metadata Anonymisation Toolkit](https://gitweb.torproject.org/user/jvoisin/mat.git) (MAT), to improve privacy of online file publications. First, I heavily based my code on [hachoir](https://bitbucket.org/haypo/hachoir/wiki/Home) (a nice, but a slightly complex library), but now, must of the formats that the MAT supports do not use hachoir.
  Despite several code restructuring and re-factorizations, silly ideas, re-implementations, and re-writing/... the MAT is living !
 
 I made two big mistakes. The first being using python2.7, and [pygobject](https://live.gnome.org/PyGObject). Neither of these were in Debian stable/tails, so I had to rewrite those parts.

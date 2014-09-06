@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Set up a bridge or a relay and join the Tor network today"
-permalink: set-bridge-or-relay-and-join-tor-network-today
+permalink: blog/set-bridge-or-relay-and-join-tor-network-today
 date: 2012-03-12
 author: Runa
 category: blog

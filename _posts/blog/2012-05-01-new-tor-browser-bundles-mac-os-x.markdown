@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles for Mac OS X"
-permalink: new-tor-browser-bundles-mac-os-x
+permalink: blog/new-tor-browser-bundles-mac-os-x
 date: 2012-05-01
 author: erinn
 category: blog

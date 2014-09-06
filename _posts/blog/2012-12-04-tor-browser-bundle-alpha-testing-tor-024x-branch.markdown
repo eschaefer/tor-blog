@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser Bundle alpha testing with Tor 0.2.4.x-branch"
-permalink: tor-browser-bundle-alpha-testing-tor-024x-branch
+permalink: blog/tor-browser-bundle-alpha-testing-tor-024x-branch
 date: 2012-12-04
 author: phobos
 category: blog

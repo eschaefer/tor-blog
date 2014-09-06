@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles for Linux"
-permalink: new-tor-browser-bundles-linux
+permalink: blog/new-tor-browser-bundles-linux
 date: 2012-02-20
 author: Sebastian
 category: blog

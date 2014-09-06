@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Transparency, Openness, and our 2013 Financials"
-permalink: transparency-openness-and-our-2013-financials
+permalink: blog/transparency-openness-and-our-2013-financials
 date: 2014-07-26
 author: phobos
 category: blog

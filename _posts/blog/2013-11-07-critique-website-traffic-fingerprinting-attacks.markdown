@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A Critique of Website Traffic Fingerprinting Attacks"
-permalink: critique-website-traffic-fingerprinting-attacks
+permalink: blog/critique-website-traffic-fingerprinting-attacks
 date: 2013-11-07
 author: mikeperry
 category: blog
@@ -76,7 +76,7 @@ Using Bayes Theorem, it is possible to convert from the true and false positive 
 
     P(Censored|Classified) =
      P(Classified|Censored)*P(Censored) /
-      (P(Censored)*P(Classified|Censored) + 
+      (P(Censored)*P(Classified|Censored) +
        P(~Censored)*P(Classified|~Censored))
 
 Under conditions of low censorship (0.1% -- such as when the Tor traffic successfully blends in with a large volume of innocuous Internet traffic, or when Tor is used for both censorship circumvention and general privacy), with a true positive rate of 0.6 and a false positive rate of 0.005, we have:

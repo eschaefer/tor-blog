@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor @ Circumvention Tech Summit IV, Berlin"
-permalink: tor-circumvention-tech-summit-iv-berlin
+permalink: /events/tor-circumvention-tech-summit-iv-berlin
 date: 2013-09-29
 startdate: 2013-09-29
 enddate: 2013-10-01

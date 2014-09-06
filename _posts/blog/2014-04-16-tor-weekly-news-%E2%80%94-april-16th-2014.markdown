@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — April 16th, 2014"
-permalink: tor-weekly-news-%E2%80%94-april-16th-2014
+permalink: blog/tor-weekly-news-%E2%80%94-april-16th-2014
 date: 2014-04-16
 author: lunar
 category: blog
@@ -32,7 +32,7 @@ Directory authorities can currently tie a relay’s nickname to its identity key
 
 How should potentially compromised relays which have not switched to a new key be handled? On April 8th, grarpamp [observed](https://lists.torproject.org/pipermail/tor-relays/2014-April/004259.html) that more than 3000 relays had been restarted — hopefully to use the fixed version of OpenSSL. It is unknown how many of those relays have switched to a new key since. Andrea Shepard has been working on a [survey](http://charon.persephoneslair.org/~andrea/private/tor-heartbleed-survey/) to identify them. What is known though are relays that are unfortunately still vulnerable. Sina Rabbani has set up a [visible list for guards and exits](https://encrypted.redteam.net/bleeding_edges/). To protect Tor users, directory authority operators have started to [reject descriptors for vulnerable relays](https://lists.torproject.org/pipermail/tor-relays/2014-April/004336.html).
 
-The identity keys for directory authorities are kept offline. But they are used to certify medium-term signing keys. Roger Dingledine’s  
+The identity keys for directory authorities are kept offline. But they are used to certify medium-term signing keys. Roger Dingledine’s
  [analysis](https://lists.torproject.org/pipermail/tor-dev/2014-April/006663.html) reports “two (moria1 and urras) of the directory authorities were unaffected by the openssl bug, and seven were affected”.
 
 At the time of writing, five of the seven affected authorities had new signing keys. In the meantime, Nick and Andrea have been busy writing code to [prevent the old keys from being accepted by Tor clients](https://bugs.torproject.org/11464).

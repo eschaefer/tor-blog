@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kazakhstan upgrades censorship to deep packet inspection"
-permalink: kazakhstan-upgrades-censorship-deep-packet-inspection
+permalink: blog/kazakhstan-upgrades-censorship-deep-packet-inspection
 date: 2012-02-16
 author: phobos
 category: blog

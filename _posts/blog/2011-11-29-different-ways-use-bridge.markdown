@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Different Ways to Use a Bridge"
-permalink: different-ways-use-bridge
+permalink: blog/different-ways-use-bridge
 date: 2011-11-29
 author: Sebastian
 category: blog

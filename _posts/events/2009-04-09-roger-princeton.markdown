@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger at Princeton"
-permalink: roger-princeton
+permalink: /events/roger-princeton
 date: 2009-04-09
 startdate: 2009-04-09
 enddate: 2009-04-09

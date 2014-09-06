@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor has funding for another browser hacker"
-permalink: tor-has-funding-another-browser-hacker
+permalink: blog/tor-has-funding-another-browser-hacker
 date: 2012-08-02
 author: mikeperry
 category: blog

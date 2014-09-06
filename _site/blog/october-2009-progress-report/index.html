@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>October 2009 Progress Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>October 2009 Progress Report</h2>
+<p class="meta">12 Nov 2009</p>
+
+<div class="event">
+<p><strong>New releases, new hires, new funding</strong>
+Christian Fromme joins Tor to work on development and maintenance of the growing number of tools we’ve created over the past year. Christian is a great python hacker with a strong security mindset. He’s going to enhance and maintain the tools such as tor weather, get-tor, bridge database, tor control, tor flow, check.torproject.org, etc. Christian has been a volunteer developer for the past year helping to enhance get-tor, tor weather, and generally helping out with our python coding needs.</p>
+
+<p>On October 10, we released Tor version 0.2.2.4-alpha. The release notes can be read at <a href="https://blog.torproject.org/blog/tor-0224-alpha-released" title="https://blog.torproject.org/blog/tor-0224-alpha-released">https://blog.torproject.org/blog/tor-0224-alpha-released</a> or below:
+<strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Fix several more asserts in the circuit build times code, for example one that causes Tor to fail to start once we have accumulated 5000 build times in the state file. Bugfixes on 0.2.2.2-alpha; fixes bug 1108.</li>
+</ul>
+
+<p><strong>New directory authorities:</strong></p>
+
+<ul>
+<li>Move moria1 and Tonga to alternate IP addresses.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Log SSL state transitions at debug level during handshake, and include SSL states in error messages. This may help debug future SSL handshake issues.</li>
+<li>Add a new ”Handshake” log domain for activities that happen during the TLS handshake.</li>
+<li>Revert to the ”June 3 2009” ip-to-country file. The September one seems to have removed most US IP addresses.</li>
+<li>Directory authorities now reject Tor relays with versions less than 0.1.2.14. This step cuts out four relays from the current network, none of which are very big.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Fix a couple of smaller issues with gathering statistics. Bugfixes on 0.2.2.1-alpha.</li>
+<li>Fix two memory leaks in the error case of circuit build times parse state. Bugfix on 0.2.2.2-alpha.</li>
+<li>Don’t count one-hop circuits when we’re estimating how long it takes circuits to build on average. Otherwise we’ll set our circuit build timeout lower than we should. Bugfix on 0.2.2.2-alpha.</li>
+<li>Directory authorities no longer change their opinion of, or vote on, whether a router is Running, unless they have themselves been online long enough to have some idea. Bugfix on 0.2.0.6-alpha. Fixes bug 1023.</li>
+</ul>
+
+<p><strong>Code simplifications and refactoring:</strong></p>
+
+<ul>
+<li>Revise our unit tests to use the ”tinytest” framework, so we can run tests in their own processes, have smarter setup/teardown code, and so on. The unit test code has moved to its own subdirectory, and has been split into multiple modules.</li>
+</ul>
+
+<p>On October 11, we released Tor 0.2.2.5-alpha. The release notes can be read at <a href="https://blog.torproject.org/blog/tor-0225-alpha-released" title="https://blog.torproject.org/blog/tor-0225-alpha-released">https://blog.torproject.org/blog/tor-0225-alpha-released</a> or below:
+<strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Make the tarball compile again. Oops. Bugfix on 0.2.2.4-alpha.</li>
+</ul>
+
+<p><strong>New directory authorities:</strong></p>
+
+<ul>
+<li>Move dizum to an alternate IP address.</li>
+<li>Code simplifications and refactorings</li>
+<li>Numerous changes, bugfixes, and workarounds from Nathan Freitas to help Tor build correctly for Android phones.</li>
+</ul>
+
+<p>On October 14th we released Vidalia 0.2.5. The release notes can be read at <a href="https://blog.torproject.org/blog/vidalia-025-released" title="https://blog.torproject.org/blog/vidalia-025-released">https://blog.torproject.org/blog/vidalia-025-released</a> or below:</p>
+
+<ul>
+<li>Add support in the Network settings page for configuring the Socks4Proxy and Socks5Proxy* options that were added in Tor 0.2.2.1-alpha. Patch from Christopher Davis.</li>
+<li>Add a ”Automatically distribute my bridge address” checkbox (enabled by default) to the bridge relay settings options. (Ticket #524)</li>
+<li>Add ports 7000 and 7001 to the list of ports excluded by the IRC category in the exit policy configuration tab. (Ticket #517)</li>
+<li>Add a context menu for highlighted event items in the ”Basic” message log view that allows the user to copy the selected item text to the clipboard.</li>
+<li>Maybe fix a time conversion bug that could result in Vidalia displaying the wrong uptime for a relay in the network map. Stop trying to enforce proper quoting and escaping of arguments to be given to the proxy executable (e.g., Polipo). Now the user is on their own for properly formatting the command line used to start the proxy executable. (Ticket #523)</li>
+</ul>
+
+<p><strong>Design, develop, and implement enhancements that make Tor a better tool for users in censored countries.</strong></p>
+
+<p>Jacob and Nathan Frietas finished development of Orbot, a tor client and relay with a graphical control interface for the Android mobile operating system. More details can be found at <a href="http://openideals.com/2009/10/22/orbot-proxy/" title="http://openideals.com/2009/10/22/orbot-proxy/">http://openideals.com/2009/10/22/orbot-proxy/</a>.</p>
+
+<p>Karsten rewrote the directory archive script that evaluates whether an IP address was a relay at a given point in the past in Python.</p>
+
+<p>Started comparing free and commercial GeoIP databases for their accuracy. It would be great if someone else (a student?) would pick up this work and move it forward.</p>
+
+<p><strong>Grow the Tor network and user base. Outreach.</strong></p>
+
+<ul>
+<li>Andrew attended the Salzburg Global Seminar SIM Initiative 2020 Vision: Setting a Long-Term Agenda for Global Media Development from October 3 - 8. <a href="http://www.salzburgglobal.org/2009/sim.cfm?nav=news&amp;IDMedia=1" title="http://www.salzburgglobal.org/2009/sim.cfm?nav=news&amp;IDMedia=1">http://www.salzburgglobal.org/2009/sim.cfm?nav=news&amp;IDMedia=1</a>. A quick writeup of the seminar was posted at <a href="https://blog.torproject.org/blog/seminar-salzburg-global" title="https://blog.torproject.org/blog/seminar-salzburg-global">https://blog.torproject.org/blog/seminar-salzburg-global</a>.</li>
+<li>Roger gave a talk at Drexel University, <a href="https://www.cs.drexel.edu/research/colloquia" title="https://www.cs.drexel.edu/research/colloquia">https://www.cs.drexel.edu/research/colloquia</a>.</li>
+<li>Andrew gave a talk about Freedom of Speech, Online Censorship, and Tor at the US Agency for International Development. It was attended by members of US AID, State Department, and National Security Staff from The White House.</li>
+<li>Roger, Jacob, Karsten, and Mike attended the 2009 Google Summer of Code Mentors Summit at Google HQ.</li>
+<li>Andrew gave a talk about Tor and its Privacy by Design at the 2009 Access and Privacy Workshop in Toronto, Canada. <a href="http://www.verney.ca/onap2009/agenda_dynamic.php" title="http://www.verney.ca/onap2009/agenda\_dynamic.php">http://www.verney.ca/onap2009/agenda_dynamic.php</a>.</li>
+<li>Jacob gave a talk at the 25th NorduNet Conference, <a href="http://www.nordu.net/conference/ndn2009web/welcome.html" title="http://www.nordu.net/conference/ndn2009web/welcome.html">http://www.nordu.net/conference/ndn2009web/welcome.html</a>.</li>
+<li>Andrew, Wendy, and others were interviewed for a Tech Review article on Tor being blocked by the Chinese Government for the first time ever, <a href="http://www.technologyreview.com/printer_friendly_article.aspx?id=23736" title="http://www.technologyreview.com/printer\_friendly\_article.aspx?id=23736">http://www.technologyreview.com/printer_friendly_article.aspx?id=23736</a>.</li>
+<li>Karsten attended EMANICS Workshop on Network Security in Bremen, Germany, and gave a 90-minute talk on Tor and my metrics work.</li>
+<li>Karsten and Sebastian attended PET-CON 2009.2 in Regensburg, Germany, and talked about measuring sensitive data in the Tor network.</li>
+<li>Finished paper on ”A Case Study on Measuring Statistical Data in the Tor Anonymity Network” together with Steven and Roger and submitted it to WECSR 2010.</li>
+</ul>
+
+<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong>
+Testing program updates to Tor Browser Bundle destined for the next release. The multi-protocol instant messaging client we use, Pidgin, includes voip and video chat functionality. Vidalia 0.2.5 inclusion to make the process of acquiring bridge addresses or becoming a bridge easier.</p>
+
+<p><strong>Bridge relay and bridge authority work.</strong>
+The bridge distribution backend is now far more reliable than it was, and the algorithm has been retuned with design from Nick and Roger. Now the bridgedb code is much more willing to hand out a user’s first few bridges, but it is much harder to get it to hand out a whole bunch of bridges.</p>
+
+<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong>
+Nick rewrote the directory authority backend code to be able to provide multiple flavors of directory info: a new flavor that can be used for low-directory-bandwidth clients, and the existing flavor to support existing clients. This is the authority-side of proposals 158 and 162; once the authorities are migrated to this, we can start rolling out the client-side. Once it’s done, the directory overhead for clients should be dramatically reduced.</p>
+
+<p><strong>More reliable (e.g. split) download mechanism.</strong>
+Christian rolled out changes to the email auto-responder, get-tor, to better handle emails coming to us in various languages. 50% more emails are being answered correctly since the change.
+Thanks to some open internet activists in India, we have a fine new mirror of the Tor website in country at <a href="http://www.torproject.org.in/" title="http://www.torproject.org.in/">http://www.torproject.org.in/</a>.
+4 new website mirrors joined, 4 existing mirrors left.</p>
+
+<p><strong>Translation work</strong></p>
+
+<ul>
+<li>6 German updates to the website.</li>
+<li>114 Italian updates to Torbutton.</li>
+<li>17 Italian updates to the website.</li>
+<li>Updated Arabic translation of Torbutton.</li>
+<li>Complete Burmese translation of Torbutton.</li>
+<li>Complete Burmese translation of Torcheck.</li>
+<li>Complete Danish translation of Torcheck.</li>
+<li>Brazilian translation of Torbutton.</li>
+</ul>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

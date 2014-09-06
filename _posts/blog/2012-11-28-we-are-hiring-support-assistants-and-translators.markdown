@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "We are hiring support assistants and translators!"
-permalink: we-are-hiring-support-assistants-and-translators
+permalink: blog/we-are-hiring-support-assistants-and-translators
 date: 2012-11-28
 author: Runa
 category: blog

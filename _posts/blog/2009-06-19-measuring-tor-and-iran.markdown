@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Measuring Tor and Iran"
-permalink: measuring-tor-and-iran
+permalink: blog/measuring-tor-and-iran
 date: 2009-06-19
 author: phobos
 category: blog

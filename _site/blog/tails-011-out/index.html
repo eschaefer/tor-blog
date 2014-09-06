@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tails 0.11 is out!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tails 0.11 is out!</h2>
+<p class="meta">07 May 2012</p>
+
+<div class="event">
+<p>This new 0.11 release is an important milestone in Tails history.</p>
+
+<p><a href="https://tails.boum.org/download/">Download it now.</a></p>
+
+<p><strong>Changes</strong></p>
+
+<p>Notable user-visible changes include:</p>
+
+<ul>
+<li><p><strong>Tails Greeter</strong> , the login screen which obsoletes the language selection boot menu. Tails Greeter also adds some new options:</p>
+
+<ul>
+<li>Activating persistence (see below).</li>
+<li>Setting a sudo password. Unlike earlier Tails releases, full sudo access via an empty password is not available any more. In fact, full sudo access is disabled per default, but can be enabled by setting this password. See <a href="https://tails.boum.org/doc/first_steps/startup_options/index.en.html#tails_greeter">the documentation</a> for details.</li>
+</ul></li>
+<li><p><strong>Tails USB installer.</strong> This graphical user interface mostly obsoletes our old instructions of cat&#39;ing the .iso directly onto a block device. All of the USB drive must be dedicated to Tails; a bit of extra space is reserved so that future Tails releases will fit when upgrading, and the rest can be used for persistence (see below) or manually formatted if the user so wishes. See <a href="https://tails.boum.org/doc/first_steps/usb_installation/index.en.html">the USB installation documentation</a> for details.</p></li>
+<li><p><strong>Persistence</strong> can optionally be used when running Tails from a USB drive. Application configurations and arbitrary directories can be made persistent. See <a href="https://tails.boum.org/doc/first_steps/persistence/index.en.html">the persistence documentation</a> for details.</p></li>
+<li><p><strong>iceweasel</strong></p>
+
+<ul>
+<li>Install iceweasel 10.0.4esr-1 (Extended Support Release).</li>
+<li>Search plugins: replace Debian-provided DuckDuckGo search plugin with the &quot;HTML SSL&quot; one; add ixquick.com; remove Scroogle.</li>
+<li>Enable TLS false start.</li>
+</ul></li>
+<li><p><strong>Vidalia</strong> : upgrade to 0.2.17-1+tails1</p></li>
+<li><p><strong>Internationalization</strong></p>
+
+<ul>
+<li>Install all available iceweasel l10n packages.</li>
+<li>Add fonts for Hebrew, Thai, Khmer, Lao and Korean languages.</li>
+<li>Add bidi support.</li>
+<li>Don&#39;t purge locales anymore.</li>
+<li>Don&#39;t remove any Scribus translations anymore.</li>
+</ul></li>
+<li><p><strong>Hardware support</strong></p>
+
+<ul>
+<li>Linux 3.2.15-1 (linux-image-3.2.0-2-amd64).</li>
+<li>Fix low sound level on MacBook5,2.</li>
+<li>Disable laptop-mode-tools automatic modules. This modules set often needs some amount of hardware-specific tweaking to work properly. This makes them rather not well suited for a Live system.</li>
+</ul></li>
+<li><p><strong>Software</strong></p>
+
+<ul>
+<li>Install GNOME keyring.</li>
+<li>Install the Traverso multitrack audio recorder and editor.</li>
+</ul></li>
+<li><p><strong>Miscellaneous</strong></p>
+
+<ul>
+<li>NetworkManager is now started at PostLogin time by tails-greeter, rather than as a system service.</li>
+<li>Pidgin: don&#39;t use the OFTC hidden service anymore. It proved to be quite unreliable, being sometimes down for days.</li>
+<li>Do not display storage volumes on Desktop. This workarounds a usability issue when persistence is enabled, and paves the way towards GNOME3&#39;s empty Desktop.</li>
+<li>Don&#39;t build hybrid ISO images anymore. They boot less reliably on a variety of hardware, and are made less useful by us shipping a USB installer from now on.</li>
+</ul></li>
+</ul>
+
+<p>Plus the usual bunch of minor bug reports and improvements.</p>
+
+<p>See the <a href="http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.11">online Changelog</a> for technical details.</p>
+
+<p>Don&#39;t hesitate to <a href="https://tails.boum.org/support/index.en.html">get in touch with us</a>.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

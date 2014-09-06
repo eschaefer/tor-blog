@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger at Workshop on Free and Open Communication on the Internet (FOCI)"
-permalink: roger-workshop-free-and-open-communication-internet-foci
+permalink: /events/roger-workshop-free-and-open-communication-internet-foci
 date: 2011-02-24
 startdate: 2011-02-24
 enddate: 2011-02-25

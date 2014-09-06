@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser 3.6-beta-2 is released"
-permalink: tor-browser-36-beta-2-released
+permalink: blog/tor-browser-36-beta-2-released
 date: 2014-04-12
 author: mikeperry
 category: blog
@@ -26,21 +26,21 @@ Here is the complete changelog since 3.6-beta-1:
   - Update NoScript to 2.6.8.19
   - Update Torbutton to 1.6.8.1
     - Bug [11242](https://trac.torproject.org/projects/tor/ticket/11242): Fix improper "update needed" message after in-place upgrade.
-    - Bug [10398](https://trac.torproject.org/projects/tor/ticket/10398): Ease translation of about:tor page elements 
+    - Bug [10398](https://trac.torproject.org/projects/tor/ticket/10398): Ease translation of about:tor page elements
 
   - Update Tor Launcher to 0.2.5.3
-    - Bug [9665](https://trac.torproject.org/projects/tor/ticket/9665): Localize Tor's unreachable bridges bootstrap error 
+    - Bug [9665](https://trac.torproject.org/projects/tor/ticket/9665): Localize Tor's unreachable bridges bootstrap error
 
   - Backport Pending Tor Patches:
     - Bug [9665](https://trac.torproject.org/projects/tor/ticket/9665): Report a bootstrap error if all bridges are unreachable
-    - Bug [11200](https://trac.torproject.org/projects/tor/ticket/11200): Prevent spurious error message prior to enabling network. 
+    - Bug [11200](https://trac.torproject.org/projects/tor/ticket/11200): Prevent spurious error message prior to enabling network.
 
 - Linux:
   - Bug [11190](https://trac.torproject.org/projects/tor/ticket/11190): Switch linux PT build process to python2
-  - Bug [10383](https://trac.torproject.org/projects/tor/ticket/10383): Enable NIST P224 and P256 accel support for 64bit builds. 
+  - Bug [10383](https://trac.torproject.org/projects/tor/ticket/10383): Enable NIST P224 and P256 accel support for 64bit builds.
 
 - Windows:
-  - Bug [11286](https://trac.torproject.org/projects/tor/ticket/11286): Fix fte transport launch error 
+  - Bug [11286](https://trac.torproject.org/projects/tor/ticket/11286): Fix fte transport launch error
 
 A list of [frequently encountered known issues](https://trac.torproject.org/projects/tor/query?keywords=~tbb-helpdesk-frequent&status=!closed) with the Tor Browser can be found on our bugtracker. Please check that list and help us diagnose and arrive at solutions for those issues before contacting support.
 

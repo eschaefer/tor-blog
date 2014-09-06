@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — September, 11th 2013"
-permalink: tor-weekly-news-%E2%80%94-september-11th-2013
+permalink: blog/tor-weekly-news-%E2%80%94-september-11th-2013
 date: 2013-09-11
 author: lunar
 category: blog
@@ -64,7 +64,7 @@ Thanks to [Frenn vun der Enn](http://enn.lu/) for setting up a [new mirror](http
 
 With the Google Summer of Code ending in two weeks, the students have sent their penultimate reports: Kostas Jakeliunas for the [Searchable metrics archive](https://lists.torproject.org/pipermail/tor-dev/2013-September/005380.html), Johannes Fürmann for [EvilGenius](https://lists.torproject.org/pipermail/tor-dev/2013-September/005394.html), Hareesan for the [Steganography Browser Extension](https://lists.torproject.org/pipermail/tor-dev/2013-September/005409.html), and Cristian-Matei Toader for [Tor capabilities ](https://lists.torproject.org/pipermail/tor-dev/2013-September/005412.html).
 
-Damian Johnson [announced](https://lists.torproject.org/pipermail/tor-reports/2013-September/000338.html) that he had completed the rewrite of [DocTor](https://gitweb.torproject.org/doctor.git) in Python, “a service that pulls hourly consensus information and checks it for a host of issues (directory authority outages, expiring certificates, etc). In the case of a problem it notifies  
+Damian Johnson [announced](https://lists.torproject.org/pipermail/tor-reports/2013-September/000338.html) that he had completed the rewrite of [DocTor](https://gitweb.torproject.org/doctor.git) in Python, “a service that pulls hourly consensus information and checks it for a host of issues (directory authority outages, expiring certificates, etc). In the case of a problem it notifies
  [tor-consensus-health@](https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-consensus-health), and we in turn give the authority operator a heads up.”
 
 Matt Pagan has [migrated](https://svn.torproject.org/cgi-bin/viewvc.cgi/Tor?view=revision&revision=26333) several [Frequently-Asked Questions](https://www.torproject.org/docs/faq.html) from the wiki to the official Tor website. This should enable more users to find the answers they need!

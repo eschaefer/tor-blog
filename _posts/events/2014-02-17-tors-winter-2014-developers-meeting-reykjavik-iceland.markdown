@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor's Winter 2014 Developers Meeting, Reykjavik, Iceland"
-permalink: tors-winter-2014-developers-meeting-reykjavik-iceland
+permalink: /events/tors-winter-2014-developers-meeting-reykjavik-iceland
 date: 2014-02-17
 startdate: 2014-02-17
 enddate: 2014-02-21

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Life without a CA"
-permalink: life-without-ca
+permalink: blog/life-without-ca
 date: 2010-03-26
 author: phobos
 category: blog
@@ -20,6 +20,6 @@ Am I too paranoid or dis-trusting of CAs? Probably. I have a few concerns about 
 
 What would I like to see rather than implicitly trusting centralized CAs? I very much like the model used by gpg and [the web of trust](http://en.wikipedia.org/wiki/Web_of_trust). I think it's completely infeasible right now for the vast majority of people using the Internet today. However, using computers was infeasible for the vast majority of people merely a decade ago. Progress happens quickly.
 
-(option two)  
+(option two)
  I generally remove all of the CAs as well, even though I think it's just a display issue at this point. To do so, go into Preferences, Advanced, Encryption tab, click View Certificates. Then just manually cycle through the remaining CAs and delete them all. I started writing a script to do this automatically, but it seems to change in each version of Firefox. If someone has a better/more automatic way to do this, I'd like to hear about it. Now you have no CAs.
 

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Jacob/Linus at NORDUnet Conference"
-permalink: jacoblinus-nordunet-conference
+permalink: /events/jacoblinus-nordunet-conference
 date: 2011-06-07
 startdate: 2011-06-07
 enddate: 2011-06-09

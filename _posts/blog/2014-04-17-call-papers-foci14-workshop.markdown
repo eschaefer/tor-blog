@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Call for papers: FOCI'14 workshop"
-permalink: call-papers-foci14-workshop
+permalink: blog/call-papers-foci14-workshop
 date: 2014-04-17
 author: phw
 category: blog

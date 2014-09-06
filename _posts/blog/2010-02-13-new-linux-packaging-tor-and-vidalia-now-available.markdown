@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Linux packaging of Tor and Vidalia now available"
-permalink: new-linux-packaging-tor-and-vidalia-now-available
+permalink: blog/new-linux-packaging-tor-and-vidalia-now-available
 date: 2010-02-13
 author: phobos
 category: blog

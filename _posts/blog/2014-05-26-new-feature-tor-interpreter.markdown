@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Feature: Tor Interpreter"
-permalink: new-feature-tor-interpreter
+permalink: blog/new-feature-tor-interpreter
 date: 2014-05-26
 author: atagar
 category: blog
@@ -22,8 +22,8 @@ The control interpreter is a new method for interacting with Tor's control inter
 
 This is the last major feature going into the Stem's 1.2.0 release, which is coming out later this month. Until then you can easily give it a whirl with...
 
-% git clone [https://git.torproject.org/stem.git](https://git.torproject.org/stem.git "https://git.torproject.org/stem.git")  
-% cd stem  
+% git clone [https://git.torproject.org/stem.git](https://git.torproject.org/stem.git "https://git.torproject.org/stem.git")
+% cd stem
 % ./tor-prompt
 
 Running into an issue? Got a feature request? As always feedback appreciated! -Damian

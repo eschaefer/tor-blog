@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor on Android"
-permalink: tor-android
+permalink: blog/tor-android
 date: 2010-03-04
 author: ioerror
 category: blog
@@ -20,28 +20,28 @@ When Orbot is successfully installed and running, it should provide a few standa
 
 Our official builds are available from our website. As per our usual style of package releases, we're releasing [the .apk package](https://www.torproject.org/dist/android/0.2.2.9-alpha-orbot-0.0.2.apk) with [gpg signatures](https://www.torproject.org/dist/android/0.2.2.9-alpha-orbot-0.0.2.apk.asc).
 
-If you'd simply like the latest Android package, please visit this url:  
+If you'd simply like the latest Android package, please visit this url:
  [http://www.torproject.org/dist/android/alpha-orbot-latest.apk](http://www.torproject.org/dist/android/alpha-orbot-latest.apk)
 
-If you have the barcode scanner, you'll be able to directly load the  
+If you have the barcode scanner, you'll be able to directly load the
 latest package by scanning the following QR code:
 
 ![](https://blog.torproject.org/files/orbot-qr-code-latest.png)
 
-We plan to release Orbot in the Google Market in the near future. The  
-Orbot package you install from our website and the application in the  
-Market should be identical. In addition to the GPG signature, the .apk  
-files contain a digital signature. If you're feeling reasonably  
-paranoid, it's probably a fine idea to download the .apk from our  
-website, check the GPG signature, and then install the package on your  
+We plan to release Orbot in the Google Market in the near future. The
+Orbot package you install from our website and the application in the
+Market should be identical. In addition to the GPG signature, the .apk
+files contain a digital signature. If you're feeling reasonably
+paranoid, it's probably a fine idea to download the .apk from our
+website, check the GPG signature, and then install the package on your
 device manually.
 
-If you'd like to reproduce our builds from source, we've documented the  
-build process in  
+If you'd like to reproduce our builds from source, we've documented the
+build process in
  [our subversion repository](https://svn.torproject.org/svn/projects/android/trunk/Orbot/BUILD).
 
-If you'd like to read more about Orbot, we suggest you check out the  
-source and start hacking around:  
+If you'd like to read more about Orbot, we suggest you check out the
+source and start hacking around:
 svn co [https://svn.torproject.org/svn/projects/android/trunk/](https://svn.torproject.org/svn/projects/android/trunk/ "https://svn.torproject.org/svn/projects/android/trunk/") android/
 
 <thead><tr>

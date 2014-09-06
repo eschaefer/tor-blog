@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles"
-permalink: new-tor-browser-bundles-13
+permalink: blog/new-tor-browser-bundles-13
 date: 2012-02-03
 author: erinn
 category: blog
@@ -30,6 +30,6 @@ The Tor Browser Bundles have all been updated to the latest Firefox (10.0) as we
 
 **Windows changes**
 
-- Make sure mozconfig always gets copied into the Firefox build directory  
+- Make sure mozconfig always gets copied into the Firefox build directory
  (closes: [#4879](https://trac.torproject.org/projects/tor/ticket/4879))
 

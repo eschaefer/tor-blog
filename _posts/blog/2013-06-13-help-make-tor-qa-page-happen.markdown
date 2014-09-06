@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Help make a Tor Q&A page happen"
-permalink: help-make-tor-qa-page-happen
+permalink: blog/help-make-tor-qa-page-happen
 date: 2013-06-13
 author: Runa
 category: blog

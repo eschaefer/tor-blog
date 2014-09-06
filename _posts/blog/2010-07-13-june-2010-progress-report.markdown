@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "June 2010 Progress Report"
-permalink: june-2010-progress-report
+permalink: blog/june-2010-progress-report
 date: 2010-07-13
 author: phobos
 category: blog
@@ -22,14 +22,14 @@ tags: ["advocacy", "measures of the tor network", "monthly status", "outreach", 
 - China’s Great Firewall continues blocking connections to the public Tor relays. They also updated their blocking to include bridge relays published via email and https websites. We conducted further research into the blocking mechanisms from inside China. A detailed analysis shows China GFW is blocking 90% of the published bridges in the https and smtp pools. The blocking is simply IP Address and TCP port combinations. Bridge relays that have been seeded into various social networks in China as well as new bridge addresses continue to work well.
 - In late June, we started receiving many reports that Nigerian internet providers are blocking many circumvention tools, Tor included. Data about the blocking methods implemented are sparse right now, but we’re continuing to work with a few smart Nigerians to reverse-engineer the blocking regime. More details about this block at [https://blog.torproject.org/blog/dear-nigerians-help-us-help-you](https://blog.torproject.org/blog/dear-nigerians-help-us-help-you "https://blog.torproject.org/blog/dear-nigerians-help-us-help-you").
 
-**Measures of the Tor Network**  
- [https://blog.torproject.org/files/exit-2010-06.png](https://blog.torproject.org/files/exit-2010-06.png "https://blog.torproject.org/files/exit-2010-06.png")  
+**Measures of the Tor Network**
+ [https://blog.torproject.org/files/exit-2010-06.png](https://blog.torproject.org/files/exit-2010-06.png "https://blog.torproject.org/files/exit-2010-06.png")
 This graph shows the total quantity of relays and quantity of exit relays in june 2010. Exit relay capacity is one of the potential bottlenecks that aﬀects the overall performance of Tor. The more exit relays we have, the faster it seems to browse the open Internet. As seen in late June, a researcher using PlanetLab hooked up 512 relays to the Tor network for their research into cloud computing and scaling eﬀects on the Tor Network. Before contacting PlanetLab, we removed all 512 nodes from the network consensus so users couldn’t use the suspect relays. We contacted the researcher and the relays were subsequently disabled.
 
-[https://blog.torproject.org/files/networksize-2010-06.png](https://blog.torproject.org/files/networksize-2010-06.png "https://blog.torproject.org/files/networksize-2010-06.png")  
+[https://blog.torproject.org/files/networksize-2010-06.png](https://blog.torproject.org/files/networksize-2010-06.png "https://blog.torproject.org/files/networksize-2010-06.png")
 This graph shows the total quantity of relays and the total quantity of bridges in June 2010. The quantity of bridges is stable throughout the month. As seen in late June, a researcher using PlanetLab hooked up 512 relays to the Tor network for their research into cloud computing and scaling eﬀects on the Tor Network. Before contacting PlanetLab, we removed all 512 nodes from the network consensus so users couldn’t use the suspect relays. We contacted the researcher and the relays were subsequently disabled.
 
-[https://blog.torproject.org/files/torperf-50kb-torperf-6m.png](https://blog.torproject.org/files/torperf-50kb-torperf-6m.png "https://blog.torproject.org/files/torperf-50kb-torperf-6m.png")  
+[https://blog.torproject.org/files/torperf-50kb-torperf-6m.png](https://blog.torproject.org/files/torperf-50kb-torperf-6m.png "https://blog.torproject.org/files/torperf-50kb-torperf-6m.png")
 This graphs shows how many seconds it took to complete a 50KB download from a standard Tor client. This measurement is from the server torperf, located in Chicago, Illinois. As you can see, latency dropped dramatically over the month for the second month in a row. We believe this is due to the ﬁxes for relays in 0.2.1.26 allow relays to handle older clients ﬂooding circuit requests to relays. As some relays were overloaded and dropped out of the network, the remaining relays had to handle an increasing load of users. Also, we have a budding competition between individuals looking to run the highest bandwidth relays. TorServersdotNet, [http://www.torservers.net/](http://www.torservers.net/ "http://www.torservers.net/"), starting running some very high bandwidth relays to increase performance and provide a way for non-technical users to support tor through combined ﬁnancial donations in exchange for Tor servers. We’re also looking to run this measurement software on a linux client connected to a standard dial-up modem to see how Tor fares in extremely low-bandwidth environments.
 
 **Outreach and Advocacy**
@@ -41,33 +41,33 @@ This graphs shows how many seconds it took to complete a 50KB download from a st
 - Runa gave a Tor talk to Electronic Frontier Norway, [http://www.efn.no/](http://www.efn.no/ "http://www.efn.no/").
 - We added an eigth directory authority called “maatuska“ hosted in Sweden.
 
-**Preconﬁgured privacy (circumvention) bundles for USB or LiveCD.**  
+**Preconﬁgured privacy (circumvention) bundles for USB or LiveCD.**
 Erinn continues to work on a Tor Browser Bundle for Apple’s OS X. Erinn continues to improve Tor Browser Bundle for Linux with feedback from initial users and other volunteer developers.
 
-**Bridge relay and bridge authority work.**  
+**Bridge relay and bridge authority work.**
 Andrew published a template conﬁguration ﬁle for tor relays to be a bridge automatically. It seems some relay operators are confused as to conﬁguring their relay as a bridge. The conﬁguration template is at [https://gitweb.torproject.org/tor.git/blob\_plain/HEAD:/src/config/torrc....](https://gitweb.torproject.org/tor.git/blob_plain/HEAD:/src/config/torrc.bridge.in "https://gitweb.torproject.org/tor.git/blob\_plain/HEAD:/src/config/torrc.bridge.in") and will be included in future Tor releases.
 
 Andrew created some experimental “bridge by default“ bundles for Microsoft Windows. The idea is to use existing technology and see if we can get users to be bridges by default without any additional conﬁguration. Intitial testing shows it works well if the upstream router or NAT device has Universal Plug and Play (UPNP) enabled. The largest obstacle is still the manual conﬁguration of ﬁrewalls, routers, and NAT devices if UPNP is not enabled by default. More details about this experiment are at [https://blog.torproject.org/blog/technology-preview-bridge-default-micro...](https://blog.torproject.org/blog/technology-preview-bridge-default-microsoft-windows-clients "https://blog.torproject.org/blog/technology-preview-bridge-default-microsoft-windows-clients").
 
-**Scalability, load balancing, directory overhead, eﬃciency.**  
-Mike spent a lot of eﬀort and research into optimizing the circuit based timing (CBT) codebase. CBT is how clients measure the performance of their tor circuits to better optimize performance.  
-The changelog of the ﬁxes is:  
-• Major bugﬁxes:  
-– Ignore negative and large timeout values that can happen during a suspend or hibernate. These values caused various asserts to ﬁre in the circuit build times code, crashing Tor. Bug 1245, bugﬁx on 0.2.2.2-alpha.  
-– Alter calculation of Pareto distribution parameter ’Xm’ for Circuit Build Timeout learning to use the weighted average of the top N=3 modes. This should improve the timeout calculation in some cases, and prevent extremely high timeout values. Bug 1335, bugﬁx on 0.2.2.2-alpha.  
+**Scalability, load balancing, directory overhead, eﬃciency.**
+Mike spent a lot of eﬀort and research into optimizing the circuit based timing (CBT) codebase. CBT is how clients measure the performance of their tor circuits to better optimize performance.
+The changelog of the ﬁxes is:
+• Major bugﬁxes:
+– Ignore negative and large timeout values that can happen during a suspend or hibernate. These values caused various asserts to ﬁre in the circuit build times code, crashing Tor. Bug 1245, bugﬁx on 0.2.2.2-alpha.
+– Alter calculation of Pareto distribution parameter ’Xm’ for Circuit Build Timeout learning to use the weighted average of the top N=3 modes. This should improve the timeout calculation in some cases, and prevent extremely high timeout values. Bug 1335, bugﬁx on 0.2.2.2-alpha.
 – Implement a ﬁltering step to recompute synthetic build times every time the timeoutchanges. Additionally, place a lower cap on synthetic build times, and allow this cap tobe controlled by the consensus. This should also improve the build time calculations,and should eliminate a case where Tor was allocating an excessive amount of temporary memory during timeout calculation. Bugs 1335 and 1245, bugﬁx on 0.2.2.2-alpha.
 
-• Minor bugﬁxes:  
+• Minor bugﬁxes:
 – Eliminate a case where a circuit build time warning was displayed after network connectivity resumed.
 
-• Minor features:  
-– Add a TIMEOUT\_RATE keyword to the BUILDTIMEOUT\_SET control port event, to give information on the current rate of circuit timeouts over our stored history.  
-– Add ability to disable circuit build time learning via consensus parameter and via a  
-LearnCircuitBuildTimeout conﬁg option. Also automatically disable circuit build time  
-calculation if we are either a AuthoritativeDirectory, or if we fail to write our state ﬁle.  
+• Minor features:
+– Add a TIMEOUT\_RATE keyword to the BUILDTIMEOUT\_SET control port event, to give information on the current rate of circuit timeouts over our stored history.
+– Add ability to disable circuit build time learning via consensus parameter and via a
+LearnCircuitBuildTimeout conﬁg option. Also automatically disable circuit build time
+calculation if we are either a AuthoritativeDirectory, or if we fail to write our state ﬁle.
 Bug 1296.
 
-Karsten web-enabled his ExoneraTor tool on the metrics website at [http://metrics](http://metrics "http://metrics").  
+Karsten web-enabled his ExoneraTor tool on the metrics website at [http://metrics](http://metrics "http://metrics").
 torproject.org/exonerator.html. ExoneraTor tells you whether there was a Tor relay running on a given IP address at a given time. Many legal advisors, lawyers, and law enforcement ask us for data regarding if a certain IP address hosted a Tor relay at a point in time. Now this data is easily available to all.
 
 Karsten ﬁxed stats on estimated user numbers after we broke the calculations of users from directory request sampling at select relays. We found that we can use entry-stats for better user number estimates.

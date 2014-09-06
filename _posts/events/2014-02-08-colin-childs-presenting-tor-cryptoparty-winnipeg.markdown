@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Colin Childs Presenting Tor @ CryptoParty, Winnipeg"
-permalink: colin-childs-presenting-tor-cryptoparty-winnipeg
+permalink: /events/colin-childs-presenting-tor-cryptoparty-winnipeg
 date: 2014-02-08
 startdate: 2014-02-08
 enddate: 2014-02-08

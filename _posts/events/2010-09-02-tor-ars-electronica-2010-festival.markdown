@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor at Ars Electronica 2010 Festival"
-permalink: tor-ars-electronica-2010-festival
+permalink: /events/tor-ars-electronica-2010-festival
 date: 2010-09-02
 startdate: 2010-09-02
 enddate: 2010-09-11

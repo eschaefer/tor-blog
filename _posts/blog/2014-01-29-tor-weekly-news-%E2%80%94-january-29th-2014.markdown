@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — January 29th, 2014"
-permalink: tor-weekly-news-%E2%80%94-january-29th-2014
+permalink: blog/tor-weekly-news-%E2%80%94-january-29th-2014
 date: 2014-01-29
 author: lunar
 category: blog
@@ -26,7 +26,7 @@ Rob Jansen, Florian Tschorsch, Aaron Johnson, and Björn Scheuermann have been w
 
 “We found a new vulnerability in the design of Tor’s flow control algorithm that can be exploited to remotely crash Tor relays. The attack is an extremely low resource attack in which an adversary’s bandwidth may be traded for a target relay’s memory (RAM) at an amplification rate of one to two orders of magnitude” explains Rob.
 
-The authors have been working with Tor developers on integrating defenses before publishing: “Due to our devastating findings, we also  
+The authors have been working with Tor developers on integrating defenses before publishing: “Due to our devastating findings, we also
 designed three defenses that mitigate our attacks, one of which provably renders the attack ineffective. Defenses have been implemented and deployed into the Tor software to ensure that the Tor network is no longer vulnerable as of Tor version 0.2.4.18-rc and later.”
 
 Be sure to read the blog post and the paper in full if you want to know more.

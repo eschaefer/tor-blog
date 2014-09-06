@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor 0.2.4.12-alpha packages and Tor Browser Bundles"
-permalink: new-tor-02412-alpha-packages-and-tor-browser-bundles
+permalink: blog/new-tor-02412-alpha-packages-and-tor-browser-bundles
 date: 2013-04-30
 author: erinn
 category: blog
@@ -23,16 +23,16 @@ You can download the alpha Tor Browser Bundles [here](https://www.torproject.org
 - Update PDF.js to 0.8.1
 - Firefox patch changes:
 
-  - Apply font limits to @font-face local() fonts and disable fallback  
+  - Apply font limits to @font-face local() fonts and disable fallback
  rendering for @font-face. (closes: #8455)
-  - Use Optimistic Data SOCKS handshake (improves page load performance).  
+  - Use Optimistic Data SOCKS handshake (improves page load performance).
  (closes: #3875)
-  - Honor the Windows theme for inverse text colors (without leaking those  
+  - Honor the Windows theme for inverse text colors (without leaking those
  colors to content). (closes: #7920)
-  - Increase pipeline randomization and try harder to batch pipelined  
+  - Increase pipeline randomization and try harder to batch pipelined
  requests together. (closes: #8470)
-  - Fix an image cache isolation domain key misusage. May fix several image  
- cache related crash bugs with New Identity, exit, and certain websites.  
+  - Fix an image cache isolation domain key misusage. May fix several image
+ cache related crash bugs with New Identity, exit, and certain websites.
  (closes: #8628)
 - Torbutton changes:
 
@@ -43,6 +43,6 @@ You can download the alpha Tor Browser Bundles [here](https://www.torproject.org
 - Build changes:
 
   - Fetch our source deps from an https mirror (closes: #8286)
-  - Create watch scripts for syncing mirror sources and monitoring mirror  
+  - Create watch scripts for syncing mirror sources and monitoring mirror
  integrity (closes: #8338)
 

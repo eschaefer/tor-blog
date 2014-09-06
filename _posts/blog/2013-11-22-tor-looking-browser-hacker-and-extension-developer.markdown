@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor is looking for a Browser Hacker and an Extension Developer!"
-permalink: tor-looking-browser-hacker-and-extension-developer
+permalink: blog/tor-looking-browser-hacker-and-extension-developer
 date: 2013-11-22
 author: mikeperry
 category: blog

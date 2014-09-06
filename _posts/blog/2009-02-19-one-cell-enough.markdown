@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "\"One cell is enough to break Tor's anonymity\""
-permalink: one-cell-enough
+permalink: blog/one-cell-enough
 date: 2009-02-19
 author: arma
 category: blog

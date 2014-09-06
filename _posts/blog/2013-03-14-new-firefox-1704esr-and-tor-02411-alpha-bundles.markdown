@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Firefox 17.0.4esr and Tor 0.2.4.11-alpha bundles"
-permalink: new-firefox-1704esr-and-tor-02411-alpha-bundles
+permalink: blog/new-firefox-1704esr-and-tor-02411-alpha-bundles
 date: 2013-03-14
 author: erinn
 category: blog
@@ -22,8 +22,8 @@ We've updated the stable and alpha Tor Browser Bundles with Firefox 17.0.4esr an
 
   - Remove "This plugin is disabled" barrier
 
-    - This improves the user experience for HTML5 Youtube videos:  
- They "silently" attempt to load flash first, which was not so silent  
+    - This improves the user experience for HTML5 Youtube videos:
+ They "silently" attempt to load flash first, which was not so silent
  with this barrier in place. (closes: #8312)
   - Disable NoScript's HTML5 media click-to-play barrier (closes: #8386)
   - Fix a New Identity hang and/or crash condition (closes: #6386)
@@ -51,8 +51,8 @@ We've updated the stable and alpha Tor Browser Bundles with Firefox 17.0.4esr an
 
   - Remove "This plugin is disabled" barrier
 
-    - This improves the user experience for HTML5 Youtube videos:  
- They "silently" attempt to load flash first, which was not so silent  
+    - This improves the user experience for HTML5 Youtube videos:
+ They "silently" attempt to load flash first, which was not so silent
  with this barrier in place. (closes: #8312)
   - Disable NoScript's HTML5 media click-to-play barrier (closes: #8386)
   - Fix a New Identity hang and/or crash condition (closes: #6386)

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Kelley @ Journalist Training Event, Helsiniki, Finland"
-permalink: kelley-journalist-training-event-helsiniki-finland
+permalink: /events/kelley-journalist-training-event-helsiniki-finland
 date: 2013-10-11
 startdate: 2013-10-11
 enddate: 2013-10-11

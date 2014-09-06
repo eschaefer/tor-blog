@@ -1,10 +1,10 @@
 ---
 layout: event
 title: "Tor @ FOSDEM, Brussels"
-permalink: tor-fosdem-brussels
+permalink: /events/tor-fosdem-brussels
 date: 2014-02-01
 startdate: 2014-02-01
-enddate: 
+enddate:
 author: admin
 category: event
 ---

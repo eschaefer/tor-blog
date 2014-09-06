@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>October 2008 Progress Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>October 2008 Progress Report</h2>
+<p class="meta">02 Dec 2008</p>
+
+<div class="event">
+<p><strong>Design</strong>
+We continued enhancements to the Chinese and Russian Tor website translations. We also have a second Chinese translator for the website now, so hopefully we will get more prompt translations there. Our Farsi translation from this summer is slowly becoming obsolete; we should solve that at some point.</p>
+
+<p>We added a new &quot;30 second summary&quot; web page for Tor:
+ <a href="https://www.torproject.org/30seconds" title="https://www.torproject.org/30seconds">https://www.torproject.org/30seconds</a>
+and a new &quot;easy download&quot; page since the original is so complex:
+ <a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a></p>
+
+<p>In the upcoming Vidalia 0.2.0 development release:
+ - Support changing UI languages without having to restart Vidalia.
+ - Updated Czech, Polish, Romanian and Turkish translations.</p>
+
+<p>In the upcoming Vidalia 0.1.10 stable release:
+ - Add a prettier dialog for prompting people for their control port password that also includes a checkbox for whether the user wants Vidalia to remember the entered password, a Help button, and a Reset button (Windows only).
+ - Fix a crash bug that occurred when the user clicks &#39;Clear&#39; in the message log toolbar followed by &#39;Save All&#39;.
+ - Uncheck the Torbutton options by default in the Windows bundle installer if Firefox is not installed.
+ - Add an Windows bundle installer page that warns the user that they should install Firefox, if it looks like they haven&#39;t already done so.</p>
+
+<p>It looks like Australia is soon to be joining the ranks of countries with a nationwide filtering regime:
+ <a href="http://arstechnica.com/news.ars/post/20081016-net-filters-required-for-all-australians-no-opt-out.html" title="http://arstechnica.com/news.ars/post/20081016-net-filters-required-for-all-australians-no-opt-out.html">http://arstechnica.com/news.ars/post/20081016-net-filters-required-for-a...</a></p>
+
+<p><strong>Proposals</strong>
+We finished the first iteration of our auto-updater spec:
+ <a href="https://svn.torproject.org/svn/updater/trunk/specs/thandy-spec.txt" title="https://svn.torproject.org/svn/updater/trunk/specs/thandy-spec.txt">https://svn.torproject.org/svn/updater/trunk/specs/thandy-spec.txt</a>
+We detail our current auto-updater progress below.</p>
+
+<p>Proposal 156 (Tracking blocked ports on the client side) moves us closer to having clients be able to automatically detect which ports are blocked by their local firewall, so they can bootstrap faster and avoid picking entry guards that aren&#39;t reachable for them. The the next steps here are to a) decide if this overall approach is the right approach, and b) revise the patch to be more memory-friendly.
+ <a href="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/156-tracking-blocked-ports.txt" title="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/156-tracking-blocked-ports.txt">https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/156-tracking...</a></p>
+
+<p><strong>Advocacy</strong>
+Roger started a &quot;Brainstorming about Tor, Germany, and data retention&quot; thread on or-dev:
+ <a href="http://archives.seul.org/or/dev/Oct-2008/msg00001.html" title="http://archives.seul.org/or/dev/Oct-2008/msg00001.html">http://archives.seul.org/or/dev/Oct-2008/msg00001.html</a>
+which eventually turned into a blog post:
+ <a href="https://blog.torproject.org/blog/tor%2C-germany%2C-and-data-retention" title="https://blog.torproject.org/blog/tor%2C-germany%2C-and-data-retention">https://blog.torproject.org/blog/tor%2C-germany%2C-and-data-retention</a>
+as well as a (rejected) 25C3 submission. While I had originally been thinking of the issue in terms of what the ISP of a Tor relay might do, the discussion also came up about what responsibilities a Tor relay operator has with respect to the vague new data retention laws:
+ <a href="http://archives.seul.org/or/talk/Oct-2008/threads.html#00126" title="http://archives.seul.org/or/talk/Oct-2008/threads.html#00126">http://archives.seul.org/or/talk/Oct-2008/threads.html#00126</a>
+The ultimate result was a clarified perspective on logging inside Tor:
+ <a href="http://archives.seul.org/or/talk/Oct-2008/msg00274.html" title="http://archives.seul.org/or/talk/Oct-2008/msg00274.html">http://archives.seul.org/or/talk/Oct-2008/msg00274.html</a></p>
+
+<p>We finally tracked down and solved the mysterious DoS attacks on some of the Tor directory authorities:
+ <a href="http://archives.seul.org/or/talk/Oct-2008/msg00056.html" title="http://archives.seul.org/or/talk/Oct-2008/msg00056.html">http://archives.seul.org/or/talk/Oct-2008/msg00056.html</a></p>
+
+<p>We started chatting with Aaron about his &quot;tor2web&quot; proxy idea for letting non-Tor users access hidden service content:
+ <a href="http://tor.theinfo.org/" title="http://tor.theinfo.org/">http://tor.theinfo.org/</a>
+Somebody should follow up on that more to encourage him to keep at it.</p>
+
+<p>Announced Joel Reardon&#39;s thesis on or-talk, and followed up with him to point him to some pieces of anonbib he needs to read more, to tell him about 25C3, and to remind him to publish his new measurement tools lest they become lost to time.</p>
+
+<p>Roger and Karsten got the patches from proposal 155 into svn, and ultimately into the upcoming 0.2.1.7-alpha release. These were the bulk of the October progress for that NLnet project:
+ <a href="https://www.torproject.org/projects/hidserv.html.en#Oct08" title="https://www.torproject.org/projects/hidserv.html.en#Oct08">https://www.torproject.org/projects/hidserv.html.en#Oct08</a></p>
+
+<p>Mike deleted the router-stability file for his directory authority (ides), which should provide temporary relief from bug 696 (which was causing most of the Stable flags to be assigned wrong, and in turn was causing instant messaging and related connections over Tor to be way more flaky than they should be):
+ <a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=696" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=696">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=696</a>
+If his router-stability file gets corrupted again, we will have learned something.</p>
+
+<p>Roger, Jacob, and Mike went to the Google Summer of Code Mentor Summit on Oct 24-26 in Mountain View, where we met with a few hundred other GSoC mentors and generally shared information about Tor and how to make good use of summer students working on free software tools.</p>
+
+<p>We also went to dinner with Niels Provos while we were there, to talk about options for the &quot;Google gives you a captcha if you&#39;re using Tor&quot; problem. It looks like the right answer there will be for Torbutton to automate some workaround.</p>
+
+<p>Andrew started working with Jillian York, so she can start blogging about the great uses of Tor. More news in November, e.g.
+ <a href="https://blog.torproject.org/blog/knight-pulse%2C-jillian%2C-and-tor" title="https://blog.torproject.org/blog/knight-pulse%2C-jillian%2C-and-tor">https://blog.torproject.org/blog/knight-pulse%2C-jillian%2C-and-tor</a></p>
+
+<p>Matt Edman printed Vidalia T-shirts, and sent them out to the folks who have helped work on Vidalia lately. He is also working with a volunteer to clean up the Vidalia website, make new logos, clean up the installer graphics, etc.</p>
+
+<p>Andrew wrote a blog post about anonymity in South Korea:
+ <a href="https://blog.torproject.org/blog/online-anonymity-debate-south-korea" title="https://blog.torproject.org/blog/online-anonymity-debate-south-korea">https://blog.torproject.org/blog/online-anonymity-debate-south-korea</a></p>
+
+<p><strong>Distribution</strong>
+Work on the Tor VM project continues. We have a working prototype available now with a walk-through and screenshots:
+ <a href="http://peertech.org/files/demo/testinfo.html" title="http://peertech.org/files/demo/testinfo.html">http://peertech.org/files/demo/testinfo.html</a></p>
+
+<p>We plan to release a more public alpha installer in November.</p>
+
+<p><strong>Scalability</strong>
+From the Tor 0.2.1.7-alpha ChangeLog:
+&quot;The &quot;ClientDNSRejectInternalAddresses&quot; config option wasn&#39;t being consistently obeyed: if an exit relay refuses a stream because its exit policy doesn&#39;t allow it, we would remember what IP address the relay said the destination address resolves to, even if it&#39;s an internal IP address. Bugfix on 0.2.0.7-alpha; patch by rovv.&quot;</p>
+
+<p><strong>Packaging</strong>
+We changed our auto update design from code-name Glider to code-name Thandy, since there&#39;s a World of Warcraft cheat program named Glider and it might be a problem for WoW players that try to use Tor.</p>
+
+<p>We&#39;ve got the PKI and server-side for the auto updater in place. We wrote up a howto walking through how to set up the server-side for the updater, including how to assign roles and generate keys:
+ <a href="https://svn.torproject.org/svn/updater/trunk/doc/HOWTO" title="https://svn.torproject.org/svn/updater/trunk/doc/HOWTO">https://svn.torproject.org/svn/updater/trunk/doc/HOWTO</a></p>
+
+<p>We&#39;ve also decided that Python should work fine for the client-side too. Mike found some techniques to include only exactly the python libs we need, rather than the whole mess of python libs:
+ <a href="http://www.py2exe.org/index.cgi/BetterCompression" title="http://www.py2exe.org/index.cgi/BetterCompression">http://www.py2exe.org/index.cgi/BetterCompression</a>
+and Martin has been messing with saving some additional space by sharing the openssl lib between Tor and Thandy.</p>
+
+<p>The next steps for November are:
+ - Roger is going to figure out what PKI we want for the first round of testing (what roles, which keys, how many, who, etc), and deploy a Thandy server so we can put some basic packages on it for testing.
+ - Nick is going to finish the client-side of Thandy, in terms of teaching it how to decide which packages and bundles are out of date, and teaching it to download new files and check all the right signatures.
+ - Martin is going to package Thandy plus all the right python libs in an easy Windows exe that hopefully isn&#39;t too big.
+ - Matt Edman is going to add a simple interface to Vidalia for client-side Thandy configuration: stuff like a GUI for telling the user that new updates have appeared and letting the user click &quot;yes, please update me now&quot;, etc.
+ - Nick and Matt are going to brainstorm more about the interface between Vidalia and Thandy. For example, which program should keep state about the versions of each package that are installed, which program should be responsible for noticing if an install or upgrade attempt fails, etc.</p>
+
+<p>All the steps but the last I think are going to be pretty straightforward. This last step has the most potential pitfalls in it, since we&#39;re trying to keep Thandy general and platform-independent yet *something* (either Thandy or Vidalia, or something in between) has to tackle all the crazy Windows-specific pieces.</p>
+
+<p>It also looks like we should move the Tor packages and bundles from NSIS (Nullsoft installer) to MSI installer, as MSI can handle versioning and automatic installs (and uninstalls!) more gracefully. It&#39;s not yet clear yet if we&#39;re going to try to squeeze that installer shift into the November development timeframe.</p>
+
+<p><strong>Tor Browser Bundle</strong>
+We&#39;ve started to think about moving the Tor Browser Bundle from Firefox 2 to Firefox 3. This will mean we should measure new traces. We&#39;ll do it once Torbutton is known to be more stable on Firefox 3, which should happen in early 2009.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

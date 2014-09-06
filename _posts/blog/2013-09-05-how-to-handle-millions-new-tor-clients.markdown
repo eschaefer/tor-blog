@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to handle millions of new Tor clients"
-permalink: how-to-handle-millions-new-tor-clients
+permalink: blog/how-to-handle-millions-new-tor-clients
 date: 2013-09-05
 author: arma
 category: blog

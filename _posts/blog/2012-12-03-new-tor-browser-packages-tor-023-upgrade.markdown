@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Packages with Tor 0.2.3 upgrade"
-permalink: new-tor-browser-packages-tor-023-upgrade
+permalink: blog/new-tor-browser-packages-tor-023-upgrade
 date: 2012-12-03
 author: erinn
 category: blog

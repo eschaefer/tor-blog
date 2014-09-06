@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles with Firefox 17.0.9esr "
-permalink: new-tor-browser-bundles-firefox-1709esr
+permalink: blog/new-tor-browser-bundles-firefox-1709esr
 date: 2013-09-20
 author: erinn
 category: blog
@@ -16,7 +16,7 @@ The beta version includes an updated HTTPS Everywhere which fixes the problems m
 
 **Tor Browser Bundle (2.3.25-13)**
 
-- Update Firefox to 17.0.9esr  
+- Update Firefox to 17.0.9esr
  [https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#f...](https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.9 "https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.9")
 - Update HTTPS Everywhere to 3.4.1
 - Update NoScript to 2.6.7.1
@@ -28,7 +28,7 @@ The beta version includes an updated HTTPS Everywhere which fixes the problems m
 
 **Tor Browser Bundle (2.4.17-beta-2)**
 
-- Update Firefox to 17.0.9esr  
+- Update Firefox to 17.0.9esr
  [https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#f...](https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.9 "https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.9")
 - Update LibPNG to 1.6.3
 - Update HTTPS Everywhere to 4.0development.12

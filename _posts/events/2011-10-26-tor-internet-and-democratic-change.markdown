@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor at Internet and Democratic Change"
-permalink: tor-internet-and-democratic-change
+permalink: /events/tor-internet-and-democratic-change
 date: 2011-10-26
 startdate: 2011-10-26
 enddate: 2011-10-26

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Weekly News — May 21st, 2014</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor Weekly News — May 21st, 2014</h2>
+<p class="meta">21 May 2014</p>
+
+<div class="event">
+<p>Welcome to the twentieth issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+
+<h1>Tor 0.2.4.22 is out</h1>
+
+<p>A <a href="https://lists.torproject.org/pipermail/tor-talk/2014-May/032956.html">new version of the Tor stable branch was released</a> on May 16th: “Tor 0.2.4.22 backports numerous high-priority fixes from the Tor 0.2.5 alpha release series. These include blocking all authority signing keys that may have been affected by the OpenSSL ‘heartbleed’ bug, choosing a far more secure set of TLS ciphersuites by default, closing a couple of memory leaks that could be used to run a target relay out of RAM, and several others.”</p>
+
+<p>For more details, look at the <a href="https://gitweb.torproject.org/tor.git/blob_plain/2ee56e4c2:/ChangeLog">full changelog</a>. The source is available at the <a href="https://www.torproject.org/dist/">usual location</a>. Packages should be coming shortly, if not <a href="http://packages.qa.debian.org/t/tor/news/20140517T102023Z.html">already available</a>.</p>
+
+<h1>Digital Restrictions Management and Firefox</h1>
+
+<p>Mozilla’s decision to <a href="https://hacks.mozilla.org/2014/05/reconciling-mozillas-mission-and-w3c-eme/">support playing media with digital restrictions</a> in Firefox by implementing the W3C EME specification has raised a fair amount of controversy. Paul Crable  <a href="https://lists.torproject.org/pipermail/tor-talk/2014-May/032947.html">wanted to know</a> what it meant for the Tor Browser.</p>
+
+<p>Mike Perry <a href="https://lists.torproject.org/pipermail/tor-talk/2014-May/032985.html">answered</a> that “simply removing the DRM will be trivial, and it will be high on our list of tasks”.</p>
+
+<p>But he also explained his worries regarding a “per-device unique identifier” that Firefox would provide as part of the implementation: “it is likely that this identifier will soon be abused by all sorts of entities, […] quickly moving on to the advertising industry (why not play a short device-linked DRM video with your banner ad? You get a persistent, device-specific tracking identifier as part of the deal!). I think it is also quite likely that many arbitrary sites will actually deny access to users who do not provide them with such a device-id, if only due to ease of increased revenue generation from a fully identified userbase.”</p>
+
+<p>Mike has <a href="https://groups.google.com/forum/#!topic/mozilla.dev.privacy/3jA9zt1pXVo">raised the issue</a> on Mozilla’s dev-privacy mailing-list where Henri Sivonen replied that device-identifying information will be hashed together with a “per-origin browser-generated secret“ that “persists until the user asks the salt to be forgotten”. So it does not look as gloom as it initially appeared. As always, the devil is in the details.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>David Goulet <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006872.html">reported</a> on the status of the development of Torsocks 2.0, the library for safely using applications with Tor.</p>
+
+<p>Karsten Loesing <a href="https://blog.torproject.org/blog/10-years-collecting-tor-directory-data">posted</a> on the Tor Blog to commemorate the tenth anniversary of the first archived Tor directory, and discussed the different ways in which the public archive of directory data is being used for research and development.</p>
+
+<p>Karsten also <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006884.html">notified</a> the community of a change in the compression algorithm used for the tarballs of archived metrics data, which has reduced their total size from 212 gigabytes to 33 — an 85% gain!</p>
+
+<p><a href="https://gnunet.org/knock">Knock</a> is a variant of port-knocking that might be useful in the future for pluggable transports. “As Knock uses two fields in the TCP header in order to hide information and we explicitly want to be compatible with machines sitting in typical home networks”, <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006873.html">writes</a> Julian Kirsch, “we thus created a program which tests if Knock would work in your environment.” Please <a href="https://gnunet.org/knock_nat_tester">give it a try</a> to help the team figure out if Knock could be deployed in the wild.</p>
+
+<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-May/000581.html">Jesse Victors</a>, <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-May/000589.html">Andrea</a>, <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-May/000592.html">Nicholas Merrill</a>, and <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-May/000594.html">Martin A.</a> for running mirrors of the Tor Project website!</p>
+
+<p>Michael Schloh von Bennewitz has been busy analyzing a <a href="https://bugs.torproject.org/9701">disk leak</a> in Tor Browser: when one copies a significant chunk of text to the clipboard, a temporary file is created with its content. Michael found a possible fix and is <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006875.html">welcoming reviews</a>.</p>
+
+<p>Nicolas Vigier has been <a href="https://lists.torproject.org/pipermail/tbb-dev/2014-May/000050.html">investigating</a> some extra connections made by the Tor Browser on startup to the local resolver and the default port or the SOCKS proxy.</p>
+
+<p>Shawn Nock proved us once more that talking to ISP is key to run Tor relays on high-speed links. Shawn’s exit node was <a href="https://lists.torproject.org/pipermail/tor-relays/2014-May/004553.html">abruptly shut down by its provider</a> on May 15th. After a well-crafted plea explaining why Tor is important, the provider <a href="https://lists.torproject.org/pipermail/tor-relays/2014-May/004555.html">restored the service</a> on the very same day!</p>
+
+<p>However, dope457 reported that their provider is now giving them <a href="https://lists.torproject.org/pipermail/tor-relays/2014-May/004562.html">trouble for being the operator of a non-exit relay</a>, due to a large amount of traffic on the DNS port (53), which is being used as the ORPort by a <a href="https://atlas.torproject.org/#details/44EFAF942314F756FC7EA50292D5B383E568A9BD">recently-established Tor relay</a>, as <a href="https://lists.torproject.org/pipermail/tor-relays/2014-May/004563.html">pointed out</a> by Roman Mamedov.</p>
+
+<p>Now that ICANN is “selling” top-level domain names, Anders Andersson <a href="https://lists.torproject.org/pipermail/tor-talk/2014-May/032974.html">raised concerns</a> about the .onion extension used by Tor. Fortunately, <a href="https://tools.ietf.org/html/rfc6761">RFC6761</a> defines a process regarding special-use domain names. Last November, Christian Grothoff, Matthias Wachs, Hellekin O. Wolf, and Jacob Appelbaum submitted a <a href="https://tools.ietf.org/html/draft-grothoff-iesg-special-use-p2p-names-02">request to reserve several TLDs used in peer-to-peer systems</a>. Hellekin <a href="https://lists.torproject.org/pipermail/tor-talk/2014-May/032983.html">sent an update</a> about the procedure: “the current status quo from the IETF so far is that this issue is not a priority”.</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>Local antivirus or firewall applications can prevent Tor from connecting unless they are disabled. Firewall tools that have caused usability issues in the past include Webroot SecureAnywhere AV, Kaspersky Internet Security 2012, Sophos Antivirus for Mac, and Microsoft Security Essentials.</p>
+
+<h1>News from Tor StackExchange</h1>
+
+<p>The <a href="https://tor.stackexchange.com/">Tor StackExchange site</a> now provides more than 1000 answers to user-supplied questions. However, there are still <a href="https://tor.stackexchange.com/unanswered">~130 questions</a> which need a good answer, so if you happen to know one then please visit the site and help out.</p>
+
+<p>The majority of the questions are about the <a href="https://tor.stackexchange.com/questions/tagged/tor-browser-bundle">Tor Browser Bundle</a>, but <a href="https://tor.stackexchange.com/questions/tagged/hidden-services">hidden services</a> also attract a large amount of attention. When it comes to operating systems, there are <a href="https://tor.stackexchange.com/questions/tagged/windows">42 Windows-related questions</a>, while <a href="https://tor.stackexchange.com/questions/tagged/tails">questions about Tails</a> and <a href="https://tor.stackexchange.com/questions/tagged/whonix">Whonix</a> number nearly 50. All your questions about Tor and related software are welcome.</p>
+
+<p>Blue_Pyro uses Orweb on a mobile phone and <a href="https://tor.stackexchange.com/q/1753/88">wants to save images from websites</a>. Abel of Guardian recommended two options: first, a user can use <a href="https://guardianproject.info/apps/firefoxprivacy/">Firefox mobile with privacy enhanced options</a>, or one can <a href="https://guardianproject.info/builds/Orfox/latest/">try Orfox</a>, a development version of a Firefox-based browser.</p>
+
+<h1>Easy development tasks to get involved with</h1>
+
+<p><a href="https://stem.torproject.org/">Stem</a> is a Python controller library for Tor. It comes with tutorials and generally has pretty good test coverage. The newly-added example scripts, however, don’t yet have unit tests. Damian Johnson suggested ways to <a href="https://trac.torproject.org/projects/tor/ticket/11335">add unit tests for example scripts</a>; if you want to help out, <a href="https://gitweb.torproject.org/stem.git">learn how to get started</a>, start writing unit tests for the example scripts, and then comment on the ticket.</p>
+
+<p>The traffic obfuscator <a href="https://www.torproject.org/projects/obfsproxy.html">obfsproxy</a> should <a href="https://trac.torproject.org/projects/tor/ticket/9823">validate command-line arguments appropriately</a>. Right now, it’s printing an error and continuing, but it should really abort. This sounds like a trivial change, but maybe there’s more to fix in the nearby code. If you like Python and want to give it a try, there’s more information for you on the ticket.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, harmony, Matt Pagan, Karsten Loesing, qbi, and Georg Koppen.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

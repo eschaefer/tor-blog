@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Top changes in Tor since the 2004 design paper (Part 1)"
-permalink: top-changes-tor-2004-design-paper-part-1
+permalink: blog/top-changes-tor-2004-design-paper-part-1
 date: 2012-10-04
 author: nickm
 category: blog

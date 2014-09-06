@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Karen and Runa doing Reddit AMA"
-permalink: karen-and-runa-doing-reddit-ama
+permalink: /events/karen-and-runa-doing-reddit-ama
 date: 2012-06-21
 startdate: 2012-06-21
 enddate: 2012-06-21

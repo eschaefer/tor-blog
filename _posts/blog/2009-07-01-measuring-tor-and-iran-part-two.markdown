@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Measuring Tor and Iran (Part two)"
-permalink: measuring-tor-and-iran-part-two
+permalink: blog/measuring-tor-and-iran-part-two
 date: 2009-07-01
 author: karsten
 category: blog

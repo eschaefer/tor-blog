@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor 0.2.1.20 Released</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor 0.2.1.20 Released</h2>
+<p class="meta">13 Nov 2009</p>
+
+<div class="event">
+<p>Tor 0.2.1.20 fixes a crash bug when you&#39;re accessing many hidden services
+at once, prepares for more performance improvements, and fixes a bunch
+of smaller bugs.</p>
+
+<p>The Windows and OS X bundles also include a more recent Vidalia, and
+switch from Privoxy to Polipo.</p>
+
+<p>The OS X installers are now drag and drop. It&#39;s best to un-install
+Tor/Vidalia and then install this new bundle, rather than upgrade. If
+you want to upgrade, you&#39;ll need to update the paths for Tor and Polipo
+in the Vidalia Settings window.</p>
+
+<p><a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a></p>
+
+<p>Changes in version 0.2.1.20 - 2009-10-15
+ o Major bugfixes:</p>
+
+<ul>
+<li>Send circuit or stream sendme cells when our window has decreased
+by 100 cells, not when it has decreased by 101 cells. Bug uncovered
+by Karsten when testing the &quot;reduce circuit window&quot; performance
+patch. Bugfix on the 54th commit on Tor -- from July 2002,
+before the release of Tor 0.0.0. This is the new winner of the
+oldest-bug prize.
+
+<ul>
+<li>Fix a remotely triggerable memory leak when a consensus document
+contains more than one signature from the same voter. Bugfix on
+0.2.0.3-alpha.</li>
+<li>Avoid segfault in rare cases when finishing an introduction circuit
+as a client and finding out that we don&#39;t have an introduction key
+for it. Fixes bug 1073. Reported by Aaron Swartz.</li>
+</ul></li>
+</ul>
+
+<p>o Major features:</p>
+
+<ul>
+<li>Tor now reads the &quot;circwindow&quot; parameter out of the consensus,
+and uses that value for its circuit package window rather than the
+default of 1000 cells. Begins the implementation of proposal 168.</li>
+</ul>
+
+<p>o New directory authorities:</p>
+
+<ul>
+<li>Set up urras (run by Jacob Appelbaum) as the seventh v3 directory
+authority.
+
+<ul>
+<li>Move moria1 and tonga to alternate IP addresses.</li>
+</ul></li>
+</ul>
+
+<p>o Minor bugfixes:</p>
+
+<ul>
+<li>Fix a signed/unsigned compile warning in 0.2.1.19.
+
+<ul>
+<li>Fix possible segmentation fault on directory authorities. Bugfix on
+0.2.1.14-rc.</li>
+<li>Fix an extremely rare infinite recursion bug that could occur if
+we tried to log a message after shutting down the log subsystem.
+Found by Matt Edman. Bugfix on 0.2.0.16-alpha.</li>
+<li>Fix an obscure bug where hidden services on 64-bit big-endian
+systems might mis-read the timestamp in v3 introduce cells, and
+refuse to connect back to the client. Discovered by &quot;rotor&quot;.
+Bugfix on 0.2.1.6-alpha.</li>
+<li>We were triggering a CLOCK_SKEW controller status event whenever
+we connect via the v2 connection protocol to any relay that has
+a wrong clock. Instead, we should only inform the controller when
+it&#39;s a trusted authority that claims our clock is wrong. Bugfix
+on 0.2.0.20-rc; starts to fix bug 1074. Reported by SwissTorExit.</li>
+<li>We were telling the controller about CHECKING_REACHABILITY and
+REACHABILITY_FAILED status events whenever we launch a testing
+circuit or notice that one has failed. Instead, only tell the
+controller when we want to inform the user of overall success or
+overall failure. Bugfix on 0.1.2.6-alpha. Fixes bug 1075. Reported
+by SwissTorExit.</li>
+<li>Don&#39;t warn when we&#39;re using a circuit that ends with a node
+excluded in ExcludeExitNodes, but the circuit is not used to access
+the outside world. This should help fix bug 1090. Bugfix on
+0.2.1.6-alpha.</li>
+<li>Work around a small memory leak in some versions of OpenSSL that
+stopped the memory used by the hostname TLS extension from being
+freed.</li>
+</ul></li>
+</ul>
+
+<p>o Minor features:</p>
+
+<ul>
+<li>Add a &quot;getinfo status/accepted-server-descriptor&quot; controller
+command, which is the recommended way for controllers to learn
+whether our server descriptor has been successfully received by at
+least on directory authority. Un-recommend good-server-descriptor
+getinfo and status events until we have a better design for them.</li>
+</ul>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

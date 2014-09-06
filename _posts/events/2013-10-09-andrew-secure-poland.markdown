@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew @ Secure Poland"
-permalink: andrew-secure-poland
+permalink: /events/andrew-secure-poland
 date: 2013-10-09
 startdate: 2013-10-09
 enddate: 2013-10-10

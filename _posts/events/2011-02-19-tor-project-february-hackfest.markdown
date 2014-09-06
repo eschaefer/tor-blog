@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor Project February Hackfest"
-permalink: tor-project-february-hackfest
+permalink: /events/tor-project-february-hackfest
 date: 2011-02-19
 startdate: 2011-02-19
 enddate: 2011-02-19

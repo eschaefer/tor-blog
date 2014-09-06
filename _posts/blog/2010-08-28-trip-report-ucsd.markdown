@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Trip report, UCSD"
-permalink: trip-report-ucsd
+permalink: blog/trip-report-ucsd
 date: 2010-08-28
 author: arma
 category: blog
@@ -20,8 +20,8 @@ At the same time I think he'd be in better shape thinking about Tor performance 
 
 I also got a chance to explain enough of Tor to Stefan that he has a good understanding of Tor's overall design. He's still digesting what advice he might have for us, but his initial impression is that it's not clear that end-to-end TCP will perform well for our situation, nor is it clear that thousands of parallel TCP sessions between each pairwise Tor relay over UDP over some datagram link encryption ( [Joel Reardon's design](http://freehaven.net/anonbib/#reardon-thesis)) will perform well either.
 
-While there, I did a CSE symposium talk that went very well:  
- [http://freehaven.net/~arma/slides-ucsd10.pdf](http://freehaven.net/~arma/slides-ucsd10.pdf "http://freehaven.net/~arma/slides-ucsd10.pdf")  
+While there, I did a CSE symposium talk that went very well:
+ [http://freehaven.net/~arma/slides-ucsd10.pdf](http://freehaven.net/~arma/slides-ucsd10.pdf "http://freehaven.net/~arma/slides-ucsd10.pdf")
 It was scheduled for an hour, but everybody stayed for 90 minutes, and the crowd was really excited. I invited Chris Davis to the talk, plus the lunch afterward, plus some of the brainstorming after that. Hopefully a better-informed Chris will come in handy in some way in the future. :)
 
 I also talked to Mihir Bellare, a well-known crypto prof, for a few hours. He had a postdoc and a grad student who were excited to learn more about our research problems. Maybe they will help Damon and Kevin redesign a packet-based encryption scheme (where you send an IV and checksum in every packet, to tolerate lost packets and out-of-order packets), like what [Freedom](http://freehaven.net/anonbib/#freedom21-security) designed long ago but never shared very well with the rest of the world.

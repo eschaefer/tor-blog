@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at International Institute of Communications"
-permalink: andrew-international-institute-communications
+permalink: /events/andrew-international-institute-communications
 date: 2011-11-28
 startdate: 2011-11-28
 enddate: 2011-11-29

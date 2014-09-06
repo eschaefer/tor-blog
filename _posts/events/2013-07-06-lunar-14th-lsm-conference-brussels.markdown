@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Lunar @ 14th LSM Conference, Brussels"
-permalink: lunar-14th-lsm-conference-brussels
+permalink: /events/lunar-14th-lsm-conference-brussels
 date: 2013-07-06
 startdate: 2013-07-06
 enddate: 2013-07-11

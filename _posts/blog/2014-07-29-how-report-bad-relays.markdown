@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to report bad relays"
-permalink: how-report-bad-relays
+permalink: blog/how-report-bad-relays
 date: 2014-07-29
 author: phw
 category: blog

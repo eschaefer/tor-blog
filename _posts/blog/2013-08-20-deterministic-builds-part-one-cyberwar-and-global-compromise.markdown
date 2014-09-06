@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Deterministic Builds Part One: Cyberwar and Global Compromise"
-permalink: deterministic-builds-part-one-cyberwar-and-global-compromise
+permalink: blog/deterministic-builds-part-one-cyberwar-and-global-compromise
 date: 2013-08-20
 author: mikeperry
 category: blog

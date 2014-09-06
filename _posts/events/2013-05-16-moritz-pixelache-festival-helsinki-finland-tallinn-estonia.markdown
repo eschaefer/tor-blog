@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Moritz @ Pixelache Festival, Helsinki, Finland / Tallinn, Estonia"
-permalink: moritz-pixelache-festival-helsinki-finland-tallinn-estonia
+permalink: /events/moritz-pixelache-festival-helsinki-finland-tallinn-estonia
 date: 2013-05-16
 startdate: 2013-05-16
 enddate: 2013-05-19

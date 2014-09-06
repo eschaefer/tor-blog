@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor at 28C3 in Berlin, Germany"
-permalink: tor-28c3-berlin-germany
+permalink: /events/tor-28c3-berlin-germany
 date: 2011-12-27
 startdate: 2011-12-27
 enddate: 2011-12-30

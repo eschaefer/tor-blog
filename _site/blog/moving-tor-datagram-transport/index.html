@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Moving Tor to a datagram transport</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Moving Tor to a datagram transport</h2>
+<p class="meta">07 Nov 2011</p>
+
+<div class="event">
+<p>Tor currently transports data over encrypted TLS tunnels between nodes, in turn carried by TCP. This has worked reasonably well, but recent research has shown that it might not be the best option, particularly for performance.</p>
+
+<p>For example, when a packet gets dropped or corrupted on a link between two Tor nodes, TCP will cause the packet to be retransmitted eventually. However, in the meantime, all circuits passing through this pair of nodes will be stalled, not only the circuit corresponding to the packet which was dropped.</p>
+
+<p>Also, Tor uses two levels of congestion control; TCP for hop-by-hop links, and a custom scheme for circuits. This might not be the right approach -- maybe these schemes aren&#39;t the right ones to use or maybe there should only be one level of congestion control.</p>
+
+<p>There have been a variety of solutions proposed to fix one or both of these problems, Most end up sending data as datagrams in UDP packets, and Tor is responsible for managing congestion and recovering from packet loss, and so can (hopefully) do so in a more intelligent way. However, there are many options for what architecture to use, what building blocks to build these schemes from, and how to tweak the many parameters that result.</p>
+
+<p>To help clarify the various options, I&#39;ve written a summary of both Tor&#39;s current network stack architecture and various proposals for how it can be improved. The document discusses various tradeoffs between the approaches, including performance, security, and engineering difficulties in deploying the solution. It ends with some provisional conclusions about which options are most promising.</p>
+
+<p>The document, “ <a href="http://www.cl.cam.ac.uk/%7Esjm217/papers/tor11datagramcomparison.pdf">Comparison of Tor Datagram Designs</a>”, is now available (with source in <a href="https://gitweb.torproject.org/sjm217/torspec.git/tree/datagram_comparison:/proposals/ideas/xxx-datagram-comparison">git</a>), and I would welcome comments. Over the next few months I&#39;ll be working on building and evaluating prototypes for these schemes, and I will be incorporating feedback from the Tor community into the process.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What the \"Spoiled Onions\" paper means for Tor users"
-permalink: what-spoiled-onions-paper-means-tor-users
+permalink: blog/what-spoiled-onions-paper-means-tor-users
 date: 2014-01-24
 author: phw
 category: blog

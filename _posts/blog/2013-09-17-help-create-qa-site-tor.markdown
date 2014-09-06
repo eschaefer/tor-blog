@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Help create a Q&A site for Tor!"
-permalink: help-create-qa-site-tor
+permalink: blog/help-create-qa-site-tor
 date: 2013-09-17
 author: Runa
 category: blog

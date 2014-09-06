@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "FOSDEM 2010:  Tor: Building, Growing, and Extending Online Anonymity"
-permalink: fosdem-2010-tor-building-growing-and-extending-online-anonymity
+permalink: /events/fosdem-2010-tor-building-growing-and-extending-online-anonymity
 date: 2010-02-06
 startdate: 2010-02-06
 enddate: 2010-02-06

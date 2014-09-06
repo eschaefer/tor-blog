@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundles for Windows"
-permalink: new-tor-browser-bundles-windows
+permalink: blog/new-tor-browser-bundles-windows
 date: 2012-05-25
 author: Sebastian
 category: blog

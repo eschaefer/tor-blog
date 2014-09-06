@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger @ George Mason University, Washington, DC"
-permalink: roger-george-mason-university-washington-dc
+permalink: /events/roger-george-mason-university-washington-dc
 date: 2014-04-11
 startdate: 2014-04-11
 enddate: 2014-04-11

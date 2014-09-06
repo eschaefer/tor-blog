@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Our three-year development roadmap is published"
-permalink: our-three-year-development-roadmap-published
+permalink: blog/our-three-year-development-roadmap-published
 date: 2008-12-19
 author: phobos
 category: blog

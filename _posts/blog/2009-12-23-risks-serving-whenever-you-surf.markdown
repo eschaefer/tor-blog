@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "On the risks of serving whenever you surf"
-permalink: risks-serving-whenever-you-surf
+permalink: blog/risks-serving-whenever-you-surf
 date: 2009-12-23
 author: sjmurdoch
 category: blog
@@ -18,7 +18,7 @@ This was the subject of a recent paper, presented at the 2009 [Workshop on Priva
 
 - By making use of a set of proxy servers, including Tor itself, it is possible to find quite a large number of bridge IP addresses
 - It is possible to probe when a bridge node (and thus the user's PC) is running
-- Traffic flows going through a Tor node affect each other – a high bandwidth flow will cause others to slow down. 
+- Traffic flows going through a Tor node affect each other – a high bandwidth flow will cause others to slow down.
 
 By combining these aspects, the authors suggest that it might be possible to de-anonymize a pseudonymous Tor user who is also running a bridge. The basic technique is to find a list of candidate IP addresses, by trying to find as many bridge IP addresses as possible (the authors found about 3% in their tests). Then, over a few weeks or months, the attacker monitors what the pseudonymous Tor user is doing (e.g. blogging), and simultaneously whether the bridge nodes are running. If the user does something, and a bridge node is down, then clearly that bridge does not belong to the user. Eventually there are only a few candidate IP addresses left, and so the attack moves to the next stage.
 

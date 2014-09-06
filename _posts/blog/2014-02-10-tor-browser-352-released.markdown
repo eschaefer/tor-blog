@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser 3.5.2 is released"
-permalink: tor-browser-352-released
+permalink: blog/tor-browser-352-released
 date: 2014-02-10
 author: mikeperry
 category: blog
@@ -27,10 +27,10 @@ Here is the list of changes since 3.5.1. The [3.x ChangeLog](https://gitweb.torp
   - Bug [10682](https://bugs.torproject.org/10682): Workaround to really disable updates for Torbutton
   - Bug [10419](https://bugs.torproject.org/10419): Don't allow connections to localhost if Torbutton is toggled
   - Bug [10140](https://bugs.torproject.org/10140): Move Japanese to extra locales (not part of TBB dist)
-  - Bug [10687](https://bugs.torproject.org/10687): Add Basque (eu) to extra locales (not part of TBB dist) 
+  - Bug [10687](https://bugs.torproject.org/10687): Add Basque (eu) to extra locales (not part of TBB dist)
 
 - Update Tor Launcher to 0.2.4.4
-  - Bug [10682](https://bugs.torproject.org/10682): Workaround to really disable updates for Tor Launcher 
+  - Bug [10682](https://bugs.torproject.org/10682): Workaround to really disable updates for Tor Launcher
 
-- Update NoScript to 2.6.8.13 
+- Update NoScript to 2.6.8.13
 

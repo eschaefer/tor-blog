@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A visit to NCFTA"
-permalink: visit-ncfta
+permalink: blog/visit-ncfta
 date: 2009-07-15
 author: phobos
 category: blog

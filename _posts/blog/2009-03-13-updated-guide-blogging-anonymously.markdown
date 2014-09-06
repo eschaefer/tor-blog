@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Updated guide to blogging anonymously"
-permalink: updated-guide-blogging-anonymously
+permalink: blog/updated-guide-blogging-anonymously
 date: 2009-03-13
 author: phobos
 category: blog

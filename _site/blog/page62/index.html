@@ -22,7 +22,7 @@
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
-            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
             <h1 class="brand-title">The Tor Project Blog</h1>
             <h2 class="brand-tagline">News and events from Tor</h2>
 
@@ -44,32 +44,32 @@
 
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
+
             <!-- A wrapper for all the blog posts -->
-            <div class="posts">
-                <h1 class="content-subhead">Recent Posts</h1>
+<div class="posts">
 
-
-               <div id="home">
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/different-ways-use-bridge">Different Ways to Use a Bridge</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">Sebastian</a> under
-            
-              <a class="post-category post-category-js" href="#">Bridge</a>
-            
-              <a class="post-category post-category-js" href="#">bridge users</a>
-            
-              <a class="post-category post-category-js" href="#">bridges</a>
-            
-              <a class="post-category post-category-js" href="#">circumvention</a>
-             |
-            29 Nov 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p><strong>Different Ways to Use a Bridge</strong></p>
+  <h1 class="content-subhead">Recent Posts</h1>
+  <div id="home">
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/different-ways-use-bridge">Different Ways to Use a Bridge</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Sebastian</a> under
+              
+                <a class="post-category post-category-js" href="#">Bridge</a>
+              
+                <a class="post-category post-category-js" href="#">bridge users</a>
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">circumvention</a>
+               |
+              29 Nov 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p><strong>Different Ways to Use a Bridge</strong></p>
 
 <p>When some adversary prevents users from reaching the Tor network, our most popular answer is using bridge relays (or bridges for short). Those are hidden relays, not listed along with all the other relays in the networkstatus documents. Currently, we have about 600 of them, and censors are having different luck learning and blocking them — see <a href="https://blog.torproject.org/blog/research-problems-ten-ways-discover-tor-bridges">the 10 ways to discover Tor bridges blog post</a> for more on how discovery approaches may work. China appears to be the only place able to successfully block most bridges consistently, whereas other places occasionally manage to block Tor&#39;s handshake and as a byproduct block all bridges too.</p>
 
@@ -135,162 +135,162 @@
 <td>42.33 KB</td> </tr>
 </tbody></p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-0238-alpha-out">Tor 0.2.3.8-alpha is out</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">erinn</a> under
-            
-              <a class="post-category post-category-js" href="#">alpha releases</a>
-            
-              <a class="post-category post-category-js" href="#">bug fixes</a>
-            
-              <a class="post-category post-category-js" href="#">tor</a>
-            
-              <a class="post-category post-category-js" href="#">windows</a>
-             |
-            24 Nov 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Tor 0.2.3.8-alpha fixes some crash and assert bugs, including a<br>
- socketpair-related bug that has been bothering Windows users. It adds<br>
- support to serve microdescriptors to controllers, so Vidalia&#39;s network<br>
- map can resume listing relays (once Vidalia implements its side),<br>
- and adds better support for hardware AES acceleration. Finally, it<br>
- starts the process of adjusting the bandwidth cutoff for getting the<br>
- &quot;Fast&quot; flag from 20KB to (currently) 32KB -- preliminary results show<br>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-0238-alpha-out">Tor 0.2.3.8-alpha is out</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha releases</a>
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">windows</a>
+               |
+              24 Nov 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Tor 0.2.3.8-alpha fixes some crash and assert bugs, including a
+ socketpair-related bug that has been bothering Windows users. It adds
+ support to serve microdescriptors to controllers, so Vidalia&#39;s network
+ map can resume listing relays (once Vidalia implements its side),
+ and adds better support for hardware AES acceleration. Finally, it
+ starts the process of adjusting the bandwidth cutoff for getting the
+ &quot;Fast&quot; flag from 20KB to (currently) 32KB -- preliminary results show
  that tiny relays harm performance more than they help network capacity.</p>
 
-<p><strong>Changes in version 0.2.3.8-alpha - 2011-11-22</strong><br>
+<p><strong>Changes in version 0.2.3.8-alpha - 2011-11-22</strong>
 <strong>Major bugfixes:</strong></p>
 
 <ul>
-<li>Initialize Libevent with the EVENT_BASE_FLAG_NOLOCK flag enabled, so<br>
-that it doesn&#39;t attempt to allocate a socketpair. This could cause<br>
-some problems on Windows systems with overzealous firewalls. Fix for<br>
-bug 4457; workaround for Libevent versions 2.0.1-alpha through<br>
+<li>Initialize Libevent with the EVENT_BASE_FLAG_NOLOCK flag enabled, so
+that it doesn&#39;t attempt to allocate a socketpair. This could cause
+some problems on Windows systems with overzealous firewalls. Fix for
+bug 4457; workaround for Libevent versions 2.0.1-alpha through
 2.0.15-stable.</li>
-<li>Correctly sanity-check that we don&#39;t underflow on a memory<br>
-allocation (and then assert) for hidden service introduction<br>
-point decryption. Bug discovered by Dan Rosenberg. Fixes bug 4410;<br>
+<li>Correctly sanity-check that we don&#39;t underflow on a memory
+allocation (and then assert) for hidden service introduction
+point decryption. Bug discovered by Dan Rosenberg. Fixes bug 4410;
 bugfix on 0.2.1.5-alpha.</li>
-<li>Remove the artificially low cutoff of 20KB to guarantee the Fast<br>
-flag. In the past few years the average relay speed has picked<br>
-up, and while the &quot;top 7/8 of the network get the Fast flag&quot; and<br>
-&quot;all relays with 20KB or more of capacity get the Fast flag&quot; rules<br>
-used to have the same result, now the top 7/8 of the network has<br>
+<li>Remove the artificially low cutoff of 20KB to guarantee the Fast
+flag. In the past few years the average relay speed has picked
+up, and while the &quot;top 7/8 of the network get the Fast flag&quot; and
+&quot;all relays with 20KB or more of capacity get the Fast flag&quot; rules
+used to have the same result, now the top 7/8 of the network has
 a capacity more like 32KB. Bugfix on 0.2.1.14-rc. Fixes bug 4489.</li>
-<li>Fix a rare assertion failure when checking whether a v0 hidden<br>
-service descriptor has any usable introduction points left, and<br>
-we don&#39;t have enough information to build a circuit to the first<br>
-intro point named in the descriptor. The HS client code in<br>
-0.2.3.x no longer uses v0 HS descriptors, but this assertion can<br>
-trigger on (and crash) v0 HS authorities. Fixes bug 4411.<br>
+<li>Fix a rare assertion failure when checking whether a v0 hidden
+service descriptor has any usable introduction points left, and
+we don&#39;t have enough information to build a circuit to the first
+intro point named in the descriptor. The HS client code in
+0.2.3.x no longer uses v0 HS descriptors, but this assertion can
+trigger on (and crash) v0 HS authorities. Fixes bug 4411.
 Bugfix on 0.2.3.1-alpha; diagnosed by frosty_un.</li>
-<li>Make bridge authorities not crash when they are asked for their own<br>
+<li>Make bridge authorities not crash when they are asked for their own
 descriptor. Bugfix on 0.2.3.7-alpha, reported by Lucky Green.</li>
-<li>When running as a client, do not print a misleading (and plain<br>
-wrong) log message that we&#39;re collecting &quot;directory request&quot;<br>
-statistics: clients don&#39;t collect statistics. Also don&#39;t create a<br>
-useless (because empty) stats file in the stats/ directory. Fixes<br>
+<li>When running as a client, do not print a misleading (and plain
+wrong) log message that we&#39;re collecting &quot;directory request&quot;
+statistics: clients don&#39;t collect statistics. Also don&#39;t create a
+useless (because empty) stats file in the stats/ directory. Fixes
 bug 4353; bugfix on 0.2.2.34 and 0.2.3.7-alpha.</li>
 </ul>
 
 <p><strong>Major features:</strong></p>
 
 <ul>
-<li>Allow Tor controllers like Vidalia to obtain the microdescriptor<br>
-for a relay by identity digest or nickname. Previously,<br>
-microdescriptors were only available by their own digests, so a<br>
-controller would have to ask for and parse the whole microdescriptor<br>
-consensus in order to look up a single relay&#39;s microdesc. Fixes<br>
+<li>Allow Tor controllers like Vidalia to obtain the microdescriptor
+for a relay by identity digest or nickname. Previously,
+microdescriptors were only available by their own digests, so a
+controller would have to ask for and parse the whole microdescriptor
+consensus in order to look up a single relay&#39;s microdesc. Fixes
 bug 3832; bugfix on 0.2.3.1-alpha.</li>
-<li>Use OpenSSL&#39;s EVP interface for AES encryption, so that all AES<br>
-operations can use hardware acceleration (if present). Resolves<br>
+<li>Use OpenSSL&#39;s EVP interface for AES encryption, so that all AES
+operations can use hardware acceleration (if present). Resolves
 ticket 4442.</li>
 </ul>
 
 <p><strong>Minor bugfixes (on 0.2.2.x and earlier):</strong></p>
 
 <ul>
-<li>Detect failure to initialize Libevent. This fix provides better<br>
+<li>Detect failure to initialize Libevent. This fix provides better
 detection for future instances of bug 4457.</li>
-<li>Avoid frequent calls to the fairly expensive cull_wedged_cpuworkers<br>
-function. This was eating up hideously large amounts of time on some<br>
+<li>Avoid frequent calls to the fairly expensive cull_wedged_cpuworkers
+function. This was eating up hideously large amounts of time on some
 busy servers. Fixes bug 4518; bugfix on 0.0.9.8.</li>
-<li>Don&#39;t warn about unused log_mutex in log.c when building with<br>
---disable-threads using a recent GCC. Fixes bug 4437; bugfix on<br>
+<li>Don&#39;t warn about unused log_mutex in log.c when building with
+--disable-threads using a recent GCC. Fixes bug 4437; bugfix on
 0.1.0.6-rc which introduced --disable-threads.</li>
-<li>Allow manual &#39;authenticate&#39; commands to the controller interface<br>
-from netcat (nc) as well as telnet. We were rejecting them because<br>
-they didn&#39;t come with the expected whitespace at the end of the<br>
+<li>Allow manual &#39;authenticate&#39; commands to the controller interface
+from netcat (nc) as well as telnet. We were rejecting them because
+they didn&#39;t come with the expected whitespace at the end of the
 command. Bugfix on 0.1.1.1-alpha; fixes bug 2893.</li>
-<li>Fix some (not actually triggerable) buffer size checks in usage of<br>
-tor_inet_ntop. Fixes bug 4434; bugfix on Tor 0.2.0.1-alpha. Patch<br>
+<li>Fix some (not actually triggerable) buffer size checks in usage of
+tor_inet_ntop. Fixes bug 4434; bugfix on Tor 0.2.0.1-alpha. Patch
 by Anders Sundman.</li>
-<li>Fix parsing of some corner-cases with tor_inet_pton(). Fixes<br>
+<li>Fix parsing of some corner-cases with tor_inet_pton(). Fixes
 bug 4515; bugfix on 0.2.0.1-alpha; fix by Anders Sundman.</li>
-<li>When configuring, starting, or stopping an NT service, stop<br>
-immediately after the service configuration attempt has succeeded<br>
+<li>When configuring, starting, or stopping an NT service, stop
+immediately after the service configuration attempt has succeeded
 or failed. Fixes bug 3963; bugfix on 0.2.0.7-alpha.</li>
-<li>When sending a NETINFO cell, include the original address<br>
-received for the other side, not its canonical address. Found<br>
+<li>When sending a NETINFO cell, include the original address
+received for the other side, not its canonical address. Found
 by &quot;troll_un&quot;; fixes bug 4349; bugfix on 0.2.0.10-alpha.</li>
-<li>Rename the bench_{aes,dmap} functions to test_*, so that tinytest<br>
-can pick them up when the tests aren&#39;t disabled. Bugfix on<br>
+<li>Rename the bench_{aes,dmap} functions to test_*, so that tinytest
+can pick them up when the tests aren&#39;t disabled. Bugfix on
 0.2.2.4-alpha which introduced tinytest.</li>
-<li>Fix a memory leak when we check whether a hidden service<br>
-descriptor has any usable introduction points left. Fixes bug<br>
+<li>Fix a memory leak when we check whether a hidden service
+descriptor has any usable introduction points left. Fixes bug
 
 <ol>
 <li>Bugfix on 0.2.2.25-alpha.</li>
 </ol></li>
-<li>Fix a memory leak in launch_direct_bridge_descriptor_fetch() that<br>
-occurred when a client tried to fetch a descriptor for a bridge<br>
+<li>Fix a memory leak in launch_direct_bridge_descriptor_fetch() that
+occurred when a client tried to fetch a descriptor for a bridge
 in ExcludeNodes. Fixes bug 4383; bugfix on 0.2.2.25-alpha.</li>
 </ul>
 
 <p><strong>Minor bugfixes (on 0.2.3.x):</strong></p>
 
 <ul>
-<li>Make util unit tests build correctly with MSVC. Bugfix on<br>
+<li>Make util unit tests build correctly with MSVC. Bugfix on
 0.2.3.3-alpha. Patch by Gisle Vanem.</li>
-<li>Successfully detect AUTH_CHALLENGE cells with no recognized<br>
-authentication type listed. Fixes bug 4367; bugfix on 0.2.3.6-alpha.<br>
+<li>Successfully detect AUTH_CHALLENGE cells with no recognized
+authentication type listed. Fixes bug 4367; bugfix on 0.2.3.6-alpha.
 Found by frosty_un.</li>
-<li>If a relay receives an AUTH_CHALLENGE cell it can&#39;t answer,<br>
-it should still send a NETINFO cell to allow the connection to<br>
-become open. Fixes bug 4368; fix on 0.2.3.6-alpha; bug found by<br>
+<li>If a relay receives an AUTH_CHALLENGE cell it can&#39;t answer,
+it should still send a NETINFO cell to allow the connection to
+become open. Fixes bug 4368; fix on 0.2.3.6-alpha; bug found by
 &quot;frosty&quot;.</li>
-<li>Log less loudly when we get an invalid authentication certificate<br>
-from a source other than a directory authority: it&#39;s not unusual<br>
-to see invalid certs because of clock skew. Fixes bug 4370; bugfix<br>
+<li>Log less loudly when we get an invalid authentication certificate
+from a source other than a directory authority: it&#39;s not unusual
+to see invalid certs because of clock skew. Fixes bug 4370; bugfix
 on 0.2.3.4-alpha and 0.2.3.6-alpha.</li>
 </ul>
 
 <p><strong>Minor features:</strong></p>
 
 <ul>
-<li>Add two new config options for directory authorities:<br>
-AuthDirFastGuarantee sets a bandwidth threshold for guaranteeing the<br>
-Fast flag, and AuthDirGuardBWGuarantee sets a bandwidth threshold<br>
-that is always sufficient to satisfy the bandwidth requirement for<br>
-the Guard flag. Now it will be easier for researchers to simulate<br>
+<li>Add two new config options for directory authorities:
+AuthDirFastGuarantee sets a bandwidth threshold for guaranteeing the
+Fast flag, and AuthDirGuardBWGuarantee sets a bandwidth threshold
+that is always sufficient to satisfy the bandwidth requirement for
+the Guard flag. Now it will be easier for researchers to simulate
 Tor networks with different values. Resolves ticket 4484.</li>
-<li>When Tor ignores a hidden service specified in its configuration,<br>
-include the hidden service&#39;s directory in the warning message.<br>
-Previously, we would only tell the user that some hidden service<br>
+<li>When Tor ignores a hidden service specified in its configuration,
+include the hidden service&#39;s directory in the warning message.
+Previously, we would only tell the user that some hidden service
 was ignored. Bugfix on 0.0.6; fixes bug 4426.</li>
-<li>When we fail to initialize Libevent, retry with IOCP disabled so we<br>
-don&#39;t need to turn on multi-threading support in Libevent, which in<br>
-turn requires a working socketpair(). This is a workaround for bug<br>
-4457, which affects Libevent versions from 2.0.1-alpha through<br>
+<li>When we fail to initialize Libevent, retry with IOCP disabled so we
+don&#39;t need to turn on multi-threading support in Libevent, which in
+turn requires a working socketpair(). This is a workaround for bug
+4457, which affects Libevent versions from 2.0.1-alpha through
 2.0.15-stable.</li>
-<li>Detect when we try to build on a platform that doesn&#39;t define<br>
+<li>Detect when we try to build on a platform that doesn&#39;t define
 AF_UNSPEC to 0. We don&#39;t work there, so refuse to compile.</li>
 <li>Update to the November 1 2011 Maxmind GeoLite Country database.</li>
 </ul>
@@ -298,54 +298,54 @@ AF_UNSPEC to 0. We don&#39;t work there, so refuse to compile.</li>
 <p><strong>Packaging changes:</strong></p>
 
 <ul>
-<li>Make it easier to automate expert package builds on Windows,<br>
+<li>Make it easier to automate expert package builds on Windows,
 by removing an absolute path from makensis.exe command.</li>
 </ul>
 
 <p><strong>Code simplifications and refactoring:</strong></p>
 
 <ul>
-<li>Remove some redundant #include directives throughout the code.<br>
+<li>Remove some redundant #include directives throughout the code.
 Patch from Andrea Gelmini.</li>
-<li>Unconditionally use OpenSSL&#39;s AES implementation instead of our<br>
-old built-in one. OpenSSL&#39;s AES has been better for a while, and<br>
-relatively few servers should still be on any version of OpenSSL<br>
+<li>Unconditionally use OpenSSL&#39;s AES implementation instead of our
+old built-in one. OpenSSL&#39;s AES has been better for a while, and
+relatively few servers should still be on any version of OpenSSL
 that doesn&#39;t have good optimized assembly AES.</li>
-<li>Use the name &quot;CERTS&quot; consistently to refer to the new cell type;<br>
+<li>Use the name &quot;CERTS&quot; consistently to refer to the new cell type;
 we were calling it CERT in some places and CERTS in others.</li>
 </ul>
 
 <p><strong>Testing:</strong></p>
 
 <ul>
-<li>Numerous new unit tests for functions in util.c and address.c by<br>
+<li>Numerous new unit tests for functions in util.c and address.c by
 Anders Sundman.</li>
-<li>The long-disabled benchmark tests are now split into their own<br>
+<li>The long-disabled benchmark tests are now split into their own
 ./src/test/bench binary.</li>
-<li>The benchmark tests can now use more accurate timers than<br>
+<li>The benchmark tests can now use more accurate timers than
 gettimeofday() when such timers are available.</li>
 </ul>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/new-tor-browser-bundles-10">New Tor Browser Bundles</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">erinn</a> under
-            
-              <a class="post-category post-category-js" href="#">firefox</a>
-            
-              <a class="post-category post-category-js" href="#">tbb</a>
-            
-              <a class="post-category post-category-js" href="#">tor browser</a>
-             |
-            24 Nov 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>The Tor Browser Bundles have been updated to Firefox 8.0.1 along with a new Libevent and some extension updates.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-10">New Tor Browser Bundles</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">firefox</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+               |
+              24 Nov 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>The Tor Browser Bundles have been updated to Firefox 8.0.1 along with a new Libevent and some extension updates.</p>
 
 <p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
 
@@ -359,28 +359,28 @@ gettimeofday() when such timers are available.</li>
 <li>Begin building Tor with --enable-gcc-warnings</li>
 </ul>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/suggest-new-name-torouter-win-excito-b3">Suggest a new name for the Torouter, win an Excito B3</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">Runa</a> under
-            
-              <a class="post-category post-category-js" href="#">contest</a>
-            
-              <a class="post-category post-category-js" href="#">excito b3</a>
-            
-              <a class="post-category post-category-js" href="#">tor</a>
-            
-              <a class="post-category post-category-js" href="#">torouter</a>
-             |
-            21 Nov 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>The Torouter is the codename for a hardware project that aims to provide users with a device that can easily be configured to run as a Tor bridge or relay. We are currently working on two devices; the <a href="https://www.excito.com/node/9">Excito B3</a> and the <a href="https://www.globalscaletechnologies.com/c-5-dreamplugs.aspx">DreamPlug</a>.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/suggest-new-name-torouter-win-excito-b3">Suggest a new name for the Torouter, win an Excito B3</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+              
+                <a class="post-category post-category-js" href="#">contest</a>
+              
+                <a class="post-category post-category-js" href="#">excito b3</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">torouter</a>
+               |
+              21 Nov 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>The Torouter is the codename for a hardware project that aims to provide users with a device that can easily be configured to run as a Tor bridge or relay. We are currently working on two devices; the <a href="https://www.excito.com/node/9">Excito B3</a> and the <a href="https://www.globalscaletechnologies.com/c-5-dreamplugs.aspx">DreamPlug</a>.</p>
 
 <p>Having two devices that are both called &quot;the Torouter&quot; can be a bit confusing, so we would like your help in renaming the Excito B3 Torouter!</p>
 
@@ -390,28 +390,28 @@ gettimeofday() when such timers are available.</li>
 
 <p><strong>UPDATE:</strong> We have received a lot of good naming suggestions for the Excito B3 Torouter, thank you to everyone who emailed us! We have decided that the new name for the Excito B3 Torouter is <strong>onionbox</strong> . An email has gone out to the lucky winner of a B3, a t-shirt and some stickers, as well as five-runners up who will all get t-shirts and stickers.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/run-tor-bridge-amazon-cloud">Run Tor as a bridge in the Amazon Cloud</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">Runa</a> under
-            
-              <a class="post-category post-category-js" href="#">bridge relays</a>
-            
-              <a class="post-category post-category-js" href="#">cloud</a>
-            
-              <a class="post-category post-category-js" href="#">tor</a>
-            
-              <a class="post-category post-category-js" href="#">tor cloud</a>
-             |
-            21 Nov 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>The Tor Cloud project gives you a user-friendly way of deploying bridges to help users access an uncensored Internet. By setting up a bridge, you donate bandwidth to the Tor network and help improve the safety and speed at which users can access the Internet.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/run-tor-bridge-amazon-cloud">Run Tor as a bridge in the Amazon Cloud</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+              
+                <a class="post-category post-category-js" href="#">bridge relays</a>
+              
+                <a class="post-category post-category-js" href="#">cloud</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">tor cloud</a>
+               |
+              21 Nov 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>The Tor Cloud project gives you a user-friendly way of deploying bridges to help users access an uncensored Internet. By setting up a bridge, you donate bandwidth to the Tor network and help improve the safety and speed at which users can access the Internet.</p>
 
 <p>Bridges are Tor relays that aren&#39;t listed in the main directory. This means that to use a bridge, you&#39;ll need to locate one first. And because there is no complete public list of all the bridges, they are also harder to block. A bridge will act as the first hop in a circuit, and will only forward traffic on to other relays in the Tor network.</p>
 
@@ -423,29 +423,30 @@ gettimeofday() when such timers are available.</li>
 
 <p>For more information, see the <a href="https://cloud.torproject.org/">Tor Cloud</a> website.</p>
 
-<p><strong>UPDATE</strong> : Some users have asked about the AWS free usage tier and pointed out that it only includes 15 GB of bandwidth out per month. I have updated the Tor Cloud website (changes should go live soon) with the following:<br>
-_<br>
-The Tor Cloud images have been configured to use no more than 40 GB of bandwidth out per month. We have estimated that customers who do not qualify for the free usage tier will pay up to $30 a month. Customers who qualify for the free usage tier, but who run bridges that use more than 15 GB of bandwidth out per month, will pay up to $3 per month.<br>
-_<br>
+<p><strong>UPDATE</strong> : Some users have asked about the AWS free usage tier and pointed out that it only includes 15 GB of bandwidth out per month. I have updated the Tor Cloud website (changes should go live soon) with the following:
+_
+The Tor Cloud images have been configured to use no more than 40 GB of bandwidth out per month. We have estimated that customers who do not qualify for the free usage tier will pay up to $30 a month. Customers who qualify for the free usage tier, but who run bridges that use more than 15 GB of bandwidth out per month, will pay up to $3 per month.
+_
 I hope that this better clarifies the cost of running a bridge in the Amazon cloud, let me know if you have any questions.</p>
 </p>
-      </div>
-    </section>
-  
+        </div>
+      </section>
+    
 
-   <!-- Pagination links -->
-  <div class="pagination">
-    
-      <a href="/blog/page61" class="previous">Previous</a>
-    
-    <span class="page_number ">Page: 62 of 133</span>
-    
-      <a href="/blog/page63" class="next">Next</a>
-    
+     <!-- Pagination links -->
+    <div class="pagination">
+      
+        <a href="/blog/page61" class="previous">Previous</a>
+      
+      <span class="page_number ">Page: 62 of 133</span>
+      
+        <a href="/blog/page63" class="next">Next</a>
+      
+    </div>
   </div>
+
 </div>
 
-            </div>
 
             <div class="footer">
                 <div class="pure-menu pure-menu-horizontal pure-menu-open">

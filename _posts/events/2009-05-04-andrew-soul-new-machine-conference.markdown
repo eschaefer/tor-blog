@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at Soul of a New Machine Conference"
-permalink: andrew-soul-new-machine-conference
+permalink: /events/andrew-soul-new-machine-conference
 date: 2009-05-04
 startdate: 2009-05-04
 enddate: 2009-05-05

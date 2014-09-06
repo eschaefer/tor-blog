@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger @ PETools: Workshop on Privacy Enhancing Tools, Bloomington, IN"
-permalink: roger-petools-workshop-privacy-enhancing-tools-bloomington
+permalink: /events/roger-petools-workshop-privacy-enhancing-tools-bloomington
 date: 2013-07-09
 startdate: 2013-07-09
 enddate: 2013-07-09

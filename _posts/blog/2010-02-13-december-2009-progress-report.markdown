@@ -1,17 +1,17 @@
 ---
 layout: post
 title: "December 2009 Progress Report"
-permalink: december-2009-progress-report
+permalink: blog/december-2009-progress-report
 date: 2010-02-13
 author: phobos
 category: blog
 tags: ["bug fixes", "enhancements", "metrics", "progress report", "releases", "translations"]
 ---
 
- **New releases, new hires, new funding**  
-Erinn Clark joins Tor to develop, enhance, and upgrade our package build system. Her initial goals are to configure, maintain, and automate builds of tor and vidalia for Windows, OS X, ubuntu, debian, centos, fedora, and opensuse systems. Secondary goals are to develop a builtbot system that includes as many disparate operating systems as possible, including Apple OS X and Microsoft  
-Windows flavors.  
- On December 2, 2009, we released torbutton 1.2.3. This is the first release that addresses the  
+ **New releases, new hires, new funding**
+Erinn Clark joins Tor to develop, enhance, and upgrade our package build system. Her initial goals are to configure, maintain, and automate builds of tor and vidalia for Windows, OS X, ubuntu, debian, centos, fedora, and opensuse systems. Secondary goals are to develop a builtbot system that includes as many disparate operating systems as possible, including Apple OS X and Microsoft
+Windows flavors.
+ On December 2, 2009, we released torbutton 1.2.3. This is the first release that addresses the
 Firefox 3.5.x codebase. It contains the following changes:
 
 - bugfix: bug 950: Preserve useragent and download settings across toggle
@@ -44,8 +44,8 @@ On December 16, 2009, we released Torbutton 1.2.4. This fixes a number of bugs f
 - misc: Kill a warning message about missing properties in window-mapper.js
 - new: Add a new pref to disable Livemark updates during Tor usage (FF3.5+)
 
-On December 21, 2009, we released an update to the -stable Tor branch, Tor 0.2.1.21. It fixes compatibility with newer OpenSSL libraries that work around the renegotiation bug. The full changelog is:  
- Tor 0.2.1.21 fixes an incompatibility with the most recent OpenSSL library. If you use Tor on Linux / Unix and you’re getting SSL renegotiation errors, upgrading should help. We also recommend an upgrade if you’re an exit relay.  
+On December 21, 2009, we released an update to the -stable Tor branch, Tor 0.2.1.21. It fixes compatibility with newer OpenSSL libraries that work around the renegotiation bug. The full changelog is:
+ Tor 0.2.1.21 fixes an incompatibility with the most recent OpenSSL library. If you use Tor on Linux / Unix and you’re getting SSL renegotiation errors, upgrading should help. We also recommend an upgrade if you’re an exit relay.
 **Major bugfixes:**
 
 - Work around a security feature in OpenSSL 0.9.8l that prevents our handshake from working unless we explicitly tell OpenSSL that we are using SSL renegotiation safely. We are, of course, but OpenSSL 0.9.8l won’t work unless we say we are.
@@ -64,9 +64,9 @@ On December 31, 2009, we released Tor Browser Bundle 1.3.0. The major change was
 - update Torbutton to 1.2.4
 - upgrade Tor to 0.2.1.21
 
-**Design, develop, and implement enhancements that make  
-Tor a better tool for users in censored countries.**  
-Updated the get-tor email autoresponder to better handle translations into non-English languages. Also updated to better handle split downloads of torbrowser bundle and mac os x vidalia bundles.  
+**Design, develop, and implement enhancements that make
+Tor a better tool for users in censored countries.**
+Updated the get-tor email autoresponder to better handle translations into non-English languages. Also updated to better handle split downloads of torbrowser bundle and mac os x vidalia bundles.
 Mike finished his six week analysis of the Firefox 3.5 code base for privacy and anonymity leaks. The notes from the audit are documented in [https://www.torproject.org/torbutton/design/FF35\_AUDIT](https://www.torproject.org/torbutton/design/FF35_AUDIT "https://www.torproject.org/torbutton/design/FF35\_AUDIT").
 
 **Grow the Tor network and user base. Outreach.**
@@ -77,7 +77,7 @@ Mike finished his six week analysis of the Firefox 3.5 code base for privacy and
 - Andrew and Roger attended a circumvention technology workshop in California.
 - Jacob, Roger, Karsten, Steven, and others attended 26C3 in Berlin, Germany. [http://events.ccc.de/congress/2009/wiki/index.php/Main\_Page](http://events.ccc.de/congress/2009/wiki/index.php/Main_Page "http://events.ccc.de/congress/2009/wiki/index.php/Main\_Page"). Jacob and Roger presented on ”Tor and censorship: lessons learned”, [http://events.ccc.de/congress/2009/Fahrplan/events/3554.en.html](http://events.ccc.de/congress/2009/Fahrplan/events/3554.en.html "http://events.ccc.de/congress/2009/Fahrplan/events/3554.en.html"). We mirrored the video and slides at [https://blog.torproject.org/blog/tor-and-censorship-lessons-learned](https://blog.torproject.org/blog/tor-and-censorship-lessons-learned "https://blog.torproject.org/blog/tor-and-censorship-lessons-learned").
 
-**Preconfigured privacy (circumvention) bundles for USB or LiveCD.**  
+**Preconfigured privacy (circumvention) bundles for USB or LiveCD.**
 On December 31, 2009, we released Tor Browser Bundle 1.3.0. The major change was the upgrade of Firefox to the 3.5 branch. The full changelog is:
 
 - upgrade Firefox to 3.5.6
@@ -92,7 +92,7 @@ Mike, Roger, and Andrew met with the Chrome team at Google to discuss integratio
 - We did a one weekend test of the performance impact of changing circuit package window from 1000 cells to 101. The test and numbers are based on research by Csaba Kiraly. ”Effectof Tor window size on performance. Email to [or-dev@freehaven.net](mailto:or-dev@freehaven.net), February 2009. http://archives.seul.org/or/dev/Feb-2009/msg00000.html”. The test appeared to be a null operation, it didn’t help nor hurt performance of the network as a whole.
 - Karsten continues to work on metrics about the Tor Network. We have a new metrics portal, [http://metrics.torproject.org/](http://metrics.torproject.org/ "http://metrics.torproject.org/") that shows the output, raw data, process for the collection, and the statistical analysis performed. Currently, our basic process is to collect, collate, and transform the data into graphs with R. Two organizations have offered to take the raw data from [http://archives.torproject.org/](http://archives.torproject.org/ "http://archives.torproject.org/") and import it into their data analysis products. We’re continuing to work on both tactics at this time.
 
-**More reliable (e.g. split) download mechanism.**  
+**More reliable (e.g. split) download mechanism.**
 OS X split dmg files will be available with each release going forward. The split dmg files are a native format for OS X 10.3 (Panther) and above; so users on low bandwidth connections should easily be able to work with these.
 
 **Translation work, ultimately a browser-based approach.**

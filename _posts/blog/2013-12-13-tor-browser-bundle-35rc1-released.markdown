@@ -1,14 +1,14 @@
 ---
 layout: post
 title: "Tor Browser Bundle 3.5rc1 Released"
-permalink: tor-browser-bundle-35rc1-released
+permalink: blog/tor-browser-bundle-35rc1-released
 date: 2013-12-13
 author: mikeperry
 category: blog
 tags: ["tbb", "tbb-3.0", "tbb-3.5", "tor browser", "tor browser bundle", "tor-browser-bundle"]
 ---
 
-The first release candidate in the [3.5 series](https://blog.torproject.org/category/tags/tbb-35) of the Tor Browser Bundle is now available from the Tor Package Archive:  
+The first release candidate in the [3.5 series](https://blog.torproject.org/category/tags/tbb-35) of the Tor Browser Bundle is now available from the Tor Package Archive:
  [https://archive.torproject.org/tor-package-archive/torbrowser/3.5rc1/](https://archive.torproject.org/tor-package-archive/torbrowser/3.5rc1/).
 
 This release includes [important security updates to Firefox.](https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox24.2)
@@ -21,7 +21,7 @@ Here is the [complete changelog](https://gitweb.torproject.org/builders/tor-brow
   - Update Firefox to 24.2.0esr
   - Update NoScript to 2.6.8.7
   - Update HTTPS-Everywhere to 3.4.4tbb (special TBB tag)
-    - Tag includes a patch to handle enabling/disabling Mixed Content Blocking 
+    - Tag includes a patch to handle enabling/disabling Mixed Content Blocking
 
   - Bug 5060: Disable health report service
   - Bug 10367: Disable prompting about health report and Mozilla Sync
@@ -32,15 +32,15 @@ Here is the [complete changelog](https://gitweb.torproject.org/builders/tor-brow
     - Bug 10147: Adblock Plus interferes w/Tor Launcher dialog
     - Bug 10201: FF ESR 24 hangs during exit on Mac OS
     - Bug 9984: Support running Tor Launcher from InstantBird
-    - Misc: Support browser directory location API changes in Firefox 24 
+    - Misc: Support browser directory location API changes in Firefox 24
 
   - Update Torbutton to 1.6.5.1
     - Bug 10352: Clear FF24 Private Browsing Mode data during New Identity
     - Bug 8167: Update cache isolation for FF24 API changes
     - Bug 10201: FF ESR 24 hangs during exit on Mac OS
     - Bug 10078: Properly clear crypto tokens during New Identity on FF24
-    - Bug 9454: Support changes to Private Browsing Mode and plugin APIs in FF24 
+    - Bug 9454: Support changes to Private Browsing Mode and plugin APIs in FF24
 
 - Linux
-  - Bug 10213; Use LD\_LIBRARY\_PATH (fixes launch issues on old Linux distros) 
+  - Bug 10213; Use LD\_LIBRARY\_PATH (fixes launch issues on old Linux distros)
 

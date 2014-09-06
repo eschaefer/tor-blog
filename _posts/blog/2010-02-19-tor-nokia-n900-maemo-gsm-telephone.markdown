@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor on the Nokia N900 (Maemo) GSM telephone"
-permalink: tor-nokia-n900-maemo-gsm-telephone
+permalink: blog/tor-nokia-n900-maemo-gsm-telephone
 date: 2010-02-19
 author: ioerror
 category: blog

@@ -1,10 +1,10 @@
 ---
 layout: event
 title: "Jake @ Stockholm Internet Forum Conference, Stockholm"
-permalink: jake-stockholm-internet-forum-conference-stockholm
+permalink: /events/jake-stockholm-internet-forum-conference-stockholm
 date: 2013-05-22
 startdate: 2013-05-22
-enddate: 
+enddate:
 author: admin
 category: event
 ---

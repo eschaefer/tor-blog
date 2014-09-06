@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "UW Hackfest Thanks!"
-permalink: uw-hackfest-thanks
+permalink: blog/uw-hackfest-thanks
 date: 2012-02-27
 author: phobos
 category: blog

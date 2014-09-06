@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "TorCtl Deprecation and Stem Plans"
-permalink: torctl-deprecation-and-stem-plans
+permalink: blog/torctl-deprecation-and-stem-plans
 date: 2012-12-31
 author: atagar
 category: blog
@@ -14,12 +14,12 @@ The first is that Mike and I have decided to deprecate [TorCtl](https://gitweb.t
 
 If you're writing scripts or controller applications for Tor then you're encouraged to move to either...
 
-- 
+-
 ## [Stem](https://stem.torproject.org/)
 
 Library with a similar design to TorCtl, but friendlier APIs and documentation. This has reached feature parity with TorCtl and is still being actively developed, so if there's something it can do to better suit your needs then please let me know!
 
-- 
+-
 ## [Txtorcon](https://txtorcon.readthedocs.org/)
 
 Twisted controller library written by Meejah, and used in projects like Ooni Probe.
@@ -38,11 +38,11 @@ On reflection this is letting the perfect be the enemy of the good. Stem's API i
 
 So here's what I propose. For the next couple months stem will have an open beta. If you'd like to have input on the future of our python controller space then please give Stem a try and [tell me the following](http://www.atagar.com/contact/)...
 
-- 
+-
 
 What pain points did you encounter? Is there anything that you'd like to see changed or that we're missing?
 
-- 
+-
 
 If your project is public then please tell me where I can find your code. I'll review it, both to suggest improvements and see how we can tweak stem to better suit your needs.
 

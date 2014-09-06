@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to Circumvent an Internet Proxy - Howcast"
-permalink: how-circumvent-internet-proxy-howcast
+permalink: blog/how-circumvent-internet-proxy-howcast
 date: 2008-12-06
 author: phobos
 category: blog

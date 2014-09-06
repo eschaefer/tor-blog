@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Obfsproxy Bridges in the Amazon Cloud"
-permalink: obfsproxy-bridges-amazon-cloud
+permalink: blog/obfsproxy-bridges-amazon-cloud
 date: 2012-09-26
 author: Runa
 category: blog

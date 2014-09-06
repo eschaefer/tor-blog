@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor at Privacy Enhancing Technology Symposium"
-permalink: tor-privacy-enhancing-technology-symposium
+permalink: /events/tor-privacy-enhancing-technology-symposium
 date: 2011-07-27
 startdate: 2011-07-27
 enddate: 2011-07-31

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger, Steven at FC09"
-permalink: roger%2C-steven-fc09
+permalink: /events/roger%2C-steven-fc09
 date: 2009-02-23
 startdate: 2009-02-23
 enddate: 2009-02-27

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Stem Release 1.2"
-permalink: stem-release-12
+permalink: blog/stem-release-12
 date: 2014-06-01
 author: atagar
 category: blog
@@ -39,19 +39,19 @@ For a tutorial to get you started see...
 This release of Stem provides a new, even easier method for establishing controllers. Connecting to Tor can now be as easy as...
 
     import sys
-    
-    
+
+
     from stem.connection import connect
-    
-    
+
+
     if __name__ == ' __main__ ':
       controller = connect()
-    
-    
+
+
       if not controller:
         sys.exit(1) # unable to get a connection
-    
-    
+
+
       print 'Tor is running version %s' % controller.get_version()
       controller.close()
 

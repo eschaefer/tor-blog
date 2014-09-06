@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>New Tor Browser Bundles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>New Tor Browser Bundles</h2>
+<p class="meta">10 Sep 2011</p>
+
+<div class="event">
+<p>The Tor Browser Bundles have been updated with a bunch of bug fixes.</p>
+
+<p><strong>Important note to Windows users:</strong> in the last release we enabled automatic port selection for Tor and this had very unexpected side effects on many Windows machines. It turns out that there are a number of consumer firewalls that don&#39;t like things connecting on high ports, which was the default. We&#39;re looking into <a href="https://trac.torproject.org/projects/tor/ticket/3943">smarter</a> <a href="https://trac.torproject.org/projects/tor/ticket/3948">ways</a> to handle this failure mode, but until we find one, we have reverted the behavior to using the previous static port. We&#39;re very sorry for the huge inconvenience this caused and hope you will find these bundles more bug-free! As ever, if you don&#39;t, please <a href="https://trac.torproject.org/">let us know</a>.
+ <a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Tor Browser Bundle (2.2.32-4)</strong></p>
+
+<p><strong>Windows fixes</strong>
+  - Disable automatic port selection to accommodate Windows users with
+ firewalls that don&#39;t allow connections or traffic on high ports (closes: #3952, #3945)</p>
+
+<p><strong>Linux fixes</strong></p>
+
+<ul>
+<li>Fix Makefile to allow for automatic retrieval of Qt and libpng (closes: #2255)</li>
+<li>Remove symlinks from tarball (closes: #2312)</li>
+</ul>
+
+<p><strong>General fixes and updates</strong></p>
+
+<ul>
+<li><p>New Firefox patches</p>
+
+<ul>
+<li>Prevent Firefox from loading all system plugins besides Flash (closes: #2826, #3547)</li>
+<li>Prevent content-preferences service from writing website urls and their settings to disk (closes: #3229)</li>
+</ul></li>
+<li><p>Update Torbutton to 1.4.3</p>
+
+<ul>
+<li>Don&#39;t let Torbutton inadvertently enable automatic updating in Firefox (closes: #3933)</li>
+<li>Fix auto-scroll on Twitter (closes: #3960)</li>
+<li>Allow site zoom information to be stored (closes: #3928)</li>
+<li>Make permissions and disk errors human-readable (closes: #3649)</li>
+</ul></li>
+</ul>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

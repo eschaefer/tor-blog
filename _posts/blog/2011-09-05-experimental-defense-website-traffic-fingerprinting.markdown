@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Experimental Defense for Website Traffic Fingerprinting"
-permalink: experimental-defense-website-traffic-fingerprinting
+permalink: blog/experimental-defense-website-traffic-fingerprinting
 date: 2011-09-05
 author: mikeperry
 category: blog

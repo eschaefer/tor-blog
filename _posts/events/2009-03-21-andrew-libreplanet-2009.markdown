@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at LibrePlanet 2009"
-permalink: andrew-libreplanet-2009
+permalink: /events/andrew-libreplanet-2009
 date: 2009-03-21
 startdate: 2009-03-21
 enddate: 2009-03-22

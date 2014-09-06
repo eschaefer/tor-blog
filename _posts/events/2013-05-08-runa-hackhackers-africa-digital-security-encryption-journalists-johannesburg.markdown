@@ -1,10 +1,10 @@
 ---
 layout: event
 title: "Runa @ Hack/Hackers Africa - Digital Security & Encryption for Journalists, Johannesburg"
-permalink: runa-hackhackers-africa-digital-security-encryption-journalists-johannesburg
+permalink: /events/runa-hackhackers-africa-digital-security-encryption-journalists-johannesburg
 date: 2013-05-08
 startdate: 2013-05-08
-enddate: 
+enddate:
 author: admin
 category: event
 ---

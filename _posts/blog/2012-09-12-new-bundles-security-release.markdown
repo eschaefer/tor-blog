@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New bundles (security release)"
-permalink: new-bundles-security-release
+permalink: blog/new-bundles-security-release
 date: 2012-09-12
 author: erinn
 category: blog

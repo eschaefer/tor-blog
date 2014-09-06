@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Jake @ Farmhouse Conf 4, Hollywood California"
-permalink: jake-farmhouse-conf-4-hollywood-california
+permalink: /events/jake-farmhouse-conf-4-hollywood-california
 date: 2013-05-04
 startdate: 2013-05-04
 enddate: 2013-05-04

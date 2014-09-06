@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — December 25th, 2013"
-permalink: tor-weekly-news-%E2%80%94-december-25th-2013
+permalink: blog/tor-weekly-news-%E2%80%94-december-25th-2013
 date: 2013-12-25
 author: lunar
 category: blog

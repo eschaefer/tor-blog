@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Torbutton 1.4.1 Released"
-permalink: torbutton-141-released
+permalink: blog/torbutton-141-released
 date: 2011-08-29
 author: mikeperry
 category: blog
@@ -16,14 +16,14 @@ However, the New Identity button and the Hotmail fix are only available to Tor B
 
 Stay tuned for a new Tor Browser release that contains Torbutton 1.4.1 tomorrow.
 
-Here is the complete changelog:  
- \* bug 523: Implement New Identity (for TBB only)  
- \* bug 3580: Fix hotmail/live breakage (for TBB only)  
- \* bug 3748: Disable 3rd party HTTP auth  
- \* bug 3665: Fix several corner cases SafeCache isolation  
- \* bug 3739: Fix https->http CORS failure for SafeCache  
- \* bug 3414: Isolate window.name based on referrer policy  
- \* bug 3809: Disable referer spoofing (fixes navigation issues)  
- \* bug 3819: Fix API issue with cookie protections  
+Here is the complete changelog:
+ \* bug 523: Implement New Identity (for TBB only)
+ \* bug 3580: Fix hotmail/live breakage (for TBB only)
+ \* bug 3748: Disable 3rd party HTTP auth
+ \* bug 3665: Fix several corner cases SafeCache isolation
+ \* bug 3739: Fix https->http CORS failure for SafeCache
+ \* bug 3414: Isolate window.name based on referrer policy
+ \* bug 3809: Disable referer spoofing (fixes navigation issues)
+ \* bug 3819: Fix API issue with cookie protections
  \* bug 3820: Fix warning w/ session store filter
 

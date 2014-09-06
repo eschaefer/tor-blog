@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Tor Browser Bundle packages"
-permalink: new-tor-browser-bundle-packages-1
+permalink: blog/new-tor-browser-bundle-packages-1
 date: 2011-01-10
 author: erinn
 category: blog
@@ -16,12 +16,12 @@ The Tor Browser Bundles have all been updated with some important security fixes
 
 - Update Firefox preferences to be more secure and disable geolocation to address #2338
 
-**OS X bundle**  
+**OS X bundle**
 **1.0.9: Released 2011-01-09**
 
 - Update Firefox preferences to be more secure and disable geolocation to address #2338
 
-**Windows bundles**  
+**Windows bundles**
 **1.3.16: Released 2011-01-09**
 
 - Update Firefox preferences to be more secure and disable geolocation to address #2338

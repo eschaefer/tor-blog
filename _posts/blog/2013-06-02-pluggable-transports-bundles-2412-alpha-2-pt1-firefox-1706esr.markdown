@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Pluggable transports bundles 2.4.12-alpha-2-pt1 with Firefox 17.0.6esr"
-permalink: pluggable-transports-bundles-2412-alpha-2-pt1-firefox-1706esr
+permalink: blog/pluggable-transports-bundles-2412-alpha-2-pt1-firefox-1706esr
 date: 2013-06-02
 author: dcf
 category: blog

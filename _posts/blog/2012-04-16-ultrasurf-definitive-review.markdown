@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ultrasurf: the definitive review"
-permalink: ultrasurf-definitive-review
+permalink: blog/ultrasurf-definitive-review
 date: 2012-04-16
 author: ioerror
 category: blog
@@ -20,17 +20,17 @@ I believe that coordinated disclosure is reasonable in most cases and I ensured 
 
 However, for various reasons, I've had to sit silently on this report for nearly four full months after our December meeting. I believe it is important to ensure that the issues discovered and discussed in my paper are resolved and that users are not kept in harm's way. I have serious concerns about ongoing security issues for the users of Ultrasurf and that is my primary reason for wishing to perform and release this research for all to see.
 
-Here's the abstract of the paper:  
+Here's the abstract of the paper:
 _Ultrasurf is a proxy-based program promoted for Internet censorship circumvention. This report gives a technical analysis of the Ultrasurf software and network. We present the results of reverse engineering the Ultrasurf client program, give an in-depth study of the known Ultrasurf network, especially those portions that interface in some way with the client or the Internet, and discuss network signatures that would allow an adversary to detect its use on a network. We cover client bootstrapping methods, censorship and censorship resistance, anonymity, user tagging by Ultrasurf and other parties, cryptographic internals and other previously unknown or undiscovered details about the Ultrasurf client and the Ultrasurf network. We find that it is possible to monitor and block the use of Ultrasurf using commercial off-the-shelf software. In particular, BlueCoat sells software and hardware solutions with such capabilities that have been deployed in Syria and other countries._
 
 The vulnerabilities presented in this paper are not merely theoretical in nature; they may present life-threatening danger in hostile situations. We recommend against the use of Ultrasurf for anonymity, security, privacy and Internet censorship circumvention.
 
-The main substance of the paper takes the time to refute nearly all of the claims that UltraReach makes on their website about their software Ultrasurf:  
+The main substance of the paper takes the time to refute nearly all of the claims that UltraReach makes on their website about their software Ultrasurf:
 _This paper addresses the following claims by UltraReach and other Ultrasurf advocates about the Ultrasurf client and Ultrasurf network:_
 
 1. “Ultrasurf enables users to browse any website freely” — refuted in Section 3.1
 2. “employs a decoying mechanism to thwart any tracing effort of its communication with its infrastructure.” — refuted in Section 5.13
-3. “Protect your privacy online with anonymous surfing and browsing. Ultrasurf hides your IP address, clears  
+3. “Protect your privacy online with anonymous surfing and browsing. Ultrasurf hides your IP address, clears
 browsing history, cookies, and more.” — refuted in Section 6.2 and Section 6.3.
 4. “change IP addresses a million times an hour” — refuted in Section 6.1
 5. “Untraceable” — refuted in Section 6.10
@@ -47,7 +47,7 @@ I firmly believe that Ultrasurf must publish their full technical specifications
 
 I hope you'll enjoy the research presented in [the paper](https://media.torproject.org/misc/2012-04-16-ultrasurf-analysis.pdf) and that it will help everyone to move towards building a more secure set of options for users.
 
-**Update:**  
+**Update:**
 UltraReach/Ultrasurf have released [a response document](http://ultrasurf.us/Ultrasurf-response-to-Tor-definitive-review.pdf) and [a response page](http://ultrasurf.us/Ultrasurf-response-to-Tor-definitive-review.html) that confirms a number of my claims, side steps a large swath of them and then attacks me, Tor and others for the report. They specifically claim that what is true in my paper is for older versions of Ultrasurf. They do not disclose which versions or when the fixes were released. This is a typical vendor tactic considering that they pressured me not to release the report until they felt they were given enough time to fix the issues involved. They also believe that I claim that Ultrasurf was broken but at no time did I ever claim it was broken; rather, I said it has problems. The claims they made and make do not live up to the implementation of policies or technical capabilities. This I think is quite reasonable because their claims were, frankly, entirely unreasonable.
 
 I put a great deal of time and effort into disclosing these report findings to Ultrasurf - both what would be considered responsible and coordinated - it's too bad that they've decided to ignore most of the findings and to attack me over the undefendable issues.

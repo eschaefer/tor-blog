@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>iSEC Partners Conducts Tor Browser Hardening Study</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>iSEC Partners Conducts Tor Browser Hardening Study</h2>
+<p class="meta">19 Aug 2014</p>
+
+<div class="event">
+<p>In May, the <a href="https://www.opentechfund.org/">Open Technology Fund</a> commissioned <a href="https://www.isecpartners.com/">iSEC Partners</a> to study current and future hardening options for the Tor Browser. The Open Technology Fund is the primary funder of Tor Browser development, and it commissions security analysis and review for all of the projects that it funds as a standard practice. We worked with iSEC to define the scope of the engagement to focus on the following six main areas:</p>
+
+<ol>
+<li>Review of the current state of hardening in Tor Browser</li>
+<li>Investigate additional hardening options and instrumentation</li>
+<li>Perform historical vulnerability analysis on Firefox, in order to make informed vulnerability surface reduction recommendations</li>
+<li>Investigate image, audio, and video codecs and their respective library&#39;s vulnerability history</li>
+<li>Review our current about:config settings, both for vulnerability surface reduction and security</li>
+<li>Review alternate/obscure protocol and application handlers</li>
+</ol>
+
+<p>The <a href="https://github.com/iSECPartners/publications/tree/master/reports/Tor%20Browser%20Bundle">complete report</a> is available in the iSEC publications github repo. All tickets related to the report can be found using the <a href="https://trac.torproject.org/projects/tor/query?status=!closed&amp;keywords=%7Etbb-isec-report">tbb-isec-report keyword</a>. General Tor Browser security tickets can be found using the <a href="https://trac.torproject.org/projects/tor/query?status=!closed&amp;keywords=%7Etbb-security">tbb-security keyword</a>.</p>
+
+<h1>Major Findings and Recommendations</h1>
+
+<p>The report had the following high-level findings and recommendations.</p>
+
+<ul>
+<li><strong>Address Space Layout Randomization is disabled on Windows and Mac</strong></li>
+</ul>
+
+<p>Due to our use of cross-compilation and non-standard toolchains in <a href="https://blog.torproject.org/blog/deterministic-builds-part-two-technical-details">our reproducible build system</a>, several hardening features have ended up disabled. We have known about the Windows issues prior to this report, and should have a fix for them soon. However, the MacOS issues are news to us, and appear to require that we build 64 bit versions of the Tor Browser for full support. The parent ticket for all basic hardening issues in Tor Browser is <a href="https://trac.torproject.org/projects/tor/ticket/10065">bug #10065</a>.</p>
+
+<ul>
+<li><strong>Participate in Pwn2Own</strong></li>
+</ul>
+
+<p>iSEC recommended that we find a sponsor to fund a <a href="http://www.pwn2own.com/">Pwn2Own</a> reward for bugs specific to Tor Browser in a semi-hardened configuration. We are very interested in this idea and would love to talk with anyone willing to sponsor us in this competition, but we&#39;re not yet certain that our hardening options will have stabilized with enough lead time for the 2015 contest next March.</p>
+
+<ul>
+<li><strong>Test and recommend the Microsoft Enhanced Mitigation Experience Toolkit on Windows</strong></li>
+</ul>
+
+<p>The <a href="https://support.microsoft.com/kb/2458544">Microsoft Enhanced Mitigation Experience Toolkit</a> is an optional toolkit that Windows users can run to further harden Tor Browser against exploitation. We&#39;ve created <a href="https://trac.torproject.org/projects/tor/ticket/12820">bug #12820</a> for this analysis.</p>
+
+<ul>
+<li><strong>Replace the Firefox memory allocator (jemalloc) with ctmalloc/PartitionAlloc</strong></li>
+</ul>
+
+<p>PartitionAlloc is a memory allocator designed by Google specifically to mitigate common heap-based vulnerabilities by hardening free lists, creating partitioned allocation regions, and using guard pages to protect metadata and partitions. Its basic hardening features can be picked up by using it as a simple malloc replacement library (as ctmalloc). <a href="https://trac.torproject.org/projects/tor/ticket/10281">Bug #10281</a> tracks this work.</p>
+
+<ul>
+<li><strong>Make use of advanced ParitionAlloc features and other instrumentation to reduce the risk from use-after-free vulnerabilities</strong></li>
+</ul>
+
+<p>The iSEC vulnerability review found that the overwhelming majority of vulnerabilities to date in Firefox were use-after-free, followed closely by general heap corruption. In order to mitigate these vulnerabilities, we would need to make use of the heap partitioning features of PartitionAlloc to actually ensure that allocations are partitioned (for example, by using the existing tags from Firefox&#39;s <a href="about:memory">about:memory</a>). We will also investigate enabling assertions in limited areas of the codebase, such as the refcounting system, the JIT and the Javascript engine.</p>
+
+<h1>Vulnerability Surface Reduction (Security Slider)</h1>
+
+<p>A large portion of the report was also focused on analyzing historical Firefox vulnerability data and other sources of large vulnerability surface for a planned &quot;Security Slider&quot; UI in Tor Browser.</p>
+
+<p>The Security Slider was first suggested by Roger Dingledine as a way to make it easy for users to trade off between functionality and security, gradually disabling features ranked by both vulnerability count and web prevalence/usability impact.</p>
+
+<p>The report makes several recommendations along these lines, but a brief distillation can be found on the <a href="https://trac.torproject.org/projects/tor/ticket/9387#comment:43">ticket for the slider</a>.</p>
+
+<p>At a high level, we plan for four levels in this slider. &quot;Low&quot; security will be the current Tor Browser settings, with the addition of JIT support. &quot;Medium-Low&quot; will disable most of the JIT, and make HTML5 media click-to-play via NoScript. &quot;Medium-High&quot; will disable the rest of the JIT, will disable JS on non-HTTPS url bar origins, and disable SVG. &quot;High&quot; will fully disable Javascript, block remote fonts via NoScript, and disable all media codecs except for WebM (which will remain click-to-play).</p>
+
+<h1>The Long Term</h1>
+
+<p>A web browser is a very large and complicated piece of software, and while we believe that the <a href="https://www.torproject.org/projects/torbrowser/design/#privacy">privacy properties</a> of Tor Browser are better than those of every other web browser currently available, it is very important to us that we raise the bar to successful code execution and exploitation of Tor Browser as well.</p>
+
+<p>We are very eager to see the deployment of <a href="https://wiki.mozilla.org/Security/Sandbox">sandboxing support in Firefox</a>, which should go a long way to improving the security of Tor Browser as well. To improve security for their users, Mozilla has recently shifted <a href="https://groups.google.com/forum/#!searchin/mozilla.dev.platform/e10s/mozilla.dev.platform/q0Ku_8j26Pc/OtHXnNThv0IJ">10 engineers</a> into the Electrolysis project, which provides the groundwork for producing a multiprocess sandbox architecture for the desktop Firefox. This will allow them to provide a Google Chrome style security sandbox for website content, to reduce the risk from software vulnerabilities, and generally impede exploitability.</p>
+
+<p>Until that time, we will also be investigating providing <a href="https://trac.torproject.org/projects/tor/ticket/10599">hardened builds of Tor Browser</a> using the <a href="https://code.google.com/p/address-sanitizer/wiki/AddressSanitizer">AddressSanitizer</a> and <a href="https://gcc.gnu.org/wiki/vtv">Virtual Table Verification</a> features of newer GCC releases. While this will not eliminate all vectors of memory corruption-based exploitation (in particular, the hardening properties of AddressSanitizer are not as good as those provided by <a href="www.github.com/santoshn/softboundcets-34/">SoftBounds+CETS</a> for example, but that compiler is not yet production-ready), it should raise the bar to exploitation. We are hopeful that these builds in combination with PartitionAlloc and the Security Slider will satisfy the needs of our users who require high security and who are willing to trade performance and usability in order to get it.</p>
+
+<p>We also hope to include optional <a href="https://trac.torproject.org/projects/tor/ticket/5791">application-wide sandboxes</a> for Tor Browser as part of the official distribution.</p>
+
+<h1>Why not Google Chrome?</h1>
+
+<p>It is no secret that in many ways, both we and Mozilla are playing catch-up to reach the level of code execution security provided by Google Chrome, and in fact closely following the Google Chrome security team was one of the recommendations of the iSEC report.</p>
+
+<p>In particular, Google Chrome benefits from a <a href="http://www.chromium.org/Home/chromium-security/guts">multiprocess sandboxing architecture</a>, as well as several further <a href="http://www.chromium.org/Home/chromium-security/brag-sheet">hardening options and innovations</a> (such as PartitionAlloc).</p>
+
+<p>Unfortunately, our budget for the browser project is still very constrained compared to the amount of work that is required to provide the <a href="https://www.torproject.org/projects/torbrowser/design/#privacy">privacy properties we feel are important</a>, and Firefox remains a far more cost-effective platform for us for several reasons. In particular, Firefox&#39;s flexible extension system, fully scriptable UI, solid proxy support, and its long Extended Support Release cycle all allow us to accomplish far more with fewer resources than we could with any other web browser.</p>
+
+<p>Further, Google Chrome is far less amenable to supporting <a href="https://www.torproject.org/projects/torbrowser/design/#privacy">basic web privacy</a> and Tor-critical features (such as solid proxy support) than Mozilla Firefox. <a href="https://blog.torproject.org/blog/google-chrome-incognito-mode-tor-and-fingerprinting">Initial efforts</a> to work with the Google Chrome team saw some success in terms of adding APIs that are crucial to addons such as HTTPS-Everywhere, but we ran into several roadblocks when it came to Tor-specific features and changes. In particular, <a href="https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs#ProxyBypassBugs">several bugs required for basic proxy-safe Tor support</a> for Google Chrome&#39;s Incognito Mode ended up blocked for various reasons. The <a href="https://code.google.com/p/chromium/issues/detail?id=80722">worst offender</a> on this front is the use of the Microsoft Windows CryptoAPI for certificate validation, without any alternative. This bug means that certificate revocation checking and intermediate certificate retrieval happen outside of the browser&#39;s proxy settings, and is subject to alteration by the OEM and/or the enterprise administrator. Worse, beyond the Tor proxy issues, the use of this OS certificate validation API means that the OEM and enterprise also have a simple entry point for installing their own root certificates to enable transparent HTTPS man-in-the-middle, with full browser validation and no user consent or awareness. All of this is not to mention the need for defenses against <a href="https://www.torproject.org/projects/torbrowser/design/#identifier-linkability">third party tracking</a> and <a href="https://www.torproject.org/projects/torbrowser/design/#fingerprinting-linkability">fingerprinting</a> to prevent the linking of Tor activity to non-Tor usage, and which would also be useful for the wider non-Tor userbase.</p>
+
+<p>While we&#39;d love for this situation to change, and are open to working with Google to improve things, at present it means that our only option for Chrome is to maintain an even more invasive fork than our current Firefox patch set, with much less likelihood of a future merge than with Firefox. As a ballpark estimate, maintaining such a fork would require somewhere between 3 and 5 times the engineering staff and infrastructure we currently have at our disposal, in addition to the ramp-up time to port our current feature set over.</p>
+
+<p>Unless either our funding situation or Google&#39;s attitude towards the features we require changes, Mozilla Firefox will remain the best platform for us to demonstrate that it is in fact possible to provide <a href="http://www.w3.org/2012/dnt-ws/position-papers/21.pdf">true privacy by design</a> for the web for those who want it. It is very distressing that this means playing catch-up and forcing our users to make usability tradeoffs in exchange for improved browser security, but we will continue to do what we can to improve that situation, both with Mozilla and with our own independent efforts.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

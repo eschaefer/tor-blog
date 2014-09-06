@@ -22,7 +22,7 @@
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
-            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
             <h1 class="brand-title">The Tor Project Blog</h1>
             <h2 class="brand-tagline">News and events from Tor</h2>
 
@@ -44,30 +44,30 @@
 
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
+
             <!-- A wrapper for all the blog posts -->
-            <div class="posts">
-                <h1 class="content-subhead">Recent Posts</h1>
+<div class="posts">
 
-
-               <div id="home">
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/tor-and-beast-ssl-attack">Tor and the BEAST SSL attack</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">nickm</a> under
-            
-              <a class="post-category post-category-js" href="#">internals</a>
-            
-              <a class="post-category post-category-js" href="#">security</a>
-            
-              <a class="post-category post-category-js" href="#">ssl</a>
-             |
-            24 Sep 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>Today, Juliano Rizzo and Thai Duong presented a new attack on TLS Ekoparty security conference in Buenos Aires. Let&#39;s talk about how it works, and how it relates to the Tor protocol.</p>
+  <h1 class="content-subhead">Recent Posts</h1>
+  <div id="home">
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-and-beast-ssl-attack">Tor and the BEAST SSL attack</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">nickm</a> under
+              
+                <a class="post-category post-category-js" href="#">internals</a>
+              
+                <a class="post-category post-category-js" href="#">security</a>
+              
+                <a class="post-category post-category-js" href="#">ssl</a>
+               |
+              24 Sep 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>Today, Juliano Rizzo and Thai Duong presented a new attack on TLS Ekoparty security conference in Buenos Aires. Let&#39;s talk about how it works, and how it relates to the Tor protocol.</p>
 
 <p>Short version: Don&#39;t panic. The Tor software itself is just fine, and the free-software browser vendors look like they&#39;re responding well and quickly. I&#39;ll be talking about why Tor is fine; I&#39;ll bet that the TBB folks will have more to say about browsers sometime soon.</p>
 
@@ -99,7 +99,7 @@
 
 <p>Nevertheless, crypto people implemented workarounds. Better safe than sorry! In version 1.1 of the TLS protocol, every record gets a fresh IV, so the attacker can&#39;t know the IV of the next message in advance. And OpenSSL implemented a fix where, whenever they&#39;re about to send a TLS record, they send an empty TLS record immediately before, and then send the record with the message in it. The empty TLS record is enough to make the CBC state change, effectively giving the real message a new IV that the attacker can&#39;t predict.</p>
 
-<p>These fixes haven&#39;t gotten very far in the web world, though. TLS 1.1 isn&#39;t widely implemented or deployed, even though the standard has been out since 2006. And<br>
+<p>These fixes haven&#39;t gotten very far in the web world, though. TLS 1.1 isn&#39;t widely implemented or deployed, even though the standard has been out since 2006. And
 OpenSSL&#39;s &quot;empty record&quot; trick turns out to break some non-conformant SSL implementations, so lots of folks turn it off. (The OpenSSL manual page for the option in question even says that &quot;it is usually safe&quot; to do so.)</p>
 
 <p>I suppose that, at the time, this seemed pretty reasonable. Guessing a plaintext is hard: there are something like 3.4 x 10^38 possible values. But as they say, attacks only get better.</p>
@@ -170,7 +170,7 @@ OpenSSL&#39;s &quot;empty record&quot; trick turns out to break some non-conform
 
 <p>DESTROY, PADDING, NETINFO, and VERSIONS cells do not have interesting bodies. DESTROY and PADDING bodies are either 0s or random bytes, and NETINFO and VERSIONS provide only trivial information that you can learn just by connecting to a node (the time of day, its addresses, and which versions of the Tor link protocol it speaks).</p>
 
-<p>That&#39;s cell bodies. What about their headers? A Tor cell&#39;s header has a command and a circuit ID that take up only 3 bytes. Learning the command doesn&#39;t tell you anything you couldn&#39;t notice by observing the encrypted link in the first place and doing a little traffic analysis. The link-local 2-byte circuit ID is random, and not<br>
+<p>That&#39;s cell bodies. What about their headers? A Tor cell&#39;s header has a command and a circuit ID that take up only 3 bytes. Learning the command doesn&#39;t tell you anything you couldn&#39;t notice by observing the encrypted link in the first place and doing a little traffic analysis. The link-local 2-byte circuit ID is random, and not
 interesting per se, but possibly interesting if you could use it to demultiplex traffic sent over multiple circuits. I&#39;ll discuss that more below at the end of the next section.</p>
 
 <h3>CLAIM 2: You can&#39;t do the Duong/Rizzo attack against the Tor protocol either</h3>
@@ -185,7 +185,7 @@ interesting per se, but possibly interesting if you could use it to demultiplex 
 
 <h3>Hey, what if I&#39;m wrong about those cell headers?</h3>
 
-<p>Let&#39;s pretend that I flubbed the analyis above, and that the attacker can read the command and circuitID for every cell on a link. All this allows the attacker to do is to demultiplex the circuits on the link, and better separate the traffic pattern flows that the link is multiplexing for different clients... but the attacker can&#39;t really<br>
+<p>Let&#39;s pretend that I flubbed the analyis above, and that the attacker can read the command and circuitID for every cell on a link. All this allows the attacker to do is to demultiplex the circuits on the link, and better separate the traffic pattern flows that the link is multiplexing for different clients... but the attacker can&#39;t really
 use this info unless the attacker can correlate it with a flow somewhere else. This requires that the attacker be watching the same traffic at two points. But if the attacker can do that, the attacker can already (we assume) do a passive correlation attack and win.</p>
 
 <h3>And what if I&#39;m wrong entirely?</h3>
@@ -204,7 +204,7 @@ use this info unless the attacker can correlate it with a flow somewhere else. T
 
 <p>First, consider bandwidth-shaping: If a node or a link is near its bandwidth limit, it will split cells in order to stay under that limit.</p>
 
-<p>Also, on a busy node, you can&#39;t really send a cell and expect it to get decrypted and put into the next output record on a given link: there are likely to be other circuits queueing other cells for that link, and by the time your cell is sent, it&#39;s likely that they&#39;ll have sent stuff too. You can get increased priority by making a very quiet<br>
+<p>Also, on a busy node, you can&#39;t really send a cell and expect it to get decrypted and put into the next output record on a given link: there are likely to be other circuits queueing other cells for that link, and by the time your cell is sent, it&#39;s likely that they&#39;ll have sent stuff too. You can get increased priority by making a very quiet
 circuit, though.</p>
 
 <p>Finally, I don&#39;t actually think it&#39;s possible to cause chosen plaintext to appear on a client-&gt;server link.</p>
@@ -229,24 +229,24 @@ circuit, though.</p>
 
 <p>Now, it&#39;s a Friday evening, and if you&#39;ll excuse me, I think I&#39;m going to go off the &#39;nets for a little while.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/academic-postdoc-phd-and-masters-positions-available-tor-related-research">Academic (Postdoc, PhD, and Master&#39;s) positions available for Tor-related research</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">ian</a> under
-            
-              <a class="post-category post-category-js" href="#">academia</a>
-            
-              <a class="post-category post-category-js" href="#">research</a>
-             |
-            24 Sep 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>As more anonymous communications and PETs researchers join the academic ranks, there is an increasing availability of Tor-related research positions at the postdoctoral, PhD, and Master&#39;s levels. (Note: we prefer the term &quot;training of Highly Qualified Personnel&quot; to &quot;pyramid scheme&quot;.)</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/academic-postdoc-phd-and-masters-positions-available-tor-related-research">Academic (Postdoc, PhD, and Master&#39;s) positions available for Tor-related research</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">ian</a> under
+              
+                <a class="post-category post-category-js" href="#">academia</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+               |
+              24 Sep 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>As more anonymous communications and PETs researchers join the academic ranks, there is an increasing availability of Tor-related research positions at the postdoctoral, PhD, and Master&#39;s levels. (Note: we prefer the term &quot;training of Highly Qualified Personnel&quot; to &quot;pyramid scheme&quot;.)</p>
 
 <p>Steven Murdoch (at Cambridge) and I (at Waterloo) each have some such positions available. See information and links below.</p>
 
@@ -275,26 +275,26 @@ circuit, though.</p>
 </dd>
 </dl>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/gsoc-2011-tails-greeter-boot-menu-tails">GSoC 2011: tails-greeter - boot menu for TAILS</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">max</a> under
-            
-              <a class="post-category post-category-js" href="#">anonymous operating systems</a>
-            
-              <a class="post-category post-category-js" href="#">gsoc 2011</a>
-            
-              <a class="post-category post-category-js" href="#">tails</a>
-             |
-            16 Sep 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>This is a guest post from our 2011 Google Summer of Code student, Max:</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/gsoc-2011-tails-greeter-boot-menu-tails">GSoC 2011: tails-greeter - boot menu for TAILS</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">max</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymous operating systems</a>
+              
+                <a class="post-category post-category-js" href="#">gsoc 2011</a>
+              
+                <a class="post-category post-category-js" href="#">tails</a>
+               |
+              16 Sep 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>This is a guest post from our 2011 Google Summer of Code student, Max:</p>
 
 <p>Throughout the summer I&#39;ve been working on &#39;tails-greeter&#39; ( <a href="https://tails.boum.org/todo/TailsGreeter/" title="https://tails.boum.org/todo/TailsGreeter/">https://tails.boum.org/todo/TailsGreeter/</a>) project for TAILS ( <a href="https://tails.boum.org" title="https://tails.boum.org">https://tails.boum.org</a>) live-cd. Essentially it&#39;s an implementation of boot-menu ( <a href="https://tails.boum.org/todo/boot_menu/" title="https://tails.boum.org/todo/boot\_menu/">https://tails.boum.org/todo/boot_menu/</a>) in a form of GDM&#39;s greeter (that little program which asks your login and password before you see your desktop).</p>
 
@@ -306,55 +306,55 @@ circuit, though.</p>
 
 <p>There are several things which could be improved, both user-visible (data representation) and internal (login procedure). I plan to stay in touch with the community to help to make tails-greeter ready for the inclusion into TAILS.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/august-2011-progress-report">August 2011 Progress Report</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">phobos</a> under
-            
-              <a class="post-category post-category-js" href="#">anonymity research</a>
-            
-              <a class="post-category post-category-js" href="#">bug fixes</a>
-            
-              <a class="post-category post-category-js" href="#">feature enhancements</a>
-            
-              <a class="post-category post-category-js" href="#">obfsproxy</a>
-            
-              <a class="post-category post-category-js" href="#">progress report</a>
-            
-              <a class="post-category post-category-js" href="#">stable release</a>
-            
-              <a class="post-category post-category-js" href="#">tor browser bundles</a>
-             |
-            15 Sep 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p>The August 2011 Progress Report is here, <a href="https://blog.torproject.org/files/2011-August-Monthly-Report.pdf" title="https://blog.torproject.org/files/2011-August-Monthly-Report.pdf">https://blog.torproject.org/files/2011-August-Monthly-Report.pdf</a>. Highlights include a new Tor stable branch, many package updates, working UPnP in MS Windows, and many other updates, bug fixes, and research results.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/august-2011-progress-report">August 2011 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity research</a>
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">feature enhancements</a>
+              
+                <a class="post-category post-category-js" href="#">obfsproxy</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">stable release</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundles</a>
+               |
+              15 Sep 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p>The August 2011 Progress Report is here, <a href="https://blog.torproject.org/files/2011-August-Monthly-Report.pdf" title="https://blog.torproject.org/files/2011-August-Monthly-Report.pdf">https://blog.torproject.org/files/2011-August-Monthly-Report.pdf</a>. Highlights include a new Tor stable branch, many package updates, working UPnP in MS Windows, and many other updates, bug fixes, and research results.</p>
 
 <p>An archive of published monthly reports is available at <a href="https://archive.torproject.org/monthly-report-archive/" title="https://archive.torproject.org/monthly-report-archive/">https://archive.torproject.org/monthly-report-archive/</a>. This includes pdf and plaintext reports for 2011.</p>
 </p>
-      </div>
-    </section>
-  
-    <section class="post">
-      <header class="post-header">
-        <h2 class="post-title"> <a href="/iran-blocks-tor-tor-releases-same-day-fix">Iran blocks Tor; Tor releases same-day fix</a></h2>
-        <p class="post-meta">
-            By <a class="post-author" href="#">arma</a> under
-            
-              <a class="post-category post-category-js" href="#">internet censorship</a>
-            
-              <a class="post-category post-category-js" href="#">iran</a>
-             |
-            14 Sep 2011
-        </p>
-      </header>
-      <div class="post-description">
-        <p><p><strong>The short version: Tor relays and bridges should upgrade to Tor 0.2.2.33 or Tor 0.2.3.4-alpha so users in Iran can reach them again.</strong></p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/iran-blocks-tor-tor-releases-same-day-fix">Iran blocks Tor; Tor releases same-day fix</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">iran</a>
+               |
+              14 Sep 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><p><strong>The short version: Tor relays and bridges should upgrade to Tor 0.2.2.33 or Tor 0.2.3.4-alpha so users in Iran can reach them again.</strong></p>
 
 <p>Yesterday morning (in our timezones — that evening, in Iran), Iran added a filter rule to their border routers that recognized Tor traffic and blocked it. Thanks to help from a variety of friends around the world, we quickly discovered how they were blocking it and released a <a href="http://archives.seul.org/tor/talk/Sep-2011/msg00187.html">new version of Tor</a> that isn&#39;t blocked. Fortunately, the fix is on the relay side: that means once enough <a href="https://torproject.org/docs/tor-doc-relay">relays</a> and <a href="https://www.torproject.org/docs/bridges">bridges</a> upgrade, the <a href="https://metrics.torproject.org/users.html?graph=direct-users&amp;start=2011-06-16&amp;end=2011-09-14&amp;country=ir&amp;dpi=72#direct-users">many tens of thousands of Tor users in Iran</a> will resume being able to reach the Tor network, without needing to change their software.</p>
 
@@ -364,23 +364,24 @@ circuit, though.</p>
 
 <p>It&#39;s too early to have cool graphs showing a drop in users and then the users coming back a day or so later. I&#39;ll plan to add these graphs once things play out more. [Update: <a href="https://metrics.torproject.org/users.html?graph=direct-users&amp;start=2011-07-01&amp;end=2011-09-18&amp;country=ir&amp;events=on&amp;dpi=72#direct-users">here is the graph as of Sept 16</a>]</p>
 </p>
-      </div>
-    </section>
-  
+        </div>
+      </section>
+    
 
-   <!-- Pagination links -->
-  <div class="pagination">
-    
-      <a href="/blog/page66" class="previous">Previous</a>
-    
-    <span class="page_number ">Page: 67 of 133</span>
-    
-      <a href="/blog/page68" class="next">Next</a>
-    
+     <!-- Pagination links -->
+    <div class="pagination">
+      
+        <a href="/blog/page66" class="previous">Previous</a>
+      
+      <span class="page_number ">Page: 67 of 133</span>
+      
+        <a href="/blog/page68" class="next">Next</a>
+      
+    </div>
   </div>
+
 </div>
 
-            </div>
 
             <div class="footer">
                 <div class="pure-menu pure-menu-horizontal pure-menu-open">

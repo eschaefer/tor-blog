@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor at Global Voices Summit 2010"
-permalink: tor-global-voices-summit-2010
+permalink: /events/tor-global-voices-summit-2010
 date: 2010-05-06
 startdate: 2010-05-06
 enddate: 2010-05-07

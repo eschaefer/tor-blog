@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor on Android</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor on Android</h2>
+<p class="meta">04 Mar 2010</p>
+
+<div class="event">
+<p>The Tor Project has been working very closely with <a href="http://openideals.com/">Nathan Freitas</a> and <a href="http://openideals.com/guardian/">The Guardian Project</a> to create an Android release. This is an early beta release and is not yet suitable for high security needs. The Android web browser is not protected by Torbutton and we have not yet developed an anonymous browser on the Android platform. Please be cautious with this release, it&#39;s probably pretty fragile and it&#39;s certainly not ready for serious use.</p>
+
+<p>We&#39;ve codenamed the Tor on Android project Orbot; Orbot is a single Android package that provides a new Tor controller, Privoxy as our trusty little HTTP proxy, libevent, and Tor itself. This Android package is using the C reference implementation of Tor. Orbot should be orders of magnitude safer than other Tor implementations on Android and it&#39;s our official release. Everything you&#39;ll need for using Tor is in the package. :-)</p>
+
+<p>We now have <a href="https://www.torproject.org/docs/android.html">an Android webpage</a> that discusses the Orbot Android package in some detail.</p>
+
+<p>Orbot has some commonly used features such as support for bridges. It also has advanced features such as per application Torification on modified devices (commonly called &#39;rooted&#39; phones). It has been tested on Android 1.5, 1.6, 2.0, 2.1 and on non-standard customized builds of Android. We think we&#39;ve ironed out most of the kinks but we&#39;re looking for some community feedback from devices in the wild. We&#39;d especially like to hear about the UI and what applications you commonly use with Tor.</p>
+
+<p>When Orbot is successfully installed and running, it should provide a few standard interfaces to interface with the Tor network. Privoxy listens on 127.0.0.1:8118 - it&#39;s chained to the standard Tor SOCKS proxy on 127.0.0.1:9050. In addition, we have a DNSPort on port 5400. The DNSPort is most commonly used by the automagical per application Torification. These ports may change in the future; if they conflict with other common and popular applications, we&#39;d like to hear about it.</p>
+
+<p>Our official builds are available from our website. As per our usual style of package releases, we&#39;re releasing <a href="https://www.torproject.org/dist/android/0.2.2.9-alpha-orbot-0.0.2.apk">the .apk package</a> with <a href="https://www.torproject.org/dist/android/0.2.2.9-alpha-orbot-0.0.2.apk.asc">gpg signatures</a>.</p>
+
+<p>If you&#39;d simply like the latest Android package, please visit this url:
+ <a href="http://www.torproject.org/dist/android/alpha-orbot-latest.apk">http://www.torproject.org/dist/android/alpha-orbot-latest.apk</a></p>
+
+<p>If you have the barcode scanner, you&#39;ll be able to directly load the
+latest package by scanning the following QR code:</p>
+
+<p><img src="https://blog.torproject.org/files/orbot-qr-code-latest.png" alt=""></p>
+
+<p>We plan to release Orbot in the Google Market in the near future. The
+Orbot package you install from our website and the application in the
+Market should be identical. In addition to the GPG signature, the .apk
+files contain a digital signature. If you&#39;re feeling reasonably
+paranoid, it&#39;s probably a fine idea to download the .apk from our
+website, check the GPG signature, and then install the package on your
+device manually.</p>
+
+<p>If you&#39;d like to reproduce our builds from source, we&#39;ve documented the
+build process in
+ <a href="https://svn.torproject.org/svn/projects/android/trunk/Orbot/BUILD">our subversion repository</a>.</p>
+
+<p>If you&#39;d like to read more about Orbot, we suggest you check out the
+source and start hacking around:
+svn co <a href="https://svn.torproject.org/svn/projects/android/trunk/" title="https://svn.torproject.org/svn/projects/android/trunk/">https://svn.torproject.org/svn/projects/android/trunk/</a> android/</p>
+
+<p><thead><tr>
+<th>Attachment</th>
+<th>Size</th> </tr></thead><tbody>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/orbot-qr-code-latest.png">orbot-qr-code-latest.png</a></td>
+<td>426 bytes</td> </tr>
+</tbody></p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

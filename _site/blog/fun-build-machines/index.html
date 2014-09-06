@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fun with build machines</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Fun with build machines</h2>
+<p class="meta">06 Aug 2008</p>
+
+<div class="event">
+<p>Perhaps you&#39;ve noticed that the packages for CentOS 4 and OSX Tiger/10.4 haven&#39;t been updated lately. Welcome to dead hard drives.</p>
+
+<p>For a long while, I used <a href="http://www.vmware.com/products/server/">VMware Server</a> for guest OSes to build the various rpm and windows packages. This mostly worked well. And then both drives in the physical server I used to host the vmware instance failed. A two-drive RAID 1 array doesn&#39;t like it when both drives fail. I replaced the drives, re-installed Debian, and attempted to install vmware server again. The vmware kernel module refused to load. I tried the old tricks to get it to work, nothing. I finally looked at some script/patch that I found via Google, and got the module to load. Then my license key didn&#39;t work anymore.</p>
+
+<p>In frustration, I gave up and installed <a href="http://www.virtualbox.org/">VirtualBox</a>. CentOS 4 defaults to using an SMP kernel on install, which Virtualbox (aka qemu) doesn&#39;t like at all. CentOS 4 installs just fine, it just won&#39;t boot after install. I haven&#39;t had time to further fix the problem. For the time being, there&#39;s no CentOS 4 (Redhat 4 rpms) for Tor.</p>
+
+<p>As for OSX, well, there was no raid array of any kind, just a single drive in a mac mini. It died in a fit of 0xE0030005 (Undefined) errors and now won&#39;t boot at all. A new drive is on the way. I expect to have OSX Tiger/10.4 packages in a week or so. The good news is that the <a href="http://www.everymac.com/systems/apple/imac/stats/imac_se_dv_400.html">Panther Mac</a> continues to work just fine.</p>
+
+<p>Perhaps it&#39;s time to start using Amazon&#39;s EC2 or something similar instead of messing with all this hardware and virtualization software. Or maybe I should work on hacking OSX 10.4 and 10.5 into virtualbox.</p>
+
+<p>** Update 2008-08-06: new drive was DOA. And it appears the logic board on the mac mini is fried. Ugh.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

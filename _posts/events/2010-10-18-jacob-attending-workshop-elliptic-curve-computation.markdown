@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Jacob attending the Workshop on Elliptic Curve Computation"
-permalink: jacob-attending-workshop-elliptic-curve-computation
+permalink: /events/jacob-attending-workshop-elliptic-curve-computation
 date: 2010-10-18
 startdate: 2010-10-18
 enddate: 2010-10-22

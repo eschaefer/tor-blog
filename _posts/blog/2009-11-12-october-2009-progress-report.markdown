@@ -1,17 +1,17 @@
 ---
 layout: post
 title: "October 2009 Progress Report"
-permalink: october-2009-progress-report
+permalink: blog/october-2009-progress-report
 date: 2009-11-12
 author: phobos
 category: blog
 tags: ["bug fixes", "enhancements", "progress report", "tor releases", "vidalia releases"]
 ---
 
- **New releases, new hires, new funding**  
+ **New releases, new hires, new funding**
 Christian Fromme joins Tor to work on development and maintenance of the growing number of tools we’ve created over the past year. Christian is a great python hacker with a strong security mindset. He’s going to enhance and maintain the tools such as tor weather, get-tor, bridge database, tor control, tor flow, check.torproject.org, etc. Christian has been a volunteer developer for the past year helping to enhance get-tor, tor weather, and generally helping out with our python coding needs.
 
-On October 10, we released Tor version 0.2.2.4-alpha. The release notes can be read at [https://blog.torproject.org/blog/tor-0224-alpha-released](https://blog.torproject.org/blog/tor-0224-alpha-released "https://blog.torproject.org/blog/tor-0224-alpha-released") or below:  
+On October 10, we released Tor version 0.2.2.4-alpha. The release notes can be read at [https://blog.torproject.org/blog/tor-0224-alpha-released](https://blog.torproject.org/blog/tor-0224-alpha-released "https://blog.torproject.org/blog/tor-0224-alpha-released") or below:
 **Major bugfixes:**
 
 - Fix several more asserts in the circuit build times code, for example one that causes Tor to fail to start once we have accumulated 5000 build times in the state file. Bugfixes on 0.2.2.2-alpha; fixes bug 1108.
@@ -38,7 +38,7 @@ On October 10, we released Tor version 0.2.2.4-alpha. The release notes can be r
 
 - Revise our unit tests to use the ”tinytest” framework, so we can run tests in their own processes, have smarter setup/teardown code, and so on. The unit test code has moved to its own subdirectory, and has been split into multiple modules.
 
-On October 11, we released Tor 0.2.2.5-alpha. The release notes can be read at [https://blog.torproject.org/blog/tor-0225-alpha-released](https://blog.torproject.org/blog/tor-0225-alpha-released "https://blog.torproject.org/blog/tor-0225-alpha-released") or below:  
+On October 11, we released Tor 0.2.2.5-alpha. The release notes can be read at [https://blog.torproject.org/blog/tor-0225-alpha-released](https://blog.torproject.org/blog/tor-0225-alpha-released "https://blog.torproject.org/blog/tor-0225-alpha-released") or below:
 **Major bugfixes:**
 
 - Make the tarball compile again. Oops. Bugfix on 0.2.2.4-alpha.
@@ -78,18 +78,18 @@ Started comparing free and commercial GeoIP databases for their accuracy. It wou
 - Karsten and Sebastian attended PET-CON 2009.2 in Regensburg, Germany, and talked about measuring sensitive data in the Tor network.
 - Finished paper on ”A Case Study on Measuring Statistical Data in the Tor Anonymity Network” together with Steven and Roger and submitted it to WECSR 2010.
 
-**Preconfigured privacy (circumvention) bundles for USB or LiveCD.**  
+**Preconfigured privacy (circumvention) bundles for USB or LiveCD.**
 Testing program updates to Tor Browser Bundle destined for the next release. The multi-protocol instant messaging client we use, Pidgin, includes voip and video chat functionality. Vidalia 0.2.5 inclusion to make the process of acquiring bridge addresses or becoming a bridge easier.
 
-**Bridge relay and bridge authority work.**  
+**Bridge relay and bridge authority work.**
 The bridge distribution backend is now far more reliable than it was, and the algorithm has been retuned with design from Nick and Roger. Now the bridgedb code is much more willing to hand out a user’s first few bridges, but it is much harder to get it to hand out a whole bunch of bridges.
 
-**Scalability, load balancing, directory overhead, efficiency.**  
+**Scalability, load balancing, directory overhead, efficiency.**
 Nick rewrote the directory authority backend code to be able to provide multiple flavors of directory info: a new flavor that can be used for low-directory-bandwidth clients, and the existing flavor to support existing clients. This is the authority-side of proposals 158 and 162; once the authorities are migrated to this, we can start rolling out the client-side. Once it’s done, the directory overhead for clients should be dramatically reduced.
 
-**More reliable (e.g. split) download mechanism.**  
-Christian rolled out changes to the email auto-responder, get-tor, to better handle emails coming to us in various languages. 50% more emails are being answered correctly since the change.  
-Thanks to some open internet activists in India, we have a fine new mirror of the Tor website in country at [http://www.torproject.org.in/](http://www.torproject.org.in/ "http://www.torproject.org.in/").  
+**More reliable (e.g. split) download mechanism.**
+Christian rolled out changes to the email auto-responder, get-tor, to better handle emails coming to us in various languages. 50% more emails are being answered correctly since the change.
+Thanks to some open internet activists in India, we have a fine new mirror of the Tor website in country at [http://www.torproject.org.in/](http://www.torproject.org.in/ "http://www.torproject.org.in/").
 4 new website mirrors joined, 4 existing mirrors left.
 
 **Translation work**

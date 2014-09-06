@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Bittorrent over Tor isn't a good idea"
-permalink: bittorrent-over-tor-isnt-good-idea
+permalink: blog/bittorrent-over-tor-isnt-good-idea
 date: 2010-04-30
 author: arma
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "GNU 30th anniversary celebration and hackathon"
-permalink: gnu-30th-anniversary-celebration-and-hackathon
+permalink: /events/gnu-30th-anniversary-celebration-and-hackathon
 date: 2013-09-28
 startdate: 2013-09-28
 enddate: 2013-09-29

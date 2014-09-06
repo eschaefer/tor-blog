@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Mac OS X Vidalia Bundle with 0.2.2.17-alpha out"
-permalink: mac-os-x-vidalia-bundle-02217-alpha-out
+permalink: blog/mac-os-x-vidalia-bundle-02217-alpha-out
 date: 2010-10-28
 author: erinn
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor @ 30th Chaos Communication Congress, Hamburg, Germany"
-permalink: tor-30th-chaos-communication-congress-hamburg-germany
+permalink: /events/tor-30th-chaos-communication-congress-hamburg-germany
 date: 2013-12-27
 startdate: 2013-12-27
 enddate: 2013-12-30

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — July 3rd, 2013"
-permalink: tor-weekly-news-%E2%80%94-july-3rd-2013
+permalink: blog/tor-weekly-news-%E2%80%94-july-3rd-2013
 date: 2013-07-03
 author: lunar
 category: blog
@@ -46,9 +46,9 @@ The [stable Tor Browser Bundle was updated to version 2.3.25-10](https://blog.to
 
 # Jenkins + Stem catching their first regression
 
-Quoting [Damian Johnson’s June status report](https://lists.torproject.org/pipermail/tor-reports/2013-June/000262.html): “Our automated  
-Jenkins test runs caught their first instance of tor regression. This  
-concerned LOADCONF’s behavior after merging a branch for ticket #6752”.  
+Quoting [Damian Johnson’s June status report](https://lists.torproject.org/pipermail/tor-reports/2013-June/000262.html): “Our automated
+Jenkins test runs caught their first instance of tor regression. This
+concerned LOADCONF’s behavior after merging a branch for ticket #6752”.
 A [new ticket](https://bugs.torproject.org/9122) was opened after Damian properly identified the issue.
 
 # First round of reports from GSoC projects

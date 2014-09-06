@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "SHA-1 files by popular request"
-permalink: sha-1-files-popular-request
+permalink: blog/sha-1-files-popular-request
 date: 2008-12-19
 author: phobos
 category: blog

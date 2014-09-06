@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>November 2008 Progress Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>November 2008 Progress Report</h2>
+<p class="meta">25 Dec 2008</p>
+
+<div class="event">
+<p><strong>Bug Fixes</strong></p>
+
+<p>Tor 0.2.1.7-alpha (released November 8) fixes a major security problem in Debian and Ubuntu packages (and maybe other packages) noticed by Theo de Raadt, fixes a smaller security flaw that might allow an attacker to access local services, adds better defense against DNS poisoning attacks on exit relays, further improves hidden service performance, and fixes a variety of other issues.
+ <a href="http://archives.seul.org/or/talk/Nov-2008/msg00229.html" title="http://archives.seul.org/or/talk/Nov-2008/msg00229.html">http://archives.seul.org/or/talk/Nov-2008/msg00229.html</a></p>
+
+<p>Tor 0.2.0.32 (released November 20) fixes a major security problem in Debian and Ubuntu packages (and maybe other packages) noticed by Theo de Raadt, fixes a smaller security flaw that might allow an attacker to access local services, further improves hidden service performance, and fixes a variety of other issues.
+ <a href="http://archives.seul.org/or/announce/Dec-2008/msg00000.html" title="http://archives.seul.org/or/announce/Dec-2008/msg00000.html">http://archives.seul.org/or/announce/Dec-2008/msg00000.html</a></p>
+
+<p>Vidalia 0.1.10 (released November 2) fixes some presentation bugs and some bugs in the Windows installer.
+ <a href="http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.10/CHANGELOG" title="http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.10/CHANGELOG">http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.10/CHAN...</a></p>
+
+<p>In the Vidalia 0.1.10 stable release:
+ - Add a prettier dialog for prompting people for their control port password that also includes a checkbox for whether the user wants Vidalia to remember the entered password, a Help button, and a Reset button (Windows only).
+ - Fix a crash bug that occurred when the user clicks &#39;Clear&#39; in the message log toolbar followed by &#39;Save All&#39;.
+ - Uncheck the Torbutton options by default in the Windows bundle installer if Firefox is not installed.
+ - Add a Windows bundle installer page that warns the user that they should install Firefox, if it looks like they haven&#39;t already done so.</p>
+
+<p>Security fixes in the Tor 0.2.1.7-alpha release:
+ - The &quot;ClientDNSRejectInternalAddresses&quot; config option wasn&#39;t being consistently obeyed: if an exit relay refuses a stream because its exit policy doesn&#39;t allow it, we would remember what IP address the relay said the destination address resolves to, even if it&#39;s an internal IP address. Bugfix on 0.2.0.7-alpha; patch by rovv.
+ - The &quot;User&quot; and &quot;Group&quot; config options did not clear the supplementary group entries for the Tor process. The &quot;User&quot; option is now more robust, and we now set the groups to the specified user&#39;s primary group. The &quot;Group&quot; option is now ignored. For more detailed logging on credential switching, set CREDENTIAL_LOG_LEVEL in common/compat.c to LOG_NOTICE or higher. Patch by Jacob Appelbaum and Steven Murdoch. Bugfix on 0.0.2pre14. Fixes bug 848.</p>
+
+<p><strong>Design Work</strong>
+We have a preliminary proposal that suggests we use only one destination port per circuit. This came out of a discussion between Roger and Robert Hogan about how making an AIM connection through your circuit, and then also web browsing through it, can link the web browsing to your AIM login and you may not want that.
+ <a href="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/ideas/xxx-separate-streams-by-port.txt" title="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/ideas/xxx-separate-streams-by-port.txt">https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/ideas/xxx-se...</a></p>
+
+<p>We picked up the &quot;proposal 141, clients do less directory downloading&quot; design discussion again:
+ <a href="http://archives.seul.org/or/dev/Nov-2008/msg00000.html" title="http://archives.seul.org/or/dev/Nov-2008/msg00000.html">http://archives.seul.org/or/dev/Nov-2008/msg00000.html</a>
+ <a href="http://archives.seul.org/or/dev/Nov-2008/msg00001.html" title="http://archives.seul.org/or/dev/Nov-2008/msg00001.html">http://archives.seul.org/or/dev/Nov-2008/msg00001.html</a>
+ <a href="http://archives.seul.org/or/dev/Nov-2008/msg00007.html" title="http://archives.seul.org/or/dev/Nov-2008/msg00007.html">http://archives.seul.org/or/dev/Nov-2008/msg00007.html</a>
+It looks like we have a plausible new direction to go, but nobody to write up the design proposal or implement it. I&#39;m going to do the first go at the next design proposal in January, and hopefully somebody will have time to build it from there.</p>
+
+<p>We continued extensive work on Thandy this month.</p>
+
+<p>We have a Thandy repository up at
+ <a href="http://updates.torproject.org/thandy/" title="http://updates.torproject.org/thandy/">http://updates.torproject.org/thandy/</a>
+and its keys and location ship with the thandy client.</p>
+
+<p>(The current repository is still for testing only, and we&#39;ll discard the keys and generate new ones when we want to put it up for real. We&#39;ll also get an ssl cert for it.)</p>
+
+<p>The client-side of Thandy (teaching it how to decide which packages and bundles are out of date, and teaching it to download new files and check all the right signatures) exists now too. It supports download resuming, doing the download over Tor, etc.</p>
+
+<p>The big picture is that thandy will remember what versions of each package and bundle are installed. Vidalia will periodically launch thandy-client so it can check for updates. When there are new packages, thandy will tell Vidalia (via stdout currently, since Vidalia launched it). Then when the time is right, Vidalia will launch thandy-client with a --install option, and thandy will know how to run the installers for each type of package (currently &quot;rpm&quot;, &quot;win32&quot;, and &quot;none&quot; are supported):
+ <a href="https://svn.torproject.org/svn/updater/trunk/doc/interface.txt" title="https://svn.torproject.org/svn/updater/trunk/doc/interface.txt">https://svn.torproject.org/svn/updater/trunk/doc/interface.txt</a></p>
+
+<p>The long-term plan is to have every platform have a package system that is capable of answering &quot;What version of the software is installed?&quot; On Windows, that would either be the new MSI installer file we&#39;re working on:
+ <a href="https://svn.vidalia-project.net/svn/vidalia/trunk/pkg/win32/vidalia.wxs.in" title="https://svn.vidalia-project.net/svn/vidalia/trunk/pkg/win32/vidalia.wxs.in">https://svn.vidalia-project.net/svn/vidalia/trunk/pkg/win32/vidalia.wxs....</a>
+or our current NSI installer, with a new registry key patch we&#39;re working on.</p>
+
+<p>If an upgrade attempt fails (due to a broken package, broken system, sudden power loss, etc), thandy will try again the next time you tell it to install. With luck, it will work later, or an upgraded version of the package that _does_ work will come to be, and thandy will fetch and install that one instead.</p>
+
+<p>We&#39;re working on patching our current Windows installer so it knows how to answer what version is installed. Then it will be easier for all the components to work together.</p>
+
+<p>In short: many more components of our auto updater are coming together, but they aren&#39;t all together yet.</p>
+
+<p>We&#39;ve started to think about moving the Tor Browser Bundle from Firefox 2 to Firefox 3. This will mean we should measure new traces. We&#39;ll do it once Torbutton is known to be more stable on Firefox 3, which should happen in early 2009</p>
+
+<p><strong>Translation</strong>
+We have our translation server up and online:
+ <a href="https://translation.torproject.org/" title="https://translation.torproject.org/">https://translation.torproject.org/</a>
+ <a href="https://www.torproject.org/translation-portal" title="https://www.torproject.org/translation-portal">https://www.torproject.org/translation-portal</a></p>
+
+<p>We now have a Romanian translation.</p>
+
+<p>We continued enhancements to the Chinese and Russian Tor website translations. Our Farsi translation from this summer is slowly becoming obsolete; we should solve that at some point.</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

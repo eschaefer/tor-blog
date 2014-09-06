@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Kelley @ ONA Conference for Journalists, Atlanta, GA"
-permalink: kelley-ona-conference-journalists-atlanta-ga
+permalink: /events/kelley-ona-conference-journalists-atlanta-ga
 date: 2013-10-17
 startdate: 2013-10-17
 enddate: 2013-10-18

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Roger's HAR2009 talk on Tor performance"
-permalink: /har2009-video-tor-performance
+permalink: blog//har2009-video-tor-performance
 date: 2009-08-19
 author: arma
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Announcing Tor Browser Bundle 3.0alpha1"
-permalink: announcing-tor-browser-bundle-30alpha1
+permalink: blog/announcing-tor-browser-bundle-30alpha1
 date: 2013-06-17
 author: mikeperry
 category: blog
@@ -38,7 +38,7 @@ For Windows users, an NSIS-based extractor now guides you through the TBB extrac
 
 The bundles are all under the 25M gmail attachment size limit, so direct email and gettor attachments are once again possible.
 
-3. **Improved build security and integrity verification**  
+3. **Improved build security and integrity verification**
 We now use [Gitian](https://gitian.org/) to build the bundles. The idea behind Gitian is to allow independent people to take our source code and produce exactly identical binaries on their own. We're not quite at the point where you always get a matching build, but the remaining differences are minor, and within a couple more releases we should have it fully reproducible. For now, we are [posting all of the builds](https://people.torproject.org/~mikeperry/tbb-3.0alpha1-builds/) for comparison, and you can of course [build and compare your own](https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build).
 
 # Known issues

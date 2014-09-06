@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Updated 64-bit Linux Tor Browser Bundles (crash fix)"
-permalink: updated-64-bit-linux-tor-browser-bundles-crash-fix
+permalink: blog/updated-64-bit-linux-tor-browser-bundles-crash-fix
 date: 2013-06-13
 author: erinn
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Combined flash proxy + pyobfsproxy browser bundles"
-permalink: combined-flash-proxy-pyobfsproxy-browser-bundles
+permalink: blog/combined-flash-proxy-pyobfsproxy-browser-bundles
 date: 2013-01-14
 author: dcf
 category: blog

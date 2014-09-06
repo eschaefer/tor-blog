@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Mortiz @ Youth Internet Governance Forum, Berlin, Germany"
-permalink: mortiz-youth-internet-governance-forum-berlin-germany
+permalink: /events/mortiz-youth-internet-governance-forum-berlin-germany
 date: 2013-06-01
 startdate: 2013-06-01
 enddate: 2013-06-01

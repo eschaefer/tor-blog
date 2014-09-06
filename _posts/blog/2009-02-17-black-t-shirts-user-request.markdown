@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Black t-shirts by user request"
-permalink: black-t-shirts-user-request
+permalink: blog/black-t-shirts-user-request
 date: 2009-02-17
 author: phobos
 category: blog

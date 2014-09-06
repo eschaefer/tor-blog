@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The DigiNotar Debacle, and what you should do about it"
-permalink: diginotar-debacle-and-what-you-should-do-about-it
+permalink: blog/diginotar-debacle-and-what-you-should-do-about-it
 date: 2011-09-01
 author: ioerror
 category: blog
@@ -32,17 +32,17 @@ We emailed quite a bit back and forth after the phone call. A few hours later th
 
 This is the current list of serial numbers for all twelve Tor Project certificates as disclosed to us by DigiNotar:
 
-899AE120CD44FCEC0FFCD62F6FC4BB81  
- 7DD16C03DF0438B2BE5FC1D3E19F138B  
- 5432FC98141883F780897BC829EB9080  
- 73024E7C998B3DDD244CFD313D5E43B6  
- B01D8C6F2D5373EABF0C00319E92AE95  
- FF789632B8D4AECD94A0AAB33074A058  
- 86633B957280BC65A5ADFD1D153BDE52  
- E7F58683066112DC5EB244FCF208E850  
- 1A07D8D6DDC7E623E71205074A05CEA2  
- 79C8E8B7DE36539FFC4B2B5825305324  
- 06CBB1CC51156C6D465F14829453DD68  
+899AE120CD44FCEC0FFCD62F6FC4BB81
+ 7DD16C03DF0438B2BE5FC1D3E19F138B
+ 5432FC98141883F780897BC829EB9080
+ 73024E7C998B3DDD244CFD313D5E43B6
+ B01D8C6F2D5373EABF0C00319E92AE95
+ FF789632B8D4AECD94A0AAB33074A058
+ 86633B957280BC65A5ADFD1D153BDE52
+ E7F58683066112DC5EB244FCF208E850
+ 1A07D8D6DDC7E623E71205074A05CEA2
+ 79C8E8B7DE36539FFC4B2B5825305324
+ 06CBB1CC51156C6D465F14829453DD68
  ED1A1008190A5D1654D138EB8FD1154A
 
 DigiNotar has not provided us with a copy of any of the certificates that they issued. We are not sure that they have copies nor if they are willing to disclose any copies they may or may not have. This point is extremely disconcerting as the CRL/OCSP revocation process is essentially worthless. Mere serial numbers are simply not enough in some cases — especially when a full list of all likely compromised serial numbers has not been disclosed as happens to currently be the case.
@@ -51,20 +51,20 @@ To the best of our knowledge and by analyzing the CRLs for DigiNotar, we do not 
 
 I believe that you can clearly see the [MITM attack in action](http://pastebin.com/rqwnJvn4) around the tenth hop of [this traceroute](https://blog.torproject.org/files/traceroutes-inside-iran.txt) thanks to an anonymous person in Iran:
 
-1 3 ms 14 ms 2 ms 192.168.1.1  
- 2 67 ms 67 ms 65 ms 91.99.\*\*\*.\*\*\*.parsonline.net [91.99.\*\*\*.\*\*\*]  
- 3 65 ms 67 ms 93 ms 10.220.1.2  
- 4 67 ms 72 ms 66 ms 2.180.2.1  
- 5 66 ms 64 ms 64 ms 217.219.64.115  
-############### [MORE Nodes] #################  
- 6 451 ms 195 ms 154 ms 78.38.245.6  
- 7 626 ms 231 ms 88 ms 78.38.245.5  
- 8 93 ms 91 ms 96 ms 78.38.244.242  
- 9 88 ms 94 ms 120 ms 78.38.244.241  
-################### [MORE] ###################  
+1 3 ms 14 ms 2 ms 192.168.1.1
+ 2 67 ms 67 ms 65 ms 91.99.\*\*\*.\*\*\*.parsonline.net [91.99.\*\*\*.\*\*\*]
+ 3 65 ms 67 ms 93 ms 10.220.1.2
+ 4 67 ms 72 ms 66 ms 2.180.2.1
+ 5 66 ms 64 ms 64 ms 217.219.64.115
+############### [MORE Nodes] #################
+ 6 451 ms 195 ms 154 ms 78.38.245.6
+ 7 626 ms 231 ms 88 ms 78.38.245.5
+ 8 93 ms 91 ms 96 ms 78.38.244.242
+ 9 88 ms 94 ms 120 ms 78.38.244.241
+################### [MORE] ###################
  10 88 ms 88 ms 88 ms 10.10.53.33 ####DIfferent IP (0.0.0.33)
 
-#### [OUT OF IRAN] ####  
+#### [OUT OF IRAN] ####
  11 340 ms \* \* pos3-1.palermo5.pal.seabone.net [195.22.198.77]
 
 To quote someone I respect greatly: "That's not dodgy at all!"

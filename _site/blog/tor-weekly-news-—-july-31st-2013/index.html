@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Weekly News — July, 31st 2013</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <h2>Tor Weekly News — July, 31st 2013</h2>
+<p class="meta">31 Jul 2013</p>
+
+<div class="event">
+<p>Welcome to the 5<sup>th</sup> issue of Tor Weekly News, the weekly newsletter that covers what is happening in the busy Tor community.</p>
+
+<h1>Summer Developer Meeting Wrap-up</h1>
+
+<p>The 2013 summer Tor development meeting happened at the <a href="http://www.tum.de/">Technische Universität München</a>. There were no formal talks during the meeting itself, but <a href="https://commons.wikimedia.org/wiki/File:050322-tumuenchen-parabeln.jpg">slides were still involved</a>!</p>
+
+<p>New minutes from sessions to add to those covered in the <a href="https://blog.torproject.org/blog/tor-weekly-news-%E2%80%94-july-24th-2013">last edition</a> have been <a href="https://trac.torproject.org/projects/tor/wiki/org/meetings/2013SummerDevMeeting">posted to the wiki</a>. This includes a second discussion on <a href="https://trac.torproject.org/projects/tor/wiki/org/meetings/2013SummerDevMeeting/PluggableTransports1">Pluggable Transports</a>, the role of the <a href="https://trac.torproject.org/projects/tor/wiki/org/meetings/2013SummerDevMeeting/ResearchDirector">Research Director</a>, a summary of discussions with cryptographers Tanja Lange and djb about the <a href="https://trac.torproject.org/projects/tor/wiki/org/meetings/2013SummerDevMeeting/TorCrypto">cryptographic aspects of Tor</a>, <a href="https://trac.torproject.org/projects/tor/wiki/org/meetings/2013SummerDevMeeting/Timesheets">timesheets for Tor contractors</a> and <a href="https://trac.torproject.org/projects/tor/wiki/org/meetings/2013SummerDevMeeting/MailingLists">mailing-lists</a>.</p>
+
+<p>Christian Grothoff organized a talk with Roger Dingledine and Jacob Appelbaum at the university. Their initial topic was the censorship arms race, but given the up-to-date knowledge of the students and other attendees, the talk got turned into a marathon 4-hour long Q&amp;A session! Thanks to Christian, the <a href="https://gnunet.org/tor2013tum-video">video is available</a> from the GNUnet website.</p>
+
+<p>The following day was dedicated to more concrete hands-on discussions and coding. The public hackfest was well-attended, with more than 70 people focusing on everything to do with Tor. Some attendees had even traveled several hundred kilometers to be there! Discussions popped up everywhere, code was written and some newcomers were introduced to the many elements that make up the Tor project. Thanks to everyone who showed up!</p>
+
+<h1>Comparing handshake protocols for Tor: Ace vs ntor</h1>
+
+<p>In WPES ’12, Esfandiar Mohammadi and Aniket Kate <a href="https://lists.torproject.org/pipermail/tor-dev/2012-August/003901.html">introduced</a> <a href="http://www.infsec.cs.uni-saarland.de/%7Emohammadi/paper/owake.pdf">Ace, an alternative for Tor’s current handshake protocol ntor</a>.</p>
+
+<p>Ace was already <a href="https://lists.torproject.org/pipermail/tor-dev/2013-July/005163.html">discussed on tor-dev at the end of 2012</a>, “but back then, no implementation for the double scalar multiplication operation (a * b + c * d) on Curve25519 was available. But recently, Robert Ransom implemented in his <a href="http://www.infsec.cs.uni-saarland.de/%7Emohammadi/ace/celator.tar.gz">celator library</a> a highly efficient double scalar multiplication which is suitable for our handshake protocol Ace”, wrote Esfandiar.</p>
+
+<p>From the comparative benchmarks that Shivanker Goel implemented and ran, using Ace could improve speed and CPU load compared to the current ntor implementation. Esfandiar Mohammadi’s email on tor-talk contains the methodology, remarks and concrete numbers.</p>
+
+<p>The code for the <a href="http://www.infsec.cs.uni-saarland.de/%7Emohammadi/ace/ace-benchmarks.tar.gz">benchmark is available online</a> along with a <a href="http://www.infsec.cs.uni-saarland.de/%7Emohammadi/ace/ace-handshake.txt">Tor-style proposal or improving circuit-creation key exchange using Ace</a>.</p>
+
+<h1>New Globe web application to explore the Tor network</h1>
+
+<p>Christian made his <a href="http://globe.rndm.de/">Globe web application available</a> at a new location. Globe is quite similar to <a href="https://atlas.torproject.org">Atlas</a>, and in fact uses the same data, but it also allows searching for bridges and is slightly more user-friendly.</p>
+
+<p>Globe now uses dygraphs as a graphing engine which makes it even easier to select time intervals for its graphs. Feel free to try out Globe and give feedback on <a href="https://github.com/makepanic/globe/issues">its bug tracker</a>.</p>
+
+<h1>Tor at OHM2013 — Netherlands</h1>
+
+<p>Several members of the Tor community will be at OHM2013: Observe, Hack, Make: “A five day outdoor international camping festival for hackers, makers, and those with an inquisitive mind”, according to <a href="https://ohm2013.org/">their website</a>. The event starts tomorrow with a few Tor-related meetings and activities.</p>
+
+<p>Tom Lowenthal will be holding a <a href="https://program.ohm2013.org/event/307.html">social event</a> at the Noisy Square village for Tor contributors and relay operators on August, 1st at 14:00.</p>
+
+<p>Later that day, Tom will also go through “the development work, advocacy help, coordination, system administration, outreach, community support, and other <a href="https://program.ohm2013.org/event/305.html">things that you can do to help the Tor Project</a> grow and improve” in the Lovelace Tent at 22:00.</p>
+
+<p>Fabio Pietrosanti invited anyone interested to attend the <a href="https://program.ohm2013.org/event/256.html">Tor2Web meeting</a> to: “outlook what we’ve done, how the network growth up discussing which could be the next major milestones to be reached in terms of software, network development, community involvement and fundraising.”</p>
+
+<p>Last but not least, Moritz Bartl from torservers.net will be around with Tor stickers and posters, as well as collecting donations to create new exit nodes. Look around the <a href="https://noisysquare.com/">Noisy Square</a>!</p>
+
+<h1>Miscellaneous development news</h1>
+
+<p>GSoC students sent out a new round of status reports. Johannes Fürmann had made great progress on the framework for <a href="https://lists.torproject.org/pipermail/tor-dev/2013-July/005179.html">EvilGenius</a> — a way to simulate censorship events: “The Genius is there, all we have to do now is make it more evil.”</p>
+
+<p>Cristian-Matei Toader is moving forward on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-July/005180.html">limiting the set of allowed system calls by the tor daemon</a>.</p>
+
+<p>ra_ sucessfully now has a “rttprober” script to <a href="https://lists.torproject.org/pipermail/tor-dev/2013-July/005181.html">measure the RTT of Tor circuits</a>.</p>
+
+<p>Kostas Jakeliunas has a clean code base for the Tor Metrics Archive project that can import archival data and be queried with an Onionoo-like interface.</p>
+
+<p>Hareesan did a quick report on the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-July/005185.html">steganography browser extension</a>.</p>
+
+<p>Chang Lan Status has returned to report some progress on the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-July/005193.html">HTTP pluggable transport</a>.</p>
+
+<p><a href="https://gitweb.torproject.org/onionoo.git/commit/1c1dfa48">Karsten Loesing added a new “fields” parameter to Onionoo</a>. It can be used to restrict the response size when only a specific set of attributes are needed. This feature is used by the <a href="https://metrics.torproject.org/bubbles.html">bubble graphs</a> showing diversity of the Tor network wrote by Lunar. The latter are now available on the metrics website, thanks to Karsten.</p>
+
+<p>Kevin P Dyer released <a href="https://lists.torproject.org/pipermail/tor-dev/2013-July/005194.html">Format-Transforming Encryption Pluggable Transport version v0.1.2-alpha</a>. Source code, documentation and builds are available on the <a href="https://kpdyer.com/fte/">FTE website</a>.</p>
+
+<p><a href="https://lists.torproject.org/pipermail/tor-dev/2013-July/005209.html">Damian Johnson has released two new monitoring scripts</a> based on the remote descriptor fetching support recently added to <a href="https://stem.torproject.org/">Stem</a>: one to check for malformed content in the descriptors, the other to monitor sudden influxes of new relays (potential Sybil attacks).</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, dope457, malaparte, harmony, and Karsten Loesing.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing-list</a> if you want to get involved!</p>
+
+</div>
+
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

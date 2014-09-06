@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor in Google Summer of Code 2013"
-permalink: tor-google-summer-code-2013
+permalink: blog/tor-google-summer-code-2013
 date: 2013-04-10
 author: atagar
 category: blog

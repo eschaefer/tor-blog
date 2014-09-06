@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger talks at ETH Zurich"
-permalink: roger-talks-eth-zurich
+permalink: /events/roger-talks-eth-zurich
 date: 2010-04-20
 startdate: 2010-04-20
 enddate: 2010-04-21

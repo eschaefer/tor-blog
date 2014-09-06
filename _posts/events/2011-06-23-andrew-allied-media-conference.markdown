@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at Allied Media Conference"
-permalink: andrew-allied-media-conference
+permalink: /events/andrew-allied-media-conference
 date: 2011-06-23
 startdate: 2011-06-23
 enddate: 2011-06-26

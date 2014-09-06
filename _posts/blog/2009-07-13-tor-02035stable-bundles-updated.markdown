@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor 0.2.0.35-stable bundles updated"
-permalink: tor-02035stable-bundles-updated
+permalink: blog/tor-02035stable-bundles-updated
 date: 2009-07-13
 author: phobos
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Obfsproxy: the next step in the censorship arms race"
-permalink: obfsproxy-next-step-censorship-arms-race
+permalink: blog/obfsproxy-next-step-censorship-arms-race
 date: 2012-02-16
 author: arma
 category: blog

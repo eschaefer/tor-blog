@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "June 2009 Progress Report"
-permalink: june-2009-progress-report
+permalink: blog/june-2009-progress-report
 date: 2009-07-12
 author: phobos
 category: blog
@@ -10,17 +10,17 @@ tags: ["anonymity advocacy", "bugfixes", "censorship circumvention", "progress r
 
  **New releases**
 
-On June 20th we released Tor 0.2.1.16-rc.  
-On June 21st, we released Tor Browser Bundle 1.2.1.  
-On June 23rd, we released Tor Browser Bundle 1.2.2.  
-On June 24th, we released Tor 0.2.0.35-stable. We expect that this release is the last of the 0.2.0.x -stable series, soon to be replaced with the 0.2.1.x series.  
+On June 20th we released Tor 0.2.1.16-rc.
+On June 21st, we released Tor Browser Bundle 1.2.1.
+On June 23rd, we released Tor Browser Bundle 1.2.2.
+On June 24th, we released Tor 0.2.0.35-stable. We expect that this release is the last of the 0.2.0.x -stable series, soon to be replaced with the 0.2.1.x series.
 On June 30th, we released Vidalia 0.1.14.
 
 **Censorship circumvention**
 
 Packaged rpms for Red Flag Linux version 6. Red Flag Linux is reported to be the new operating system for all Internet cafe's in China. So far, no one has seen this conversion actually happen, but now we're ready if it does.
 
-Our email autoresponder, gettor , received a number of patches to deal with dkim issues, including finding a dkim bug that prevented yahoo email users from fetching Tor. This bug has been fixed. Additionally, we've whitelisted some domains where we  
+Our email autoresponder, gettor , received a number of patches to deal with dkim issues, including finding a dkim bug that prevented yahoo email users from fetching Tor. This bug has been fixed. Additionally, we've whitelisted some domains where we
 see we're having lots of use but dkim isn't always configured properly. We've had thousands of users from China using gettor.
 
 **Outreach/Advocacy**
@@ -29,7 +29,7 @@ Andrew, Roger, and Wendy attended Computers, Freedom, and Privacy 2009 Conferenc
 
 Andrew talked with the Committee to Protect Journalists ( [http://cpj.org](http://cpj.org "http://cpj.org")) about online security and circumvention tools.
 
-Jillian C. York blogged at KnightPulse about “Average citizens browse anonymously  
+Jillian C. York blogged at KnightPulse about “Average citizens browse anonymously
 ”, [http://www.knightpulse.org/blog/09/06/04/average-citizens-browse-anonymo...](http://www.knightpulse.org/blog/09/06/04/average-citizens-browse-anonymously "http://www.knightpulse.org/blog/09/06/04/average-citizens-browse-anonymously")
 
 Due to Iranian's usage of Tor during the recent election, the general press/media conducted a few interviews with Andrew:
@@ -68,7 +68,7 @@ It is good enough to start running on multiple authorities now to produce actual
 
 **More reliable (e.g. split) download mechanism.**
 
-Our email autoresponder, gettor , received a number of patches to deal with dkim issues, including finding a dkim bug that prevented yahoo email users from fetching Tor. This bug  
+Our email autoresponder, gettor , received a number of patches to deal with dkim issues, including finding a dkim bug that prevented yahoo email users from fetching Tor. This bug
 has been fixed. Additionally, we've whitelisted some domains where we see we're having lots of use but dkim isn't always configured properly. We've had thousands of users from China using gettor.
 
 The Tor Check website (check.torproject.org) had a few bugs and we've fixed all but two. We sometimes still have false negatives (because the Tor client doesn't know to fetch the consensus at any specific time) and we also still sometimes barf python exceptions because mod\_python has some weird exception from time to time. We also accepted a patch from Marcus Greip that extends the TorBulkExitList to allow arbitrary ports rather than just port 80.
@@ -79,7 +79,7 @@ Reduced the scanning for plugins Portable Firefox can do on launch of the applic
 
 **Translations**
 
-16 Polish website updates  
-8 Italian website updates  
+16 Polish website updates
+8 Italian website updates
 3 German website updates
 

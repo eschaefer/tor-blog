@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew at Wesleyan University"
-permalink: andrew-wesleyan-university
+permalink: /events/andrew-wesleyan-university
 date: 2010-06-08
 startdate: 2010-06-08
 enddate: 2010-06-08

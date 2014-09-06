@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "To Toggle, or not to Toggle: The End of Torbutton"
-permalink: toggle-or-not-toggle-end-torbutton
+permalink: blog/toggle-or-not-toggle-end-torbutton
 date: 2011-05-02
 author: mikeperry
 category: blog
@@ -36,7 +36,7 @@ So, we can either invest effort in improving the UI of Torbutton to better educa
 
 We don't have the manpower (ie: enough me) to do both. This means we should go with the simpler, easier option.
 
-We do face a small number of barriers and downsides associated with this plan. We are collecting the issues we need to address ASAP as child tickets of this bug:  
+We do face a small number of barriers and downsides associated with this plan. We are collecting the issues we need to address ASAP as child tickets of this bug:
  [https://trac.torproject.org/projects/tor/ticket/2880](https://trac.torproject.org/projects/tor/ticket/2880 "https://trac.torproject.org/projects/tor/ticket/2880")
 
 Overall, the downsides seem to mostly apply to expert users and how they will adapt the custom Tor setups they have built. We don't anticipate a lot of long term issues with this group, as most of the configuration options of Torbutton will remain available, and users should still be able to install custom addons and configure their Tor Browser profile however they need (even to the point of running it side-by-side to a system tor instance that is used for non-web applications).

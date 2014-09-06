@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Stem Release 1.1"
-permalink: stem-release-11
+permalink: blog/stem-release-11
 date: 2013-10-14
 author: atagar
 category: blog
@@ -25,11 +25,11 @@ The [stem.descriptor.remote](https://stem.torproject.org/api/descriptor/remote.h
 For example...
 
     from stem.descriptor.remote import DescriptorDownloader
-    
-    
+
+
     downloader = DescriptorDownloader()
-    
-    
+
+
     try:
       for desc in downloader.get_consensus().run():
         print "found relay %s (%s)" % (desc.nickname, desc.fingerprint)

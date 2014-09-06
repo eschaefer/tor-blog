@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Wading into social waters"
-permalink: wading-social-waters
+permalink: blog/wading-social-waters
 date: 2012-08-23
 author: phobos
 category: blog
@@ -14,19 +14,19 @@ We're expanding into Facebook, Google+, Reddit, and others because our users are
 
 We do have some concerns about social media sites. Let's enumerate these concerns.
 
-1. 
+1.
 
 Current social media solutions don't respect user privacy, however it's all we have today. With buttons like "+1", "Like", and "Tweet this" strewn about websites, tracking your normal web activity, Tor is at least one solution to help you stop this global tracking. We believe you should be fully in control of your own data and metadata.
 
-2. 
+2.
 
 The users are currently using these systems in very unsafe ways. We can join the system and set up a presence with details about how to use these systems more safely--or if they cannot be used safely at all. The goal is to educate people.The EFF has an [explanation](https://www.eff.org/free-speech-weak-link#platforms) of these risks as well.
 
-3. 
+3.
 
 We can get our message out to people and have a discussion with them, where they are, even though we don't control the medium and risk getting kicked off the system.
 
-4. 
+4.
 
 Some are impersonating us now, and not at the quality level we want to see. A bad answer or impression from a fake Tor is worse than no answer at all.
 

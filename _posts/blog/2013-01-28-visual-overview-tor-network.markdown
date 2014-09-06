@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Visual overview of the Tor network"
-permalink: visual-overview-tor-network
+permalink: blog/visual-overview-tor-network
 date: 2013-01-28
 author: karsten
 category: blog

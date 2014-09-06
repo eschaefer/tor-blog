@@ -1,10 +1,10 @@
 ---
 layout: event
 title: "Tor Annual Dev Meeting"
-permalink: tor-annual-dev-meeting
+permalink: /events/tor-annual-dev-meeting
 date: 2013-07-22
 startdate: 2013-07-22
-enddate: 
+enddate:
 author: admin
 category: event
 ---

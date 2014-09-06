@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor's New Cambridge Offices - OPEN HOUSE "
-permalink: tors-new-cambridge-offices-open-house
+permalink: /events/tors-new-cambridge-offices-open-house
 date: 2013-11-20
 startdate: 2013-11-20
 enddate: 2013-11-20
@@ -15,12 +15,12 @@ Learn about Tor's ongoing work with victims of domestic violence and others. Exp
 
 We look forward to seeing you there!
 
-Best entrance to the building for this event is:  
-136 Bishop Allen Drive, 2nd Floor  
+Best entrance to the building for this event is:
+136 Bishop Allen Drive, 2nd Floor
 Cambridge, MA 02139
 
-For questions please contact:  
-The Tor Project: [execdir@torproject.org](mailto:execdir@torproject.org)  
-or  
+For questions please contact:
+The Tor Project: [execdir@torproject.org](mailto:execdir@torproject.org)
+or
 Transition House: [jenny@transitionhouse.org](mailto:jenny@transitionhouse.org)
 

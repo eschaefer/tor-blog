@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "London Internet Security & Privacy Workshop"
-permalink: london-internet-security-privacy-workshop
+permalink: /events/london-internet-security-privacy-workshop
 date: 2011-03-07
 startdate: 2011-03-07
 enddate: 2011-03-07

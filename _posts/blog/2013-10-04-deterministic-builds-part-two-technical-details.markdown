@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Deterministic Builds Part Two: Technical Details"
-permalink: deterministic-builds-part-two-technical-details
+permalink: blog/deterministic-builds-part-two-technical-details
 date: 2013-10-04
 author: mikeperry
 category: blog
@@ -74,7 +74,7 @@ Gitian relies on [libfaketime](http://www.code-wizards.com/projects/libfaketime/
 
 A rather insane subsection of the [FIPS-140](https://en.wikipedia.org/wiki/FIPS_140) certification standard requires that you distribute signatures for all of your cryptographic libraries. The Firefox build process meets this requirement by generating a temporary key, using it to sign the libraries, and discarding the private portion of that key. Because there are many other ways to intercept the crypto outside of modifying the actual DLL images, we opted to simply remove these signature files from distribution. There simply is no way to verify code integrity on a running system without both OS and coprocessor assistance. Download package signatures make sense of course, but we handle those another way (as mentioned above).
 
-6. **On Windows builds, something mysterious causes 3 bytes to randomly vary  
+6. **On Windows builds, something mysterious causes 3 bytes to randomly vary
 in the binary.**
 
 Unable to determine the source of this, we just bitstomp the binary and regenerate the PE header checksums using strip... Seems fine so far! ;)

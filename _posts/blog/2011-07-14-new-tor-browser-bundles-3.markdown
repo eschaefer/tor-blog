@@ -1,32 +1,32 @@
 ---
 layout: post
 title: "New Tor Browser Bundles"
-permalink: new-tor-browser-bundles-3
+permalink: blog/new-tor-browser-bundles-3
 date: 2011-07-14
 author: erinn
 category: blog
 tags: ["firefox updates", "release candidate", "tbb"]
 ---
 
-All of the alpha Tor Browser Bundles have been updated to the latest Tor  
-0.2.2.30-rc, and the Windows stable bundle has been updated with the latest  
+All of the alpha Tor Browser Bundles have been updated to the latest Tor
+0.2.2.30-rc, and the Windows stable bundle has been updated with the latest
 Firefox 3.6.19.
 
-The experimental bundles also now contain Firefox 5 and Polipo has been removed  
+The experimental bundles also now contain Firefox 5 and Polipo has been removed
 from all of them.
 
 [https://torproject.org/download/download](https://torproject.org/download/download "https://torproject.org/download/download")
 
 **Firefox 3.6 Tor Browser Bundles**
 
-**Windows bundle**  
+**Windows bundle**
 **1.3.26: Released 2011-07-13**
 
 - Update Firefox to 3.6.19
 - Update HTTPS-Everywhere to 1.0.0development.4
 - Update Libevent to 2.0.12-stable
 
-**OS X bundle**  
+**OS X bundle**
 **1.1.22: Released 2011-07-13**
 
 - Update Tor to 0.2.2.30-rc
@@ -34,7 +34,7 @@ from all of them.
 - Update HTTPS-Everywhere to 1.0.0development.4
 - Update NoScript to 2.1.1.2
 
-**Linux bundles**  
+**Linux bundles**
 **1.1.12: Released 2011-07-13**
 
 - Update Tor to 0.2.2.30-rc
