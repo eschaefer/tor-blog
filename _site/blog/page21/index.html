@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/pluggable-transports-bundles-2417-rc-1-pt1-firefox-17010esr">Pluggable transports bundles 2.4.17-rc-1-pt1 with Firefox 17.0.10esr</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">dcf</a> under
+            
+              <a class="post-category post-category-js" href="#">flashproxy</a>
+            
+              <a class="post-category post-category-js" href="#">obfsproxy</a>
+            
+              <a class="post-category post-category-js" href="#">pluggable transports</a>
+             |
+            05 Nov 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>There are new Pluggable Transports Tor Browser Bundles with Firefox 17.0.10esr. They are made from the <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-firefox-17010esr">Tor Browser Bundle release</a> of November 1.</p>
+
+<ul>
+<li><a href="https://www.torproject.org/dist/torbrowser/tor-pluggable-transports-browser-2.4.17-rc-1-pt1_en-US.exe">Windows</a> ( <a href="https://www.torproject.org/dist/torbrowser/tor-pluggable-transports-browser-2.4.17-rc-1-pt1_en-US.exe.asc">sig</a>)</li>
+<li><a href="https://www.torproject.org/dist/torbrowser/osx/TorBrowser-Pluggable-Transports-2.4.17-rc-1-pt1-osx-i386-en-US.zip">Mac OS X</a> ( <a href="https://www.torproject.org/dist/torbrowser/osx/TorBrowser-Pluggable-Transports-2.4.17-rc-1-pt1-osx-i386-en-US.zip.asc">sig</a>)</li>
+<li><a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-i686-2.4.17-rc-1-pt1-dev-en-US.tar.gz">GNU/Linux 32-bit</a> ( <a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-i686-2.4.17-rc-1-pt1-dev-en-US.tar.gz.asc">sig</a>)</li>
+<li><a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-x86_64-2.4.17-rc-1-pt1-dev-en-US.tar.gz">GNU/Linux 64-bit</a> ( <a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-x86_64-2.4.17-rc-1-pt1-dev-en-US.tar.gz.asc">sig</a>)</li>
+</ul>
+
+<p>The OS X bundle won&#39;t work in the new OS X Mavericks by default. It is caused by some changes in the new operating system release. <a href="https://trac.torproject.org/projects/tor/ticket/10030">We know about this problem and are working on fixing it.</a> If you are an affected user, you can try <a href="https://trac.torproject.org/projects/tor/ticket/10030#comment:9">this workaround</a> of placing absolute paths in the torrc file.</p>
+
+<p>The bundles contain flash proxy and obfsproxy configured to run by default. If you want to use flash proxy, you will have to take the extra steps listed in the <a href="https://trac.torproject.org/projects/tor/wiki/FlashProxyHowto">flash proxy howto</a>.</p>
+
+<p>These bundles contain the same hardcoded obfs2 bridge addresses as the previous bundles which may work for some jurisdictions but you are strongly advised to get new bridge addresses from <a href="https://bridges.torproject.org">BridgeDB</a>.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/torbirdy-012-our-third-beta-release">TorBirdy: 0.1.2 - Our third beta release!</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">ioerror</a> under
+            
+              <a class="post-category post-category-js" href="#">Thunderbird</a>
+            
+              <a class="post-category post-category-js" href="#">TorBirdy</a>
+             |
+            04 Nov 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>TorBirdy 0.1.2 is out! All users are encouraged to upgrade as soon as possible, especially if you are using Thunderbird 24.</p>
+
+<p>Notable changes in this release include:</p>
+
+<p>0.1.2, 04 Nov 2013</p>
+
+<ul>
+<li><p>New options:</p>
+
+<ul>
+<li>restore default TorBirdy settings</li>
+<li>toggle checking of new messages automatically for all accounts</li>
+</ul></li>
+<li><p>The minimum version of Thunderbird we now support is 10.0 (closes <a href="https://trac.torproject.org/projects/tor/ticket/9569">#9569</a>)</p></li>
+<li><p>`--throw-keyids&#39; is now disabled by default (closes <a href="https://trac.torproject.org/projects/tor/ticket/9648">#9648</a>)</p></li>
+<li><p>We are no longer forcing Thunderbird updates (closes <a href="https://trac.torproject.org/projects/tor/ticket/8341">#8341</a>)</p></li>
+<li><p>Add support for Thunderbird 24 (Gecko 17+) (closes <a href="https://trac.torproject.org/projects/tor/ticket/9673">#9673</a>)</p></li>
+<li><p>Enhanced support for Thunderbird chat</p></li>
+<li><p>We have a new TorBirdy logo. Thanks to Nima Fatemi!</p></li>
+<li><p>Improved documentation:</p>
+
+<ul>
+<li><a href="https://trac.torproject.org/projects/tor/wiki/torbirdy">https://trac.torproject.org/projects/tor/wiki/torbirdy</a></li>
+</ul></li>
+<li><p>Add new translations and updated existing ones</p>
+
+<ul>
+<li>Please see the Transifex page for more information and credits</li>
+</ul></li>
+</ul>
+
+<p>We offer two ways to install TorBirdy -- either by visiting <a href="https://www.torproject.org/dist/torbirdy/torbirdy-0.1.2.xpi">our website</a> ( <a href="https://www.torproject.org/dist/torbirdy/torbirdy-0.1.2.xpi.asc">sig</a>) or by visiting the <a href="https://addons.mozilla.org/en-us/thunderbird/addon/torbirdy/">Mozilla Add-ons page for TorBirdy</a>. Note that there may be a delay -- which can range from a few hours to days -- before the extension is reviewed by Mozilla and updated on the Add-ons page.</p>
+
+<p>As a general anonymity and security note: we are still working on <a href="https://trac.torproject.org/projects/tor/wiki/torbirdy#InfoLeaks">two known anonymity issues</a> with Mozilla. Please make sure that you read the <a href="https://trac.torproject.org/projects/tor/wiki/torbirdy#BeforeusingTorBirdy">Before Using TorBirdy</a> and <a href="https://trac.torproject.org/projects/tor/wiki/torbirdy#KnownTorBirdyIssues">Known TorBirdy Issues</a> sections on the wiki before using TorBirdy.</p>
+
+<p>We had love help with translations, programming or anything that you think will improve TorBirdy!</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/new-tor-browser-bundles-firefox-17010esr">New Tor Browser Bundles with Firefox 17.0.10esr</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">erinn</a> under
+            
+              <a class="post-category post-category-js" href="#">firefox updates</a>
+            
+              <a class="post-category post-category-js" href="#">tbb</a>
+            
+              <a class="post-category post-category-js" href="#">torbrowser</a>
+             |
+            01 Nov 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p><a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.10">Firefox 17.0.10esr</a> has been released with several security fixes and all of the Tor Browser Bundles have been updated. All users are encouraged to upgrade.</p>
+
+<p><a href="https://www.torproject.org/projects/torbrowser.html.en#downloads" title="https://www.torproject.org/projects/torbrowser.html.en#downloads">https://www.torproject.org/projects/torbrowser.html.en#downloads</a></p>
+
+<p><strong>Tor Browser Bundle (2.3.25-14)</strong></p>
+
+<ul>
+<li>Update Firefox to 17.0.10esr<br>
+<a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.10" title="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.10">https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#f...</a></li>
+<li>Update LibPNG to 1.6.6</li>
+<li>Update NoScript to 2.6.8.4</li>
+<li>Update HTTPS-Everywhere to 3.4.2</li>
+<li><p>Firefox patch changes:</p>
+
+<ul>
+<li>Hide infobar for missing plugins. (closes: #9012)</li>
+<li>Change the default entry page for the addons tab to the installed addons page. (closes: #8364)</li>
+<li>Make flash objects really be click-to-play if flash is enabled. (closes: #9867)</li>
+<li>Make getFirstPartyURI log+handle errors internally to simplify caller usage of the API. (closes: #3661)</li>
+<li>Remove polipo and privoxy from the banned ports list. (closes: #3661)</li>
+<li>misc: Fix a potential memory leak in the Image Cache isolation</li>
+<li>misc: Fix a potential crash if OS theme information is ever absent</li>
+</ul></li>
+</ul>
+
+<p><strong>Tor Browser Bundle (2.4.17-rc-1)</strong></p>
+
+<ul>
+<li>Update Firefox to 17.0.10esr<br>
+<a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.10" title="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.10">https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#f...</a></li>
+<li>Update LibPNG to 1.6.6</li>
+<li>Update NoScript to 2.6.8.4</li>
+<li>Downgrade HTTPS-Everywhere to 3.4.2 in preparation for this becoming the stable bundle</li>
+<li><p>Firefox patch changes:</p>
+
+<ul>
+<li>Hide infobar for missing plugins. (closes: #9012)</li>
+<li>Change the default entry page for the addons tab to the installed addons page. (closes: #8364)</li>
+<li>Make flash objects really be click-to-play if flash is enabled. (closes: #9867)</li>
+<li>Make getFirstPartyURI log+handle errors internally to simplify caller usage of the API. (closes: #3661)</li>
+<li>Remove polipo and privoxy from the banned ports list. (closes: #3661)</li>
+<li>misc: Fix a potential memory leak in the Image Cache isolation</li>
+<li>misc: Fix a potential crash if OS theme information is ever absent</li>
+</ul></li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-weekly-news-%E2%80%94-october-30th-2013">Tor Weekly News — October 30th, 2013</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">lunar</a> under
+            
+              <a class="post-category post-category-js" href="#">tor weekly news</a>
+             |
+            30 Oct 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Welcome to the eighteenth issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+
+<h1>A few highlights from this year’s Google Summer of Code</h1>
+
+<p>The Google Summer of Code 2013 program is over since the end of September. While Nick, Moritz and Damian <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000367.html">attended the GSoC Mentor Summit</a> at Google’s main campus last week, here are a few highlights from three of the five projects that were carried through the summer.</p>
+
+<p>Robert worked on enhancing Tor’s Path Selection algorithm. <a href="https://bitbucket.org/ra_/tor-rtt">The enhancement</a> uses active measurements of the Round-Trip-Time of Tor circuits. Rejecting the slowest circuits will improve the average latency of Tor circuits. The results of this work will hopefully be integrated into Tor 0.2.5.x and should then be usable by users. Robert wrote: “Working with the Tor community is very encouraging since there are highly skilled and enthusiastic people around. I am really happy to have made that decision and can definitely recommend doing so to others.”</p>
+
+<p>Johannes Fürmann created a censorship simulation tool that facilitates testing of applications in a simulated network which can be configured and extended to behave like censorship infrastructure in various countries. <a href="https://github.com/TheTorProject/EvilGenius">EvilGenius</a> can be used to do automated “smoke testing”, i.e. find out if code still works properly if a node in the network manipulates traffic in different ways. Other than that, it can be used to automatically test decentralized network applications. “Overall, working with Tor was a great experience and I hope to be able to work with the Tor community again” said Johannes.</p>
+
+<p>Kostas Jakeliūnas worked on creating a <a href="http://github.com/wfn/torsearch">searchable and scalable Tor Metrics data archive</a>. This required implementing a Tor relay consensus and descriptor search backend that can encompass most of the archival data available (as of now, the currently running backend covers relays from 2008 up until now).</p>
+
+<p>Those curious to browse Tor relay archives — searching for a needle in the very large haystack or just looking around — might enjoy playing with the <a href="http://ts.mkj.lt:5555/">current test platform</a>. It can run powerful queries on the large dataset without query parameter/span restrictions. Many <a href="https://github.com/wfn/torsearch/blob/master/docs/use_cases_examples.md">use cases</a> are supported — for example, since the newest consensus data is always available, the backend can be used in an ExoneraTor-like fashion.</p>
+
+<p>Together with Karsten Loesing, Kostas hopes to integrate this system with the current <a href="https://www.torproject.org/projects/onionoo.html">Onionoo</a>, hopefully further empowering (and eventually simplifying) the overall Tor Metrics ecosystem.</p>
+
+<p>Kostas described the project as “an interesting and challenging one — a lot of work […] to make it robust and truly scalable.” He also added: “Working with Tor was a great experience: I found the developer community to be welcoming indeed, comprised of many people who are professionals in their field. It should be noted that where there are interesting problems and a clear cause, great people assemble.”</p>
+
+<h1>Collecting data against network level adversaries</h1>
+
+<p>“The anonymity of a connection over Tor is vulnerable to an adversary who can observe it in enough places along its route. For example, traffic that crosses the same country as it enters and leaves the Tor network can potentially be deanonymized by an authority in that country who can monitor all network communication.” Karsten Loesing, Anupam Das, and Nikita Borisov began their <a href="https://lists.torproject.org/pipermail/tor-relays/2013-October/003113.html">call for help to Tor relay operators</a> by stating a problem that has recently attracted some interest by the research community.</p>
+
+<p>The question “which part of the Internet does a Tor relay lie in” is easy enough to answer, but “determining routes with high confidence has been difficult“ so far. The best source of information could come from the relay operators, as Karsten et al. wrote: “To figure out where traffic travels from your relay, we’d like you to run a bunch of ‘traceroutes’ — network measurements that show the paths traffic takes.”</p>
+
+<p>This one-time experiment — for now — is meant to be used by “several researchers, but the leads are Anupam Das, a Ph.D. student at the University of Illinois at Urbana-Champaign, and his advisor Nikita Borisov.”</p>
+
+<p>In order to participate, shell scripts are available which automate most of the process. They have been reviewed with care from several members of the Tor community and are available from <a href="https://bitbucket.org/anupam_das/traceroute-from-tor-relays">a Git repository</a>. Since their initial email, Anupam Das has assembled a <a href="http://web.engr.illinois.edu/%7Edas17/tor-traceroute_v1.html#faq">FAQ regarding scope, resource consumption, and other topics</a>.</p>
+
+<p>Be sure to run the scripts if you can. As Karsten, Anupam, and Nikita concluded, “with your help, we will keep improving to face the new challenges to privacy and freedom online.”</p>
+
+<h1>Tor Help Desk Roundup</h1>
+
+<p>Using the Tor Browser Bundle is still proving to be tricky for many Ubuntu users who upgraded from Ubuntu 13.04 to 13.10. The commonly reported error is that users cannot enter text in any of the browser’s text fields, including the URL and search bars. So far this problem appears to be resolved by removing ibus with apt-get before running the Tor Browser. Users who need ibus can try running <code>export GTK\_IM\_MODULE=xim</code>, as documented in <a href="https://bugs.torproject.org/9353">Trac ticket #9353</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>David Goulet is asking for a <a href="https://trac.torproject.org/projects/tor/ticket/10007">final round of reviews of his rewrite of torsocks</a> so it can replace the old implementation. Lunar has <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030730.html">updated the package in Debian experimental</a> to encourage testing. A few portability bugs and a deadlock  has already been ironed out in the process.</p>
+
+<p>The next Tails contributor meeting will be <a href="https://mailman.boum.org/pipermail/tails-dev/2013-October/003956.html">held on November 6th</a>. The present agenda has “firewall exceptions for user-run local services”, “decide what kind of questions go into the FAQ”, among other topics.</p>
+
+<p>Matthew Finkel has sent a <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005674.html">draft proposal</a> with possible solutions for Hidden Services backed by multiple servers. Several comments have been made already, with Nick Mathewson giving a heads-up on the work he has started on merging thoughts and discussions in a <a href="https://gitweb.torproject.org/user/nickm/torspec.git/blob/refs/heads/rendspec-ng:/rend-spec-ng.txt">new specification</a>.</p>
+
+<p>James B. <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030800.html">reported</a> a <a href="http://www.bsdnow.tv/tutorials/tor">tutorial on bsdnow.tv</a> describing how to setup Tor relays, bridges, exit nodes and hidden services on FreeBSD. Their <a href="http://www.bsdnow.tv/episodes/2013_10_23-a_brief_intorduction">last week’s podcast</a> called “A Brief Intorduction” features a live demonstration (beginning at 43:52).</p>
+
+<p>The Guardian Project has made a new release of its chat application for Android systems. ChatSecure v12 (previously known has Gibberbot) contains <a href="https://guardianproject.info/2013/10/24/chatsecure-v12-provides-comprehensive-security-and-a-whole-new-look/">several new features</a> and is fully integrated with Orbot.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, dope457, Matt Pagan, Kostas Jakeliūnas, ra, Johannes Fürmann, Karsten Loesing, and Roger Dingledine.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tails-021-out">Tails 0.21 is out</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">tails</a> under
+            
+              <a class="post-category post-category-js" href="#">anonymous operating system</a>
+            
+              <a class="post-category post-category-js" href="#">tails</a>
+            
+              <a class="post-category post-category-js" href="#">tails releases</a>
+             |
+            29 Oct 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Tails, The Amnesic Incognito Live System, version 0.21, is out.</p>
+
+<p>All users must upgrade as soon as possible: this release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_0.20.1/">numerous security issues</a>.</p>
+
+<p><a href="https://tails.boum.org/download/">Download it now.</a></p>
+
+<p><strong>Changes</strong></p>
+
+<ul>
+<li><p>Security fixes</p>
+
+<ul>
+<li>Don&#39;t grant access to the Tor control port for the desktop user. Else, an attacker able to run arbitrary code as this user could obtain the public IP.</li>
+<li>Don&#39;t allow the desktop user to directly change persistence settings. Else, an attacker able to run arbitrary code as this user could leverage this feature to gain persistent root access, as long as persistence is enabled.</li>
+<li>Install Iceweasel 17.0.10esr with Torbrowser patches.</li>
+<li>Patch Torbutton to make window resizing closer to what the design says.</li>
+</ul></li>
+<li><p>New features</p>
+
+<ul>
+<li>Add a persistence preset for printing settings.</li>
+<li>Support running Tails off more types of SD cards.</li>
+</ul></li>
+<li><p>Minor improvements</p>
+
+<ul>
+<li>Add a KeePassX launcher to the top panel.</li>
+<li>Improve the bug reporting workflow.</li>
+<li>Prefer stronger ciphers when encrypting data with GnuPG.</li>
+<li>Exclude the version string in GnuPG&#39;s ASCII armored output.</li>
+<li>Use the same custom Startpage search URL than the TBB. This apparently disables the new broken &quot;family&quot; filter.</li>
+<li>Provide a consistent path to the persistent volume mountpoint.</li>
+</ul></li>
+<li><p>Localization</p>
+
+<ul>
+<li>Many translation updates all over the place.</li>
+</ul></li>
+</ul>
+
+<p>See the <a href="https://git-tails.immerda.ch/tails/plain/debian/changelog">online Changelog</a> for technical details.</p>
+
+<p><strong>Known issues</strong></p>
+
+<ul>
+<li>On some hardware, Vidalia does not start.</li>
+<li>Longstanding <a href="https://tails.boum.org/support/known_issues/">known issues</a>.</li>
+</ul>
+
+<p><strong>What&#39;s coming up?</strong></p>
+
+<p>The next Tails release is scheduled for around December 11.</p>
+
+<p>Have a look to our <a href="https://labs.riseup.net/code/projects/tails/roadmap">roadmap</a> to see where we are heading to.</p>
+
+<p>Would you want to help? There are many ways <a href="https://tails.boum.org/contribute/"><strong>you</strong> can contribute to Tails</a>. If you want to help, <a href="https://tails.boum.org/support/">come talk to us</a>!</p>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page20" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 21 of 133</span>
+    
+      <a href="/blog/page22" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

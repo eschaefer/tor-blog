@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/torbutton-release-125-google-captchas-and-addonsmozillaorg">Torbutton Release 1.2.5, Google Captchas, and addons.mozilla.org</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">mikeperry</a> under
+            
+              <a class="post-category post-category-js" href="#">captchas</a>
+            
+              <a class="post-category post-category-js" href="#">data retention</a>
+            
+              <a class="post-category post-category-js" href="#">firefox</a>
+            
+              <a class="post-category post-category-js" href="#">google</a>
+            
+              <a class="post-category post-category-js" href="#">logging</a>
+            
+              <a class="post-category post-category-js" href="#">mozilla</a>
+            
+              <a class="post-category post-category-js" href="#">torbutton</a>
+             |
+            10 Apr 2010
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Torbutton 1.2.5 has been released. You can download it from <a href="https://www.torproject.org/torbutton/">the torbutton homepage</a>. It has also been submitted to <a href="https://addons.mozilla.org/en-US/firefox/addon/2275/">addons.mozilla.org</a>, though it may take a while for Mozilla to review the addon.</p>
+
+<p>In addition to the numerous bug fixes mentioned in the <a href="https://gitweb.torproject.org//torbutton.git?a=blob;hb=HEAD;f=src/CHANGELOG">changelog</a>, one of the new features of this release is to provide the ability to automatically redirect to an alternate search engine when Google presents you with a captcha. The current options are <a href="https://www.ixquick.com">IxQuick</a>, <a href="http://www.bing.com">Bing</a>, <a href="http://search.yahoo.com">Yahoo</a>, and <a href="https://ssl.scroogle.org">Scroogle</a>. Since it supports SSL, and appears to have a <a href="https://www.ixquick.com/eng/protect-privacy.html">progressive stance on user privacy</a>, IxQuick is the current default.</p>
+
+<p>For those unaware, Google&#39;s search engine has rate limiting features that cause it to <a href="http://googleonlinesecurity.blogspot.com/2007/07/reason-behind-were-sorry-message.html">present captchas</a> and sometimes even outright ban IP addresses that issue large numbers of search queries, especially if some of these queries appear to be searching for software vulnerabilities or unprotected comment areas.</p>
+
+<p>The Tor Project has had multiple discussions with Google over the past 2 years about potential workarounds on either Torbutton or Google&#39;s side to reduce the number of captchas and ban pages presented to Tor users while issuing normal natural language queries.</p>
+
+<p>Unfortunately, we were unable to come to a solution or any form of compromise that would reduce the number of captchas and outright bans seen by regular Tor users. We hope that this workaround will enhance the experience of Tor users while still allowing them to use Google for queries that don&#39;t result in a ban.</p>
+
+<p>In addition, potentially identifying information (such as language, OS version, and Firefox version) will be stripped off of Google Search Box queries by default. This was a major problem for users of Debian and Ubuntu, which have decided to augment their rebranded Firefox implementations to provide an excessive amount of information to Google for some reason.</p>
+
+<p>Furthermore, this release will also only update Torbutton via Tor by default to address concerns with the data retention policies of <a href="https://addons.mozilla.org/">addons.mozilla.org</a>, as well as to prevent censored users from being revealed as Tor users during the Torbutton update download, which happens over http.</p>
+
+<p>While Mozilla does have a <a href="http://www.mozilla.com/en-US/privacy-policy.html">blanket privacy policy</a> covering all of their websites, they currently do not have a clear data retention or sanitization policy on <a href="https://addons.mozilla.org/en-US/statistics/addon/2275">data that is collected and retained</a> during the use of addons.mozilla.org and during the addon update process. Mozilla has informed us that they are working hard to improve their practices and develop a good privacy and data retention policy specific to addons.mozilla.org. However, until such a policy emerges, we have decided that it is best to ensure that Tor users&#39; privacy is protected during the update process via the use of our network.</p>
+
+<p>Data retention concerns aside, the fact that addon update downloads are performed over HTTP can allow censorship regimes to detect the Torbutton download, and to prevent it from happening. For the safety of our censored users, these updates must happen over Tor by default until Mozilla also supports SSL for its addon update downloads. The integrity of the addon is verified by downloading a SHA1 hash over SSL, so this approach should not expose users to exit node tampering.</p>
+
+<p>We have investigated having Torbutton only update via our servers, but this is infeasible for three reasons. First, censored users often cannot reach our servers, so they would be forced to use Tor anyway to safely update. Second, addons hosted on addons.mozilla.org are not permitted to provide a custom update url, so we would have to maintain two versions, or delist Torbutton from that site. Third, future versions of Firefox are expected to ping addons.mozilla.org anyway for statistics gathering purposes.</p>
+
+<p>The unfortunate side effect is that performing these updates via Tor likely also means that the count of Torbutton users on the addons.mozilla.org site will gradually tend downward, and the Torbutton addon will be listed lower in response to searches on the site, since it will appear that we only have a number of users equal to the number of Tor exit nodes once everyone has upgraded.</p>
+
+<p>Not a lot of cheerful news, but as always, we&#39;re doing our best to work with what we have.</p>
+
+<p>The complete changelog for this release is as follows:</p>
+
+<ul>
+<li>bugfix: bug 1169: Fix blank popup conflict with CoolPreviews</li>
+<li>bugfix: bug 1246: Fix IST and other HH:30 timezone issues.</li>
+<li>bugfix: bug 1219: Fix the toggle warning loop issue on settings change.</li>
+<li>bugfix: bug 1321: Fix a session restore bug when closing the last window</li>
+<li>bugfix: bug 1302: Update useragent to FF3.6.3 on WinNT6.</li>
+<li>bugfix: bug 1157: Add logic to handle torbutton crashed state conflicts</li>
+<li>bugfix: bug 1235: Improve the &#39;changed-state&#39; refresh warning message</li>
+<li>bugfix: bug 1337: Bind alert windows to correct browser window</li>
+<li>bugfix: bug 1055: Make the error console the default log output location</li>
+<li>bugfix: bug 1032: Fix an exception in the localhost proxy filter</li>
+<li>misc: Always tell a website our window size is rounded even if it&#39;s not</li>
+<li>misc: Add some suggestions to warning about loading external content</li>
+<li>new: Add option to always update Torbutton via Tor. On by default</li>
+<li>new: Redirect Google queries elsewhere on captcha (default ixquick)</li>
+<li>new: Strip identifying info off of Google searchbox queries</li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/end-life-tor-020x-branch">End of Life for Tor 0.2.0.x branch</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">end of life</a>
+            
+              <a class="post-category post-category-js" href="#">old-stable</a>
+            
+              <a class="post-category post-category-js" href="#">tor 0.2.0</a>
+             |
+            31 Mar 2010
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>We have declared end-of-life for Tor 0.2.0.x. Those Tor versions have<br>
+several known flaws, and nobody should be using them. You should upgrade.</p>
+
+<p>Specifically, the big flaw in Tor &lt;= 0.2.0.35 is that its list of<br>
+directory authorities is out of date, so you&#39;ll find it hard to learn<br>
+about the network. We&#39;re signing the network status consensus with the<br>
+old signatures for now, but we&#39;re going to stop doing that in a few weeks,<br>
+which means your Tor 0.2.0.x will fail to find the current network.</p>
+
+<p>The only exception is people using Debian Lenny -- our nice Debian<br>
+packager is trying to keep that package maintained for you.</p>
+
+<p>As a bonus, if you move to a newer Tor you&#39;ll get significant performance<br>
+boosts as a client, and you&#39;ll improve the performance for others as<br>
+a relay.</p>
+
+<p>The original message is archived at <a href="http://archives.seul.org/or/announce/Mar-2010/msg00001.html" title="http://archives.seul.org/or/announce/Mar-2010/msg00001.html">http://archives.seul.org/or/announce/Mar-2010/msg00001.html</a></p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/announcing-tor-store">Announcing the Tor Store</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">ecommerce</a>
+            
+              <a class="post-category post-category-js" href="#">mugs</a>
+            
+              <a class="post-category post-category-js" href="#">printfection</a>
+            
+              <a class="post-category post-category-js" href="#">shopping</a>
+            
+              <a class="post-category post-category-js" href="#">tor logo</a>
+            
+              <a class="post-category post-category-js" href="#">tor store</a>
+            
+              <a class="post-category post-category-js" href="#">tshirts</a>
+             |
+            29 Mar 2010
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>We&#39;ve teamed up with Printfection to offer you a chance to support Tor, enhance your wardrobe, and get people to ask you, &quot;what&#39;s with the onion?&quot; We support many styles of mens and womens t-shirts right now, in all 31 colors Printfection offers. If you have made your own graphics, let us know and we&#39;ll add it to the store.</p>
+
+<p>Printfection will ship globally and only uses your data to ship your order.</p>
+
+<p>Casey Shorr, the CEO of Printfection, says,</p>
+
+<blockquote>
+<p>&quot;The Tor Project is leveraging Printfection&#39;s on-demand merchandise fulfillment technology to engage their supporters and generate additional revenue to help protect anonymity online. We&#39;re proud to be associated with such an important project.&quot;</p>
+</blockquote>
+
+<p>The Tor Store can be found at <a href="http://printfection.com/torprojectstore" title="http://printfection.com/torprojectstore">http://printfection.com/torprojectstore</a>. The full press release is here, <a href="https://www.torproject.org/press/2010-03-25-tor-store-press-release.html.en" title="https://www.torproject.org/press/2010-03-25-tor-store-press-release.html.en">https://www.torproject.org/press/2010-03-25-tor-store-press-release.html...</a>.</p>
+
+<p>Enjoy!</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-browser-bundle-gnulinux">Tor Browser Bundle for GNU/Linux</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">erinn</a> under
+            
+              <a class="post-category post-category-js" href="#">installing and using tor</a>
+            
+              <a class="post-category post-category-js" href="#">tbb</a>
+            
+              <a class="post-category post-category-js" href="#">torbrowser</a>
+             |
+            27 Mar 2010
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Tor Browser Bundle for GNU/Linux is now available for x86 and x86_64 architectures in 12 languages.</p>
+
+<p>The Tor Browser Bundle lets you use Tor without needing to install any software. It can run off a USB flash drive, comes with a pre-configured web browser and is self-contained.</p>
+
+<p>You can download it from the <a href="http://www.torproject.org/torbrowser/">Tor Browser</a> page which also has instructions about how to extract and use it.</p>
+
+<p>The bundle comes with the following software:</p>
+
+<ul>
+<li><a href="https://www.torproject.org/">Tor 0.2.2.10-alpha</a></li>
+<li><a href="https://www.torproject.org/vidalia/">Vidalia 0.2.7</a> -- cross-platform controller GUI for the Tor software</li>
+<li><a href="https://www.pps.jussieu.fr/%7Ejch/software/polipo/">Polipo 1.0.4.1</a> -- caching web proxy</li>
+<li><a href="http://www.mozilla.com/firefox/">Firefox 3.5.8</a> -- web browser</li>
+<li><a href="https://www.torproject.org/torbutton/">Torbutton 1.2.4</a> -- Firefox extension to enable or disable the browser&#39;s use of Tor</li>
+<li><a href="http://noscript.net/">NoScript 1.9.9.57</a> -- Firefox extension to only allow scripts from trusted sites</li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/6623">BetterPrivacy 1.4.7</a> -- Firefox extension to protect against supercookies</li>
+</ul>
+
+<p>This is a beta version, so please test it and <a href="https://bugs.torproject.org/">file bugs</a>!</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/life-without-ca">Life without a CA</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">certificate authority</a>
+            
+              <a class="post-category post-category-js" href="#">certificate fingerprints</a>
+            
+              <a class="post-category post-category-js" href="#">distributed trust</a>
+            
+              <a class="post-category post-category-js" href="#">firefox</a>
+            
+              <a class="post-category post-category-js" href="#">ssl errors</a>
+             |
+            26 Mar 2010
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>At <a href="http://libreplanet.org/">Libreplanet 2010</a>, I was in a discussion with the <a href="https://web.monkeysphere.info/">MonkeySphere</a> and <a href="https://www.eff.org/">EFF</a> folks about how to encourage every website to offer ssl by default. The general idea is to stop local traffic snooping and provide more security by default. During the discussion, it came up that I disable all of the <a href="http://en.wikipedia.org/wiki/Certificate_authority">Certificate Authorities</a> in my systems and selectively trust the ssl certificates from individual websites. I&#39;ve been doing this for years. Apparently my admission was a shocking statement to many. The group asked me to document my Firefox setup and what life is like without any trusted CAs. Seth from the EFF has a <a href="https://www.eff.org/deeplinks/2010/03/researchers-reveal-likelihood-governments-fake-ssl">quick post</a> about possible concerns over the CAs in your browser. I used to rely on the <a href="https://addons.mozilla.org/en-US/firefox/addon/6415">Certificate Patrol</a> Firefox Extension to monitor changing certs.</p>
+
+<p>I generally use FreeBSD and Debian-based linux distributions for my operating systems. After I install firefox, I rename libnssckbi.so to something else (like libnssckbi.so.saved). Restart Firefox (see below for option two). Firefox should no longer validate ssl certs automatically.</p>
+
+<p>Browse to a secure website, like <a href="https://torproject.org/" title="https://torproject.org/">https://torproject.org/</a>. You should get the intentionally scary &quot;This Connection is Untrusted&quot; certificate error page. However, you should expect this error as there are no more CAs to validate against. Click &quot;I Understand the Risks&quot;. Click &quot;Add Exception&quot;. Firefox should retrieve the certificate. Click &quot;View&quot;. This is where it gets interesting.</p>
+
+<p>How do you validate the certificate? It depends on the other end. For sites I worry about, like my bank or favorite shopping stores, I call support and ask for the SSL fingerprint and serial number. Sometimes the support person even knows what I&#39;m talking about. I suspect they just open their browser, click on the lock icon and read me the information. Generally, it takes some work to get the information. Further, I&#39;ll compare the cert received through Tor and through non-Tor ssh tunnels on disparate hosts. However, you only have to do this checking once per cert. Once you have it, Firefox stores it as an exception and, if the cert doesn&#39;t change between visits, doesn&#39;t interrupt you with the cert error page.</p>
+
+<p>Am I too paranoid or dis-trusting of CAs? Probably. I have a few concerns about this process, too. Does the list of certs in my browser open me up to unique fingerprinting in some way? Would I notice if a <a href="http://www.wired.com/threatlevel/2010/03/packet-forensics/">Packet Forensics</a> device was used? Unless someone screwed up, I doubt it. And a seldom asked question is, have I ever caught ssl certs being faked or changed by a man-in-the-middle? Yes I have.</p>
+
+<p>What would I like to see rather than implicitly trusting centralized CAs? I very much like the model used by gpg and <a href="http://en.wikipedia.org/wiki/Web_of_trust">the web of trust</a>. I think it&#39;s completely infeasible right now for the vast majority of people using the Internet today. However, using computers was infeasible for the vast majority of people merely a decade ago. Progress happens quickly.</p>
+
+<p>(option two)<br>
+ I generally remove all of the CAs as well, even though I think it&#39;s just a display issue at this point. To do so, go into Preferences, Advanced, Encryption tab, click View Certificates. Then just manually cycle through the remaining CAs and delete them all. I started writing a script to do this automatically, but it seems to change in each version of Firefox. If someone has a better/more automatic way to do this, I&#39;d like to hear about it. Now you have no CAs.</p>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page96" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 97 of 133</span>
+    
+      <a href="/blog/page98" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

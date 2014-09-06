@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tails-live-system-version-08-released">Tails Live System version 0.8 released</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">anonymous operating system</a>
+            
+              <a class="post-category post-category-js" href="#">debian</a>
+            
+              <a class="post-category post-category-js" href="#">livecd</a>
+            
+              <a class="post-category post-category-js" href="#">liveusb</a>
+            
+              <a class="post-category post-category-js" href="#">tails</a>
+            
+              <a class="post-category post-category-js" href="#">tor</a>
+             |
+            04 Oct 2011
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>On September 21, Tails anonymous live system version 0.8 was released.</p>
+
+<p>Notable user-visible changes include:</p>
+
+<p>Tor 0.2.2.33<br>
+ I2P 0.8.8<br>
+ Linux 3.0.0<br>
+ Iceweasel 3.5.16-9<br>
+ Torbutton 1.4.3-1<br>
+ HTTPS Everywhere 1.0.1-1<br>
+ More random looking nicks in Pidgin.<br>
+ Replace the onBoard virtual keyboard with Florence.<br>
+ PiTIVi non-linear audio/video editor.<br>
+ Support arbitrary DNS queries.<br>
+ Use XZ compression to get much smaller ISO images and a bit faster boot.</p>
+
+<p>Plus the usual bunch of minor bug reports and improvements.</p>
+
+<p>The original announcement is at <a href="http://tails.boum.org/news/version_0.8/" title="http://tails.boum.org/news/version\_0.8/">http://tails.boum.org/news/version_0.8/</a></p>
+
+<p>You can download it via <a href="https://archive.torproject.org/amnesia.boum.org/tails/stable/tails-i386-0.8/" title="https://archive.torproject.org/amnesia.boum.org/tails/stable/tails-i386-0.8/">https://archive.torproject.org/amnesia.boum.org/tails/stable/tails-i386-...</a>, bittorrent, or <a href="http://tails.boum.org/download/index.en.html" title="http://tails.boum.org/download/index.en.html">http://tails.boum.org/download/index.en.html</a></p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-0235-alpha-out">Tor 0.2.3.5-alpha is out</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">erinn</a> under
+            
+              <a class="post-category post-category-js" href="#">alpha releases</a>
+            
+              <a class="post-category post-category-js" href="#">bug fixes</a>
+            
+              <a class="post-category post-category-js" href="#">security fixes</a>
+            
+              <a class="post-category post-category-js" href="#">tor</a>
+             |
+            01 Oct 2011
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Tor 0.2.3.5-alpha fixes two bugs that make it possible to enumerate<br>
+ bridge relays; fixes an assertion error that many users started hitting<br>
+ today; and adds the ability to refill token buckets more often than<br>
+ once per second, allowing significant performance improvements.</p>
+
+<p><strong>Security fixes:</strong></p>
+
+<ul>
+<li>Bridge relays now do their directory fetches inside Tor TLS<br>
+connections, like all the other clients do, rather than connecting<br>
+directly to the DirPort like public relays do. Removes another<br>
+avenue for enumerating bridges. Fixes bug 4115; bugfix on 0.2.0.35.</li>
+<li>Bridges relays now build circuits for themselves in a more similar<br>
+way to how clients build them. Removes another avenue for<br>
+enumerating bridges. Fixes bug 4124; bugfix on 0.2.0.3-alpha,<br>
+when bridges were introduced.</li>
+</ul>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Fix an &quot;Assertion md-&gt;held_by_node == 1 failed&quot; error that could<br>
+occur when the same microdescriptor was referenced by two node_t<br>
+objects at once. Fix for bug 4118; bugfix on Tor 0.2.3.1-alpha.</li>
+</ul>
+
+<p><strong>Major features (networking):</strong></p>
+
+<ul>
+<li>Add a new TokenBucketRefillInterval option to refill token buckets<br>
+more frequently than once per second. This should improve network<br>
+performance, alleviate queueing problems, and make traffic less<br>
+bursty. Implements proposal 183; closes ticket 3630. Design by<br>
+Florian Tschorsch and Bj√∂rn Scheuermann; implementation by<br>
+Florian Tschorsch.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Change an integer overflow check in the OpenBSD_Malloc code so<br>
+that GCC is less likely to eliminate it as impossible. Patch<br>
+from Mansour Moufid. Fixes bug 4059.</li>
+</ul>
+
+<p><strong>Minor bugfixes (usability):</strong></p>
+
+<ul>
+<li>Downgrade log messages about circuit timeout calibration from<br>
+&quot;notice&quot; to &quot;info&quot;: they don&#39;t require or suggest any human<br>
+intervention. Patch from Tom Lowenthal. Fixes bug 4063;<br>
+bugfix on 0.2.2.14-alpha.</li>
+</ul>
+
+<p><strong>Minor features (diagnostics):</strong></p>
+
+<ul>
+<li>When the system call to create a listener socket fails, log the<br>
+error message explaining why. This may help diagnose bug 4027.</li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/new-tor-browser-bundles-7">New Tor Browser Bundles</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">erinn</a> under
+            
+              <a class="post-category post-category-js" href="#">firefox updates</a>
+            
+              <a class="post-category post-category-js" href="#">tbb</a>
+            
+              <a class="post-category post-category-js" href="#">tor</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser bundle</a>
+             |
+            01 Oct 2011
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>The Tor Browser Bundles have been updated to Firefox 7.0.1 and Tor 0.2.2.33. The bundles were originally uploaded with Firefox 7.0, but a fix was quickly released, so the two changelogs have been merged in this post.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Tor Browser Bundle (2.2.33-2)</strong></p>
+
+<p><strong>Windows fixes</strong></p>
+
+<ul>
+<li>Begin building Vidalia with DEP/ASLR</li>
+</ul>
+
+<p><strong>OS X fixes</strong></p>
+
+<ul>
+<li>Stop TBB from logging so much information to the system by only allowing dyld log library loads to syslog when it is in debug mode (closes: #4093)</li>
+</ul>
+
+<p><strong>General fixes and updates</strong></p>
+
+<ul>
+<li>Update Firefox to 7.0.1</li>
+<li>Update OpenSSL to 1.0.0e (closes: #3996) (except for OS X)</li>
+<li>Update Tor to 0.2.2.33</li>
+<li>Update NoScript to 2.1.2.8</li>
+<li>Downgrade HTTPS Everywhere to 1.0.3, because we don&#39;t want stable TBBs to use development versions of extensions (closes: #4050)</li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/whither-website-translations">Whither website translations</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">bugs</a>
+            
+              <a class="post-category post-category-js" href="#">polyglot internet</a>
+            
+              <a class="post-category post-category-js" href="#">translators</a>
+            
+              <a class="post-category post-category-js" href="#">website translations</a>
+             |
+            28 Sep 2011
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>As of <a href="https://lists.torproject.org/pipermail/tor-commits/2011-September/035605.html">svn commit 25130</a> we no longer have our web pages translated. We continue to translate tor, vidalia, aurora/firefox, our manual pages, and other documentation included with the various bundles. We&#39;re also going to create a new, simplified user manual that can be translated and included in our various packages.</p>
+
+<p>I thank our translators, both past and current, and continue to be impressed at the community we&#39;ve built up around translating all things Tor. We appreciate it, our users appreciate, and I appreciate it.</p>
+
+<p>Why did we do this?</p>
+
+<ul>
+<li>We spend a lot of time managing the translated pages on the website.</li>
+<li>The English pages are frequently updated, thereby invalidating all of the other languages.</li>
+<li>The switch to <a href="https://www.transifex.net/start/">Transifex</a> hasn&#39;t made more translators appear, especially for the languages we may care about the most.</li>
+<li>The translators for many languages that have a right-to-left orientation complain that the transifex interface is a nightmare to use and refuse to update.</li>
+<li>Lots of users simply use google translate, or read English anyway.</li>
+<li>Getting translated software into the hands of people is more important than them reading our web pages (especially if the documentation is translated and available locally)</li>
+<li>Our translations for right to left languages, such as Arabic and Farsi, were growing out of date and required far more technical skill to do than more translators are capable of handling. This involved editing the raw perl templating system we used.</li>
+<li>And, according to our webserver logs, our translated website traffic is less than 2% of total GET requests, nevermind page views.</li>
+</ul>
+
+<p>We may go back to the old model, which was svn or git commits directly to the repository for translations. It seemed this model attracted a few dedicated translators for some interesting languages. These languages were always kept current with the English pages. Another option is automated translation, such as something Bayesian that understands the difference between the snack cookie and a web browser cookie.</p>
+
+<p>If you have suggestions or other ideas how to improve our translations, feel free to respond to <a href="https://trac.torproject.org/projects/tor/ticket/4082">ticket 4082</a>.</p>
+
+<p>I still look forward to universal translators, helping me to understand the <a href="http://www.ethanzuckerman.com/blog/the-polyglot-internet/">polyglot Internet</a>. There is so much content out there that isn&#39;t in languages I understand. I hope universal translators can greatly improve in a short time.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/arm-release-144">Arm Release 1.4.4</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">atagar</a> under
+            
+              <a class="post-category post-category-js" href="#">arm</a>
+             |
+            26 Sep 2011
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Hi all. A new release of <a href="http://www.atagar.com/arm/">arm</a> is now available. Besides the normal batch of <a href="http://www.atagar.com/arm/releaseNotes.php#1.4.4">bug fixes and minor features</a> this includes an <a href="http://www.atagar.com/arm/images/screenshot_interpretor_full.png">interactive interpretor for raw control port access</a>.</p>
+
+<p>This is intended to be a tool for developers, highly knowledgeable operators, and anyone that would like to learn about Tor&#39;s control protocol. It provides usability improvements like tab completion and history scroll-back, along with IRC style interpretor commands...</p>
+
+<ul>
+<li><strong>/help</strong> - provides usage information for all of the tor/interpretor commands and tor&#39;s configuration options</li>
+<li><strong>/info</strong> - queries relay information via fingerprint, nickname, or IP address</li>
+<li><strong>/find</strong> - searches the backlog for the given regex</li>
+<li><strong>/events</strong> - displays any events that we&#39;ve listened for</li>
+<li><strong>/write</strong> - dumps the interpretor backlog to a file</li>
+</ul>
+
+<p>This can both be used via a new page in the curses interface and as<br>
+ <a href="http://www.atagar.com/arm/images/screenshot_interpretorPrompt.png">a standalone prompt</a> by running &quot;arm --prompt&quot;.</p>
+
+<p>Hopefully I&#39;m not the only person that finds this to be useful! -Damian</p>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page65" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 66 of 133</span>
+    
+      <a href="/blog/page67" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

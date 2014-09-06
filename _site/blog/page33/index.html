@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tails-018-out">Tails 0.18 is out</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">tails</a> under
+            
+              <a class="post-category post-category-js" href="#">anonymous operating system</a>
+            
+              <a class="post-category post-category-js" href="#">tails</a>
+            
+              <a class="post-category post-category-js" href="#">tails releases</a>
+             |
+            18 May 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Tails, The Amnesic Incognito Live System, version 0.18, is out.</p>
+
+<p>All users must upgrade as soon as possible.</p>
+
+<p><a href="https://tails.boum.org/download/">Download it now.</a></p>
+
+<p><strong>Changes</strong></p>
+
+<p>Notable user-visible changes include:</p>
+
+<ul>
+<li><p>New features</p>
+
+<ul>
+<li>Support obfs3 bridges.</li>
+<li>Automatically install a custom list of additional packages chosen by the user at the beginning of every working session, and upgrade them once a network connection is established (technology preview).</li>
+</ul></li>
+<li><p>Iceweasel</p>
+
+<ul>
+<li>Upgrade to Iceweasel 17.0.5esr-0+tails2~bpo60+1.</li>
+<li>Update Torbrowser patches to current maint-2.4 branch (567682b).</li>
+<li>Torbutton 1.5.2, and various prefs hacks to fix breakage.</li>
+<li>HTTPS Everywhere 3.2</li>
+<li>NoScript 2.6.6.1-1</li>
+<li>Isolate DOM storage to first party URI, and enable DOM storage.</li>
+<li>Isolate the image cache per url bar domain.</li>
+<li>Update prefs to match the TBB&#39;s, fix bugs, and take advantage of the latest Torbrowser patches.</li>
+<li>Make prefs organization closer to the TBB&#39;s, and generally clean them up.</li>
+</ul></li>
+<li><p>Bugfixes</p>
+
+<ul>
+<li>Linux 3.2.41-2+deb7u2.</li>
+<li>All Iceweasel prefs we set are now applied.</li>
+<li>Bring back support for proxies of type other than obfsproxy.</li>
+</ul></li>
+<li><p>Minor improvements</p>
+
+<ul>
+<li>Set <code>kernel.dmesg_restrict=1</code>, and make <code>/proc/&lt;pid&gt;/</code> invisible and restricted for other users. It makes it slightly harder for an attacker to gather information that may allow them to escalate privileges.</li>
+<li>Install gnome-screenshot.</li>
+<li>Add a <em>About Tails</em> launcher in the <em>System</em> menu.</li>
+<li>Install GNOME accessibility themes.</li>
+<li>Use <em>Getting started...</em> as the homepage for the Tails documentation button.</li>
+<li>Disable audio preview in Nautilus.</li>
+</ul></li>
+<li><p>Localization: many translation updates all over the place.</p></li>
+</ul>
+
+<p>See the <a href="http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.18">online Changelog</a> for technical details.</p>
+
+<p><strong>Known issue</strong></p>
+
+<p>The web browser default search engine is Google, instead of the intended localized Startpage. You may select <em>Startpage HTTPS</em> in the search engine menu next to the Google icon.</p>
+
+<p><strong>I want to try it / to upgrade!</strong></p>
+
+<p>See the <a href="https://tails.boum.org/getting_started/">Getting started</a> page.</p>
+
+<p>As no software is ever perfect, we maintain a list of <a href="https://tails.boum.org/support/known_issues/">problems that affects the last release of Tails</a>.</p>
+
+<p><strong>What&#39;s coming up?</strong></p>
+
+<p>The next Tails release is scheduled for June 27.</p>
+
+<p>Have a look to our <a href="https://tails.boum.org/contribute/roadmap/">roadmap</a> to see where we are heading to.</p>
+
+<p>Would you want to help? As explained in our <a href="https://tails.boum.org/contribute/">&quot;how to contribute&quot; documentation</a>, there are many ways <strong>you</strong> can contribute to Tails. If you want to help, come talk to us!</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/new-tor-browser-bundles-firefox-1706esr">New Tor Browser Bundles with Firefox 17.0.6esr</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">erinn</a> under
+            
+              <a class="post-category post-category-js" href="#">firefox updates</a>
+            
+              <a class="post-category post-category-js" href="#">tbb</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser bundle</a>
+             |
+            14 May 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>There is a new Firefox 17.0.6esr out and all of the Tor Browser Bundles (stable and alpha branches) have been updated. The new stable TBBs have a lot of new and updated Firefox patches, so those of you who were experiencing crashes should no longer be seeing that behavior. Please let us know if you do by <a href="https://trac.torproject.org/projects/tor">opening a ticket</a> with details.</p>
+
+<p>The stable Tor Browser Bundles are available at their <a href="https://www.torproject.org/download/download-easy.html.en">normal location</a>.</p>
+
+<p>The alpha Tor Browser Bundles are available <a href="https://www.torproject.org/projects/torbrowser.html.en#Download-torbrowserbundlealpha">here</a>.</p>
+
+<p><strong>Tor Browser Bundle (2.3.25-8)</strong></p>
+
+<ul>
+<li>Update Firefox to 17.0.6esr</li>
+<li>Update HTTPS Everywhere to 3.2</li>
+<li>Update Torbutton to 1.5.2</li>
+<li>Update libpng to 1.5.15</li>
+<li>Update NoScript to 2.6.6.1</li>
+<li><p>Firefox patch changes:</p>
+
+<ul>
+<li>Apply font limits to @font-face local() fonts and disable fallback<br>
+rendering for @font-face. (closes: #8455)</li>
+<li>Use Optimistic Data SOCKS handshake (improves page load performance).<br>
+(closes: #3875)</li>
+<li>Honor the Windows theme for inverse text colors (without leaking those<br>
+colors to content). (closes: #7920)</li>
+<li>Increase pipeline randomization and try harder to batch pipelined<br>
+requests together. (closes: #8470)</li>
+<li>Fix an image cache isolation domain key misusage. May fix several image<br>
+cache related crash bugs with New Identity, exit, and certain websites.<br>
+(closes: #8628)</li>
+</ul></li>
+<li><p>Torbutton changes:</p>
+
+<ul>
+<li>Allow session restore if the user allows disk actvity (closes: #8457)</li>
+<li>Remove the Display Settings panel and associated locales (closes: #8301)</li>
+<li>Fix &quot;Transparent Torification&quot; option. (closes: #6566)</li>
+<li>Fix a hang on New Identity. (closes: #8642)</li>
+</ul></li>
+<li><p>Build changes:</p>
+
+<ul>
+<li>Fetch our source deps from an https mirror (closes: #8286)</li>
+<li>Create watch scripts for syncing mirror sources and monitoring mirror<br>
+integrity (closes: #8338)</li>
+</ul></li>
+</ul>
+
+<p><strong>Tor Browser Bundle (2.4.12-alpha-2)</strong></p>
+
+<ul>
+<li>Update Firefox to 17.0.6esr</li>
+<li>Update NoScript to 2.6.6.1</li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/calea-2-and-tor">CALEA 2 and Tor</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">arma</a> under
+            
+              <a class="post-category post-category-js" href="#">advocacy</a>
+            
+              <a class="post-category post-category-js" href="#">data retention</a>
+            
+              <a class="post-category post-category-js" href="#">law enforcement</a>
+             |
+            09 May 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Journalists and activists have been asking me this week about the news that the Obama administration is now <a href="http://www.nytimes.com/2013/05/08/us/politics/obama-may-back-fbi-plan-to-wiretap-web-users.html">considering</a> whether to support the latest version of the FBI&#39;s <a href="https://www.eff.org/foia/foia-records-problems-electronic-surveillance">&quot;Going Dark&quot;</a> legislation. Here are some points to add to the discussion.</p>
+
+<ul>
+<li>This is far from law currently. Nobody&#39;s even published any proposed text. Right now the White House is considering whether to back it, and now is a great time to help them understand how dangerous it would be for America.</li>
+<li>Forcing backdoors in communication tools is a mandate for insecurity. Haven&#39;t they been paying attention to just how much these same systems are under <a href="http://googleblog.blogspot.com/2011/06/ensuring-your-information-is-safe.html">attack</a> from foreign governments and criminals? Did they not learn any lessons from the wiretapping scandals in <a href="http://en.wikipedia.org/wiki/Greek_wiretapping_case_2004%E2%80%932005">Greece</a> and <a href="http://en.wikipedia.org/wiki/SISMI-Telecom_scandal">Italy</a>, where CALEA backdoors were used to surveil politicians, without law enforcement even knowing about it? You cannot add a backdoor to a communications system without making it more vulnerable to attack, both from insiders and from the outside.</li>
+<li>The Justice Department is being really short-sighted here by imagining that the world is black and white. We&#39;ve heard from people at the <a href="https://blog.torproject.org/blog/trip-report-october-fbi-conference">FBI</a>, DEA, NSA, etc who <a href="https://www.torproject.org/about/torusers.html.en#lawenforcement">use Tor for their job</a>. If we changed the design so we could snoop on people, those users should go use a system that isn&#39;t broken by design — such as one in another country. And if those users should, why wouldn&#39;t criminals switch too?</li>
+<li>In any case, it seems likely that the law won&#39;t apply to The Tor Project, since we don&#39;t run the Tor network and also it&#39;s not a service. (We write free open source software, and then people run it to form a network.)</li>
+<li>The current <a href="http://en.wikipedia.org/wiki/Communications_Assistance_for_Law_Enforcement_Act">CALEA</a> already has an ugly <a href="https://blog.torproject.org/blog/trip-report-german-foreign-office">trickle-down effect</a> on the citizens of other countries. Different governments have different standards for lawful access, but the technology doesn&#39;t distinguish. So when the Egyptian general plugs in his telco box and sees the connector labelled &quot;lawful access&quot;, he thinks to himself &quot;I *am* the law&quot; and proceeds with surveilling his citizens to stay in power. To put it bluntly, America&#39;s lawful intercept program undermines its foreign policy goals.</li>
+</ul>
+
+<p>And lastly, we should all keep in mind that they can&#39;t force us to do anything. You always have the alternative of stopping whatever it is you&#39;re doing. So for example if they try to &quot;force&quot; an individual <a href="https://www.torproject.org/docs/faq#KeyManagement">directory authority</a> operator to do something, the operator should just stop operating the authority (and then consider working with EFF and ACLU to establish precedent that such an attempt was illegal). And so on, all the way up the chain. Good thing the Internet is an international community.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/new-tor-02412-alpha-packages-and-tor-browser-bundles">New Tor 0.2.4.12-alpha packages and Tor Browser Bundles</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">erinn</a> under
+            
+              <a class="post-category post-category-js" href="#">tbb</a>
+            
+              <a class="post-category post-category-js" href="#">tor alpha</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser bundle</a>
+            
+              <a class="post-category post-category-js" href="#">tor release</a>
+             |
+            30 Apr 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>There is a new alpha-release of Tor Browser, based on tor 0.2.4.12-alpha. Alpha versions of Vidalia Bundles and Expert bundles are also updated.</p>
+
+<p>This release also includes a patch to enable <a href="https://thunk.cs.uwaterloo.ca/optimistic-data-pets2010-rump.pdf">optimistic data</a> (PDF) which should significantly speed up your browsing experience. Please give them a try and let us know how they work for you.</p>
+
+<p>You can download the alpha Tor Browser Bundles <a href="https://www.torproject.org/projects/torbrowser.html.en#Download-torbrowserbundlealpha">here</a>.</p>
+
+<p><strong>Tor Browser Bundle (2.4.12-alpha-1)</strong></p>
+
+<ul>
+<li>Update Tor to 0.2.4.12-alpha</li>
+<li>Update Torbutton to 1.5.2</li>
+<li>Update libpng to 1.5.15</li>
+<li>Update NoScript to 2.6.6</li>
+<li>Update PDF.js to 0.8.1</li>
+<li><p>Firefox patch changes:</p>
+
+<ul>
+<li>Apply font limits to @font-face local() fonts and disable fallback<br>
+rendering for @font-face. (closes: #8455)</li>
+<li>Use Optimistic Data SOCKS handshake (improves page load performance).<br>
+(closes: #3875)</li>
+<li>Honor the Windows theme for inverse text colors (without leaking those<br>
+colors to content). (closes: #7920)</li>
+<li>Increase pipeline randomization and try harder to batch pipelined<br>
+requests together. (closes: #8470)</li>
+<li>Fix an image cache isolation domain key misusage. May fix several image<br>
+cache related crash bugs with New Identity, exit, and certain websites.<br>
+(closes: #8628)</li>
+</ul></li>
+<li><p>Torbutton changes:</p>
+
+<ul>
+<li>Allow session restore if the user allows disk actvity (closes: #8457)</li>
+<li>Remove the Display Settings panel and associated locales (closes: #8301)</li>
+<li>Fix &quot;Transparent Torification&quot; option. (closes: #6566)</li>
+<li>Fix a hang on New Identity. (closes: #8642)</li>
+</ul></li>
+<li><p>Build changes:</p>
+
+<ul>
+<li>Fetch our source deps from an https mirror (closes: #8286)</li>
+<li>Create watch scripts for syncing mirror sources and monitoring mirror<br>
+integrity (closes: #8338)</li>
+</ul></li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/weekend-new-england-give-camp">A weekend at New England Give Camp</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">anonymity</a>
+            
+              <a class="post-category post-category-js" href="#">cambridge</a>
+            
+              <a class="post-category post-category-js" href="#">cctv</a>
+            
+              <a class="post-category post-category-js" href="#">domestic violence</a>
+            
+              <a class="post-category post-category-js" href="#">dv</a>
+            
+              <a class="post-category post-category-js" href="#">intimate partner violence</a>
+            
+              <a class="post-category post-category-js" href="#">ipv</a>
+            
+              <a class="post-category post-category-js" href="#">microsoft</a>
+            
+              <a class="post-category post-category-js" href="#">new england give camp</a>
+            
+              <a class="post-category post-category-js" href="#">tor</a>
+             |
+            29 Apr 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><h1>Trip Report for New England Give Camp 2013</h1>
+
+<p>I spent the entire weekend with <a href="http://newenglandgivecamp.org/">New England Give Camp</a> at <a href="http://microsoftcambridge.com">Microsoft Research</a> in Cambridge, MA. I was one of the non-profits, representing <a href="https://wiki.tpo.is">ipv tech</a>, Tor, and offering myself as a technical volunteer to help out other non-profits. Over the 48 hours, here&#39;s what I helped out doing:</p>
+
+<ul>
+<li><p><a href="http://www.transitionhouse.org/">Transition House</a></p>
+
+<ul>
+<li>Help evaluate their IT systems</li>
+<li>Look at, reverse engineer, and fix their Alice database system</li>
+</ul></li>
+<li><p><a href="http://www.emergedv.com/">Emerge</a></p>
+
+<ul>
+<li>Update their wordpress installation</li>
+<li>Help fix the rotating images on the site</li>
+</ul></li>
+<li><p><a href="https://wiki.tpo.is">ipv tech</a></p>
+
+<ul>
+<li>Hack on <a href="http://fuerza.is">fuerza</a> app</li>
+<li>Get fuerza into a git repo, now <a href="https://gitorious.org/fuerza">here at gitorious</a></li>
+<li>rewrite the app to be markdown and static files to work offline</li>
+</ul></li>
+<li><p>Children&#39;s Charter</p>
+
+<ul>
+<li>Help resurrect their hacked WordPress installation and build them a new site.</li>
+</ul></li>
+</ul>
+
+<p>I also did a 30 minute talk about technology and intimate partner violence. Over the past few years, I&#39;ve seen every possible technology used to stalk, harass, and abuse people--and those that help them. I&#39;m helping the victims and advocates use the same technologies to empower the victims and turn the tables on the abusers in most cases. The ability to be anonymous and be free from surveillance for once, even for an hour, is cherished by the victims and affected advocates.</p>
+
+<p>Our team was great. Kevin, Paul, John, Bob, Carmine, Adam, and Sarah did a great job at keeping motivated, making progress, and joking along the way. Microsoft, Whole Foods, and a slew of sponsors offered endless food, sugary drinks, beautiful views, and encouragement throughout the weekend.</p>
+
+<p>Cambridge Community Television <a href="http://cctvcambridge.org/NEGiveCamp2013">interviewed me</a> at the very end of the event. There&#39;s also a Flickr group <a href="https://secure.flickr.com/groups/negc2013/">full of pictures</a>.</p>
+
+<p>Overall it was a great experience. I encourage you to volunteer next year.</p>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page32" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 33 of 133</span>
+    
+      <a href="/blog/page34" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

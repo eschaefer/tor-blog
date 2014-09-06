@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-02422-released">tor 0.2.4.22 released</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phoul</a> under
+            
+              <a class="post-category post-category-js" href="#">little-t-tor</a>
+            
+              <a class="post-category post-category-js" href="#">tor</a>
+            
+              <a class="post-category post-category-js" href="#">tor-releases</a>
+             |
+            04 Jun 2014
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>This is a slightly belated announcement for the release of tor 0.2.4.22. Going into the future, we&#39;re planning to publish this information on the blog shortly after it is sent to <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-announce">tor-announce</a>.</p>
+
+<p>Release information is always published first on <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-talk">tor-talk</a>.</p>
+
+<p>Tor 0.2.4.22 backports numerous high-priority fixes from the Tor 0.2.5 alpha release series. These include blocking all authority signing keys that may have been affected by the OpenSSL &quot;heartbleed&quot; bug, choosing a far more secure set of TLS ciphersuites by default, closing a couple of memory leaks that could be used to run a target relay out of RAM, and several others.</p>
+
+<p>Here is the complete changelog:  </p>
+
+<p>Changes in version 0.2.4.22 - 2014-05-16:</p>
+
+<ul>
+<li><p>Major features (security, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Block authority signing keys that were used on authorities<br>
+vulnerable to the &quot;heartbleed&quot; bug in OpenSSL (CVE-2014-0160). (We<br>
+don&#39;t have any evidence that these keys _were_ compromised; we&#39;re<br>
+doing this to be prudent.) Resolves ticket 11464. </li>
+</ul></li>
+<li><p>Major bugfixes (security, OOM):</p>
+
+<ul>
+<li>Fix a memory leak that could occur if a microdescriptor parse<br>
+fails during the tokenizing step. This bug could enable a memory<br>
+exhaustion attack by directory servers. Fixes bug 11649; bugfix<br>
+on 0.2.2.6-alpha. </li>
+</ul></li>
+<li><p>Major bugfixes (TLS cipher selection, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>The relay ciphersuite list is now generated automatically based on<br>
+uniform criteria, and includes all OpenSSL ciphersuites with<br>
+acceptable strength and forward secrecy. Previously, we had left<br>
+some perfectly fine ciphersuites unsupported due to omission or<br>
+typo. Resolves bugs 11513, 11492, 11498, 11499. Bugs reported by<br>
+&#39;cypherpunks&#39;. Bugfix on 0.2.4.8-alpha.</li>
+<li>Relays now trust themselves to have a better view than clients of<br>
+which TLS ciphersuites are better than others. (Thanks to bug<br>
+11513, the relay list is now well-considered, whereas the client<br>
+list has been chosen mainly for anti-fingerprinting purposes.)<br>
+Relays prefer: AES over 3DES; then ECDHE over DHE; then GCM over<br>
+CBC; then SHA384 over SHA256 over SHA1; and last, AES256 over<br>
+AES128. Resolves ticket 11528.</li>
+<li>Clients now try to advertise the same list of ciphersuites as<br>
+Firefox 28. This change enables selection of (fast) GCM<br>
+ciphersuites, disables some strange old ciphers, and stops<br>
+advertising the ECDH (not to be confused with ECDHE) ciphersuites.<br>
+Resolves ticket 11438. </li>
+</ul></li>
+<li><p>Minor bugfixes (configuration, security):</p>
+
+<ul>
+<li>When running a hidden service, do not allow TunneledDirConns 0:<br>
+trying to set that option together with a hidden service would<br>
+otherwise prevent the hidden service from running, and also make<br>
+it publish its descriptors directly over HTTP. Fixes bug 10849;<br>
+bugfix on 0.2.1.1-alpha. </li>
+</ul></li>
+<li><p>Minor bugfixes (controller, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Avoid sending a garbage value to the controller when a circuit is<br>
+cannibalized. Fixes bug 11519; bugfix on 0.2.3.11-alpha. </li>
+</ul></li>
+<li><p>Minor bugfixes (exit relay, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Stop leaking memory when we successfully resolve a PTR record.<br>
+Fixes bug 11437; bugfix on 0.2.4.7-alpha. </li>
+</ul></li>
+<li><p>Minor bugfixes (bridge client, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Avoid 60-second delays in the bootstrapping process when Tor is<br>
+launching for a second time while using bridges. Fixes bug 9229;<br>
+bugfix on 0.2.0.3-alpha. </li>
+</ul></li>
+<li><p>Minor bugfixes (relays and bridges, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Give the correct URL in the warning message when trying to run a<br>
+relay on an ancient version of Windows. Fixes bug 9393. </li>
+</ul></li>
+<li><p>Minor bugfixes (compilation):</p>
+
+<ul>
+<li>Fix a compilation error when compiling with --disable-curve25519.<br>
+Fixes bug 9700; bugfix on 0.2.4.17-rc. </li>
+</ul></li>
+<li><p>Minor bugfixes:</p>
+
+<ul>
+<li>Downgrade the warning severity for the the &quot;md was still<br>
+referenced 1 node(s)&quot; warning. Tor 0.2.5.4-alpha has better code<br>
+for trying to diagnose this bug, and the current warning in<br>
+earlier versions of tor achieves nothing useful. Addresses warning<br>
+from bug 7164. </li>
+</ul></li>
+<li><p>Minor features (log verbosity, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>When we run out of usable circuit IDs on a channel, log only one<br>
+warning for the whole channel, and describe how many circuits<br>
+there were on the channel. Fixes part of ticket 11553. </li>
+</ul></li>
+<li><p>Minor features (security, backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Decrease the lower limit of MaxMemInCellQueues to 256 MBytes (but<br>
+leave the default at 8GBytes), to better support Raspberry Pi<br>
+users. Fixes bug 9686; bugfix on 0.2.4.14-alpha. </li>
+</ul></li>
+<li><p>Documentation (backport from 0.2.5.4-alpha):</p>
+
+<ul>
+<li>Correctly document that we search for a system torrc file before<br>
+looking in ~/.torrc. Fixes documentation side of 9213; bugfix on<br>
+0.2.3.18-rc. </li>
+</ul></li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/stem-release-12">Stem Release 1.2</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">atagar</a> under
+            
+              <a class="post-category post-category-js" href="#">stem</a>
+             |
+            01 Jun 2014
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Hi all. After months of work I&#39;m please to announce the release of Stem 1.2.0!</p>
+
+<p>For those who aren&#39;t familiar with it, Stem is a Python library for interacting with Tor. With it you can script against your relay, descriptor data, or even write applications similar to arm and Vidalia.</p>
+
+<p><strong><a href="https://stem.torproject.org/">https://stem.torproject.org/</a></strong></p>
+
+<p>So what&#39;s new in this release?</p>
+
+<hr>
+
+<h2>Interactive Tor Interpreter</h2>
+
+<p>The control interpreter is a new method for interacting with Tor&#39;s control interface that combines an interactive python interpreter with raw access similar to telnet. This adds several usability features, such as...</p>
+
+<ul>
+<li>Irc-style commands like &#39;/help&#39;.</li>
+<li>Tab completion for Tor&#39;s controller commands.</li>
+<li>History scrollback by pressing up/down.</li>
+<li>Transparently handles Tor authentication at startup.</li>
+<li>Colorized output for improved readability.</li>
+</ul>
+
+<p>For a tutorial to get you started see...</p>
+
+<p><strong><a href="https://stem.torproject.org/tutorials/down_the_rabbit_hole.html">Down the Rabbit Hole</a></strong></p>
+
+<hr>
+
+<h2>New connect() Function</h2>
+
+<p>This release of Stem provides a new, even easier method for establishing controllers. Connecting to Tor can now be as easy as...</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">import sys
+
+
+from stem.connection import connect
+
+
+if __name__ == &#39; __main__ &#39;:
+  controller = connect()
+
+
+  if not controller:
+    sys.exit(1) # unable to get a connection
+
+
+  print &#39;Tor is running version %s&#39; % controller.get_version()
+  controller.close()
+</code></pre></div>
+<hr>
+
+<p>For a rundown on the myriad of improvements and fixes in this release see...</p>
+
+<p><strong><a href="https://stem.torproject.org/change_log.html#version-1-2">https://stem.torproject.org/change_log.html#version-1-2</a></strong></p>
+
+<p>Cheers! -Damian</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/stockholm-may-2014-trip-report">Stockholm May 2014 Trip Report</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">burkina faso</a>
+            
+              <a class="post-category post-category-js" href="#">egypt</a>
+            
+              <a class="post-category post-category-js" href="#">gender equality</a>
+            
+              <a class="post-category post-category-js" href="#">jordan</a>
+            
+              <a class="post-category post-category-js" href="#">kenya</a>
+            
+              <a class="post-category post-category-js" href="#">panel talks</a>
+            
+              <a class="post-category post-category-js" href="#">stockholm</a>
+            
+              <a class="post-category post-category-js" href="#">stockholm internet forum</a>
+            
+              <a class="post-category post-category-js" href="#">sweden</a>
+            
+              <a class="post-category post-category-js" href="#">uganda</a>
+             |
+            30 May 2014
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>I was invited to speak on a panel at Sida about security, tools, and how they can be used in the world. The panel was generally for Sida staff to let them learn, ask questions, and interact with us in an informal way. A big thanks to Sida for providing the space and infrastructure support to allow us to all congeal for a day. My presentation from the panel is available[8].</p>
+
+<p>Despite not being invited last year, I was invited to the Stockholm Internet Forum<a href="SIF14">1</a> this year to help talk about Tor, privacy, a cyber-panopticon[2] panel, empowering women and tech, and generally meeting with various organizations about funding partnerships. I spent most of my time split between talking to various orgs about partnerships and hanging out with the cool dfri[3] people. I met Hillevi Engström[7] and introduced her and her attending staff to Tor. The cyper-panopticon panel was held during the unconference sessions on the first day. We generally raised topics of surveillance, chilling effects, encryption, and the nature of abusive relationships between some governments and their populaces. Some pictures and videos are available[4]--if anyone has more pictures or video, let me know via email. The panel wasn&#39;t officially recorded by SIF14.</p>
+
+<p>The better parts of the panels were the hallway/mingle sessions where everyone got to talk about real topics. I talked at length about the situation in Burkina Faso[5], the Uganda and LGBT situation, and spoke to a few women from Jordan, Egypt, Ghana, Ivory Coast, Algiers, Morocco, Uganda, and Kenya about the state of women&#39;s access to and education in technology, especially in writing code to gain employment. Everyone wants to help equalize the situation for women in both economic and rights in these countries. A huge debt of gratitude to Sarah Cortes[6], a volunteer, researcher, and strong feminist for paying her own way to Sweden to represent Tor at Sida and at SIF14, explaining the details to most of the women at the conference, and for introducing Tor to a huge number of organizations in a very positive way. It&#39;s unfortunate the conference was dominated by discussions about a few white men and surveillance. Learning more about surveillance, Snowden, and women whistle-blowers would have been interesting. However, more time given to the topics of gender equality such as the &quot;crime of being a woman online&quot; and what we can do to empower all women with access, opportunity, education, and increased technical skills would have been more interesting at a conference composed of 50% women. What have you done to fight the patriarchy today?</p>
+
+<p>I met and spoke with a few senior officials of the Middle East-North Africa region from the Foreign Ministry of Sweden about Tor, privacy, and supporting women in the region.</p>
+
+<p>I spent the rest of the week meeting with some people from potential partners, dfri, and other activists from around the world. The general feedback from potential funding organizations is that we have a lot of work to do and the rest of the world is quickly catching up and surpassing our capabilities. At the same time, there is a lot of interest in partnering with us to accomplish many goals in improving privacy, censorship circumvention research, and improving the situation of women online.</p>
+
+<p>All in all, a successful trip and great time in Sweden.</p>
+
+<ol>
+<li><a href="http://www.stockholminternetforum.se/" title="http://www.stockholminternetforum.se/">http://www.stockholminternetforum.se/</a><br></li>
+<li><a href="https://cyberpanopticonsif.wordpress.com/" title="https://cyberpanopticonsif.wordpress.com/">https://cyberpanopticonsif.wordpress.com/</a><br></li>
+<li><a href="https://www.dfri.se/" title="https://www.dfri.se/">https://www.dfri.se/</a><br></li>
+<li><a href="http://andrewlewman.smugmug.com/SIF14-Panopticon-Panel/" title="http://andrewlewman.smugmug.com/SIF14-Panopticon-Panel/">http://andrewlewman.smugmug.com/SIF14-Panopticon-Panel/</a><br></li>
+<li><a href="https://en.wikipedia.org/wiki/Burkina_Faso" title="https://en.wikipedia.org/wiki/Burkina\_Faso">https://en.wikipedia.org/wiki/Burkina_Faso</a><br></li>
+<li><a href="http://sarahcortes.is/" title="http://sarahcortes.is/">http://sarahcortes.is/</a><br></li>
+<li><a href="http://www.government.se/sb/d/13510" title="http://www.government.se/sb/d/13510">http://www.government.se/sb/d/13510</a><br></li>
+<li><a href="https://svn.torproject.org/svn/projects/presentations/2014-05-26-Sida-Presentation.pdf" title="https://svn.torproject.org/svn/projects/presentations/2014-05-26-Sida-Presentation.pdf">https://svn.torproject.org/svn/projects/presentations/2014-05-26-Sida-Pr...</a></li>
+</ol>
+
+<p>Originally sent to the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-May/000538.html">Tor-reports</a> mailing list.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-weekly-news-%E2%80%94-may-28th-2014">Tor Weekly News — May 28th, 2014</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">harmony</a> under
+            
+              <a class="post-category post-category-js" href="#">tor weekly news</a>
+             |
+            28 May 2014
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Welcome to the twenty-first issue of Tor Weekly News in 2014, the weekly newsletter that covers what is happening in the Tor community.</p>
+
+<h1>OnionShare and tor’s ControlPort</h1>
+
+<p>Micah Lee published <a href="https://github.com/micahflee/onionshare">OnionShare</a>, a program that “makes it simple to share a file securely using a password-protected Tor hidden service”. It originally ran only in Tails, but has now been made compatible with other GNU/Linux distros, Windows, and OS X. As part of that process, Micah <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006895.html">wondered</a> about the best way to make the program work with a Tor Browser or system tor process, as “I would really like to not be in the business of distributing Tor myself”. <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006896.html">meejah</a> and <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006899.html">David Stainton</a> responded with relevant details of the <a href="https://stem.torproject.org/">Stem</a> and <a href="https://github.com/meejah/txtorcon">txtorcon</a> controller libraries, which allow this kind of operation to take place via tor’s ControlPort.</p>
+
+<h1>The “Tor and HTTPS” visualization made translatable</h1>
+
+<p>Lunar <a href="https://lists.torproject.org/pipermail/tor-talk/2014-May/033001.html">announced</a> the creation of a <a href="https://people.torproject.org/%7Elunar/tor-and-https/">repository</a> for an SVG+Javascript version of the EFF’s interactive <a href="https://www.eff.org/pages/tor-and-https/">“Tor and HTTPS” visualization</a>, which has proven useful in explaining to users the types of data that can be leaked or intercepted, and by whom, when using Tor or HTTPS (or both, or neither). As Lunar wrote, “The good news is that it’s translatable”: copies have so far been published in over twenty languages. The amount of translation required is very small, so if you’d like to contribute in your language then download the <a href="https://gitweb.torproject.org/user/lunar/tor-and-https.git/blob/HEAD:/tor-and-https.pot">POT file</a> and submit a patch!</p>
+
+<h1>A Child’s Garden of Pluggable Transports</h1>
+
+<p>David Fifield <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006891.html">published</a> <a href="https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports">“A Child’s Garden of Pluggable Transports”</a>, a detailed visualization of different pluggable transport protocols, including “aspects of different transports that I think are hard to intuit, such as what flash proxy rendezvous looks like, and how transports look under the encrypted layer that is visible to a censor”. A few <a href="https://www.torproject.org/docs/pluggable-transports">other transports supported by Tor</a> are not yet discussed in the guide; “if you know how to run any of those transports, and you know an effective way to visualize it, please add it to the page”, wrote David.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Anthony G. Basile <a href="http://opensource.dyc.edu/pipermail/tor-ramdisk/2014-May/000131.html">released</a> version 20140520 of <a href="http://opensource.dyc.edu/tor-ramdisk">tor-ramdisk</a>, the micro Linux distribution “whose only purpose is to host a Tor server in an environment that maximizes security and privacy”. The new version upgrades Tor to version 0.2.4.22, which “adds an important block to authority signing keys that were used on authorities vulnerable to the “heartbleed” bug in OpenSSL”, among other fixes; upgrading “is strongly recommended”.</p>
+
+<p>Cure53 <a href="https://cure53.de/pentest-report_onion-browser.pdf">audited the security</a> of the <a href="https://mike.tig.as/onionbrowser/">Onion Browser</a>, a web browser for iOS platforms tunneling traffic through Tor. From the conclusion: “we believe that the Onion Browser project is on the right track, however there is still a long way ahead for the project to be appropriately ‘ripe’ for usage in actually privacy-relevant and critically important scenarios.” All reported issues should have been fixed in <a href="https://mike.tig.as/onionbrowser/security/#v1_5">release 1.5</a> on May 14th.</p>
+
+<p>A new pluggable transport, currently named <a href="https://github.com/Yawning/obfs4">obfs4</a>, is being crafted by Yawning Angel: “obfs4 is ScrambleSuit with djb crypto. Instead of obfs3 style UniformDH and CTR-AES256/HMAC-SHA256, obfs4 uses a combination of Curve25519, Elligator2, HMAC-SHA256, XSalsa20/Poly1305 and SipHash-2-4”. The feature set offered by obfs4 is comparable to ScrambleSuit, with minor differences. Yawning is now asking the community for <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006897.html">comments, reviews, and tests</a>.</p>
+
+<p>Stem now offers a <a href="https://blog.torproject.org/blog/new-feature-tor-interpreter">control interpreter</a>, “a new method for interacting with Tor’s control interface that combines an interactive python interpreter with raw access similar to telnet”. Damian Johnson wrote a <a href="https://stem.torproject.org/tutorials/down_the_rabbit_hole.html">new tutorial</a> to give an overview of what can be done with it.</p>
+
+<p>Also on the controller front, Yawning Angel hacked on <a href="https://github.com/yawning/or-applet">or-applet</a>, a Gtk+ system tray applet to monitor Tor circuits.</p>
+
+<p>Arlo Breault is making progress on the Tor Instant Messenger Bundle: a minimalistic <a href="https://bugs.torproject.org/11533">user interface for OTR encryption in Instantbird</a>, one of the key features missing from the finished software, has now been implemented.</p>
+
+<p>Nicolas Vigier has been <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006911.html">working</a> on improving the <a href="https://github.com/tsgates/mbox/">Mbox sandboxing environment</a> to test the Tor Browser for disk or network leaks.</p>
+
+<p>Israel Leiva <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006903.html">published</a> the initial version of a <a href="https://github.com/ileiva/gettor/blob/master/spec/overview.txt">design proposal</a> for the “Revamp GetTor” Google Summer of Code project, having concluded that a full rewrite is needed.</p>
+
+<p>Juha Nurmi submitted the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-May/000536.html">first weekly report</a> for the ahmia.fi GSoC project.</p>
+
+<p>kzhm <a href="https://lists.torproject.org/pipermail/tor-talk/2014-May/033032.html">sent out</a> instructions for installing obfsproxy on Fedora 20, to go with <a href="https://www.torproject.org/projects/obfsproxy-instructions.html">those for other Linux distributions</a>.</p>
+
+<p><a href="https://code.google.com/p/address-sanitizer/wiki/AddressSanitizer">AddressSanitizer</a> (ASan) is a powerful memory error detector: software built with such technology makes it a lot harder to exploit programming errors related to memory management. Happily, Georg Koppen has <a href="https://lists.torproject.org/pipermail/tor-qa/2014-May/000414.html">announced</a> the first test packages of the Tor Browser built with ASan hardening.</p>
+
+<p>Karsten Loesing is planning on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006909.html">spinning off the directory archive from the metrics portal</a>.</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>Multiple Mac OS X users complained that despite seeing the “Congratulations” welcome page, they were unable to reach any website with the Tor Browser. It appears that with a recent update, the Sophos anti-virus solution interferes with the Tor Browser. In order to be able to use the Tor Browser again, one must open Sophos Anti-Virus, then “Preferences”, and in the “Web Protection” panel position all switches to off.</p>
+
+<h1>News from Tor StackExchange</h1>
+
+<p>yohann2008 doesn’t want their hidden service to be <a href="https://tor.stackexchange.com/q/2130/88">indexed by search engines</a>. puser suggested using a <a href="https://en.wikipedia.org/wiki/Robots_exclusion_standard">robots.txt file</a>, as on a normal webpage. Jens Kubieziel later received confirmation on the IRC channel of <a href="https://ahmia.fi/">ahmia.fi</a> that this search engine does indeed respect the robots.txt; however, it is unknown whether others do.</p>
+
+<p>Herbalist saw the <a href="https://tor.stackexchange.com/q/1866/88">following line in their log file</a> and wonders what it could mean: “Rejecting INTRODUCE1 on non-OR or non-edge circuit 7503”. If you can unravel this mystery, please submit your answer to the question.</p>
+
+<h1>Easy development tasks to get involved with</h1>
+
+<p>The metrics website displays graphs on <a href="https://metrics.torproject.org/users.html#userstats-bridge-transport">bridge users by pluggable transport</a>, but we’d like to have another graph with <a href="https://bugs.torproject.org/11799">total pluggable transport usage</a>. Karsten Loesing outlined the steps for adding such a graph, which require some knowledge of R and ggplot2. If you enjoy writing R and want to add this new graph to the metrics website, give it a try and post your results on the ticket.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, harmony, qbi, and Karsten Loesing.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/new-feature-tor-interpreter">New Feature: Tor Interpreter</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">atagar</a> under
+            
+              <a class="post-category post-category-js" href="#">stem</a>
+             |
+            26 May 2014
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Hi all, after a couple months down in the engine room I&#39;m delighted to announce a new Stem feature for advanced Tor users and developers!</p>
+
+<p><strong><a href="https://stem.torproject.org/tutorials/down_the_rabbit_hole.html">Stem&#39;s Interpreter Tutoral</a></strong></p>
+
+<p>The control interpreter is a new method for interacting with Tor&#39;s control interface that combines an interactive python interpreter with raw access similar to telnet. This adds several usability features, such as...</p>
+
+<ul>
+<li>Irc-style commands like &#39;/help&#39;.</li>
+<li>Tab completion for Tor&#39;s controller commands.</li>
+<li>History scrollback by pressing up/down.</li>
+<li>Transparently handles Tor authentication at startup.</li>
+<li>Colorized output for improved readability.</li>
+</ul>
+
+<p>This is the last major feature going into the Stem&#39;s 1.2.0 release, which is coming out later this month. Until then you can easily give it a whirl with...</p>
+
+<p>% git clone <a href="https://git.torproject.org/stem.git" title="https://git.torproject.org/stem.git">https://git.torproject.org/stem.git</a><br>
+% cd stem<br>
+% ./tor-prompt</p>
+
+<p>Running into an issue? Got a feature request? As always feedback appreciated! -Damian</p>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page6" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 7 of 133</span>
+    
+      <a href="/blog/page8" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

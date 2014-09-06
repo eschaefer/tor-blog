@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/toggle-or-not-toggle-end-torbutton">To Toggle, or not to Toggle: The End of Torbutton</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">mikeperry</a> under
+            
+              <a class="post-category post-category-js" href="#">firefox</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser bundle</a>
+            
+              <a class="post-category post-category-js" href="#">torbutton</a>
+            
+              <a class="post-category post-category-js" href="#">usability</a>
+             |
+            02 May 2011
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>In a random bar about two years ago, a Google Chrome developer asked me why Torbutton didn&#39;t just launch a new, clean Firefox profile/instance to deal with the tremendous number of state separation issues. Simply by virtue of him asking me this question, I realized how much better off Chrome was by implementing Incognito Mode this way and how much simpler it must have been for them overall (though they did not/do not deal with anywhere near as many issues as Torbutton does)...</p>
+
+<p>So I took a deep breath, and explained how the original use model of Torbutton and my initial ignorance at the size of the problem had led me through a series of incremental improvements to address the state isolation issue one item at a time. Since the toggle model was present at the beginning of this vision quest, it was present at the end.</p>
+
+<p>I realized at that same instant that in hindsight, this decision was monumentally stupid, and that I had been working harder, not smarter. However, I thought then that since we had the toggle model built, we might as well keep it: it allowed people to use their standard issue Firefoxes easily and painlessly with Tor.</p>
+
+<p>I now no longer believe even this much. I think we should completely do away with the toggle model, as well as the entire idea of Torbutton as a separate piece of user-facing software, and rely solely on the Tor Browser Bundles, except perhaps with the addition of standalone Tor+Vidalia binaries for use by experts and relay operators.</p>
+
+<p>The Tor Browser Bundles will include Torbutton, but we will no longer recommend that people use Torbutton without Tor Browser. Torbutton will be removed from addons.mozilla.org, and the Torbutton download page will clearly state that it is for experts only. If serious unfixed security issues begin to accumulate against the toggle model, we will stop providing Torbutton xpis at all.</p>
+
+<p>I believe this shift must be done for a few reasons: some usability, some technical. Since I feel the usability issues trump the technical ones, I&#39;ll discuss them first.</p>
+
+<p>Unfortunately, the Tor Project doesn&#39;t really have funding to conduct official usability studies to help us make the best choice, but I think that even without them, it is pretty clear that this migration is what we must do to improve the status quo.</p>
+
+<p>I think the average user is horribly confused by both the toggle model and the need to install additional software into Firefox (or conversely, the need to *also* install Tor software onto their computers after they install Torbutton). I also think that the average user is not likely to use this software safely. They are likely to log in to sites over Tor that they shouldn&#39;t, forget which tor mode they are in, and forget which mode certain tabs were opened under. These are all nightmare situations for anonymity and privacy.</p>
+
+<p>On the technical side, several factors are forcing us in the direction of a short-term fork of Firefox. The over-arching issue is that the set of bugfixes required to maintain the toggle model is a superset of those required to maintain the browser model. <a href="https://trac.torproject.org/projects/tor/report/39">Trac report #39</a> lists the bugs we must fix for the browser model, where as to maintain the toggle model, we must fix bugs from <a href="https://trac.torproject.org/projects/tor/report/14">trac report #14</a> in addition to the bugs in <a href="https://trac.torproject.org/projects/tor/report/39">report #39</a>.</p>
+
+<p>A similar issue exists with <a href="https://www.torproject.org/torbutton/en/design/#FirefoxBugs">bugs that must be fixed in Firefox</a>. The Firefox API bugs that need to be addressed to properly support the toggle model include rather esoteric and complicated issues that few groups other than Tor will find useful.</p>
+
+<p>This means more resistance from Mozilla to get the toggle mode bugs fixed or even merged, less likelihood the fixes will be used elsewhere, and more danger they will succumb to bitrot. As a result, the lag time between fix and deployment for low-priority Firefox bugs can be as long as 3 years. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=280661">Bug 280661</a> for an example.</p>
+
+<p>The Tor Browser bugs on the other hand are more directly usable by Firefox in its own Private Browsing Mode, which makes them more likely to merge quicker, and be maintained long-term. Also, because we are releasing our own Firefox-based browser, we will also have more control over experimenting with them and deploying these fixes to our users rapidly, as opposed to waiting for the next major Firefox release.</p>
+
+<p>So, we can either invest effort in improving the UI of Torbutton to better educate users to understand our particular rabbit-hole tunnel-vision of design choices, and also solving crazier Firefox bugs; or we can reconsider our user model and try to simplify our software.</p>
+
+<p>We don&#39;t have the manpower (ie: enough me) to do both. This means we should go with the simpler, easier option.</p>
+
+<p>We do face a small number of barriers and downsides associated with this plan. We are collecting the issues we need to address ASAP as child tickets of this bug:<br>
+ <a href="https://trac.torproject.org/projects/tor/ticket/2880" title="https://trac.torproject.org/projects/tor/ticket/2880">https://trac.torproject.org/projects/tor/ticket/2880</a></p>
+
+<p>Overall, the downsides seem to mostly apply to expert users and how they will adapt the custom Tor setups they have built. We don&#39;t anticipate a lot of long term issues with this group, as most of the configuration options of Torbutton will remain available, and users should still be able to install custom addons and configure their Tor Browser profile however they need (even to the point of running it side-by-side to a system tor instance that is used for non-web applications).</p>
+
+<p><a href="https://lists.torproject.org/pipermail/tor-talk/2011-April/020077.html">Additional discussion</a> about this issue has occurred on the tor-talk mailinglist.</p>
+
+<p>Hopefully this announcement doesn&#39;t ruin your day!</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/ipv6-future-i-hear">IPv6 is the future, I hear</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">nickm</a> under
+            
+              <a class="post-category post-category-js" href="#">development</a>
+            
+              <a class="post-category post-category-js" href="#">ipv6</a>
+             |
+            28 Apr 2011
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>A while ago, I wrote up a description of what needs to be done to get Tor to be IPv6-compliant and sent it to the tor-dev mailinglist. I thought it might be neat to share this on the blog too, so that people know what&#39;s left to do before we an call Tor fully IPv6-compliant.</p>
+
+<p>Currently, I&#39;m hoping that for 0.2.3.x we can at least get to the point where bridges can handle IPv6-only clients and exits can handle IPv6 addresses. If we get further, that will be even better.</p>
+
+<hr>
+
+<h3>Overview</h3>
+
+<p>This document outlines what we&#39;ll have to do to make Tor fully support IPv6. It refers to other proposals, current and as-yet unwritten. It suggests a few incremental steps, each of which on its own should make Tor more useful in the brave new IPv6 future of tomorrow.</p>
+
+<h3>Motivation</h3>
+
+<p>Turns out, 4 billion addresses wasn&#39;t enough.</p>
+
+<h3>What needs to change</h3>
+
+<p>Tor uses the Internet in many ways. There are three main ways that will need to change for IPv6 support, from most urgent to least urgent.</p>
+
+<ol>
+<li>Tor must allow connections from IPv6-only clients. (Currently, routers and bridges do not listen on IPv6 addresses, and can&#39;t advertise that they support IPv6 addresses, so clients can&#39;t learn that they do.)</li>
+<li>Tor must transport IPv6 traffic and IPv6-related DNS traffic. (Currently, Tor only allows BEGIN cells to ask for connections to IPv4 targets or to hostnames, and only allows RESOLVE cells to request A and PTR records.)</li>
+<li>Tor must allow nodes to connect to one another over IPv6.</li>
+</ol>
+
+<p>Allowing IPv6-only clients is the most important, since unless we do, these clients will be unable to connect to Tor at all. Next most important is to support IPv6 DNS related dependencies and exiting to IPv6 services. Finally, allowing Tor nodes to support a dual stack of both IPv4 and IPv6 for interconnection seems like a reasonable step towards a fully hybrid v4/v6 Tor network.</p>
+
+<p>One implementation hurdle that will need to get resolved alongside these changes is to convert uint32_t to tor_addr_t in many more places in the Tor code, so we can handle addresses being either IPv4 or IPv6. There are a few cases, e.g. the local router list, where we&#39;ll want to think harder about the resource requirements of keeping tens of thousands of larger addresses in memory.</p>
+
+<p>More issues may of course also be discovered as we develop solutions for these issues, some of which may need to take priority.</p>
+
+<h3>Designs that we will need to do</h3>
+
+<p>For IPv6-only clients, we&#39;ll need to specify that routers can have multiple addresses and ORPorts.</p>
+
+<p>There is an old proposal (118) to try to allow multiple ORPorts per router. It&#39;s been accepted; it needs to be checked for correctness, updated to track other changes in more recent Tor versions, and updated to work with the new microdescriptor designs.</p>
+
+<p>Additionally, we&#39;ll need to audit the designs for all our codebase for places that might assume that IPs are a scarce resource. For example, clients assume that any two routers occupying an IPv4 /16 network are &quot;too close&quot; topologically to be used in the same circuit, and the bridgedb HTTPS distributor assumes that hopping from one /24 to another takes a little effort for most clients. The directory authorities assume that blacklisting an IP is an okay response to a bad router at that address. These and other places will instead need more appropriate notions of &quot;closeness&quot; and &quot;similarity&quot;.</p>
+
+<p>We&#39;ll want to consider geographic and political boundaries rather than purely mathematical notions such as the size of network blocks.</p>
+
+<p>We&#39;ll need a way to advertise IPv6 bridges, and to use them.</p>
+
+<p>For transporting IPv6-only traffic, we have another accepted design proposal (117). It has some open questions concerning proper behavior with respect to DNS lookups, and also needs to be checked and updated to track current Tor designs.</p>
+
+<p>We do not have a current accepted design proposal for allowing nodes to connect to each other via IPv6. Allowing opportunistic IPv6 traffic between nodes that can communicate with both IPv4 and IPv6 will be relatively simple, as will be bridges that have only an IPv6 address: both of these fall out relatively simply from designing a process for advertising and connecting to IPv6 addresses. The harder problem is in supporting IPv6-only Tor routers. For these, we&#39;ll need to consider network topology issues: having nodes that can&#39;t connect to all the other nodes will weaken one of our basic assumptions for path generation, so we&#39;ll need to make sure to do the analysis enough to tell whether this is safe.</p>
+
+<h3>Ready, fire, aim: An alternative methodology</h3>
+
+<p>At least one volunteer is currently working on IPv6 issues in Tor. If his efforts go well, it might be that our first design drafts for some of these open topics arrive concurrently with (or even in the form of!) alpha code to implement them. If so, we need to follow a variant of the design process, extracting design from code to evaluate it (rather than designing then coding). Probably, based on design review, some changes to code would be necessary.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/firefox-4-tor-browser-bundle-windows">Firefox 4 Tor Browser Bundle for Windows</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">erinn</a> under
+            
+              <a class="post-category post-category-js" href="#">firefox</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser bundle</a>
+            
+              <a class="post-category post-category-js" href="#">windows</a>
+             |
+            24 Apr 2011
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Windows users, your time has finally arrived! A new Tor Browser Bundle with Firefox 4 is available <a href="https://www.torproject.org/dist/torbrowser/tor-browser-2.2.24-1-alpha_en-US.exe">here</a> ( <a href="https://www.torproject.org/dist/torbrowser/tor-browser-2.2.24-1-alpha_en-US.exe.asc">sig</a>). The build infrastructure has moved to a Windows 7 machine, but this bundle has been tested on both WinXP and Win7. If you encounter any strange issues, please let me know here or <a href="https://trac.torproject.org">on our bug tracker</a>.</p>
+
+<p><strong>Tor Browser Bundle (2.2.24-1) alpha; suite=windows</strong></p>
+
+<ul>
+<li>Create new bundle for Firefox 4</li>
+<li>Update Tor to 0.2.2.24-alpha</li>
+<li>Update Torbutton to 1.3.2-alpha</li>
+<li>Update OpenSSL to 1.0.0d</li>
+<li>Update Libevent to 2.0.10-stable</li>
+<li>Update HTTPS-Everywhere to 0.9.9.development.4</li>
+<li>Add NoScript 2.0.9.9</li>
+<li>Add BetterPrivacy 1.49</li>
+<li>The Opa Heinz release</li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/reading-links-15-april">Reading links, 15 April</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">advocacy</a>
+            
+              <a class="post-category post-category-js" href="#">anonymity</a>
+            
+              <a class="post-category post-category-js" href="#">interesting reading</a>
+            
+              <a class="post-category post-category-js" href="#">privacy</a>
+            
+              <a class="post-category post-category-js" href="#">reading links</a>
+             |
+            16 Apr 2011
+        </p>
+      </header>
+      <div class="post-description">
+        <p><ul>
+<li>MAFIAAfire firefox extension, in response to the ICE domain name take downs, <a href="http://www.mafiaafire.com/" title="http://www.mafiaafire.com/">http://www.mafiaafire.com/</a>. What happens when mafiaafire.com is taken down?</li>
+<li>US Government Outlines Online Internet ID System. Trust us. We&#39;re the Government. <a href="https://secure.dslreports.com/shownews/Government-Outlines-Online-Internet-ID-System-113743" title="https://secure.dslreports.com/shownews/Government-Outlines-Online-Internet-ID-System-113743">https://secure.dslreports.com/shownews/Government-Outlines-Online-Intern...</a></li>
+<li>European Court of Justice To Outlaw Internet Filtering, <a href="http://falkvinge.net/2011/04/14/european-court-of-justice-to-outlaw-internet-filtering-esp-for-copyright-enforcement/" title="http://falkvinge.net/2011/04/14/european-court-of-justice-to-outlaw-internet-filtering-esp-for-copyright-enforcement/">http://falkvinge.net/2011/04/14/european-court-of-justice-to-outlaw-inte...</a></li>
+<li>Surveillance Self-Defense by the EFF, <a href="https://ssd.eff.org/" title="https://ssd.eff.org/">https://ssd.eff.org/</a></li>
+<li>Over the firewall and into the fire, <a href="http://advocacy.globalvoicesonline.org/2011/04/14/over-the-firewall-and-into-the-fire/" title="http://advocacy.globalvoicesonline.org/2011/04/14/over-the-firewall-and-into-the-fire/">http://advocacy.globalvoicesonline.org/2011/04/14/over-the-firewall-and-...</a></li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/stockholm-hackfest-may-14th">Stockholm Hackfest, May 14th</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">advocacy</a>
+            
+              <a class="post-category post-category-js" href="#">code</a>
+            
+              <a class="post-category post-category-js" href="#">developers</a>
+            
+              <a class="post-category post-category-js" href="#">hackfest</a>
+            
+              <a class="post-category post-category-js" href="#">iis.se</a>
+            
+              <a class="post-category post-category-js" href="#">tor</a>
+             |
+            15 Apr 2011
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>We&#39;re holding a Tor hackfest on Saturday, May 14th at Ringvägen 100, Stockholm.</p>
+
+<p>We&#39;ll be starting at 10 AM . Thanks to <a href="https://www.iis.se/" title="https://www.iis.se/">https://www.iis.se/</a> for hosting the event. We&#39;re hoping to provide pizza and drinks for lunch. We have a wiki page available to get an idea of what food you want and any topics you wish to see discussed. <a href="https://trac.torproject.org/projects/tor/wiki/2011StockholmHackfest" title="https://trac.torproject.org/projects/tor/wiki/2011StockholmHackfest">https://trac.torproject.org/projects/tor/wiki/2011StockholmHackfest</a></p>
+
+<p>Please attend if you have some interest in programming, advocacy, marketing, or research with Tor, or are willing to be persuaded to entertain an interest. :) Tor&#39;s a small project (in terms of number of developers) that could really use your help.</p>
+
+<p>Hope to see you on Saturday!</p>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page75" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 76 of 133</span>
+    
+      <a href="/blog/page77" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

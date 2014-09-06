@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/april-2010-progress-report">April 2010 Progress Report</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">alpha releases</a>
+            
+              <a class="post-category post-category-js" href="#">bug fixes</a>
+            
+              <a class="post-category post-category-js" href="#">enhancements</a>
+            
+              <a class="post-category post-category-js" href="#">metrics</a>
+            
+              <a class="post-category post-category-js" href="#">progress report</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser bundle</a>
+             |
+            10 May 2010
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p><strong>New releases</strong></p>
+
+<ul>
+<li>On April 24, we released Tor 0.2.2.13-alpha. This version addresses the recent connection and memory overload problems we’ve been seeing on relays, especially relays with their DirPort open. If your relay has been crashing, or you turned it off because it used too many resources, give this release a try.</li>
+</ul>
+
+<p>o Major bugfixes:<br>
+ - Teach relays to defend themselves from connection overload. Relays<br>
+ now close idle circuits early if it looks like they were intended<br>
+ for directory fetches. Relays are also more aggressive about closing<br>
+ TLS connections that have no circuits on them. Such circuits are<br>
+ unlikely to be re-used, and tens of thousands of them were piling<br>
+ up at the fast relays, causing the relays to run out of sockets<br>
+ and memory. Bugfix on 0.2.0.22-rc (where clients started tunneling<br>
+ their directory fetches over TLS).</p>
+
+<p>o Minor features:<br>
+ - Finally get rid of the deprecated and now harmful notion of &quot;clique<br>
+ mode&quot;, where directory authorities maintain TLS connections to<br>
+ every other relay.<br>
+ - Directory authorities now do an immediate reachability check as soon<br>
+ as they hear about a new relay. This change should slightly reduce<br>
+ the time between setting up a relay and getting listed as running<br>
+ in the consensus. It should also improve the time between setting<br>
+ up a bridge and seeing use by bridge users.<br>
+ - Directory authorities no longer launch a TLS connection to every<br>
+ relay as they startup. Now that we have 2k+ descriptors cached,<br>
+ the resulting network hiccup is becoming a burden. Besides,<br>
+ authorities already avoid voting about Running for the first half<br>
+ hour of their uptime.</p>
+
+<ul>
+<li>On April 20, 2010 we released Tor 0.2.2.12-alpha. This release fixes a critical bug in how directory authorities handle and vote on descriptors. It was causing relays to drop out of the consensus.</li>
+</ul>
+
+<p>Changes in version 0.2.2.12-alpha - 2010-04-20<br>
+ o Major bugfixes:<br>
+ - Many relays have been falling out of the consensus lately because<br>
+ not enough authorities know about their descriptor for them to get<br>
+ a majority of votes. When we deprecated the v2 directory protocol,<br>
+ we got rid of the only way that v3 authorities can hear from each<br>
+ other about other descriptors. Now authorities examine every v3<br>
+ vote for new descriptors, and fetch them from that authority. Bugfix<br>
+ on 0.2.1.23.<br>
+ - Fix two typos in tor_vasprintf() that broke the compile on Windows,<br>
+ and a warning in or.h related to bandwidth_weight_rule_t that<br>
+ prevented clean compile on OS X. Fixes bug 1363; bugfix on<br>
+ 0.2.2.11-alpha.<br>
+ - Fix a segfault on relays when DirReqStatistics is enabled<br>
+ and 24 hours pass. Bug found by keb. Fixes bug 1365; bugfix on<br>
+ 0.2.2.11-alpha.</p>
+
+<p>o Minor bugfixes:<br>
+ - Demote a confusing TLS warning that relay operators might get when<br>
+ someone tries to talk to their OrPort. It is neither the operator&#39;s<br>
+ fault nor can they do anything about it. Fixes bug 1364; bugfix<br>
+ on 0.2.0.14-alpha.</p>
+
+<ul>
+<li>On April 15, we released Tor 0.2.2.11-alpha. It fixes yet another instance of broken OpenSSL libraries that was causing some relays to drop out of the consensus.</li>
+</ul>
+
+<p>o Major bugfixes:<br>
+ - Directory mirrors were fetching relay descriptors only from v2<br>
+ directory authorities, rather than v3 authorities like they should.<br>
+ Only 2 v2 authorities remain (compared to 7 v3 authorities), leading<br>
+ to a serious bottleneck. Bugfix on 0.2.0.9-alpha. Fixes bug 1324.<br>
+ - Fix a parsing error that made every possible value of<br>
+ CircPriorityHalflifeMsec get treated as &quot;1 msec&quot;. Bugfix<br>
+ on 0.2.2.7-alpha. Rename CircPriorityHalflifeMsec to<br>
+ CircuitPriorityHalflifeMsec, so authorities can tell newer relays<br>
+ about the option without breaking older ones.<br>
+ - Fix SSL renegotiation behavior on OpenSSL versions like on Centos<br>
+ that claim to be earlier than 0.9.8m, but which have in reality<br>
+ backported huge swaths of 0.9.8m or 0.9.8n renegotiation<br>
+ behavior. Possible fix for some cases of bug 1346.</p>
+
+<p>o Minor features:<br>
+ - Experiment with a more aggressive approach to preventing clients<br>
+ from making one-hop exit streams. Exit relays who want to try it<br>
+ out can set &quot;RefuseUnknownExits 1&quot; in their torrc, and then look<br>
+ for &quot;Attempt by %s to open a stream&quot; log messages. Let us know<br>
+ how it goes!<br>
+ - Add support for statically linking zlib by specifying<br>
+ --enable-static-zlib, to go with our support for statically linking<br>
+ openssl and libevent. Resolves bug 1358.</p>
+
+<p>o Minor bugfixes:<br>
+ - Fix a segfault that happens whenever a Tor client that is using<br>
+ libevent2&#39;s bufferevents gets a hup signal. Bugfix on 0.2.2.5-alpha;<br>
+ fixes bug 1341.<br>
+ - When we cleaned up the contrib/tor-exit-notice.html file, we left<br>
+ out the first line. Fixes bug 1295.<br>
+ - When building the manpage from a tarball, we required asciidoc, but<br>
+ the asciidoc -&gt; roff/html conversion was already done for the<br>
+ tarball. Make &#39;make&#39; complain only when we need asciidoc (either<br>
+ because we&#39;re compiling directly from git, or because we altered<br>
+ the asciidoc manpage in the tarball). Bugfix on 0.2.2.9-alpha.<br>
+ - When none of the directory authorities vote on any params, Tor<br>
+ segfaulted when trying to make the consensus from the votes. We<br>
+ didn&#39;t trigger the bug in practice, because authorities do include<br>
+ params in their votes. Bugfix on 0.2.2.10-alpha; fixes bug 1322.</p>
+
+<p>o Testsuite fixes:<br>
+ - In the util/threads test, no longer free the test_mutex before all<br>
+ worker threads have finished. Bugfix on 0.2.1.6-alpha.<br>
+ - The master thread could starve the worker threads quite badly on<br>
+ certain systems, causing them to run only partially in the allowed<br>
+ window. This resulted in test failures. Now the master thread sleeps<br>
+ occasionally for a few microseconds while the two worker-threads<br>
+ compete for the mutex. Bugfix on 0.2.0.1-alpha.</p>
+
+<ul>
+<li>Tor Browser Bundle for GNU/Linux was updated throughout the month, from versions 1.0.1 to 1.0.4. The details are:<br>
+1.0.4: Released 2010-04-24<br>
+Update Tor to 0.2.2.13-alpha</li>
+</ul>
+
+<p>1.0.3: Released 2010-04-20<br>
+ Update Tor to 0.2.2.12-alpha</p>
+
+<p>1.0.2: Released 2010-04-18<br>
+ Update Tor to 0.2.2.10-alpha<br>
+ Update to Vidalia 0.2.8</p>
+
+<p>1.0.1: Released 2010-04-08<br>
+ Stop TBB from crashing when it tries to download files<br>
+ Update Torbutton to 1.2.5</p>
+
+<ul>
+<li>On April 4, we released Tor Browser Bundle for Windows version 1.3.4. The changes were an update to Firefox 3.5.9 to address some security issues, and update the Torbutton Firefox extension to 1.2.5.</li>
+<li>On April 8, we released the latest Torbutton Firefox Extension version, 1.2.5. This release includes a number of bugfixes and some new features. The details are:</li>
+</ul>
+
+<p>* bugfix: bug 1169: Fix blank popup conflict with CoolPreviews<br>
+ * bugfix: bug 1246: Fix IST and other HH:30 timezone issues.<br>
+ * bugfix: bug 1219: Fix the toggle warning loop issue on settings change.<br>
+ * bugfix: bug 1321: Fix a session restore bug when closing the last window<br>
+ * bugfix: bug 1302: Update useragent to FF3.6.3 on WinNT6.<br>
+ * bugfix: bug 1157: Add logic to handle torbutton crashed state conflicts<br>
+ * bugfix: bug 1235: Improve the &#39;changed-state&#39; refresh warning message<br>
+ * bugfix: bug 1337: Bind alert windows to correct browser window<br>
+ * bugfix: bug 1055: Make the error console the default log output location<br>
+ * bugfix: bug 1032: Fix an exception in the localhost proxy filter<br>
+ * misc: Always tell a website our window size is rounded even if it&#39;s not<br>
+ * misc: Add some suggestions to warning about loading external content<br>
+ * new: Add option to always update Torbutton via Tor. On by default<br>
+ * new: Redirect Google queries elsewhere on captcha (default ixquick)<br>
+ * new: Strip identifying info off of Google searchbox queries</p>
+
+<ul>
+<li>On April 11, we released Vidalia 0.2.8. It contains updated translations, updates to the universal plug and play libraries, and better compatibility with newer versions of the Nokia Qt toolkit.</li>
+</ul>
+
+<p>o Stop using our custom dock icon implementation on OS X and just use<br>
+ QSystemTrayIcon everywhere. Fixes the build on Snow Leopard.<br>
+ (Ticket #562)<br>
+ o Update the bundled CA certificates to re-enable downloading bridges<br>
+ from bridges.torproject.org via SSL.<br>
+ o Include a pre-configured qt.conf file in the Mac OS X bundles that<br>
+ disable Qt plugin loading from the default directories. Otherwise,<br>
+ users who have Qt installed in a system-wide location would end up<br>
+ loading the libraries twice and crashing.<br>
+ o Include libgcc_s_dw2-1.dll in the Windows installers, since Qt 4.6 now<br>
+ depends on that DLL. Including the .dll is currently hardcoded, so the<br>
+ Windows installer must be built using Qt 4.6. (Ticket #555)<br>
+ o Update the included version of miniupnpc to 1.4.20100407.<br>
+ o Add Burmese and Thai UI translations.</p>
+
+<p><strong>Design, develop, and implement enhancements that make Tor a better tool for users in censored countries.</strong></p>
+
+<p>Karsten did major backend processing work on the <a href="http://metrics.torproject.org" title="http://metrics.torproject.org">http://metrics.torproject.org</a> data and website. These improvements allow for an automated process to update the various graphs and analyze the data sets. The whole system is better documented to assist someone in replicating the environment from scratch.</p>
+
+<p><strong>Outreach and Advocacy</strong></p>
+
+<ul>
+<li>Jacob talked at SOURCE Boston about Tor, censorship circumvention, and running relays. <a href="http://www.sourceconference.com/" title="http://www.sourceconference.com/">http://www.sourceconference.com/</a>. Jacob&#39;s presentation can be found at <a href="https://svn.torproject.org/svn/projects/presentations/SOURCE-Boston-2010.pdf" title="https://svn.torproject.org/svn/projects/presentations/SOURCE-Boston-2010.pdf">https://svn.torproject.org/svn/projects/presentations/SOURCE-Boston-2010...</a>.</li>
+<li>Andrew lectured about anonymous communications and Tor at the Portland campus of the University of Southern Maine.</li>
+<li>Roger lectured about anonymous communications and Tor at the Albuquerque campus of the University of New Mexico.</li>
+<li>Andrew was interviewed by Radio Free Asia: Vietnam about using Tor for online privacy and anonymity. <a href="http://www.rfa.org/vietnamese/in_depth/TOR-free-anti-censorship-tool-KhAn%20-04262010195030.html" title="http://www.rfa.org/vietnamese/in\_depth/TOR-free-anti-censorship-tool-KhAn%20-04262010195030.html">http://www.rfa.org/vietnamese/in_depth/TOR-free-anti-censorship-tool-KhA...</a></li>
+</ul>
+
+<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong></p>
+
+<p>Released new versions of Tor Browser Bundle for GNU/Linux and Windows. See above for details.</p>
+
+<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong></p>
+
+<p>From the 0.2.2.12-alpha release notes:<br>
+Directory authorities now do an immediate reachability check as soon as they hear about a new relay. This change should slightly reduce the time between setting up a relay and getting listed as running in the consensus. It should also improve the time between setting up a bridge and seeing use by bridge users.</p>
+
+<p>In March, we changed a setting on a majority of the Directory Authorities called CircPriorityHalflifeMsec. Based upon research at the University of Waterloo, changing this setting could improve the overall performance of the network by fine tuning the earned weighted mean average bit bucket for better performance. Due to a bug in the CircPriorityHalflifeMsec parsing, the average latency in the network increased dramatically. At the same time, China unblocked the list of public and bridge relays, flooding hundreds of thousands of clients back into the network. It seems the network responded poorly to both events.</p>
+
+<p><strong>More reliable (e.g. split) download mechanism.</strong></p>
+
+<p>The GNU/Linux tor browser bundle with localizations was added to the get-tor email auto-responder.</p>
+
+<p>Translation work, ultimately a browser-based approach.</p>
+
+<ul>
+<li>Updated text strings for the get-tor email auto-responder to make it easier for translators to complete the work.</li>
+<li>Added new translations of Vietnamese, Greek and Serbian to all projects.</li>
+<li>Many updated translated strings in German, Polish, Greek, Dutch, Finnish, Russian, Japanese, Chinese, French, Burmese, Spanish, Farsi, Arabic, Swedish, Turkish, and Norwegian.</li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/bittorrent-over-tor-isnt-good-idea">Bittorrent over Tor isn&#39;t a good idea</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">arma</a> under
+            
+              <a class="post-category post-category-js" href="#">anonymity applications attack</a>
+            
+              <a class="post-category post-category-js" href="#">BitTorrent</a>
+            
+              <a class="post-category post-category-js" href="#">different exit</a>
+            
+              <a class="post-category post-category-js" href="#">network</a>
+            
+              <a class="post-category post-category-js" href="#">peer</a>
+            
+              <a class="post-category post-category-js" href="#">post privacy problem</a>
+            
+              <a class="post-category post-category-js" href="#">relay</a>
+             |
+            30 Apr 2010
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>An increasing number of people are asking us about the <a href="http://hal.inria.fr/docs/00/47/15/56/PDF/TorBT.pdf">recent paper</a> coming out of Inria in France around Bittorrent and privacy attacks. This post tries to explain the attacks and what they imply.</p>
+
+<p>There are three pieces to the attack (or three separate attacks that build on each other, if you prefer).</p>
+
+<p>The first attack is on people who configure their Bittorrent application to proxy their tracker traffic through Tor. These people are hoping to keep their IP address secret from somebody looking over the list of peers at the tracker. The problem is that several popular Bittorrent clients (the authors call out uTorrent in particular, and I think Vuze does it too) just ignore their socks proxy setting in this case. Choosing to ignore the proxy setting is understandable, since modern tracker designs use the UDP protocol for communication, and socks proxies such as Tor only support the TCP protocol -- so the developers of these applications had a choice between &quot;make it work even when the user sets a proxy that can&#39;t be used&quot; and &quot;make it mysteriously fail and frustrate the user&quot;. The result is that the Bittorrent applications made a different security decision than some of their users expected, and now it&#39;s biting the users.</p>
+
+<p>The attack is actually worse than that: apparently in some cases uTorrent, BitSpirit, and libTorrent simply write your IP address directly into the information they send to the tracker and/or to other peers. Tor is doing its job: Tor is _anonymously_ sending your IP address to the tracker or peer. Nobody knows where you&#39;re sending your IP address from. But that probably isn&#39;t what you wanted your Bittorrent client to send.</p>
+
+<p>That was the first attack. The second attack builds on the first one to go after Bittorrent users that proxy the rest of their Bittorrent traffic over Tor also: it aims to let an attacking peer (as opposed to tracker) identify you. It turns out that the Bittorrent protocol, at least as implemented by these popular Bittorrent applications, picks a random port to listen on, and it tells that random port to the tracker as well as to each peer it interacts with. Because of the first attack above, the tracker learns both your real IP address and also the random port your client chose. So if your uTorrent client picks 50344 as its port, and then anonymously (via Tor) talks to some other peer, that other peer can go to the tracker, look for everybody who published to the tracker listing port 50344 (with high probability there&#39;s only one), and voila, the other peer learns your real IP address. As a bonus, if the Bittorrent peer communications aren&#39;t encrypted, the Tor exit relay you pick can also <a href="https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/TorFAQ#CanexitnodeseavesdroponcommunicationsIsntthatbad">watch the traffic</a> and do the attack.</p>
+
+<p>That&#39;s the second attack. Combined, they present a variety of reasons why running any Bittorrent traffic over Tor isn&#39;t going to get you the privacy that you might want.</p>
+
+<p>So what&#39;s the fix? There are two answers here. The first answer is &quot;don&#39;t run Bittorrent over Tor&quot;. We&#39;ve been saying for years not to run Bittorrent over Tor, because the Tor network <a href="https://blog.torproject.org/blog/why-tor-is-slow">can&#39;t handle the load</a>; perhaps these attacks will convince more people to listen. The second answer is that if you want your Bittorrent client to actually provide privacy when using a proxy, you need to get the application and protocol developers to fix their applications and protocols. <a href="https://www.torproject.org/download.html.en#Warning">Tor can&#39;t keep you safe if your applications leak your identity.</a></p>
+
+<p>The third attack from their paper is where things get interesting. For efficiency, Tor <a href="https://svn.torproject.org/svn/projects/design-paper/tor-design.html#sec:intro">puts multiple application streams over each circuit</a>. This approach improves efficiency because we don&#39;t have to waste time and overhead making a new circuit for every tiny picture on the aol.com frontpage, and it improves anonymity because every time you build a new path through the Tor network, you increase the odds that one of the paths you&#39;ve built is observable by an attacker. But the downside is that exit relays can build short snapshots of user profiles based on all the streams they see coming out of a given circuit. If one of those streams identifies the user, the exit relay knows that the rest of those streams belong to that user too.</p>
+
+<p>The result? If you&#39;re using Bittorrent over Tor, and you&#39;re _also_ browsing the web over Tor at the same time, then the above attacks allow an attacking exit relay to break the anonymity of some of your web traffic.</p>
+
+<p>What&#39;s the fix? The same two fixes as before: don&#39;t run Bittorrent over Tor, and/or get your Bittorrent developers to fix their applications.</p>
+
+<p>But as Tor developers, this attack opens up an opportunity for a third fix. Is there a way that we as Tor can reduce the damage that users can do to themselves when they use insecure applications over Tor? We can&#39;t solve the fact that you&#39;ll shoot yourself in the foot if you use Bittorrent over Tor, but maybe we can still save the rest of the leg.</p>
+
+<p>One approach to addressing this problem in Tor&#39;s design is to make each user application use a separate circuit. In Linux and Unix, we can probably hack something like that up -- there are ways to look up the pid (process ID) of the application connecting to our socket. I suspect it gets harder in Windows though. It also gets harder because many Tor applications use an intermediate http proxy, like Polipo or Privoxy, and we&#39;d have to teach these other proxies how to distinguish between different applications and then pass that information along to Tor.</p>
+
+<p>Another answer is to separate streams by destination port. Then all the streams that go to port 80 are on one circuit, and a stream for a different destination port goes on another circuit. We&#39;ve had that idea lurking in the background for a long time now, but it&#39;s actually because of Bittorrent that we haven&#39;t implemented it: if a BT client asks us to make 50 streams to 50 different destination ports, I don&#39;t want the Tor client to try to make 50 different circuits. That puts too much load on the network. I guess we could special-case it by separating &quot;80&quot; and &quot;not 80&quot;, but I&#39;m not sure how effective that would be in practice, first since many other ports (IM, SSH, etc) would want to be special-cased, and second since firewalls are pressuring more and more of the Internet to go over port 80 these days.</p>
+
+<p>We should keep brainstorming about ways to protect users even when their applications are handing over their sensitive information. But in the mean time, I think it&#39;s great that these researchers are publishing their results and letting everybody else evaluate the attacks. (If you&#39;re a researcher working on Tor attacks or defenses, check out our new <a href="https://www.torproject.org/research.html.en">research resources</a> page.) The attacks in this paper are serious attacks if you&#39;re a Bittorrent user and you&#39;re hoping to have some privacy.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/you-have-won-tor-sweepstakes-and-other-scams">You have won the Tor sweepstakes and other scams</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">28th</a>
+            
+              <a class="post-category post-category-js" href="#">account address</a>
+            
+              <a class="post-category post-category-js" href="#">anonymity</a>
+            
+              <a class="post-category post-category-js" href="#">archives</a>
+            
+              <a class="post-category post-category-js" href="#">ca cashed checks</a>
+            
+              <a class="post-category post-category-js" href="#">claim</a>
+            
+              <a class="post-category post-category-js" href="#">days</a>
+            
+              <a class="post-category post-category-js" href="#">digit dreams</a>
+            
+              <a class="post-category post-category-js" href="#">letters</a>
+            
+              <a class="post-category post-category-js" href="#">life lucky</a>
+            
+              <a class="post-category post-category-js" href="#">mail money</a>
+            
+              <a class="post-category post-category-js" href="#">post prize</a>
+            
+              <a class="post-category post-category-js" href="#">scams</a>
+             |
+            28 Apr 2010
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Over the past 18 months someone has been mailing fake checks from us to individuals all over the United States. The text of the letter one receives is:</p>
+
+<blockquote>
+<p>From: Merchant &amp; Bryce, Partners in Finance.<br>
+To: victim</p>
+
+<p>Congratulations! We are pleased to inform you that you are one of the 26 declared lucky winners of our 2009 Dreams Sweepstakes(tm) held on [pick a date] in the 2nd category. A ticket with serial numbers [make up some numbers] attached to your name drew the lucky winning numbers [make up some numbers].</p>
+
+<p>The 2009 Dreams Sweepstakes(tm) is a no purchase CASH STIMULUS give-away generated from proceeds of sales of gifts from charitable organizations across North America. All participants were selected through a random computer ballot system drawn from over [pick a big number here] name from a consumer database. Your name emerged as a lucky winner and you are entitled to the sum of [pick a five digit number], this stemming from the total price of [pick a six digit number] that was shared and presented among the 26 declared winners. The prize is only open to legal US and Canadian residents who are 18 years of age or older and located at their listed address.</p>
+
+<p>Your claim number is [make up some numbers] and in accordance with the disbursement policy your prize award money has been forwarded to our trust account to authenticate your legitimacy in order to avoid double claim and to facilitate release your winnings to you either by certified check, money order or wire transfer to your designated local bank account that you will provide details for.</p>
+
+<p>To expedite the processing, enclosed is a check of <a href="10%%20of%20your%20prize%20money">pick a four digit number</a> which has been deducted from your winnings. You will be using a portion of these funds to pay for the applicable taxes on your [pick a five digit number] prize money as well as the issuance cost for the purchase of a surety bond certificate that serves as proof of legitimacy.</p>
+
+<p>The applicable taxes to be paid and the surety bond certificate issuance cost is a total of 9%(NINE PERCENT) of your prize money winnings which is: [pick 9% of your winning number].</p>
+
+<p>Please contact your claims agent Mrs. Amber Logan at 1-(213) 283-6229 for further clarification and instructions on claiming your winning. Any attempt to negotiate your winning check without contacting your claims agent will automatically lead to your check being voided.</p>
+
+<p>Please note: Prizes not claimed by [pick a date 3 weeks into the future] will be automatically deemed unclaimed and forwarded to the sponsors for re-entry into the next draw.</p>
+
+<p>Congratulations from the Board of Trustees and all the sponsors,<br>
+Paul Lylesworth, Attorney at Law and 2009 Dreams Sweepstakes(tm).</p>
+
+<p>Address: 1450 Veterans Blvd, Suite 100, Redwood City, CA 94063. Tel 1-213-261-6639.</p>
+</blockquote>
+
+<p>I&#39;ve replaced the unique amounts and numbers with text in brackets [] to highlight what&#39;s changed. Otherwise, the letters are all the same.</p>
+
+<p>The checks are written against our public donation bank account, which is a deposit-only savings account. The checks themselves are signed by various people, typically Paul Lylesworth or Frank Anderson. However, Walmart cashed the checks without verification and then sent bill collectors after us for not honoring the checks. Sometimes the checks are written from The Tar Project.</p>
+
+<p>Most victims find our phone number on the press page and call to ask, &quot;Is this for real?&quot; As they suspect, it is not real and is a scam.</p>
+
+<p>I&#39;ve also removed the claim numbers and amounts to protect those that sent to us copies of the letters and checks they received in the mail, and that are working with the local Police on this case.</p>
+
+<p>As for as some basic sleuthing, the phone numbers NPA-NPX are assigned to MagicJack in Los Angeles, California. The letters themselves are mailed from Canada. postal code M4L 3T6. This is Toronto, Ontario.</p>
+
+<p>That&#39;s all we know. If you receive an unexpected check from us, it&#39;s fake.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-02211-alpha-and-02212-alpha-are-out">Tor 0.2.2.11-alpha and 0.2.2.12-alpha are out</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">alpha releases</a>
+            
+              <a class="post-category post-category-js" href="#">bug fixes</a>
+            
+              <a class="post-category post-category-js" href="#">performance improvements</a>
+             |
+            24 Apr 2010
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Tor 0.2.2.12-alpha fixes a critical bug in how directory authorities<br>
+handle and vote on descriptors. It was causing relays to drop out of<br>
+the consensus.</p>
+
+<p>Tor 0.2.2.11-alpha fixes yet another instance of broken OpenSSL libraries<br>
+that was causing some relays to drop out of the consensus.</p>
+
+<p>(Windows bundles will be available whenever Andrew gets around to making<br>
+them; we&#39;re trying to stick to a policy of announcing alphas on time<br>
+rather than waiting for every package.)</p>
+
+<p><a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+
+<p>Original announcement is at <a href="http://archives.seul.org/or/talk/Apr-2010/msg00174.html" title="http://archives.seul.org/or/talk/Apr-2010/msg00174.html">http://archives.seul.org/or/talk/Apr-2010/msg00174.html</a></p>
+
+<p>Changes in version 0.2.2.12-alpha - 2010-04-20<br>
+ o Major bugfixes:<br>
+ - Many relays have been falling out of the consensus lately because<br>
+ not enough authorities know about their descriptor for them to get<br>
+ a majority of votes. When we deprecated the v2 directory protocol,<br>
+ we got rid of the only way that v3 authorities can hear from each<br>
+ other about other descriptors. Now authorities examine every v3<br>
+ vote for new descriptors, and fetch them from that authority. Bugfix<br>
+ on 0.2.1.23.<br>
+ - Fix two typos in tor_vasprintf() that broke the compile on Windows,<br>
+ and a warning in or.h related to bandwidth_weight_rule_t that<br>
+ prevented clean compile on OS X. Fixes bug 1363; bugfix on<br>
+ 0.2.2.11-alpha.<br>
+ - Fix a segfault on relays when DirReqStatistics is enabled<br>
+ and 24 hours pass. Bug found by keb. Fixes bug 1365; bugfix on<br>
+ 0.2.2.11-alpha.</p>
+
+<p>o Minor bugfixes:<br>
+ - Demote a confusing TLS warning that relay operators might get when<br>
+ someone tries to talk to their OrPort. It is neither the operator&#39;s<br>
+ fault nor can they do anything about it. Fixes bug 1364; bugfix<br>
+ on 0.2.0.14-alpha.</p>
+
+<p>Changes in version 0.2.2.11-alpha - 2010-04-15<br>
+ o Major bugfixes:<br>
+ - Directory mirrors were fetching relay descriptors only from v2<br>
+ directory authorities, rather than v3 authorities like they should.<br>
+ Only 2 v2 authorities remain (compared to 7 v3 authorities), leading<br>
+ to a serious bottleneck. Bugfix on 0.2.0.9-alpha. Fixes bug 1324.<br>
+ - Fix a parsing error that made every possible value of<br>
+ CircPriorityHalflifeMsec get treated as &quot;1 msec&quot;. Bugfix<br>
+ on 0.2.2.7-alpha. Rename CircPriorityHalflifeMsec to<br>
+ CircuitPriorityHalflifeMsec, so authorities can tell newer relays<br>
+ about the option without breaking older ones.<br>
+ - Fix SSL renegotiation behavior on OpenSSL versions like on Centos<br>
+ that claim to be earlier than 0.9.8m, but which have in reality<br>
+ backported huge swaths of 0.9.8m or 0.9.8n renegotiation<br>
+ behavior. Possible fix for some cases of bug 1346.</p>
+
+<p>o Minor features:<br>
+ - Experiment with a more aggressive approach to preventing clients<br>
+ from making one-hop exit streams. Exit relays who want to try it<br>
+ out can set &quot;RefuseUnknownExits 1&quot; in their torrc, and then look<br>
+ for &quot;Attempt by %s to open a stream&quot; log messages. Let us know<br>
+ how it goes!<br>
+ - Add support for statically linking zlib by specifying<br>
+ --enable-static-zlib, to go with our support for statically linking<br>
+ openssl and libevent. Resolves bug 1358.</p>
+
+<p>o Minor bugfixes:<br>
+ - Fix a segfault that happens whenever a Tor client that is using<br>
+ libevent2&#39;s bufferevents gets a hup signal. Bugfix on 0.2.2.5-alpha;<br>
+ fixes bug 1341.<br>
+ - When we cleaned up the contrib/tor-exit-notice.html file, we left<br>
+ out the first line. Fixes bug 1295.<br>
+ - When building the manpage from a tarball, we required asciidoc, but<br>
+ the asciidoc -&gt; roff/html conversion was already done for the<br>
+ tarball. Make &#39;make&#39; complain only when we need asciidoc (either<br>
+ because we&#39;re compiling directly from git, or because we altered<br>
+ the asciidoc manpage in the tarball). Bugfix on 0.2.2.9-alpha.<br>
+ - When none of the directory authorities vote on any params, Tor<br>
+ segfaulted when trying to make the consensus from the votes. We<br>
+ didn&#39;t trigger the bug in practice, because authorities do include<br>
+ params in their votes. Bugfix on 0.2.2.10-alpha; fixes bug 1322.</p>
+
+<p>o Testsuite fixes:<br>
+ - In the util/threads test, no longer free the test_mutex before all<br>
+ worker threads have finished. Bugfix on 0.2.1.6-alpha.<br>
+ - The master thread could starve the worker threads quite badly on<br>
+ certain systems, causing them to run only partially in the allowed<br>
+ window. This resulted in test failures. Now the master thread sleeps<br>
+ occasionally for a few microseconds while the two worker-threads<br>
+ compete for the mutex. Bugfix on 0.2.0.1-alpha.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/march-2010-progress-report">March 2010 Progress Report</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">advocacy</a>
+            
+              <a class="post-category post-category-js" href="#">progress report</a>
+            
+              <a class="post-category post-category-js" href="#">proposals</a>
+            
+              <a class="post-category post-category-js" href="#">releases</a>
+            
+              <a class="post-category post-category-js" href="#">scalability</a>
+            
+              <a class="post-category post-category-js" href="#">translations</a>
+             |
+            18 Apr 2010
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p><strong>New Releases</strong><br>
+On March 7th, we released the latest in the -alpha series, Tor 0.2.2.10-alpha. Tor 0.2.2.10-alpha fixes a regression introduced in 0.2.2.9-alpha that could prevent relays from guessing their IP address correctly. It also starts the groundwork for another client-side performance boost, since currently we&#39;re not making efficient use of relays that have both the Guard flag and the Exit flag.</p>
+
+<p>o Major bugfixes:<br>
+ - Fix a regression from our patch for bug 1244 that caused relays<br>
+ to guess their IP address incorrectly if they didn&#39;t set Address<br>
+ in their torrc and/or their address fails to resolve. Bugfix on<br>
+ 0.2.2.9-alpha; fixes bug 1269.</p>
+
+<p>o Major features (performance):<br>
+ - Directory authorities now compute consensus weightings that instruct<br>
+ clients how to weight relays flagged as Guard, Exit, Guard+Exit,<br>
+ and no flag. Clients that use these weightings will distribute<br>
+ network load more evenly across these different relay types. The<br>
+ weightings are in the consensus so we can change them globally in<br>
+ the future. Extra thanks to &quot;outofwords&quot; for finding some nasty<br>
+ security bugs in the first implementation of this feature.</p>
+
+<p>o Minor features (performance):<br>
+ - Always perform router selections using weighted relay bandwidth,<br>
+ even if we don&#39;t need a high capacity circuit at the time. Non-fast<br>
+ circuits now only differ from fast ones in that they can use relays<br>
+ not marked with the Fast flag. This &quot;feature&quot; could turn out to<br>
+ be a horrible bug; we should investigate more before it goes into<br>
+ a stable release.</p>
+
+<p>o Minor features:<br>
+ - Allow disabling building of the manpages. Skipping the manpage<br>
+ speeds up the build considerably.</p>
+
+<p>o Minor bugfixes (on 0.2.2.x):<br>
+ - Fix a memleak in the EXTENDCIRCUIT logic. Spotted by coverity.<br>
+ Bugfix on 0.2.2.9-alpha.<br>
+ - Disallow values larger than INT32_MAX for PerConnBWRate|Burst<br>
+ config option. Bugfix on 0.2.2.7-alpha.<br>
+ - Ship the asciidoc-helper file in the tarball, so that people can<br>
+ build from source if they want to, and touching the .1.txt files<br>
+ doesn&#39;t break the build. Bugfix on 0.2.2.9-alpha.</p>
+
+<p>o Minor bugfixes (on 0.2.1.x or earlier):<br>
+ - Fix a dereference-then-NULL-check sequence when publishing<br>
+ descriptors. Bugfix on 0.2.1.5-alpha. Discovered by ekir; fixes<br>
+ bug 1255.<br>
+ - Fix another dereference-then-NULL-check sequence. Bugfix on<br>
+ 0.2.1.14-rc. Discovered by ekir; fixes bug 1256.<br>
+ - Make sure we treat potentially not NUL-terminated strings correctly.<br>
+ Bugfix on 0.1.1.13-alpha. Discovered by rieo; fixes bug 1257.</p>
+
+<p>o Code simplifications and refactoring:<br>
+ - Fix some urls in the exit notice file and make it XHTML1.1 strict<br>
+ compliant. Based on a patch from Christian Kujau.<br>
+ - Don&#39;t use sed in asciidoc-helper anymore.<br>
+ - Make the build process fail if asciidoc cannot be found and<br>
+ building with asciidoc isn&#39;t disabled.</p>
+
+<p>On March 15, we released the latest in the -stable series, Tor 0.2.1.25-stable.</p>
+
+<p>o Major bugfixes:<br>
+ - Fix a regression from our patch for bug 1244 that caused relays<br>
+ to guess their IP address incorrectly if they didn&#39;t set Address<br>
+ in their torrc and/or their address fails to resolve. Bugfix on<br>
+ 0.2.1.23; fixes bug 1269.<br>
+ - When freeing a session key, zero it out completely. We only zeroed<br>
+ the first ptrsize bytes. Bugfix on 0.0.2pre8. Discovered and<br>
+ patched by ekir. Fixes bug 1254.</p>
+
+<p>o Minor bugfixes:<br>
+ - Fix a dereference-then-NULL-check sequence when publishing<br>
+ descriptors. Bugfix on 0.2.1.5-alpha. Discovered by ekir; fixes<br>
+ bug 1255.<br>
+ - Fix another dereference-then-NULL-check sequence. Bugfix on<br>
+ 0.2.1.14-rc. Discovered by ekir; fixes bug 1256.<br>
+ - Make sure we treat potentially not NUL-terminated strings correctly.<br>
+ Bugfix on 0.1.1.13-alpha. Discovered by rieo; fixes bug 1257.</p>
+
+<p>On March 26 we released the first beta of a Tor Browser Bundle for GNU/Linux operating systems. It is now available for x86 and x86_64 architectures in 12 languages.</p>
+
+<p>The bundle comes with the following software:<br>
+ * Tor 0.2.2.10-alpha<br>
+ * Vidalia 0.2.7 -- cross-platform controller GUI for the Tor software<br>
+ * Polipo 1.0.4.1 -- caching web proxy<br>
+ * Firefox 3.5.8 -- web browser<br>
+ * Torbutton 1.2.4 -- Firefox extension to enable or disable the browser&#39;s use of Tor<br>
+ * NoScript 1.9.9.57 -- Firefox extension to only allow scripts from trusted sites<br>
+ * BetterPrivacy 1.4.7 -- Firefox extension to protect against supercookies</p>
+
+<p>Orbot 0.0.4 is the first public release. Orbot includes:</p>
+
+<p>* Tor 0.2.2.9-alpha<br>
+* A native Android control graphical interface<br>
+* Privoxy compiled for Android</p>
+
+<p>March 11 we released Orbot 0.0.5 for Android phones. It fixes a number of bugs in the graphical control interface and updated Tor to 0.2.2.10-alpha.</p>
+
+<p><strong>Design, develop, and implement enhancements that make Tor a better tool for users in censored countries.</strong></p>
+
+<p>We worked with activists in Iran and China to determine what relays were blocked, if any, by national firewall apparatus. Iran is not blocking Tor relays at all. China is blocking most public relays, and appears to have crawled the bridge address website in order to block those bridges. There were 4121 requests in a 6 hour period from seemingly unique gmail accounts for bridge addresses via email. However, we cannot attribute this to anything other than users requesting bridges. It is possible this was an attempt to enumerate all bridges available via email. Our twitter and qq distribution methods remain under utilized.</p>
+
+<p>Implemented graphs of packages served by our get-tor email autoresponder. You can see them at <a href="http://metrics.torproject.org/gettor-graphs.html" title="http://metrics.torproject.org/gettor-graphs.html">http://metrics.torproject.org/gettor-graphs.html</a></p>
+
+<p><strong>Outreach and Advocacy</strong></p>
+
+<ul>
+<li>On March 1, Roger met with Sina from Access. He answered many questions about Tor, learned more about the situation in Iran now, and helped brainstorm about further collaborations.</li>
+<li>On March 2, Karen was a panelist at the University of Maryland Digital Media Conference. </li>
+<li>On March 12, Jacob spoke at Digital Security and Tactics for (and by) anti-authoritarians. https://www.noisebridge.net/wiki/Digital_Security_and_Tactics_For_(and_By)_Anti_Authoritarians</li>
+<li>On March 20, Andrew, Erinn, and Runa attended LibrePlanet 2010. Erinn was a panelist at a session about &quot;Women in Technology and Free Software&quot;. Andrew spoke about Tor, Free Software, and running a non-profit business with free software. <a href="http://libreplanet.org/2010" title="http://libreplanet.org/2010">http://libreplanet.org/2010</a></li>
+<li>A Tor fan created a very quick advocacy video about using Tor for circumvention at <a href="http://media.torproject.org/video/TorQatarCensor15secs2b.ogv" title="http://media.torproject.org/video/TorQatarCensor15secs2b.ogv">http://media.torproject.org/video/TorQatarCensor15secs2b.ogv</a>.</li>
+<li>Andrew was interviewed by ABC Australia&#39;s Future Tense program about the &quot;DarkWeb&quot;. You can listen to the radio interview at <a href="http://media.torproject.org/video/2010-03-11-ABC-Australia-FutureTense-Interview.mp3" title="http://media.torproject.org/video/2010-03-11-ABC-Australia-FutureTense-Interview.mp3">http://media.torproject.org/video/2010-03-11-ABC-Australia-FutureTense-I...</a> or read the transcript at <a href="http://www.abc.net.au/rn/futuretense/stories/2010/2837736.htm" title="http://www.abc.net.au/rn/futuretense/stories/2010/2837736.htm">http://www.abc.net.au/rn/futuretense/stories/2010/2837736.htm</a>.</li>
+<li>Steven Murdoch was interviewed by PC Pro UK magazine about &quot;The Dark Side of the Web&quot;, <a href="http://www.pcpro.co.uk/features/356254/the-dark-side-of-the-web" title="http://www.pcpro.co.uk/features/356254/the-dark-side-of-the-web">http://www.pcpro.co.uk/features/356254/the-dark-side-of-the-web</a>.</li>
+<li>On March 25, we announced The Tor Store to allow users to support Tor from around the world with t-shirts, mugs, and other merchandise. <a href="https://www.torproject.org/press/2010-03-25-tor-store-press-release.html.en" title="https://www.torproject.org/press/2010-03-25-tor-store-press-release.html.en">https://www.torproject.org/press/2010-03-25-tor-store-press-release.html...</a>.</li>
+<li>Tor and EFF were accepted into the Google Summer of Code for the fourth year in a row. <a href="https://blog.torproject.org/blog/tor-google-summer-code-2010" title="https://blog.torproject.org/blog/tor-google-summer-code-2010">https://blog.torproject.org/blog/tor-google-summer-code-2010</a>.</li>
+<li>Jacob gave a Tor talk to Twitter engineers about circumvention, anonymity, and the positive uses of both technologies.</li>
+<li>Erinn, Jacob, and Mike talked to Google engineers about Tor on Android and better integration with the Chrome browser.</li>
+<li>Christian rewrote the Tor Weather web application, <a href="https://weather.torproject.org/" title="https://weather.torproject.org/">https://weather.torproject.org/</a>, to increase stability, fix a number of bugs, and add some requested features. Tor Weather is a tool for relay operators to get a reminder when their relay appears to be offline.</li>
+</ul>
+
+<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong><br>
+A beta-test of Tor Browser Bundle for GNU/Linux was released for general testing. It is released in both native 32-bit and 64-bit versions. See release notes above.</p>
+
+<p><strong>Bridge relay and bridge authority work.</strong><br>
+Steven started work on a proposal to turn all clients into bridges by default. This proposal describes how Tor clients could determine when they have sufficient bandwidth capacity and are sufficiently reliable to become either bridges or Tor relays. When they meet this criteria, they will automatically promote themselves, based on user preferences. The proposal also defines the new controller messages and options which will control this process.</p>
+
+<p>Note that for the moment, only transitions between client and bridge are being considered. Transitions to public relay will be considered at a future date, but will use the same infrastructure for measuring capacity and reliability.</p>
+
+<p>The full proposal, and subsequent discussion, can be read at <a href="http://archives.seul.org/or/dev/Mar-2010/msg00028.html" title="http://archives.seul.org/or/dev/Mar-2010/msg00028.html">http://archives.seul.org/or/dev/Mar-2010/msg00028.html</a>.</p>
+
+<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong><br>
+Karsten continued to improve the Tor Metrics Portal, <a href="http://metrics.torproject.org/" title="http://metrics.torproject.org/">http://metrics.torproject.org/</a>. More reports were automated. The entire setup and process of how we analyze the data was documented. We could use volunteer help with portal and data visualization technologies and implementation experience.</p>
+
+<p>We added proposal 170, &quot;Configuration options regarding circuit building&quot;. Tor&#39;s treatment of the various configuration *Nodes options was surprising to many users, and quite a few conspiracy theories have crept up. We should update our specification and code to better describe and to communicate what is going during circuit building, and how we&#39;re honoring configuration. So far, we&#39;ve been tracking a bugreport about this behaviour ( <a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1090" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1090">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1090</a>) and Nick replied in a thread on or-talk ( <a href="http://archives.seul.org/or/talk/Feb-2010/msg00117.html" title="http://archives.seul.org/or/talk/Feb-2010/msg00117.html">http://archives.seul.org/or/talk/Feb-2010/msg00117.html</a>). This proposal tries to document our intention for those configuration options.</p>
+
+<p><strong>Translation work, ultimately a browser-based approach.</strong></p>
+
+<ul>
+<li>Language updates to the website in French, Chinese, German, Spanish, Polish, Russian, Estonian, Norwegian, Greek</li>
+<li>Language updates to the get-tor email autoresponder in Vietnamese, Dutch,</li>
+<li>Language updates to torbutton in Arabic, German, Danish, Slovakian, Swedish, Vietnamese, Russian</li>
+<li>Runa fixed a large amount of broken html and translated files. This enabled us to push nearly all projects and languages into the codebases. </li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page95" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 96 of 133</span>
+    
+      <a href="/blog/page97" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/circumvention-and-anonymity">Circumvention and Anonymity</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">censorship circumvention</a>
+            
+              <a class="post-category post-category-js" href="#">distributed trust</a>
+            
+              <a class="post-category post-category-js" href="#">open architecture</a>
+            
+              <a class="post-category post-category-js" href="#">open philosophy</a>
+             |
+            12 Jan 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>We&#39;ve always argued that safe circumvention requires anonymity, even from the circumvention service itself. There are many people wanting to record your Internet traffic and browsing patterns; from governments to commercial advertising networks. There are many ways to defeat the threat of traffic analysis; from simple proxy providers, virtual private networks, and distributed peer to peer solutions. Only some of these offer anonymity along with circumvention. Tor&#39;s open design and anonymity properties provide protections for the user from those watching the traffic and from us as an organization.</p>
+
+<p>Our architecture and design don&#39;t force the user to assume trust in us. Our code is <a href="https://gitweb.torproject.org/tor.git/">accessible</a> and <a href="https://gitweb.torproject.org/tor.git/blob/HEAD:/LICENSE">licensed under an open license</a>. Our <a href="https://gitweb.torproject.org/torspec.git">specifications</a> are clearly detailed and published. Our <a href="https://www.torproject.org/download/download">packages</a> follow a defined build process so the user can create the same binaries we do. Independent researchers can and do test the properties Tor provides [and help us to improve]. Moreover, The Tor software runs on a distributed network, where a single operator cannot capture or be forced to capture all users&#39; traffic information, even under legal or coercive threat.</p>
+
+<p>All of these should allow the user to trust The Tor Project as a <a href="https://www.torproject.org/about/corepeople">not-for-profit company</a> and to trust that Tor isn&#39;t surreptitiously watching the very information you&#39;re trying to protect and isn&#39;t gathering information we could be forced to disclose.</p>
+
+<p>We&#39;re always willing to work with other organizations who understand that anonymity provides stronger circumvention protections than the alternatives.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/down-0-issues-coverity-scan.">Down to 0 issues on Coverity Scan.</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">nickm</a> under
+             |
+            11 Jan 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>As of 7 January, we&#39;re down to 0 issues on Coverity Scan. This is great news!</p>
+
+<p>In case you haven&#39;t heard of them, Coverity makes top-of-the-line static analysis tools (programs that analyse other programs looking for possible bugs). They&#39;re a big serious company, with a serious &quot;enterprise&quot; pricing structure. But, fortunately to us, they have <a href="http://scan.coverity.com/">a program</a> to provide the use of these tools, free of charge, to selected open source projects. They&#39;ve been scanning development snapshots of Tor for bugs since last September.</p>
+
+<p>In September, they found 171 issues in our code. Many of these were just sloppiness in our unit tests&#39; error handing, but a good fraction were real bugs in our main codebase, a couple of which could have resulted in crashes under unusual circumstances that probably would have been hard to debug. By December, we were down to 15 issues. Now we&#39;re at 0, at long last.</p>
+
+<p>Congratulations and thanks to everybody who helped analyse and fix the bugs here, and many thanks to the administrators of Coverity Scan for helping us out.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-0.2.1.10-alpha-released">Tor 0.2.1.10-alpha released</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">alpha release</a>
+            
+              <a class="post-category post-category-js" href="#">bug fixes</a>
+            
+              <a class="post-category post-category-js" href="#">code refactoring</a>
+            
+              <a class="post-category post-category-js" href="#">documentation</a>
+             |
+            10 Jan 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Tor 0.2.1.10-alpha fixes two major bugs in bridge relays (one that would<br>
+make the bridge relay not so useful if it had DirPort set to 0, and one<br>
+that could let an attacker learn a little bit of information about the<br>
+bridge&#39;s users), and a bug that would cause your Tor relay to ignore a<br>
+circuit create request it can&#39;t decrypt (rather than reply with an error).<br>
+It also fixes a wide variety of other bugs.</p>
+
+<p><a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+
+<p>Changes in version 0.2.1.10-alpha - 2009-01-06<br>
+<strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>If the cached networkstatus consensus is more than five days old,<br>
+discard it rather than trying to use it. In theory it could<br>
+be useful because it lists alternate directory mirrors, but in<br>
+practice it just means we spend many minutes trying directory<br>
+mirrors that are long gone from the network. Helps bug 887 a bit;<br>
+bugfix on 0.2.0.x.</li>
+<li>Bridge relays that had DirPort set to 0 would stop fetching<br>
+descriptors shortly after startup, and then briefly resume<br>
+after a new bandwidth test and/or after publishing a new bridge<br>
+descriptor. Bridge users that try to bootstrap from them would<br>
+get a recent networkstatus but would get descriptors from up to<br>
+18 hours earlier, meaning most of the descriptors were obsolete<br>
+already. Reported by Tas; bugfix on 0.2.0.13-alpha.</li>
+<li>Prevent bridge relays from serving their &#39;extrainfo&#39; document<br>
+to anybody who asks, now that extrainfo docs include potentially<br>
+sensitive aggregated client geoip summaries. Bugfix on<br>
+0.2.0.13-alpha.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>New controller event &quot;clients_seen&quot; to report a geoip-based summary<br>
+of which countries we&#39;ve seen clients from recently. Now controllers<br>
+like Vidalia can show bridge operators that they&#39;re actually making<br>
+a difference.</li>
+<li>Build correctly against versions of OpenSSL 0.9.8 or later built<br>
+without support for deprecated functions.<br>
+
+<ul>
+<li>Update to the &quot;December 19 2008&quot; ip-to-country file.</li>
+</ul></li>
+</ul>
+
+<p><strong>Minor bugfixes (on 0.2.0.x):</strong></p>
+
+<ul>
+<li>Authorities now vote for the Stable flag for any router whose<br>
+weighted MTBF is at least 5 days, regardless of the mean MTBF.</li>
+<li>Do not remove routers as too old if we do not have any consensus<br>
+document. Bugfix on 0.2.0.7-alpha.</li>
+<li>Do not accept incomplete ipv4 addresses (like 192.168.0) as valid.<br>
+Spec conformance issue. Bugfix on Tor 0.0.2pre27.</li>
+<li>When an exit relay resolves a stream address to a local IP address,<br>
+do not just keep retrying that same exit relay over and<br>
+over. Instead, just close the stream. Addresses bug 872. Bugfix<br>
+on 0.2.0.32. Patch from rovv.</li>
+<li>If a hidden service sends us an END cell, do not consider<br>
+retrying the connection; just close it. Patch from rovv.</li>
+<li>When we made bridge authorities stop serving bridge descriptors over<br>
+unencrypted links, we also broke DirPort reachability testing for<br>
+bridges. So bridges with a non-zero DirPort were printing spurious<br>
+warns to their logs. Bugfix on 0.2.0.16-alpha. Fixes bug 709.</li>
+<li>When a relay gets a create cell it can&#39;t decrypt (e.g. because it&#39;s<br>
+using the wrong onion key), we were dropping it and letting the<br>
+client time out. Now actually answer with a destroy cell. Fixes<br>
+bug 904. Bugfix on 0.0.2pre8.</li>
+<li>Squeeze 2-5% out of client performance (according to oprofile) by<br>
+improving the implementation of some policy-manipulation functions.</li>
+</ul>
+
+<p><strong>Minor bugfixes (on 0.2.1.x):</strong></p>
+
+<ul>
+<li>Make get_interface_address() function work properly again; stop<br>
+guessing the wrong parts of our address as our address.</li>
+<li>Do not cannibalize a circuit if we&#39;re out of RELAY_EARLY cells to<br>
+send on that circuit. Otherwise we might violate the proposal-110<br>
+limit. Bugfix on 0.2.1.3-alpha. Partial fix for Bug 878. Diagnosis<br>
+thanks to Karsten.</li>
+<li>When we&#39;re sending non-EXTEND cells to the first hop in a circuit,<br>
+for example to use an encrypted directory connection, we don&#39;t need<br>
+to use RELAY_EARLY cells: the first hop knows what kind of cell<br>
+it is, and nobody else can even see the cell type. Conserving<br>
+RELAY_EARLY cells makes it easier to cannibalize circuits like<br>
+this later.</li>
+<li>Stop logging nameserver addresses in reverse order.</li>
+<li>If we are retrying a directory download slowly over and over, do<br>
+not automatically give up after the 254th failure. Bugfix on<br>
+0.2.1.9-alpha.</li>
+<li>Resume reporting accurate &quot;stream end&quot; reasons to the local control<br>
+port. They were lost in the changes for Proposal 148. Bugfix on<br>
+0.2.1.9-alpha.</li>
+</ul>
+
+<p><strong>Deprecated and removed features:</strong></p>
+
+<ul>
+<li>The old &quot;tor --version --version&quot; command, which would print out<br>
+the subversion &quot;Id&quot; of most of the source files, is now removed. It<br>
+turned out to be less useful than we&#39;d expected, and harder to<br>
+maintain.</li>
+</ul>
+
+<p><strong>Code simplifications and refactoring:</strong></p>
+
+<ul>
+<li>Change our header file guard macros to be less likely to conflict<br>
+with system headers. Adam Langley noticed that we were conflicting<br>
+with log.h on Android.</li>
+<li>Tool-assisted documentation cleanup. Nearly every function or<br>
+static variable in Tor should have its own documentation now.</li>
+</ul>
+
+<p>The original announcement can be found at <a href="http://archives.seul.org/or/talk/Jan-2009/msg00078.html" title="http://archives.seul.org/or/talk/Jan-2009/msg00078.html">http://archives.seul.org/or/talk/Jan-2009/msg00078.html</a></p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-0.2.1.9-alpha-released">Tor 0.2.1.9-alpha released</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">alpha release</a>
+            
+              <a class="post-category post-category-js" href="#">bug fixes</a>
+            
+              <a class="post-category post-category-js" href="#">deprecated features</a>
+            
+              <a class="post-category post-category-js" href="#">security fixes</a>
+             |
+            05 Jan 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Tor 0.2.1.9-alpha fixes many more bugs, some of them security-related.</p>
+
+<p><a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+
+<p>Changes in version 0.2.1.9-alpha - 2008-12-25<br>
+<strong>New directory authorities:</strong></p>
+
+<ul>
+<li>gabelmoo (the authority run by Karsten Loesing) now has a new<br>
+IP address.</li>
+</ul>
+
+<p><strong>Security fixes:</strong></p>
+
+<ul>
+<li>Never use a connection with a mismatched address to extend a<br>
+circuit, unless that connection is canonical. A canonical<br>
+connection is one whose address is authenticated by the router&#39;s<br>
+identity key, either in a NETINFO cell or in a router descriptor.</li>
+<li>Avoid a possible memory corruption bug when receiving hidden service<br>
+descriptors. Bugfix on 0.2.1.6-alpha.</li>
+</ul>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Fix a logic error that would automatically reject all but the first<br>
+configured DNS server. Bugfix on 0.2.1.5-alpha. Possible fix for<br>
+part of bug 813/868. Bug spotted by coderman.</li>
+<li>When a stream at an exit relay is in state &quot;resolving&quot; or<br>
+&quot;connecting&quot; and it receives an &quot;end&quot; relay cell, the exit relay<br>
+would silently ignore the end cell and not close the stream. If<br>
+the client never closes the circuit, then the exit relay never<br>
+closes the TCP connection. Bug introduced in 0.1.2.1-alpha;<br>
+reported by &quot;wood&quot;.</li>
+<li>When we can&#39;t initialize DNS because the network is down, do not<br>
+automatically stop Tor from starting. Instead, retry failed<br>
+dns_inits() every 10 minutes, and change the exit policy to reject<br>
+*:* until one succeeds. Fixes bug 691.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Give a better error message when an overzealous init script says<br>
+&quot;sudo -u username tor --user username&quot;. Makes Bug 882 easier for<br>
+users to diagnose.</li>
+<li>When a directory authority gives us a new guess for our IP address,<br>
+log which authority we used. Hopefully this will help us debug<br>
+the recent complaints about bad IP address guesses.</li>
+<li>Detect svn revision properly when we&#39;re using git-svn.</li>
+<li>Try not to open more than one descriptor-downloading connection<br>
+to an authority at once. This should reduce load on directory<br>
+authorities. Fixes bug 366.</li>
+<li>Add cross-certification to newly generated certificates, so that<br>
+a signing key is enough information to look up a certificate.<br>
+Partial implementation of proposal 157.</li>
+<li>Start serving certificates by (identity digest, signing key digest)<br>
+pairs. Partial implementation of proposal 157.</li>
+<li>Clients now never report any stream end reason except &#39;MISC&#39;.<br>
+Implements proposal 148.</li>
+<li>On platforms with a maximum syslog string length, truncate syslog<br>
+messages to that length ourselves, rather than relying on the<br>
+system to do it for us.</li>
+<li>Optimize out calls to time(NULL) that occur for every IO operation,<br>
+or for every cell. On systems where time() is a slow syscall,<br>
+this fix will be slightly helpful.</li>
+<li>Exit servers can now answer resolve requests for ip6.arpa addresses.</li>
+<li>When we download a descriptor that we then immediately (as<br>
+a directory authority) reject, do not retry downloading it right<br>
+away. Should save some bandwidth on authorities. Fix for bug<br>
+
+<ol>
+<li>Patch by Sebastian Hahn.</li>
+</ol></li>
+<li>When a download gets us zero good descriptors, do not notify<br>
+Tor that new directory information has arrived.</li>
+<li>Avoid some nasty corner cases in the logic for marking connections<br>
+as too old or obsolete or noncanonical for circuits.</li>
+</ul>
+
+<p><strong>Minor features (controller):</strong></p>
+
+<ul>
+<li>New CONSENSUS_ARRIVED event to note when a new consensus has<br>
+been fetched and validated.</li>
+<li>When we realize that another process has modified our cached<br>
+descriptors file, print out a more useful error message rather<br>
+than triggering an assertion. Fixes bug 885. Patch from Karsten.</li>
+<li>Add an internal-use-only __ReloadTorrcOnSIGHUP option for<br>
+controllers to prevent SIGHUP from reloading the<br>
+configuration. Fixes bug 856.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Resume using the correct &quot;REASON=&quot; stream when telling the<br>
+controller why we closed a stream. Bugfix in 0.2.1.1-alpha.</li>
+<li>When a canonical connection appears later in our internal list<br>
+than a noncanonical one for a given OR ID, always use the<br>
+canonical one. Bugfix on 0.2.0.12-alpha. Fixes bug 805.<br>
+Spotted by rovv.</li>
+<li>Clip the MaxCircuitDirtiness config option to a minimum of 10<br>
+seconds. Warn the user if lower values are given in the<br>
+configuration. Bugfix on 0.1.0.1-rc. Patch by Sebastian.</li>
+<li>Clip the CircuitBuildTimeout to a minimum of 30 seconds. Warn the<br>
+user if lower values are given in the configuration. Bugfix on<br>
+0.1.1.17-rc. Patch by Sebastian.</li>
+<li>Fix a race condition when freeing keys shared between main thread<br>
+and CPU workers that could result in a memory leak. Bugfix on<br>
+0.1.0.1-rc. Fixes bug 889.</li>
+</ul>
+
+<p><strong>Minor bugfixes (hidden services):</strong></p>
+
+<ul>
+<li>Do not throw away existing introduction points on SIGHUP (bugfix on<br>
+0.0.6pre1); also, do not stall hidden services because we&#39;re<br>
+throwing away introduction points; bugfix on 0.2.1.7-alpha. Spotted<br>
+by John Brooks. Patch by Karsten. Fixes bug 874.</li>
+<li>Fix a memory leak when we decline to add a v2 rendezvous<br>
+descriptor to the cache because we already had a v0 descriptor<br>
+with the same ID. Bugfix on 0.2.0.18-alpha.</li>
+</ul>
+
+<p><strong>Deprecated and removed features:</strong></p>
+
+<ul>
+<li>RedirectExits has been removed. It was deprecated since<br>
+0.2.0.3-alpha.</li>
+<li>Finally remove deprecated &quot;EXTENDED_FORMAT&quot; controller feature. It<br>
+has been called EXTENDED_EVENTS since 0.1.2.4-alpha.</li>
+<li>Cell pools are now always enabled; --disable-cell-pools is ignored.</li>
+</ul>
+
+<p><strong>Code simplifications and refactoring:</strong></p>
+
+<ul>
+<li>Rename the confusing or_is_obsolete field to the more appropriate<br>
+is_bad_for_new_circs, and move it to or_connection_t where it<br>
+belongs.</li>
+<li>Move edge-only flags from connection_t to edge_connection_t: not<br>
+only is this better coding, but on machines of plausible alignment,<br>
+it should save 4-8 bytes per connection_t. &quot;Every little bit helps.&quot;</li>
+<li>Rename ServerDNSAllowBrokenResolvConf to ServerDNSAllowBrokenConfig<br>
+for consistency; keep old option working for backward compatibility.</li>
+<li>Simplify the code for finding connections to use for a circuit.</li>
+</ul>
+
+<p>Original signed announcement at <a href="http://archives.seul.org/or/talk/Jan-2009/msg00029.html" title="http://archives.seul.org/or/talk/Jan-2009/msg00029.html">http://archives.seul.org/or/talk/Jan-2009/msg00029.html</a></p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/md5-certificate-collision-attack%2C-and-what-it-means-tor">The MD5 certificate collision attack, and what it means for Tor</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">nickm</a> under
+            
+              <a class="post-category post-category-js" href="#">attack</a>
+            
+              <a class="post-category post-category-js" href="#">md5</a>
+            
+              <a class="post-category post-category-js" href="#">security</a>
+            
+              <a class="post-category post-category-js" href="#">ssl</a>
+            
+              <a class="post-category post-category-js" href="#">tls</a>
+            
+              <a class="post-category post-category-js" href="#">x509</a>
+             |
+            30 Dec 2008
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Today, a team of security researchers and cryptographers gave a talk at the <a href="http://events.ccc.de/congress/2008/">25th Chaos Communication Congress (25C3)</a>, about a <a href="http://www.win.tue.nl/hashclash/rogue-ca/">nifty attack against X.509 certificates generated using the MD5 digest algorithm</a>. We figured that people will ask us about how this attack affects Tor, so I&#39;m writing an answer in advance.</p>
+
+<p><strong>The short version:</strong> This attack doesn&#39;t affect Tor.</p>
+
+<p><strong>The medium version:</strong> This attack doesn&#39;t affect Tor, since Tor doesn&#39;t ever use MD5 certificates, and since Tor doesn&#39;t care what certificate authorities say. On the other hand, this attack probably <em>does</em> affect your browser. Check your browser vendor for updates over the next few days and weeks, and make sure you install them.</p>
+
+<p><strong>The long version:</strong> To understand the attack, first you&#39;ve got to understand certificates. When your browser makes a connection to a &quot;secure&quot; website, it uses a protocol called <a href="http://en.wikipedia.org/wiki/Transport_layer_security">SSL (or sometimes TLS)</a> to see who it&#39;s talking to and encrypt the connection with them. In SSL, parties are identified using <a href="http://en.wikipedia.org/wiki/X.509">X.509 certificates</a>, which are issued to them by certificate authorities, or &quot;CA&quot;s. Your browser comes with <a href="http://www.mozilla.org/projects/security/certs/included/">a big list of certificate authorities</a>. When your browser sees a certificate that was signed by a certificate authority it recognizes, it knows it&#39;s talking to the right website.</p>
+
+<p>Certificates, like nearly anything of interest, are too big to sign as-is, so the CA uses a <a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function">cryptographic &quot;digest&quot; algorithm</a> to derive a short &quot;hash&quot; of the certificate that it can sign. The digest algorithm is supposed to be &quot;collision resistant&quot;, so that nobody can find two different certificates that produce the same hash. Such a collision would be bad, since somebody who could produce two such certificates could get a CA to sign one of them, and then use that signature on the other one. Since the hash values would be the same, nobody would be able to tell that the CA had not really signed the second certificate.</p>
+
+<p>With me so far? Good. Let&#39;s talk about MD5. There is an old broken hash algorithm called <a href="http://en.wikipedia.org/wiki/MD5">MD5</a>. How old and broken? Cryptographers have considered it weak since 1996 or so, and there have been known real collisions in it since 2004. In 2007, researchers published a method for generating MD5 collisions that could be used against X.509 certificates. In other words, the writing has been on the wall since at least 1996 (arguably 1993), and the writing has been getting bigger year after year. You&#39;d have to be pretty oblivious to still use MD5 for signing certificates in 2008!</p>
+
+<p>Unfortunately, some brave CAs still use MD5 for signing certificates in 2008. And so we come to the attack.</p>
+
+<p>Using a method derived from the 2007 paper, and a cluster of 200 Playstation 3s, the researchers generated two certificates that would produce an MD5 collision: one innocuous one, and one CA certificate. They got a CA to sign the first one, and then transferred this signature to the second. Since the second certificate was for a CA, they now had a certificate that let them generate their <em>own</em> certificates, and make any phony claims they wanted about the identity of any website. If your browser saw one of these phony certificates, it would believe it, since it was ultimately signed by a CA it recognized.</p>
+
+<p>For more information on the attack, with a lot of complicated tricky bits I didn&#39;t mention, see <a href="http://www.win.tue.nl/hashclash/rogue-ca/">the authors&#39; writeup</a>.</p>
+
+<p>The good news is that <strong>Tor itself is not affected</strong> . Tor doesn&#39;t use MD5 for anything[*]. Tor doesn&#39;t use commercial CAs. Tor doesn&#39;t sign certificates for others, and everything in Tor that is signed is signed using SHA-1, not MD5.[**]</p>
+
+<p>The bad news is that your browser probably does have some of the affected CAs listed. As how-to guides for securing your browser become available, we&#39;ll post links to them here.</p>
+
+<p>Finally: Happy new year! And best wishes to any programmers who get stuck working all night on New Year&#39;s Eve to remove MD5 from their system.</p>
+
+<p>Footnotes:</p>
+
+<p>[*] The fine print: Tor uses the TLS protocol, which uses MD5 in a couple of places. But TLS uses in tandem with SHA-1, so an attacker will need to break SHA-1 and MD5 at the same time to harm TLS&#39;s security. Read RFC2246 for the ugly ugly details.</p>
+
+<p>[**] Yes, I know that SHA-1 is showing its age too. Unfortunately, the SHA-2 algorithms aren&#39;t <em>that</em> much better, and nothing else has seen the same amount of analysis. Once the <a href="http://en.wikipedia.org/wiki/NIST_hash_function_competition">NIST hash function competition</a> has picked a SHA-3 candidate, we&#39;ll switch to that. In the mean time, I&#39;ll be launching some design work on or-dev to make it easier for Tor to switch to a better hash algorithm, once we&#39;ve got one, or in case we need to jump off SHA-1 in a hurry.</p>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page122" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 123 of 133</span>
+    
+      <a href="/blog/page124" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

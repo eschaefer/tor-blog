@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/performance-measurements-and-blockingresistance-analysis-tor-network">Performance measurements and blocking-resistance analysis in the Tor network</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">karsten</a> under
+            
+              <a class="post-category post-category-js" href="#">censorship circumvention</a>
+            
+              <a class="post-category post-category-js" href="#">performance</a>
+            
+              <a class="post-category post-category-js" href="#">research</a>
+             |
+            21 May 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>The Tor network has grown to more than one thousand relays and millions of casual users over the past few years. We are proud of our network&#39;s popularity, but with growth has come increasing <a href="https://blog.torproject.org/blog/why-tor-is-slow">performance problems</a> and attempts by some countries to block access to the Tor network. In order to address these problems, we need to learn more about the Tor network. In this post, I describe the current state of network measurements in Tor and some proposed additions to help us understand the network better.</p>
+
+<p>Right now, relays, <a href="https://www.torproject.org/bridges">bridges</a>, and directories gather the following data for statistical purposes:</p>
+
+<ul>
+<li>Relays and bridges count the number of bytes that they have pushed in 15-minute intervals over the past 24 hours. They include these data in extra-info documents that they send to the directory authorities whenever they publish their server descriptor. See Figure 3 in the <a href="http://git.torproject.org/checkout/metrics/master/report/dirarch/dirarch-2009-03-31.pdf">analysis of directory archives</a> that shows that roughly half of the available bandwidth capacity is utilized.</li>
+<li>Bridges further include a rough number of clients per country that they have seen in the past 48 hours in their extra-info documents. We <a href="http://git.torproject.org/checkout/tor/master/doc/spec/proposals/126-geoip-reporting.txt">added this feature</a> in <a href="http://git.torproject.org/checkout/tor/master/ChangeLog">version 0.2.0.13-alpha</a> to help us learn when a given country is trying to block connections to bridges. It also lets us understand bridge adoption better: see for an example an analysis of <a href="http://git.torproject.org/checkout/metrics/master/report/bridges/bridges-2009-04-04.pdf">bridge users by countries</a>.</li>
+<li>Directories since version <a href="http://git.torproject.org/checkout/tor/master/ChangeLog">0.2.1.1-alpha</a> can be configured to count the number of clients they see per country in the past 24 hours and to write them to a local file. We have used these data in the past to <a href="http://git.torproject.org/checkout/tor/master/doc/spec/proposals/ideas/xxx-geoip-survey-plan.txt">estimate</a> total <a href="http://git.torproject.org/checkout/metrics/master/report/dirreq/directory-requests-2009-04-23.2.pdf">numbers</a> and <a href="http://git.torproject.org/checkout/metrics/master/report/dirreq/dirreq-report-2009-04-30.pdf">origins of clients</a>.</li>
+</ul>
+
+<p>It turns out that we need to learn more about the Tor network to make it more useful for everyone. In particular, we are trying to identify performance bottlenecks and want to be ready to notice if any countries start blocking access to the Tor network. Therefore, I am planning to extend network measurements by the following kinds of data:</p>
+
+<ul>
+<li>Entry guards should count the number of clients per country seen in the past 24 hours and include these numbers in their extra-info documents. These data are similar to what bridges already gather about their clients as well as directories if configured accordingly. (Remember, because Tor paths are more than one hop, the entry guard knows you are using Tor but does not know anything about your destinations.) We need country counts from entry guards to learn how many clients are connected to a single entry guard and if there are or start to be any restrictions for clients connecting from specific countries.</li>
+<li>Relays should determine statistics about the number of bytes and cells waiting in their local queues and report them to the directory authorities in their extra-info documents. We need to <a href="http://archives.seul.org/or/dev/Apr-2009/msg00007.html">learn more</a> about buffer sizes of relays at various loads to identify current and future performance problems and fix them.</li>
+<li>Exit nodes should include the number of bytes and streams they pushed over the past 24 hours broken down by exiting port in their extra-info documents. These data are important for us to identify load-balancing problems with respect to <a href="https://wiki.torproject.org/noreply/TheOnionRouter/TorFAQ#RunARelayBut">exit policies</a>.</li>
+</ul>
+
+<p>These approaches have been designed so that none of the network data can be used to deanonymize our users. All network data are aggregated before being uploaded to the directory authorities: client addresses are resolved to countries, added up over at least 24 hours, and rounded up to the next multiple of a fixed number (currently 8). All network data should be made available via the directories just as the current statistical data can be obtained from downloading extra-info documents. The details of the network measurements as outlined here will be specified in <a href="http://git.torproject.org/checkout/tor/master/doc/spec/proposals/001-process.txt">proposals</a> and discussed on the <a href="http://archives.seul.org/or/dev/">developer mailing list</a>. You can check out our results on the <a href="https://www.torproject.org/projects/metrics">metrics project page</a> as we make progress.</p>
+
+<p>We are excited to finally start tackling the performance problems and to prepare ourselves to notice when countries start blocking access to the Tor network. We would love to have help from the rest of the research community in discussing safe ways to measure the described network data and to analyze them later on.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/april-2009-progress-report">April 2009 Progress Report</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">bugfixes</a>
+            
+              <a class="post-category post-category-js" href="#">progress report</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser bundle</a>
+             |
+            12 May 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p><strong>New releases</strong><br>
+On April 12, we released 0.2.1.14-rc. Read the details <a href="http://blog.torproject.org/blog/tor-02114rc-released">in the announcement</a>.</p>
+
+<p><strong>Outreach</strong><br>
+Roger attended an ITSG conference in Chicago.</p>
+
+<p>Roger, Nick, Jacob, and Mike attended the CodeCon conference in San Francisco, <a href="http://www.codecon.org/2009/" title="http://www.codecon.org/2009/">http://www.codecon.org/2009/</a>.</p>
+
+<p>Andrew met with the Center for Democracy and Human Rights in Saudi Arabia to discuss using Tor for their mission, <a href="http://cdhr.info" title="http://cdhr.info">http://cdhr.info</a>.</p>
+
+<p>Roger and Andrew met with the Department of Justice CyberCrime Division to give an overview of how Tor works and how we could better work with law enforcement.</p>
+
+<p>Wendy, Roger, and Andrew had a dinner with Internews Central Asia media development staff.</p>
+
+<p>Andrew attended the CIMI/NED panel on World Press Freedom, <a href="http://cima.ned.org/860/world-press-freedom-day-2009.html" title="http://cima.ned.org/860/world-press-freedom-day-2009.html">http://cima.ned.org/860/world-press-freedom-day-2009.html</a>.</p>
+
+<p>Andrew attended Boston Barcamp4 and spoke about Free Network Services and Online Privacy, <a href="http://www.barcampboston.org/" title="http://www.barcampboston.org/">http://www.barcampboston.org/</a>.</p>
+
+<p>Roger and Andrew met with Human Rights in China to give an overview of Tor and possible applications for their mission.</p>
+
+<p><strong>Scalability</strong><br>
+From the 0.2.1.14-rc changelog:<br>
+Clients replace entry guards that were chosen more than a few months ago. This change should significantly improve client performance, especially once more people upgrade, since relays that have been a guard for a long time are currently overloaded.</p>
+
+<p>Continued work on TorFlow, a tool for scanning the public Tor network and detecting misconfigured, overloaded, and evil nodes.</p>
+
+<p><strong>Translations</strong><br>
+Count and languages updated:<br>
+20 Japanese website<br>
+16 Portugese website<br>
+3 Polish website<br>
+3 Chinese website<br>
+7 French website<br>
+14 Italian website<br>
+31 Norwegian website<br>
+1 Danish website<br>
+1 Vietnamese torbutton<br>
+1 Turkish torbutton<br>
+1 Greek torbutton<br>
+1 Arabic torbutton<br>
+1 Ukranian torcheck<br>
+1 Netherland torcheck<br>
+1 Thai torcheck<br>
+1 Burmese torcheck<br>
+1 German website<br>
+2 Russian website<br>
+1 Hindi torcheck<br>
+1 Greek torcheck</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-browser-bundle-1112-released">Tor Browser Bundle 1.1.12 released</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">tor browser bundle</a>
+            
+              <a class="post-category post-category-js" href="#">tor IM browser bundle</a>
+             |
+            14 Apr 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Updated Tor Browser and Tor IM Browser bundles are released. The updated bundles can be found at <a href="https://www.torproject.org/torbrowser/" title="https://www.torproject.org/torbrowser/">https://www.torproject.org/torbrowser/</a></p>
+
+<p>The changes from 1.1.11 are:</p>
+
+<ul>
+<li>Update OpenSSL to 0.9.8k</li>
+<li>Update Tor to 0.2.1.14-rc</li>
+</ul>
+
+<p>Also fixes a bug where Chinese (zh_CN) translations weren&#39;t being used in Vidalia, see <a href="http://archives.seul.org/or/cvs/Apr-2009/msg00001.html" title="http://archives.seul.org/or/cvs/Apr-2009/msg00001.html">http://archives.seul.org/or/cvs/Apr-2009/msg00001.html</a> for details.</p>
+
+<p>Tor Browser and Tor IM Browser Bundles are also known as the &quot;Zero Install Client&quot; for Windows.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-02114rc-released">Tor 0.2.1.14-rc released</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">bug fixes</a>
+            
+              <a class="post-category post-category-js" href="#">improvements</a>
+            
+              <a class="post-category post-category-js" href="#">release candidate</a>
+             |
+            14 Apr 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Changes in version 0.2.1.14-rc - 2009-04-12<br>
+<strong>Major features:</strong></p>
+
+<ul>
+<li>Clients replace entry guards that were chosen more than a few months ago. This change should significantly improve client performance, especially once more people upgrade, since relays that have been a guard for a long time are currently overloaded.</li>
+</ul>
+
+<p><strong>Major bugfixes (on 0.2.0):</strong></p>
+
+<ul>
+<li>Finally fix the bug where dynamic-IP relays disappear when their IP address changes: directory mirrors were mistakenly telling them their old address if they asked via begin_dir, so they never got an accurate answer about their new address, so they just vanished after a day. For belt-and-suspenders, relays that don&#39;t set Address in their config now avoid using begin_dir for all direct connections. Should fix bugs 827, 883, and 900.</li>
+<li>Relays were falling out of the networkstatus consensus for part of a day if they changed their local config but the authorities discarded their new descriptor as &quot;not sufficiently different&quot;. Now directory authorities accept a descriptor as changed if bandwidthrate or bandwidthburst changed. Partial fix for bug 962; patch by Sebastian.</li>
+<li>Avoid crashing in the presence of certain malformed descriptors. Found by lark, and by automated fuzzing.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>When generating circuit events with verbose nicknames for controllers, try harder to look up nicknames for routers on a circuit. (Previously, we would look in the router descriptors we had for nicknames, but not in the consensus.) Partial fix for bug 941.</li>
+<li>If the bridge config line doesn&#39;t specify a port, assume 443. This makes bridge lines a bit smaller and easier for users to understand.</li>
+<li>Raise the minimum bandwidth to be a relay from 20000 bytes to 20480 bytes (aka 20KB/s), to match our documentation. Also update directory authorities so they always assign the Fast flag to relays with 20KB/s of capacity. Now people running relays won&#39;t suddenly find themselves not seeing any use, if the network gets faster on average.</li>
+<li>Update to the &quot;April 3 2009&quot; ip-to-country file.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Avoid trying to print raw memory to the logs when we decide to give up on downloading a given relay descriptor. Bugfix on 0.2.1.9-alpha.</li>
+<li>In tor-resolve, when the Tor client to use is specified by :, actually use the specified port rather than defaulting to 9050. Bugfix on 0.2.1.6-alpha.</li>
+<li>Make directory usage recording work again. Bugfix on 0.2.1.6-alpha.</li>
+<li>When starting with a cache over a few days old, do not leak memory for the obsolete router descriptors in it. Bugfix on 0.2.0.33.</li>
+<li>Avoid double-free on list of successfully uploaded hidden service discriptors. Fix for bug 948. Bugfix on 0.2.1.6-alpha.</li>
+<li>Change memarea_strndup() implementation to work even when duplicating a string at the end of a page. This bug was harmless for now, but could have meant crashes later. Fix by lark. Bugfix on 0.2.1.1-alpha.</li>
+<li>Limit uploaded directory documents to be 16M rather than 500K. The directory authorities were refusing v3 consensus votes from other authorities, since the votes are now 504K. Fixes bug 959; bugfix on 0.0.2pre17 (where we raised it from 50K to 500K ;).</li>
+<li>Directory authorities should never send a 503 &quot;busy&quot; response to requests for votes or keys. Bugfix on 0.2.0.8-alpha; exposed by bug 959.</li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/march-2009-progress-report">March 2009 Progress Report</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">alpha release</a>
+            
+              <a class="post-category post-category-js" href="#">bug fixes</a>
+            
+              <a class="post-category post-category-js" href="#">progress report</a>
+             |
+            13 Apr 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p><strong>New releases, new hires, new funding</strong></p>
+
+<p>On March 9, we released Tor 0.2.1.13-alpha. It includes the following fixes and enhancements:</p>
+
+<p>o Major bugfixes:<br>
+ - Correctly update the list of which countries we exclude as exits, when the GeoIP file is loaded or reloaded. Diagnosed by lark. Bugfix on 0.2.1.6-alpha.</p>
+
+<p>o Minor bugfixes (on 0.2.0.x and earlier):<br>
+ - Automatically detect MacOSX versions earlier than 10.4.0, and<br>
+ disable kqueue from inside Tor when running with these versions.<br>
+ We previously did this from the startup script, but that was no<br>
+ help to people who didn&#39;t use the startup script. Resolves bug 863.<br>
+ - When we had picked an exit node for a connection, but marked it as<br>
+ &quot;optional&quot;, and it turned out we had no onion key for the exit,<br>
+ stop wanting that exit and try again. This situation may not<br>
+ be possible now, but will probably become feasible with proposal<br>
+ 158. Spotted by rovv. Fixes another case of bug 752.<br>
+ - Clients no longer cache certificates for authorities they do not<br>
+ recognize. Bugfix on 0.2.0.9-alpha.<br>
+ - When we can&#39;t transmit a DNS request due to a network error, retry<br>
+ it after a while, and eventually transmit a failing response to<br>
+ the RESOLVED cell. Bugfix on 0.1.2.5-alpha.<br>
+ - If the controller claimed responsibility for a stream, but that<br>
+ stream never finished making its connection, it would live<br>
+ forever in circuit_wait state. Now we close it after SocksTimeout<br>
+ seconds. Bugfix on 0.1.2.7-alpha; reported by Mike Perry.<br>
+ - Drop begin cells to a hidden service if they come from the middle<br>
+ of a circuit. Patch from lark.<br>
+ - When we erroneously receive two EXTEND cells for the same circuit<br>
+ ID on the same connection, drop the second. Patch from lark.<br>
+ - Fix a crash that occurs on exit nodes when a nameserver request<br>
+ timed out. Bugfix on 0.1.2.1-alpha; our CLEAR debugging code had<br>
+ been suppressing the bug since 0.1.2.10-alpha. Partial fix for<br>
+ bug 929.<br>
+ - Do not assume that a stack-allocated character array will be<br>
+ 64-bit aligned on platforms that demand that uint64_t access is<br>
+ aligned. Possible fix for bug 604.<br>
+ - Parse dates and IPv4 addresses in a locale- and libc-independent<br>
+ manner, to avoid platform-dependent behavior on malformed input.<br>
+ - Build correctly when configured to build outside the main source<br>
+ path. Patch from Michael Gold.<br>
+ - We were already rejecting relay begin cells with destination port<br>
+ of 0. Now also reject extend cells with destination port or address<br>
+ of 0. Suggested by lark.</p>
+
+<p>o Minor bugfixes (on 0.2.1.x):<br>
+ - Don&#39;t re-extend introduction circuits if we ran out of RELAY_EARLY<br>
+ cells. Bugfix on 0.2.1.3-alpha. Fixes more of bug 878.<br>
+ - If we&#39;re an exit node, scrub the IP address to which we are exiting<br>
+ in the logs. Bugfix on 0.2.1.8-alpha.</p>
+
+<p>o Minor features:<br>
+ - On Linux, use the prctl call to re-enable core dumps when the user<br>
+ is option is set.<br>
+ - New controller event NEWCONSENSUS that lists the networkstatus<br>
+ lines for every recommended relay. Now controllers like Torflow<br>
+ can keep up-to-date on which relays they should be using.<br>
+ - Update to the &quot;February 26 2009&quot; ip-to-country file.<br>
+On March 10, we released Tor Browser Bundle 1.1.10. It includes:<br>
+Update Tor to 0.2.1.13-alpha<br>
+Update Firefox to 3.0.7<br>
+Update Pidgin to 2.5.5</p>
+
+<p>On March 31, we released Tor Browser Bundle 1.1.11. It includes:<br>
+Update Firefox to 3.0.8<br>
+Add Italian language bundles<br>
+Update Torbutton to 1.2.1<br>
+Update Vidalia to 0.1.12</p>
+
+<p>On March 21, we released Torbutton 1.2.1, it includes:<br>
+bugfix: bug 773: Fixed Noscript conflict issue.<br>
+bugfix: bug 866: Fixed conflict with ZoTero<br>
+bugfix: bug 908: Make UserAgentSwitcher&#39;s &#39;default&#39; button restore Torbutton&#39;s spoofed user agent if Tor is enabled.<br>
+bugfix: bug 909: Get Torbutton to &quot;properly&quot; react to users changing their Firefox cookie lifetime settings as opposed to using the Torbutton interface.<br>
+bugfix: bug 834: Fix session saving and startup issues<br>
+bugfix: bug 875: Removed docShell == null popup during toggle for some users<br>
+bugfix: bug 910: fixed a locale spoofing issue in navigator.appVersion<br>
+bugfix: bug 747: Attempt to fix &#39;fullscreen&#39; resizing issues.<br>
+bugfix: Stop-gap timezone spoofing fix for Linux and Mac for FF3. Requires a one-line patch to Firefox for Windows to work.<br>
+bugfix: Clear SSL Session IDs on toggle. (See FF Bug 448747)<br>
+misc: bug 931: Added a socks v4 vs v5 version choice to custom prefs.<br>
+misc: bug 836: redesign startup preference window to make it more understandable<br>
+misc: Torbutton now presents itself as Windows FF3.0.7.</p>
+
+<p>On March 16, we released TorVM 0.0.1 as a testing release for user feedback and testing. More about TorVM can be read at <a href="https://www.torproject.org/torvm/" title="https://www.torproject.org/torvm/">https://www.torproject.org/torvm/</a></p>
+
+<p>Vidalia 0.1.12 16-Mar-2009<br>
+ o Fix a bug in the hidden service settings configuration class that<br>
+ could lead to compile errors in Visual Studio and on IRIX.<br>
+ o Fix a build error that occurred on IRIX when using the MIPSPro<br>
+ compiler. Patch from Matthew Saunier.<br>
+ o Remove two duplicated strings in the Spanish translation of Qt&#39;s<br>
+ internal strings (qt_es.po). The duplicated strings caused build<br>
+ errors when building with Qt 4.5. (Ticket #469)<br>
+ o Remove the code that altered PublishServerDescriptor when becoming a<br>
+ bridge, since Tor handles that itself now, and ensure that BridgeRelay<br>
+ is reset when going from bridge to just-a-client mode.<br>
+ o Remove an unnecessary #include from helpbrowser.cpp.<br>
+ o Add an application icon based on Tor&#39;s logo to the vidalia.desktop<br>
+ file.</p>
+
+<p>Vidalia 0.2.0 19-Mar-2009<br>
+ o Add support for changing UI languages without having to restart<br>
+ Vidalia.<br>
+ o Add preliminary support for using the KDE Marble widget for the<br>
+ network map. It&#39;s currently a compile-time option and is disabled by<br>
+ default.<br>
+ o Add support for displaying Tor&#39;s plaintext port warnings. Also gives<br>
+ the user the option to disable future warnings.<br>
+ o Add an interface for displaying the geographic distribution of<br>
+ clients who have recently used a bridge operator&#39;s relay.<br>
+ o Add tooltips to tree items in the help browser&#39;s table of contents. Some<br>
+ of the help topic labels are a bit long.<br>
+ o Switch to a simpler About dialog and move the license information to a<br>
+ separate HTML-formatted display.<br>
+ o Switch to a simpler drag-and-drop installer in the OS X bundles.<br>
+ o Switch to an MSI-based installer on Windows.<br>
+ o Clear the list of default CA certificates used by QSslSocket before adding<br>
+ the only one we care about. Suggested by coderman.<br>
+ o Support building with Visual Studio again.<br>
+ o Add a Debian package structure from dererk.<br>
+ o Updated Albanian, Czech, Finnish, Polish, Portuguese, Romanian,<br>
+ Swedish, Turkish and many other translations.</p>
+
+<p>The Vidalia 0.2.0 release was also posted to the blog,<br>
+ <a href="https://blog.torproject.org/blog/technology-preview-marble-and-vidalia020" title="https://blog.torproject.org/blog/technology-preview-marble-and-vidalia020">https://blog.torproject.org/blog/technology-preview-marble-and-vidalia02...</a></p>
+
+<p>*<em>Design, develop, and implement enhancements<br>
+*</em><br>
+The Torbutton 1.2.1 update fixes a number of bugs that protect users in censored countries. Continued work on TorVM for easier and safer usage of Tor. Continued development of the secure updater client for Tor.</p>
+
+<p>*<em>Architecture and technical design docs for Tor enhancements<br>
+related to blocking-resistance.<br>
+*</em><br>
+Nick wrote up a blog entry describing our current plans for making<br>
+libevent (and ultimately) Tor work well on Windows:<br>
+ <a href="https://blog.torproject.org/blog/some-notes-progress-iocp-and-libevent" title="https://blog.torproject.org/blog/some-notes-progress-iocp-and-libevent">https://blog.torproject.org/blog/some-notes-progress-iocp-and-libevent</a></p>
+
+<p>*<em>Grow the Tor network and user base. Outreach.<br>
+*</em><br>
+Andrew attended the LibrePlanet 2009 conference, <a href="http://www.fsf.org/associate/meetings/2009/" title="http://www.fsf.org/associate/meetings/2009/">http://www.fsf.org/associate/meetings/2009/</a>. Discussed Tor, free network services, and free software.</p>
+
+<p>Karsten, Sebastian, and others helped organize and then attended Pet-Con 2009, <a href="http://www.pet-con.org/index.php/PET_Convention_2009.1" title="http://www.pet-con.org/index.php/PET\_Convention\_2009.1">http://www.pet-con.org/index.php/PET_Convention_2009.1</a>.</p>
+
+<p>Nick wrote a blog post about the secure updater for Tor, codenamed Thandy, for Google&#39;s Open Source blog: <a href="http://google-opensource.blogspot.com/2009/03/thandy-secure-update-for-tor.html" title="http://google-opensource.blogspot.com/2009/03/thandy-secure-update-for-tor.html">http://google-opensource.blogspot.com/2009/03/thandy-secure-update-for-t...</a></p>
+
+<p>Finished analyzing directory archives from February 2006 to February<br>
+2009. This analysis gives a slightly better picture of the Tor network<br>
+than the analysis of the 2008 data. The analysis shows that there is a<br>
+clear trend reversal in the number of German relays in 2008, , but for other countries the number of relays has continued to increase.</p>
+
+<p><a href="http://freehaven.net/%7Ekarsten/metrics/dirarch-2009-03-31.pdf" title="http://freehaven.net/~karsten/metrics/dirarch-2009-03-31.pdf">http://freehaven.net/~karsten/metrics/dirarch-2009-03-31.pdf</a></p>
+
+<p>On March 17, Roger attended a hearing at the US Sentencing Commission,<br>
+where Seth Schoen from EFF was testifying in opposition to a new &quot;if<br>
+you use a proxy when committing a crime, it&#39;s a sophisticated crime so<br>
+you get more jail-time&quot; clause they were considering. It turned out one<br>
+of the commissioners is an avid Tor user, so they were sympathetic to<br>
+his testimony.</p>
+
+<p>On March 24-25, Roger and Andrew met with the Psiphon team in Toronto.<br>
+We taught them about Tor&#39;s perspective on blocking-resistance, and about<br>
+our bridges design. We also helped review their future design plans. We<br>
+still have concerns that their closed design and implementation will<br>
+ultimately mean they are less effective than they could be, but it&#39;s<br>
+good to have alternate circumvention approaches available.</p>
+
+<p>Tor (in combination with EFF) got accepted to Google Summer of Code<br>
+2009. Google will be funding roughly 5 students to work on Tor-related<br>
+development projects over this coming summer:<br>
+ <a href="https://blog.torproject.org/blog/eff-and-tor-google-summer-code-2009" title="https://blog.torproject.org/blog/eff-and-tor-google-summer-code-2009">https://blog.torproject.org/blog/eff-and-tor-google-summer-code-2009</a><br>
+Our current thoughts are to focus on porting Polipo to Windows; improving<br>
+usability and features for Torbutton; working harder to get WML support<br>
+into Pootle, so people can translate our website with a browser; and<br>
+further work on Thandy to make it scale better when 100000 users all<br>
+try to upgrade in the same day.</p>
+
+<p>Hal Roberts released his Berkman Center report on the &quot;landscape of<br>
+circumvention technologies&quot; as of 2007, which recommends Tor and Psiphon:<br>
+ <a href="https://blog.torproject.org/blog/berkman-2007-circumvention-landscape-and-progress" title="https://blog.torproject.org/blog/berkman-2007-circumvention-landscape-and-progress">https://blog.torproject.org/blog/berkman-2007-circumvention-landscape-an...</a></p>
+
+<p>Roger and Nick participated in the Codecon program committee, and helped<br>
+to choose a variety of good development projects to showcase in April. Two<br>
+of these turned out to be libevent (including the new Windows work),<br>
+and Torflow:<br>
+ <a href="http://www.codecon.org/2009/program.html" title="http://www.codecon.org/2009/program.html">http://www.codecon.org/2009/program.html</a></p>
+
+<p>Roger had lunch on March 4 with Micah Sherr, a PhD student at Penn who<br>
+is working on a new path selection algorithm for Tor, that tries to<br>
+minimize path latency rather than maximize bandwidth. Roger poked some<br>
+holes in his design, and hopefully will help him over the next few months<br>
+to fix them. You can read more about Micah&#39;s design in Section 4.3 of the<br>
+&quot;performance.pdf&quot; document.</p>
+
+<p>We worked with Global Voices to help them update their &quot;guide to blogging<br>
+anonymously&quot;:<br>
+ <a href="https://blog.torproject.org/blog/updated-guide-blogging-anonymously" title="https://blog.torproject.org/blog/updated-guide-blogging-anonymously">https://blog.torproject.org/blog/updated-guide-blogging-anonymously</a><br>
+In particular, we updated it to include recommendations for using Tor<br>
+Browser Bundle, since TBB didn&#39;t exist when the guide was first written.</p>
+
+<p>*<em>Preconfigured privacy (circumvention) bundles for USB or LiveCD.<br>
+*</em><br>
+On March 10, we released Tor Browser Bundle 1.1.10. It includes:<br>
+Update Tor to 0.2.1.13-alpha<br>
+Update Firefox to 3.0.7<br>
+Update Pidgin to 2.5.5</p>
+
+<p>On March 31, we released Tor Browser Bundle 1.1.11. It includes:<br>
+Update Firefox to 3.0.8<br>
+Add Italian language bundles<br>
+Update Torbutton to 1.2.1<br>
+Update Vidalia to 0.1.12</p>
+
+<p>*<em>Bridge relay and bridge authority work.<br>
+*</em><br>
+From the changelog item from Vidalia 0.1.12:<br>
+ o Remove the code that altered PublishServerDescriptor when becoming a<br>
+ bridge, since Tor handles that itself now, and ensure that BridgeRelay<br>
+ is reset when going from bridge to just-a-client mode.</p>
+
+<p>*<em>Scalability, load balancing, directory overhead, efficiency.<br>
+*</em><br>
+Roger and Steven wrote the Performance Roadmap as published at <a href="https://www.torproject.org/press/2009-03-12-performance-roadmap-press-release.html.en" title="https://www.torproject.org/press/2009-03-12-performance-roadmap-press-release.html.en">https://www.torproject.org/press/2009-03-12-performance-roadmap-press-re...</a></p>
+
+<p>*<em>Footprints from Tor Browser Bundle.<br>
+*</em><br>
+March 17, updated research on traces left behind by the Tor Browser Bundle. The current document can be found at <a href="https://svn.torproject.org/svn/torbrowser/trunk/docs/traces.txt" title="https://svn.torproject.org/svn/torbrowser/trunk/docs/traces.txt">https://svn.torproject.org/svn/torbrowser/trunk/docs/traces.txt</a>.</p>
+
+<p><strong>Translations</strong><br>
+21 Polish website translations<br>
+20 French website translations<br>
+53 Italian website translations<br>
+25 German website translations<br>
+5 Chinese website translations<br>
+5 Updates from the translation portal for torbutton, in French, Italian, and Bokmål (Norwegian)</p>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page116" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 117 of 133</span>
+    
+      <a href="/blog/page118" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/thanks">Thanks!</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">advocacy</a>
+            
+              <a class="post-category post-category-js" href="#">thanks</a>
+             |
+            08 Oct 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Thank you from The Tor Project for your support, advocacy, and help over the past few years!</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/yes-we-know-about-guardian-article">Yes, we know about the Guardian article</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">arma</a> under
+            
+              <a class="post-category post-category-js" href="#">gchq</a>
+            
+              <a class="post-category post-category-js" href="#">nsa</a>
+             |
+            04 Oct 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>And also the Washington Post article.</p>
+
+<p>We&#39;re planning to write up a more detailed analysis later, but for now here&#39;s a place to centralize all the &quot;hey did you know about this article&quot; blog comments.</p>
+
+<p>And for the journalists out there who want a statement, here&#39;s my quote from the article:</p>
+
+<p>&quot;The good news is that they went for a browser exploit, meaning there&#39;s no indication they can break the Tor protocol or do traffic analysis on the Tor network. Infecting the laptop, phone, or desktop is still the easiest way to learn about the human behind the keyboard.</p>
+
+<p>Tor still helps here: you can target individuals with browser exploits, but if you attack too many users, somebody&#39;s going to notice. So even if the NSA aims to surveil everyone, everywhere, they have to be a lot more selective about which Tor users they spy on.</p>
+
+<p>Just using Tor isn&#39;t enough to keep you safe in all cases. Browser exploits, large-scale surveillance, and general user security are all challenging topics for the average internet user. These attacks make it clear that we, the broader internet community, need to keep working on better security for browsers and other internet-facing applications.&quot;</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/deterministic-builds-part-two-technical-details">Deterministic Builds Part Two: Technical Details</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">mikeperry</a> under
+            
+              <a class="post-category post-category-js" href="#">cyberpeace</a>
+            
+              <a class="post-category post-category-js" href="#">decentralization</a>
+            
+              <a class="post-category post-category-js" href="#">deterministic builds</a>
+            
+              <a class="post-category post-category-js" href="#">gitian</a>
+            
+              <a class="post-category post-category-js" href="#">National Insecurity Agency</a>
+            
+              <a class="post-category post-category-js" href="#">security</a>
+             |
+            04 Oct 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>This is the second post in a two-part series on the build security improvements in the <a href="https://blog.torproject.org/category/tags/tbb-30">Tor Browser Bundle 3.0 release cycle</a>.</p>
+
+<p>The <a href="https://blog.torproject.org/blog/deterministic-builds-part-one-cyberwar-and-global-compromise">first post</a> described why such security is necessary. This post is meant to describe the technical details with respect to how such builds are produced.</p>
+
+<p>We achieve our build security through a reproducible build process that enables anyone to produce byte-for-byte identical binaries to the ones we release. Elsewhere on the Internet, this process is varyingly called &quot;deterministic builds&quot;, &quot;reproducible builds&quot;, &quot;idempotent builds&quot;, and probably a few other terms, too.</p>
+
+<p>To produce byte-for-byte identical packages, we use <a href="http://gitian.org/">Gitian</a> to build Tor Browser Bundle 3.0 and above, but that isn&#39;t the only option for achieving reproducible builds. We will first describe how we use Gitian, and then go on to enumerate the individual issues that Gitian solves for us, and that we had to solve ourselves through either wrapper scripts, hacks, build process patches, and (in one esoteric case for Windows) direct binary patching.</p>
+
+<h1>Gitian: What is it?</h1>
+
+<p><a href="http://gitian.org/howto.html">Gitian</a> is a thin wrapper around the Ubuntu virtualization tools written in a combination of Ruby and bash. It was originally developed by Bitcoin developers to ensure the build security and integrity of the Bitcoin software.</p>
+
+<p>Gitian uses Ubuntu&#39;s python-vmbuilder to create a qcow2 base image for an Ubuntu version and architecture combination and a set of git and tarball inputs that you specify in a &#39; <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/descriptors/linux/gitian-firefox.yml">descriptor</a>&#39;, and then proceeds to run a shell script that you provide to build a component inside that controlled environment. This build process produces an output set that includes the compiled result and another &quot;output descriptor&quot; that captures the versions and hashes of all packages present on the machine during compilation.</p>
+
+<p>Gitian requires either Intel VT support (for qemu-kvm), or LXC support, and currently only supports launching Ubuntu build environments from Ubuntu itself.</p>
+
+<h1>Gitian: How Tor Uses It</h1>
+
+<p><a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build">Tor&#39;s use of Gitian</a> is slightly more automated and also slightly different than how Bitcoin uses it.</p>
+
+<p>First of all, because Gitian supports only Ubuntu hosts and targets, we must cross compile everything for Windows and MacOS. Luckily, Mozilla <a href="https://developer.mozilla.org/en-US/docs/Cross_Compile_Mozilla_for_Mingw32">provides support</a> for <a href="http://mingw-w64.sourceforge.net/">MinGW-w64</a> as a &quot;third tier&quot; compiler, and does endeavor to work with the MinGW team to fix issues as they arise.</p>
+
+<p>To our further good fortune, we were able to use a MacOS cross compiler created by <a href="https://github.com/mingwandroid">Ray Donnelly</a> based on a <a href="https://github.com/mingwandroid/toolchain4">fork of &quot;Toolchain4&quot;</a>. We owe Ray a great deal for providing his compilers to the public, and he has been most excellent in terms of helping us through any issues we encountered with them. Ray is also working to <a href="https://github.com/diorcety/crosstool-ng.git">merge his patches</a> into the <a href="http://crosstool-ng.org/">crosstools-ng project</a>, to provide a more seamless build process to create rebuilds of his compilers. As of this writing, we are still using <a href="https://mingw-and-ndk.googlecode.com/files/multiarch-darwin11-cctools127.2-gcc42-5666.3-llvmgcc42-2336.1-Linux-120724.tar.xz">his binaries</a> in combination with the <a href="https://launchpad.net/%7Eflosoft/+archive/cross-apple/+packages">flosoft MacOS10.X SDK</a>.</p>
+
+<p>For each platform, we build the components of Tor Browser Bundle in 3 stages, with one descriptor per stage. The <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/descriptors/linux/gitian-tor.yml">first descriptor</a> builds Tor and its core dependency libraries (OpenSSL, libevent, and zlib) and produces one output zip file. The <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/descriptors/linux/gitian-firefox.yml">second descriptor</a> builds Firefox. The <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/descriptors/linux/gitian-bundle.yml">third descriptor</a> combines the previous two outputs along with our included Firefox addons and localization files to produce the actual localized bundle files.</p>
+
+<p>We <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/tree/HEAD:/gitian/">provide a Makefile and shellscript-based wrapper</a> around Gitian to automate the download and authentication of our source inputs prior to build, and to perform a final step that creates a sha256sums.txt file that lists all of the bundle hashes, and can be signed by any number of detached signatures, one for each builder.</p>
+
+<p>It is important to distribute multiple cryptographic signatures to prevent targeted attacks against stealing a single build signing key (because the signing key itself is of course another single point of failure). Unfortunately, GPG currently lacks support for verifying multiple signatures of the same document. Users must manually copy each detached signature they wish to verify into its proper .asc filename suffix. Eventually, we hope to create a stub installer or wrapper script of some kind to simplify this step, as well as add multi-signature support to the Firefox update process. We are also investigating adding a URL and a hash of the package list the <a href="https://gitweb.torproject.org/torspec.git/blob/master:/dir-spec.txt">Tor Consensus</a>, so that the Tor Consensus document itself authenticates our binary packages.</p>
+
+<p>We do not use the Gitian output descriptors or the Gitian signing tools, because the tools are used to sign Gitian&#39;s output descriptors. We found that Ubuntu&#39;s individual packages (which are listed in the output descriptors) varied too frequently to allow this mechanism to be reproducible for very long. However, we do include a <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/versions">list of input versions and hashes</a> used to produce each bundle in the bundle itself. The format of this versions file is the same that we use as input to download the sources. This means it should remain possible to re-build an arbitrary bundle for verification at a later date, assuming that any later updates to Ubuntu&#39;s toolchain packages do not change the output.</p>
+
+<h1>Gitian: Pain Points</h1>
+
+<p>Gitian is not perfect. In fact, many who have tried our build system have remarked that it is not even close to deterministic (and that for this and other reasons &#39;Reproducible Builds&#39; is a better term). In fact, it seems to experience build failures for quite unpredictible reasons related to bugs in one or more of qemu-kvm/LXC, make, qcow copy-on-write image support. These bugs are often intermittent, and simply restarting the build process often causes things to proceed smoothly. This has made the bugs exceedingly tricky to pinpoint and diagnose.</p>
+
+<p>Gitian&#39;s use of tags (especially signed tags) has some bugs and flaws. For this reason, we verify signatures ourselves after input fetching, and provide gitian only with explicit commit hashes for the input source repositories.</p>
+
+<p>We maintain a list of the most common issues in the <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build">build instructions</a>.</p>
+
+<h1>Remaining Build Reproducibility Issues</h1>
+
+<p>By default, the Gitian VM environment controls the following aspects of the build platform that normally vary and often leak into compiled software: hostname, build path, uname output, toolchain version, and time.</p>
+
+<p>However, Gitian is not enough by itself to magically produce reproducible builds. Beyond what Gitian provides, we had to patch a number of reproducibility issues in Firefox and some of the supporting tools on each platform. These include:</p>
+
+<ol>
+<li><strong>Reordering due to inode ordering differences (exposed via Python&#39;s os.walk())</strong></li>
+</ol>
+
+<p>Several places in the Firefox build process use python scripts to repackage both compiled library archives and zip files. In particular, they tend to obtain directory listings using os.walk(), which is dependent upon the inode ordering of the filesystem. We fix this by sorting those file lists in the applicable places.</p>
+
+<ol>
+<li><strong>LC_ALL localizations alter sorting order</strong></li>
+</ol>
+
+<p>Sorting only gets you so far, though, if someone from a different locale is trying to reproduce your build. Differences in your character sets will cause these sort orders to differ. For this reason, we set the LC_ALL environment variable to &#39;C&#39; at the top of our Gitian descriptors.</p>
+
+<ol>
+<li><strong>Hostname and other OS info leaks in LXC mode</strong></li>
+</ol>
+
+<p>For these cases, we simply patch the pieces of Firefox that include the hostname (primarily for <a href="about:buildconfig">about:buildconfig</a>).</p>
+
+<ol>
+<li><strong>Millisecond and below timestamps are not fixed by libfaketime</strong></li>
+</ol>
+
+<p>Gitian relies on <a href="http://www.code-wizards.com/projects/libfaketime/">libfaketime</a> to set the clock to a fixed value to deal with embedded timestamps in archives and in the build process. However, in some places, Firefox inserts millisecond timestamps into its supporting libraries as part of an informational structure. We simply zero these fields.</p>
+
+<ol>
+<li><strong>FIPS-140 mode generates throwaway signing keys</strong></li>
+</ol>
+
+<p>A rather insane subsection of the <a href="https://en.wikipedia.org/wiki/FIPS_140">FIPS-140</a> certification standard requires that you distribute signatures for all of your cryptographic libraries. The Firefox build process meets this requirement by generating a temporary key, using it to sign the libraries, and discarding the private portion of that key. Because there are many other ways to intercept the crypto outside of modifying the actual DLL images, we opted to simply remove these signature files from distribution. There simply is no way to verify code integrity on a running system without both OS and coprocessor assistance. Download package signatures make sense of course, but we handle those another way (as mentioned above).</p>
+
+<ol>
+<li><strong>On Windows builds, something mysterious causes 3 bytes to randomly vary<br>
+in the binary.</strong></li>
+</ol>
+
+<p>Unable to determine the source of this, we just bitstomp the binary and regenerate the PE header checksums using strip... Seems fine so far! ;)</p>
+
+<ol>
+<li><strong>umask leaks into LXC mode in some cases</strong></li>
+</ol>
+
+<p>We fix this by manually setting umask at the top of our Gitian descriptors. Additionally, we found that we had to reset the permissions inside of tar and zip files, as the umask didn&#39;t affect them on some builds (but not others...)</p>
+
+<ol>
+<li><strong>Zip and Tar reordering and attribute issues</strong></li>
+</ol>
+
+<p>To aid with this and other issues with reproducibility, we created simple shell wrappers for <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/build-helpers/dzip.sh">zip</a> and <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/build-helpers/dtar.sh">tar</a> to eliminate the sources of non-determinism.</p>
+
+<ol>
+<li><strong>Timezone leaks</strong></li>
+</ol>
+
+<p>To deal with these, we set TZ=UTC at the top of our descriptors.</p>
+
+<h1>Future Work</h1>
+
+<p>The most common question we&#39;ve been asked about this build process is: What can be done to prevent the adversary from compromising the (substantially weaker) Ubuntu build and packaging processes, and further, what about the <a href="http://cm.bell-labs.com/who/ken/trust.html">Trusting Trust attack</a>?</p>
+
+<p>In terms of eliminating the remaining single points of compromise, the first order of business is to build all of our compilers and toolchain directly from sources via their own Gitian descriptors.</p>
+
+<p>Once this is accomplished, we can begin the process of building identical binaries from multiple different Linux distributions. This would require the adversary to compromise multiple Linux distributions in order to compromise the Tor software distribution.</p>
+
+<p>If we can support reproducible builds through cross compiling from multiple architectures (Intel, ARM, MIPS, PowerPC, etc), this also reduces the likelihood of a Trusting Trust attack surviving unnoticed in the toolchain (because the machine code that injects the payload would have to be pre-compiled and present for all copies of the cross-compiled executable code in a way that is still not visible in the sources).</p>
+
+<p>If those Linux distributions also support reproducible builds of the full build and toolchain environment (both <a href="https://wiki.debian.org/ReproducibleBuilds">Debian</a> and <a href="http://securityblog.redhat.com/2013/09/18/reproducible-builds-for-fedora/">Fedora</a> have started this), we can eliminate Trusting Trust attacks entirely by using <a href="http://www.schneier.com/blog/archives/2006/01/countering_trus.html">Diverse Double Compilation</a> between multiple independent distribution toolchains, and/or assembly audited compilers. In other words, we could use the distributions&#39; deterministic build processes to <a href="https://lwn.net/Articles/555902/">verify</a> that identical build environments are produced through Diverse Double Compilation.</p>
+
+<p>As can be seen, much work remains before the system is fully resistant against all forms of malware injection, but even in their current state, reproducible builds are a huge step forward in software build security. We hope this information helps other software distributors to follow the example set by Bitcoin and Tor.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-and-silk-road-takedown">Tor and the Silk Road takedown</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">arma</a> under
+            
+              <a class="post-category post-category-js" href="#">download warnings</a>
+            
+              <a class="post-category post-category-js" href="#">fbi</a>
+            
+              <a class="post-category post-category-js" href="#">hidden services</a>
+            
+              <a class="post-category post-category-js" href="#">operational security</a>
+            
+              <a class="post-category post-category-js" href="#">silk road</a>
+            
+              <a class="post-category post-category-js" href="#">tor</a>
+             |
+            03 Oct 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>We&#39;ve had several requests by the press and others to talk about the Silk Road situation today. We only know what&#39;s going on by reading the same news sources everyone else is reading.</p>
+
+<p>In this case we&#39;ve been watching carefully to try to learn if there are any flaws with Tor that we need to correct. So far, nothing about this case makes us think that there are new ways to compromise Tor (the software or the network). The FBI says that their suspect made mistakes in operational security, and was found through actual detective work. Remember: Tor does not anonymize individuals when they use their legal name on a public forum, use a VPN with logs that are subject to a subpoena, or provide personal information to other services. See also the <a href="https://www.torproject.org/download/download#warning">list of warnings linked from the Tor download page</a>.</p>
+
+<p>Also, while we&#39;ve seen no evidence that this case involved breaking into the webserver behind the hidden service, we should take this opportunity to emphasize that Tor&#39;s hidden service feature (a way to publish and access content anonymously) won&#39;t keep someone anonymous when paired with unsafe software or unsafe behavior. It is up to the publisher to choose and configure server software that is resistant to attacks. Mistakes in configuring or maintaining a hidden service website can compromise the publisher&#39;s anonymity independent of Tor.</p>
+
+<p>And finally, Tor&#39;s design goals include preventing even The Tor Project from tracking users; hidden services are no different. We don&#39;t have any special access to or information about this hidden service or any other. Because Tor is open-source and it comes with detailed design documents and research papers, independent researchers can verify its security.</p>
+
+<p>Here are some helpful links to more information on these subjects:</p>
+
+<p>Technical details of hidden services:<br>
+ <a href="https://www.torproject.org/docs/hidden-services" title="https://www.torproject.org/docs/hidden-services">https://www.torproject.org/docs/hidden-services</a></p>
+
+<p>Our abuse FAQ:<br>
+ <a href="https://www.torproject.org/docs/faq-abuse" title="https://www.torproject.org/docs/faq-abuse">https://www.torproject.org/docs/faq-abuse</a></p>
+
+<p>For those curious about our interactions with law enforcement:<br>
+ <a href="https://blog.torproject.org/category/tags/law-enforcement" title="https://blog.torproject.org/category/tags/law-enforcement">https://blog.torproject.org/category/tags/law-enforcement</a><br>
+ <a href="https://www.torproject.org/docs/faq#Backdoor" title="https://www.torproject.org/docs/faq#Backdoor">https://www.torproject.org/docs/faq#Backdoor</a></p>
+
+<p>Using Tor hidden services for good:<br>
+ <a href="https://blog.torproject.org/blog/using-tor-good" title="https://blog.torproject.org/blog/using-tor-good">https://blog.torproject.org/blog/using-tor-good</a></p>
+
+<p>Regarding the Freedom Hosting incident in August 2013, which is unrelated<br>
+as far as we can tell:<br>
+ <a href="https://blog.torproject.org/blog/hidden-services-current-events-and-freedom-hosting" title="https://blog.torproject.org/blog/hidden-services-current-events-and-freedom-hosting">https://blog.torproject.org/blog/hidden-services-current-events-and-free...</a></p>
+
+<p>Some general hints on staying anonymous:<br>
+ <a href="https://www.torproject.org/about/overview#stayinganonymous" title="https://www.torproject.org/about/overview#stayinganonymous">https://www.torproject.org/about/overview#stayinganonymous</a></p>
+
+<p>The Tor Project is a nonprofit 501(c)(3) organization dedicated to providing tools to help people manage their privacy on the Internet. Our focus continues to be in helping ordinary citizens, victims of abuse, individuals in dangerous parts of the world, and <a href="https://www.torproject.org/about/torusers">others</a> stay aware and educated about how to keep themselves secure online.</p>
+
+<p>The global Tor team remains committed to building technology solutions to help keep the doors to freedom of expression open. We will continue to watch as the details of this situation unfold and respond when it is appropriate and useful.</p>
+
+<p>For further press related questions please contact us at <a href="mailto:execdir@torproject.org">execdir@torproject.org</a>.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-weekly-news-%E2%80%94-october-2nd-2013">Tor Weekly News — October 2nd, 2013</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">lunar</a> under
+            
+              <a class="post-category post-category-js" href="#">tor weekly news</a>
+             |
+            02 Oct 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Welcome to the fourteenth issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the much-discussed Tor community.</p>
+
+<h1>Tor Browser Bundle 3.0alpha4 released</h1>
+
+<p>On September 28<sup>th</sup>, Mike Perry released the <a href="https://blog.torproject.org/blog/tor-browser-bundle-30alpha4-released">fourth alpha of the new Tor Browser Bundle 3.0 series</a>. The main highlights of this series are the important usability improvements that integrate Tor configuration and control into the browser itself, rather than relying on the unmaintained Vidalia interface.</p>
+
+<p>The latest iteration is based on Firefox 17.0.9esr, which brings with it a lot of important security fixes. It also fixes a fingerprinting issue by randomizing the timestamp sent when establishing an HTTPS connection.</p>
+
+<p>Two small but important usability improvements in the new Tor Launcher component were made: users can now directly copy and paste “bridge” lines from the <a href="https://bridges.torproject.org/">bridge database</a>, while clock-skews that would prevent Tor from functioning properly are now reported to users.</p>
+
+<p>Download your copy, test it, and report any problems you find. If you&#39;re feeling adventurous, you can also try out the crucial new security process by <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build">independently reproducing the binaries</a> from the publicly-reviewable source code.</p>
+
+<h1>Tor mini-hackathon at GNU 30<sup>th</sup> anniversary</h1>
+
+<p>The Tor mini-hackathon at the <a href="https://www.gnu.org/gnu30/">GNU 30th anniversary event</a> took place over the weekend, and Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/030238.html">sent out a brief report</a> on how things went. As well as working on proposal 220, which involves improvements to Tor server identity keys, Nick merged some small patches into the Tor mainline branch, and collected promises of several more to come. He also directed a few enquiring minds towards Tor&#39;s online community, saying “I hope we’ll be seeing more of some of the folks I talked to on our mailing lists and IRC channels soon”.</p>
+
+<h1>Tor Stack Exchange page in private beta</h1>
+
+<p>The <a href="http://tor.stackexchange.com">Tor Stack Exchange page</a>, which <a href="http://area51.stackexchange.com/proposals/56447/tor-online-anonymity-privacy-and-security">reached 100% commitment</a> last week, has now been moved into the ‘private beta’ stage. Runa Sandvik <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/030187.html">clarified</a> that “the purpose behind it is to ensure that users who committed to the site’s proposal have a chance to start asking and answering questions, as well as help with the initial community building activities that will define and shape the site”. She added that “the more experts who participate in the private beta, the more certain it is that our page will move on to the next stage (i.e. the public beta).”</p>
+
+<p>Fruitful discussions are already taking place: Karsten Loesing wrote to the wider community on the question of <a href="https://lists.torproject.org/pipermail/tor-relays/2013-September/002936.html">what to do about contact information for bridge operators</a> after it was posed on Stack Exchange.</p>
+
+<p>Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005519.html">put out a call</a> for Tor developers and anonymity researchers to participate in answering questions on the site, adding “Steven, Philipp, Jens, and I can&#39;t do it by ourselves.” If you have expert knowledge to contribute, please send an email to <a href="mailto:help@rt.torproject.org">help@rt.torproject.org</a> to get an invitation!</p>
+
+<h1>liballium: Pluggable Transports utility library in C</h1>
+
+<p>Yawning Angel announced a new library to ease the task of writing <a href="https://www.torproject.org/docs/pluggable-transports.html">pluggable transports</a>. liballium is a “simple library that handles the Tor Pluggable Transport Configuration protocol. The idea is for this library to be the C/C++ equivalent to <a href="https://gitweb.torproject.org/pluggable-transports/pyptlib.git">pyptlib</a> (and maybe more, depending on how much time I have to work on it).”</p>
+
+<p>The <a href="https://github.com/Yawning/liballium">code is available</a> for review featuring “a reasonably well commented example.”</p>
+
+<p>Feel free to follow up with “questions, comments, feedback”!</p>
+
+<h1>Tor Help Desk Roundup</h1>
+
+<p>Multiple users wrote to the help desk asking for guidance setting up hidden service sites. The most straightforward documentation for hidden services is in the <a href="https://www.torproject.org/docs/faq.html.en#torrc">torrc file</a> itself. A <a href="https://www.torproject.org/docs/tor-hidden-service.html.en">more in-depth guide</a> can be found on the Tor Project website. The website also documents how <a href="https://www.torproject.org/docs/hidden-services.html.en">hidden services work</a>. Technical details can be found in the <a href="https://gitweb.torproject.org/torspec.git?a=blob_plain;hb=HEAD;f=rend-spec.txt">Rendezvous Specification document</a>.</p>
+
+<h1>Monthly status reports for September 2013</h1>
+
+<p>The wave of regular monthly reports from Tor project members for the month of September has begun. <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000341.html">Runa Sandvik</a> released her report first, followed by reports from <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000342.html">Damian Johnson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000343.html">Philipp Winter</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000344.html">Sherief Alaa</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000345.html">Noel David Torres Taño</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Mike Perry published his <a href="http://pgp.mit.edu:11371/pks/lookup?op=get&amp;search=0x29846B3C683686CC">new GPG public key</a>, <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005518.html">adding</a>: “this new key will be used to sign email from me going forward, and will be used to sign software releases until such time as I get around to creating a second set of keys on a hardware token for that purpose”.</p>
+
+<p>David Fifield <a href="https://blog.torproject.org/blog/pluggable-transports-bundles-2417-beta-2-pt3-firefox-1709esr">updated the Pluggable Transports bundles using the latest Tor Browser Bundle</a>. In order to benefit from the improvements and security fixes, please update!</p>
+
+<p>intrigeri sent a <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003719.html">release schedule for Tails 0.21</a>. The first release candidate should be out on October 20th.</p>
+
+<p>Roger Dingledine sent out “a list of criteria to consider when evaluating pluggable transports for readiness of deployment to users”, asking for comments on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005528.html">his initial draft</a>.</p>
+
+<p>If you have the necessary hardware and want to help Tails out, please test two upcoming features: <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003744.html">persistent printer settings</a> and <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003757.html">support for more SD card readers</a> (the “sdio” type).</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by harmony, Lunar, dope457, and Matt Pagan.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page22" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 23 of 133</span>
+    
+      <a href="/blog/page24" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

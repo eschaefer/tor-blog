@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-02033-stable-released">Tor 0.2.0.33-stable released</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">bug fixes</a>
+            
+              <a class="post-category post-category-js" href="#">security fixes</a>
+            
+              <a class="post-category post-category-js" href="#">stable release</a>
+             |
+            22 Jan 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Tor 0.2.0.33 fixes a variety of bugs that were making relays less useful<br>
+to users. It also finally fixes a bug where a relay or client that&#39;s<br>
+been off for many days would take a long time to bootstrap.</p>
+
+<p>This update also fixes an important security-related bug reported by<br>
+Ilja van Sprundel. You should upgrade. (We&#39;ll send out more details<br>
+about the bug once people have had some time to upgrade.)</p>
+
+<p><a href="https://www.torproject.org/download.html" title="https://www.torproject.org/download.html">https://www.torproject.org/download.html</a></p>
+
+<p>Changes in version 0.2.0.33 - 2009-01-21<br>
+<strong>Security fixes:</strong></p>
+
+<ul>
+<li>Fix a heap-corruption bug that may be remotely triggerable on<br>
+some platforms. Reported by Ilja van Sprundel.</li>
+</ul>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>When a stream at an exit relay is in state &quot;resolving&quot; or<br>
+&quot;connecting&quot; and it receives an &quot;end&quot; relay cell, the exit relay<br>
+would silently ignore the end cell and not close the stream. If<br>
+the client never closes the circuit, then the exit relay never<br>
+closes the TCP connection. Bug introduced in Tor 0.1.2.1-alpha;<br>
+reported by &quot;wood&quot;.</li>
+<li>When sending CREATED cells back for a given circuit, use a 64-bit<br>
+connection ID to find the right connection, rather than an addr:port<br>
+combination. Now that we can have multiple OR connections between<br>
+the same ORs, it is no longer possible to use addr:port to uniquely<br>
+identify a connection.</li>
+<li>Bridge relays that had DirPort set to 0 would stop fetching<br>
+descriptors shortly after startup, and then briefly resume<br>
+after a new bandwidth test and/or after publishing a new bridge<br>
+descriptor. Bridge users that try to bootstrap from them would<br>
+get a recent networkstatus but would get descriptors from up to<br>
+18 hours earlier, meaning most of the descriptors were obsolete<br>
+already. Reported by Tas; bugfix on 0.2.0.13-alpha.</li>
+<li>Prevent bridge relays from serving their &#39;extrainfo&#39; document<br>
+to anybody who asks, now that extrainfo docs include potentially<br>
+sensitive aggregated client geoip summaries. Bugfix on<br>
+0.2.0.13-alpha.</li>
+<li>If the cached networkstatus consensus is more than five days old,<br>
+discard it rather than trying to use it. In theory it could be<br>
+useful because it lists alternate directory mirrors, but in practice<br>
+it just means we spend many minutes trying directory mirrors that<br>
+are long gone from the network. Also discard router descriptors as<br>
+we load them if they are more than five days old, since the onion<br>
+key is probably wrong by now. Bugfix on 0.2.0.x. Fixes bug 887.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Do not mark smartlist_bsearch_idx() function as ATTR_PURE. This bug<br>
+could make gcc generate non-functional binary search code. Bugfix<br>
+on 0.2.0.10-alpha.</li>
+<li>Build correctly on platforms without socklen_t.</li>
+<li>Compile without warnings on solaris.</li>
+<li>Avoid potential crash on internal error during signature collection.<br>
+Fixes bug 864. Patch from rovv.</li>
+<li>Correct handling of possible malformed authority signing key<br>
+certificates with internal signature types. Fixes bug 880.<br>
+Bugfix on 0.2.0.3-alpha.</li>
+<li>Fix a hard-to-trigger resource leak when logging credential status.<br>
+CID 349.</li>
+<li>When we can&#39;t initialize DNS because the network is down, do not<br>
+automatically stop Tor from starting. Instead, we retry failed<br>
+dns_inits() every 10 minutes, and change the exit policy to reject<br>
+*:* until one succeeds. Fixes bug 691.</li>
+<li>Use 64 bits instead of 32 bits for connection identifiers used with<br>
+the controller protocol, to greatly reduce risk of identifier reuse.</li>
+<li>When we&#39;re choosing an exit node for a circuit, and we have<br>
+no pending streams, choose a good general exit rather than one that<br>
+supports &quot;all the pending streams&quot;. Bugfix on 0.1.1.x. Fix by rovv.</li>
+<li>Fix another case of assuming, when a specific exit is requested,<br>
+that we know more than the user about what hosts it allows.<br>
+Fixes one case of bug 752. Patch from rovv.</li>
+<li>Clip the MaxCircuitDirtiness config option to a minimum of 10<br>
+seconds. Warn the user if lower values are given in the<br>
+configuration. Bugfix on 0.1.0.1-rc. Patch by Sebastian.</li>
+<li>Clip the CircuitBuildTimeout to a minimum of 30 seconds. Warn the<br>
+user if lower values are given in the configuration. Bugfix on<br>
+0.1.1.17-rc. Patch by Sebastian.</li>
+<li>Fix a memory leak when we decline to add a v2 rendezvous descriptor to<br>
+the cache because we already had a v0 descriptor with the same ID.<br>
+Bugfix on 0.2.0.18-alpha.</li>
+<li>Fix a race condition when freeing keys shared between main thread<br>
+and CPU workers that could result in a memory leak. Bugfix on<br>
+0.1.0.1-rc. Fixes bug 889.</li>
+<li>Send a valid END cell back when a client tries to connect to a<br>
+nonexistent hidden service port. Bugfix on 0.1.2.15. Fixes bug<br>
+
+<ol>
+<li>Patch from rovv.</li>
+</ol></li>
+<li>Check which hops rendezvous stream cells are associated with to<br>
+prevent possible guess-the-streamid injection attacks from<br>
+intermediate hops. Fixes another case of bug 446. Based on patch<br>
+from rovv.</li>
+<li>If a broken client asks a non-exit router to connect somewhere,<br>
+do not even do the DNS lookup before rejecting the connection.<br>
+Fixes another case of bug 619. Patch from rovv.</li>
+<li>When a relay gets a create cell it can&#39;t decrypt (e.g. because it&#39;s<br>
+using the wrong onion key), we were dropping it and letting the<br>
+client time out. Now actually answer with a destroy cell. Fixes<br>
+bug 904. Bugfix on 0.0.2pre8.</li>
+</ul>
+
+<p><strong>Minor bugfixes (hidden services):</strong></p>
+
+<ul>
+<li>Do not throw away existing introduction points on SIGHUP. Bugfix on<br>
+0.0.6pre1. Patch by Karsten. Fixes bug 874.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Report the case where all signatures in a detached set are rejected<br>
+differently than the case where there is an error handling the<br>
+detached set.</li>
+<li>When we realize that another process has modified our cached<br>
+descriptors, print out a more useful error message rather than<br>
+triggering an assertion. Fixes bug 885. Patch from Karsten.</li>
+<li>Implement the 0x20 hack to better resist DNS poisoning: set the<br>
+case on outgoing DNS requests randomly, and reject responses that do<br>
+not match the case correctly. This logic can be disabled with the<br>
+ServerDNSRamdomizeCase setting, if you are using one of the 0.3%<br>
+of servers that do not reliably preserve case in replies. See<br>
+&quot;Increased DNS Forgery Resistance through 0x20-Bit Encoding&quot;<br>
+for more info.</li>
+<li>Check DNS replies for more matching fields to better resist DNS<br>
+poisoning.</li>
+<li>Never use OpenSSL compression: it wastes RAM and CPU trying to<br>
+compress cells, which are basically all encrypted, compressed, or<br>
+both.</li>
+</ul>
+
+<p>The original announcement can be found at <a href="http://archives.seul.org/or/announce/Jan-2009/msg00000.html" title="http://archives.seul.org/or/announce/Jan-2009/msg00000.html">http://archives.seul.org/or/announce/Jan-2009/msg00000.html</a></p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-0.2.1.11-alpha-released">Tor 0.2.1.11-alpha released</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">alpha release</a>
+            
+              <a class="post-category post-category-js" href="#">bugfixes</a>
+            
+              <a class="post-category post-category-js" href="#">security fixes</a>
+             |
+            22 Jan 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Tor 0.2.1.11-alpha finishes fixing the &quot;if your Tor is off for a week it<br>
+will take a long time to bootstrap again&quot; bug. It also fixes an important<br>
+security-related bug reported by Ilja van Sprundel. You should upgrade.<br>
+(We&#39;ll send out more details about the bug once people have had some<br>
+time to upgrade.)</p>
+
+<p><a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+
+<p>Changes in version 0.2.1.11-alpha - 2009-01-20<br>
+<strong>Security fixes:</strong></p>
+
+<ul>
+<li>Fix a heap-corruption bug that may be remotely triggerable on<br>
+some platforms. Reported by Ilja van Sprundel.</li>
+</ul>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Discard router descriptors as we load them if they are more than<br>
+five days old. Otherwise if Tor is off for a long time and then<br>
+starts with cached descriptors, it will try to use the onion<br>
+keys in those obsolete descriptors when building circuits. Bugfix<br>
+on 0.2.0.x. Fixes bug 887.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Try to make sure that the version of Libevent we&#39;re running with<br>
+is binary-compatible with the one we built with. May address bug<br>
+897 and others.</li>
+<li>Make setting ServerDNSRandomizeCase to 0 actually work. Bugfix<br>
+for bug 905. Bugfix on 0.2.1.7-alpha.</li>
+<li>Add a new --enable-local-appdata configuration switch to change<br>
+the default location of the datadir on win32 from APPDATA to<br>
+LOCAL_APPDATA. In the future, we should migrate to LOCAL_APPDATA<br>
+entirely. Patch from coderman.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Make outbound DNS packets respect the OutboundBindAddress setting.<br>
+Fixes the bug part of bug 798. Bugfix on 0.1.2.2-alpha.</li>
+<li>When our circuit fails at the first hop (e.g. we get a destroy<br>
+cell back), avoid using that OR connection anymore, and also<br>
+tell all the one-hop directory requests waiting for it that they<br>
+should fail. Bugfix on 0.2.1.3-alpha.</li>
+<li>In the torify(1) manpage, mention that tsocks will leak your<br>
+DNS requests.</li>
+</ul>
+
+<p>Original announcement can be found at <a href="http://archives.seul.org/or/talk/Jan-2009/msg00171.html" title="http://archives.seul.org/or/talk/Jan-2009/msg00171.html">http://archives.seul.org/or/talk/Jan-2009/msg00171.html</a></p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/two-incentive-designs-tor">Two incentive designs for Tor</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">arma</a> under
+            
+              <a class="post-category post-category-js" href="#">incentives</a>
+            
+              <a class="post-category post-category-js" href="#">performance</a>
+            
+              <a class="post-category post-category-js" href="#">research</a>
+             |
+            17 Jan 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>One big challenge to making Tor fast is providing incentives for users to act as relays. So far we&#39;ve been getting more relays by 1) building community through interacting more with relay operators, listing the fast ones prominently in the <a href="http://torstatus.kgprog.com/index.php?SR=Bandwidth&amp;SO=Desc">Tor status pages</a>, and generally making it clear that you will make the Tor network better if you do, and 2) making it really easy to configure and run a relay by adding a simple GUI interface in Vidalia and adding UPnP support. But we should also consider more direct incentive approaches, for example where Tor is faster for you if you&#39;re a relay.</p>
+
+<p>There are two papers that came out in 2008 that everybody pondering incentives in Tor should read. The first is <a href="http://freehaven.net/anonbib/#incentives-fc10">&quot;Building Incentives into Tor&quot;</a>, a tech report I coauthored with Johnny Ngan and Dan Wallach from Rice University (update: now it&#39;s an FC 2010 paper). The second is <a href="http://freehaven.net/anonbib/#raykova-pet2008">&quot;Payment for Anonymous Routing&quot;</a>, published at <a href="http://petsymposium.org/2008/program.php">PETS 2008</a> by Androulaki et al from Columbia University.</p>
+
+<p>The first paper proposes that Tor&#39;s directory authorities should spot check relays to make sure they&#39;re behaving well, and assign &quot;gold star&quot; flags to the good ones in the networkstatus consensus. Then relays give priority service to connections from people who have gold stars. We ran simulations of the idea for various combinations of users and strategies (selfish, cooperative, adaptive, etc), and showed that in general the performance for gold-star users stays good even with many other users and a heavy traffic load on the network. The other main goal of the design uses an economic argument: not only does it provide the (explicit) incentive to run a relay, but it also aims to grow the overall capacity of the network, so even non-relays will benefit.</p>
+
+<p>However, this incentive design has a serious flaw: the set of gold-star users is public. Over time an attacker can narrow down which relays are always the ones online when a certain activity (e.g. posting to a blog) happens. One fix might be to make the gold star status persist for a few weeks after the relay stops offering service, to dampen out fluctuations in the anonymity sets. But I fear that this narrowing-down attack (also known in research papers as the &quot;intersection attack&quot;) is still going to work really well against users who only relay traffic around the times they want good performance.</p>
+
+<p>It would seem that any incentives scheme that treats currently running relays specially will fall prey to this attack. We need to find some way to greatly increase the set of people who might be getting priority service. That&#39;s where the Columbia paper comes in: they propose that Tor clients use e-cash (digital coins) to pay for high-priority circuits. The bulk of the paper is in working out how to both a) make sure users can&#39;t cheat too often, and b) make sure relays can&#39;t use the payments to trace users. They use a hybrid digital cash design, where clients don&#39;t mind identifying themselves to the first hop, but then use anonymous digital cash when paying the later hops in the circuit. Most anonymous credential schemes involve way too much computational overhead, so having one that&#39;s more practical is a great step.</p>
+
+<p>Because anybody can buy the digital coins, it&#39;s not so easy to build a set of suspects when you see somebody use a high-priority circuit. Of course, once real money gets involved, things get more complex. One big problem is the bank. Actually building a centralized place where people turn dollars into bits and back is a daunting exercise, and other projects have learned the lesson that it&#39;s hard to get right. Plus there are still unsolved anonymity questions -- if we see Alice use a credit card to buy some anonymous coins, and then a few minutes later some anonymous person spends some anonymous coins, what did we learn?</p>
+
+<p>On top of that are the social implications of adding money into the system. Nick keeps reminding me of sociological studies saying that rewarding volunteers with t-shirts makes them feel good about their contribution, whereas rewarding them with a small amount of cash makes them subconsciously start to value their contribution based on the cash you give them. So they&#39;re more likely to stop volunteering, as they don&#39;t feel their effort is properly appreciated. More details <a href="http://www.congo-education.net/wealth-of-networks/ch-04.htm">here</a>, <a href="http://fiveandone.wikispaces.com/file/view/Why+Incentive+Plans+Cannot+Work.pdf">here</a>, and <a href="http://www.google.com/search?q=Effects+of+externally+mediated+rewards+on+intrinsic+motivation">here</a>. It&#39;s hard to say how right this research is, but it seems a rough set of variables to add in if we can avoid it.</p>
+
+<p>Beyond that, paying relays introduces other problems. For one, relays now have new incentives to cheat, or to minimize their traffic costs compared to the payments. How do we achieve a good decentralized network if everybody gravitates to the same cheapest hosting provider? Money can even <a href="http://archives.seul.org/or/talk/Dec-2008/msg00061.html">change the legal status of relays</a> in some cases.</p>
+
+<p>So how to proceed? My current idea is a combination of the two designs. The directory authorities give out digital coins in exchange for being a good relay, and the coins can be used to build high-priority circuits. The relays track the coins just enough to prevent too much double-spending (using a coin more than once), and then discard them. Now there is no bank, and no real money involved. It&#39;s just a resource management approach.</p>
+
+<p>Will a secondary market appear, where people sell their coins on eBay? Perhaps. Fine with me if so. I think that&#39;s a different situation than having the protocol itself designed to transfer dollars from users to relays.</p>
+
+<p>The single-use coins make me uncomfortable, because there&#39;s a lot of crypto infrastructure and performance questions in getting all those coins right. Worse, if we&#39;re really spending coins for every circuit, we will want to rethink our current &quot;feel free to build a bunch of circuits and just use a few&quot; approach that we&#39;re getting even more attached to with <a href="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/151-path-selection-improvements.txt">proposal 151</a>. In my ideal world we could give out coins (credentials) that could be used as much as you like in a given time period, so we don&#39;t need the whole anonymous cash infrastructure. But if somebody posts their credential to Slashdot, I want some way either to revoke it and/or to notice and not give that guy any more credentials in the future, and that seems hard. So it looks like it&#39;ll be single-use coins or bust.</p>
+
+<p>Of course, lest I appear too optimistic, there are a few more barriers to getting this right. We need to make sure Tor&#39;s network design can scale to make use of many more relays. We&#39;ve been making some progress lately at <a href="https://www.torproject.org/projects/lowbandwidth">decreasing the bandwidth required for directory downloads</a>, but <a href="https://www.torproject.org/faq#EverybodyARelay">many other aspects of this problem still need to be solved</a>. We also need a better way to actually implement priority circuits: our <a href="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/111-local-traffic-priority.txt">current approach</a> sometimes accidentally gives high priority to other circuits too. Lastly, we might find that per-circuit accounting is not sufficient to handle the load that some users want to put on the network. If so, somebody will need to start doing design and research on per-byte accounting.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/improvements-hidden-service-performance-or-not%3F">Improvements on Hidden Service Performance -- or not?</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">karsten</a> under
+            
+              <a class="post-category post-category-js" href="#">hidden services</a>
+            
+              <a class="post-category post-category-js" href="#">performance</a>
+             |
+            15 Jan 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>During the past eight months we have been trying pretty hard to improve hidden service performance. This work was part of the project to <a href="https://www.torproject.org/projects/hidserv.html">Speed Up Tor Hidden Services</a>, generously funded by the NLnet Foundation. As of today, we know that we have succeeded in our attempts -- well, or not?</p>
+
+<p>We started in June 2008 by measuring how long it takes until hidden services are registered in the network, how long it takes for clients to connect to them, and similar metrics. An <a href="http://freehaven.net/%7Ekarsten/hidserv/perfanalysis-2008-06-15.pdf">analysis</a> of these data revealed what problems could be responsible for the experienced delays: First of all, we found in total 10 bugs, some of them delaying hidden services significantly. These bugs are now fixed in the 0.2.1.x series (and the major bugs also in the 0.2.0.x series). Second, we identified certain substeps as the bottlenecks of the hidden service protocol, all of them related to building circuits on demand. We proposed a few design changes to overcome these bottlenecks by reducing circuit-build timeouts or by building circuits in parallel. These design changes have been <a href="http://freehaven.net/%7Ekarsten/hidserv/discussion-2008-07-15.pdf">discussed</a>, <a href="http://freehaven.net/%7Ekarsten/hidserv/design-2008-08-15.pdf">evaluated</a>, <a href="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/155-four-hidden-service-improvements.txt">specified</a>, and finally implemented in the 0.2.1.x series.</p>
+
+<p>As of today, we know that we were successful in our attempts -- well, at least in parts. In December 2008, we performed a second set of measurements with a Tor version that had all bugfixes and design changes. Today we finished the analysis of these new data by <a href="http://freehaven.net/%7Ekarsten/hidserv/comparison-2009-01-15.pdf">comparing</a> them with the June data. We found that the time until hidden services are advertised in the network halved from 2:12 minutes to 58 seconds in the mean. This improvement is by far better than we had expected. With this improvement we might even think about reducing an internal descriptor stabilization time from 30 seconds to a lower value, which would further reduce service publication time. However, we also found that the time that clients need to wait while connecting to hidden services remained unchanged at 56 seconds in the mean. Even though our design changes were effective, the <a href="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/114-distributed-storage.txt">distributed storage</a> for hidden service descriptors has counter-balanced all gains achieved here. This deteriorating effect was not expected when we started. In the future, we should therefore focus on speeding up downloads from the distributed hidden service directory, for example by parallelizing requests.</p>
+
+<p>All in all, these improvements are an important step in making hidden services faster. Now we know pretty well what the main problem of hidden services is: on-demand circuit building. Of course, this problem is not specific to hidden services, but a general problem of Tor. Fortunately, hidden services would benefit from all improvements that are made to circuit building in Tor. In the future we are focusing on improvements to circuit building in general.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/experimental-os-x-drag-and-drop-vidalia-bundle-installer">Experimental OS X Drag and Drop Vidalia Bundle Installer</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">alpha release</a>
+            
+              <a class="post-category post-category-js" href="#">apple os x</a>
+            
+              <a class="post-category post-category-js" href="#">experimental</a>
+            
+              <a class="post-category post-category-js" href="#">polipo</a>
+            
+              <a class="post-category post-category-js" href="#">vidalia bundle</a>
+             |
+            13 Jan 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>I asked for community feedback in <a href="https://blog.torproject.org/blog/os-x-vidalia-bundle-thoughts">this post</a> about drag and drop installation of the Vidalia bundle for Apple&#39;s OS X. In working with the Vidalia team, we now have a drag and drop installer. This is <strong>experimental</strong> . It&#39;s designed for a clean install. It won&#39;t migrate your settings, nor will it configure anything for you. Upon installing, your milk may sour and your salt may run off with your pepper. Now that the disclaimers are over, here&#39;s what it contains and does do for you.</p>
+
+<p>It includes Universal binaries for:</p>
+
+<ul>
+<li>Vidalia version 0.2.0-svn r3425</li>
+<li>Polipo 1.0.4 configured to use Tor as a socksproxy</li>
+<li>Tor 0.2.1.10-alpha compiled with prefix and bindir set to /Applications/Vidalia.app</li>
+</ul>
+
+<p>You can <a href="http://interloper.org/tmp/vidalia/vidalia-bundle-0.2.1.11-alpha-0.2.0-svn-r3467-universal.dmg">download them</a> along with <a href="http://interloper.org/tmp/vidalia/vidalia-bundle-0.2.1.11-alpha-0.2.0-svn-r3467-universal.dmg.asc">the pgp signature</a> and <a href="http://interloper.org/tmp/vidalia/vidalia-bundle-0.2.1.11-alpha-0.2.0-svn-r3467-universal.dmg.sha1">the SHA-1 hash</a>. <strong>**Update 2009-01-22 changed packages to r3467 of Vidalia and updated Tor to 0.2.1.11-alpha.</strong></p>
+
+<p>It&#39;s a self-contained disk image that has 3 items. The Vidalia.app package, a README.txt, and a folder full of licenses. There is a pretty background for the disk image courtesy of dr|z3d, and a link to the /Applications folder. And while everything is in a simple dmg file, this is not a Tor Browser Bundle for OS X. Running the applications out of the dmg may work, but OS X writes to plist files, caches, and other things all over the installed system. Please wait until we can properly create a TBB for OS X; for this is not it. However, if you are interested in helping out with a TBB for OS X, we&#39;re happy to have you help.</p>
+
+<p>Installation is literally this: &quot;Drag the Vidalia icon to the Applications folder&quot;. Boom. Done. Vidalia, Tor, and Polipo are installed. Go to your Applications folder and double-click the Vidalia icon. Everything should work out of the box. All bets are off if you have a pre-configured Tor, Vidalia, Polipo, or Privoxy.</p>
+
+<p>Here is a running <a href="http://trac.vidalia-project.net/browser/vidalia/trunk/CHANGELOG">CHANGELOG</a> of what&#39;s new in Vidalia 0.2.0-svn. One of the changes is that your Vidalia data directory is no longer ~/.vidalia/ but ~/Library/Vidalia. If you don&#39;t have a vidalia.conf in ~/Library/Vidalia, there is a sample vidalia.conf in /Applications/Vidalia.app/Contents/Resources that is copied to ~/Library/Vidalia to make this bundle work.</p>
+
+<p>The changes to Polipo are <a href="https://svn.torproject.org/svn/tor/trunk/contrib/polipo/">documented</a>. See the <a href="https://svn.torproject.org/svn/tor/trunk/contrib/polipo/README">README</a> file for some details.</p>
+
+<p>The only change to Tor are the parameters passed to configure:<br>
+&quot;CFLAGS=&quot;-O -g -mmacosx-version-min=10.4 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc&quot; LDFLAGS=&quot;-Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk&quot;<br>
+CONFDIR=/Applications/Vidalia.app<br>
+./configure --prefix=/Applications/Vidalia.app --bindir=/Applications/Vidalia.app<br>
+--sysconfdir=/Library --disable-dependency-tracking&quot;. And edit the Makefile to remove the tests for /Library/Tor.</p>
+
+<p>The goal is to make it easier for users to install the Vidalia Bundle and get Tor working. Using Vidalia to configure Tor is recommended. I don&#39;t know if this is the final direction, but enough people have trouble installing and configuring our packages in OS X, this is worth a test.</p>
+
+<p>I look forward to your feedback. Thanks!</p>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page121" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 122 of 133</span>
+    
+      <a href="/blog/page123" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

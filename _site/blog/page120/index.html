@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/some-notes-progress-iocp-and-libevent">Some notes on progress with IOCP and Libevent</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">nickm</a> under
+            
+              <a class="post-category post-category-js" href="#">developerment</a>
+            
+              <a class="post-category post-category-js" href="#">hacking</a>
+            
+              <a class="post-category post-category-js" href="#">iocp</a>
+            
+              <a class="post-category post-category-js" href="#">libevent</a>
+             |
+            01 Mar 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Hi! I recently wrote up a status report for the progress we&#39;re making on hacking Libevent, and I thought I&#39;d post it here too.</p>
+
+<p>BACKGROUND</p>
+
+<p>Tor currently uses Libevent for its high-performance networking calls. Libevent is a software library originally written by Niels Provos (then of UMichigan, now of Google), and now co-developed by Niels Provos and the Tor Project&#39;s Nick Mathewson. Its purpose is to provide consistent fast interfaces to various operating systems&#39; mutually incompatible fast networking facilities. Libevent gives applications two basic interfaces to these networking layers: a low-level interface where the application is notified when an operation (like a network read or write) is ready to begin, and a higher-level interface where Libevent itself manages network operations and the application is notified when the network operations are completed.</p>
+
+<p>Existing versions of Libevent have good performance everywhere but on Windows. This is because, while all other remotely common server operating systems provide a fast networking facility suitable for Libevent&#39;s low-level interface, Windows&#39;s fast (&quot;IOCP&quot;) networking calls are only suitable for building a compatible version of Libevent&#39;s high-level interface. Additionally, Libevent has not even used these fast Windows calls for its high-level interface, because of certain deficiencies in Libevent&#39;s existing implementation (such as lack of full Windows compatibility in all its submodules, lack of thread-safe data structures, and inefficient data structures).</p>
+
+<p>For Windows, using IOCP is not just a performance requirement, but a stability one. Many non-server versions of Windows require all network IO buffers to use &quot;non-paged RAM&quot; (memory that doesn&#39;t get swapped to disk), and limit the total amount of RAM that can be used for non-paged storage to an uncomfortably low amount.</p>
+
+<p>So to make Libevent fast and stable on Windows, the tasks are:</p>
+
+<p>1) Make Libevent&#39;s overall design flexible enough to support an IOCP-based backend for its high-level interface.</p>
+
+<p>2) Write the IOCP-based backend for Windows.</p>
+
+<p>Additionally, Tor today only uses Libevent&#39;s low-level interface because of missing features in the high-level interface, such as support for SSL-based connections and rate-limiting. Also, while the speed-performance of the high-level interface has been fine, it has used unacceptably large amounts of RAM in existing versions of Libevent. So to make Tor take advantage of Libevent&#39;s high-level networking capabilities, the tasks are:</p>
+
+<p>3) Revise Libevent&#39;s high-level interface to support the features Tor needs.</p>
+
+<p>4) Revise Tor&#39;s own networking layer to use Libevent&#39;s high-level interface.</p>
+
+<p>Finally, Windows&#39;s IOCP performs best when it is run in an aggressively multi-threaded environment, where any one of a pool of worker threads might be notified about any operation&#39;s completion on any socket. Moving to a model of this kind is out-of-scope for this report, though Libevent and Tor both plan to move in this direction in the longer term.</p>
+
+<p>STATUS</p>
+
+<p>Items 1 and 3 are mostly done: Nick has re-written large portions of Libevent&#39;s underlying high-level (&quot;bufferevents&quot;) interface in order to support multiple backends; to run safely in multiple threads; to allow for arbitrary data filters (including SSL and compression) and connection restraints (including rate limiting); and to provide acceptable RAM usage by use of improved data structures. These improvements and others are slated for inclusion in Libevent 2.0, which will represent the largest revision in Libevent since its beginning.</p>
+
+<p>Item 2 is begun and underway. We expect to have the first version of a Windows IOCP-based implementation of the high-level Libevent interfaces completed by the end of March; perhaps sooner. After this point, we&#39;ll need to spend a while load-testing the implementation to ensure it behaves correctly and quickly. Additionally, our conference outreach has found us a volunteer domain expert in this area who has offered to help us out with high-load testing.</p>
+
+<p>Item 4 will start once the Libevent interfaces have been tested enough that we are relatively confident of their stability. We will have two options at this point. First, we could make future versions of Tor require Libevent 2.0 everywhere, and replace Tor&#39;s buffered network IO code with calls to Libevent&#39;s. Alternatively, we could build Tor to use the low-level Libevent interface if built against an older Libevent, but use the high-level interface if built against a more recent one. The former approach would be easier to build, but might create unacceptable dependencies for some package bundlers depending on when the various free operating systems begin to ship Libevent 2. We will work with them to identify which approach is best for our users.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/january-2009-progress-report">January 2009 Progress Report</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">bug fixes</a>
+            
+              <a class="post-category post-category-js" href="#">progress report</a>
+            
+              <a class="post-category post-category-js" href="#">releases</a>
+            
+              <a class="post-category post-category-js" href="#">security fixes</a>
+            
+              <a class="post-category post-category-js" href="#">translations</a>
+             |
+            23 Feb 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p><strong>New releases, new hires, new funding</strong></p>
+
+<p>Tor 0.2.1.10-alpha (released January 6) fixes two major bugs in bridge<br>
+relays (one that would make the bridge relay not so useful if it had<br>
+DirPort set to 0, and one that could let an attacker learn a little bit<br>
+of information about the bridge&#39;s users), and a bug that would cause your<br>
+Tor relay to ignore a circuit create request it can&#39;t decrypt (rather<br>
+than reply with an error). It also fixes a wide variety of other bugs.<br>
+ <a href="http://archives.seul.org/or/talk/Jan-2009/msg00078.html" title="http://archives.seul.org/or/talk/Jan-2009/msg00078.html">http://archives.seul.org/or/talk/Jan-2009/msg00078.html</a></p>
+
+<p>Tor 0.2.1.11-alpha (released Jan 20) finishes fixing the &quot;if your Tor is<br>
+off for a week it will take a long time to bootstrap again&quot; bug. It also<br>
+fixes an important security-related bug reported by Ilja van Sprundel. You<br>
+should upgrade. (We&#39;ll send out more details about the bug once people<br>
+have had some time to upgrade.)<br>
+ <a href="http://archives.seul.org/or/talk/Jan-2009/msg00171.html" title="http://archives.seul.org/or/talk/Jan-2009/msg00171.html">http://archives.seul.org/or/talk/Jan-2009/msg00171.html</a></p>
+
+<p>Tor 0.2.0.33 (released Jan 21) fixes a variety of bugs that were making<br>
+relays less useful to users. It also finally fixes a bug where a relay or<br>
+client that&#39;s been off for many days would take a long time to bootstrap.<br>
+ <a href="http://archives.seul.org/or/announce/Jan-2009/msg00000.html" title="http://archives.seul.org/or/announce/Jan-2009/msg00000.html">http://archives.seul.org/or/announce/Jan-2009/msg00000.html</a></p>
+
+<p>Tor Browser Bundle 1.1.8 (released Jan 22) updates Tor to 0.2.1.11-alpha<br>
+(security update), updates OpenSSL to 0.9.8j (security update), updates<br>
+Firefox to 3.0.5, updates Pidgin to 2.5.4, and updates libevent to 1.4.9.<br>
+ <a href="https://svn.torproject.org/svn/torbrowser/trunk/README" title="https://svn.torproject.org/svn/torbrowser/trunk/README">https://svn.torproject.org/svn/torbrowser/trunk/README</a></p>
+
+<p>This month we also hired three new people: Martin Peck is working on<br>
+Tor VM, a new way of packaging Tor on Windows that will let people use<br>
+Youtube safely again; Mike Perry is working on Torbutton maintenance<br>
+and development and on Torflow, a set of scripts to do measurements on<br>
+the Tor network; and Andrew Lewman is our new executive director.</p>
+
+<p><strong>Enhancements</strong><br>
+Major bugfixes in the Tor 0.2.1.10-alpha and 0.2.0.33 releases:<br>
+- If the cached networkstatus consensus is more than five days old,<br>
+ discard it rather than trying to use it. In theory it could be useful<br>
+ because it lists alternate directory mirrors, but in practice it just<br>
+ means we spend many minutes trying directory mirrors that are long<br>
+ gone from the network. Helps bug 887 a bit; bugfix on 0.2.0.x.</p>
+
+<p>Tor 0.2.1.10-alpha contains cleanups that let Tor build on Google&#39;s<br>
+Android phone:<br>
+- Change our header file guard macros to be less likely to conflict<br>
+ with system headers. Adam Langley noticed that we were conflicting<br>
+ with log.h on Android.</p>
+
+<p>Major bugfixes in the Tor 0.2.1.11-alpha and 0.2.0.33 releases:<br>
+- Discard router descriptors as we load them if they are more than<br>
+ five days old. Otherwise if Tor is off for a long time and then<br>
+ starts with cached descriptors, it will try to use the onion<br>
+ keys in those obsolete descriptors when building circuits. Bugfix<br>
+ on 0.2.0.x. Fixes bug 887.</p>
+
+<p>Security bugfixes in the Tor 0.2.1.11-alpha and 0.2.0.33 releases:<br>
+- Fix a heap-corruption bug that may be remotely triggerable on<br>
+ some platforms. Reported by Ilja van Sprundel.</p>
+
+<p>Circuit-building speedups in Tor 0.2.1.10-alpha:<br>
+- When a relay gets a create cell it can&#39;t decrypt (e.g. because it&#39;s<br>
+ using the wrong onion key), we were dropping it and letting the<br>
+ client time out. Now actually answer with a destroy cell. Fixes<br>
+ bug 904. Bugfix on 0.0.2pre8.</p>
+
+<p>Scalability fixes from the Tor 0.2.0.33 ChangeLog:<br>
+- Clip the MaxCircuitDirtiness config option to a minimum of 10 seconds,<br>
+ and the CircuitBuildTimeout to a minimum of 30 seconds. Warn the user if<br>
+ lower values are given in the configuration. These fixes prevent a user<br>
+ from rebuilding circuits too often, which can be a denial-of-service<br>
+ attack on the network.<br>
+- When a stream at an exit relay is in state &quot;resolving&quot; or<br>
+ &quot;connecting&quot; and it receives an &quot;end&quot; relay cell, the exit relay<br>
+ would silently ignore the end cell and not close the stream. If<br>
+ the client never closes the circuit, then the exit relay never<br>
+ closes the TCP connection. Bug introduced in Tor 0.1.2.1-alpha;<br>
+ reported by &quot;wood&quot;.<br>
+- When sending CREATED cells back for a given circuit, use a 64-bit<br>
+ connection ID to find the right connection, rather than an addr:port<br>
+ combination. Now that we can have multiple OR connections between<br>
+ the same ORs, it is no longer possible to use addr:port to uniquely<br>
+ identify a connection.</p>
+
+<p>Bootstrapping speedups in Tor 0.2.1.11-alpha:<br>
+- When our circuit fails at the first hop (e.g. we get a destroy<br>
+ cell back), avoid using that OR connection anymore, and also<br>
+ tell all the one-hop directory requests waiting for it that they<br>
+ should fail. Bugfix on 0.2.1.3-alpha.</p>
+
+<p><strong>Architecture</strong><br>
+Proposal 158 (&quot;Clients download consensus + microdescriptors&quot;) suggests a<br>
+new way forward for reducing directory overhead for clients, and replaced<br>
+part of proposal 141. Rather than modifying the circuit-building protocol<br>
+to fetch a server descriptor inline at each circuit extend, we instead put<br>
+all of the information that clients need either into the consensus itself,<br>
+or into a new set of data about each relay called a microdescriptor.<br>
+ <a href="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/158-microdescriptors.txt" title="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/158-microdescriptors.txt">https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/158-microdes...</a></p>
+
+<p>From the 0.2.0.33 ChangeLog:<br>
+- Never use OpenSSL compression: it wastes RAM and CPU trying to compress<br>
+ cells, which are basically all encrypted, compressed, or both. It also<br>
+ made us stand out from other applications on the wire.</p>
+
+<p><strong>Advocacy</strong><br>
+Jillian York continued blogging for us about the good uses of Tor:<br>
+ <a href="http://www.knightpulse.org/blog/tor" title="http://www.knightpulse.org/blog/tor">http://www.knightpulse.org/blog/tor</a></p>
+
+<p>&quot;Federico Heinz advocates anonymous browsing in Argentina&quot;, Jan 8<br>
+ <a href="http://www.knightpulse.org/blog/09/01/08/federico-heinz-advocates-anonymous-browsing-argentina" title="http://www.knightpulse.org/blog/09/01/08/federico-heinz-advocates-anonymous-browsing-argentina">http://www.knightpulse.org/blog/09/01/08/federico-heinz-advocates-anonym...</a></p>
+
+<p>&quot;Human Rights Organizations in Argentina welcome anonymous browsing&quot;, Jan 25<br>
+ <a href="http://www.knightpulse.org/blog/09/01/25/human-rights-organizations-argentina-welcome-anonymous-browsing" title="http://www.knightpulse.org/blog/09/01/25/human-rights-organizations-argentina-welcome-anonymous-browsing">http://www.knightpulse.org/blog/09/01/25/human-rights-organizations-arge...</a></p>
+
+<p>&quot;Watch how you get around&quot;, Jan 30<br>
+ <a href="http://www.knightpulse.org/blog/09/01/30/watch-how-you-get-around" title="http://www.knightpulse.org/blog/09/01/30/watch-how-you-get-around">http://www.knightpulse.org/blog/09/01/30/watch-how-you-get-around</a></p>
+
+<p><strong>Pre-configured bundles</strong><br>
+Tor Browser Bundle 1.1.8 (released Jan 22) updates Tor to 0.2.1.11-alpha<br>
+(security update), updates OpenSSL to 0.9.8j (security update), updates<br>
+Firefox to 3.0.5, updates Pidgin to 2.5.4, and updates libevent to 1.4.9.<br>
+ <a href="https://svn.torproject.org/svn/torbrowser/trunk/README" title="https://svn.torproject.org/svn/torbrowser/trunk/README">https://svn.torproject.org/svn/torbrowser/trunk/README</a></p>
+
+<p>We continued work on Vidalia features to support where we want Tor<br>
+Browser Bundle to go. In particular, we&#39;re changing it to be able to<br>
+launch Firefox natively, rather than use the &quot;PortableFirefox&quot; pile of<br>
+complex scripts. We hope this change will also let users run a normal<br>
+Firefox alongside TBB. More on that in February.</p>
+
+<p>We also continued work on Tor VM, a new way of packaging Tor on<br>
+Windows that will (among other things) let people use Youtube safely<br>
+again. Hopefully we&#39;ll have some simple instructions up about that in<br>
+February too.</p>
+
+<p><strong>Bridges</strong><br>
+Major bugfixes in the Tor 0.2.1.10-alpha and 0.2.0.33 releases:<br>
+- Bridge relays that had DirPort set to 0 would stop fetching<br>
+ descriptors shortly after startup, and then briefly resume<br>
+ after a new bandwidth test and/or after publishing a new bridge<br>
+ descriptor. Bridge users that try to bootstrap from them would<br>
+ get a recent networkstatus but would get descriptors from up to<br>
+ 18 hours earlier, meaning most of the descriptors were obsolete<br>
+ already. Reported by Tas; bugfix on 0.2.0.13-alpha.<br>
+- Prevent bridge relays from serving their &#39;extrainfo&#39; document<br>
+ to anybody who asks, now that extrainfo docs include potentially<br>
+ sensitive aggregated client geoip summaries. Bugfix on<br>
+ 0.2.0.13-alpha.</p>
+
+<p>Bugfixes in the Tor 0.2.1.10-alpha release:<br>
+- When we made bridge authorities stop serving bridge descriptors over<br>
+ unencrypted links, we also broke DirPort reachability testing for<br>
+ bridges. So bridges with a non-zero DirPort were printing spurious<br>
+ warns to their logs. Bugfix on 0.2.0.16-alpha. Fixes bug 709.</p>
+
+<p>New feature in Tor 0.2.1.10-alpha:<br>
+- New controller event &quot;clients_seen&quot; to report a geoip-based summary<br>
+ of which countries we&#39;ve seen clients from recently. Now controllers<br>
+ like Vidalia can show bridge operators that they&#39;re actually making<br>
+ a difference.<br>
+Vidalia will add support for this feature in February.</p>
+
+<p><strong>Alternate download methods</strong><br>
+Our &quot;gettor&quot; email auto-responder is up and working:<br>
+ <a href="https://svn.torproject.org/svn/projects/gettor/README" title="https://svn.torproject.org/svn/projects/gettor/README">https://svn.torproject.org/svn/projects/gettor/README</a><br>
+ <a href="https://www.torproject.org/finding-tor#Mail" title="https://www.torproject.org/finding-tor#Mail">https://www.torproject.org/finding-tor#Mail</a></p>
+
+<p>Thandy itself is working smoothly at this point too -- it can contact<br>
+the central repository, check all the keys, look in the registry and<br>
+compare the currently installed version to the new choices, fetch the<br>
+right packages, check all the signatures, and launch the install.</p>
+
+<p>As of December we only had a new MSI-based installer for Tor, but not for<br>
+Vidalia, Torbutton, or Polipo. Now we do, though it&#39;s still in testing:<br>
+ <a href="https://data.peertech.org/torbld" title="https://data.peertech.org/torbld">https://data.peertech.org/torbld</a></p>
+
+<p><strong>Translations</strong><br>
+Our translation server is up and online:<br>
+ <a href="https://translation.torproject.org/" title="https://translation.torproject.org/">https://translation.torproject.org/</a><br>
+ <a href="https://www.torproject.org/translation-portal" title="https://www.torproject.org/translation-portal">https://www.torproject.org/translation-portal</a></p>
+
+<p>We continued enhancements to the Chinese and Russian Tor website<br>
+translations. Our Farsi translation from this summer is slowly becoming<br>
+obsolete; we should solve that at some point.</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-browser-bundle-1.1.9-released">Tor Browser Bundle 1.1.9 Released</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">alpha release</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser</a>
+            
+              <a class="post-category post-category-js" href="#">vidalia</a>
+             |
+            19 Feb 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Tor Browser Bundle 1.1.9 is released.</p>
+
+<p>It includes the following changes:</p>
+
+<p>Update Tor to 0.2.1.12-alpha<br>
+Update Firefox to 3.0.6<br>
+Update Vidalia to 0.1.11</p>
+
+<p>It&#39;s available at <a href="https://www.torproject.org/torbrowser/" title="https://www.torproject.org/torbrowser/">https://www.torproject.org/torbrowser/</a></p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/one-cell-enough">&quot;One cell is enough to break Tor&#39;s anonymity&quot;</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">arma</a> under
+            
+              <a class="post-category post-category-js" href="#">attacks</a>
+            
+              <a class="post-category post-category-js" href="#">research</a>
+            
+              <a class="post-category post-category-js" href="#">tagging</a>
+             |
+            19 Feb 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Tomorrow there&#39;s a talk at Black Hat DC by Xinwen Fu on an active attack that can allow traffic confirmation in Tor. He calls it a &quot; <a href="http://www.cs.uml.edu/%7Exinwenfu/paper/ICC08_Fu.pdf">replay attack</a>&quot;, whereas we called it a &quot;tagging attack&quot; in the original Tor paper, but let&#39;s look at how it actually works.</p>
+
+<p>First, remember the basics of how Tor provides anonymity. Tor clients <a href="https://www.torproject.org/images/htw2.png">route their traffic</a> over several ( <a href="https://wiki.torproject.org/noreply/TheOnionRouter/TorFAQ#VariablePathLength">usually three</a>) relays, with the goal that no single relay gets to learn both where the user is (call her Alice) and what site she&#39;s reaching (call it Bob).</p>
+
+<p>The Tor design <a href="https://www.torproject.org/svn/trunk/doc/design-paper/tor-design.html#subsec:threat-model">doesn&#39;t try to protect</a> against an attacker who can see or measure both traffic going into the Tor network and also traffic coming out of the Tor network. That&#39;s because if you can see both flows, some <a href="http://freehaven.net/anonbib/#danezis:pet2004">simple statistics</a> let you decide whether they match up.</p>
+
+<p>Because we aim to let people browse the web, we can&#39;t afford the extra overhead and hours of additional delay that are used in high-latency mix networks like <a href="http://freehaven.net/anonbib/#mixmaster-spec">Mixmaster</a> or <a href="http://freehaven.net/anonbib/#minion-design">Mixminion</a> to slow this attack. That&#39;s why Tor&#39;s security is all about trying to decrease the chances that an adversary will end up in the right positions to see the traffic flows.</p>
+
+<p>The way we generally explain it is that Tor tries to protect against traffic analysis, where an attacker tries to learn whom to investigate, but Tor can&#39;t protect against traffic confirmation (also known as end-to-end correlation), where an attacker tries to confirm a hypothesis by monitoring the right locations in the network and then doing the math.</p>
+
+<p>And the math is really effective. There are simple packet counting attacks ( <a href="http://freehaven.net/anonbib/#SS03">Passive Attack Analysis for Connection-Based Anonymity Systems</a>) and moving window averages ( <a href="http://freehaven.net/anonbib/#timing-fc2004">Timing Attacks in Low-Latency Mix-Based Systems</a>), but the more recent stuff is <a href="http://www.lightbluetouchpaper.org/2007/05/28/sampled-traffic-analysis-by-internet-exchange-level-adversaries/">downright scary</a>, like Steven Murdoch&#39;s PET 2007 paper about achieving high confidence in a correlation attack despite seeing only 1 in 2000 packets on each side ( <a href="http://freehaven.net/anonbib/#murdoch-pet2007">Sampled Traffic Analysis by Internet-Exchange-Level Adversaries</a>).</p>
+
+<p>What Fu is presenting in his talk is another instance of the confirmation attack, called the tagging attack. The basic idea is that an adversary who controls both the first (entry) and last (exit) relay that Alice picks can modify the data flow at one end of the circuit (&quot;tag&quot; it), and detect that modification at the other end — thus bridging the circuit and confirming that it really is Alice talking to Bob. This attack has some limitations compared to the above attacks. First, it involves modifying data, which in most cases will break the connection; so there&#39;s a lot more risk that he&#39;ll be noticed. Second, the attack relies on the adversary actually controlling both relays. The passive variants can be performed by an observer like an ISP or a telco.</p>
+
+<p>Tagging attacks on designs like Tor go back over a decade in the literature. In the 1996 Onion Routing paper ( <a href="http://freehaven.net/anonbib/#onion-routing:ih96">Hiding Routing Information</a>), they wrote:</p>
+
+<blockquote>
+<p>If the responder&#39;s proxy [exit node] is compromised, and can determine when the unencrypted data stream has been corrupted, it is possible for compromised nodes earlier in the virtual circuit to corrupt the stream and ask which responder&#39;s proxy received uncorrupted data. By working with compromised nodes around a suspected initiator&#39;s proxy [Tor client], one can identify the beginning of the virtual circuit.</p>
+</blockquote>
+
+<p>When we designed Tor, we made a conscious decision to not design against this attack, because the other confirmation attacks are just as effective and we have no fix for them, and because countering the tagging attack doesn&#39;t come for free. Here&#39;s a quote from <a href="https://www.torproject.org/svn/trunk/doc/design-paper/tor-design.html#subsec:integrity-checking">the Tor design paper</a> in 2004:</p>
+
+<blockquote>
+<p>Because Tor uses TLS on its links, external adversaries cannot modify data. Addressing the insider malleability attack, however, is more complex.</p>
+
+<p>We could do integrity checking of the relay cells at each hop, either by including hashes or by using an authenticating cipher mode like EAX, but there are some problems. First, these approaches impose a message-expansion overhead at each hop, and so we would have to either leak the path length or waste bytes by padding to a maximum path length. Second, these solutions can only verify traffic coming from Alice: ORs would not be able to produce suitable hashes for the intermediate hops, since the ORs on a circuit do not know the other ORs&#39; session keys. Third, we have already accepted that our design is vulnerable to end-to-end timing attacks; so tagging attacks performed within the circuit provide no additional information to the attacker. Thus, we check integrity only at the edges of each stream.</p>
+</blockquote>
+
+<p>Basically, we chose a design where the tagging attack is no more effective than the passive confirmation attacks, and figured that would have to be good enough.</p>
+
+<p>I should also note here that the correlation attack papers mostly focus on _observing_ flows at either end and matching them up. They do great with just that. But think what you could do if you actually control one of the endpoints, and can modulate how much you send, when you send it, etc. Heck, if you&#39;re the exit relay, you can spoof a much larger webpage for the user, and then have even more bytes to work with. None of that requires a tagging attack.</p>
+
+<p>So, where does the &quot;one cell is enough&quot; come in? If you can tag a single cell and recognize it on the other end of the circuit, then you can be confident you&#39;ve got the right flow.</p>
+
+<p>One of the unknowns in the research world is exactly how quickly the timing attack succeeds. How many seconds of traffic (and/or packets) do you need to achieve a certain level of confidence? I&#39;ll grant that if you run the entry and exit, tagging is a very simple attack to carry out both conceptually and in practice. But I think Fu underestimates how simple the timing attack can be also. That&#39;s probably the fundamental disagreement here.</p>
+
+<p>For example, Bauer et al. in WPES 2007 described a passive timing attack on Tor circuit creation that works before a single relay cell has been transmitted ( <a href="http://freehaven.net/anonbib/#bauer:wpes2007">Low-Resource Routing Attacks Against Tor</a>).</p>
+
+<p>Fu&#39;s paper also cites concern about false positives -- it seems on first glance that a tagging attack should provide much higher confidence than a timing attack, since you&#39;ll always be wondering whether the timing attack really matched up the right circuits. Here&#39;s a quote from one of the authors of <a href="http://freehaven.net/anonbib/#hs-attack06">Locating Hidden Servers</a>, another paper with a successful timing attack on Tor:</p>
+
+<blockquote>
+<p>We were prepared to do parameter tuning, active timing signature insertion, etc. should it be necessary, but it wasn&#39;t. In the thousands of circuits we ran we _never_ had a false positive. The Bauer et al. paper from WPES&#39;07 extended our work from hidden server circuits to general Tor circuits (although it only ran on a Tor testbed on PlanetLab rather than the public Tor network). The highest false positive rate they got was .0006. This is just a nonissue.</p>
+</blockquote>
+
+<p>One of the challenges here is that anonymity designs live on the edge. While crypto algorithms aim to be so good that even really powerful attackers still can&#39;t succeed, anonymity networks are constantly balancing performance and efficiency against attacks like these. One of the tradeoffs we made in the Tor design is that we accepted end-to-end correlation as an attack that is too expensive to solve, and we&#39;re building the best design we can based on that.</p>
+
+<p>If somebody can show us that tagging attacks are actually much more effective than their passive timing counterparts, we should work harder to fix them. If somebody can come up with a cheap way to make them harder, we&#39;re all ears. But while they remain on par with passive attacks and remain expensive to fix, then it doesn&#39;t seem like a good move to slow down Tor even more without actually making it safer.</p>
+
+<p>Overall, I&#39;m confused why the conference organizers thought this would be a good topic for a Black Hat talk. It&#39;s not like there&#39;s a shortage of &quot;oh crap&quot; Tor attack papers lately. I guess my take-away message is that I need to introduce Jeff Moss to Nick Hopper et al from Minnesota ( <a href="http://freehaven.net/anonbib/#tissec-latency-leak">How Much Anonymity does Network Latency Leak?</a>) and Sambuddho Chakravarty et al from Columbia ( <a href="http://www.google.com/search?q=columbia+global+passive+adversary+tor">Approximating a Global Passive Adversary against Tor</a>).</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/praise-multiple-options-circumvention">In praise of multiple options for circumvention</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+            
+              <a class="post-category post-category-js" href="#">circumvention</a>
+            
+              <a class="post-category post-category-js" href="#">education</a>
+             |
+            17 Feb 2009
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>I was asked the other day why we don&#39;t advocate for just Tor as the one tool to rule them all. My glib answer is &quot;of course we do, however the larger the toolbox, the better off the world.&quot;</p>
+
+<p>Expanding on that notion, the various anonymity, privacy, and circumvention tools target different people and use cases. Tor advocates for <a href="https://blog.torproject.org/blog/circumvention-and-anonymity">Anonymity first, circumvention second</a>. It would be very naive of us to think that we can solve all use cases. In fact, it would be silly of us to try to dictate the needs of any user. The larger the ecosystem of privacy and anonymity tools, the more options for users, and the better off we are as a whole.</p>
+
+<p>At the core, Tor is a protocol and a set of specifications. Others can take our documentation and build upon it for their own tool. The EU PRIME project did this and created a fully Java implementation of Tor with a GUI. The result was called OnionCoffee. It&#39;s woefully out of date now, but the proof of concept stands; it can be done. The purpose of specifying a protocol is to leave interpretation and implementation as open as possible. Imagine if the creators of the Internet Protocol restricted implementations to exactly as they had envisioned 40-something years ago. As for Tor, there is much more protocol work to be done, research completed, and our reference implementation polished before we can consider online anonymity solved, or even close to solved.</p>
+
+<p>We are often asked, &quot;I use tool X, what do you think about it? Should I switch to Tor?&quot;</p>
+
+<p>Instead of an answer, we ask a series of questions to find out why they use X; for the reasons of learning more about X, why people choose X, and what Tor may lack. It turns out, they use X because their friends use X, and they know the strengths and weaknesses of the software well. It may not be perfect, but they know what the software can and cannot do. They know if a tool is compromised, or access to the service is shut off, they can switch to another. If there was only one tool, once it is blocked or disappears, the users are screwed. Isn&#39;t it great to have options?</p>
+
+<p>Obviously, we state that Tor is a fine solution, and perhaps they should add the concept of anonymity and our software to their list of options. Our goal is educating users to help themselves and others. Anyone who suggests otherwise is trying to sell you something.</p>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page119" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 120 of 133</span>
+    
+      <a href="/blog/page121" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

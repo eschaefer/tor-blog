@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <img class="tor-logo" src="/assets/images/tor_logo.png" />
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+
+               <div id="home">
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-weekly-news-%E2%80%94-december-25th-2013">Tor Weekly News — December 25th, 2013</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">lunar</a> under
+            
+              <a class="post-category post-category-js" href="#">tor weekly news</a>
+             |
+            25 Dec 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Welcome to the 26th issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+
+<h1>The 3.x series of the Tor Browser Bundle is now stable</h1>
+
+<p>After more than a year of work, Mike Perry has officially <a href="https://blog.torproject.org/blog/tor-browser-bundle-35-released">blessed the 3.5 release of the Tor Browser Bundle as the new stable release</a>. Improving on the previous stable series, it features a <a href="https://blog.torproject.org/blog/deterministic-builds-part-two-technical-details">deterministic build system</a> for <a href="https://blog.torproject.org/blog/deterministic-builds-part-one-cyberwar-and-global-compromise">distributed trust</a>, a new <a href="https://gitweb.torproject.org/tor-launcher.git">integrated interface to interact with Tor</a> and all the <a href="https://lists.torproject.org/pipermail/tor-talk/2013-December/031392.html">improvements from Tor 0.2.4</a>.</p>
+
+<p>Users of the previous 2.x series might be a little disoriented by the user interface changes. David Fifield, Matt Pagan and others have been compiling <a href="https://trac.torproject.org/projects/tor/wiki/doc/TorBrowserBundle3FAQ">the most frequent questions</a> heard after the switch. Until the integrated browser interface catches up, <a href="https://people.torproject.org/%7Eerinn/vidalia-standalone-bundles/">new Vidalia bundles are now available</a> for those who need them. Erinn Clark is ironing out the remaining integration issues.</p>
+
+<p>With the discontinuation of Firefox 17 ESR, the new release had to be pushed to users to avoid exposing them to security holes. Firefox 24 ESR, on which the Tor Browser is now based, should be supported by Mozilla for approximately one year. This will leave our browser hackers some time to focus more on user experience improvements, test automation, and better resistance to fingerprinting issues.</p>
+
+<p>Several tutorials, videos, and bits of documentation might now in one way or another be out-of-date in many places. Please help report them or, even better, write up some updated versions.</p>
+
+<p>This release is quite a milestone for the project. Update and enjoy!</p>
+
+<h1>The Tor Project now accepts donation in Bitcoin</h1>
+
+<p>As is often pointed out in the press, the majority of the Tor Project’s financial support comes from US government-linked organizations. In the ongoing effort to offer as many possible ways for individuals and organizations to give help to the project, <a href="https://blog.torproject.org/blog/announcement-tor-project-now-accepting-bitcoin-donations">Bitcoin donations are now being accepted</a>.</p>
+
+<p>As Roger Dingledine wrote in a subsequent comment: “We really need to get some funding for core Tor development, and especially for improving Tor’s anonymity, because none of our current funders care enough about the anonymity side of Tor. Outreach and blocking-resistance are great topics, but we can’t let the anonymity part rot.”</p>
+
+<p>Head over to the <a href="https://www.torproject.org/donate/donate#bitcoin">donations page</a> to learn more about how to chip in with Bitcoins or other currencies.</p>
+
+<h1>Tor 0.2.4.20 is out</h1>
+
+<p>The first update to the new stable branch of Tor has been <a href="https://lists.torproject.org/pipermail/tor-talk/2013-December/031483.html">released</a> on December 23rd. It fixes an issue that would create more preemptive circuits than actually need, and a security issue related to poor random number generation.</p>
+
+<p>The latter affects “users who 1) use OpenSSL 1.0.0 or later, 2) set ‘HardwareAccel 1’ in their torrc file, 3) have ‘Sandy Bridge’ or ‘Ivy Bridge’ Intel processors, and 4) have no state file in their DataDirectory (as would happen on first start). Users who generated relay or hidden service identity keys in such a situation should discard them and generate new ones.”</p>
+
+<p>The source code is already available from <a href="https://www.torproject.org/dist/">the usual location</a>. Update packages and bundles should be ready soon.</p>
+
+<h1>Tor events at the 30th Chaos Communication Congress</h1>
+
+<p>The Chaos Computer Club will be holding <a href="https://www.ccc.de/en/updates/2013/30c3">its 30th Congress</a> in Hamburg between the 27th and the 30th of December, and as usual there are a number of Tor-related talks and events scheduled.</p>
+
+<p>Following their <a href="https://media.torproject.org/video/29c3-5306-en-the_tor_software_ecosystem_h264.mp4">session on the Tor ecosystem at 29c3</a>, Tor Project members Roger Dingledine and Jacob Appelbaum will be giving a talk entitled “ <a href="https://events.ccc.de/congress/2013/Fahrplan/events/5423.html">The Tor Network: We’re living in interesting times</a>”, in which they discuss the Project’s work over the last few years, with special reference to “major cryptographic upgrades in the Tor network, interesting academic papers in attacking the Tor network, major high profile users breaking news about the network itself, discussions about funding, FBI/NSA exploitation of Tor Browser users, botnet related load on the Tor network, and other important topics”.</p>
+
+<p>Their talk will be followed by a <a href="https://events.ccc.de/congress/2013/wiki/Session:How_to_help_Tor%3F">discussion involving everyone interested in helping Tor</a> at the NoisySquare assembly. The Tor ecosystem is now made up of more than forty different projects, and there are sure to be ways you can help. Bring your skills and your energy!</p>
+
+<p>Torservers.net will be holding a <a href="https://events.ccc.de/congress/2013/wiki/Session:Tor_Relay_Operators_Meetup">meeting of Tor relay operators and organizations</a>, featuring “quick presentations on recent and future activities around Torservers.net”, to be followed by the official members’ meeting of the German Torservers.net partner organization, Zwiebelfreunde e.V.</p>
+
+<h1>youbroketheinternet will hold a session on the <a href="https://events.ccc.de/congress/2013/wiki/Session:YBTI_Cryptographic_Routing">future of crypto routing backends</a>: “Even the IETF is now considering that Onion Routing should be a fundamental capability of the Internet. How would that look in practice?”</h1>
+
+<p>If you are attending the Congress, feel free to come along and participate in these sessions; if not, you should be able to catch up with the talks online.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Anthony G. Basile <a href="http://opensource.dyc.edu/pipermail/tor-ramdisk/2013-December/000107.html">released version 20131216</a> of Tor-ramdisk, a “uClibc-based micro Linux distribution whose only purpose is to host a Tor server in an environment that maximizes security and privacy.” This new release is the first to ship the 0.2.4 branch of Tor.</p>
+
+<p>For those who like hazardous experiments, intrigeri sent a <a href="https://mailman.boum.org/pipermail/tails-dev/2013-December/004538.html">call for testing</a> an experimental Tails image with preliminary UEFI support — users of Apple hardware should be particularly interested. anonym also <a href="https://mailman.boum.org/pipermail/tails-dev/2013-December/004547.html">announced</a> that test images from the MAC spoofing branch were available.</p>
+
+<p>Nick Mathewson sent his now-monthly <a href="https://lists.torproject.org/pipermail/tor-dev/2013-December/005957.html">review of the status of Tor’s proposals</a>. Karsten Loesing followed-up by commenting on several of those related to the directory protocol. Have a look, you might also be able to move things forward!</p>
+
+<p>Many thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-December/000403.html">John Sweeney of otivpn.com</a>, <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-December/000411.html">Jeremy J. Olson of EPRCI</a>, and <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-December/000415.html">les.net</a> for running mirrors of the Tor Project website.</p>
+
+<p>Karsten Loesing has been <a href="https://bugs.torproject.org/10460">experimenting</a> with replacementsfor the “fast exits” graphs that would convey a better feeling of the network growth. He also deployed a new visualization for the <a href="https://metrics.torproject.org/performance.html#connbidirect">fraction of connections used uni-/bidirectionally</a>.</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>Multiple users have now emailed the help desk regarding a particular type of “ <a href="https://en.wikipedia.org/wiki/Ransomware_%28malware%29">ransomware</a>” that encrypts the hard drive of Windows computers and won’t give users the decryption key until a payment is made. Victims of this malware have emailed the help desk because the ransomware message includes a link to a tor hidden service site. Malware victims wanted to know how to install the Tor Browser, or thought the Tor Project was the source of the malware.</p>
+
+<p>The Tor Project does not make malware; in the past Tor developers have worked with anti-virus developers to help stop other types of malware. Users affected might find useful information in the <a href="http://www.bleepingcomputer.com/virus-removal/cryptolocker-ransomware-information">guide assembled by BleepingComputer.com</a>. If you have not been affected, the story might be a good reminder to think about your backups.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, harmony, Matt Pagan and dope457.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-browser-bundle-35-released">Tor Browser Bundle 3.5 is released</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">mikeperry</a> under
+            
+              <a class="post-category post-category-js" href="#">tbb</a>
+            
+              <a class="post-category post-category-js" href="#">tbb-3.0</a>
+            
+              <a class="post-category post-category-js" href="#">tbb-3.5</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser bundle</a>
+            
+              <a class="post-category post-category-js" href="#">tor-browser-bundle</a>
+             |
+            19 Dec 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p><strong>Update 12/20:</strong> Test builds of Pluggable Transport bundles are now available. See inline and see the FAQ link for more details.</p>
+
+<p>The 2.x stable series of the Tor Browser Bundle has officially been deprecated, and all users are encouraged to upgrade to the <a href="https://blog.torproject.org/category/tags/tbb-35">3.5 series</a>.</p>
+
+<p>Packages are now available from the <a href="https://www.torproject.org/download/download-easy.html">Tor download page</a> as well as the <a href="https://archive.torproject.org/tor-package-archive/torbrowser/3.5/">Tor Package archive</a>.</p>
+
+<p>For now, the Pluggable Transports-capable TBB is still a separate package, maintained by David Fifield. Download them here: <a href="https://people.torproject.org/%7Edcf/pt-bundle/3.5-pt20131217/">https://people.torproject.org/~dcf/pt-bundle/3.5-pt20131217/</a>. We hope to have combined packages available in a beta soon.</p>
+
+<p>For people already using TBB 3.5rc1, the changes are not substantial, and are included below.</p>
+
+<p>However, for users of TBB 2.x and 3.0, this release includes <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox24.2">important security updates to Firefox</a>. All users are strongly encouraged to update immediately, as we will not be making further releases in the 2.x or 3.0 series.</p>
+
+<p>In terms of user-facing changes from TBB 2.x, the 3.x series primarily features the replacement of Vidalia with a Firefox-based Tor controller called Tor Launcher. This has resulted in a vast decrease in startup times, and a vast increase in usability. We have also begun work on an <a href="https://trac.torproject.org/projects/tor/wiki/doc/TorBrowserBundle3FAQ">FAQ page</a> to handle common questions arising from this transition -- where Vidalia went, how to disable JavaScript, how to check signatures, etc.</p>
+
+<p>The <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/refs/heads/master:/Bundle-Data/Docs/ChangeLog.txt">complete changelog</a> for the 3.x series describes the changes since 2.x.</p>
+
+<p>The set of changes since the 3.5rc1 release is:</p>
+
+<ul>
+<li><p>All Platforms</p>
+
+<ul>
+<li>Update Tor to 0.2.4.19</li>
+<li>Update Tor Launcher to 0.2.4.2</li>
+<li>Bug 10382: Fix a Tor Launcher hang on TBB exit </li>
+<li>Update Torbutton to 1.6.5.2</li>
+<li>Misc: Switch update download URL back to download-easy </li>
+</ul></li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-weekly-news-%E2%80%94-december-18th-2013">Tor Weekly News — December 18th, 2013</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">lunar</a> under
+            
+              <a class="post-category post-category-js" href="#">tor weekly news</a>
+             |
+            18 Dec 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Welcome to the twenty-fifth issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the ever-updating Tor community.</p>
+
+<h1>Tor 0.2.4.19 is out</h1>
+
+<p>After more than a year in the making, Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-talk/2013-December/031392.html">announced</a> the first stable release in the Tor 0.2.4 series, as well as the dedication of this series to the memory of Aaron Swartz (1986-2013).</p>
+
+<p>Tor 0.2.4 boasts a large number of major new features, among them a new circuit handshake, improved link encryption, a flexible approach to the queueing of circuit creation requests, and the use of “directory guards” to defend against client-enumeration attacks. You can consult the full changelog in Roger’s announcement, and <a href="https://www.torproject.org/dist/">download the source code</a> from the website.</p>
+
+<p>As no code changes have been made since the previous release candidate, there is no reasons for users of tor 0.2.4.18-rc to upgrade in a hurry.</p>
+
+<h1>Tor Browser Bundle 3.5rc1 is out</h1>
+
+<p>Mike Perry <a href="https://blog.torproject.org/blog/tor-browser-bundle-35rc1-released">announced</a> the first release candidate in the Tor Browser Bundle 3.5 series, and strongly encouraged users to update in anticipation of the imminent end-of-life of both the 2.x stable and 3.0 series, following Mozilla&#39;s deprecation of Firefox 17 ESR, on which both are based.</p>
+
+<p>This release also includes a number of important security updates, alongside various bugfixes and usability improvements; for this reason as well, users should upgrade as soon as possible.</p>
+
+<h1>Tails 0.22 is out</h1>
+
+<p>Tails saw its <a href="https://tails.boum.org/news/version_0.22/">35th release</a> on December 11th. It incorporates many major and minor improvements and bugfixes, and opens up the new incremental-upgrade feature for beta-testing.</p>
+
+<p>As this is the first release to feature a browser based on the Firefox 24 ESR series, some small inconveniences found their way in. Have a look at the known issues before giving it a go.</p>
+
+<p>Nevertheless, it fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_0.21/">several important security issues</a>, so it is recommended that all users upgrade as soon as possible.</p>
+
+<h1>Torservers.net awarded $250,000 grant</h1>
+
+<p>The Torservers.net team <a href="https://blog.torservers.net/20131213/torservers-awarded-250000-by-digital-defenders.html">announced</a> that they have received a $250,000 organizational grant, to be spread over two years, from the <a href="http://digitaldefenders.org/">Digital Defenders Partnership</a>, which in its own words was “established to provide rapid response to threats to internet freedom.”</p>
+
+<p>With this grant, wrote Moritz Bartl, “participating Torservers organizations will be able to sustain at least 3 Gbit/s of exit traffic, and 2000 fast and up-to-date bridges.”</p>
+
+<p>In order to make the most efficient use of this significant contribution to the Tor network while maintaining its diversity, <a href="https://lists.torproject.org/pipermail/tor-relays/2013-December/003495.html">wrote Moritz</a>, “we need to find seven more organizations that are willing to rent servers for a period of at least 2 years”, <a href="https://mailman.stanford.edu/pipermail/liberationtech/2013-December/012376.html">adding</a> that “we really want to avoid having organizations run both high bandwidth exit relays and a larger number of Tor bridges: An operator should not see both traffic entering the Tor network and traffic leaving the Tor network” .</p>
+
+<p>For this reason, he called for groups interested in supporting the Tor network to get in contact, in order to discuss how they can best set up and maintain Tor services. The first such partnership will be with the <a href="https://www.cyber-arabs.com/">Institute for War and Peace Reporting&#39;s Cyber Arabs group</a>.</p>
+
+<p>If you represent an organization that could make this much-needed contribution to the Tor network, please contact the Torservers.net team, or join them at the <a href="https://events.ccc.de/congress/2013/wiki/Session:Torservers_Meetup">Tor relay operators meetup during the upcoming Chaos Communication Congress in Hamburg</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>The Tails team reported on the vast amount of <a href="https://tails.boum.org/news/report_2013_11/">activity that occurred during November 2013</a>. Coming up in the next few Tails releases are an updated I2P, a new clock applet with configurable timezone, better localization, incremental upgrades, safer persistence, MAC spoofing…</p>
+
+<p>meejah <a href="https://lists.torproject.org/pipermail/tor-dev/2013-December/005927.html">announced</a> the release of txtorcon 0.8.2, and warned users that they should upgrade if they use that program’s TCP4HiddenServiceEndpoint feature, in order to fix a bug that allows listening on hosts other than 127.0.0.1.</p>
+
+<p>Kevin P Dyer <a href="https://lists.torproject.org/pipermail/tor-dev/2013-December/005953.html">announced</a> the 0.2.2 release of fteproxy, which “includes the removal of gmpy as a dependency, additional documentation to explain the significance of language theoretical algorithms, and bounds checking of the input/output of our (un)ranking algorithms”; this <a href="https://lists.torproject.org/pipermail/tor-dev/2013-December/005929.html">hot on the heels of 0.2.1</a>, in which he “focused on breaking away from heavyweight dependencies: OpenFST and boost”.</p>
+
+<p>Mike Perry <a href="https://lists.torproject.org/pipermail/tor-dev/2013-December/005923.html">shared his thoughts</a> regarding the presence of the Tor Browser Bundle in centralized repositories such as the Apple App Store or Google Play, and the possibilities for attack that these stores open up.</p>
+
+<p>Ondrej Mikle <a href="https://lists.torproject.org/pipermail/tor-talk/2013-December/031408.html">warned users of Enterprise Linux 5</a> that Tor RPM packages will no longer be built for their platform, owing to an “increasing number of required workarounds”.</p>
+
+<p>Karsten Loesing published a <a href="https://lists.torproject.org/pipermail/tor-dev/2013-December/005948.html">summary of the past, present and the future of the Tor Metrics project</a>, which he maintains, offering some context for the various changes that have recently been announced.</p>
+
+<p>Lunar sent reports from the Tor help desk for <a href="https://lists.torproject.org/pipermail/tor-reports/2013-December/000404.html">October</a> and <a href="https://lists.torproject.org/pipermail/tor-reports/2013-December/000405.html">November</a>.</p>
+
+<p>Jacob Appelbaum recapped his work over the last few months — from June to December — in a slew of reports ( <a href="https://lists.torproject.org/pipermail/tor-reports/2013-December/000407.html">June</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-December/000408.html">July</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-December/000409.html">August</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-December/000410.html">September</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-December/000411.html">October</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-December/000412.html">November</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-December/000413.html">December</a>).</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>Occasionally users who need the Pluggable Transports Tor Browser Bundle will download the Vidalia Bridge Bundle instead, which is less useful for users trying to circumvent state censorship. The Vidalia Bridge Bundle is only available for Windows and is configured by default to turn the client machine into a bridge. None of the Vidalia Bundles are designed to use Pluggable Transports.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by harmony, Lunar, dope457, and Matt Pagan.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/announcement-tor-project-now-accepting-bitcoin-donations">Announcement: The Tor Project is now accepting Bitcoin Donations</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">phobos</a> under
+            
+              <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+            
+              <a class="post-category post-category-js" href="#">bitcoins</a>
+            
+              <a class="post-category post-category-js" href="#">donations</a>
+            
+              <a class="post-category post-category-js" href="#">tor project</a>
+             |
+            17 Dec 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>Over the past year, we have received many requests for us to accept bitcoin donations. After careful consideration and research, we are thrilled to announce that effective today The Tor Project is accepting bitcoin donations. In partnership with <a href="https://bitpay.com/">Bitpay</a>, bitcoins can easily and directly be donated to support Tor’s ongoing mission of being the global resource for privacy technology advocacy, research and education in the ongoing pursuit of freedom of speech, privacy rights online, and censorship circumvention. Check out our <a href="https://www.torproject.org/donate/donate#bitcoin">donations page</a> now. Bitcoin donations received by The Tor Project will be converted directly to US Dollars.</p>
+
+<p>Our decision to accept bitcoins has been well thought out and researched from a financial accounting perspective with an eye on passing our required annual A-133 audit. We believe we are the <em>first</em> US 501(c)3 non-profit organization to test acceptance of bitcoins and attempt to pass the US Government A-133 Audit Standard. Our 2013 audit results, along with our past <a href="https://www.torproject.org/about/financials.html.en">financial documents</a>, will be made available on our website once complete in 2014.</p>
+
+<p>The Tor Project is also proud to be in the company of other visible non-profit organizations accepting bitcoins including <a href="https://www.eff.org/deeplinks/2013/05/eff-will-accept-bitcoins-support-digital-liberty">EFF</a> and <a href="http://en.blog.wordpress.com/2012/11/15/pay-another-way-bitcoin/">Wordpress</a>.</p>
+
+<p>Why is this important? The Tor Project needs your donations to continue our mission and to keep the Tor suite of technologies ahead with the growing threats to privacy and anonymity around the world. Your donation made TODAY, through bitcoin, Paypal, Amazon Payments, Givv.org, checks, money orders or bank transfers, will provide greater security and privacy for millions around the world who use Tor every day.</p>
+
+<p>Help us continue our mission!</p>
+</p>
+      </div>
+    </section>
+  
+    <section class="post">
+      <header class="post-header">
+        <h2 class="post-title"> <a href="/tor-browser-bundle-35rc1-released">Tor Browser Bundle 3.5rc1 Released</a></h2>
+        <p class="post-meta">
+            By <a class="post-author" href="#">mikeperry</a> under
+            
+              <a class="post-category post-category-js" href="#">tbb</a>
+            
+              <a class="post-category post-category-js" href="#">tbb-3.0</a>
+            
+              <a class="post-category post-category-js" href="#">tbb-3.5</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser</a>
+            
+              <a class="post-category post-category-js" href="#">tor browser bundle</a>
+            
+              <a class="post-category post-category-js" href="#">tor-browser-bundle</a>
+             |
+            13 Dec 2013
+        </p>
+      </header>
+      <div class="post-description">
+        <p><p>The first release candidate in the <a href="https://blog.torproject.org/category/tags/tbb-35">3.5 series</a> of the Tor Browser Bundle is now available from the Tor Package Archive:<br>
+ <a href="https://archive.torproject.org/tor-package-archive/torbrowser/3.5rc1/">https://archive.torproject.org/tor-package-archive/torbrowser/3.5rc1/</a>.</p>
+
+<p>This release includes <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox24.2">important security updates to Firefox.</a></p>
+
+<p>Moreover, the Firefox 17esr release series has been deprecated by Mozilla. This means the imminent end of life for our 2.x and 3.0 bundle series. All 3.0 users are strongly encourage to update immediately, as we will not be making further releases in that series. If this release candidate survives the next few days without issue, this release candidate will be declared stable, and we will officially deprecate the current stable 2.x Tor Browser Bundles and declare their versions out of date as well.</p>
+
+<p>Here is the <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/refs/heads/master:/Bundle-Data/Docs/ChangeLog.txt">complete changelog</a>:</p>
+
+<ul>
+<li><p>All Platforms</p>
+
+<ul>
+<li>Update Firefox to 24.2.0esr</li>
+<li>Update NoScript to 2.6.8.7</li>
+<li>Update HTTPS-Everywhere to 3.4.4tbb (special TBB tag)</li>
+<li>Tag includes a patch to handle enabling/disabling Mixed Content Blocking </li>
+<li>Bug 5060: Disable health report service</li>
+<li>Bug 10367: Disable prompting about health report and Mozilla Sync</li>
+<li>Misc Prefs: Disable HTTPS-Everywhere first-run tooltips</li>
+<li>Misc Prefs: Disable layer acceleration to avoid crashes on Windows</li>
+<li>Misc Prefs: Disable Mixed Content Blocker pending backport of Mozilla Bug 878890</li>
+<li>Update Tor Launcher to 0.2.4.1</li>
+<li>Bug 10147: Adblock Plus interferes w/Tor Launcher dialog</li>
+<li>Bug 10201: FF ESR 24 hangs during exit on Mac OS</li>
+<li>Bug 9984: Support running Tor Launcher from InstantBird</li>
+<li>Misc: Support browser directory location API changes in Firefox 24 </li>
+<li>Update Torbutton to 1.6.5.1</li>
+<li>Bug 10352: Clear FF24 Private Browsing Mode data during New Identity</li>
+<li>Bug 8167: Update cache isolation for FF24 API changes</li>
+<li>Bug 10201: FF ESR 24 hangs during exit on Mac OS</li>
+<li>Bug 10078: Properly clear crypto tokens during New Identity on FF24</li>
+<li>Bug 9454: Support changes to Private Browsing Mode and plugin APIs in FF24 </li>
+</ul></li>
+<li><p>Linux</p>
+
+<ul>
+<li>Bug 10213; Use LD_LIBRARY_PATH (fixes launch issues on old Linux distros) </li>
+</ul></li>
+</ul>
+</p>
+      </div>
+    </section>
+  
+
+   <!-- Pagination links -->
+  <div class="pagination">
+    
+      <a href="/blog/page16" class="previous">Previous</a>
+    
+    <span class="page_number ">Page: 17 of 133</span>
+    
+      <a href="/blog/page18" class="next">Next</a>
+    
+  </div>
+</div>
+
+            </div>
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
