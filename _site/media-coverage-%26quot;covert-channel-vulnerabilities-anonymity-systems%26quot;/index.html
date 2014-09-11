@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Media coverage of 'Covert channel vulnerabilities in anonymity systems'</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
+
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Media coverage of 'Covert channel vulnerabilities in anonymity systems'</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">sjmurdoch</a> under
+              
+                <a class="post-category post-category-js" href="#">attacks</a>
+              
+                <a class="post-category post-category-js" href="#">covert channels</a>
+              
+                <a class="post-category post-category-js" href="#">media coverage</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              04 Feb 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Over the past few days there has been some coverage of my <a href="http://www.lightbluetouchpaper.org/2007/12/10/covert-channel-vulnerabilities-in-anonymity-systems/">PhD thesis</a>, and its relationship to Tor, on blogs and online news sites. It seems like this wave started with a <a href="http://mcpmag.com/columns/article.asp?editorialsid=2470">column</a> by Russ Cooper, which triggered articles in <a href="http://www.pcworld.com/article/id,142094-pg,1/article.html">PC World</a> and <a href="http://www.darkreading.com/document.asp?doc_id=144606&amp;WT.svl=news2_3">Dark Reading</a>. The media attention came as a bit of a surprise to me, since nobody asked to interview me over this. I&#39;d encourage other journalists writing about Tor to contact someone from the project as we&#39;re happy to help give some context.</p>
+
+<p>My thesis is a fairly diverse collection of work, but the articles emphasize the impact of the attacks I discuss on users of anonymity networks like Tor. Actually, my thesis doesn&#39;t aim to show that Tor is insecure; the reason I selected Tor as a test case was that it&#39;s one of the few (and by far the largest) low-latency system that aims to stand up to observation. Other, simpler, systems have comparatively well understood weaknesses, and so there is less value in researching them.</p>
+
+<p>Quantifying the security of anonymity systems is a difficult question and still being actively worked on. Comparing different systems is even harder since they make different assumptions on the capabilities of attackers (the “threat model”). The mere chance of attacks doesn&#39;t indicate that a system is insecure, since they might make assumptions about the environment that are not met, or are insufficiently reliable for the scenario being considered.</p>
+
+<p>The actual goal of my thesis was try to better understand the strengths and weaknesses of systems like Tor, but more importantly to also to suggest a more general methodology for discovering, and resolving flaws. I proposed that the work from the well-established field of <a href="http://en.wikipedia.org/wiki/Covert_channel">covert channels</a> could be usefully applied, and used examples, including Tor, to justify this.</p>
+
+<p>There remains much work to be done before it&#39;s possible to be sure how secure anonymity systems are, but hopefully this framework will be a useful one in moving forward. Since in September 2007 I joined the Tor project, I hope I&#39;ll also help in other ways too.</p>
+
+        </div>
+      </section>
+  </div>
+
+</div>
+
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/media-coverage-%2526quot%3Bcovert-channel-vulnerabilities-anonymity-systems%2526quot%3B',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
