@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>five minutes to speak</h2>
-<p class="meta">13 Feb 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>I was asked to give a five minute speech to open a panel in front of a number of policy makers and advisors in Washington, DC in the past few weeks. The discussion was under <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Chatham_House_Rule">Chatham House Rule</a>. A number of people have encouraged me to publish the speech notes as a blog post, it is as follows.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">five minutes to speak</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+              
+                <a class="post-category post-category-js" href="#">cyberutopian</a>
+              
+                <a class="post-category post-category-js" href="#">peer to peer</a>
+              
+                <a class="post-category post-category-js" href="#">policy</a>
+              
+                <a class="post-category post-category-js" href="#">policy makers</a>
+              
+                <a class="post-category post-category-js" href="#">technology</a>
+               |
+              13 Feb 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>I was asked to give a five minute speech to open a panel in front of a number of policy makers and advisors in Washington, DC in the past few weeks. The discussion was under <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Chatham_House_Rule">Chatham House Rule</a>. A number of people have encouraged me to publish the speech notes as a blog post, it is as follows.</p>
 
 <blockquote>
 <p>Here I am, a technologist in a room full of policy people. I&#39;ll stick
@@ -151,8 +173,62 @@ to see the power and effects of these technologies with bittorrent, jap,
 skype, freenet, i2p, and tor.</p>
 </blockquote>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/five-minutes-speak',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

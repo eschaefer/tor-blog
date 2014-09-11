@@ -45,18 +45,92 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>2011 Stockholm Hackfest Thanks</h2>
-<p class="meta">15 May 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Thanks to everyone for attending today. We had some great discussions about <a href="http://www.haven-project.org/">The Haven Project</a>, Economic Association for tor relay operators, <a href="http://www.telecomix.org/">telecomix</a>, pluggable transports, <a href="http://tails.boum.org/">TAILS</a>, IPv6, <a href="http://romab.se/">sandboxing flash</a>, and of course, tor itself.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">2011 Stockholm Hackfest Thanks</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">hackfest</a>
+              
+                <a class="post-category post-category-js" href="#">stockholm</a>
+              
+                <a class="post-category post-category-js" href="#">stockholm hackfest</a>
+              
+                <a class="post-category post-category-js" href="#">sverige</a>
+              
+                <a class="post-category post-category-js" href="#">sweden</a>
+               |
+              15 May 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Thanks to everyone for attending today. We had some great discussions about <a href="http://www.haven-project.org/">The Haven Project</a>, Economic Association for tor relay operators, <a href="http://www.telecomix.org/">telecomix</a>, pluggable transports, <a href="http://tails.boum.org/">TAILS</a>, IPv6, <a href="http://romab.se/">sandboxing flash</a>, and of course, tor itself.</p>
 
 <p>And a great bit of gratitude to iis.se for promoting and hosting the hackfest, and for providing food. <a href="https://www.iis.se/blogg/hackare-intar-se" title="https://www.iis.se/blogg/hackare-intar-se">https://www.iis.se/blogg/hackare-intar-se</a> and the followup, <a href="https://www.iis.se/internet-for-alla/reportage/teknikreportage/hackare-intog-se" title="https://www.iis.se/internet-for-alla/reportage/teknikreportage/hackare-intog-se">https://www.iis.se/internet-for-alla/reportage/teknikreportage/hackare-i...</a></p>
 
 <p>Tack!</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/2011-stockholm-hackfest-thanks',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

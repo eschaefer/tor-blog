@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Some notes on progress with IOCP and Libevent</h2>
-<p class="meta">01 Mar 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Hi! I recently wrote up a status report for the progress we&#39;re making on hacking Libevent, and I thought I&#39;d post it here too.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Some notes on progress with IOCP and Libevent</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">nickm</a> under
+              
+                <a class="post-category post-category-js" href="#">developerment</a>
+              
+                <a class="post-category post-category-js" href="#">hacking</a>
+              
+                <a class="post-category post-category-js" href="#">iocp</a>
+              
+                <a class="post-category post-category-js" href="#">libevent</a>
+               |
+              01 Mar 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Hi! I recently wrote up a status report for the progress we&#39;re making on hacking Libevent, and I thought I&#39;d post it here too.</p>
 
 <p>BACKGROUND</p>
 
@@ -81,8 +99,62 @@
 
 <p>Item 4 will start once the Libevent interfaces have been tested enough that we are relatively confident of their stability. We will have two options at this point. First, we could make future versions of Tor require Libevent 2.0 everywhere, and replace Tor&#39;s buffered network IO code with calls to Libevent&#39;s. Alternatively, we could build Tor to use the low-level Libevent interface if built against an older Libevent, but use the high-level interface if built against a more recent one. The former approach would be easier to build, but might create unacceptable dependencies for some package bundlers depending on when the various free operating systems begin to ship Libevent 2. We will work with them to identify which approach is best for our users.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/some-notes-progress-iocp-and-libevent',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

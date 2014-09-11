@@ -45,11 +45,35 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Anonymity by Design versus by Policy</h2>
-<p class="meta">17 Sep 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>There have been some recent stories in the news about various <a href="http://www.citmedialaw.org/blog/2009/skanky-blogging-anonymity-and-whats-right">&quot;anonymous&quot; bloggers</a> and <a href="http://www.citmedialaw.org/blog/2009/splitting-digital-baby-california-court-creates-new-procedure-uncovering-anonymous-comment">commenters</a> being unmasked by court order. A business promises not to give up your identity unless forced to do so via court order. This is anonymity by policy. If a business doesn&#39;t have your identity, then there is nothing to divulge. This is anonymity by design.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Anonymity by Design versus by Policy</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">blogging</a>
+              
+                <a class="post-category post-category-js" href="#">commenting</a>
+              
+                <a class="post-category post-category-js" href="#">courts</a>
+              
+                <a class="post-category post-category-js" href="#">free speech</a>
+              
+                <a class="post-category post-category-js" href="#">news stories</a>
+              
+                <a class="post-category post-category-js" href="#">online anonymity</a>
+               |
+              17 Sep 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>There have been some recent stories in the news about various <a href="http://www.citmedialaw.org/blog/2009/skanky-blogging-anonymity-and-whats-right">&quot;anonymous&quot; bloggers</a> and <a href="http://www.citmedialaw.org/blog/2009/splitting-digital-baby-california-court-creates-new-procedure-uncovering-anonymous-comment">commenters</a> being unmasked by court order. A business promises not to give up your identity unless forced to do so via court order. This is anonymity by policy. If a business doesn&#39;t have your identity, then there is nothing to divulge. This is anonymity by design.</p>
 
 <p><a href="http://www.washingtonpost.com/wp-dyn/content/article/2009/04/08/AR2009040803248.html">Advocates for anonymous comments</a> understand the value of being able to speak freely. However, if you&#39;re simply connecting from your home or office, parts of your identity are leaked to the site on which you commented. As shown above, you can be unmasked fairly easily. Some sites simply respond to a subpoena, others legal threats, and still others simply don&#39;t care; giving away your identity with any request. There are <a href="https://www.torproject.org/torusers">plenty of valid reasons</a> to want to protect your identity in a blog, comment, or feedback form.</p>
 
@@ -59,8 +83,62 @@
 
 <p>The examples and news stories above show you the difference between anonymity by policy and anonymity by design. We encourage the courts to keep raising the requirements before forcing a provider to divulge your identity. We encourage companies to learn how privacy can enhance their relationship with their customers. We designed Tor such that relying on court tests and company policies isn&#39;t your only protection. Tor users and relay operators don&#39;t have the data to divulge. This is anonymity and privacy by design.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/anonymity-design-versus-policy',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

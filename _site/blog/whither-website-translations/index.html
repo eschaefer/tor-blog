@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Whither website translations</h2>
-<p class="meta">28 Sep 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>As of <a href="https://lists.torproject.org/pipermail/tor-commits/2011-September/035605.html">svn commit 25130</a> we no longer have our web pages translated. We continue to translate tor, vidalia, aurora/firefox, our manual pages, and other documentation included with the various bundles. We&#39;re also going to create a new, simplified user manual that can be translated and included in our various packages.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Whither website translations</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bugs</a>
+              
+                <a class="post-category post-category-js" href="#">polyglot internet</a>
+              
+                <a class="post-category post-category-js" href="#">translators</a>
+              
+                <a class="post-category post-category-js" href="#">website translations</a>
+               |
+              28 Sep 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>As of <a href="https://lists.torproject.org/pipermail/tor-commits/2011-September/035605.html">svn commit 25130</a> we no longer have our web pages translated. We continue to translate tor, vidalia, aurora/firefox, our manual pages, and other documentation included with the various bundles. We&#39;re also going to create a new, simplified user manual that can be translated and included in our various packages.</p>
 
 <p>I thank our translators, both past and current, and continue to be impressed at the community we&#39;ve built up around translating all things Tor. We appreciate it, our users appreciate, and I appreciate it.</p>
 
@@ -72,8 +90,62 @@
 
 <p>I still look forward to universal translators, helping me to understand the <a href="http://www.ethanzuckerman.com/blog/the-polyglot-internet/">polyglot Internet</a>. There is so much content out there that isn&#39;t in languages I understand. I hope universal translators can greatly improve in a short time.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/whither-website-translations',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

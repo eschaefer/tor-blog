@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>"One cell is enough to break Tor's anonymity"</h2>
-<p class="meta">19 Feb 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Tomorrow there&#39;s a talk at Black Hat DC by Xinwen Fu on an active attack that can allow traffic confirmation in Tor. He calls it a &quot; <a href="http://www.cs.uml.edu/%7Exinwenfu/paper/ICC08_Fu.pdf">replay attack</a>&quot;, whereas we called it a &quot;tagging attack&quot; in the original Tor paper, but let&#39;s look at how it actually works.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">"One cell is enough to break Tor's anonymity"</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">attacks</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+              
+                <a class="post-category post-category-js" href="#">tagging</a>
+               |
+              19 Feb 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Tomorrow there&#39;s a talk at Black Hat DC by Xinwen Fu on an active attack that can allow traffic confirmation in Tor. He calls it a &quot; <a href="http://www.cs.uml.edu/%7Exinwenfu/paper/ICC08_Fu.pdf">replay attack</a>&quot;, whereas we called it a &quot;tagging attack&quot; in the original Tor paper, but let&#39;s look at how it actually works.</p>
 
 <p>First, remember the basics of how Tor provides anonymity. Tor clients <a href="https://www.torproject.org/images/htw2.png">route their traffic</a> over several ( <a href="https://wiki.torproject.org/noreply/TheOnionRouter/TorFAQ#VariablePathLength">usually three</a>) relays, with the goal that no single relay gets to learn both where the user is (call her Alice) and what site she&#39;s reaching (call it Bob).</p>
 
@@ -99,8 +115,62 @@
 
 <p>Overall, I&#39;m confused why the conference organizers thought this would be a good topic for a Black Hat talk. It&#39;s not like there&#39;s a shortage of &quot;oh crap&quot; Tor attack papers lately. I guess my take-away message is that I need to introduce Jeff Moss to Nick Hopper et al from Minnesota ( <a href="http://freehaven.net/anonbib/#tissec-latency-leak">How Much Anonymity does Network Latency Leak?</a>) and Sambuddho Chakravarty et al from Columbia ( <a href="http://www.google.com/search?q=columbia+global+passive+adversary+tor">Approximating a Global Passive Adversary against Tor</a>).</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/one-cell-enough',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

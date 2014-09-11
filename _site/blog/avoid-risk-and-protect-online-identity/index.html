@@ -45,11 +45,21 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Avoid risk and protect online identity</h2>
-<p class="meta">14 Mar 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>A number of good blog posts have been written about how you can avoid risk, protect your online identity, blog safely and so on. We decided to collect links to some of these posts so that you can easily find the information most relevant to you.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Avoid risk and protect online identity</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+               |
+              14 Mar 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>A number of good blog posts have been written about how you can avoid risk, protect your online identity, blog safely and so on. We decided to collect links to some of these posts so that you can easily find the information most relevant to you.</p>
 
 <p><a href="https://www.eff.org/wp/blog-safely">How to Blog Safely (About Work or Anything Else)</a> is a guide written by the <a href="https://www.eff.org/">EFF</a>. The guide talks about how you can use Tor to blog anonymously, and offers a few simple precautions to help you maintain control of your privacy.</p>
 
@@ -63,8 +73,62 @@
 
 <p><a href="http://www.microsoft.com/security/family-safety/blogging.aspx">Safety tips on blogging</a> from <a href="http://www.microsoft.com">Microsoft</a>. This short guide lists some basic guidelines for bloggers, and also gives some advice to parents about how they can talk to their kids about the Internet and blogging.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/avoid-risk-and-protect-online-identity',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

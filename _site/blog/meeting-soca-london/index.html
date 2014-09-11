@@ -45,18 +45,84 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Meeting With SOCA in London</h2>
-<p class="meta">04 Feb 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>In January I met with the <a href="http://www.soca.gov.uk/">Serious Organised Crime Agency (SOCA)</a> in London, UK. One of the challenges when dealing with online threats (cybercrime/e-crime) is understanding which leads not to follow. My goal was to help them understand what Tor is, how it works (both from a user and a relay operator point of view), and what it can and cannot do.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Meeting With SOCA in London</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+              
+                <a class="post-category post-category-js" href="#">trip report</a>
+               |
+              04 Feb 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>In January I met with the <a href="http://www.soca.gov.uk/">Serious Organised Crime Agency (SOCA)</a> in London, UK. One of the challenges when dealing with online threats (cybercrime/e-crime) is understanding which leads not to follow. My goal was to help them understand what Tor is, how it works (both from a user and a relay operator point of view), and what it can and cannot do.</p>
 
 <p>I talked about the Tor software ecosystem, including <a href="https://metrics.torproject.org/exonerator.html">ExoneraTor</a> (the website that tells you whether a given IP address was a Tor relay), and mentioned that we list all <a href="https://www.torproject.org/projects/projects.html.en">official projects</a> on our website. I also mentioned Roger’s trip to the <a href="https://blog.torproject.org/blog/trip-report-october-fbi-conference">FBI conference</a> in October 2012, and talked about some of the experiences we have had teaching US-based law enforcement about Tor.</p>
 
 <p>Overall, I would say the meeting went well. They learned more about Tor and the projects we are working on, and they are aware that the protections that prevent us from figuring out what Tor users are doing - and who they are - is what’s keeping all Tor users safe.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/meeting-soca-london',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

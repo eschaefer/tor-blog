@@ -45,16 +45,94 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Set up a bridge or a relay and join the Tor network today</h2>
-<p class="meta">12 Mar 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The Tor network relies on volunteers to donate bandwidth. The more people who run Tor as a bridge or a relay, the faster and safer the network becomes. <a href="https://www.tacticaltech.org/">Tactical Tech</a> created a video to encourage you to join the Tor Network. The video, and information about how you can set up a bridge or a relay, can be found on <a href="https://www.torproject.org/relays">https://www.torproject.org/relays</a>. If you want to help us translate the video into your language, let us know!</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Set up a bridge or a relay and join the Tor network today</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+              
+                <a class="post-category post-category-js" href="#">bridge relays</a>
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">cloud</a>
+              
+                <a class="post-category post-category-js" href="#">relays</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">tor cloud</a>
+              
+                <a class="post-category post-category-js" href="#">video</a>
+               |
+              12 Mar 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Tor network relies on volunteers to donate bandwidth. The more people who run Tor as a bridge or a relay, the faster and safer the network becomes. <a href="https://www.tacticaltech.org/">Tactical Tech</a> created a video to encourage you to join the Tor Network. The video, and information about how you can set up a bridge or a relay, can be found on <a href="https://www.torproject.org/relays">https://www.torproject.org/relays</a>. If you want to help us translate the video into your language, let us know!</p>
 
 <p>The full HD video can be found here: <a href="https://media.torproject.org/video/2012-03-04-BuildingBridges-HD.ogv">https://media.torproject.org/video/2012-03-04-BuildingBridges-HD.ogv</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/set-bridge-or-relay-and-join-tor-network-today',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

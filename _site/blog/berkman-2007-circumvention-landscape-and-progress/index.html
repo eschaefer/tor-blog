@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Berkman 2007 Circumvention Landscape and Progress</h2>
-<p class="meta">05 Mar 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The Berkman Center has released their report on the <a href="http://cyber.law.harvard.edu/publications/2009/2007_Circumvention_Landscape_Report">landscape of circumvention technologies</a> as it was in 2007. Tor was included in this test and comes out as a secure tool with some improvements needed. Technology Review also picked up this report and <a href="http://www.technologyreview.com/web/22252/page1/">wrote an article</a> on the results.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Berkman 2007 Circumvention Landscape and Progress</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">Berkman Center for Internet and Society</a>
+              
+                <a class="post-category post-category-js" href="#">research report</a>
+              
+                <a class="post-category post-category-js" href="#">tool comparison</a>
+               |
+              05 Mar 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Berkman Center has released their report on the <a href="http://cyber.law.harvard.edu/publications/2009/2007_Circumvention_Landscape_Report">landscape of circumvention technologies</a> as it was in 2007. Tor was included in this test and comes out as a secure tool with some improvements needed. Technology Review also picked up this report and <a href="http://www.technologyreview.com/web/22252/page1/">wrote an article</a> on the results.</p>
 
 <p>Since the original publication of the report, we&#39;ve responded to and improved a number of identified weaknesses. The main focus has been on usability of the software. Tor is easier to understand, configure, and install. We&#39;ve worked on finding translators for the various parts of the suite of tools that comprise Tor. We developed and enhanced a Firefox plugin called Torbutton. The current Torbutton mitigates all known browser-based anonymity attacks. Torbutton is included in our bundles and is automatically installed into the user&#39;s Firefox browser configuration. Torbutton can be found at <a href="https://torproject.org/torbutton/" title="https://torproject.org/torbutton/">https://torproject.org/torbutton/</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/2275" title="https://addons.mozilla.org/en-US/firefox/addon/2275">https://addons.mozilla.org/en-US/firefox/addon/2275</a>.</p>
 
@@ -59,8 +75,62 @@
 
 <p>As part of its dedication to transparency and openness, The Tor Project has published its three year development roadmap, focused on providing anti-censorship tools and services for the advancement of Internet freedom in closed societies. While Tor&#39;s original goal was to provide online anonymity, many people around the world use Tor to get around Internet censorship, as well. Human Rights Watch and Global Voices Online have both recommended Tor as a tool to circumvent censorship regimes in oppressive nations. The roadmap is focused on providing anti-censorship tools and services for the advancement of Internet freedom in closed societies. This roadmap can be found at <a href="https://www.torproject.org/press/2008-12-19-roadmap-press-release" title="https://www.torproject.org/press/2008-12-19-roadmap-press-release">https://www.torproject.org/press/2008-12-19-roadmap-press-release</a>.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/berkman-2007-circumvention-landscape-and-progress',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

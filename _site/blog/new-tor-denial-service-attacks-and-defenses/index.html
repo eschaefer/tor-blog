@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>New Tor Denial of Service Attacks and Defenses</h2>
-<p class="meta">25 Jan 2014</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>New work on denial of service in Tor will be presented at <a href="http://www.internetsociety.org/ndss2014/programme#session5">NDSS &#39;14 on Tuesday, February 25th, 2014</a>:</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">New Tor Denial of Service Attacks and Defenses</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">robgjansen</a> under
+              
+                <a class="post-category post-category-js" href="#">denial of service</a>
+              
+                <a class="post-category post-category-js" href="#">dos</a>
+              
+                <a class="post-category post-category-js" href="#">hidden services</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+               |
+              25 Jan 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>New work on denial of service in Tor will be presented at <a href="http://www.internetsociety.org/ndss2014/programme#session5">NDSS &#39;14 on Tuesday, February 25th, 2014</a>:</p>
 
 <p><cite><br>
 <b>The Sniper Attack: Anonymously Deanonymizing and Disabling the Tor Network</b><br>
@@ -149,8 +167,62 @@ To appear at the 21st Symposium on Network and Distributed System Security<br>
 
 <p>Finally, <a href="https://blog.torproject.org/blog/hidden-services-need-some-love">hidden services also need some love</a>. More work is needed to redesign them in a way that does not allow a client to cause the hidden service to choose new relays on demand.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/new-tor-denial-service-attacks-and-defenses',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

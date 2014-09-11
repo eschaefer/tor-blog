@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Ultrasurf: the definitive review</h2>
-<p class="meta">16 Apr 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>In the summer of 2011, I spent a few months learning how to effectively reverse engineer Windows software. I&#39;m still learning and while I have a lifetime of learning to do on the topic, I chose to audit Ultrasurf as a challenge. This research was performed as a labor of love and it was funded work. My interest in reverse engineering Ultrasurf comes entirely because I have seen people promoting it without also offering evidence that it is safe. Additionally, a few people had asked me what I thought of the software and in order to form an opinion, I decided to dig deeper.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Ultrasurf: the definitive review</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">ioerror</a> under
+              
+                <a class="post-category post-category-js" href="#">research</a>
+              
+                <a class="post-category post-category-js" href="#">reverse engineering</a>
+              
+                <a class="post-category post-category-js" href="#">snakeoil</a>
+              
+                <a class="post-category post-category-js" href="#">ultrasurf</a>
+               |
+              16 Apr 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>In the summer of 2011, I spent a few months learning how to effectively reverse engineer Windows software. I&#39;m still learning and while I have a lifetime of learning to do on the topic, I chose to audit Ultrasurf as a challenge. This research was performed as a labor of love and it was funded work. My interest in reverse engineering Ultrasurf comes entirely because I have seen people promoting it without also offering evidence that it is safe. Additionally, a few people had asked me what I thought of the software and in order to form an opinion, I decided to dig deeper.</p>
 
 <p>Ultrasurf is software produced by the UltraReach company for censorship circumvention, privacy, security and anonymity. Unfortunately for them, I found their claims to be overstated and I found a number of serious problems with Ultrasurf.</p>
 
@@ -97,8 +115,62 @@ UltraReach/Ultrasurf have released <a href="http://ultrasurf.us/Ultrasurf-respon
 
 <p><strong>Another Update:</strong> Collin Anderson has written up <a href="http://b.averysmallbird.com/entries/the-need-for-community-participation-and-clear-disclosure-processes-in-the-case-of-ultrasurf">his view of the disclosure process</a>. He is an independently involved third party that attempted to mediate our disclosure, solutions and a reasonable time frame for all parties involved.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/ultrasurf-definitive-review',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

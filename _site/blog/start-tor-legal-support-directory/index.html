@@ -45,11 +45,43 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Start of a Tor Legal Support Directory</h2>
-<p class="meta">12 Jan 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Over the past few months, a number of exit relay operators have contacted us asking for help with some legal issues encountered while running their relay. While we can&#39;t provide legal advice in all jurisdictions, we can frequently find you a next hop in the legal chain to get you the advice or representation you need. Sometimes this advice is free/pro-bono, other times it is not. It&#39;s up to the legal organization to decide if they can take your case or refer you to someone else.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Start of a Tor Legal Support Directory</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">australia</a>
+              
+                <a class="post-category post-category-js" href="#">austria</a>
+              
+                <a class="post-category post-category-js" href="#">exit relays</a>
+              
+                <a class="post-category post-category-js" href="#">finland</a>
+              
+                <a class="post-category post-category-js" href="#">germany</a>
+              
+                <a class="post-category post-category-js" href="#">legal support</a>
+              
+                <a class="post-category post-category-js" href="#">netherlands</a>
+              
+                <a class="post-category post-category-js" href="#">switzerland</a>
+              
+                <a class="post-category post-category-js" href="#">tor legal support directory</a>
+              
+                <a class="post-category post-category-js" href="#">tor relay operators</a>
+              
+                <a class="post-category post-category-js" href="#">usa</a>
+               |
+              12 Jan 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Over the past few months, a number of exit relay operators have contacted us asking for help with some legal issues encountered while running their relay. While we can&#39;t provide legal advice in all jurisdictions, we can frequently find you a next hop in the legal chain to get you the advice or representation you need. Sometimes this advice is free/pro-bono, other times it is not. It&#39;s up to the legal organization to decide if they can take your case or refer you to someone else.</p>
 
 <p>Rather than keep a secret list of people willing to help, we&#39;re building a public list for operators to contact directly, in their own country. A big thanks to Fred and Gwen at the EFF for helping to start this list and for making introductions. And, of course, a big thanks to the organizations for agreeing to be listed and for offering support to Tor relay operators.</p>
 
@@ -92,8 +124,62 @@ Electronic Frontier Foundation
 <p><strong>Switzerland</strong> :
  <a href="http://www.privacyfoundation.ch" title="http://www.privacyfoundation.ch">http://www.privacyfoundation.ch</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/start-tor-legal-support-directory',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

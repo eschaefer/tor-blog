@@ -45,11 +45,23 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Congrats 2008 Google Summer of Code Students!</h2>
-<p class="meta">07 May 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The <a href="http://www.eff.org">EFF</a> and <a href="https://www.torproject.org">The Tor Project</a> announce the final selection of students for the <a href="http://code.google.com/soc/2008/">2008 Google Summer of Code</a>.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Congrats 2008 Google Summer of Code Students!</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">gsoc</a>
+               |
+              07 May 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The <a href="http://www.eff.org">EFF</a> and <a href="https://www.torproject.org">The Tor Project</a> announce the final selection of students for the <a href="http://code.google.com/soc/2008/">2008 Google Summer of Code</a>.</p>
 
 <p>We&#39;re happy to welcome:</p>
 
@@ -65,8 +77,62 @@
 
 <p>There were a total of 40 applications <a href="http://code.google.com/soc/2008/eff/about.html">for 7 slots</a> this year. Congratulations to Aleksei, Camilo, Domenik, Sebastian, Simon, Christian, and Fallon for their excellent applications and subsequent selection. We look forward to releasing their completed projects as functionality for the benefit of the Tor user community.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/congrats-2008-google-summer-code-students%21',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

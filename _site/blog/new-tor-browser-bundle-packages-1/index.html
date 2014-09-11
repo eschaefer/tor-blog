@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>New Tor Browser Bundle packages</h2>
-<p class="meta">10 Jan 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The Tor Browser Bundles have all been updated with some important security fixes and it is advised that all users upgrade. Geolocation has been disabled and some prefs added as a workaround for <a href="https://trac.torproject.org/projects/tor/ticket/2338">bug 2338</a>. A full list of changes is in <a href="https://gitweb.torproject.org/torbrowser.git/blobdiff/bdf8d711b08935bbd37979270dc30347d1cb2c44..2c895ec8f004427744579f466a73a8ebb576c8ec:/build-scripts/config/prefs.js">the diff</a>.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">New Tor Browser Bundle packages</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+              
+                <a class="post-category post-category-js" href="#">security updates</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">torbrowser</a>
+              
+                <a class="post-category post-category-js" href="#">updated packages</a>
+               |
+              10 Jan 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Tor Browser Bundles have all been updated with some important security fixes and it is advised that all users upgrade. Geolocation has been disabled and some prefs added as a workaround for <a href="https://trac.torproject.org/projects/tor/ticket/2338">bug 2338</a>. A full list of changes is in <a href="https://gitweb.torproject.org/torbrowser.git/blobdiff/bdf8d711b08935bbd37979270dc30347d1cb2c44..2c895ec8f004427744579f466a73a8ebb576c8ec:/build-scripts/config/prefs.js">the diff</a>.</p>
 
 <p><strong>Linux bundles</strong></p>
 
@@ -73,8 +95,62 @@
 <li>Update Firefox preferences to be more secure and disable geolocation to address #2338</li>
 </ul>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/new-tor-browser-bundle-packages-1',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

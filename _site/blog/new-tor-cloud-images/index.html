@@ -45,18 +45,90 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>New Tor Cloud images</h2>
-<p class="meta">20 Sep 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p><a href="https://cloud.torproject.org/">The Tor Cloud</a> images for all the seven regions have been updated to include the latest cloud image for stable Ubuntu release 12.04.1 LTS (Precise Pangolin). These new images are available on the Tor Cloud website.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">New Tor Cloud images</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">relays</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">tor cloud</a>
+               |
+              20 Sep 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p><a href="https://cloud.torproject.org/">The Tor Cloud</a> images for all the seven regions have been updated to include the latest cloud image for stable Ubuntu release 12.04.1 LTS (Precise Pangolin). These new images are available on the Tor Cloud website.</p>
 
 <p>The new images include Tor&#39;s new GPG key, uses apt-get instead of aptitude, and also includes the deb.torproject.org-keyring package ( <a href="https://trac.torproject.org/projects/tor/ticket/6776">#6776</a>).</p>
 
 <p>If you are already running a Tor Cloud bridge, you will need to either manually update your image, or set up a new Tor Cloud bridge and terminate the old one. If you decide not to take action, your image will fail to upgrade Tor correctly and will not be running as a bridge. To manually update your image; log on with SSH, and follow the <a href="https://www.torproject.org/docs/debian.html.en">instructions</a> to add the new GPG key, upgrade Tor, and install the deb.torproject.org-keyring package.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/new-tor-cloud-images',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

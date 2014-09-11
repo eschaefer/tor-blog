@@ -45,11 +45,41 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>April 2011 Progress Report</h2>
-<p class="meta">08 May 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The April 2011 Progress Report is attached to this post and available at <a href="https://blog.torproject.org/files/2011-April-Monthly-Report.pdf" title="https://blog.torproject.org/files/2011-April-Monthly-Report.pdf">https://blog.torproject.org/files/2011-April-Monthly-Report.pdf</a>.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">April 2011 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity fixes</a>
+              
+                <a class="post-category post-category-js" href="#">arm</a>
+              
+                <a class="post-category post-category-js" href="#">bugfixes</a>
+              
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+              
+                <a class="post-category post-category-js" href="#">enhancements</a>
+              
+                <a class="post-category post-category-js" href="#">libevent</a>
+              
+                <a class="post-category post-category-js" href="#">new features</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">tor releases</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia releases</a>
+               |
+              08 May 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The April 2011 Progress Report is attached to this post and available at <a href="https://blog.torproject.org/files/2011-April-Monthly-Report.pdf" title="https://blog.torproject.org/files/2011-April-Monthly-Report.pdf">https://blog.torproject.org/files/2011-April-Monthly-Report.pdf</a>.</p>
 
 <p>Highlights include releases for tor, vidalia, arm, and libevent. Updates to pluggable transports, obfsproxy, torbutton, many translation and core architecture updates.</p>
 
@@ -61,8 +91,62 @@
 <td>693.16 KB</td> </tr>
 </tbody></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/april-2011-progress-report',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

@@ -45,11 +45,35 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Vidalia: get involved!</h2>
-<p class="meta">12 Apr 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Hello everyone, for those who don&#39;t know me, I&#39;m the one that&#39;s taking care of Vidalia these days.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Vidalia: get involved!</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">chiiph</a> under
+              
+                <a class="post-category post-category-js" href="#">builds</a>
+              
+                <a class="post-category post-category-js" href="#">free software</a>
+              
+                <a class="post-category post-category-js" href="#">gentoo</a>
+              
+                <a class="post-category post-category-js" href="#">new developers</a>
+              
+                <a class="post-category post-category-js" href="#">open hatch</a>
+              
+                <a class="post-category post-category-js" href="#">open source software</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia</a>
+               |
+              12 Apr 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Hello everyone, for those who don&#39;t know me, I&#39;m the one that&#39;s taking care of Vidalia these days.</p>
 
 <p>The other day I was contacted by paulproteus in the #vidalia IRC channel about an initiative they (OpenHatch) are organizing called &quot;Build It&quot;.</p>
 
@@ -72,8 +96,62 @@ The guys behind the Build It initiative have a theory about this difficulty:</p>
 
 <p>If you want to know more about the Buld It initiative, you can ask in #openhatch at Freenode, or read here: <a href="https://openhatch.org/wiki/Build_it" title="https://openhatch.org/wiki/Build\_it">https://openhatch.org/wiki/Build_it</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/vidalia-get-involved',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

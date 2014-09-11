@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Anonymous Publishing and Risking Execution</h2>
-<p class="meta">01 Jun 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Here&#39;s a timely reminder of why anonymous publishing tools like Tor
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Anonymous Publishing and Risking Execution</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">anonymous publishing</a>
+              
+                <a class="post-category post-category-js" href="#">London Review of Books</a>
+              
+                <a class="post-category post-category-js" href="#">risking execution</a>
+              
+                <a class="post-category post-category-js" href="#">Terry Eagleton</a>
+               |
+              01 Jun 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Here&#39;s a timely reminder of why anonymous publishing tools like Tor
 are so critical to free expression. A recent book, <a href="http://www.gyford.com/phil/writing/2008/05/22/risking_executio.php">Anonymity: A Secret History of English Literature</a>, covers the history of anonymous publication in English literature, noting that many authors and publishers were imprisoned, tortured, or killed for expressing politically unpopular views.</p>
 
 <blockquote>
@@ -64,8 +84,62 @@ In the current London Review of Books <a href="http://www.lrb.co.uk/v30/n10/eagl
 publisher, but that doesn’t seem much more likely a situation either.</p>
 </blockquote>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/anonymous-publishing-and-risking-execution',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

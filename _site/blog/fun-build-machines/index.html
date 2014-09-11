@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Fun with build machines</h2>
-<p class="meta">06 Aug 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Perhaps you&#39;ve noticed that the packages for CentOS 4 and OSX Tiger/10.4 haven&#39;t been updated lately. Welcome to dead hard drives.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Fun with build machines</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">centos4</a>
+              
+                <a class="post-category post-category-js" href="#">osx 10.4</a>
+              
+                <a class="post-category post-category-js" href="#">osx tiger</a>
+              
+                <a class="post-category post-category-js" href="#">packages</a>
+               |
+              06 Aug 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Perhaps you&#39;ve noticed that the packages for CentOS 4 and OSX Tiger/10.4 haven&#39;t been updated lately. Welcome to dead hard drives.</p>
 
 <p>For a long while, I used <a href="http://www.vmware.com/products/server/">VMware Server</a> for guest OSes to build the various rpm and windows packages. This mostly worked well. And then both drives in the physical server I used to host the vmware instance failed. A two-drive RAID 1 array doesn&#39;t like it when both drives fail. I replaced the drives, re-installed Debian, and attempted to install vmware server again. The vmware kernel module refused to load. I tried the old tricks to get it to work, nothing. I finally looked at some script/patch that I found via Google, and got the module to load. Then my license key didn&#39;t work anymore.</p>
 
@@ -61,8 +79,62 @@
 
 <p>** Update 2008-08-06: new drive was DOA. And it appears the logic board on the mac mini is fried. Ugh.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/fun-build-machines',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

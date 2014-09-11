@@ -45,11 +45,41 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Hacking Against Domestic Violence</h2>
-<p class="meta">18 Dec 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>This January the Tor Project is supporting the <a href="http://vdhackathon.org">Central America Domestic Violence Hackathon</a>. The goal of this effort is to address the challenge of domestic violence by building technology solutions to assist agencies that work to support victims and advance efforts to bring perpetrators to justice.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Hacking Against Domestic Violence</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">domestic violence</a>
+              
+                <a class="post-category post-category-js" href="#">dv</a>
+              
+                <a class="post-category post-category-js" href="#">hackathon</a>
+              
+                <a class="post-category post-category-js" href="#">helping survivors</a>
+              
+                <a class="post-category post-category-js" href="#">helping victims</a>
+              
+                <a class="post-category post-category-js" href="#">ipv</a>
+              
+                <a class="post-category post-category-js" href="#">nnedv</a>
+              
+                <a class="post-category post-category-js" href="#">secondmuse</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">world bank</a>
+               |
+              18 Dec 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>This January the Tor Project is supporting the <a href="http://vdhackathon.org">Central America Domestic Violence Hackathon</a>. The goal of this effort is to address the challenge of domestic violence by building technology solutions to assist agencies that work to support victims and advance efforts to bring perpetrators to justice.</p>
 
 <p>This is being done by supporting communities on the ground in six Central America countries and Washington, DC. Already some of the organizations involved, including <a href="http://secondmuse.com">SecondMuse</a> and the <a href="http://worldbank.org">World Bank</a>, have worked with these communities to define problems with potential for technical solutions. Next, these problems will be refined and then hacked on at a series of coordinated hackathons on January 26th and 27th, 2013.</p>
 
@@ -64,8 +94,62 @@
 
 <p>Finally, if you&#39;d like to get involved on a deeper level by organizing a problem refinement event, meeting with organizations in these locations, helping organize a hackathon, or more - contact the team running this project at <a href="mailto:vdhackathon@secondmuse.com">vdhackathon@secondmuse.com</a>.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/hacking-against-domestic-violence',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

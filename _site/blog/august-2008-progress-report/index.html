@@ -45,11 +45,37 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>August 2008 Progress Report</h2>
-<p class="meta">22 Sep 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p><strong>Releases</strong></p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">August 2008 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">incognito</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">releases</a>
+              
+                <a class="post-category post-category-js" href="#">stable release</a>
+              
+                <a class="post-category post-category-js" href="#">tor weather</a>
+              
+                <a class="post-category post-category-js" href="#">translations</a>
+              
+                <a class="post-category post-category-js" href="#">updates</a>
+               |
+              22 Sep 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p><strong>Releases</strong></p>
 
 <p>Vidalia 0.1.7 (released August 2) fixes a bug that caused Vidalia to not recognize Tor&#39;s version correctly in Tor 0.2.0.x, adds an &quot;nsh2po&quot; tool that helps Pootle translate the Vidalia bundle installer strings, adds &quot;TZ=UTC&quot; to the BrowserExecutable&#39;s environment variables when launched via Vidalia, and updates the Czech, French, and German translations.
  <a href="http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.7/CHANGELOG" title="http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.7/CHANGELOG">http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.7/CHANG...</a></p>
@@ -153,8 +179,62 @@ Weather is a service to let relay operators get notified when their relay is unr
 <p>Jacob has also been working on a Tor network map, to visualize where our relays are. Using all of the known descriptors, it maps each node with some GeoIP code and plot it onto a map. You can interact with the data to see the IP address of each node, the node name and the city/country information if we could find it. Sadly, it *will* lock your browser up for one or two minutes, as there&#39;s a lot of data to parse:
  <a href="http://freehaven.net/%7Eioerror/maps/v3-tormap.html" title="http://freehaven.net/~ioerror/maps/v3-tormap.html">http://freehaven.net/~ioerror/maps/v3-tormap.html</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/august-2008-progress-report',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

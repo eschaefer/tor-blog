@@ -45,11 +45,39 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Real Name Internet versus Reality</h2>
-<p class="meta">31 Jul 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>There is a growing cacophony that a fully identified, real name policy for the Internet will solve all of our problems relating to crime, bullying, harassment, and everything else. This idea is furthered along by <a href="http://www.huffingtonpost.com/2011/07/27/randi-zuckerberg-anonymity-online_n_910892.html">Facebook</a>, <a href="http://www.huffingtonpost.com/2010/08/10/eric-schmidt-privacy-stan_n_677224.html">Google</a>, and the <a href="http://www.whitehouse.gov/blog/2010/06/25/national-strategy-trusted-identities-cyberspace">US White House</a>.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Real Name Internet versus Reality</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity online</a>
+              
+                <a class="post-category post-category-js" href="#">facebook</a>
+              
+                <a class="post-category post-category-js" href="#">gigaom</a>
+              
+                <a class="post-category post-category-js" href="#">google</a>
+              
+                <a class="post-category post-category-js" href="#">ipv</a>
+              
+                <a class="post-category post-category-js" href="#">jillian york</a>
+              
+                <a class="post-category post-category-js" href="#">karina rigby</a>
+              
+                <a class="post-category post-category-js" href="#">pseudonymity</a>
+              
+                <a class="post-category post-category-js" href="#">real name policies</a>
+               |
+              31 Jul 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>There is a growing cacophony that a fully identified, real name policy for the Internet will solve all of our problems relating to crime, bullying, harassment, and everything else. This idea is furthered along by <a href="http://www.huffingtonpost.com/2011/07/27/randi-zuckerberg-anonymity-online_n_910892.html">Facebook</a>, <a href="http://www.huffingtonpost.com/2010/08/10/eric-schmidt-privacy-stan_n_677224.html">Google</a>, and the <a href="http://www.whitehouse.gov/blog/2010/06/25/national-strategy-trusted-identities-cyberspace">US White House</a>.</p>
 
 <p>As just one example of how this is an over-simplified argument, it seems people are continuing to forget their childhoods. As a kid, many of you were bullied and harassed at school. You knew the kids picking on you at lunch, at recess, at morning before class, and after school. Further, you knew their parents, where they lived, and generally who they were outside of school. This bullying and harassment may have continued through High School, into College, and through your work life. Again, you knew their real names and far more about them than Google, Facebook, or the US Govt will ever hope to know. A real name world hasn&#39;t made life better, more civil, or safer for millions of kids growing up in it.</p>
 
@@ -63,8 +91,62 @@
 
 <p>The power is in the beholder, not the technology itself. Use your anonymity for good, while you still have it. You should be in control of your identity, not someone else.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/real-name-internet-versus-reality',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

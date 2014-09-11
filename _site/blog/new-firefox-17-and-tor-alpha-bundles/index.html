@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>New Firefox 17 and Tor alpha bundles</h2>
-<p class="meta">28 Jan 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>We have some test Tor Browser Bundles available for testing! They contain Firefox 17.0.2esr which we&#39;re planning to switch to in February. Just as a reminder: <strong>these are alpha bundles</strong> . We&#39;re still testing them ourselves but we want to get them out for wider circulation so we can find out about any dealbreaker bugs before moving Firefox 17 into the stable bundles. For the more sophisticated users out there, we&#39;d love it if you could run Wireshark with the bundles and let us know if you see anything untoward.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">New Firefox 17 and Tor alpha bundles</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">firefox updates</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">tor alpha</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+               |
+              28 Jan 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We have some test Tor Browser Bundles available for testing! They contain Firefox 17.0.2esr which we&#39;re planning to switch to in February. Just as a reminder: <strong>these are alpha bundles</strong> . We&#39;re still testing them ourselves but we want to get them out for wider circulation so we can find out about any dealbreaker bugs before moving Firefox 17 into the stable bundles. For the more sophisticated users out there, we&#39;d love it if you could run Wireshark with the bundles and let us know if you see anything untoward.</p>
 
 <p>Alpha Tor Browser Bundles can be downloaded here:</p>
 
@@ -87,8 +109,62 @@ TBB</li>
 </ul></li>
 </ul>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/new-firefox-17-and-tor-alpha-bundles',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

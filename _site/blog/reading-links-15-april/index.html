@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Reading links, 15 April</h2>
-<p class="meta">16 Apr 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<ul>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Reading links, 15 April</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">anonymity</a>
+              
+                <a class="post-category post-category-js" href="#">interesting reading</a>
+              
+                <a class="post-category post-category-js" href="#">privacy</a>
+              
+                <a class="post-category post-category-js" href="#">reading links</a>
+               |
+              16 Apr 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <ul>
 <li>MAFIAAfire firefox extension, in response to the ICE domain name take downs, <a href="http://www.mafiaafire.com/" title="http://www.mafiaafire.com/">http://www.mafiaafire.com/</a>. What happens when mafiaafire.com is taken down?</li>
 <li>US Government Outlines Online Internet ID System. Trust us. We&#39;re the Government. <a href="https://secure.dslreports.com/shownews/Government-Outlines-Online-Internet-ID-System-113743" title="https://secure.dslreports.com/shownews/Government-Outlines-Online-Internet-ID-System-113743">https://secure.dslreports.com/shownews/Government-Outlines-Online-Intern...</a></li>
 <li>European Court of Justice To Outlaw Internet Filtering, <a href="http://falkvinge.net/2011/04/14/european-court-of-justice-to-outlaw-internet-filtering-esp-for-copyright-enforcement/" title="http://falkvinge.net/2011/04/14/european-court-of-justice-to-outlaw-internet-filtering-esp-for-copyright-enforcement/">http://falkvinge.net/2011/04/14/european-court-of-justice-to-outlaw-inte...</a></li>
@@ -57,8 +77,62 @@
 <li>Over the firewall and into the fire, <a href="http://advocacy.globalvoicesonline.org/2011/04/14/over-the-firewall-and-into-the-fire/" title="http://advocacy.globalvoicesonline.org/2011/04/14/over-the-firewall-and-into-the-fire/">http://advocacy.globalvoicesonline.org/2011/04/14/over-the-firewall-and-...</a></li>
 </ul>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/reading-links-15-april',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

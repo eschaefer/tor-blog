@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>SHA-1 files by popular request</h2>
-<p class="meta">19 Dec 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>We&#39;ve received requests for .sha1 files in addition to .asc for our packages. Starting with 0.2.1.8-alpha, there are now .sha1 files in the <a href="https://www.torproject.org/dist/">appropriate dist directories</a>. Displaying them on the download web page is still a bit tricky. The current layout leaves the page even more cluttered with .sha1 links all over it.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">SHA-1 files by popular request</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">downloads</a>
+              
+                <a class="post-category post-category-js" href="#">file verification</a>
+              
+                <a class="post-category post-category-js" href="#">hashes</a>
+              
+                <a class="post-category post-category-js" href="#">sha-1</a>
+               |
+              19 Dec 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We&#39;ve received requests for .sha1 files in addition to .asc for our packages. Starting with 0.2.1.8-alpha, there are now .sha1 files in the <a href="https://www.torproject.org/dist/">appropriate dist directories</a>. Displaying them on the download web page is still a bit tricky. The current layout leaves the page even more cluttered with .sha1 links all over it.</p>
 
 <p>When you download a 0.2.1.8-alpha or later package, simply replace &quot;.asc&quot; with &quot;.sha1&quot; to get the hash file.</p>
 
@@ -59,8 +77,62 @@
 
 <p>If you don&#39;t know what any of this means, <a href="http://en.wikipedia.org/wiki/File_verification">start here</a>.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/sha-1-files-popular-request',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

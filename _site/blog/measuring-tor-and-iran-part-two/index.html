@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Measuring Tor and Iran (Part two)</h2>
-<p class="meta">01 Jul 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Two weeks ago we posted early measurements about the <a href="https://blog.torproject.org/blog/measuring-tor-and-iran">growth of Tor usage in Iran</a>. Since then we have improved our math, and used more data sources. This work is part of our <a href="https://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network">metrics project</a>, where we&#39;re learning about the Tor network to improve its availability and performance while keeping our users safe.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Measuring Tor and Iran (Part two)</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">karsten</a> under
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">iran</a>
+              
+                <a class="post-category post-category-js" href="#">metrics</a>
+               |
+              01 Jul 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Two weeks ago we posted early measurements about the <a href="https://blog.torproject.org/blog/measuring-tor-and-iran">growth of Tor usage in Iran</a>. Since then we have improved our math, and used more data sources. This work is part of our <a href="https://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network">metrics project</a>, where we&#39;re learning about the Tor network to improve its availability and performance while keeping our users safe.</p>
 
 <p>The first graph shows the estimated number of new and returning Tor clients per day coming from China and Iran. So for example, there were around 7800 new and returning Iranian Tor users on June 24. By &quot;returning&quot;, we mean Tor clients that were off for at least several days, so they didn&#39;t have cached directory information. We added China as a comparison for the Iran numbers: you can see the results of the recent <a href="http://rconversation.blogs.com/rconversation/2009/06/chinas-censorship-blowback.html">Green Dam fiasco and attempts to block Google services</a>. Many more details and math are <a href="https://git.torproject.org/checkout/metrics/master/report/dirreq/directory-requests-2009-06-26.pdf">here</a>.</p>
 
@@ -72,8 +88,62 @@
 <td>21.44 KB</td> </tr>
 </tbody></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/measuring-tor-and-iran-part-two',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

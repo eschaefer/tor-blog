@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>How to Circumvent an Internet Proxy - Howcast</h2>
-<p class="meta">06 Dec 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Howcast produced a quick video for the masses on <a href="http://www.howcast.com/videos/90601-How-To-Circumvent-an-Internet-Proxy">how to circumvent censorship</a>. We were technical consultants for this video. It&#39;s tough to talk about Tor, when the first question you&#39;re trying to answer is &quot;What is a proxy? And why do I care?&quot;</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">How to Circumvent an Internet Proxy - Howcast</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+              
+                <a class="post-category post-category-js" href="#">howcast</a>
+              
+                <a class="post-category post-category-js" href="#">video</a>
+               |
+              06 Dec 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Howcast produced a quick video for the masses on <a href="http://www.howcast.com/videos/90601-How-To-Circumvent-an-Internet-Proxy">how to circumvent censorship</a>. We were technical consultants for this video. It&#39;s tough to talk about Tor, when the first question you&#39;re trying to answer is &quot;What is a proxy? And why do I care?&quot;</p>
 
 <p>Howcast did a great job for a high-level overview of circumvention technologies in four minutes.</p>
 
@@ -58,8 +74,62 @@
 <param name="allowScriptAccess" value="always">
 <embed src="http://www.howcast.com/flash/howcast_player.swf?file=90601&amp;theme=black" type="application/x-shockwave-flash" width="432" height="276" allowfullscreen="false" allowscriptaccess="always"></embed></object></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/how-circumvent-internet-proxy-howcast',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

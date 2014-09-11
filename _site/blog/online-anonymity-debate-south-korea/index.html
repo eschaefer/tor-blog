@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Online Anonymity Debate in South Korea</h2>
-<p class="meta">17 Oct 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p><a href="http://www.tmcnet.com/usubmit/-online-anonymity-hotly-debated-south-korea-/2008/10/15/3707066.htm">An article</a> about the debate over online anonymity in South Korea caught my eye for a few reasons. The topic of online anonymity periodically rises to the social consciousness in South Korea. This time, it&#39;s about the suicide of a well-known actress, <a href="http://en.wikipedia.org/wiki/Choi_Jin-sil">Choi Jin-sil</a>. It&#39;s sad that she chose to commit suicide, and I&#39;m sorry she felt she had no where to go for help. However, blaming the Internet for her death is dubious at best. The Internet is a collection of networks. The Internet is a thing, not a person. While I dislike rude telemarketers, I don&#39;t blame the telephone company for providing the connection. In this case, there seemed to be a subset of people bent on defaming her regardless of the circumstances, while using the Internet as their communication medium.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Online Anonymity Debate in South Korea</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">cyber defamation</a>
+              
+                <a class="post-category post-category-js" href="#">democracy</a>
+              
+                <a class="post-category post-category-js" href="#">online anonymity</a>
+              
+                <a class="post-category post-category-js" href="#">south korea</a>
+              
+                <a class="post-category post-category-js" href="#">whistleblowers</a>
+               |
+              17 Oct 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p><a href="http://www.tmcnet.com/usubmit/-online-anonymity-hotly-debated-south-korea-/2008/10/15/3707066.htm">An article</a> about the debate over online anonymity in South Korea caught my eye for a few reasons. The topic of online anonymity periodically rises to the social consciousness in South Korea. This time, it&#39;s about the suicide of a well-known actress, <a href="http://en.wikipedia.org/wiki/Choi_Jin-sil">Choi Jin-sil</a>. It&#39;s sad that she chose to commit suicide, and I&#39;m sorry she felt she had no where to go for help. However, blaming the Internet for her death is dubious at best. The Internet is a collection of networks. The Internet is a thing, not a person. While I dislike rude telemarketers, I don&#39;t blame the telephone company for providing the connection. In this case, there seemed to be a subset of people bent on defaming her regardless of the circumstances, while using the Internet as their communication medium.</p>
 
 <p>The real goal behind this upswelling of support for banning anonymity is to pass the Cyber Defamation Law. This appears to be the equivalent of user verification where all online activities must be in a real name and, in some way, verifiable.</p>
 
@@ -75,8 +95,62 @@
 
 <p><a href="http://www.guardian.co.uk/technology/2008/oct/09/news.internet">The Guardian</a> has a better overview covering both the positive and negative uses of online anonymity in South Korea.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/online-anonymity-debate-south-korea',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

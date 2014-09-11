@@ -45,11 +45,37 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Tor Browser Bundle 3.0alpha2 Released</h2>
-<p class="meta">01 Jul 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The second alpha release in the <a href="https://blog.torproject.org/category/tags/tbb-30">3.0 series</a> of the Tor Browser Bundle is now available from the <a href="https://archive.torproject.org/tor-package-archive/torbrowser/3.0a2">Tor Package Archive</a>.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Tor Browser Bundle 3.0alpha2 Released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">deterministic builds</a>
+              
+                <a class="post-category post-category-js" href="#">gitian</a>
+              
+                <a class="post-category post-category-js" href="#">security</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tbb-3.0</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">tor-browser-bundle</a>
+               |
+              01 Jul 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The second alpha release in the <a href="https://blog.torproject.org/category/tags/tbb-30">3.0 series</a> of the Tor Browser Bundle is now available from the <a href="https://archive.torproject.org/tor-package-archive/torbrowser/3.0a2">Tor Package Archive</a>.</p>
 
 <p>In addition to providing important security updates to Firefox and Tor, these release binaries should now be exactly reproducible from the source code by anyone. They have been independently reproduced by at least 3 public builders using independent machines, and the Tor Package Archive contains all three builder&#39;s GPG signatures of the sha256sums.txt file in the package directory.</p>
 
@@ -96,8 +122,62 @@
 <li>Transifex issues are still causing problems with missing translation text in some bundles</li>
 </ol>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/tor-browser-bundle-30alpha2-released',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

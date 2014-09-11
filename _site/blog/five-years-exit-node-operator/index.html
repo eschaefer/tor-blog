@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Five Years as an Exit Node Operator</h2>
-<p class="meta">11 Nov 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The official version of <a href="https://www.torproject.org/faq-abuse.html.en#TypicalAbuses">&quot;What to expect&quot;</a> when running a Tor exit relay is fairly brief. This post will be verbose.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Five Years as an Exit Node Operator</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">exit node</a>
+              
+                <a class="post-category post-category-js" href="#">exit relay</a>
+              
+                <a class="post-category post-category-js" href="#">hugging dmca notices</a>
+              
+                <a class="post-category post-category-js" href="#">operator experiences</a>
+              
+                <a class="post-category post-category-js" href="#">tor is benign</a>
+               |
+              11 Nov 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The official version of <a href="https://www.torproject.org/faq-abuse.html.en#TypicalAbuses">&quot;What to expect&quot;</a> when running a Tor exit relay is fairly brief. This post will be verbose.</p>
 
 <p>I&#39;ve been running a node since 2003. I first started off running a node in Xen on a server at a colocation datacenter with an un-metered line. The dual Xeon kept up with the demands fairly well. I ran it with the default exit policy with open irc ports. Things went smoothly for many months until my ISP called. The Abuse Department said my IP was reported in a mass irc bot attack against <a href="http://www.dal.net/">DalNet</a>. I spent some time on the phone explaining Tor, explaining how it&#39;s an anonymizing proxy, and how it&#39;s used for good in the world. I highlighted that of the megabits of bandwidth it provided 7x24 for many months, this was the first issue. They asked that I block irc ports, and all would be well. I modified the exit policy to block irc ports.</p>
 
@@ -69,8 +89,62 @@
 
 <p>In total, I&#39;ve received around 50 DMCA infringement notices, 20 abuse complaints, and zero visits from the Feds. After 5 years, I must have transferred petabytes of normal Tor traffic. Hopefully, I&#39;ve helped users in restrictive environments see the unfiltered Internet. Or helped people keep their privacy and anonymity intact while online. Sorry to disappoint you if you were expecting SWAT teams and black helicopters and mad car chases through the streets. Real life is much more boring.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/five-years-exit-node-operator',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

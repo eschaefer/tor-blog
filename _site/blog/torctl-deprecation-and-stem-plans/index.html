@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>TorCtl Deprecation and Stem Plans</h2>
-<p class="meta">31 Dec 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Hi all. Just a friendly heads up concerning a couple things going on in our python controller space.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">TorCtl Deprecation and Stem Plans</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">atagar</a> under
+              
+                <a class="post-category post-category-js" href="#">controller</a>
+              
+                <a class="post-category post-category-js" href="#">python</a>
+              
+                <a class="post-category post-category-js" href="#">stem</a>
+              
+                <a class="post-category post-category-js" href="#">torctl</a>
+               |
+              31 Dec 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Hi all. Just a friendly heads up concerning a couple things going on in our python controller space.</p>
 
 <p>The first is that Mike and I have decided to deprecate <a href="https://gitweb.torproject.org/pytorctl.git">TorCtl</a> and make it a part of TorFlow (the framework used to support the Bandwidth Authorities and SoaT). The TorCtl codebase has largely been frozen for years out of concern for the stability of the Bandwidth Authorities (which lack any tests).</p>
 
@@ -95,8 +113,62 @@
 
 <p>PS. Many thanks to Ravi, Sean, Eoin, Beck, Erik, Megan, Sathyanarayanan, and everyone else who has helped stem get to this point. Happy New Year!</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/torctl-deprecation-and-stem-plans',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

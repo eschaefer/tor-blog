@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Tor and Censorship:  lessons learned</h2>
-<p class="meta">08 Jan 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Roger recently gave a talk at <a href="http://events.ccc.de/congress/2009/Fahrplan/events/3554.en.html">26C3</a> about our experiences with various censorship technologies.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Tor and Censorship:  lessons learned</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">26c3</a>
+              
+                <a class="post-category post-category-js" href="#">ccc</a>
+              
+                <a class="post-category post-category-js" href="#">censorship</a>
+              
+                <a class="post-category post-category-js" href="#">jacob</a>
+              
+                <a class="post-category post-category-js" href="#">roger</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              08 Jan 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Roger recently gave a talk at <a href="http://events.ccc.de/congress/2009/Fahrplan/events/3554.en.html">26C3</a> about our experiences with various censorship technologies.</p>
 
 <blockquote>
 <p>In the aftermath of the Iranian elections in June, and then the late September blockings in China, we&#39;ve learned a lot about how circumvention tools work in reality for activists in tough situations. I&#39;ll give an overview of the Tor architecture, and summarize the variety of people who use it and what security it provides. Then we&#39;ll focus on the use of tools like Tor in countries like Iran and China: why anonymity is important for circumvention, why transparency in design and operation is critical for trust, the role of popular media in helping – and harming – the effectiveness of the tools, and tradeoffs between usability and security. After describing Tor&#39;s strategy for secure circumvention (what we thought would work), I&#39;ll talk about how the arms race actually seems to be going in practice.</p>
@@ -67,8 +89,62 @@
 <td>1021.32 KB</td> </tr>
 </tbody></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/tor-and-censorship-lessons-learned',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

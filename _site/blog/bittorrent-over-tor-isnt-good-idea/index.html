@@ -45,11 +45,35 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Bittorrent over Tor isn't a good idea</h2>
-<p class="meta">30 Apr 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>An increasing number of people are asking us about the <a href="http://hal.inria.fr/docs/00/47/15/56/PDF/TorBT.pdf">recent paper</a> coming out of Inria in France around Bittorrent and privacy attacks. This post tries to explain the attacks and what they imply.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Bittorrent over Tor isn't a good idea</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity applications attack</a>
+              
+                <a class="post-category post-category-js" href="#">BitTorrent</a>
+              
+                <a class="post-category post-category-js" href="#">different exit</a>
+              
+                <a class="post-category post-category-js" href="#">network</a>
+              
+                <a class="post-category post-category-js" href="#">peer</a>
+              
+                <a class="post-category post-category-js" href="#">post privacy problem</a>
+              
+                <a class="post-category post-category-js" href="#">relay</a>
+               |
+              30 Apr 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>An increasing number of people are asking us about the <a href="http://hal.inria.fr/docs/00/47/15/56/PDF/TorBT.pdf">recent paper</a> coming out of Inria in France around Bittorrent and privacy attacks. This post tries to explain the attacks and what they imply.</p>
 
 <p>There are three pieces to the attack (or three separate attacks that build on each other, if you prefer).</p>
 
@@ -77,8 +101,62 @@
 
 <p>We should keep brainstorming about ways to protect users even when their applications are handing over their sensitive information. But in the mean time, I think it&#39;s great that these researchers are publishing their results and letting everybody else evaluate the attacks. (If you&#39;re a researcher working on Tor attacks or defenses, check out our new <a href="https://www.torproject.org/research.html.en">research resources</a> page.) The attacks in this paper are serious attacks if you&#39;re a Bittorrent user and you&#39;re hoping to have some privacy.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/bittorrent-over-tor-isnt-good-idea',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

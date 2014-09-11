@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Talking to German police in Stuttgart</h2>
-<p class="meta">26 Mar 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>In early January after 24C3, I travelled to Stuttgart to meet with the police there. I spoke to about 30 or 40 investigators. My goal wasn&#39;t to advocate for any particular laws or policies (that&#39;s up to them, after all), but rather to help give them background so they can make more informed decisions: explain who uses Tor and how it works, and try to answer any questions that come up. In particular, my goals were to open a discussion about the data retention laws, and also brainstorm how German Tor operators and German law enforcement can get along better.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Talking to German police in Stuttgart</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">data retention</a>
+              
+                <a class="post-category post-category-js" href="#">germany</a>
+              
+                <a class="post-category post-category-js" href="#">law enforcement</a>
+              
+                <a class="post-category post-category-js" href="#">talks</a>
+               |
+              26 Mar 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>In early January after 24C3, I travelled to Stuttgart to meet with the police there. I spoke to about 30 or 40 investigators. My goal wasn&#39;t to advocate for any particular laws or policies (that&#39;s up to them, after all), but rather to help give them background so they can make more informed decisions: explain who uses Tor and how it works, and try to answer any questions that come up. In particular, my goals were to open a discussion about the data retention laws, and also brainstorm how German Tor operators and German law enforcement can get along better.</p>
 
 <p>It turns out that the fellow who did the September 2006 seizures was part of this group, and he was very interested to talk to me and learn more about Tor.</p>
 
@@ -65,8 +83,62 @@
 2) They thought it was quite clear that Tor relays weren&#39;t included as &quot;server providers&quot; in the upcoming data retention laws. They offered to talk to a state prosecutor in their area to try to get a public statement to that effect. I&#39;m not optimistic (it&#39;s hard to ever get the government to publically say anything), but that&#39;s a fine start.
 3) They will tell other German police groups about me, and maybe I&#39;ll visit others at some point.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/talking-german-police-stuttgart',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

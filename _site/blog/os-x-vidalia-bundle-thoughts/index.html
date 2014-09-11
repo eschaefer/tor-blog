@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>OS X Vidalia Bundle Thoughts</h2>
-<p class="meta">30 Oct 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>A few weeks ago, I watched some non-technical OS X users attempt to install the Vidalia-Tor Bundle. Many of them tried to drag the installation package to Applications. A few were surprised it required an installation at all.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">OS X Vidalia Bundle Thoughts</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">apple os x</a>
+              
+                <a class="post-category post-category-js" href="#">installation</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia bundle</a>
+               |
+              30 Oct 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>A few weeks ago, I watched some non-technical OS X users attempt to install the Vidalia-Tor Bundle. Many of them tried to drag the installation package to Applications. A few were surprised it required an installation at all.</p>
 
 <p>In <a href="http://trac.vidalia-project.net/browser/vidalia/trunk/pkg/osx">Vidalia trunk</a> I committed a different way to install Vidalia, Tor, and Polipo. In this new dmg, you just open it up and drag the Vidalia icon into Applications. You now have Tor, Vidalia, and Polipo pre-configured and running completely out of Applications. While this works well for users that never installed Tor/Vidalia before, it doesn&#39;t work so well for existing installations.</p>
 
@@ -61,8 +77,62 @@
 
 <p>Thoughts on ways to make the OS X install easier, ostensibly via drag and drop install? Or is the effort to create a TBB for OS X a better use of resources?</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/os-x-vidalia-bundle-thoughts',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

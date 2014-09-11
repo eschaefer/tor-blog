@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Tor Check Outage on 03 and 04 July 2013</h2>
-<p class="meta">04 Jul 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Over the past 24 hours <a href="https://check.torproject.org" title="https://check.torproject.org">https://check.torproject.org</a> has been unavailable due to excessive DNS queries to the exitlist service. It seems there are a number of individuals and companies with commercial products relying upon this volunteer service. We finally hit the point where we couldn&#39;t keep up with the queries and simply disabled the service.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Tor Check Outage on 03 and 04 July 2013</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">abuse</a>
+              
+                <a class="post-category post-category-js" href="#">check</a>
+              
+                <a class="post-category post-category-js" href="#">dns queries from hell</a>
+              
+                <a class="post-category post-category-js" href="#">exitlist</a>
+              
+                <a class="post-category post-category-js" href="#">TorCheck</a>
+               |
+              04 Jul 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Over the past 24 hours <a href="https://check.torproject.org" title="https://check.torproject.org">https://check.torproject.org</a> has been unavailable due to excessive DNS queries to the exitlist service. It seems there are a number of individuals and companies with commercial products relying upon this volunteer service. We finally hit the point where we couldn&#39;t keep up with the queries and simply disabled the service.</p>
 
 <p>This is a volunteer service offered as a proof of concept. We strongly encourage people to run their own. The code is available at <a href="https://svn.torproject.org/svn/check/trunk/" title="https://svn.torproject.org/svn/check/trunk/">https://svn.torproject.org/svn/check/trunk/</a>.</p>
 
@@ -57,8 +77,62 @@
 
 <p>As of 09:00 on 04 July 2013, the service is re-enabled. We reserve the right to take it down as needed without notice.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/tor-check-outage-03-and-04-july-2013',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

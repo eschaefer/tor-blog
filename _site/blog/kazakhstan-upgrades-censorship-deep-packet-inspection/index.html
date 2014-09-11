@@ -45,11 +45,35 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Kazakhstan upgrades censorship to deep packet inspection</h2>
-<p class="meta">16 Feb 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>In December 2011 we were aware of Kazakhstan <a href="http://www.hrw.org/news/2011/12/17/kazakhstan-investigate-violence-oil-rich-western-region">increasing Internet censorship</a> in response to some unrest and protests in Zhanaozen in the west. The censorship was then deployed around the country, in many cases with the <a href="http://www.washingtontimes.com/news/2011/dec/30/kazakhstan-social-networking-ban-censorship-debate/">full support of the populace</a>. The initial invesitgation showed simple IP address blocking coupled with basic dns censorship. Tor continued to work without incident until this week.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Kazakhstan upgrades censorship to deep packet inspection</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+              
+                <a class="post-category post-category-js" href="#">deep packet inspection</a>
+              
+                <a class="post-category post-category-js" href="#">dpi</a>
+              
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">kazakhstan</a>
+              
+                <a class="post-category post-category-js" href="#">obfsproxy</a>
+              
+                <a class="post-category post-category-js" href="#">tor blocked</a>
+               |
+              16 Feb 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>In December 2011 we were aware of Kazakhstan <a href="http://www.hrw.org/news/2011/12/17/kazakhstan-investigate-violence-oil-rich-western-region">increasing Internet censorship</a> in response to some unrest and protests in Zhanaozen in the west. The censorship was then deployed around the country, in many cases with the <a href="http://www.washingtontimes.com/news/2011/dec/30/kazakhstan-social-networking-ban-censorship-debate/">full support of the populace</a>. The initial invesitgation showed simple IP address blocking coupled with basic dns censorship. Tor continued to work without incident until this week.</p>
 
 <p>JSC KazTransCom, <a href="http://bgp.he.net/AS35104#_asinfo">AS35104</a>, has deployed or begun testing deep packet inspection (dpi) of all Internet traffic. They specifically target SSL-based protocols for blocking. This includes Tor, IPsec, and PPTP-based technologies, as well as some SSL-based VPNs. Business and private users of these technologies are equally affected.</p>
 
@@ -59,8 +83,62 @@
 
 <p>Thank you to the volunteers for spending their Valentine&#39;s Day collecting and analyzing data.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/kazakhstan-upgrades-censorship-deep-packet-inspection',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

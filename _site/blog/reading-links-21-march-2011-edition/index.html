@@ -45,19 +45,101 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Reading links, 21 March 2011 edition</h2>
-<p class="meta">22 Mar 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<ul>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Reading links, 21 March 2011 edition</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">china</a>
+              
+                <a class="post-category post-category-js" href="#">edrigram</a>
+              
+                <a class="post-category post-category-js" href="#">gmail</a>
+              
+                <a class="post-category post-category-js" href="#">interesting links</a>
+              
+                <a class="post-category post-category-js" href="#">interesting reading</a>
+              
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">mandated content blocking</a>
+              
+                <a class="post-category post-category-js" href="#">reading links</a>
+              
+                <a class="post-category post-category-js" href="#">vpns</a>
+               |
+              22 Mar 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <ul>
 <li>The ramped up censorship of the Internet by China continues while the world is distracted by the Middle East and Japan. <a href="http://advocacy.globalvoicesonline.org/2011/03/20/china-pptp-and-l2tp-vpn-protocols-blocked/" title="http://advocacy.globalvoicesonline.org/2011/03/20/china-pptp-and-l2tp-vpn-protocols-blocked/">http://advocacy.globalvoicesonline.org/2011/03/20/china-pptp-and-l2tp-vp...</a></li>
 <li>GMail blockage in China, or not. <a href="http://techcrunch.com/2011/03/21/google-and-china-at-it-again-with-government-gmail-block/" title="http://techcrunch.com/2011/03/21/google-and-china-at-it-again-with-government-gmail-block/">http://techcrunch.com/2011/03/21/google-and-china-at-it-again-with-gover...</a></li>
 <li>On Mandated Content Blocking in the Domain Name System, <a href="http://www.circleid.com/posts/20110318_on_mandated_content_blocking_in_the_domain_name_system/" title="http://www.circleid.com/posts/20110318\_on\_mandated\_content\_blocking\_in\_the\_domain\_name\_system/">http://www.circleid.com/posts/20110318_on_mandated_content_blocking_in_t...</a></li>
 <li>The always excellent EDRi-gram is out for March 2011, <a href="http://www.edri.org/edrigram/number9.5" title="http://www.edri.org/edrigram/number9.5">http://www.edri.org/edrigram/number9.5</a></li>
 </ul>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/reading-links-21-march-2011-edition',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

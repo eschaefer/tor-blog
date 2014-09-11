@@ -45,11 +45,25 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Improvements on Hidden Service Performance -- or not?</h2>
-<p class="meta">15 Jan 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>During the past eight months we have been trying pretty hard to improve hidden service performance. This work was part of the project to <a href="https://www.torproject.org/projects/hidserv.html">Speed Up Tor Hidden Services</a>, generously funded by the NLnet Foundation. As of today, we know that we have succeeded in our attempts -- well, or not?</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Improvements on Hidden Service Performance -- or not?</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">karsten</a> under
+              
+                <a class="post-category post-category-js" href="#">hidden services</a>
+              
+                <a class="post-category post-category-js" href="#">performance</a>
+               |
+              15 Jan 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>During the past eight months we have been trying pretty hard to improve hidden service performance. This work was part of the project to <a href="https://www.torproject.org/projects/hidserv.html">Speed Up Tor Hidden Services</a>, generously funded by the NLnet Foundation. As of today, we know that we have succeeded in our attempts -- well, or not?</p>
 
 <p>We started in June 2008 by measuring how long it takes until hidden services are registered in the network, how long it takes for clients to connect to them, and similar metrics. An <a href="http://freehaven.net/%7Ekarsten/hidserv/perfanalysis-2008-06-15.pdf">analysis</a> of these data revealed what problems could be responsible for the experienced delays: First of all, we found in total 10 bugs, some of them delaying hidden services significantly. These bugs are now fixed in the 0.2.1.x series (and the major bugs also in the 0.2.0.x series). Second, we identified certain substeps as the bottlenecks of the hidden service protocol, all of them related to building circuits on demand. We proposed a few design changes to overcome these bottlenecks by reducing circuit-build timeouts or by building circuits in parallel. These design changes have been <a href="http://freehaven.net/%7Ekarsten/hidserv/discussion-2008-07-15.pdf">discussed</a>, <a href="http://freehaven.net/%7Ekarsten/hidserv/design-2008-08-15.pdf">evaluated</a>, <a href="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/155-four-hidden-service-improvements.txt">specified</a>, and finally implemented in the 0.2.1.x series.</p>
 
@@ -57,8 +71,62 @@
 
 <p>All in all, these improvements are an important step in making hidden services faster. Now we know pretty well what the main problem of hidden services is: on-demand circuit building. Of course, this problem is not specific to hidden services, but a general problem of Tor. Fortunately, hidden services would benefit from all improvements that are made to circuit building in Tor. In the future we are focusing on improvements to circuit building in general.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/improvements-hidden-service-performance-or-not%3F',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

@@ -45,18 +45,90 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>On being targeted by the NSA</h2>
-<p class="meta">04 Jul 2014</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>As quoted in the original article on <a href="http://daserste.ndr.de/panorama/aktuell/NSA-targets-the-privacy-conscious,nsa230.html">Das Erste</a>:</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">On being targeted by the NSA</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">nsa</a>
+              
+                <a class="post-category post-category-js" href="#">target america</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">xkeyscore</a>
+               |
+              04 Jul 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>As quoted in the original article on <a href="http://daserste.ndr.de/panorama/aktuell/NSA-targets-the-privacy-conscious,nsa230.html">Das Erste</a>:</p>
 
 <p>We&#39;ve been thinking of state surveillance for years because of our work in places where journalists are threatened. Tor&#39;s anonymity is based on distributed trust, so observing traffic at one place in the Tor network, even a directory authority, isn&#39;t enough to break it. Tor has gone mainstream in the past few years, and its wide diversity of users -- from civic-minded individuals and ordinary consumers to activists, law enforcement, and companies -- is part of its security. Just learning that somebody visited the Tor or Tails website doesn&#39;t tell you whether that person is a journalist source, someone concerned that her Internet Service Provider will learn about her health conditions, or just someone irked that cat videos are blocked in her location.</p>
 
 <p>Trying to make a list of Tor&#39;s millions of daily users certainly counts as widescale collection. Their attack on the bridge address distribution service shows their &quot;collect all the things&quot; mentality -- it&#39;s worth emphasizing that we designed bridges for users in countries like China and Iran, and here we are finding out about attacks by our own country. Does reading the contents of those mails violate the wiretap act? Now I understand how the Google engineers felt when they learned about the attacks on their infrastructure.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/being-targeted-nsa',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

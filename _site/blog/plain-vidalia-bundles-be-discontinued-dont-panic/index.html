@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Plain Vidalia Bundles to be Discontinued (Don't Panic!)</h2>
-<p class="meta">20 Oct 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Over the past few years, Tor has gotten more popular and has had to grow and change to accommodate a highly varied userbase. One aspect of this is getting the software into users&#39; hands and having it immediately do what they want it to, while also not allowing them to inadvertently deanonymize themselves because they missed a configuration step or didn&#39;t understand which applications were using Tor and which were not. As a result, we have standardized on the Tor Browser Bundle for all platforms and are currently promoting it as our only fully supported client experience.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Plain Vidalia Bundles to be Discontinued (Don't Panic!)</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">package updates</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia bundle</a>
+               |
+              20 Oct 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Over the past few years, Tor has gotten more popular and has had to grow and change to accommodate a highly varied userbase. One aspect of this is getting the software into users&#39; hands and having it immediately do what they want it to, while also not allowing them to inadvertently deanonymize themselves because they missed a configuration step or didn&#39;t understand which applications were using Tor and which were not. As a result, we have standardized on the Tor Browser Bundle for all platforms and are currently promoting it as our only fully supported client experience.</p>
 
 <p>Since the Tor Browser Bundle offers the best current protection, we are moving to a client/server model for packages, and consequently the &quot;plain&quot; Vidalia bundles will be discontinued by the <strong>end of the year</strong> and no longer recommended for client usage. We&#39;ve started rolling out server Vidalia bundles for Windows, which you can test by going to the <a href="https://www.torproject.org/download">download page</a>.</p>
 
@@ -75,8 +93,62 @@
 
 <p>We&#39;ve started creating a <a href="https://trac.torproject.org/projects/tor/wiki/doc/TorFAQ#TorBrowserBundle">Tor Browser Bundle FAQ</a>, but we&#39;d like to hear your concerns so we can provide answers where necessary, documentation for alternative setups, and fix the software where answers are insufficient. We have several months before Tor Browser Bundle is the only option, so please help us make it as good as possible! If you have bugs to file, please don&#39;t file them in the blog comments -- use our <a href="https://trac.torproject.org">bug tracker</a> for that.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/plain-vidalia-bundles-be-discontinued-dont-panic',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

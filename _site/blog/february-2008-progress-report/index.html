@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>February 2008 Progress Report</h2>
-<p class="meta">12 Mar 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Tor 0.2.0.20-rc (released Feb 24) is the first release candidate for the 0.2.0 series. It makes more progress towards normalizing Tor&#39;s TLS handshake, makes hidden services work better again, helps relays bootstrap if they don&#39;t know their IP address, adds optional support for linking in openbsd&#39;s allocator or tcmalloc, allows really fast relays to scale past 15000 sockets, and fixes a bunch of minor bugs reported by Veracode.
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">February 2008 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">release candidate</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">torbrowser</a>
+              
+                <a class="post-category post-category-js" href="#">torbutton</a>
+               |
+              12 Mar 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Tor 0.2.0.20-rc (released Feb 24) is the first release candidate for the 0.2.0 series. It makes more progress towards normalizing Tor&#39;s TLS handshake, makes hidden services work better again, helps relays bootstrap if they don&#39;t know their IP address, adds optional support for linking in openbsd&#39;s allocator or tcmalloc, allows really fast relays to scale past 15000 sockets, and fixes a bunch of minor bugs reported by Veracode.
  <a href="http://archives.seul.org/or/talk/Feb-2008/msg00279.html" title="http://archives.seul.org/or/talk/Feb-2008/msg00279.html">http://archives.seul.org/or/talk/Feb-2008/msg00279.html</a></p>
 
 <p>Tor 0.2.0.19-alpha (released Feb 9) makes more progress towards normalizing Tor&#39;s TLS handshake, makes path selection for relays more secure and IP address guessing more robust, and generally fixes a lot of bugs in preparation for calling the 0.2.0 branch stable.
@@ -100,8 +120,62 @@
 <p>The new Tor Browser Bundle 0.0.7 (released Feb 8) and 0.0.8 (released Feb 15) include security updates for Firefox (2.0.12), security updates for Torbutton (1.1.13), automate generation of internationalized bundles, allow optional extensions to be placed in build-scripts/extensions, build Polipo with regular expression support (activating the forbiddenFile option), and update Polipo configuration based on suggestions from Incognito&#39;s Polipo configuration:
  <a href="https://tor-svn.freehaven.net/svn/torbrowser/branches/stable/README" title="https://tor-svn.freehaven.net/svn/torbrowser/branches/stable/README">https://tor-svn.freehaven.net/svn/torbrowser/branches/stable/README</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/february-2008-progress-report',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

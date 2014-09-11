@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>The MD5 certificate collision attack, and what it means for Tor</h2>
-<p class="meta">30 Dec 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Today, a team of security researchers and cryptographers gave a talk at the <a href="http://events.ccc.de/congress/2008/">25th Chaos Communication Congress (25C3)</a>, about a <a href="http://www.win.tue.nl/hashclash/rogue-ca/">nifty attack against X.509 certificates generated using the MD5 digest algorithm</a>. We figured that people will ask us about how this attack affects Tor, so I&#39;m writing an answer in advance.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">The MD5 certificate collision attack, and what it means for Tor</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">nickm</a> under
+              
+                <a class="post-category post-category-js" href="#">attack</a>
+              
+                <a class="post-category post-category-js" href="#">md5</a>
+              
+                <a class="post-category post-category-js" href="#">security</a>
+              
+                <a class="post-category post-category-js" href="#">ssl</a>
+              
+                <a class="post-category post-category-js" href="#">tls</a>
+              
+                <a class="post-category post-category-js" href="#">x509</a>
+               |
+              30 Dec 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Today, a team of security researchers and cryptographers gave a talk at the <a href="http://events.ccc.de/congress/2008/">25th Chaos Communication Congress (25C3)</a>, about a <a href="http://www.win.tue.nl/hashclash/rogue-ca/">nifty attack against X.509 certificates generated using the MD5 digest algorithm</a>. We figured that people will ask us about how this attack affects Tor, so I&#39;m writing an answer in advance.</p>
 
 <p><strong>The short version:</strong> This attack doesn&#39;t affect Tor.</p>
 
@@ -79,8 +101,62 @@
 
 <p>[**] Yes, I know that SHA-1 is showing its age too. Unfortunately, the SHA-2 algorithms aren&#39;t <em>that</em> much better, and nothing else has seen the same amount of analysis. Once the <a href="http://en.wikipedia.org/wiki/NIST_hash_function_competition">NIST hash function competition</a> has picked a SHA-3 candidate, we&#39;ll switch to that. In the mean time, I&#39;ll be launching some design work on or-dev to make it easier for Tor to switch to a better hash algorithm, once we&#39;ve got one, or in case we need to jump off SHA-1 in a hurry.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/md5-certificate-collision-attack%2C-and-what-it-means-tor',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

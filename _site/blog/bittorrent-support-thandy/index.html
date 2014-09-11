@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>BitTorrent support for Thandy</h2>
-<p class="meta">10 Sep 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>As a returning <a href="http://socghop.appspot.com/org/home/google/gsoc2009/eff">Google Summer of Code</a> student for the second year in a row, I was thrilled to hear that I had been accepted again.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">BitTorrent support for Thandy</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Sebastian</a> under
+              
+                <a class="post-category post-category-js" href="#">BitTorrent</a>
+              
+                <a class="post-category post-category-js" href="#">google</a>
+              
+                <a class="post-category post-category-js" href="#">Google Summer of Code</a>
+              
+                <a class="post-category post-category-js" href="#">gsoc</a>
+              
+                <a class="post-category post-category-js" href="#">thandy</a>
+               |
+              10 Sep 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>As a returning <a href="http://socghop.appspot.com/org/home/google/gsoc2009/eff">Google Summer of Code</a> student for the second year in a row, I was thrilled to hear that I had been accepted again.</p>
 
 <p>My task was to add <a href="http://www.bittorrent.com/">BitTorrent</a> support to <a href="https://git.torproject.org/checkout/thandy/master/">Thandy</a>, the secure automated updater <a href="http://google-opensource.blogspot.com/2009/03/thandy-secure-update-for-tor.html">developed</a> by the Tor project, along with setting up and testing the necessary infrastructure. The goal is to better mitigate load spikes following the release of new software versions and allowing volunteers to easily help users to fetch Tor.</p>
 
@@ -61,8 +81,62 @@
 
 <p>Overall, I&#39;m very happy with how my Summer of Code turned out to be, and I hope to participate again (either as student or even mentor)!</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/bittorrent-support-thandy',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

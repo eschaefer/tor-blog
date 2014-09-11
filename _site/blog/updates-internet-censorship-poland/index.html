@@ -45,18 +45,86 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Updates on Internet Censorship in Poland</h2>
-<p class="meta">22 Jan 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Recently, the proposal to create a Registry of Banned Websites and Services was approved. More details can be found at</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Updates on Internet Censorship in Poland</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">poland</a>
+               |
+              22 Jan 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Recently, the proposal to create a Registry of Banned Websites and Services was approved. More details can be found at</p>
 
 <p><a href="http://globalvoicesonline.org/2010/01/21/poland-government-approves-proposal-to-create-registry-of-banned-websites-and-services/" title="http://globalvoicesonline.org/2010/01/21/poland-government-approves-proposal-to-create-registry-of-banned-websites-and-services/">http://globalvoicesonline.org/2010/01/21/poland-government-approves-prop...</a></p>
 
 <p>and a letter to the President at: <a href="http://polishlinux.org/poland/polish-internet-users-against-the-censorship-of-the-net/" title="http://polishlinux.org/poland/polish-internet-users-against-the-censorship-of-the-net/">http://polishlinux.org/poland/polish-internet-users-against-the-censorsh...</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/updates-internet-censorship-poland',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

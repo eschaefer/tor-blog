@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Polipo Portability Enhancements Summary</h2>
-<p class="meta">12 Sep 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Over the summer for GSoC 2009, I worked on Polipo, Tor&#39;s favored Web proxy for bridging the gap between HTTP and SOCKS protocols. The proxy also provides an efficient memory cache to help speed up browsing. I had an opportunity to learn about Polipo and Libevent, and I had a chance to attend <a href="http://petsymposium.org/2009/">PETS</a>, a privacy conference, and meet some of the Tor folks in person. <a href="http://www.pps.jussieu.fr/%7Ejch/software/polipo/">Polipo</a> is authored by Juliusz Chroboczek. <a href="http://www.monkey.org/%7Eprovos/libevent/">Libevent</a> is developed by Nick Mathewson and Niels Provos. Nick Mathewson also happens to work for the Tor Project and was my GSoC mentor over the summer.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Polipo Portability Enhancements Summary</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">chrisd</a> under
+              
+                <a class="post-category post-category-js" href="#">gsoc 2009</a>
+              
+                <a class="post-category post-category-js" href="#">libevent</a>
+              
+                <a class="post-category post-category-js" href="#">polipo</a>
+               |
+              12 Sep 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Over the summer for GSoC 2009, I worked on Polipo, Tor&#39;s favored Web proxy for bridging the gap between HTTP and SOCKS protocols. The proxy also provides an efficient memory cache to help speed up browsing. I had an opportunity to learn about Polipo and Libevent, and I had a chance to attend <a href="http://petsymposium.org/2009/">PETS</a>, a privacy conference, and meet some of the Tor folks in person. <a href="http://www.pps.jussieu.fr/%7Ejch/software/polipo/">Polipo</a> is authored by Juliusz Chroboczek. <a href="http://www.monkey.org/%7Eprovos/libevent/">Libevent</a> is developed by Nick Mathewson and Niels Provos. Nick Mathewson also happens to work for the Tor Project and was my GSoC mentor over the summer.</p>
 
 <p>My work included integrating support for Libevent, a library for managing I/O events portably. The main advantage of using Libevent over Polipo&#39;s built-in event loop is Libevent&#39;s support of platform-specific APIs for monitoring large numbers of connections for I/O events. Polipo, when compiled to use Libevent, should be quicker when juggling many open connections. Informal benchmarking seemed to back this up, although more thorough profiling is still TODO. Modern versions of Libevent also contain an asynchronous DNS resolver, which I tied into Polipo, as well. Polipo&#39;s original event system and asynchronous DNS resolver are still available in case Libevent is unavailable on a user&#39;s system.</p>
 
@@ -61,8 +77,62 @@
 
 <p>Working on this project was a fun and informative experience, and I hope to stay a member of the Tor community. I&#39;ve had some experience working on open source projects before, but it&#39;s unique to find developers as dedicated as those working on Tor. In fact, Tor is a full-time job for several of the developers, and I think seeing a high level of development activity helps to keep volunteers around.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/polipo-portability-enhancements-summary',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

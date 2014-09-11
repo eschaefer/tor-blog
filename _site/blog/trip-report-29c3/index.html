@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Trip report, 29c3</h2>
-<p class="meta">10 Jan 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Jacob and I did <a href="http://events.ccc.de/congress/2012/Fahrplan/events/5306.en.html">another Tor talk</a> at <a href="http://events.ccc.de/congress/2012/">CCC</a> this year. This time we focused on explaining all the various Tor project components (mostly development-related) that <a href="https://www.torproject.org/getinvolved/volunteer#Projects">need help</a> from the broader community.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Trip report, 29c3</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">29c3</a>
+              
+                <a class="post-category post-category-js" href="#">advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">talks</a>
+              
+                <a class="post-category post-category-js" href="#">trip report</a>
+               |
+              10 Jan 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Jacob and I did <a href="http://events.ccc.de/congress/2012/Fahrplan/events/5306.en.html">another Tor talk</a> at <a href="http://events.ccc.de/congress/2012/">CCC</a> this year. This time we focused on explaining all the various Tor project components (mostly development-related) that <a href="https://www.torproject.org/getinvolved/volunteer#Projects">need help</a> from the broader community.</p>
 
 <p>The talk went well, but we were in the smaller room, and we and the conference organizers had failed to communicate that it was meant to be more of a workshopy atmosphere. We had a lot of people there who just wanted to see the sequel to our <a href="http://www.youtube.com/watch?v=GwMr8Xl7JMQ">spectacle</a> last year, and it meant we turned away many hundred Tor enthusiasts. Live and learn I guess. I did end up holding a post-talk Tor Q&amp;A session that lasted for seven hours.</p>
 
@@ -70,8 +88,62 @@
 <li>I talked to bunnie about the <a href="http://www.bunniestudios.com/blog/?p=2686">open laptop</a> he&#39;s working on. Over in <a href="https://trac.torproject.org/projects/tor/wiki/doc/Torouter">Torouter land</a>, we&#39;ve had a series of experiences where we pick what looks like a fine architecture for a tiny Tor relay. We work with the vendor, help everything go smoothly, and then at the last minute it seems like the vendor goes sideways with some for-profit proprietary alternate plan. :( I really want to live in a world where a fully open platform exists — hardware design and documentation, firmware, device drivers, software, everything. If you can do anything to help bunnie succeed, please do!</li>
 </ul>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/trip-report-29c3',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

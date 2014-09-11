@@ -45,11 +45,25 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>TorBEL: The Tor Bulk Exit List Tools</h2>
-<p class="meta">20 Aug 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>We have finally crossed the point of no return: 16 August 2010, 1900 UTC. Google Summer of Code 2010 is over; it&#39;s been a lot of fun and a lot of hard work participating in GSoC this year, and I hope that I have accomplished my goal. I took up the task of redesigning <a href="https://exitlist.torproject.org">TorDNSEL</a>, a DNSBL-style interface for querying information about Tor exit nodes, to be more thorough, more usable, and more maintainable. Out of this effort came TorBEL, a set of specifications and Python tools that try to address this problem.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">TorBEL: The Tor Bulk Exit List Tools</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">hbock</a> under
+              
+                <a class="post-category post-category-js" href="#">gsoc2010</a>
+              
+                <a class="post-category post-category-js" href="#">torbel</a>
+               |
+              20 Aug 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We have finally crossed the point of no return: 16 August 2010, 1900 UTC. Google Summer of Code 2010 is over; it&#39;s been a lot of fun and a lot of hard work participating in GSoC this year, and I hope that I have accomplished my goal. I took up the task of redesigning <a href="https://exitlist.torproject.org">TorDNSEL</a>, a DNSBL-style interface for querying information about Tor exit nodes, to be more thorough, more usable, and more maintainable. Out of this effort came TorBEL, a set of specifications and Python tools that try to address this problem.</p>
 
 <p>The TorBEL codebase as released today contains several important
  pieces:</p>
@@ -70,8 +84,62 @@
 
 <p>All in all GSoC 2010 has been a great experience and I really hope to see that TorBEL gets some real-world usage in the very near future. I very much look forward to continuing work with the Tor developer community on TorBEL and hopefully other interesting projects as well.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/torbel-tor-bulk-exit-list-tools',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

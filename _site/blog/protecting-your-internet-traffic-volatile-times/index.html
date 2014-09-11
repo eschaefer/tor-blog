@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Protecting your Internet traffic in volatile times</h2>
-<p class="meta">02 Feb 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>We&#39;re glad that the Internet Service Providers in Egypt are announcing their routes to the world and have <a href="http://www.renesys.com/blog/2011/02/egypt-returns-to-the-internet.shtml">rejoined the Internet</a>. We are concerned because it is possible that traffic crossing the Egyptian border is being recorded and possibly saved for future use. <a href="https://www.torproject.org/download/download#warning">Correctly using Tor</a> to and from Egyptian destinations will keep your traffic anonymous.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Protecting your Internet traffic in volatile times</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">egypt</a>
+              
+                <a class="post-category post-category-js" href="#">low bandwidth clients</a>
+              
+                <a class="post-category post-category-js" href="#">tor camouflage</a>
+              
+                <a class="post-category post-category-js" href="#">tor on satellite</a>
+              
+                <a class="post-category post-category-js" href="#">volatile internet</a>
+               |
+              02 Feb 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We&#39;re glad that the Internet Service Providers in Egypt are announcing their routes to the world and have <a href="http://www.renesys.com/blog/2011/02/egypt-returns-to-the-internet.shtml">rejoined the Internet</a>. We are concerned because it is possible that traffic crossing the Egyptian border is being recorded and possibly saved for future use. <a href="https://www.torproject.org/download/download#warning">Correctly using Tor</a> to and from Egyptian destinations will keep your traffic anonymous.</p>
 
 <p>Tor separates who you are from where you are going on the Internet. It&#39;s up to you, the user, to choose where you share your personal information. Currently, we do not try very hard to hide that you are using Tor. In the past few years, we haven&#39;t needed to hide. Tor looks like an SSL connection on the wire. Your local ISP, if they are very clever, could map your current connections from your assigned IP address to the list of public Tor relays. This would only tell them you are using Tor, not where you are going on the Internet. We do offer <a href="https://www.torproject.org/docs/bridges.html.en">bridge relays</a>, which are semi-public relays published in a few selective ways. By using bridges, your ISP is unlikely to figure out you are using Tor. We need thousands more bridges, please <a href="https://www.torproject.org/docs/tor-doc-relay">join the Tor network</a> to help others.</p>
 
@@ -57,8 +77,62 @@
 
 <p>Thanks to some <a href="https://secure.avaaz.org/en/egypt_blackout/">funding from Avaaz</a>, we&#39;ve also begun experimenting with ways to make Tor perform better on satellite and mesh networks. We have Tor working well on <a href="https://guardianproject.info/apps/orbot/">mobile phone 3G and 4G connections</a>. Tor over <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Very_small_aperture_terminal">VSAT</a> and <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Broadband_Global_Area_Network">BGAN</a> connections does work, however it needs more research into how to better handle the variable latencies and varying available bandwidth on such connections. The improvements that result from this research will benefit those with little to no Internet access, whether due to political unrest, natural disasters, or remote locations, who nonetheless seek to keep their online activities safe.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/protecting-your-internet-traffic-volatile-times',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

@@ -45,11 +45,37 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Deterministic Builds Part One: Cyberwar and Global Compromise</h2>
-<p class="meta">20 Aug 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>I&#39;ve spent the past few months developing a new build system for the <a href="https://blog.torproject.org/category/tags/tbb-30">3.0 series</a> of the Tor Browser Bundle that produces what are called &quot;deterministic builds&quot; -- packages which are byte-for-byte identical no matter who actually builds them, or what hardware they use. This effort was extraordinarily involved, consuming all of my development time for over two months (including several nights and weekends), babysitting builds and fixing differences and issues that arose.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Deterministic Builds Part One: Cyberwar and Global Compromise</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">cyberpeace</a>
+              
+                <a class="post-category post-category-js" href="#">dangerous toys</a>
+              
+                <a class="post-category post-category-js" href="#">decentralization</a>
+              
+                <a class="post-category post-category-js" href="#">deterministic builds</a>
+              
+                <a class="post-category post-category-js" href="#">gitian</a>
+              
+                <a class="post-category post-category-js" href="#">lack of foresight</a>
+              
+                <a class="post-category post-category-js" href="#">National Insecurity Agency</a>
+              
+                <a class="post-category post-category-js" href="#">security</a>
+               |
+              20 Aug 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>I&#39;ve spent the past few months developing a new build system for the <a href="https://blog.torproject.org/category/tags/tbb-30">3.0 series</a> of the Tor Browser Bundle that produces what are called &quot;deterministic builds&quot; -- packages which are byte-for-byte identical no matter who actually builds them, or what hardware they use. This effort was extraordinarily involved, consuming all of my development time for over two months (including several nights and weekends), babysitting builds and fixing differences and issues that arose.</p>
 
 <p>When describing my recent efforts to others, by far the two most common questions I&#39;ve heard are &quot;Why did you do that?&quot; and &quot;How did you do that?&quot;. I&#39;ve decided to answer each question at length in a separate blog post. This blog post attempts to answer the first question: &quot;Why would anyone want a deterministic build process?&quot;</p>
 
@@ -89,8 +115,62 @@
 
 <p>I believe it is important for Tor to set an example on this point, and I hope that the Linux distributions will follow in making deterministic packaging the norm. Thankfully, due to our close relationship with Debian, after we whispered in a few of the right ears <a href="https://wiki.debian.org/ReproducibleBuilds">they have started work</a> on this effort. Don&#39;t despair guys: it won&#39;t take two months for each Linux package. In our case, we had to cross-compile Firefox deterministically for four different target operating system and architecture combinations and fix a number of Firefox-specific build issues, all of which I will describe in the <a href="https://blog.torproject.org/blog/deterministic-builds-part-two-technical-details">second post on the technical details</a>.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/deterministic-builds-part-one-cyberwar-and-global-compromise',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

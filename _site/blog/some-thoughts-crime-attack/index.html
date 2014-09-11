@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Some thoughts on the CRIME attack</h2>
-<p class="meta">14 Sep 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>By this point, some people have started to ask me about the Rizzo and Duong&#39;s new <a href="http://www.ekoparty.org//2012/juliano-rizzo.php">CRIME</a> attack on TLS.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Some thoughts on the CRIME attack</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">nickm</a> under
+              
+                <a class="post-category post-category-js" href="#">crime</a>
+              
+                <a class="post-category post-category-js" href="#">security</a>
+              
+                <a class="post-category post-category-js" href="#">tls</a>
+               |
+              14 Sep 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>By this point, some people have started to ask me about the Rizzo and Duong&#39;s new <a href="http://www.ekoparty.org//2012/juliano-rizzo.php">CRIME</a> attack on TLS.</p>
 
 <p>The short version is the same as with <a href="https://blog.torproject.org/blog/tor-and-beast-ssl-attack">BEAST</a> last year: Tor is not affected. TorBrowser is not affected. Other applications may be affected; please consult your app vendor.</p>
 
@@ -118,8 +134,62 @@
 
 <p><strong>Acknowledgements</strong> : my thanks to Juliano for explaining the attack to me and helping me understand its ramifications. Lots of the analysis above is due to a conversation with him. Thanks also to Juliano and Thai for coming up with the attack. Thanks to Robert Ransom for feedback and corrections on the first draft of this post.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/some-thoughts-crime-attack',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

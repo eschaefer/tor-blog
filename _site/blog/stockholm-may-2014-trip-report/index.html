@@ -45,11 +45,41 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Stockholm May 2014 Trip Report</h2>
-<p class="meta">30 May 2014</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>I was invited to speak on a panel at Sida about security, tools, and how they can be used in the world. The panel was generally for Sida staff to let them learn, ask questions, and interact with us in an informal way. A big thanks to Sida for providing the space and infrastructure support to allow us to all congeal for a day. My presentation from the panel is available[8].</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Stockholm May 2014 Trip Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">burkina faso</a>
+              
+                <a class="post-category post-category-js" href="#">egypt</a>
+              
+                <a class="post-category post-category-js" href="#">gender equality</a>
+              
+                <a class="post-category post-category-js" href="#">jordan</a>
+              
+                <a class="post-category post-category-js" href="#">kenya</a>
+              
+                <a class="post-category post-category-js" href="#">panel talks</a>
+              
+                <a class="post-category post-category-js" href="#">stockholm</a>
+              
+                <a class="post-category post-category-js" href="#">stockholm internet forum</a>
+              
+                <a class="post-category post-category-js" href="#">sweden</a>
+              
+                <a class="post-category post-category-js" href="#">uganda</a>
+               |
+              30 May 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>I was invited to speak on a panel at Sida about security, tools, and how they can be used in the world. The panel was generally for Sida staff to let them learn, ask questions, and interact with us in an informal way. A big thanks to Sida for providing the space and infrastructure support to allow us to all congeal for a day. My presentation from the panel is available[8].</p>
 
 <p>Despite not being invited last year, I was invited to the Stockholm Internet Forum<a href="SIF14">1</a> this year to help talk about Tor, privacy, a cyber-panopticon[2] panel, empowering women and tech, and generally meeting with various organizations about funding partnerships. I spent most of my time split between talking to various orgs about partnerships and hanging out with the cool dfri[3] people. I met Hillevi Engström[7] and introduced her and her attending staff to Tor. The cyper-panopticon panel was held during the unconference sessions on the first day. We generally raised topics of surveillance, chilling effects, encryption, and the nature of abusive relationships between some governments and their populaces. Some pictures and videos are available[4]--if anyone has more pictures or video, let me know via email. The panel wasn&#39;t officially recorded by SIF14.</p>
 
@@ -74,8 +104,62 @@
 
 <p>Originally sent to the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-May/000538.html">Tor-reports</a> mailing list.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/stockholm-may-2014-trip-report',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

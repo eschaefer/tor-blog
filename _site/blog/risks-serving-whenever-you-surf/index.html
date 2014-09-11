@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>On the risks of serving whenever you surf</h2>
-<p class="meta">23 Dec 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p><a href="https://www.torproject.org/bridges">Bridge nodes</a> are one of Tor&#39;s key architectural components for allowing wide access to the network. These act like normal Tor nodes, except there is no centralized list available to download, so it&#39;s harder to block access to all of them. Users who cannot access the Tor network in the normal way can find the IP addresses of a few bridges, and connect to the rest of the Tor network via these nodes. The bridge node IP addresses are distributed in a way such that anyone should be able to find a few, but it should be difficult for someone to find (and block access to) them all. Currently they are available by email or the web, but more strategies are being considered, such as instant messaging or MMORPGs.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">On the risks of serving whenever you surf</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">sjmurdoch</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity</a>
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+               |
+              23 Dec 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p><a href="https://www.torproject.org/bridges">Bridge nodes</a> are one of Tor&#39;s key architectural components for allowing wide access to the network. These act like normal Tor nodes, except there is no centralized list available to download, so it&#39;s harder to block access to all of them. Users who cannot access the Tor network in the normal way can find the IP addresses of a few bridges, and connect to the rest of the Tor network via these nodes. The bridge node IP addresses are distributed in a way such that anyone should be able to find a few, but it should be difficult for someone to find (and block access to) them all. Currently they are available by email or the web, but more strategies are being considered, such as instant messaging or MMORPGs.</p>
 
 <p>For the bridge system to work well, Tor needs lots of volunteers to run bridge nodes, as otherwise there would be so few that they could all be easily discovered and blocked. To increase the number of such nodes, it has been made easy to set up a bridge, just by clicking the &quot;Help censored users reach the Tor network&quot; in the Vidalia preferences. More could be done however. For example, the default Tor configuration could be set to make Tor clients automatically a bridge if they are reachable from the Internet and sufficiently reliable.</p>
 
@@ -71,8 +89,62 @@
 
 <p>The <a href="http://www-users.cs.umn.edu/%7Ehopper/surf_and_serve.pdf">paper</a> goes into much more detail than covered in this blog post, so do read it if you would like to find out more about how precisely how the experiments were performed. For example, the experiments perform the clogging attack on nodes with fast network connections and comparatively slow CPUs, and their proposed defence makes this assumption. In the case of many bridge nodes, for example on domestic DSL lines, the situation could be very different, and variants of the attack might circumvent their protection. While this paper is an excellent start, there is much more that can be done in analyzing and defending against these style of attacks.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/risks-serving-whenever-you-surf',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

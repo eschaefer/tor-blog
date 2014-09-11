@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>CALEA 2 and Tor</h2>
-<p class="meta">09 May 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Journalists and activists have been asking me this week about the news that the Obama administration is now <a href="http://www.nytimes.com/2013/05/08/us/politics/obama-may-back-fbi-plan-to-wiretap-web-users.html">considering</a> whether to support the latest version of the FBI&#39;s <a href="https://www.eff.org/foia/foia-records-problems-electronic-surveillance">&quot;Going Dark&quot;</a> legislation. Here are some points to add to the discussion.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">CALEA 2 and Tor</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">data retention</a>
+              
+                <a class="post-category post-category-js" href="#">law enforcement</a>
+               |
+              09 May 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Journalists and activists have been asking me this week about the news that the Obama administration is now <a href="http://www.nytimes.com/2013/05/08/us/politics/obama-may-back-fbi-plan-to-wiretap-web-users.html">considering</a> whether to support the latest version of the FBI&#39;s <a href="https://www.eff.org/foia/foia-records-problems-electronic-surveillance">&quot;Going Dark&quot;</a> legislation. Here are some points to add to the discussion.</p>
 
 <ul>
 <li>This is far from law currently. Nobody&#39;s even published any proposed text. Right now the White House is considering whether to back it, and now is a great time to help them understand how dangerous it would be for America.</li>
@@ -61,8 +77,62 @@
 
 <p>And lastly, we should all keep in mind that they can&#39;t force us to do anything. You always have the alternative of stopping whatever it is you&#39;re doing. So for example if they try to &quot;force&quot; an individual <a href="https://www.torproject.org/docs/faq#KeyManagement">directory authority</a> operator to do something, the operator should just stop operating the authority (and then consider working with EFF and ACLU to establish precedent that such an attempt was illegal). And so on, all the way up the chain. Good thing the Internet is an international community.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/calea-2-and-tor',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Tor security advisory: Old Tor Browser Bundles vulnerable</h2>
-<p class="meta">05 Aug 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>An attack that exploits a <a href="https://www.mozilla.org/security/announce/2013/mfsa2013-53.html">Firefox vulnerability in JavaScript</a> has been observed in the wild. Specifically, Windows users using the Tor Browser Bundle (which includes Firefox <a href="https://www.torproject.org/projects/torbrowser/design/">plus privacy patches</a>) appear to have been targeted.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Tor security advisory: Old Tor Browser Bundles vulnerable</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">security</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+               |
+              05 Aug 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>An attack that exploits a <a href="https://www.mozilla.org/security/announce/2013/mfsa2013-53.html">Firefox vulnerability in JavaScript</a> has been observed in the wild. Specifically, Windows users using the Tor Browser Bundle (which includes Firefox <a href="https://www.torproject.org/projects/torbrowser/design/">plus privacy patches</a>) appear to have been targeted.</p>
 
 <p>This vulnerability was <a href="https://blog.mozilla.org/security/2013/08/04/investigating-security-vulnerability-report/">fixed in Firefox 17.0.7 ESR</a>. The following versions of the Tor Browser Bundle include this fixed version:</p>
 
@@ -65,8 +81,62 @@
 <p>Read the full advisory here:
  <a href="https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html" title="https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html">https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.h...</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/tor-security-advisory-old-tor-browser-bundles-vulnerable',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

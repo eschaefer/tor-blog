@@ -45,16 +45,86 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>UW Hackfest Thanks!</h2>
-<p class="meta">27 Feb 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Thanks to the 30+ people that showed up across <a href="https://blog.torproject.org/blog/university-washington-open-hackfest">our hackfests</a> on Wednesday and Thursday. We talked about <a href="https://www.torproject.org/projects/obfsproxy.html.en">obfsproxy</a>, <a href="https://trac.torproject.org/projects/tor/wiki/doc/Torouter">torouter</a>, civil liberties and tor, and Andrew spent four-plus hours explaining tor, hidden services, and online privacy risks to a bunch of tor-curious people. It&#39;s clear the ice cream sundae/gourmet popcorn bar was a huge success, with people literally squealing their love for Tor (I&#39;m sure it was tor and not the ice cream ;). Thanks to <a href="https://www.youtube.com/watch?v=288BaXwK8dY">PrivateOnion</a> for writing a song. <a href="https://twitter.com/#!/INTLRevolver">@INTLRevolver</a> started a twibbon campaign and shared some womens&#39; privacy issues with us and how Tor can help.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">UW Hackfest Thanks!</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">hackfest</a>
+              
+                <a class="post-category post-category-js" href="#">thanks</a>
+              
+                <a class="post-category post-category-js" href="#">u of washington</a>
+               |
+              27 Feb 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Thanks to the 30+ people that showed up across <a href="https://blog.torproject.org/blog/university-washington-open-hackfest">our hackfests</a> on Wednesday and Thursday. We talked about <a href="https://www.torproject.org/projects/obfsproxy.html.en">obfsproxy</a>, <a href="https://trac.torproject.org/projects/tor/wiki/doc/Torouter">torouter</a>, civil liberties and tor, and Andrew spent four-plus hours explaining tor, hidden services, and online privacy risks to a bunch of tor-curious people. It&#39;s clear the ice cream sundae/gourmet popcorn bar was a huge success, with people literally squealing their love for Tor (I&#39;m sure it was tor and not the ice cream ;). Thanks to <a href="https://www.youtube.com/watch?v=288BaXwK8dY">PrivateOnion</a> for writing a song. <a href="https://twitter.com/#!/INTLRevolver">@INTLRevolver</a> started a twibbon campaign and shared some womens&#39; privacy issues with us and how Tor can help.</p>
 
 <p>And a final thank you to Mel and Kar at the U of Washington for their support, logistics, and general awesomeness overall.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/uw-hackfest-thanks',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

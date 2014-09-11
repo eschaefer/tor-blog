@@ -45,11 +45,35 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>New Tor Browser Bundles and Tor 0.2.4.7-alpha packages available</h2>
-<p class="meta">06 Jan 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>All of the Tor Browser Bundles have been updated to Firefox 10.0.12esr in order to address the recent problems with <a href="https://blog.mozilla.org/security/2013/01/03/revoking-trust-in-two-turktrust-certficates/">TurkTrust</a> <a href="http://googleonlinesecurity.blogspot.se/2013/01/enhancing-digital-certificate-security.html">certificates</a>. From Mozilla&#39;s post:</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">New Tor Browser Bundles and Tor 0.2.4.7-alpha packages available</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">certificate authority</a>
+              
+                <a class="post-category post-category-js" href="#">firefox</a>
+              
+                <a class="post-category post-category-js" href="#">security</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor alpha</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia bundle</a>
+               |
+              06 Jan 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>All of the Tor Browser Bundles have been updated to Firefox 10.0.12esr in order to address the recent problems with <a href="https://blog.mozilla.org/security/2013/01/03/revoking-trust-in-two-turktrust-certficates/">TurkTrust</a> <a href="http://googleonlinesecurity.blogspot.se/2013/01/enhancing-digital-certificate-security.html">certificates</a>. From Mozilla&#39;s post:</p>
 
 <blockquote>
 <p>TURKTRUST, a certificate authority in Mozilla’s root program, mis-issued two intermediate certificates to customers. TURKTRUST has scanned their certificate database and log files and confirmed that the mistake was made for only two certificates.</p>
@@ -86,8 +110,62 @@
 <li>Update NoScript to 2.6.4.2</li>
 </ul>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/new-tor-browser-bundles-and-tor-0247-alpha-packages-available',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

@@ -45,16 +45,92 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Google funds an auto-update for Vidalia</h2>
-<p class="meta">07 Jun 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Google is funding a project to create an auto-update feature in Vidalia. This <a href="https://www.torproject.org/projects/google">auto-update feature</a> will provide a better user experience for Tor users. The goal is to create a system where Vidalia can detect when a new release is available, fetch the package, verify authenticity, and assist the user in upgrading the Vidalia/Tor package. The auto-update feature preserves the user&#39;s privacy and anonymity. Over the next six months we&#39;ll develop the auto-update system for general release around November 15, 2008.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Google funds an auto-update for Vidalia</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">auto-update</a>
+              
+                <a class="post-category post-category-js" href="#">funding</a>
+              
+                <a class="post-category post-category-js" href="#">google</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">tor software</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia</a>
+               |
+              07 Jun 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Google is funding a project to create an auto-update feature in Vidalia. This <a href="https://www.torproject.org/projects/google">auto-update feature</a> will provide a better user experience for Tor users. The goal is to create a system where Vidalia can detect when a new release is available, fetch the package, verify authenticity, and assist the user in upgrading the Vidalia/Tor package. The auto-update feature preserves the user&#39;s privacy and anonymity. Over the next six months we&#39;ll develop the auto-update system for general release around November 15, 2008.</p>
 
 <p>We&#39;re excited to work with Google on this project and look forward to the collaboration.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/google-funds-auto-update-vidalia',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

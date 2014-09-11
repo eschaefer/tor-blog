@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Thank you to our donors</h2>
-<p class="meta">28 Dec 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>2011 was an exciting year for communications security. Online communications helped to support activists in the Middle East&#39;s &quot;Arab Spring&quot; as they toppled Tunisia&#39;s Ben Ali and Egypt&#39;s Mubarak. Tor&#39;s entry nodes and hidden &quot;bridge&quot; entry points have seen <a href="https://metrics.torproject.org/users.html">increased usage</a> from Iran and Syria, as citizens there seek to communicate securely and evade government censorship. Secretary of State Clinton has made Internet Freedom part of the U.S. State Department&#39;s agenda, while here in the United States, advertisers have developed more sophisticated ways to track browsers&#39; online activity.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Thank you to our donors</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity online</a>
+              
+                <a class="post-category post-category-js" href="#">donor appreciation</a>
+              
+                <a class="post-category post-category-js" href="#">fighting for the future</a>
+              
+                <a class="post-category post-category-js" href="#">hugs</a>
+              
+                <a class="post-category post-category-js" href="#">thanks</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              28 Dec 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>2011 was an exciting year for communications security. Online communications helped to support activists in the Middle East&#39;s &quot;Arab Spring&quot; as they toppled Tunisia&#39;s Ben Ali and Egypt&#39;s Mubarak. Tor&#39;s entry nodes and hidden &quot;bridge&quot; entry points have seen <a href="https://metrics.torproject.org/users.html">increased usage</a> from Iran and Syria, as citizens there seek to communicate securely and evade government censorship. Secretary of State Clinton has made Internet Freedom part of the U.S. State Department&#39;s agenda, while here in the United States, advertisers have developed more sophisticated ways to track browsers&#39; online activity.</p>
 
 <p>The Tor Project can help, but the censors and snoops are never very far behind. We must keep improving our software and network, researching its security against new threats, and training users to communicate safely. As a non-profit, we depend on your donations of money, relays, and advocacy to keep making progress.</p>
 
@@ -61,8 +83,62 @@
 
 <p>Donate securely online at <a href="https://www.torproject.org/donate" title="https://www.torproject.org/donate">https://www.torproject.org/donate</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/thank-you-our-donors',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

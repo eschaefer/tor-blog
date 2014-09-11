@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Boston Tor Hackers:  Join us Sunday September 19th</h2>
-<p class="meta">15 Sep 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>We&#39;re holding a Tor hackfest this Sunday, the 19th. Tor&#39;s Chief Architect, Nick Mathewson, will be explaining Tor&#39;s goals and what the project has been up to lately, and then we&#39;ll pick a few day-sized projects to work on together with his help.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Boston Tor Hackers:  Join us Sunday September 19th</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">code</a>
+              
+                <a class="post-category post-category-js" href="#">developers</a>
+              
+                <a class="post-category post-category-js" href="#">hackfest</a>
+              
+                <a class="post-category post-category-js" href="#">theories</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              15 Sep 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We&#39;re holding a Tor hackfest this Sunday, the 19th. Tor&#39;s Chief Architect, Nick Mathewson, will be explaining Tor&#39;s goals and what the project has been up to lately, and then we&#39;ll pick a few day-sized projects to work on together with his help.</p>
 
 <p>We&#39;ll be meeting at 2pm in the new Media Lab building (E14), room 240, thanks to the Center for Future Civic Media at MIT. Since the building is closed on Sundays, please e-mail <a href="mailto:chris-torfest@printf.net">chris-torfest@printf.net</a> before Sunday to get a phone number to use to be let in. We&#39;re hoping to provide pizza and drinks, and we&#39;ll finish up and move to Grendel&#39;s Den around 9pm.</p>
 
@@ -59,8 +79,62 @@
 
 <p>Please RSVP if you can make it. Hope to see you on Sunday!</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/boston-tor-hackers-join-us-sunday-september-19th',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

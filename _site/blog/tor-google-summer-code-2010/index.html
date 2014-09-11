@@ -45,11 +45,25 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Tor in Google Summer of Code 2010</h2>
-<p class="meta">23 Mar 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Interested in coding on Tor and getting paid for it by Google? If you are a student, we have good news for you: We have been <a href="http://socghop.appspot.com/gsoc/program/accepted_orgs/google/gsoc2010">accepted</a> as a mentoring organization for <a href="http://socghop.appspot.com/gsoc/program/home/google/gsoc2010">Google Summer of Code 2010</a> together with <a href="https://www.eff.org/">The Electronic Frontier Foundation</a>! Woo!</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Tor in Google Summer of Code 2010</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">karsten</a> under
+              
+                <a class="post-category post-category-js" href="#">gsoc</a>
+              
+                <a class="post-category post-category-js" href="#">gsoc2010</a>
+               |
+              23 Mar 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Interested in coding on Tor and getting paid for it by Google? If you are a student, we have good news for you: We have been <a href="http://socghop.appspot.com/gsoc/program/accepted_orgs/google/gsoc2010">accepted</a> as a mentoring organization for <a href="http://socghop.appspot.com/gsoc/program/home/google/gsoc2010">Google Summer of Code 2010</a> together with <a href="https://www.eff.org/">The Electronic Frontier Foundation</a>! Woo!</p>
 
 <p>Here are the facts: The summer of code gives you the opportunity to work on your own Tor-related coding project with one of the Tor developers as your mentor. You can apply for a coding project related to Tor itself or to one of its many <a href="https://www.torproject.org/projects/">supplemental projects</a> (as well as for an <a href="https://www.eff.org/gsoc2010">EFF-related project</a>). Your mentor will help you when you&#39;re stuck with your project and guide you in becoming part of the Tor community. Google pays you 4,500 USD for the three months of your project, so that you can focus on coding and don&#39;t have to worry about how to pay your bills.</p>
 
@@ -59,8 +73,62 @@
 
 <p>We are looking forward to discussing your project idea with you!</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/tor-google-summer-code-2010',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

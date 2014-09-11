@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>The lifecycle of a new relay</h2>
-<p class="meta">11 Sep 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Many people set up new fast relays and then wonder why their bandwidth is not fully loaded instantly. In this post I&#39;ll walk you through the lifecycle of a new fast <a href="https://www.torproject.org/docs/faq#ExitPolicies">non-exit</a> relay, since Tor&#39;s bandwidth estimation and load balancing has gotten much more complicated in recent years. I should emphasize that the descriptions here are in part anecdotal — at the end of the post I ask some research questions that will help us make better sense of what&#39;s going on.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">The lifecycle of a new relay</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity</a>
+              
+                <a class="post-category post-category-js" href="#">entry guards</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+               |
+              11 Sep 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Many people set up new fast relays and then wonder why their bandwidth is not fully loaded instantly. In this post I&#39;ll walk you through the lifecycle of a new fast <a href="https://www.torproject.org/docs/faq#ExitPolicies">non-exit</a> relay, since Tor&#39;s bandwidth estimation and load balancing has gotten much more complicated in recent years. I should emphasize that the descriptions here are in part anecdotal — at the end of the post I ask some research questions that will help us make better sense of what&#39;s going on.</p>
 
 <p>I hope this summary will be useful for relay operators. It also provides background for understanding some of the anonymity analysis research papers that people have been asking me about lately. In an upcoming blog post, I&#39;ll explain why we need to raise the guard rotation period (and what that means) to improve Tor&#39;s anonymity. [Edit: <a href="https://blog.torproject.org/blog/improving-tors-anonymity-changing-guard-parameters">here is that blog post</a>]</p>
 
@@ -114,8 +130,62 @@
 
 <p>The &quot;steady-state&quot; phase assumes a constant number of Tor users: in situations where many new users appear (like the <a href="https://blog.torproject.org/blog/how-to-handle-millions-new-tor-clients">botnet invasion in August 2013</a>), current guards will get unbalanced. How quickly and smoothly does the network rebalance as clients shift guards after that?</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/lifecycle-of-a-new-relay',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

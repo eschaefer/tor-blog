@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Tor has funding for another browser hacker</h2>
-<p class="meta">02 Aug 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Your job would be to work on Torbutton and patches to our Firefox-based browser, as well as a potential Android port. This would be a contractor position likely starting in October and going through Q1 2013, with the possibility of later in 2013 and beyond. There may also be a possibility for part-time work prior to October.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Tor has funding for another browser hacker</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">jobs</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+               |
+              02 Aug 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Your job would be to work on Torbutton and patches to our Firefox-based browser, as well as a potential Android port. This would be a contractor position likely starting in October and going through Q1 2013, with the possibility of later in 2013 and beyond. There may also be a possibility for part-time work prior to October.</p>
 
 <p>The purpose of our browser is to build a private-by-design reference implementation of &quot;Do Not Track&quot;, but through the <a href="https://www.torproject.org/projects/torbrowser/design/#privacy">alteration of browser behavior</a> and without the need for <a href="br%20/%3E%0Ahttps://blog.torproject.org/blog/improving-private-browsing-modes-do-not-track-vs-real-privacy-design">regulation or begging</a>.</p>
 
@@ -61,8 +77,62 @@
 
 <p>For an even more detailed overview of the full breadth and depth of the work you&#39;d be doing, have a look at <a href="https://www.torproject.org/projects/torbrowser/design/">The Design and Implementation of the Tor Browser</a>, especially <a href="https://www.torproject.org/projects/torbrowser/design/#DesignRequirements">The Design Requirements</a> section.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/tor-has-funding-another-browser-hacker',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

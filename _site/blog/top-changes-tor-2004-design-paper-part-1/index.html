@@ -45,11 +45,21 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Top changes in Tor since the 2004 design paper (Part 1)</h2>
-<p class="meta">04 Oct 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The main academic reference for Tor is <a href="https://svn.torproject.org/svn/projects/design-paper/tor-design.pdf">&quot;Tor: The Second-Generation Onion Router&quot; by Dingledine, Mathewson, and Syverson</a>. But that paper was published back in 2004, and Tor has evolved since then. So Steven Murdoch and Nick Mathewson are currently preparing an updated version of the Tor design paper, to include new design changes and research results concerning Tor over the last 8 years.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Top changes in Tor since the 2004 design paper (Part 1)</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">nickm</a> under
+               |
+              04 Oct 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The main academic reference for Tor is <a href="https://svn.torproject.org/svn/projects/design-paper/tor-design.pdf">&quot;Tor: The Second-Generation Onion Router&quot; by Dingledine, Mathewson, and Syverson</a>. But that paper was published back in 2004, and Tor has evolved since then. So Steven Murdoch and Nick Mathewson are currently preparing an updated version of the Tor design paper, to include new design changes and research results concerning Tor over the last 8 years.</p>
 
 <p>In this series of posts, we (Steven and Nick) will try to summarize the most interesting or significant changes to Tor&#39;s design since the publication of the original paper. We&#39;re only going to cover the stuff we think is most interesting, and we&#39;ll aim to do so in an interesting way.</p>
 
@@ -145,8 +155,62 @@
 
 <p>In Part 2 we will look at changes to how Tor selects paths and the new anti-censorship measures.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/top-changes-tor-2004-design-paper-part-1',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

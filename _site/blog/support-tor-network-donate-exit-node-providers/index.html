@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Support the Tor Network: Donate to Exit Node Providers</h2>
-<p class="meta">10 Oct 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The Tor network is run by volunteers, and for the most part is entirely independent of the software development effort led by The Tor Project, Inc. While The Tor Project, Inc is a 501(c)3 non-profit that is <a href="https://www.torproject.org/donate/donate.html.en">happy to take donations</a> to create more and better software, up until recently there was no way for you to fund deployment of more relays to improve network capacity and performance, aside from running those relays yourself.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Support the Tor Network: Donate to Exit Node Providers</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">distributed trust</a>
+              
+                <a class="post-category post-category-js" href="#">exits</a>
+              
+                <a class="post-category post-category-js" href="#">performance</a>
+              
+                <a class="post-category post-category-js" href="#">relays</a>
+               |
+              10 Oct 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Tor network is run by volunteers, and for the most part is entirely independent of the software development effort led by The Tor Project, Inc. While The Tor Project, Inc is a 501(c)3 non-profit that is <a href="https://www.torproject.org/donate/donate.html.en">happy to take donations</a> to create more and better software, up until recently there was no way for you to fund deployment of more relays to improve network capacity and performance, aside from running those relays yourself.</p>
 
 <p>We&#39;re happy to announce that both <a href="https://www.noisebridge.net/wiki/Tor">Noisebridge</a> and <a href="https://www.torservers.net">TorServers.net</a> are now able to take donations directly for the purpose of running high capacity Tor exit nodes.</p>
 
@@ -69,8 +89,62 @@
 
 <p>However, if configuring and maintaining a high capacity relay is not for you, donating a portion of the monthly hosting budgets of either of these organizations is an excellent way to support anonymity, privacy, and censorship circumvention for very large numbers of people.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/support-tor-network-donate-exit-node-providers',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

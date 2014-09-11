@@ -45,11 +45,23 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>The Tor Project is in Google Summer of Code 2008!</h2>
-<p class="meta">18 Mar 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Once again, with sponsorship from the amazing folks at the <a href="https://www.eff.org/">EFF</a>, the Tor Project has been accepted as a mentoring organization in Google&#39;s <a href="http://code.google.com/soc/2008/">Summer of Code</a>. This program funds students to work on open source and free software projects over the summer, and provides organizations like ours with a chance to work with great and enthusiastic coders from around the world.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">The Tor Project is in Google Summer of Code 2008!</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">nickm</a> under
+              
+                <a class="post-category post-category-js" href="#">gsoc</a>
+               |
+              18 Mar 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Once again, with sponsorship from the amazing folks at the <a href="https://www.eff.org/">EFF</a>, the Tor Project has been accepted as a mentoring organization in Google&#39;s <a href="http://code.google.com/soc/2008/">Summer of Code</a>. This program funds students to work on open source and free software projects over the summer, and provides organizations like ours with a chance to work with great and enthusiastic coders from around the world.</p>
 
 <p>Many thanks first to Google for the opportunity, and to EFF for their continuing help and support. We&#39;d also like to thanks everyone in the Tor community who agreed to help mentor students with us this summer, especially those who contributed to our <a href="https://www.torproject.org/volunteer.html#Projects">project ideas list</a>.</p>
 
@@ -57,8 +69,62 @@
 
 <p>Also, be sure to check out the <a href="http://code.google.com/soc/2008/">other great organizations</a> who will be mentoring students this year.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/tor-project-google-summer-code-2008%21',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

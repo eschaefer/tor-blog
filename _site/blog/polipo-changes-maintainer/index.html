@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Polipo changes maintainer</h2>
-<p class="meta">11 Dec 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Congratulations to Chrisd for assuming maintainership of the Polipo codebase from Juliusz. The full announcement is available at <a href="http://sourceforge.net/mailarchive/forum.php?thread_name=87d42l7fka.fsf%40trurl.pps.jussieu.fr&amp;forum_name=polipo-users">the mailing list archives</a>.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Polipo changes maintainer</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">Google Summer of Code</a>
+              
+                <a class="post-category post-category-js" href="#">maintainer</a>
+              
+                <a class="post-category post-category-js" href="#">new features</a>
+              
+                <a class="post-category post-category-js" href="#">performance</a>
+              
+                <a class="post-category post-category-js" href="#">polipo</a>
+              
+                <a class="post-category post-category-js" href="#">volunteer</a>
+               |
+              11 Dec 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Congratulations to Chrisd for assuming maintainership of the Polipo codebase from Juliusz. The full announcement is available at <a href="http://sourceforge.net/mailarchive/forum.php?thread_name=87d42l7fka.fsf%40trurl.pps.jussieu.fr&amp;forum_name=polipo-users">the mailing list archives</a>.</p>
 
 <p><em>Why Chris?</em></p>
 
@@ -67,8 +89,62 @@
 
 <p>Juliusz is a busy person. His free time has been concentrated on Babel, <a href="http://www.pps.jussieu.fr/%7Ejch/software/babel/" title="http://www.pps.jussieu.fr/~jch/software/babel/">http://www.pps.jussieu.fr/~jch/software/babel/</a>, over the past year. Juliusz is still a committer to polipo. We appreciate all of his help during the transition and for the years of maintenance of polipo.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/polipo-changes-maintainer',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

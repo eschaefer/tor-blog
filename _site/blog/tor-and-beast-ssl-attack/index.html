@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Tor and the BEAST SSL attack</h2>
-<p class="meta">24 Sep 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Today, Juliano Rizzo and Thai Duong presented a new attack on TLS Ekoparty security conference in Buenos Aires. Let&#39;s talk about how it works, and how it relates to the Tor protocol.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Tor and the BEAST SSL attack</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">nickm</a> under
+              
+                <a class="post-category post-category-js" href="#">internals</a>
+              
+                <a class="post-category post-category-js" href="#">security</a>
+              
+                <a class="post-category post-category-js" href="#">ssl</a>
+               |
+              24 Sep 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Today, Juliano Rizzo and Thai Duong presented a new attack on TLS Ekoparty security conference in Buenos Aires. Let&#39;s talk about how it works, and how it relates to the Tor protocol.</p>
 
 <p>Short version: Don&#39;t panic. The Tor software itself is just fine, and the free-software browser vendors look like they&#39;re responding well and quickly. I&#39;ll be talking about why Tor is fine; I&#39;ll bet that the TBB folks will have more to say about browsers sometime soon.</p>
 
@@ -211,8 +227,62 @@ circuit, though.</p>
 
 <p>Now, it&#39;s a Friday evening, and if you&#39;ll excuse me, I think I&#39;m going to go off the &#39;nets for a little while.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/tor-and-beast-ssl-attack',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

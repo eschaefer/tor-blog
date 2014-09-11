@@ -45,18 +45,90 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Visual overview of the Tor network</h2>
-<p class="meta">28 Jan 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>If you were to give a non-technical person a brief overview of the Tor network, how would you begin? And if you had a picture or diagram to assist you, how would that look like?</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Visual overview of the Tor network</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">karsten</a> under
+              
+                <a class="post-category post-category-js" href="#">introduction</a>
+              
+                <a class="post-category post-category-js" href="#">network</a>
+              
+                <a class="post-category post-category-js" href="#">overview</a>
+              
+                <a class="post-category post-category-js" href="#">support</a>
+               |
+              28 Jan 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>If you were to give a non-technical person a brief overview of the Tor network, how would you begin? And if you had a picture or diagram to assist you, how would that look like?</p>
 
 <p>We&#39;re looking for better visualizations of the Tor network as introductory material. Most people already know EFF&#39;s visualizations from <a href="https://www.torproject.org/about/overview.html.en#thesolution">Tor&#39;s Overview page</a>. Recently, an <a href="https://lists.torproject.org/pipermail/tor-talk/2013-January/027105.html">Italian hack meeting</a> came up with a fun picture of how to imagine a Tor circuit. A discussion among Tor developers brought up an ugly, but potentially useful <a href="https://people.torproject.org/%7Ekarsten/tor-network-road-traffic.jpg">analogy with road traffic</a>.</p>
 
 <p>Want to help make these visualizations better or suggest your own? Prettier drawings that we can actually show to the world are as useful as content-wise improvements what to add or leave out from these visualizations. Simply leave your ideas or links in the comments. Thanks!</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/visual-overview-tor-network',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

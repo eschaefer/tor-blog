@@ -45,11 +45,37 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Research problem: better guard rotation parameters</h2>
-<p class="meta">20 Aug 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Tor&#39;s <a href="https://www.torproject.org/docs/faq#EntryGuards">entry guard design</a> protects users in a variety of ways.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Research problem: better guard rotation parameters</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity</a>
+              
+                <a class="post-category post-category-js" href="#">anonymity features</a>
+              
+                <a class="post-category post-category-js" href="#">attackers</a>
+              
+                <a class="post-category post-category-js" href="#">entry guards</a>
+              
+                <a class="post-category post-category-js" href="#">guard relays</a>
+              
+                <a class="post-category post-category-js" href="#">performance</a>
+              
+                <a class="post-category post-category-js" href="#">protecting users</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+               |
+              20 Aug 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Tor&#39;s <a href="https://www.torproject.org/docs/faq#EntryGuards">entry guard design</a> protects users in a variety of ways.</p>
 
 <p>First, they protect against the &quot; <a href="http://freehaven.net/anonbib/#Wright:2004">predecessor attack</a>&quot;: if you choose new relays for each circuit, eventually an attacker who runs a few relays will be your first and last hop. With entry guards, the risk of end-to-end correlation for any given circuit is the same, but the cumulative risk for all your circuits over time is capped.</p>
 
@@ -76,8 +102,62 @@
 
 <p>The big-picture tradeoff to explore is: what algorithm should we use to assign Guard flags such that a) we assign the flag to as many relays as possible, yet b) we minimize the chance that Alice will use the adversary&#39;s node as a guard?</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/research-problem-better-guard-rotation-parameters',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

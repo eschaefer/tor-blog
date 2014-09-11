@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Improving Tor's anonymity by changing guard parameters</h2>
-<p class="meta">16 Oct 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>There are tensions in the Tor protocol design between the anonymity provided by entry guards and the performance improvements from better load balancing. This blog post walks through the research questions I raised in 2011, then summarizes answers from three recent papers written by researchers in the Tor community, and finishes by explaining what Tor design changes we need to make to provide better anonymity, and what we&#39;ll be trading off.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Improving Tor's anonymity by changing guard parameters</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity</a>
+              
+                <a class="post-category post-category-js" href="#">entry guards</a>
+              
+                <a class="post-category post-category-js" href="#">hidden services</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+               |
+              16 Oct 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>There are tensions in the Tor protocol design between the anonymity provided by entry guards and the performance improvements from better load balancing. This blog post walks through the research questions I raised in 2011, then summarizes answers from three recent papers written by researchers in the Tor community, and finishes by explaining what Tor design changes we need to make to provide better anonymity, and what we&#39;ll be trading off.</p>
 
 <h1>Part one: The research questions</h1>
 
@@ -218,8 +236,62 @@
 
 <p>And finally, as everybody wants to know: was this attack how &quot;they&quot; busted recent hidden services ( <a href="https://blog.torproject.org/blog/tor-security-advisory-old-tor-browser-bundles-vulnerable">Freedom Hosting</a>, <a href="https://blog.torproject.org/blog/tor-and-silk-road-takedown">Silk Road</a>, the attacks described in the latest <a href="http://www.theguardian.com/world/2013/oct/04/nsa-gchq-attack-tor-network-encryption">Guardian article</a>)? The answer is apparently no in each case, which means the techniques they *did* use were even *lower* hanging fruit. The lesson? Security is hard, and you have to get it right at many different levels.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/improving-tors-anonymity-changing-guard-parameters',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

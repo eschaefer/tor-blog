@@ -45,18 +45,92 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>tails anonymous operating system, version 0.7 released</h2>
-<p class="meta">09 Apr 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The latest in the series, tail 0.7 livecd/liveusb anonymous operating system is released. The Amnesic Incognito Live System, version 0.7, is built on top of Debian Squeeze. The full changelog is available at <a href="https://tails.boum.org/news/version_0.7/" title="https://tails.boum.org/news/version\_0.7/">https://tails.boum.org/news/version_0.7/</a></p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">tails anonymous operating system, version 0.7 released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymous operating system</a>
+              
+                <a class="post-category post-category-js" href="#">livecd</a>
+              
+                <a class="post-category post-category-js" href="#">liveusb</a>
+              
+                <a class="post-category post-category-js" href="#">tails</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              09 Apr 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The latest in the series, tail 0.7 livecd/liveusb anonymous operating system is released. The Amnesic Incognito Live System, version 0.7, is built on top of Debian Squeeze. The full changelog is available at <a href="https://tails.boum.org/news/version_0.7/" title="https://tails.boum.org/news/version\_0.7/">https://tails.boum.org/news/version_0.7/</a></p>
 
 <p>Highlight include updated Tor, better hardware and 3G modem support, https everywhere, more anonymity and privacy fixes, debian squeeze-based for updated software all around.</p>
 
 <p>You can get it at <a href="https://tails.boum.org/download/index.en.html" title="https://tails.boum.org/download/index.en.html">https://tails.boum.org/download/index.en.html</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/tails-anonymous-operating-system-version-07-released',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

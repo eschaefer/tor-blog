@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Two incentive designs for Tor</h2>
-<p class="meta">17 Jan 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>One big challenge to making Tor fast is providing incentives for users to act as relays. So far we&#39;ve been getting more relays by 1) building community through interacting more with relay operators, listing the fast ones prominently in the <a href="http://torstatus.kgprog.com/index.php?SR=Bandwidth&amp;SO=Desc">Tor status pages</a>, and generally making it clear that you will make the Tor network better if you do, and 2) making it really easy to configure and run a relay by adding a simple GUI interface in Vidalia and adding UPnP support. But we should also consider more direct incentive approaches, for example where Tor is faster for you if you&#39;re a relay.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Two incentive designs for Tor</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">incentives</a>
+              
+                <a class="post-category post-category-js" href="#">performance</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+               |
+              17 Jan 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>One big challenge to making Tor fast is providing incentives for users to act as relays. So far we&#39;ve been getting more relays by 1) building community through interacting more with relay operators, listing the fast ones prominently in the <a href="http://torstatus.kgprog.com/index.php?SR=Bandwidth&amp;SO=Desc">Tor status pages</a>, and generally making it clear that you will make the Tor network better if you do, and 2) making it really easy to configure and run a relay by adding a simple GUI interface in Vidalia and adding UPnP support. But we should also consider more direct incentive approaches, for example where Tor is faster for you if you&#39;re a relay.</p>
 
 <p>There are two papers that came out in 2008 that everybody pondering incentives in Tor should read. The first is <a href="http://freehaven.net/anonbib/#incentives-fc10">&quot;Building Incentives into Tor&quot;</a>, a tech report I coauthored with Johnny Ngan and Dan Wallach from Rice University (update: now it&#39;s an FC 2010 paper). The second is <a href="http://freehaven.net/anonbib/#raykova-pet2008">&quot;Payment for Anonymous Routing&quot;</a>, published at <a href="http://petsymposium.org/2008/program.php">PETS 2008</a> by Androulaki et al from Columbia University.</p>
 
@@ -73,8 +89,62 @@
 
 <p>Of course, lest I appear too optimistic, there are a few more barriers to getting this right. We need to make sure Tor&#39;s network design can scale to make use of many more relays. We&#39;ve been making some progress lately at <a href="https://www.torproject.org/projects/lowbandwidth">decreasing the bandwidth required for directory downloads</a>, but <a href="https://www.torproject.org/faq#EverybodyARelay">many other aspects of this problem still need to be solved</a>. We also need a better way to actually implement priority circuits: our <a href="https://svn.torproject.org/svn/tor/trunk/doc/spec/proposals/111-local-traffic-priority.txt">current approach</a> sometimes accidentally gives high priority to other circuits too. Lastly, we might find that per-circuit accounting is not sufficient to handle the load that some users want to put on the network. If so, somebody will need to start doing design and research on per-byte accounting.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/two-incentive-designs-tor',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

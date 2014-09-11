@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Plaintext over Tor is still plaintext</h2>
-<p class="meta">02 Jun 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Recently, a few articles have been published regarding Tor, <a href="http://wikileaks.org/">Wikileaks</a>, and snooping data coming out of the Tor network. I write to remind our users, and people in search of privacy enhancing technology, that good software is just one part of the solution. Education is just as important. This is why there is a <a href="//www.torproject.org/download/download.html.en#warning">warning on the Tor download page</a> about what Tor does and does not do. We also have a <a href="https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/TorFAQ#CanexitnodeseavesdroponcommunicationsIsntthatbad">FAQ entry about this topic</a>. Any plaintext communication over the Internet is open to intercept. This is true if the transport mechanism is email, http, tor, or carrier pigeons. Tor does not magically encrypt the Internet from end to end. Tor does wrap your traffic in encrypted layers as it transports it through the Tor network. See <a href="https://www.torproject.org/images/htw3.png">this diagram</a> for a visual explanation.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Plaintext over Tor is still plaintext</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">exit relays</a>
+              
+                <a class="post-category post-category-js" href="#">plaintext communications</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">wikileaks</a>
+               |
+              02 Jun 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Recently, a few articles have been published regarding Tor, <a href="http://wikileaks.org/">Wikileaks</a>, and snooping data coming out of the Tor network. I write to remind our users, and people in search of privacy enhancing technology, that good software is just one part of the solution. Education is just as important. This is why there is a <a href="//www.torproject.org/download/download.html.en#warning">warning on the Tor download page</a> about what Tor does and does not do. We also have a <a href="https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/TorFAQ#CanexitnodeseavesdroponcommunicationsIsntthatbad">FAQ entry about this topic</a>. Any plaintext communication over the Internet is open to intercept. This is true if the transport mechanism is email, http, tor, or carrier pigeons. Tor does not magically encrypt the Internet from end to end. Tor does wrap your traffic in encrypted layers as it transports it through the Tor network. See <a href="https://www.torproject.org/images/htw3.png">this diagram</a> for a visual explanation.</p>
 
 <p>Tor provides anonymity and privacy by hiding where your Internet traffic is going and where it came from, but users must protect the security of their traffic by using encryption. Once you exit the last relay, you are back on the open Internet. Some web email providers, banks, and other sites use encryption by default when you log in, something you can check by looking for &quot;https://&quot; at the beginning of a URL. For more information, check out <a href="http://ryansholin.com/2010/05/31/wikileaks-and-tor-moral-use-of-an-amoral-system/#comment-1769">Ethan Zuckerman&#39;s comments</a> on this topic.</p>
 
@@ -57,8 +75,62 @@
 
 <p>We hear from the <a href="http://www.theregister.co.uk/2010/06/02/wikileaks_tor_snooping_denial/">Wikileaks folks</a> that <a href="http://twitter.com/wikileaks/status/15220072701">the premise</a> behind these news articles is actually false -- they didn&#39;t bootstrap Wikileaks by monitoring the Tor network. But that&#39;s not the point. The point is that users who want to be safe need to be encrypting their traffic, whether they&#39;re using Tor or not.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/plaintext-over-tor-still-plaintext',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>GSoC 2011: tails-greeter - boot menu for TAILS</h2>
-<p class="meta">16 Sep 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>This is a guest post from our 2011 Google Summer of Code student, Max:</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">GSoC 2011: tails-greeter - boot menu for TAILS</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">max</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymous operating systems</a>
+              
+                <a class="post-category post-category-js" href="#">gsoc 2011</a>
+              
+                <a class="post-category post-category-js" href="#">tails</a>
+               |
+              16 Sep 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>This is a guest post from our 2011 Google Summer of Code student, Max:</p>
 
 <p>Throughout the summer I&#39;ve been working on &#39;tails-greeter&#39; ( <a href="https://tails.boum.org/todo/TailsGreeter/" title="https://tails.boum.org/todo/TailsGreeter/">https://tails.boum.org/todo/TailsGreeter/</a>) project for TAILS ( <a href="https://tails.boum.org" title="https://tails.boum.org">https://tails.boum.org</a>) live-cd. Essentially it&#39;s an implementation of boot-menu ( <a href="https://tails.boum.org/todo/boot_menu/" title="https://tails.boum.org/todo/boot\_menu/">https://tails.boum.org/todo/boot_menu/</a>) in a form of GDM&#39;s greeter (that little program which asks your login and password before you see your desktop).</p>
 
@@ -61,8 +77,62 @@
 
 <p>There are several things which could be improved, both user-visible (data representation) and internal (login procedure). I plan to stay in touch with the community to help to make tails-greeter ready for the inclusion into TAILS.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/gsoc-2011-tails-greeter-boot-menu-tails',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

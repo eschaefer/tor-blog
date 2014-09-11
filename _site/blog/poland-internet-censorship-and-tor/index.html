@@ -45,11 +45,35 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Poland, Internet Censorship, and Tor</h2>
-<p class="meta">12 Jan 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Over the past month I&#39;ve been working with a few people from Poland. We are discussing how we can improve the impression of Tor in country. It seems a few people want to make all anonymity and privacy tools illegal; and tor is a well-known scapegoat. Thanks to the efforts of Paweł Wilk for writing a few sane articles about online privacy and Tor in particular.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Poland, Internet Censorship, and Tor</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity</a>
+              
+                <a class="post-category post-category-js" href="#">global voices</a>
+              
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">internet freedom</a>
+              
+                <a class="post-category post-category-js" href="#">law enforcement</a>
+              
+                <a class="post-category post-category-js" href="#">poland</a>
+              
+                <a class="post-category post-category-js" href="#">privacy</a>
+               |
+              12 Jan 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Over the past month I&#39;ve been working with a few people from Poland. We are discussing how we can improve the impression of Tor in country. It seems a few people want to make all anonymity and privacy tools illegal; and tor is a well-known scapegoat. Thanks to the efforts of Paweł Wilk for writing a few sane articles about online privacy and Tor in particular.</p>
 
 <p>Sywlia Presley of Global Voices writes up a great overview of the situation at <a href="http://globalvoicesonline.org/2010/01/10/poland-discussions-of-tor-and-internet-filtering/" title="http://globalvoicesonline.org/2010/01/10/poland-discussions-of-tor-and-internet-filtering/">http://globalvoicesonline.org/2010/01/10/poland-discussions-of-tor-and-i...</a>.</p>
 
@@ -59,8 +83,62 @@
 
 <p>Anonymity loves company.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/poland-internet-censorship-and-tor',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

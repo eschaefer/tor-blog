@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Blackout Against Copyright Overreach: Stop SOPA and PIPA</h2>
-<p class="meta">17 Jan 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The Tor Project doesn&#39;t usually get involved with U.S. copyright debates. But SOPA and PIPA (the House&#39;s &quot;Stop Online Piracy Act&quot; and the Senate&#39;s &quot;Protect-IP Act&quot;) go beyond enforcement of copyright. These copyright bills would strain the infrastructure of the Internet, on which many free communications -- anonymous or identified -- depend. Originally, the bills proposed that so-called &quot;rogue sites&quot; should be blocked through the Internet&#39;s Domain Name System (DNS). That would have broken DNSSEC security and shared U.S. censorship tactics with those of China&#39;s &quot;great firewall.&quot;</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Blackout Against Copyright Overreach: Stop SOPA and PIPA</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">wseltzer</a> under
+              
+                <a class="post-category post-category-js" href="#">law</a>
+              
+                <a class="post-category post-category-js" href="#">PIPA</a>
+              
+                <a class="post-category post-category-js" href="#">SOPA</a>
+               |
+              17 Jan 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Tor Project doesn&#39;t usually get involved with U.S. copyright debates. But SOPA and PIPA (the House&#39;s &quot;Stop Online Piracy Act&quot; and the Senate&#39;s &quot;Protect-IP Act&quot;) go beyond enforcement of copyright. These copyright bills would strain the infrastructure of the Internet, on which many free communications -- anonymous or identified -- depend. Originally, the bills proposed that so-called &quot;rogue sites&quot; should be blocked through the Internet&#39;s Domain Name System (DNS). That would have broken DNSSEC security and shared U.S. censorship tactics with those of China&#39;s &quot;great firewall.&quot;</p>
 
 <p>Now, while we hear that DNS-blocking is off the table, the bills remain threatening to the network of intermediaries who carry online speech. Most critically to Tor, SOPA contained a provision forbidding &quot;circumvention&quot; of court-ordered blocking that was written broadly enough that it <a href="http://wendy.seltzer.org/blog/archives/2011/12/15/stopping-sopas-anti-circumvention.html">could apply to Tor</a> -- which helps its users to &quot;circumvent&quot; local-network censorship. Further, both bills broaden the reach of intermediary liability, to hold conduits and search engines liable for user-supplied infringement. The private rights of action and &quot;safe harbors&quot; could force or encourage providers to censor well beyond the current DMCA&#39;s &quot;notice and takedown&quot; provision (of which <a href="https://www.chillingeffects.org/">Chilling Effects</a> documents numerous burdens and abuses).</p>
 
@@ -57,8 +73,62 @@
 
 <p>U.S. citizens, please call or write, to <a href="http://americancensorship.org/">urge your representatives to stop SOPA and PIPA</a>. Elsewhere in the world, keep an eye out for similar legislation. and bring the fight there too.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/blackout-against-copyright-overreach-stop-sopa-and-pipa',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

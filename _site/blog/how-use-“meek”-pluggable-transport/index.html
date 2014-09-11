@@ -45,11 +45,25 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>How to use the “meek” pluggable transport</h2>
-<p class="meta">15 Aug 2014</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The recently released 4.0-alpha-1 version of Tor Browser includes <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a>, a new <a href="https://www.torproject.org/docs/pluggable-transports.html">pluggable transport</a> for censorship circumvention. meek tunnels your Tor traffic through HTTPS, and uses a technique called “domain fronting” to hide the fact that you are communicating with a Tor bridge—to the censor it looks like you are talking to some other web site. For more details, see the <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek#Overview">overview</a> and the <a href="https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports#meek">Child’s Garden of Pluggable Transports</a>.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">How to use the “meek” pluggable transport</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">dcf</a> under
+              
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+              
+                <a class="post-category post-category-js" href="#">pluggable transports</a>
+               |
+              15 Aug 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The recently released 4.0-alpha-1 version of Tor Browser includes <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a>, a new <a href="https://www.torproject.org/docs/pluggable-transports.html">pluggable transport</a> for censorship circumvention. meek tunnels your Tor traffic through HTTPS, and uses a technique called “domain fronting” to hide the fact that you are communicating with a Tor bridge—to the censor it looks like you are talking to some other web site. For more details, see the <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek#Overview">overview</a> and the <a href="https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports#meek">Child’s Garden of Pluggable Transports</a>.</p>
 
 <p>You only need meek if your Internet connection is censored so that you can’t use ordinary Tor. Even then, you should try other pluggable transports first, because they have less overhead. My recommended order for trying transports is:</p>
 
@@ -101,8 +115,62 @@
 
 <p>If it doesn’t work, you can write to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-dev">tor-dev mailing list</a>, or to me personally at <a href="mailto:dcf@torproject.org">dcf@torproject.org</a>, or file a <a href="https://trac.torproject.org/projects/tor/newticket?component=meek">new ticket</a>.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/how-use-%E2%80%9Cmeek%E2%80%9D-pluggable-transport',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

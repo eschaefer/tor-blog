@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Using Tor hidden services for good</h2>
-<p class="meta">08 Jan 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Getting good stories for Tor successes is tricky, because if Tor is doing its job, nobody notices. I know a lot of people who have really interesting Tor success stories and have no interest in telling the world who they are and how they managed (until that moment when everybody is reading about them, that is) to stay safe.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Using Tor hidden services for good</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">arab spring</a>
+              
+                <a class="post-category post-category-js" href="#">controversial content hosting</a>
+              
+                <a class="post-category post-category-js" href="#">globaleaks</a>
+              
+                <a class="post-category post-category-js" href="#">hidden services</a>
+              
+                <a class="post-category post-category-js" href="#">positive uses</a>
+              
+                <a class="post-category post-category-js" href="#">resilience</a>
+               |
+              08 Jan 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Getting good stories for Tor successes is tricky, because if Tor is doing its job, nobody notices. I know a lot of people who have really interesting Tor success stories and have no interest in telling the world who they are and how they managed (until that moment when everybody is reading about them, that is) to stay safe.</p>
 
 <p>Still, there are a bunch of other stories out there that haven&#39;t been documented as well. For example, I really like Nasser&#39;s story about his experiences in Mauritania:
  <a href="http://www.technologyreview.com/computing/22427/page4/" title="http://www.technologyreview.com/computing/22427/page4/">http://www.technologyreview.com/computing/22427/page4/</a></p>
@@ -71,8 +93,62 @@
 
 <p>This blog post was adapted from an email to tor-talk by Roger. See the original email at <a href="https://lists.torproject.org/pipermail/tor-talk/2011-November/021997.html" title="https://lists.torproject.org/pipermail/tor-talk/2011-November/021997.html">https://lists.torproject.org/pipermail/tor-talk/2011-November/021997.htm...</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/using-tor-good',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

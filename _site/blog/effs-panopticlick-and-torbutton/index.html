@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>EFF's Panopticlick and Torbutton</h2>
-<p class="meta">29 Jan 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The EFF has recently released a <a href="http://panopticlick.eff.org/">browser fingerprinting test suite</a> that they call <a href="http://panopticlick.eff.org/about.php">Panopticlick</a>. The idea is that in normal operation, your browser leaks a lot of information about its configuration which <a href="https://www.eff.org/deeplinks/2010/01/tracking-by-user-agent">can be used to uniquely fingerprint you</a> independent of your cookies.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">EFF's Panopticlick and Torbutton</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">EFF</a>
+              
+                <a class="post-category post-category-js" href="#">online anonymity</a>
+              
+                <a class="post-category post-category-js" href="#">panopticlick</a>
+              
+                <a class="post-category post-category-js" href="#">privacy</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">torbutton</a>
+               |
+              29 Jan 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The EFF has recently released a <a href="http://panopticlick.eff.org/">browser fingerprinting test suite</a> that they call <a href="http://panopticlick.eff.org/about.php">Panopticlick</a>. The idea is that in normal operation, your browser leaks a lot of information about its configuration which <a href="https://www.eff.org/deeplinks/2010/01/tracking-by-user-agent">can be used to uniquely fingerprint you</a> independent of your cookies.</p>
 
 <p>Because of how EFF&#39;s testing tool functions, it has created some confusion and concern among Tor users, so I wanted to make a few comments to try to clear things up.</p>
 
@@ -65,8 +87,62 @@
 
 <p>However, I wish that they also included or at least referenced <a href="http://whattheinternetknowsaboutyou.com/">url history disclosure information</a> with their tool. After all, if you have history enabled (and you haven&#39;t set Torbutton to block history reads during Non-Tor usage), each URL you visit adds <a href="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy">another bit</a> to the set that can be used to fingerprint you. Often bits that are extremely sensitive, such as which diseases and genetic conditions you have based on your <a href="http://en.wikipedia.org/wiki/Category:Diseases_and_disorders">Wikipedia</a> or <a href="https://www.google.com/health/">Google Health</a> url history. I am convinced that it is only a matter of time before the ad networks begin mining this data to provide targeted ads for over-the-counter and prescription medications and to sell this data to other marketing and insurance firms, if they don&#39;t do it already.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/effs-panopticlick-and-torbutton',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

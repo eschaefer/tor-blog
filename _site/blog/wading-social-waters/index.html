@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Wading into social waters</h2>
-<p class="meta">23 Aug 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Recently, we&#39;ve been introduced to two &quot;Tor Project&quot; Facebook Org pages. Neither of which are run by us at Tor, yet. There was also a Google+ page for a while, too. We currently use a few social media methods, such as <a href="https://lists.torproject.org">mailing lists</a>, pgp web of trust, <a href="ircs://irc.torproject.org/#tor">internet relay chat</a>, <a href="https://identi.ca/torproject">Identi.ca</a>, and <a href="https://twitter.com/torproject">Twitter</a>. Some people are very upset Tor is seemingly supporting Facebook, Google+ and others.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Wading into social waters</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">social media</a>
+              
+                <a class="post-category post-category-js" href="#">tor project</a>
+               |
+              23 Aug 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Recently, we&#39;ve been introduced to two &quot;Tor Project&quot; Facebook Org pages. Neither of which are run by us at Tor, yet. There was also a Google+ page for a while, too. We currently use a few social media methods, such as <a href="https://lists.torproject.org">mailing lists</a>, pgp web of trust, <a href="ircs://irc.torproject.org/#tor">internet relay chat</a>, <a href="https://identi.ca/torproject">Identi.ca</a>, and <a href="https://twitter.com/torproject">Twitter</a>. Some people are very upset Tor is seemingly supporting Facebook, Google+ and others.</p>
 
 <p>We&#39;re expanding into Facebook, Google+, Reddit, and others because our users are asking for it. There are existing Tor communities in many places, and we don&#39;t need to formally be at them all. It&#39;s great when individuals step up to the challenge and represent Tor in positive ways. However, as people join these communities, they are looking for a real discussion with us. For many people, these platforms are the primary means of communication.</p>
 
@@ -75,8 +91,62 @@
 
 <p>Writing and deploying our own social media system is beyond the scope of our mission. However, tor can provide an anonymous base for such a system. We have hope for systems like <a href="https://joindiaspora.com/">Diaspora</a>, <a href="http://tent.io">tent</a>, and <a href="https://www.freedomboxfoundation.org/">FreedomBox</a>.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/wading-social-waters',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

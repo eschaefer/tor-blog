@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Torbutton 1.4.0 Released</h2>
-<p class="meta">10 Jul 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Torbutton 1.4.0 has been released at:
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Torbutton 1.4.0 Released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity</a>
+              
+                <a class="post-category post-category-js" href="#">firefox extensions</a>
+              
+                <a class="post-category post-category-js" href="#">firefox plugins</a>
+              
+                <a class="post-category post-category-js" href="#">firefox privacy</a>
+              
+                <a class="post-category post-category-js" href="#">torbutton</a>
+               |
+              10 Jul 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Torbutton 1.4.0 has been released at:
  <a href="https://www.torproject.org/torbutton/" title="https://www.torproject.org/torbutton/">https://www.torproject.org/torbutton/</a></p>
 
 <p>The addon has been disabled on addons.mozilla.org. Our URL is now
@@ -108,8 +128,62 @@ just annoy me slightly as I relocate them to the correct component).</p>
 <li><a href="https://www.torproject.org/torbutton/en/design/#requirements" title="https://www.torproject.org/torbutton/en/design/#requirements">https://www.torproject.org/torbutton/en/design/#requirements</a></li>
 </ol>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/torbutton-140-released',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

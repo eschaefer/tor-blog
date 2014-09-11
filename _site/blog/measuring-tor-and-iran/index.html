@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Measuring Tor and Iran</h2>
-<p class="meta">19 Jun 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>I&#39;ve been fielding some calls from the press about Tor and Iran. Someone quoted me as saying &quot;double the clients from Iran over the past few days&quot;. We wondered, what are the real numbers? What does our network see from Iran? Is port 443 or https:// really blocked? Here&#39;s what we&#39;ve discovered in the past day of working with the <a href="https://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network">new metrics</a> we&#39;ve developed to be safe to collect without compromising anyone&#39;s anonymity.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Measuring Tor and Iran</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">directory services</a>
+              
+                <a class="post-category post-category-js" href="#">iran</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              19 Jun 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>I&#39;ve been fielding some calls from the press about Tor and Iran. Someone quoted me as saying &quot;double the clients from Iran over the past few days&quot;. We wondered, what are the real numbers? What does our network see from Iran? Is port 443 or https:// really blocked? Here&#39;s what we&#39;ve discovered in the past day of working with the <a href="https://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network">new metrics</a> we&#39;ve developed to be safe to collect without compromising anyone&#39;s anonymity.</p>
 
 <p>This first dataset is from one of the Directory Authorities. We have six authorities, so a plausible scaling factor is 6, assuming all authorities are seeing equal requests (it could be more or less than 6, too). We don&#39;t know if the authorities are seeing equal requests, as they listen on different TCP ports, are located in different parts of the world, and clients will chose one randomly. This graph roughly shows the number of requests from new Tor clients coming from IP addresses that our geoip database reports as Iran.</p>
 
@@ -74,8 +90,62 @@
 <td>32.92 KB</td> </tr>
 </tbody></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/measuring-tor-and-iran',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

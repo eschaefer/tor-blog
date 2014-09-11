@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Announcement: The Tor Project is now accepting Bitcoin Donations</h2>
-<p class="meta">17 Dec 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Over the past year, we have received many requests for us to accept bitcoin donations. After careful consideration and research, we are thrilled to announce that effective today The Tor Project is accepting bitcoin donations. In partnership with <a href="https://bitpay.com/">Bitpay</a>, bitcoins can easily and directly be donated to support Tor’s ongoing mission of being the global resource for privacy technology advocacy, research and education in the ongoing pursuit of freedom of speech, privacy rights online, and censorship circumvention. Check out our <a href="https://www.torproject.org/donate/donate#bitcoin">donations page</a> now. Bitcoin donations received by The Tor Project will be converted directly to US Dollars.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Announcement: The Tor Project is now accepting Bitcoin Donations</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">bitcoins</a>
+              
+                <a class="post-category post-category-js" href="#">donations</a>
+              
+                <a class="post-category post-category-js" href="#">tor project</a>
+               |
+              17 Dec 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Over the past year, we have received many requests for us to accept bitcoin donations. After careful consideration and research, we are thrilled to announce that effective today The Tor Project is accepting bitcoin donations. In partnership with <a href="https://bitpay.com/">Bitpay</a>, bitcoins can easily and directly be donated to support Tor’s ongoing mission of being the global resource for privacy technology advocacy, research and education in the ongoing pursuit of freedom of speech, privacy rights online, and censorship circumvention. Check out our <a href="https://www.torproject.org/donate/donate#bitcoin">donations page</a> now. Bitcoin donations received by The Tor Project will be converted directly to US Dollars.</p>
 
 <p>Our decision to accept bitcoins has been well thought out and researched from a financial accounting perspective with an eye on passing our required annual A-133 audit. We believe we are the <em>first</em> US 501(c)3 non-profit organization to test acceptance of bitcoins and attempt to pass the US Government A-133 Audit Standard. Our 2013 audit results, along with our past <a href="https://www.torproject.org/about/financials.html.en">financial documents</a>, will be made available on our website once complete in 2014.</p>
 
@@ -59,8 +77,62 @@
 
 <p>Help us continue our mission!</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/announcement-tor-project-now-accepting-bitcoin-donations',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

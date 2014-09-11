@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Update on Tor usage in Tunisia</h2>
-<p class="meta">14 Jan 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>It has been reported that the Tunisian President has <a href="http://english.aljazeera.net/news/africa/2011/01/2011113192110570350.html">stopped the Internet censorship</a> in the country. We have confirmation from a few Tunisians that Tor works from within the country, without requiring bridges. And that Youtube and some other sites are no longer censored. There is cautious optimism that this is real, however many continue to use Tor to protect their Internet traffic as a safeguard.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Update on Tor usage in Tunisia</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">cautious optimism</a>
+              
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">tunisia</a>
+              
+                <a class="post-category post-category-js" href="#">users</a>
+               |
+              14 Jan 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>It has been reported that the Tunisian President has <a href="http://english.aljazeera.net/news/africa/2011/01/2011113192110570350.html">stopped the Internet censorship</a> in the country. We have confirmation from a few Tunisians that Tor works from within the country, without requiring bridges. And that Youtube and some other sites are no longer censored. There is cautious optimism that this is real, however many continue to use Tor to protect their Internet traffic as a safeguard.</p>
 
 <p>Two graphs show the current state of Tor usage in Tunisia:</p>
 
@@ -68,8 +86,62 @@
 <td>13.45 KB</td> </tr>
 </tbody></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/update-tor-usage-tunisia',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

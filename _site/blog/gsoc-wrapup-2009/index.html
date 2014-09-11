@@ -45,11 +45,25 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Google Summer of Code 2009 Wrap-up</h2>
-<p class="meta">27 Oct 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Attending the Google Summer of Code Mentor Summit feels like the perfect time to finally write the wrap up of this year&#39;s <a href="http://socghop.appspot.com/program/home/google/gsoc2009">Google Summer of Code</a>. So, what did we learn in our third year of participation?</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Google Summer of Code 2009 Wrap-up</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">karsten</a> under
+              
+                <a class="post-category post-category-js" href="#">gsoc</a>
+              
+                <a class="post-category post-category-js" href="#">gsoc 2009</a>
+               |
+              27 Oct 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Attending the Google Summer of Code Mentor Summit feels like the perfect time to finally write the wrap up of this year&#39;s <a href="http://socghop.appspot.com/program/home/google/gsoc2009">Google Summer of Code</a>. So, what did we learn in our third year of participation?</p>
 
 <p>We had 5 students funded by Google to work on Tor over this summer, plus 1 more for The <a href="https://www.eff.org/">Electronic Frontier Foundation</a>. We had to pick these 6 out of 32 applications, which was a pretty hard process for us. In retrospect, there were at least 2 more students that we&#39;d really have wanted to work on Tor but that we were not able to pick. Fortunately, they stuck with the project anyway, writing a neat <a href="https://blog.torproject.org/blog/summer-conclusion-arm-project">relay monitor</a> and helping reimplement Tor in Java for mobile devices.</p>
 
@@ -63,8 +77,62 @@
 
 <p>Thank you, Google, for the Summer of Code program! We really appreciate being part of it!</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/gsoc-wrapup-2009',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

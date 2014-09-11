@@ -45,11 +45,47 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>You have won the Tor sweepstakes and other scams</h2>
-<p class="meta">28 Apr 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Over the past 18 months someone has been mailing fake checks from us to individuals all over the United States. The text of the letter one receives is:</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">You have won the Tor sweepstakes and other scams</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">28th</a>
+              
+                <a class="post-category post-category-js" href="#">account address</a>
+              
+                <a class="post-category post-category-js" href="#">anonymity</a>
+              
+                <a class="post-category post-category-js" href="#">archives</a>
+              
+                <a class="post-category post-category-js" href="#">ca cashed checks</a>
+              
+                <a class="post-category post-category-js" href="#">claim</a>
+              
+                <a class="post-category post-category-js" href="#">days</a>
+              
+                <a class="post-category post-category-js" href="#">digit dreams</a>
+              
+                <a class="post-category post-category-js" href="#">letters</a>
+              
+                <a class="post-category post-category-js" href="#">life lucky</a>
+              
+                <a class="post-category post-category-js" href="#">mail money</a>
+              
+                <a class="post-category post-category-js" href="#">post prize</a>
+              
+                <a class="post-category post-category-js" href="#">scams</a>
+               |
+              28 Apr 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Over the past 18 months someone has been mailing fake checks from us to individuals all over the United States. The text of the letter one receives is:</p>
 
 <blockquote>
 <p>From: Merchant &amp; Bryce, Partners in Finance.
@@ -87,8 +123,62 @@ Paul Lylesworth, Attorney at Law and 2009 Dreams Sweepstakes(tm).</p>
 
 <p>That&#39;s all we know. If you receive an unexpected check from us, it&#39;s fake.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/you-have-won-tor-sweepstakes-and-other-scams',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

@@ -45,11 +45,37 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Trip Report: White House Forum to Combat Human Trafficking</h2>
-<p class="meta">18 Apr 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<h1>Trip Report White House Forum to Combat Human Trafficking, 09 April 2013</h1>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Trip Report: White House Forum to Combat Human Trafficking</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">domestic violence</a>
+              
+                <a class="post-category post-category-js" href="#">dv</a>
+              
+                <a class="post-category post-category-js" href="#">human trafficking</a>
+              
+                <a class="post-category post-category-js" href="#">ipa</a>
+              
+                <a class="post-category post-category-js" href="#">ipv</a>
+              
+                <a class="post-category post-category-js" href="#">modern slavery</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">white house</a>
+               |
+              18 Apr 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <h1>Trip Report White House Forum to Combat Human Trafficking, 09 April 2013</h1>
 
 <p>I was invited to attend the <a href="http://www.whitehouse.gov/blog/2013/04/10/working-together-combat-human-trafficking">White House Forum to Combat Human Trafficking</a>. I&#39;ve been part of a task force to look at the role of technology in human trafficking. Secretary of State John Kerry sent <a href="http://www.state.gov/secretary/remarks/2013/04/207232.htm">a video</a> since he was in another country at the time. A local Tor volunteer from Cambridge, Massachusetts has White House Press credentials and was able to <a href="http://cctvcambridge.org/WhiteHouseTor">cover the event</a>. This article is a better writeup and interview, with video, than anything else I&#39;ve seen covering the event. Interestingly, no other press showed up to cover the event. It seems <a href="http://cctvcambridge.org/">CCTV Cambridge</a> was the only press covering this White House initiative.</p>
 
@@ -61,8 +87,62 @@
 
 <p>Overall, it was a good day trip to DC.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/trip-report-white-house-forum-combat-human-trafficking',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

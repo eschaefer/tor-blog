@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Updates on Kazakhstan Internet Censorship</h2>
-<p class="meta">02 Mar 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Two weeks ago <a href="https://blog.torproject.org/blog/kazakhstan-upgrades-censorship-deep-packet-inspection">we announced</a> the use of deep packet inspection to censor the Internet in Kazakhstan. Over those two weeks we&#39;ve continued working on how they are blocking native tor connections. The good news is that our <a href="https://www.torproject.org/projects/obfsproxy.html.en">obfsproxy bundle</a> continues to work well in country. Thanks to wanoskarnet, ann, and others for their help.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Updates on Kazakhstan Internet Censorship</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">deep packet inspection</a>
+              
+                <a class="post-category post-category-js" href="#">dpi</a>
+              
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">kazakhstan</a>
+              
+                <a class="post-category post-category-js" href="#">network data</a>
+               |
+              02 Mar 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Two weeks ago <a href="https://blog.torproject.org/blog/kazakhstan-upgrades-censorship-deep-packet-inspection">we announced</a> the use of deep packet inspection to censor the Internet in Kazakhstan. Over those two weeks we&#39;ve continued working on how they are blocking native tor connections. The good news is that our <a href="https://www.torproject.org/projects/obfsproxy.html.en">obfsproxy bundle</a> continues to work well in country. Thanks to wanoskarnet, ann, and others for their help.</p>
 
 <p>We have some network-level data captures at both ends to help us assess what is occuring. It seems the Kazakhstan firewall finds something unique in the TLS &quot;Server Hello&quot; message as sent by the Tor relay or bridge and therefore blocks subsequent communications. IP address and TCP port are irrelevant to the censorship. Research continues. Anonymized network flows are available here:</p>
 
@@ -63,8 +83,62 @@
 
 <p><center><a href="https://media.torproject.org/image/blog-images/direct-users-off-2011-12-03-on-300-2012-03-02-kz.png"><img src="https://media.torproject.org/image/blog-images/direct-users-off-2011-12-03-on-300-2012-03-02-kz.png" height="200" width="320"></a></center>. The full image is here, <a href="https://media.torproject.org/image/blog-images/direct-users-off-2011-12-03-on-300-2012-03-02-kz.png" title="https://media.torproject.org/image/blog-images/direct-users-off-2011-12-03-on-300-2012-03-02-kz.png">https://media.torproject.org/image/blog-images/direct-users-off-2011-12-...</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/updates-kazakhstan-internet-censorship',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

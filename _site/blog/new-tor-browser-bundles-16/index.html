@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>New Tor Browser Bundles</h2>
-<p class="meta">28 Apr 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The Tor Browser Bundles have all been updated to the latest Firefox 12.0 as well as a number of other software updates, bugfixes, and new features. We&#39;ve rebranded Firefox so it should now be more easy to distinguish between it and your normal Firefox. We&#39;ve also added Korean and Vietnamese to the available languages.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">New Tor Browser Bundles</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">firefox updates</a>
+              
+                <a class="post-category post-category-js" href="#">libevent updates</a>
+              
+                <a class="post-category post-category-js" href="#">openssl</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">torbrowser</a>
+               |
+              28 Apr 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Tor Browser Bundles have all been updated to the latest Firefox 12.0 as well as a number of other software updates, bugfixes, and new features. We&#39;ve rebranded Firefox so it should now be more easy to distinguish between it and your normal Firefox. We&#39;ve also added Korean and Vietnamese to the available languages.</p>
 
 <p><strong>UPDATE:</strong> The Mac OS X 64-bit bundles had a minor Vidalia problem that prevented TorBrowser from being launched. They have been updated to 2.2.35-9.1 and are now available on the website.</p>
 
@@ -77,8 +99,62 @@
 <li><p>Make the 32-bit Tor Browser Bundle compatible with OS X 10.5</p></li>
 </ul>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/new-tor-browser-bundles-16',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

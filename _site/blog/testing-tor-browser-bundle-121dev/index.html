@@ -45,18 +45,90 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Testing Tor Browser Bundle 1.2.1-dev</h2>
-<p class="meta">31 May 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>This is a testing release of Tor IM Browser Bundle 1.2.1-dev. The only fix in this release so far is an updated prefs.js to fix plugin scanning. The InvalidPrefs.js file no longer appears either. I&#39;m working on the other suggestions from <a href="http://blog.torproject.org/blog/testing-tor-browser-bundle-120dev#comment-1386">this comment</a>.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Testing Tor Browser Bundle 1.2.1-dev</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">plugin scanning</a>
+              
+                <a class="post-category post-category-js" href="#">testing</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+               |
+              31 May 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>This is a testing release of Tor IM Browser Bundle 1.2.1-dev. The only fix in this release so far is an updated prefs.js to fix plugin scanning. The InvalidPrefs.js file no longer appears either. I&#39;m working on the other suggestions from <a href="http://blog.torproject.org/blog/testing-tor-browser-bundle-120dev#comment-1386">this comment</a>.</p>
 
 <p>You can <a href="https://svn.torproject.org/cgi-bin/viewvc.cgi/torbrowser/trunk/build-scripts/config/prefs.js?view=log">view the diffs</a> to see the changes.</p>
 
 <p>The <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.1-dev_en-US.exe">bundle</a> and associated <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.1-dev_en-US.exe.asc">signature</a> and <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.1-dev_en-US.exe.sha1">sha1</a> files are available too.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/testing-tor-browser-bundle-121dev',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

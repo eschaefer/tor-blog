@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Tor Browser Bundle 1.3.0 Released</h2>
-<p class="meta">04 Jan 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>On December 31, 2009, I released the latest in the Tor Browser Bundle series, 1.3.0. The version bump from 1.2.10 to 1.3.0 is due to the change to Firefox 3.5.6 (from Firefox 3.0.15).</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Tor Browser Bundle 1.3.0 Released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">firefox updates</a>
+              
+                <a class="post-category post-category-js" href="#">pidgin updates</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">torbutton</a>
+               |
+              04 Jan 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>On December 31, 2009, I released the latest in the Tor Browser Bundle series, 1.3.0. The version bump from 1.2.10 to 1.3.0 is due to the change to Firefox 3.5.6 (from Firefox 3.0.15).</p>
 
 <p>You can get the latest TBB in 12 languages at <a href="https://www.torproject.org/torbrowser/" title="https://www.torproject.org/torbrowser/">https://www.torproject.org/torbrowser/</a></p>
 
@@ -68,8 +86,62 @@
 
 <p>The original announcement is at <a href="http://archives.seul.org/or/talk/Jan-2010/msg00037.html" title="http://archives.seul.org/or/talk/Jan-2010/msg00037.html">http://archives.seul.org/or/talk/Jan-2010/msg00037.html</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/tor-browser-bundle-130-released',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

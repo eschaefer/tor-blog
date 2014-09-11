@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Trip report, ACM CCS/WPES</h2>
-<p class="meta">17 Dec 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>In October I attended <a href="http://hatswitch.org/wpes2012/">WPES</a> and the first day of <a href="http://www.sigsac.org/ccs/CCS2012/">CCS</a>. There are a bunch of new Tor-related research papers:</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Trip report, ACM CCS/WPES</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">conference</a>
+              
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+              
+                <a class="post-category post-category-js" href="#">trip report</a>
+               |
+              17 Dec 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>In October I attended <a href="http://hatswitch.org/wpes2012/">WPES</a> and the first day of <a href="http://www.sigsac.org/ccs/CCS2012/">CCS</a>. There are a bunch of new Tor-related research papers:</p>
 
 <ul>
 <li><a href="http://freehaven.net/anonbib/#wpes12-cogs">&quot;Changing of the Guards: A Framework for Understanding and Improving Entry Guard Selection in Tor&quot;</a>. Basically Tariq has written a suite of tools for analyzing how likely an adversary is to be able to see a Tor user&#39;s circuits given various values for guard selection and guard rotation. Early results include &quot;three guards is probably the wrong number&quot; and &quot;we probably shouldn&#39;t rotate guards so often&quot;. Later results I hope will include &quot;here&#39;s an algorithm for assigning the Guard flag to relays that makes users safer&quot;.</li>
@@ -63,8 +81,62 @@
 
 <p>This recent variety of pluggable-transport designs and research papers is fantastic. It also makes me realize that somebody should put some effort into identifying the various components that a Tor transport system needs, and which papers provide which components. For example, it sounds like SkypeMorph and CensorSpoofer could share the same details for the link encryption and flow control for their UDP stream, rather than inventing two separately. Similarly, the &quot;small upstream channel&quot; requirement from CensorSpoofer reminds me of the similar goal that David&#39;s <a href="http://freehaven.net/anonbib/#flashproxy-pets12">Flashproxy</a> design faces. I see that Tariq and Ian have <a href="http://cacr.uwaterloo.ca/techreports/2012/cacr2012-33.pdf">a new tech report</a> out that gives that a start.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/trip-report-acm-ccswpes',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Update on Internet censorship in Iran</h2>
-<p class="meta">21 Jan 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Here&#39;s a quick update on what we&#39;re seeing from Tor clients in Iran. This is an update to <a href="https://blog.torproject.org/blog/new-blocking-activity-iran" title="https://blog.torproject.org/blog/new-blocking-activity-iran">https://blog.torproject.org/blog/new-blocking-activity-iran</a>. It appears that one of the five Iranian ISPs is experimenting in blocking censorship circumvention tools; such as Tor, Freegate, Ultrasurf, and Hot Spot Shield. There have been reports that this update to censorship technologies was coming soon, <a href="https://www.azadcyber.info/articles/1560" title="https://www.azadcyber.info/articles/1560">https://www.azadcyber.info/articles/1560</a>.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Update on Internet censorship in Iran</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">great potato wall</a>
+              
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">iran</a>
+              
+                <a class="post-category post-category-js" href="#">ssl man-in-the-middle</a>
+               |
+              21 Jan 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Here&#39;s a quick update on what we&#39;re seeing from Tor clients in Iran. This is an update to <a href="https://blog.torproject.org/blog/new-blocking-activity-iran" title="https://blog.torproject.org/blog/new-blocking-activity-iran">https://blog.torproject.org/blog/new-blocking-activity-iran</a>. It appears that one of the five Iranian ISPs is experimenting in blocking censorship circumvention tools; such as Tor, Freegate, Ultrasurf, and Hot Spot Shield. There have been reports that this update to censorship technologies was coming soon, <a href="https://www.azadcyber.info/articles/1560" title="https://www.azadcyber.info/articles/1560">https://www.azadcyber.info/articles/1560</a>.</p>
 
 <p>Previously, we had data suggesting that ssl-connections were being throttled or experiencing a forced reduced-throughput. It seems this is no longer the case. A simple IP address access list is used to stop access to the public Tor nodes, as well as many Tor bridges. An example of this blocklist on the Iranian Tor users:</p>
 
@@ -86,8 +104,62 @@
 <td>3.58 KB</td> </tr>
 </tbody></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/update-internet-censorship-iran',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

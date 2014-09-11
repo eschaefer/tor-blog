@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Hidden Services, Current Events, and Freedom Hosting</h2>
-<p class="meta">04 Aug 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Around midnight on August 4th we were notified by a few people that a large number of hidden service addresses have disappeared from the Tor Network. There are a variety of rumors about a hosting company for hidden services: that it is suddenly offline, has been breached, or attackers have placed a javascript exploit on their web site.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Hidden Services, Current Events, and Freedom Hosting</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">facts</a>
+              
+                <a class="post-category post-category-js" href="#">freedom hosting</a>
+              
+                <a class="post-category post-category-js" href="#">hidden services</a>
+              
+                <a class="post-category post-category-js" href="#">hidservs</a>
+              
+                <a class="post-category post-category-js" href="#">tor network</a>
+               |
+              04 Aug 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Around midnight on August 4th we were notified by a few people that a large number of hidden service addresses have disappeared from the Tor Network. There are a variety of rumors about a hosting company for hidden services: that it is suddenly offline, has been breached, or attackers have placed a javascript exploit on their web site.</p>
 
 <p>A <a href="https://www.torproject.org/docs/hidden-services.html.en">Hidden service</a> is a server – often delivering web pages – that is reachable only through the Tor network. While most people know that the Tor network with its thousands of volunteer-run nodes provides anonymity for users who don´t want to be tracked and identified on the internet, the lesser-known hidden service feature of Tor provides anonymity also for the server operator.</p>
 
@@ -66,8 +86,62 @@ them if we can.</p>
 
 <p><strong>EDIT:</strong> See our <a href="https://blog.torproject.org/blog/tor-security-advisory-old-tor-browser-bundles-vulnerable">next blog post</a> for more details about the attack.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/hidden-services-current-events-and-freedom-hosting',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

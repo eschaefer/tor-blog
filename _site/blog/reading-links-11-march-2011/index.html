@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Reading links for 11 March 2011</h2>
-<p class="meta">11 Mar 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<ul>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Reading links for 11 March 2011</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">interesting topics</a>
+              
+                <a class="post-category post-category-js" href="#">reading links</a>
+              
+                <a class="post-category post-category-js" href="#">thoughts</a>
+              
+                <a class="post-category post-category-js" href="#">what we're reading</a>
+               |
+              11 Mar 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <ul>
 <li>Woah, &quot;France Goes Overboard In Data Retention: Wants User Passwords Retained&quot;, <a href="http://www.techdirt.com/articles/20110303/03520213350/france-goes-overboard-data-retention-wants-user-passwords-retained.shtml" title="http://www.techdirt.com/articles/20110303/03520213350/france-goes-overboard-data-retention-wants-user-passwords-retained.shtml">http://www.techdirt.com/articles/20110303/03520213350/france-goes-overbo...</a></li>
 <li>Tor is a finalist in &quot;Free Expression Awards 2011: New Media&quot;, <a href="http://www.indexoncensorship.org/2011/03/free-expression-awards-2011-new-media/" title="http://www.indexoncensorship.org/2011/03/free-expression-awards-2011-new-media/">http://www.indexoncensorship.org/2011/03/free-expression-awards-2011-new...</a></li>
 <li>&quot;Svenska biståndspengar till Facebookrevolutionen&quot;, <a href="http://www.nyteknik.se/nyheter/it_telekom/internet/article3123594.ece" title="http://www.nyteknik.se/nyheter/it\_telekom/internet/article3123594.ece">http://www.nyteknik.se/nyheter/it_telekom/internet/article3123594.ece</a></li>
@@ -58,8 +76,62 @@
 <li>New net rules set to make cookies crumble, <a href="http://www.bbc.co.uk/news/technology-12668552" title="http://www.bbc.co.uk/news/technology-12668552">http://www.bbc.co.uk/news/technology-12668552</a></li>
 </ul>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/reading-links-11-march-2011',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

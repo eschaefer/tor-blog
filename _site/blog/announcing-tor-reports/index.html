@@ -45,16 +45,86 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Announcing Tor Reports</h2>
-<p class="meta">16 Jul 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>For the past four years, I&#39;ve been summarizing progress of Tor on the blog. See the tag <a href="https://blog.torproject.org/category/tags/progress-report">progress report</a> for the history of these reports. Based on community feedback, we&#39;re switching to a mailing list with archive of the raw status reports. <a href="https://lists.torproject.org/pipermail/tor-reports/">Tor-reports</a> is live. The goal is to provide the raw details rather than summarizing all of the progress and only being able to provide a quick summary per topic.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Announcing Tor Reports</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">report mailing list</a>
+              
+                <a class="post-category post-category-js" href="#">status report</a>
+               |
+              16 Jul 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>For the past four years, I&#39;ve been summarizing progress of Tor on the blog. See the tag <a href="https://blog.torproject.org/category/tags/progress-report">progress report</a> for the history of these reports. Based on community feedback, we&#39;re switching to a mailing list with archive of the raw status reports. <a href="https://lists.torproject.org/pipermail/tor-reports/">Tor-reports</a> is live. The goal is to provide the raw details rather than summarizing all of the progress and only being able to provide a quick summary per topic.</p>
 
 <p>Each developer, advocate, and internal staff will be posting their reports to this list. The idea is to share more with the community and give people a chance to ask questions directly of the people doing the work. Enjoy the transparency.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/announcing-tor-reports',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

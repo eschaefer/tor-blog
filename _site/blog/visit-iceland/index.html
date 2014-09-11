@@ -45,11 +45,41 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>A visit to Iceland</h2>
-<p class="meta">22 May 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>I spent two days in Iceland discussing Tor and freedom of information with various people. I talked to a few people, including a member of Icelandic Parliament, about the International Modern Media Institute, <a href="http://immi.is/" title="http://immi.is/">http://immi.is/</a>. The goals of IMMI are to secure free speech and defining new operating principles for the global media. They are starting with Iceland and moving on to the world. They already have much success in Iceland, but are running into issues of scale and funding. They could use some help.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">A visit to Iceland</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">1984</a>
+              
+                <a class="post-category post-category-js" href="#">advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">hackfest</a>
+              
+                <a class="post-category post-category-js" href="#">Hakkavélin</a>
+              
+                <a class="post-category post-category-js" href="#">iceland</a>
+              
+                <a class="post-category post-category-js" href="#">immi</a>
+              
+                <a class="post-category post-category-js" href="#">law enforcement</a>
+              
+                <a class="post-category post-category-js" href="#">pagekite</a>
+              
+                <a class="post-category post-category-js" href="#">tor fans</a>
+              
+                <a class="post-category post-category-js" href="#">volcanoes</a>
+               |
+              22 May 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>I spent two days in Iceland discussing Tor and freedom of information with various people. I talked to a few people, including a member of Icelandic Parliament, about the International Modern Media Institute, <a href="http://immi.is/" title="http://immi.is/">http://immi.is/</a>. The goals of IMMI are to secure free speech and defining new operating principles for the global media. They are starting with Iceland and moving on to the world. They already have much success in Iceland, but are running into issues of scale and funding. They could use some help.</p>
 
 <p>The second day I talked to the computer forensics team from the National Police of Iceland about Tor, <a href="http://www.logreglan.is/" title="http://www.logreglan.is/">http://www.logreglan.is/</a>. We discussed all things Tor and their experiences with it. Apparently there are &#39;computer specialists&#39; traveling Europe talking to law enforcement (for great profit) disparaging any technology that provides security and privacy to citizens as &#39;for child abuse and organized crime&#39;. These people neglect to mention that all technologies are dual usage and the human behind it determines the good or bad usage of the technology. One of the officers mentions that no one talks about crowbar crime, but everyone is talking about computer crime as if humans aren&#39;t involved. Overall, it was a great discussion lasting a few hours.</p>
 
@@ -61,8 +91,62 @@
 
 <p>Thank you to Björgvin, Birgitta, Berglind, and Mörður for arranging meetings and hosting me for the two days.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/visit-iceland',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

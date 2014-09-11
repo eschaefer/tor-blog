@@ -45,11 +45,39 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Improving Private Browsing Modes: "Do-Not-Track" vs Real Privacy by Design</h2>
-<p class="meta">13 Jun 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p><strong>Updated 06/16/2011</strong> : Break off window.name into its own linkability issue. While ultimately it should be handled identically to the referer, that was not clear in the original text.
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Improving Private Browsing Modes: "Do-Not-Track" vs Real Privacy by Design</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">chrome</a>
+              
+                <a class="post-category post-category-js" href="#">dnt</a>
+              
+                <a class="post-category post-category-js" href="#">do not track</a>
+              
+                <a class="post-category post-category-js" href="#">firefox</a>
+              
+                <a class="post-category post-category-js" href="#">incognito</a>
+              
+                <a class="post-category post-category-js" href="#">privacy by design</a>
+              
+                <a class="post-category post-category-js" href="#">private browsing</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+              
+                <a class="post-category post-category-js" href="#">torbutton</a>
+               |
+              13 Jun 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><strong>Updated 06/16/2011</strong> : Break off window.name into its own linkability issue. While ultimately it should be handled identically to the referer, that was not clear in the original text.
 <strong>Updated 07/01/2011</strong> : Add link to article about 81% consumer polling rate in favor of some form of Do Not Track...</p>
 
 <p>As I said in my <a href="https://blog.torproject.org/blog/toggle-or-not-toggle-end-torbutton">previous post</a>, the Tor Project hopes to work on <a href="https://trac.torproject.org/projects/tor/ticket/2871">a set of patches</a> that effectively improves the Private Browsing Mode of Firefox. Long term, we&#39;d love to merge these patches upstream, and/or see them obsoleted by better implementations.</p>
@@ -162,8 +190,62 @@
 
 <p>However, until then, we must do our best to attempt to provide software that we believe will provide the privacy and security that users have come to expect from us. For now, this means shipping our own browser.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/improving-private-browsing-modes-do-not-track-vs-real-privacy-design',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

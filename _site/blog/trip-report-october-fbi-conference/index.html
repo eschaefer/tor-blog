@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Trip report, October FBI conference</h2>
-<p class="meta">16 Dec 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>In October I attended an FBI conference, as part of my work to try to keep Tor on good relations with law enforcement. My first goal is to remind them of all the good uses of Tor, so if they ever find themselves lobbying to outlaw anonymity online, they&#39;ll understand what they&#39;re giving up. The second goal is to make sure they understand what Tor is and how it works, so if they encounter it in their investigations they&#39;ll hassle our exit relay operators less. (Here&#39;s a great way that one FBI person explained it to me: &quot;I&#39;ve got 10 leads, and 48 hours before this case doesn&#39;t matter anymore. If you can help me understand which leads *not* to follow, I can do my job better.&quot;) My third goal is to help them be able to use Tor correctly for their own jobs — remember that diversity of users is part of what makes Tor safe for everybody to use.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Trip report, October FBI conference</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">law enforcement</a>
+              
+                <a class="post-category post-category-js" href="#">talks</a>
+              
+                <a class="post-category post-category-js" href="#">trip report</a>
+               |
+              16 Dec 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>In October I attended an FBI conference, as part of my work to try to keep Tor on good relations with law enforcement. My first goal is to remind them of all the good uses of Tor, so if they ever find themselves lobbying to outlaw anonymity online, they&#39;ll understand what they&#39;re giving up. The second goal is to make sure they understand what Tor is and how it works, so if they encounter it in their investigations they&#39;ll hassle our exit relay operators less. (Here&#39;s a great way that one FBI person explained it to me: &quot;I&#39;ve got 10 leads, and 48 hours before this case doesn&#39;t matter anymore. If you can help me understand which leads *not* to follow, I can do my job better.&quot;) My third goal is to help them be able to use Tor correctly for their own jobs — remember that diversity of users is part of what makes Tor safe for everybody to use.</p>
 
 <p>Overall, we&#39;ve been doing a pretty good job at teaching US-based law enforcement about Tor. At the end of the conference, one of the FBI agents took me aside and asked &quot;surely you have *some* sort of way of tracking your users?&quot; When I pointed at various of his FBI colleagues in the room who had told me they use Tor every day for their work, and asked if he&#39;d be comfortable if we had a way of tracing *them*, I think he got it.</p>
 
@@ -58,8 +74,62 @@ http://www.scribd.com/doc/89690597/Willemsindictment-Filed-045</p>
 
 <p>I should still note that Tor doesn&#39;t introduce any magic new silver bullet that causes criminals to be uncatchable when before they weren&#39;t. The Farmer&#39;s Market people ran their webserver in some other foreign country before they switched to a Tor hidden service, and just the fact that the country didn&#39;t want to cooperate in busting them was enough to make that a dead end. Jurisdictional arbitrage is alive and well in the world.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/trip-report-october-fbi-conference',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

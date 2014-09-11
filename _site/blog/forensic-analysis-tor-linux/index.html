@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Forensic Analysis of Tor on Linux</h2>
-<p class="meta">13 Apr 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>As part of a deliverable for two of our sponsors ( <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorJ">Sponsor J,</a> <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorL">Sponsor L</a>), I have been working on a forensic analysis of the Tor Browser Bundle. In this three part series, I will summarize the most interesting or significant traces left behind after using the bundle. This post will cover Debian Linux ( <a href="https://trac.torproject.org/projects/tor/ticket/8166">#8166</a>), part two will cover Windows 7, and part three will cover OS X 10.8.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Forensic Analysis of Tor on Linux</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+              
+                <a class="post-category post-category-js" href="#">forensic analysis</a>
+              
+                <a class="post-category post-category-js" href="#">linux</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              13 Apr 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>As part of a deliverable for two of our sponsors ( <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorJ">Sponsor J,</a> <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/SponsorL">Sponsor L</a>), I have been working on a forensic analysis of the Tor Browser Bundle. In this three part series, I will summarize the most interesting or significant traces left behind after using the bundle. This post will cover Debian Linux ( <a href="https://trac.torproject.org/projects/tor/ticket/8166">#8166</a>), part two will cover Windows 7, and part three will cover OS X 10.8.</p>
 
 <h3>Process</h3>
 
@@ -73,8 +91,62 @@
 
 <p><strong>/var/log/daemon.log</strong> , <strong>/var/log/syslog</strong> , <strong>/var/log/kern.log</strong> , <strong>/var/log/messages</strong> : contains information about attached devices. I had an external drive attached to the virtual machine, so these files contain lines such as <em>“Mounted /dev/sdb1 (Read-Write, label “THA”, NTFS 3.1)”</em> and <em>“Initializing USB Mass Storage driver…”</em>.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/forensic-analysis-tor-linux',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

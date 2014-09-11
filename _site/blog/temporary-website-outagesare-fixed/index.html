@@ -45,11 +45,39 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Temporary Website Outages....are fixed</h2>
-<p class="meta">21 Dec 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Update 2011-12-21 20:06 (GMT-5): everything is back online and operating within acceptable parameters.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Temporary Website Outages....are fixed</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">check</a>
+              
+                <a class="post-category post-category-js" href="#">gitweb</a>
+              
+                <a class="post-category post-category-js" href="#">godzilla wins</a>
+              
+                <a class="post-category post-category-js" href="#">hosting provider attacked</a>
+              
+                <a class="post-category post-category-js" href="#">no love for us today</a>
+              
+                <a class="post-category post-category-js" href="#">svn</a>
+              
+                <a class="post-category post-category-js" href="#">trac</a>
+              
+                <a class="post-category post-category-js" href="#">websites down</a>
+              
+                <a class="post-category post-category-js" href="#">www</a>
+               |
+              21 Dec 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Update 2011-12-21 20:06 (GMT-5): everything is back online and operating within acceptable parameters.</p>
 
 <p>As of late last night 20 Dec (GMT-5) our website hosting provider is
 experiencing a sustained attack. The attack is not directed at Tor, but
@@ -68,8 +96,62 @@ different machine today.</p>
 
 <p>Originally posted to tor-talk, <a href="https://lists.torproject.org/pipermail/tor-talk/2011-December/022457.html" title="https://lists.torproject.org/pipermail/tor-talk/2011-December/022457.html">https://lists.torproject.org/pipermail/tor-talk/2011-December/022457.htm...</a></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/temporary-website-outagesare-fixed',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

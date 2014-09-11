@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Tor is looking for a Browser Hacker and an Extension Developer!</h2>
-<p class="meta">22 Nov 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The Tor Project has two browser-related job openings available!</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Tor is looking for a Browser Hacker and an Extension Developer!</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">jobs</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor-browser</a>
+               |
+              22 Nov 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Tor Project has two browser-related job openings available!</p>
 
 <p>We are looking for a <a href="https://www.torproject.org/about/jobs-browserhacker.html.en">C++ browser developer</a> to work on our Firefox-based browser, and a <a href="https://www.torproject.org/about/jobs-extdev.html.en">Firefox extension developer</a> to work on our growing number of Firefox extensions. Our ideal candidates would be comfortable in both roles, but we are also interested in hearing from people with either skillset.</p>
 
@@ -59,8 +75,62 @@
 
 <p>Instructions on how to apply to the C++ position can be found on the <a href="https://www.torproject.org/about/jobs-browserhacker.html.en">browser hacker job posting</a>. If you would prefer to focus on extension development, you should apply to the <a href="https://www.torproject.org/about/jobs-extdev.html.en">extension developer</a> position.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/tor-looking-browser-hacker-and-extension-developer',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

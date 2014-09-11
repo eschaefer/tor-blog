@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>EFF and Tor in Google Summer of Code 2009</h2>
-<p class="meta">21 Mar 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Great news! We have been accepted as a mentoring organization for <a href="http://socghop.appspot.com/program/home/google/gsoc2009">Google Summer of Code 2009</a> together with <a href="https://www.eff.org/">The Electronic Frontier Foundation</a>. Yay!</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">EFF and Tor in Google Summer of Code 2009</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">karsten</a> under
+              
+                <a class="post-category post-category-js" href="#">Google Summer of Code</a>
+              
+                <a class="post-category post-category-js" href="#">gsoc</a>
+              
+                <a class="post-category post-category-js" href="#">gsoc 2009</a>
+               |
+              21 Mar 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Great news! We have been accepted as a mentoring organization for <a href="http://socghop.appspot.com/program/home/google/gsoc2009">Google Summer of Code 2009</a> together with <a href="https://www.eff.org/">The Electronic Frontier Foundation</a>. Yay!</p>
 
 <p>This will be our third Google Summer of Code after 2007 and <a href="https://blog.torproject.org/blog/tor-project-google-summer-code-2008%21">2008</a>. In our <a href="http://code.google.com/soc/2007/eff/about.html">first year</a> we had four students working on making relays work better (and not crash) on Windows, on a library and tool to try alternative path selection algorithms, on a fuzzing library to look for parsing problems, and on scalability and privacy for hidden services. In our <a href="http://code.google.com/soc/2008/eff/about.html">second year</a> we had seven students. One of our successful students of the 2008 program wrote a nice <a href="https://blog.torproject.org/blog/google-summer-code-2008-review">blog post</a> reviewing how GSoC went for him, for the other students, and for the project in general.</p>
 
@@ -59,8 +75,62 @@
 
 <p>Did we get you interested? These are your next steps: Look at Google&#39;s FAQ whether you are <a href="http://socghop.appspot.com/document/show/program/google/gsoc2009/faqs#eligibility">eligible</a> to participate. Have a look at our <a href="https://www.torproject.org/gsoc#Ideas">ideas lists</a> (one for <a href="https://www.torproject.org/volunteer.html.en#Projects">The Tor Project</a>, one for the <a href="http://switzerland.wiki.sourceforge.net/Projects">EFF&#39;s Switzerland tool</a>). Put some thoughts on the listed ideas, or make up your own. Talk to us. No, really, this step is important: Talk to us! Come to <a href="irc://irc.oftc.net/tor/">#tor on irc.oftc.net</a> or send us an <a href="mailto:tor-assistants@freehaven.net">email</a> and let us know about your project idea. Write down your application using our <a href="https://www.torproject.org/gsoc#Template">template</a> and send it in until <a href="http://socghop.appspot.com/document/show/program/google/gsoc2009/faqs#timeline">April 3, 2009, 19:00 UTC</a>. Stick around for any questions we might have to you. We are looking forward to reading your application, erm, to talking to you and discussing your project idea!</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/eff-and-tor-google-summer-code-2009',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

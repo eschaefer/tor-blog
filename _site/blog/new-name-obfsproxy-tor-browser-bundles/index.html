@@ -45,11 +45,25 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>New Name for Obfsproxy Tor Browser Bundles</h2>
-<p class="meta">22 Mar 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>Some days ago we released <a href="https://blog.torproject.org/blog/new-pluggable-transports-bundles-02411-alpha-flashproxy-obfsproxy">new Pluggable Transport Bundles</a> which aim to
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">New Name for Obfsproxy Tor Browser Bundles</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">asn</a> under
+              
+                <a class="post-category post-category-js" href="#">bundles</a>
+              
+                <a class="post-category post-category-js" href="#">pluggable transports</a>
+               |
+              22 Mar 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Some days ago we released <a href="https://blog.torproject.org/blog/new-pluggable-transports-bundles-02411-alpha-flashproxy-obfsproxy">new Pluggable Transport Bundles</a> which aim to
 replace the old Pyobfsproxy/Flashproxy bundles and the even older
 Obfsproxy bundles.</p>
 
@@ -66,8 +80,62 @@ pluggable transports. Users need to use <a href="http://bridges.torproject.org" 
 to get bridges with pluggable transports (&quot;obfuscated/obfsproxy
 bridges&quot;) for their bundles.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/new-name-obfsproxy-tor-browser-bundles',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

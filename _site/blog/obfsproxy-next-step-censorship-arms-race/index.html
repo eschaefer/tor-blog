@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Obfsproxy: the next step in the censorship arms race</h2>
-<p class="meta">16 Feb 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>On Feb 9, Iran <a href="https://blog.torproject.org/blog/iran-partially-blocks-encrypted-network-traffic">started to filter SSL connections</a> on much of their network. Since the Tor protocol uses SSL, that means Tor stopped working too — even Tor with bridges, since bridges use SSL too.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Obfsproxy: the next step in the censorship arms race</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+              
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">iran</a>
+              
+                <a class="post-category post-category-js" href="#">obfsproxy</a>
+               |
+              16 Feb 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>On Feb 9, Iran <a href="https://blog.torproject.org/blog/iran-partially-blocks-encrypted-network-traffic">started to filter SSL connections</a> on much of their network. Since the Tor protocol uses SSL, that means Tor stopped working too — even Tor with bridges, since bridges use SSL too.</p>
 
 <p>We&#39;ve been quietly developing Obfsproxy, a new tool to make it easier to change how Tor traffic looks on the network. In late 2011 Iran <a href="http://freehaven.net/%7Ekarsten/volatile/top-3-direct-users-relative-2011-12-13.png">moved into the #2 position</a> in global Tor user count, and several important political events are scheduled in Iran this month and next. This situation seemed like a good time to test our new tool while also helping improve Internet freedom around the world.</p>
 
@@ -81,8 +101,62 @@
 
 <p>And finally, thanks go to George Kadianakis for taking Obfsproxy on as his <a href="http://code.google.com/soc/">Google Summer of Code 2011</a> <a href="https://lists.torproject.org/pipermail/tor-talk/2011-April/020234.html">Project</a>; to Nick Mathewson for mentoring him and getting the Obfsproxy architecture going in the right direction; to Sebastian Hahn for spending all weekend with me fixing bugs and making packages; and to Karsten Loesing, Erinn Clark, Robert Ransom, Runa Sandvik, Nick, George, and the broader Tor community for stepping up over the weekend to help us take it from &quot;early prototype&quot; to &quot;deployed software in use by 5000+ people&quot; in 72 hours.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/obfsproxy-next-step-censorship-arms-race',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

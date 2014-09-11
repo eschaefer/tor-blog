@@ -45,11 +45,21 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Anonymity on the Internet is not going away.</h2>
-<p class="meta">08 Nov 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>A few people have told me about <a href="http://www.techradar.com/news/computing/will-the-internet-always-be-anonymous--482519">this TechRadar</a> story. The implication is that the US Air Force is going to <a href="https://www.fbo.gov/index?print_preview=1&amp;s=opportunity&amp;mode=form&amp;id=e72854d6e3c1a044038563ef1e0fdfa6&amp;tab=core&amp;tabmode=list&amp;cck=1&amp;au=&amp;ck=">do away</a> with the anonymity of the Internet. In reality, I think these people are looking for Tor&#39;s opinion on this sort of &quot;news&quot;. Rather than pick apart the silliness of the statements, a few things bothered me about the TechRadar article; which I&#39;ve already heard many times.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Anonymity on the Internet is not going away.</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+               |
+              08 Nov 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>A few people have told me about <a href="http://www.techradar.com/news/computing/will-the-internet-always-be-anonymous--482519">this TechRadar</a> story. The implication is that the US Air Force is going to <a href="https://www.fbo.gov/index?print_preview=1&amp;s=opportunity&amp;mode=form&amp;id=e72854d6e3c1a044038563ef1e0fdfa6&amp;tab=core&amp;tabmode=list&amp;cck=1&amp;au=&amp;ck=">do away</a> with the anonymity of the Internet. In reality, I think these people are looking for Tor&#39;s opinion on this sort of &quot;news&quot;. Rather than pick apart the silliness of the statements, a few things bothered me about the TechRadar article; which I&#39;ve already heard many times.</p>
 
 <p>Let&#39;s tackle the misnomer that the Internet is inherently anonymous. This quote states the &quot;common wisdom&quot;:</p>
 
@@ -73,8 +83,62 @@
 
 <p>Anonymity is a defense against the tyranny of the majority. There are <a href="https://www.torproject.org/torusers">many, many valid uses</a> of anonymity tools, such as Tor. The belief that anonymous tools exist only for the edges of societies is narrow-minded. The tools exist and are used by all. Much like the Internet, the tools can be used for good or bad. The negative uses of such tools typically generate huge headlines, but not the positive uses. Raising the profile of the positive uses of anonymity tools, such as Tor, is one of our challenges.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/anonymity-internet-not-going-away.',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

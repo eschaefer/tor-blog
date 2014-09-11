@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Google Summer of Code 2008 review</h2>
-<p class="meta">09 Mar 2009</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>As we started preparing to apply for the Google Summer of Code 2009, we realized that we haven&#39;t reported how last year&#39;s Summer of Code went for us.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Google Summer of Code 2008 review</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Sebastian</a> under
+              
+                <a class="post-category post-category-js" href="#">Google Summer of Code</a>
+              
+                <a class="post-category post-category-js" href="#">gsoc</a>
+              
+                <a class="post-category post-category-js" href="#">gsoc 2008</a>
+               |
+              09 Mar 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>As we started preparing to apply for the Google Summer of Code 2009, we realized that we haven&#39;t reported how last year&#39;s Summer of Code went for us.</p>
 
 <p>Tor&#39;s 2008 Google Summer of Code was a victim of Tor&#39;s increasing growth! We&#39;ve got a lot more people involved now, and we have a lot more projects we want to tackle. But that also means we need to work harder at coordinating everything, and that&#39;s not as smooth as we&#39;d hoped.</p>
 
@@ -82,8 +98,62 @@ Hidden services are a very useful feature in Tor that allows anyone to host a lo
 
 <p>As a last note, next time around we plan to work more closely with the <a href="https://www.eff.org">EFF</a> (our sponsor organization for GSoC). In particular, we&#39;d like to accept a few students to work with Peter Eckersley on Switzerland and other projects organized by EFF&#39;s engineers.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/google-summer-code-2008-review',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

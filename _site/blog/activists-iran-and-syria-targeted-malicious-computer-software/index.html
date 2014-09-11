@@ -45,11 +45,31 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Activists in Iran and Syria targeted with malicious computer software</h2>
-<p class="meta">15 Mar 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>In February 2012 we learned that activists in Iran and Syria were targeted with two different types of malicious computer software. We received a copy of each malware, and Jonathan Tomek from <a href="http://threatgrid.com/">ThreatGRID</a> helped with the analysis.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Activists in Iran and Syria targeted with malicious computer software</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+              
+                <a class="post-category post-category-js" href="#">iran</a>
+              
+                <a class="post-category post-category-js" href="#">malware</a>
+              
+                <a class="post-category post-category-js" href="#">privacy</a>
+              
+                <a class="post-category post-category-js" href="#">security</a>
+              
+                <a class="post-category post-category-js" href="#">syria</a>
+               |
+              15 Mar 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>In February 2012 we learned that activists in Iran and Syria were targeted with two different types of malicious computer software. We received a copy of each malware, and Jonathan Tomek from <a href="http://threatgrid.com/">ThreatGRID</a> helped with the analysis.</p>
 
 <p><strong>How you get infected</strong></p>
 
@@ -79,8 +99,62 @@
 
 <p>The backdoor (<em>1122333.exe</em> in the <em>Documents and Settings</em> folder), which is similar to the DarkComet Remote Administration Tool, allows the attacker to connect to your computer and do anything that he or she wants, including logging keystrokes and acting as the system administrator. The malware will modify the Windows startup script to ensure that the connection is always open.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/activists-iran-and-syria-targeted-malicious-computer-software',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

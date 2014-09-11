@@ -45,11 +45,23 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Torsocks 1.2 Released</h2>
-<p class="meta">29 Oct 2011</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>I&#39;m happy to announce the release of <a href="http://code.google.com/p/torsocks/downloads/list">Torsocks 1.2</a>.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Torsocks 1.2 Released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mwenge</a> under
+              
+                <a class="post-category post-category-js" href="#">torsocks</a>
+               |
+              29 Oct 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>I&#39;m happy to announce the release of <a href="http://code.google.com/p/torsocks/downloads/list">Torsocks 1.2</a>.</p>
 
 <p>Torsocks is an application for Linux, BSD and Mac OSX that allows you to use network applications such as ssh and irssi with Tor.</p>
 
@@ -67,8 +79,62 @@
 <li>Robert</li>
 </ul>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/torsocks-12-released',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

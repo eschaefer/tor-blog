@@ -45,11 +45,21 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>How to handle millions of new Tor clients</h2>
-<p class="meta">05 Sep 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>[<strong>tl;dr</strong> : if you want your Tor to be more stable, upgrade to a Tor Browser Bundle with Tor 0.2.4.x in it, and then wait for enough relays to upgrade to today&#39;s 0.2.4.17-rc release.]</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">How to handle millions of new Tor clients</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+               |
+              05 Sep 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>[<strong>tl;dr</strong> : if you want your Tor to be more stable, upgrade to a Tor Browser Bundle with Tor 0.2.4.x in it, and then wait for enough relays to upgrade to today&#39;s 0.2.4.17-rc release.]</p>
 
 <p>Starting around August 20, we started to see a sudden spike in the number of Tor clients. By now it&#39;s unmistakable: there are millions of new Tor clients and the numbers continue to rise:</p>
 
@@ -83,8 +93,62 @@
 
 <p>And finally, I still maintain that if you have a multi-million node botnet, it&#39;s silly to try to hide it behind the 4000-relay Tor network. These people should be using their botnet as a peer-to-peer anonymity system for itself. So I interpret this incident as continued exploration by botnet developers to try to figure out what resources, services, and topologies integrate well for protecting botnet communications. Another facet of solving this problem long-term is helping them to understand that Tor isn&#39;t a great answer for their problem.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/how-to-handle-millions-new-tor-clients',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

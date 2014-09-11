@@ -45,11 +45,27 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Torproject.org Blocked by GFW in China: Sooner or Later?</h2>
-<p class="meta">21 Jun 2008</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>We didn&#39;t expect Tor wouldn&#39;t be blocked in China for a long time before it became true days ago.  We&#39;ve got a lot of users&#39; reports on that from different regions in China about torproject.org was blocked by <a href="http://en.wikipedia.org/wiki/Internet_censorship_in_the_People%27s_Republic_of_China">Great Firewall</a> system in China.  
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Torproject.org Blocked by GFW in China: Sooner or Later?</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Anonymous</a> under
+              
+                <a class="post-category post-category-js" href="#">china</a>
+              
+                <a class="post-category post-category-js" href="#">GFW</a>
+              
+                <a class="post-category post-category-js" href="#">GreatFirewall</a>
+               |
+              21 Jun 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We didn&#39;t expect Tor wouldn&#39;t be blocked in China for a long time before it became true days ago.  We&#39;ve got a lot of users&#39; reports on that from different regions in China about torproject.org was blocked by <a href="http://en.wikipedia.org/wiki/Internet_censorship_in_the_People%27s_Republic_of_China">Great Firewall</a> system in China.  
  <a href="http://mcfreds.blogspot.com/2008/06/torprojectorg-blocked-in-china.html">McFred&#39;s Blog</a> said:</p>
 
 <blockquote>
@@ -72,8 +88,62 @@ Trace route from Beijing, China shows the destination is unreachable, seems they
 <p><a href="http://www.alouz.com/">Zola(or Zuola)</a>, a famous Chinese activist blogger, could be the first one found our site blocked and published the news <a href="https://twitter.com/zuola/statuses/836998904">on twitter</a>. He also help build <a href="http://tor.zuo.la/">a mirror site</a> soon after that(We would love to publish any other Tor mirrors in China via your comments).  Thanks Zola and all volunteers supporting Tor.  Please kindly keep <a href="https://spreadsheets.google.com/viewform?key=pVaQwN7WNlsaM7U-CLgQUJQ">taking our survey</a> on Tor usage in China.
 Though Tor project official site is not as same to Tor network, this harsh action will definitely affect the future awareness of Tor as a tool to support Free Access.  It means China government is paying more attention on the technological solutions rather than merely sensitive content they care before.  The sad thing is that once a web site was put into blacklist, it&#39;s very hard to get it back.  Once again, it means how important Tor&#39;s mission is.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/torprojectorg-blocked-gfw-china-sooner-or-later',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Ethiopia Introduces Deep Packet Inspection</h2>
-<p class="meta">31 May 2012</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The Ethiopian Telecommunication Corporation, which happens to be the sole telecommunication service provider in Ethiopia, has deployed or begun testing Deep Packet Inspection (DPI) of all Internet traffic. We have previously analyzed the same kind of censorship in <a href="https://blog.torproject.org/blog/knock-knock-knockin-bridges-doors">China</a>, <a href="https://blog.torproject.org/blog/iran-partially-blocks-encrypted-network-traffic">Iran</a>, and <a href="https://blog.torproject.org/blog/kazakhstan-upgrades-censorship-deep-packet-inspection">Kazakhstan</a>.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Ethiopia Introduces Deep Packet Inspection</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+              
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+              
+                <a class="post-category post-category-js" href="#">deep packet inspection</a>
+              
+                <a class="post-category post-category-js" href="#">dpi</a>
+              
+                <a class="post-category post-category-js" href="#">ethiopia</a>
+              
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">tor blocked</a>
+               |
+              31 May 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Ethiopian Telecommunication Corporation, which happens to be the sole telecommunication service provider in Ethiopia, has deployed or begun testing Deep Packet Inspection (DPI) of all Internet traffic. We have previously analyzed the same kind of censorship in <a href="https://blog.torproject.org/blog/knock-knock-knockin-bridges-doors">China</a>, <a href="https://blog.torproject.org/blog/iran-partially-blocks-encrypted-network-traffic">Iran</a>, and <a href="https://blog.torproject.org/blog/kazakhstan-upgrades-censorship-deep-packet-inspection">Kazakhstan</a>.</p>
 
 <p>Reports show that Tor stopped working a week ago -- even with bridges configured. Websites such as <a href="https://gmail.com/">https://gmail.com/</a>, <a href="https://facebook.com/">https://facebook.com/</a>, <a href="https://twitter.com/">https://twitter.com/</a>, and even <a href="https://torproject.org/">https://torproject.org/</a> continue to work. The graphs below show the effects of this deployment of censorship based on Deep Packet Inspection:</p>
 
@@ -61,8 +83,62 @@
 
 <p>Thanks to Philipp Winter and George Kadianakis for helping me analyze the data. If you have more information about the censorship in Ethiopia, please email <a href="mailto:help@rt.torproject.org">help@rt.torproject.org</a>.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/ethiopia-introduces-deep-packet-inspection',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

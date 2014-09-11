@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>CryptoParty Stockholm</h2>
-<p class="meta">05 Mar 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>I attended the <a href="https://cryptoparty.org/wiki/Stockholm">Stockholm Cryptoparty</a> on Saturday the 16th of February. I was asked to give the opening talk, &quot;Varför krypto?&quot;, to start off the day. My goal was to explain why cryptography should be used daily by everyone in mundane ways. The general topic was about how I watch kids using cryptography daily, without knowing it or without fully understanding the technical details behind it. This is ok. Kids chat a lot. When you introduce <a href="http://www.cypherpunks.ca/otr/">Off-the-record</a> to their chats, they instantly understand that the chats are now private, and can be authenticated. The distinction between the two concepts is fairly easy to grasp, even if they don&#39;t understand the details of hashes, key exchanges, or ciphers. Once a few core people start using OTR, for example, then it spreads to their friends and soon you have networks of kids using OTR having safe and secure chats.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">CryptoParty Stockholm</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">cryptography</a>
+              
+                <a class="post-category post-category-js" href="#">cryptoparty</a>
+              
+                <a class="post-category post-category-js" href="#">fun times</a>
+              
+                <a class="post-category post-category-js" href="#">kids</a>
+              
+                <a class="post-category post-category-js" href="#">stockholm</a>
+              
+                <a class="post-category post-category-js" href="#">sweden</a>
+               |
+              05 Mar 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>I attended the <a href="https://cryptoparty.org/wiki/Stockholm">Stockholm Cryptoparty</a> on Saturday the 16th of February. I was asked to give the opening talk, &quot;Varför krypto?&quot;, to start off the day. My goal was to explain why cryptography should be used daily by everyone in mundane ways. The general topic was about how I watch kids using cryptography daily, without knowing it or without fully understanding the technical details behind it. This is ok. Kids chat a lot. When you introduce <a href="http://www.cypherpunks.ca/otr/">Off-the-record</a> to their chats, they instantly understand that the chats are now private, and can be authenticated. The distinction between the two concepts is fairly easy to grasp, even if they don&#39;t understand the details of hashes, key exchanges, or ciphers. Once a few core people start using OTR, for example, then it spreads to their friends and soon you have networks of kids using OTR having safe and secure chats.</p>
 
 <p>The simplest three steps people can take to begin using cryptography daily are:</p>
 
@@ -65,8 +87,62 @@
 
 <p>Thanks to <a href="https://dfri.se/">DFRI</a>, <a href="http://www.sparvnastet.org/">Sparvnästet</a>, and <a href="https://www.iis.se/">iis.se</a> for hosting the event and inviting me to attend.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/cryptoparty-stockholm',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

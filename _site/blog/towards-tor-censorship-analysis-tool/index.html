@@ -45,11 +45,25 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Towards a Tor Censorship Analysis Tool</h2>
-<p class="meta">06 Feb 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>The Tor network is <a href="https://censorshipwiki.torproject.org">documented to be blocked</a> in several countries. Analyzing and circumventing these blocks typically requires detailed packet traces or access to machines inside censoring countries. Both, however, are not always easy to acquire:</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Towards a Tor Censorship Analysis Tool</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phw</a> under
+              
+                <a class="post-category post-category-js" href="#">censorship</a>
+              
+                <a class="post-category post-category-js" href="#">measurement</a>
+               |
+              06 Feb 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Tor network is <a href="https://censorshipwiki.torproject.org">documented to be blocked</a> in several countries. Analyzing and circumventing these blocks typically requires detailed packet traces or access to machines inside censoring countries. Both, however, are not always easy to acquire:</p>
 
 <ol>
 <li>Network traces are problematic for two reasons. First, they are difficult to obtain since they require the cooperation of users within censoring countries. Second, they are hard to anonymize and must not fall into wrong hands. Derived information, such as <a href="https://media.torproject.org/image/blog-images/2012-05-31-ethiopia-dpi-blocking-of-tor.png">flow diagrams</a>, is typically safe to publish but frequently lacks important information.</li>
@@ -60,8 +74,62 @@
 
 <p>We created a <a href="https://research.torproject.org/techreports/censorship-analysis-tool-2013-02-06.pdf">technical report which discusses the design requirements for such a censorship analysis tool</a>. We list the desired features, discuss how they can be implemented and we give a rough overview of the software design. After all, this technical report should serve as basis for the development and deployment of the censorship analysis tool.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/towards-tor-censorship-analysis-tool',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

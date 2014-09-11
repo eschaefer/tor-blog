@@ -45,11 +45,29 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Technology Preview:  Bridge by default for Microsoft Windows clients</h2>
-<p class="meta">06 Jun 2010</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>We keep hearing from people around the world that clicking the 3 buttons to turn yourself into a bridge is too difficult todo for most users. These people have repeatedly asked for a &quot;bridge by default&quot; configuration in a package. Here it is: <a href="http://archive.torproject.org/tor-package-archive/technology-preview/" title="http://archive.torproject.org/tor-package-archive/technology-preview/">http://archive.torproject.org/tor-package-archive/technology-preview/</a></p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Technology Preview:  Bridge by default for Microsoft Windows clients</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bridge by default</a>
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">everyone as a bridge</a>
+              
+                <a class="post-category post-category-js" href="#">microsoft windows</a>
+               |
+              06 Jun 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We keep hearing from people around the world that clicking the 3 buttons to turn yourself into a bridge is too difficult todo for most users. These people have repeatedly asked for a &quot;bridge by default&quot; configuration in a package. Here it is: <a href="http://archive.torproject.org/tor-package-archive/technology-preview/" title="http://archive.torproject.org/tor-package-archive/technology-preview/">http://archive.torproject.org/tor-package-archive/technology-preview/</a></p>
 
 <p>When you install and run this package, you are a bridge relay helping censored users around the world access Tor and the uncensored Internet.
 To understand more about bridges, read <a href="https://www.torproject.org/bridges" title="https://www.torproject.org/bridges">https://www.torproject.org/bridges</a>.</p>
@@ -62,8 +80,62 @@ To understand more about bridges, read <a href="https://www.torproject.org/bridg
 
 <p><em>Update 2010-06-11: Fixed a vidalia.conf issue which wasn&#39;t a problem, but looked like the controlport was open and un-authenticated. uploaded new binaries and removed the old ones. The bridge-bundle nsi file that creates this bundle is <a href="https://trac.vidalia-project.net/browser/vidalia/trunk/pkg/win32/bridge-bundle.nsi.in">in Vidalia svn</a>. Just replace vidalia-bundle.nsi.in with the bridge-bundle.nsi.in and create your bundle.</em></p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/technology-preview-bridge-default-microsoft-windows-clients',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">

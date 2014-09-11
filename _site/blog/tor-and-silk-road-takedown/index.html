@@ -45,11 +45,33 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <h2>Tor and the Silk Road takedown</h2>
-<p class="meta">03 Oct 2013</p>
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
 
-<div class="event">
-<p>We&#39;ve had several requests by the press and others to talk about the Silk Road situation today. We only know what&#39;s going on by reading the same news sources everyone else is reading.</p>
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Tor and the Silk Road takedown</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">download warnings</a>
+              
+                <a class="post-category post-category-js" href="#">fbi</a>
+              
+                <a class="post-category post-category-js" href="#">hidden services</a>
+              
+                <a class="post-category post-category-js" href="#">operational security</a>
+              
+                <a class="post-category post-category-js" href="#">silk road</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              03 Oct 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We&#39;ve had several requests by the press and others to talk about the Silk Road situation today. We only know what&#39;s going on by reading the same news sources everyone else is reading.</p>
 
 <p>In this case we&#39;ve been watching carefully to try to learn if there are any flaws with Tor that we need to correct. So far, nothing about this case makes us think that there are new ways to compromise Tor (the software or the network). The FBI says that their suspect made mistakes in operational security, and was found through actual detective work. Remember: Tor does not anonymize individuals when they use their legal name on a public forum, use a VPN with logs that are subject to a subpoena, or provide personal information to other services. See also the <a href="https://www.torproject.org/download/download#warning">list of warnings linked from the Tor download page</a>.</p>
 
@@ -85,8 +107,62 @@ as far as we can tell:
 
 <p>For further press related questions please contact us at <a href="mailto:execdir@torproject.org">execdir@torproject.org</a>.</p>
 
+        </div>
+      </section>
+  </div>
+
 </div>
 
+<div class="comments"></div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/tor-and-silk-road-takedown',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://secure-fortress-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+    (document.getElementsByTagName('head')[0] ||
+     document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+</script>
 
 
             <div class="footer">
