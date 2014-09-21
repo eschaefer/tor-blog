@@ -94,6 +94,9 @@ h3 {
 
 .post {
     padding-bottom: 2em;
+    h1 {
+        font-size: 1.4em;
+    }
 }
 .post-title {
     font-size: 2em;
@@ -175,4 +178,21 @@ h3 {
         top: 0;
         bottom: 0;
     }
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  display: inline-block;
+}
+* html .clearfix {
+  height: 1%;
+} /* Hides from IE-mac \*/
+.clearfix {
+  display: block;
 }
