@@ -140,10 +140,21 @@
 
 </div>
 
-<div class="comments"></div>
+
+
+<div class="comments clearfix">
+  <div class="comments-loading">
+  <p><em>Comments will not load without Javascript enabled</em></p>
+  </div>
+</div>
 
 <script type="text/javascript" class="juvia">
 (function() {
+    var loadingSection = document.body.querySelector('.comments-loading');
+    var icon = '<p>Comments Loading...</p><img alt="loading comments" src="/assets/images/black-001-loading.gif">';
+
+    loadingSection.innerHTML = loadingSection.innerHTML + icon;
+
     var options = {
         container    : '.comments',
         site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
@@ -186,8 +197,10 @@
     s.type      = 'text/javascript';
     s.className = 'juvia';
     s.src       = makeApiUrl(options);
+
     (document.getElementsByTagName('head')[0] ||
-     document.getElementsByTagName('body')[0]).appendChild(s);
+      document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
+
 })();
 </script>
 

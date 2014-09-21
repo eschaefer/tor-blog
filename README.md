@@ -10,3 +10,11 @@ gem install jekyll
 jekyll serve
 
 ```
+
+Or build it to be served on any flat file server:
+
+```bash
+
+jekyll build
+
+```
