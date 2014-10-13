@@ -53,317 +53,297 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/may-2009-progress-report">May 2009 Progress Report</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
-              
-                <a class="post-category post-category-js" href="#">metrics</a>
-              
-                <a class="post-category post-category-js" href="#">progress report</a>
-              
-                <a class="post-category post-category-js" href="#">proposals</a>
-              
-                <a class="post-category post-category-js" href="#">translations</a>
-               |
-              10 Jun 2009
-          </p>
-        </header>
-        <div class="post-description">
-          <p><strong>New releases</strong>
-On May 25, we released Tor 0.2.1.15-rc.
-On May 17, we released Tor VM 0.0.2.
-On May 25, we released Vidalia 0.1.13 containing</p>
-
-<ul>
-<li>Remove an old warning on the relay settings page that running a bridge
-relay requires Tor 0.2.0.8-alpha or newer.</li>
-<li>Add a workaround for a bug that prevented Vidalia&#39;s tray icon from
-getting added to the system notification area on Gnome when Vidalia was
-run on system startup. Patch by Steve Tyree. (Ticket #247)</li>
-<li>Fix a bug that prevented the control panel from displaying when
-running on the Enlightenment window manager. Patch by Steve Tyree.</li>
-<li>Rename the CMake variables used to store the location of Qt&#39;s lupdate
-and lrelease executables. Recent versions of CMake decided to use the
-same variable name, which was stomping on mine, resulting in the wrong
-lupdate and lrelease executables being used.</li>
-<li>Use the TorProcess subclass of QProcess for launching Tor when hashing
-a control password so we can take advantage of its PATH+=:/usr/sbin
-trick on Debian there too.</li>
-<li>If a RouterDescriptor object is empty, don&#39;t try to display it in the
-router descriptor details viewer. (Ticket #479)</li>
-<li>Wait until Vidalia has registered for log events via the control port
-before ignoring Tor&#39;s output on stdout. Previously we would start
-ignoring Tor&#39;s stdout after successfully authenticating, but before
-registering for log events which, in some cases, could lead to
-messages not appearing in the message log.</li>
-<li>Update many translations and remove others than are no longer
-up-to-date enough to be useful.</li>
-</ul>
-
-<p>On May 25th, we released Tor Browser Bundle 1.2.0 containing</p>
-
-<ul>
-<li>Switch to launching Firefox directly from Vidalia to
-allow multiple instances of Firefox</li>
-<li>Update Firefox to 3.0.10</li>
-<li>Update to Qt 4.5.1</li>
-<li>Update Firefox prefs.js to stop scanning for plugins</li>
-<li>Update libevent to 1.4.11</li>
-<li>Include the Tor geoip database</li>
-<li>Update Vidalia to 0.1.13</li>
-<li>Update Tor to 0.2.1.15-rc</li>
-</ul>
-
-<p><strong>Design, develop, and implement enhancements that make Tor a better
-tool for users in censored countries.</strong></p>
-
-<p>Matt added &quot;fetch bridges&quot; features to Vidalia 0.2.x. This provides a link to automatically request bridges from <a href="https://bridges.torproject.org" title="https://bridges.torproject.org">https://bridges.torproject.org</a> for users.</p>
-
-<p><strong>Architecture and technical design docs for Tor enhancements
-related to blocking-resistance.</strong>
-Proposal 160 aims to let authorities modify the bandwidth they put in
-the consensus for each relay. This step will allow us to adjust the
-weights we advertise for clients, once the measurements from TorFlow
-start giving us better weights.
- <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/160-bandwidth-offset.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/160-bandwidth-offset.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/160-ba...</a></p>
-
-<p>Proposal 161 describes how node bandwidth ratios are
- computed and how they can be produced in parallel.
- <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-computing-bandwidth-adjustments.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-computing-bandwidth-adjustments.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-co...</a></p>
-
-<p>Proposal 162 describes &quot;consensus flavors&quot;: the size of the networkstatus
-consensus is critical, since every user fetches it every few hours. So
-we need a way to add new fields -- and remove old fields -- in a way
-that lets old clients continue to use the consensus. The current plan
-is to build and distribute several different versions at once, so each
-client can fetch the one with the format they expect.
- <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/162-consensus-flavors.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/162-consensus-flavors.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/162-co...</a></p>
-
-<p>Proposal 163 starts to consider the problem of clients using relays as
-single-hop proxies. If many clients start doing this (say, to improve
-their own performance), it puts additional risk on the relays, since now
-an attacker can expect to discover both client origins and destinations
-by attacking the relay. Our current strategy for forcing clients to use
-more than one hop is quite fragile, and it looks like we will soon need
-more robust strategies.
- <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/163-detecting-clients.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/163-detecting-clients.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/163-de...</a></p>
-
-<p>Proposal 164 suggests ways to make it easier for relay operators to
-discover why they are not listed in the networkstatus consensus. We have
-a handle of people each week ask us on IRC why their relay isn&#39;t listed,
-and currently the only way to answer is to have a competent directory
-authority operator go dig around in various files in his datadirectory.
- <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/164-reporting-server-status.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/164-reporting-server-status.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/164-re...</a></p>
-
-<p>Proposal 165 focuses on simplifying the steps required to add a new
-directory authority. The current approach requires manual work from every
-directory authority operator within a space of several hours. As the
-number of authorities grows, this synchronization is becoming impractical
--- and that&#39;s causing us to leave the number of authorities small, which
-makes us vulnerable to other attacks. Once this proposal is finalized
-and deployed, we&#39;ll hopefully be able to add new authorities more
-smoothly.
- <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/165-simple-robust-voting.txt" title="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/165-simple-robust-voting.txt">https://git.torproject.org/checkout/tor/master/doc/spec/proposals/165-si...</a></p>
-
-<p><strong>Grow the Tor network and user base. Outreach.</strong>
-Jacob attended CONFidence in Krakow, Poland as a keynote speaker. <a href="http://2009.confidence.org.pl/" title="http://2009.confidence.org.pl/">http://2009.confidence.org.pl/</a></p>
-
-<p>Andrew and Jacob attended the Soul of a New Machine conference in Berkeley, CA. <a href="http://hrc.berkeley.edu/events/newmachineconference/" title="http://hrc.berkeley.edu/events/newmachineconference/">http://hrc.berkeley.edu/events/newmachineconference/</a></p>
-
-<p>Roger and Andrew attended the 7th Annual Chinese Internet Research Conference in Philadelphia, PA. <a href="http://www.global.asc.upenn.edu/index.php?page=167" title="http://www.global.asc.upenn.edu/index.php?page=167">http://www.global.asc.upenn.edu/index.php?page=167</a></p>
-
-<p>Karsten attended SIGINT 09 in Cologne.</p>
-
-<p>Mike gave a presentation on TorFlow at CodeCon.</p>
-
-<p>Roger met with Nick, Paul Syverson and Aaron Johnson at Yale to work more on Paul&#39;s research question: if we trust some Tor relays differently than others, how should we select our paths to be safe, and how do we analyze how safe the paths are?</p>
-
-<p>Roger did a talk for about 15 OSI people in Budapest, Hungary.</p>
-
-<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD</strong>
-The two large changes were the ability to run multiple instances of Firefox at once, such that a user&#39;s personal firefox shouldn&#39;t share data with the firefox from our bundle. The other change is the ability to stop TBB firefox from scanning the system for potential plugins, like Windows Media, Java, etc.</p>
-
-<p>Started work on a hardened branch of Incognito live CD to help protect users from possible bugs in the programs running.</p>
-
-<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong></p>
-
-<p>We documented the metrics we collect to help us determine the best ways to scale the Tor network. <a href="http://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network" title="http://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network">http://blog.torproject.org/blog/performance-measurements-and-blockingres...</a> A number of nodes are now collecting this information to assist our network-wide measurements.</p>
-
-<p>Much progress on torctl and torflow tools being used to measure real and potential performance of nodes in the public tor network.</p>
-
-<p>Mike wrote proposal 161 describing how node bandwidth ratios are
- computed and how they can be produced in parallel. The proposal can be found at <a href="http://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-computing-bandwidth-adjustments.txt" title="http://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-computing-bandwidth-adjustments.txt">http://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-com...</a></p>
-
-<p>Karsten finished a first patch to dump statistics about local queues to disk every 15 minutes. A first impression of how these data could be evaluated can be found in <a href="http://freehaven.net/%7Ekarsten/volatile/bufferstats-2009-05-25.pdf" title="http://freehaven.net/~karsten/volatile/bufferstats-2009-05-25.pdf">http://freehaven.net/~karsten/volatile/bufferstats-2009-05-25.pdf</a>. The goal is to see if our buffer allocation algorithms are sufficient or need tweaking.</p>
-
-<p><strong>More reliable (e.g. split) download mechanism.</strong>
-Developed the ability to split Apple OS X bundles into 1.44MB chunks. The functionality is native to OS X versions 10.4 and newer. It will not work in versions 10.3.9 or earlier releases.</p>
-
-<p><strong>Translation work, ultimately a browser-based approach</strong>
-11 Polish updates
-4 German updates
-Portugese torbutton updates
-Danish torbutton updates
-Romanian torbutton updates
-11 Italian updates
-3 Chinese updates</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/testing-red-flag-linux-rpms">Testing Red Flag Linux rpms</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">redflag linux</a>
-              
-                <a class="post-category post-category-js" href="#">rpm</a>
-              
-                <a class="post-category post-category-js" href="#">testing</a>
-               |
-              08 Jun 2009
-          </p>
-        </header>
-        <div class="post-description">
-          <p>A company in China has produced its own distribution of linux, called <a href="http://www.redflag-linux.com/">Red Flag Linux</a>. Various reports are that Internet cafes are <a href="http://www.rfa.org/english/news/china/microsoft%20to%20linux-12022008144416.html">being forced to install it</a>. We have no confirmed reports of this actually occurring. However, a few users have asked for rpms anyway.</p>
-
-<p>If you happen to run this Red Flag distribution, we have some test rpms based on tor 0.2.1.15-rc for you.</p>
-
-<p>The <a href="https://www.torproject.org/dist/rpm-redflag/tor-0.2.1.15.rc-tor.0.redflag6_0.i386.rpm">binary itself</a> along with <a href="https://www.torproject.org/dist/rpm-redflag/tor-0.2.1.15.rc-tor.0.redflag6_0.i386.rpm.asc">signature</a> and <a href="https://www.torproject.org/dist/rpm-redflag/tor-0.2.1.15.rc-tor.0.redflag6_0.i386.rpm.sha1">sha-1 hash</a>.</p>
-
-<p>The <a href="https://www.torproject.org/dist/rpm-redflag/tor-0.2.1.15.rc-tor.0.redflag6_0.src.rpm">source rpm</a> along with <a href="https://www.torproject.org/dist/rpm-redflag/tor-0.2.1.15.rc-tor.0.redflag6_0.src.rpm.asc">signature</a> and <a href="https://www.torproject.org/dist/rpm-redflag/tor-0.2.1.15.rc-tor.0.redflag6_0.src.rpm.sha1">sha-1 hash</a>.</p>
-
-<p>I welcome feedback.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-02115rc-released">Tor 0.2.1.15-rc released</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-123-and-124-released">Tor Browser Bundle 1.2.3 and 1.2.4 Released</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
                 <a class="post-category post-category-js" href="#">bug fixes</a>
               
-                <a class="post-category post-category-js" href="#">malloc fixes</a>
+                <a class="post-category post-category-js" href="#">enhancements</a>
               
                 <a class="post-category post-category-js" href="#">release candidate</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
                |
-              01 Jun 2009
+              13 Jul 2009
           </p>
         </header>
         <div class="post-description">
-          <p>Tor 0.2.1.15-rc marks the second release candidate for the 0.2.1.x
-series. It fixes a major bug on fast exit relays, as well as a variety
-of more minor bugs.</p>
+          <p>Tor Browser Bundle 1.2.3 was released on July 8, 2009. It contains the following changes:</p>
+
+<ul>
+<li>Update Vidalia to 0.1.14</li>
+<li>Update Tor to 0.2.1.17-rc</li>
+<li>Update Pidgin to 2.5.8</li>
+</ul>
+
+<p>TBB 1.2.3 was replaced by 1.2.4 on July 11, 2009 to include:</p>
+
+<ul>
+<li>Include libeay32.dll from OpenSSL 0.9.8k to make QT happy</li>
+<li>Update Vidalia to 0.1.15</li>
+</ul>
+
+<p>TBB 1.2.4 is available at <a href="https://torproject.org/torbrowser" title="https://torproject.org/torbrowser">https://torproject.org/torbrowser</a>.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-02117rc-released">Tor 0.2.1.17-rc released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">release candidate</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              13 Jul 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Tor 0.2.1.17-rc marks the fourth -- and hopefully last -- release
+candidate for the 0.2.1.x series. It lays the groundwork for further
+client performance improvements, and also fixes a big bug with directory
+authorities that were causing them to assign Guard and Stable flags
+poorly.</p>
+
+<p>The Windows bundles also finally include the geoip database that we
+thought we&#39;d been shipping since 0.2.0.x (oops), and the OS X bundles
+should actually install Torbutton rather than giving you a cryptic
+failure message (oops).</p>
 
 <p>This is a release candidate! That means that we don&#39;t know of any
-remaining show-stopping bugs, and this will become the new stable if
+remaining show-stopping bugs, and 0.2.1.18 will be the new stable if
 there are no problems. Please test it, and tell us about any problems
 that you find.</p>
 
 <p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
 
-<p>Changes in version 0.2.1.15-rc - 2009-05-25</p>
-
-<p><strong>Major bugfixes (on 0.2.0.x):</strong> - Fix a timing-dependent, allocator-dependent, DNS-related crash bug that would occur on some exit nodes when DNS failures and timeouts occurred in certain patterns. Fix for bug 957.</p>
-
-<p><strong>Minor bugfixes (on 0.2.0.x):</strong> - Actually return -1 in the error case for read_bandwidth_usage().
- Harmless bug, since we currently don&#39;t care about the return value
- anywhere. Bugfix on 0.2.0.9-alpha.
-- Provide a more useful log message if bug 977 (related to buffer
- freelists) ever reappears, and do not crash right away.
-- Fix an assertion failure on 64-bit platforms when we allocated
- memory right up to the end of a memarea, then realigned the memory
- one step beyond the end. Fixes a possible cause of bug 930.
-- Protect the count of open sockets with a mutex, so we can&#39;t
- corrupt it when two threads are closing or opening sockets at once.
- Fix for bug 939. Bugfix on 0.2.0.1-alpha.
-- Don&#39;t allow a bridge to publish its router descriptor to a
- non-bridge directory authority. Fixes part of bug 932.
-- When we change to or from being a bridge, reset our counts of
- client usage by country. Fixes bug 932.
-- Fix a bug that made stream bandwidth get misreported to the
- controller.
-- Stop using malloc_usable_size() to use more area than we had
- actually allocated: it was safe, but made valgrind really unhappy.
-- Fix a memory leak when v3 directory authorities load their keys
- and cert from disk. Bugfix on 0.2.0.1-alpha.</p>
-
-<p><strong>Minor bugfixes (on 0.2.1.x):</strong> - Fix use of freed memory when deciding to mark a non-addable
- descriptor as never-downloadable. Bugfix on 0.2.1.9-alpha.</p>
-
-<p>The original release announcement can be found at <a href="http://archives.seul.org/or/talk/May-2009/msg00133.html" title="http://archives.seul.org/or/talk/May-2009/msg00133.html">http://archives.seul.org/or/talk/May-2009/msg00133.html</a></p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/testing-tor-browser-bundle-121dev">Testing Tor Browser Bundle 1.2.1-dev</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">bug fixes</a>
-              
-                <a class="post-category post-category-js" href="#">plugin scanning</a>
-              
-                <a class="post-category post-category-js" href="#">testing</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-               |
-              31 May 2009
-          </p>
-        </header>
-        <div class="post-description">
-          <p>This is a testing release of Tor IM Browser Bundle 1.2.1-dev. The only fix in this release so far is an updated prefs.js to fix plugin scanning. The InvalidPrefs.js file no longer appears either. I&#39;m working on the other suggestions from <a href="http://blog.torproject.org/blog/testing-tor-browser-bundle-120dev#comment-1386">this comment</a>.</p>
-
-<p>You can <a href="https://svn.torproject.org/cgi-bin/viewvc.cgi/torbrowser/trunk/build-scripts/config/prefs.js?view=log">view the diffs</a> to see the changes.</p>
-
-<p>The <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.1-dev_en-US.exe">bundle</a> and associated <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.1-dev_en-US.exe.asc">signature</a> and <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.1-dev_en-US.exe.sha1">sha1</a> files are available too.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/testing-tor-browser-bundle-120-dev">Testing Tor Browser Bundle 1.2.0-dev</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">geoip</a>
-              
-                <a class="post-category post-category-js" href="#">libevent</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-               |
-              23 May 2009
-          </p>
-        </header>
-        <div class="post-description">
-          <p>This is an open call for testing of the soon to be released Tor Browser Bundle 1.2.0.</p>
-
-<p>The major changes in this version are that you can now run multiple instances of Firefox. This means each Firefox browser is independent of the others. They won&#39;t leak urls, scripts, etc between instances.</p>
-
-<p>It also includes Tor&#39;s geoip database. This will enable people to set ExitNodes by country code. You still have to manually edit the torrc file. We&#39;d love it if someone wrote a way to do this into Vidalia (such as right click on a country in the network map and choose &quot;exit here&quot;).</p>
+<p>Changes in version 0.2.1.17-rc - 2009-07-02
+<strong>Major features:</strong></p>
 
 <ul>
-<li>Switch to launching Firefox directly from Vidalia to allow multiple instances of Firefox</li>
-<li>Update Firefox to 3.0.10</li>
-<li>Update to Qt 4.5.1</li>
-<li>Update Firefox prefs.js to stop scanning for plugins</li>
-<li>Update libevent to 1.4.11</li>
-<li>Include the Tor geoip database</li>
+<li>Clients now use the bandwidth values in the consensus, rather than
+the bandwidth values in each relay descriptor. This approach opens
+the door to more accurate bandwidth estimates once the directory
+authorities start doing active measurements. Implements more of
+proposal 141.</li>
 </ul>
 
-<p>I&#39;ll be watching this post and comments for feedback. I only created the English version for testing. Thanks for testing!</p>
+<p><strong>Major bugfixes:</strong></p>
 
-<p>Here is the <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.0-dev_en-US.exe">Tor IM Browser Bundle 1.2.0-dev</a>, <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.0-dev_en-US.exe.asc">sig</a>, and <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.0-dev_en-US.exe.sha1">sha1</a> files.</p>
+<ul>
+<li>When Tor clients restart after 1-5 days, they discard all their
+cached descriptors as too old, but they still use the cached
+consensus document. This approach is good for robustness, but
+bad for performance: since they don&#39;t know any bandwidths, they
+end up choosing at random rather than weighting their choice by
+speed. Fixed by the above feature of putting bandwidths in the
+consensus. Bugfix on 0.2.0.x.</li>
+<li>Directory authorities were neglecting to mark relays down in their
+internal histories if the relays fall off the routerlist without
+ever being found unreachable. So there were relays in the histories
+that haven&#39;t been seen for eight months, and are listed as being
+up for eight months. This wreaked havoc on the &quot;median wfu&quot;
+and &quot;median mtbf&quot; calculations, in turn making Guard and Stable
+flags very wrong, hurting network performance. Fixes bugs 696 and
+
+<ol>
+<li>Bugfix on 0.2.0.6-alpha.</li>
+</ol></li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Serve the DirPortFrontPage page even when we have been approaching
+our quotas recently. Fixes bug 1013; bugfix on 0.2.1.8-alpha.</li>
+<li>The control port would close the connection before flushing long
+replies, such as the network consensus, if a QUIT command was issued
+before the reply had completed. Now, the control port flushes all
+pending replies before closing the connection. Also fixed a spurious
+warning when a QUIT command is issued after a malformed or rejected
+AUTHENTICATE command, but before the connection was closed. Patch
+by Marcus Griep. Bugfix on 0.2.0.x; fixes bugs 1015 and 1016.</li>
+<li>When we can&#39;t find an intro key for a v2 hidden service descriptor,
+fall back to the v0 hidden service descriptor and log a bug message.
+Workaround for bug 1024.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>If we&#39;re a relay and we change our IP address, be more verbose
+about the reason that made us change. Should help track down
+further bugs for relays on dynamic IP addresses.</li>
+</ul>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-02035stable-bundles-updated">Tor 0.2.0.35-stable bundles updated</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">stable release</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia release</a>
+               |
+              13 Jul 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Updated Vidalia-bundle packages with Tor 0.2.0.35 are released. The only thing that&#39;s changed is the update of Vidalia from 0.1.14 to 0.1.15. You can retrieve the updated packages from <a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a></p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/june-2009-progress-report">June 2009 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">bugfixes</a>
+              
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">releases</a>
+               |
+              12 Jul 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p><strong>New releases</strong></p>
+
+<p>On June 20th we released Tor 0.2.1.16-rc.
+On June 21st, we released Tor Browser Bundle 1.2.1.
+On June 23rd, we released Tor Browser Bundle 1.2.2.
+On June 24th, we released Tor 0.2.0.35-stable. We expect that this release is the last of the 0.2.0.x -stable series, soon to be replaced with the 0.2.1.x series.
+On June 30th, we released Vidalia 0.1.14.</p>
+
+<p><strong>Censorship circumvention</strong></p>
+
+<p>Packaged rpms for Red Flag Linux version 6. Red Flag Linux is reported to be the new operating system for all Internet cafe&#39;s in China. So far, no one has seen this conversion actually happen, but now we&#39;re ready if it does.</p>
+
+<p>Our email autoresponder, gettor , received a number of patches to deal with dkim issues, including finding a dkim bug that prevented yahoo email users from fetching Tor. This bug has been fixed. Additionally, we&#39;ve whitelisted some domains where we
+see we&#39;re having lots of use but dkim isn&#39;t always configured properly. We&#39;ve had thousands of users from China using gettor.</p>
+
+<p><strong>Outreach/Advocacy</strong></p>
+
+<p>Andrew, Roger, and Wendy attended Computers, Freedom, and Privacy 2009 Conference ( <a href="http://www.cfp2009.org" title="http://www.cfp2009.org">http://www.cfp2009.org</a>). Andrew presented a “quicktake” talk on “Who uses Tor?”. Andrew and Roger, along with Paul Syverson, and a North African blogger, hosted a panel on “It Takes A Village To Be Anonymous”. Due to the sensitive situation surrounding the blogger, this panel was not recorded.</p>
+
+<p>Andrew talked with the Committee to Protect Journalists ( <a href="http://cpj.org" title="http://cpj.org">http://cpj.org</a>) about online security and circumvention tools.</p>
+
+<p>Jillian C. York blogged at KnightPulse about “Average citizens browse anonymously
+”, <a href="http://www.knightpulse.org/blog/09/06/04/average-citizens-browse-anonymously" title="http://www.knightpulse.org/blog/09/06/04/average-citizens-browse-anonymously">http://www.knightpulse.org/blog/09/06/04/average-citizens-browse-anonymo...</a></p>
+
+<p>Due to Iranian&#39;s usage of Tor during the recent election, the general press/media conducted a few interviews with Andrew:</p>
+
+<ol>
+<li>Computer World, <a href="http://www.computerworld.com/action/article.do?command=viewArticleBasic&amp;articleId=9134471&amp;intsrc=news_ts_head" title="http://www.computerworld.com/action/article.do?command=viewArticleBasic&amp;articleId=9134471&amp;intsrc=news\_ts\_head">http://www.computerworld.com/action/article.do?command=viewArticleBasic&amp;...</a></li>
+<li>Cnet News, <a href="http://news.cnet.com/8301-13578_3-10267287-38.html" title="http://news.cnet.com/8301-13578\_3-10267287-38.html">http://news.cnet.com/8301-13578_3-10267287-38.html</a></li>
+<li>Deutche Welle, <a href="http://www.dw-world.de/dw/article/0,,4400882,00.html" title="http://www.dw-world.de/dw/article/0,,4400882,00.html">http://www.dw-world.de/dw/article/0,,4400882,00.html</a></li>
+<li>Technology Review, <a href="http://www.technologyreview.com/web/22893/" title="http://www.technologyreview.com/web/22893/">http://www.technologyreview.com/web/22893/</a></li>
+<li>Origo, in Hungary, <a href="http://www.origo.hu/techbazis/internet/20090618-a-kiberforradalmarok-fegyverei-eszkozok-anonim-netezeshez.html" title="http://www.origo.hu/techbazis/internet/20090618-a-kiberforradalmarok-fegyverei-eszkozok-anonim-netezeshez.html">http://www.origo.hu/techbazis/internet/20090618-a-kiberforradalmarok-feg...</a></li>
+<li>O&#39;Reilly, <a href="http://radar.oreilly.com/2009/06/tor-and-the-legality-of-runnin.html" title="http://radar.oreilly.com/2009/06/tor-and-the-legality-of-runnin.html">http://radar.oreilly.com/2009/06/tor-and-the-legality-of-runnin.html</a></li>
+<li>Washington Times, <a href="http://www.washingtontimes.com/news/2009/jun/26/protesters-use-navy-technology-to-avoid-censorship/?feat=home_headlines" title="http://www.washingtontimes.com/news/2009/jun/26/protesters-use-navy-technology-to-avoid-censorship/?feat=home\_headlines">http://www.washingtontimes.com/news/2009/jun/26/protesters-use-navy-tech...</a></li>
+<li>Arte TV video interview, the 30-minute video interview can&#39;t be put online, but will be shown to their viewers in late June/early July 2009. <a href="http://www.arte.tv" title="http://www.arte.tv">http://www.arte.tv</a></li>
+<li>EFF, <a href="http://www.eff.org/deeplinks/2009/06/help-protesters-iran-run-tor-relays-bridges" title="http://www.eff.org/deeplinks/2009/06/help-protesters-iran-run-tor-relays-bridges">http://www.eff.org/deeplinks/2009/06/help-protesters-iran-run-tor-relays...</a></li>
+<li>A Houston Radio station did an on-air interview, but didn&#39;t put the interview online.</li>
+<li>A Romanian newspaper did an interview, but didn&#39;t put the story online.</li>
+<li>Public Rado International did a more in-depth interview. They expect it to be on PBS Radio and BBC Radio 4 in early July 2009.</li>
+</ol>
+
+<p>A number of blogs and other media picked up these original interviews and spread the word even further:</p>
+
+<ol>
+<li>Wall Street Journal, <a href="http://blogs.wsj.com/digits/2009/06/18/iranians-using-tor-to-anonymize-web-use/" title="http://blogs.wsj.com/digits/2009/06/18/iranians-using-tor-to-anonymize-web-use/">http://blogs.wsj.com/digits/2009/06/18/iranians-using-tor-to-anonymize-w...</a></li>
+<li>CBS News, <a href="http://www.cbsnews.com/blogs/2009/06/17/politics/politicalhotsheet/entry5094825.shtml" title="http://www.cbsnews.com/blogs/2009/06/17/politics/politicalhotsheet/entry5094825.shtml">http://www.cbsnews.com/blogs/2009/06/17/politics/politicalhotsheet/entry...</a></li>
+<li><a href="http://curtisschweitzer.net/blog/?p=2995" title="http://curtisschweitzer.net/blog/?p=2995">http://curtisschweitzer.net/blog/?p=2995</a></li>
+<li><a href="http://voices.allthingsd.com/20090618/iranians-using-tor-to-anonymize-web-use/" title="http://voices.allthingsd.com/20090618/iranians-using-tor-to-anonymize-web-use/">http://voices.allthingsd.com/20090618/iranians-using-tor-to-anonymize-we...</a></li>
+<li><a href="http://www.dailyfinance.com/2009/06/24/nokia-and-siemens-in-iran-controversy/" title="http://www.dailyfinance.com/2009/06/24/nokia-and-siemens-in-iran-controversy/">http://www.dailyfinance.com/2009/06/24/nokia-and-siemens-in-iran-controv...</a></li>
+<li><a href="http://www.muslimnews.co.uk/news/news.php?article=16360" title="http://www.muslimnews.co.uk/news/news.php?article=16360">http://www.muslimnews.co.uk/news/news.php?article=16360</a></li>
+</ol>
+
+<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong></p>
+
+<p>Tor Browser Bundle 1.2.1 and 1.2.2 released in June. Planning a migration of the base operating system for the Incognito LiveCD to switch from Gentoo to an Ubuntu variant. We can always use help in maintaining Incognito.</p>
+
+<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong></p>
+
+<p>June was spent documenting, stabilizing, and streamlining the bandwidth authority scanner, which has been runningfor a while on the Directory Authority named ides.</p>
+
+<p>It is good enough to start running on multiple authorities now to produce actual results for clients to use.</p>
+
+<p><strong>More reliable (e.g. split) download mechanism.</strong></p>
+
+<p>Our email autoresponder, gettor , received a number of patches to deal with dkim issues, including finding a dkim bug that prevented yahoo email users from fetching Tor. This bug
+has been fixed. Additionally, we&#39;ve whitelisted some domains where we see we&#39;re having lots of use but dkim isn&#39;t always configured properly. We&#39;ve had thousands of users from China using gettor.</p>
+
+<p>The Tor Check website (check.torproject.org) had a few bugs and we&#39;ve fixed all but two. We sometimes still have false negatives (because the Tor client doesn&#39;t know to fetch the consensus at any specific time) and we also still sometimes barf python exceptions because mod_python has some weird exception from time to time. We also accepted a patch from Marcus Greip that extends the TorBulkExitList to allow arbitrary ports rather than just port 80.</p>
+
+<p><strong>Footprints from Tor Browser Bundle.</strong></p>
+
+<p>Reduced the scanning for plugins Portable Firefox can do on launch of the application. There is still an issue where Firefox displays other plugins to users, but they aren&#39;t actually valid plugins and won&#39;t run on command. Firefox acquires the names through queries to the Windows Registry.</p>
+
+<p><strong>Translations</strong></p>
+
+<p>16 Polish website updates
+8 Italian website updates
+3 German website updates</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/time-directory-authority-outside-useu">Time for a Directory Authority outside US/EU</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">argentina</a>
+              
+                <a class="post-category post-category-js" href="#">directory authority</a>
+              
+                <a class="post-category post-category-js" href="#">isp</a>
+              
+                <a class="post-category post-category-js" href="#">japan</a>
+              
+                <a class="post-category post-category-js" href="#">malaysia</a>
+              
+                <a class="post-category post-category-js" href="#">panama</a>
+              
+                <a class="post-category post-category-js" href="#">singapore</a>
+              
+                <a class="post-category post-category-js" href="#">south africa</a>
+               |
+              11 Jul 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>I&#39;m researching where to host one or two Directory Authorities outside
+the US and EU.</p>
+
+<p>It&#39;s been suggested to me that Argentina, South Africa, Panama,
+Singapore, Malaysia, and Japan are fine locales for a well-connected,
+dedicated server. I&#39;m looking for a relatively low end dedicated server
+that can transit 2-4 TB a month at relatively cheap prices (say
+US$200/mo or less).</p>
+
+<p>If you have experience and contacts at various providers, I&#39;m all ears.</p>
+
+<p>Thanks!</p>
 
         </div>
       </section>
@@ -374,7 +354,7 @@ that you find.</p>
       
         <a href="/blog/page115" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 116 of 134</span>
+      <span class="page_number ">Page: 116 of 137</span>
       
         <a href="/blog/page117" class="next">Next</a>
       

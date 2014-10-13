@@ -53,199 +53,121 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tails-018-out">Tails 0.18 is out</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-july-10th-2013">Tor Weekly News — July, 10th 2013</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">tails</a> under
+              By <a class="post-author" href="#">lunar</a> under
               
-                <a class="post-category post-category-js" href="#">anonymous operating system</a>
-              
-                <a class="post-category post-category-js" href="#">tails</a>
-              
-                <a class="post-category post-category-js" href="#">tails releases</a>
+                <a class="post-category post-category-js" href="#">tor weekly news</a>
                |
-              18 May 2013
+              10 Jul 2013
           </p>
         </header>
         <div class="post-description">
-          <p>Tails, The Amnesic Incognito Live System, version 0.18, is out.</p>
+          <p>Welcome to the second issue of Tor Weekly News, the weekly newsletter meant to cover what is happening in the great Tor community.</p>
 
-<p>All users must upgrade as soon as possible.</p>
+<h1>First release candidate for Tor 0.2.4.x series</h1>
 
-<p><a href="https://tails.boum.org/download/">Download it now.</a></p>
+<p>On July 3rd, Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-talk/2013-July/028776.html">announced the release of Tor 0.2.4.15-rc</a>. As “rc” suggests, it is the first release candidate for the 0.2.4.x series. This version fixes a few smaller bugs over the latest alpha, but “generally appears stable,” Roger noted.</p>
 
-<p><strong>Changes</strong></p>
+<p>Some highlights of <a href="https://gitweb.torproject.org/tor.git/blob/b13c6becc:/ChangeLog">changes from 0.2.3.x</a>:</p>
 
-<p>Notable user-visible changes include:</p>
-
-<ul>
-<li><p>New features</p>
+<h2>- bridges now report the pluggable transports they support to the bridge authority ( <a href="https://bugs.torproject.org/3589">#3589</a>),</h2>
 
 <ul>
-<li>Support obfs3 bridges.</li>
-<li>Automatically install a custom list of additional packages chosen by the user at the beginning of every working session, and upgrade them once a network connection is established (technology preview).</li>
-</ul></li>
-<li><p>Iceweasel</p>
-
-<ul>
-<li>Upgrade to Iceweasel 17.0.5esr-0+tails2~bpo60+1.</li>
-<li>Update Torbrowser patches to current maint-2.4 branch (567682b).</li>
-<li>Torbutton 1.5.2, and various prefs hacks to fix breakage.</li>
-<li>HTTPS Everywhere 3.2</li>
-<li>NoScript 2.6.6.1-1</li>
-<li>Isolate DOM storage to first party URI, and enable DOM storage.</li>
-<li>Isolate the image cache per url bar domain.</li>
-<li>Update prefs to match the TBB&#39;s, fix bugs, and take advantage of the latest Torbrowser patches.</li>
-<li>Make prefs organization closer to the TBB&#39;s, and generally clean them up.</li>
-</ul></li>
-<li><p>Bugfixes</p>
-
-<ul>
-<li>Linux 3.2.41-2+deb7u2.</li>
-<li>All Iceweasel prefs we set are now applied.</li>
-<li>Bring back support for proxies of type other than obfsproxy.</li>
-</ul></li>
-<li><p>Minor improvements</p>
-
-<ul>
-<li>Set <code>kernel.dmesg_restrict=1</code>, and make <code>/proc/&lt;pid&gt;/</code> invisible and restricted for other users. It makes it slightly harder for an attacker to gather information that may allow them to escalate privileges.</li>
-<li>Install gnome-screenshot.</li>
-<li>Add a <em>About Tails</em> launcher in the <em>System</em> menu.</li>
-<li>Install GNOME accessibility themes.</li>
-<li>Use <em>Getting started...</em> as the homepage for the Tails documentation button.</li>
-<li>Disable audio preview in Nautilus.</li>
-</ul></li>
-<li><p>Localization: many translation updates all over the place.</p></li>
+<li>IPv6 support ( <a href="https://bugs.torproject.org/5534">#5534</a>, <a href="https://bugs.torproject.org/5535">#5535</a>, <a href="https://bugs.torproject.org/6362">#6362</a>, <a href="https://bugs.torproject.org/6363">#6363</a>),</li>
+<li>automatically forward the TCP ports of pluggable transport proxies using tor-fw-helper if PortForwarding is enabled ( <a href="https://bugs.torproject.org/6522">#6522</a>),</li>
+<li>switch to a nonrecursive Makefile structure. Where available, now use automake’s “silent” make rules by default ( <a href="https://bugs.torproject.org/4567">#4567</a>),</li>
+<li>many, many more small improvements and fixes.</li>
 </ul>
 
-<p>See the <a href="http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.18">online Changelog</a> for technical details.</p>
+<p>Please <a href="https://www.torproject.org/dist/">download it and test widely and wildly</a>.</p>
 
-<p><strong>Known issue</strong></p>
+<h1>New vulnerability in Tor Browser Bundle 2.3.25-10?</h1>
 
-<p>The web browser default search engine is Google, instead of the intended localized Startpage. You may select <em>Startpage HTTPS</em> in the search engine menu next to the Google icon.</p>
+<p>An <a href="https://bugs.torproject.org/9195">anonymous reporter reported</a> a potential leak when using the Tor Browser Bundle on Windows. If Microsoft Security Essentials or another cloud based anti-virus solution is configured, downloads will automatically be sent to these external providers — bypassing Tor — once complete.</p>
 
-<p><strong>I want to try it / to upgrade!</strong></p>
+<p>The reporter suggested setting the <code>browser.download.manager.scanWhenDone</code> property to <code>false</code> to prevent anti-virus solutions from starting without user interaction.</p>
 
-<p>See the <a href="https://tails.boum.org/getting_started/">Getting started</a> page.</p>
+<h1>The Tor Project is hiring a Lead Automation Engineer</h1>
 
-<p>As no software is ever perfect, we maintain a list of <a href="https://tails.boum.org/support/known_issues/">problems that affects the last release of Tails</a>.</p>
+<p>Do you have experience programming in multiple languages, including Java, Python/Ruby, shell scripting, and JavaScript?</p>
 
-<p><strong>What&#39;s coming up?</strong></p>
+<p>The Tor Project <a href="https://lists.torproject.org/pipermail/tor-dev/2013-July/005119.html">opened a new position</a> as Lead Automation Engineer. The project seeks to deploy nightly builds and continuous integration for as many of its key software components and platform combinations as possible. Mike Perry wrote, “Candidates are expected to be capable of taking the lead in selecting, deploying, and maintaining multiple automation systems in several different programming languages.”</p>
 
-<p>The next Tails release is scheduled for June 27.</p>
+<p>For more details, including information on how to apply, see <a href="https://www.torproject.org/about/jobs-lead-automation.html.en">the job posting</a>.</p>
 
-<p>Have a look to our <a href="https://tails.boum.org/contribute/roadmap/">roadmap</a> to see where we are heading to.</p>
+<h1>check.torproject.org outage</h1>
 
-<p>Would you want to help? As explained in our <a href="https://tails.boum.org/contribute/">&quot;how to contribute&quot; documentation</a>, there are many ways <strong>you</strong> can contribute to Tails. If you want to help, come talk to us!</p>
+<p><a href="https://blog.torproject.org/blog/tor-check-outage-03-and-04-july-2013">As Andrew Lewman wrote on Thursday, July 4th</a>, “over the past 24 hours <code>https://check.torproject.org</code> has been unavailable due to excessive DNS queries to the exitlist service. It seems there are a number of individuals and companies with commercial products relying upon this volunteer service. We finally hit the point where we couldn’t keep up with the queries and simply disabled the service”.</p>
+
+<p>At the time of writing, the service is again available, but the project might “take it down as needed without notice.”</p>
+
+<p>‘check.torproject.org’ is no longer the homepage for Tails since <a href="https://tails.boum.org/news/version_0.16/">January of this year</a>. The Tor Browser Bundle will also <a href="https://bugs.torproject.org/7494">switch to a new homepage in version 3</a>, currently in alpha stage.</p>
+
+<p>Other software or services that depend on check.torproject.org should either migrate away or run their own version using <a href="https://svn.torproject.org/cgi-bin/viewvc.cgi/Tor/check/trunk/">the source code for the web page</a>. It is supported by a <a href="https://trac.torproject.org/projects/tor/wiki/doc/TorDNSExitList">database of running exit nodes that can be queried through DNS</a>.</p>
+
+<p>If you wish to help, one need is to make it easier for third parties to get their own “check” service running. This means <a href="https://bugs.torproject.org/9204">getting the service more modular</a> and improving <a href="https://gitweb.torproject.org/tordnsel.git">TorDNSEL</a> or finishing <a href="https://gitweb.torproject.org/torbel.git">TorBEL</a>. Someone must also write documentation that is easy to follow.</p>
+
+<h1>An experimental transparent Tor proxy for Windows</h1>
+
+<p><a href="https://lists.torproject.org/pipermail/tor-talk/2013-July/028809.html">basil announced a new experimental transparent Tor proxy for using Tor on Windows</a>: “1) It (transparently) reroutes all HTTP traffic through the Tor anonymity network; and 2) It blocks all non-Tor traffic (including DNS) to and from your computer.”</p>
+
+<p>The project is currently dubbed TorWall but the name is likely to change as it is problematic regarding the <a href="https://www.torproject.org/docs/trademark-faq">Tor trademark</a> and <a href="https://lists.torproject.org/pipermail/tor-talk/2013-July/028833.html">Roger pointed out</a> that there is already a discontinued project called Torwall. Roger also pointed out that transparent proxying might not be the best solutions “on the theory that if the given application isn’t specifically configured to use Tor, it’s probably going to screw up privacy-wise.”</p>
+
+<p><a href="https://lists.torproject.org/pipermail/tor-talk/2013-July/028840.html">basil answered</a> by stating that the project was “really for those who know and understand the risks (possibly a very limited market?).” Feel free to give it a try if you do!</p>
+
+<h1>Theft of Tor relay private keys?</h1>
+
+<p>On Tuesday, July 2nd, <a href="https://lists.torproject.org/pipermail/tor-talk/2013-July/028749.html">Thomas H. expressed concern</a> about a hypothetical attacker breaking into a large number of nodes and stealing their private keys, combined with gathering all the traffic possible. “Wouldn’t this increase the likelihood that data from complete circuits can be decrypted and traced back to the original sender?”</p>
+
+<p>In <a href="https://lists.torproject.org/pipermail/tor-talk/2013-July/028751.html">response to this question</a>, Mike Perry admits that he shares Thomas’ concerns: “If their intercepts are passive, merely stealing relays’ private identity key won’t accomplish much because Tor uses <a href="https://en.wikipedia.org/wiki/Perfect_forward_secrecy">Forward Secrecy</a> for both the relay TLS links and for circuit setup. However, if their intercepts are active (as in they can arbitrarily manipulate traffic in-flight), then stealing either Guard node keys or directory authority keys allows complete route capture and traffic discovery of targeted clients”.</p>
+
+<p>To avoid this danger, Mike Perry has previously suggested “changes to Tor to make such key theft easier to detect, less damaging, and harder to make use of” (see <a href="https://bugs.torproject.org/7126">#7126</a>, <a href="https://bugs.torproject.org/5968">#5968</a>).</p>
+
+<p>Mike also supports the idea of <a href="https://bugs.torproject.org/5563">regular identity key rotation for relays</a>. He would like to see support for default key rotation in the future.</p>
+
+<p>Mike pointed out that currently changing an identity key too frequently has several disadvantages for the Tor network: “First, it takes the bandwidth measurement servers a couple days to ramp up your capacity of your new identity key, so you will spend a lot of time below your max throughput. Second, you would also likely never get the Guard flag. Third, there are also load balancing issues with Guard nodes where as soon as you get the Guard flag, it will take 1-2 months before clients switch to your new Guard, so you will also likely spend that time at less than your full capacity.”</p>
+
+<p>If you are operating a relay, please check the wiki page with <a href="https://trac.torproject.org/projects/tor/wiki/doc/TorRelaySecurity">tips for enhancing the relay’s security</a>.</p>
+
+<h1>A new interface to explore the Tor network</h1>
+
+<p>On June 25th, <a href="https://lists.torproject.org/pipermail/tor-dev/2013-June/005063.html">Christian (makepanic) announced</a> a new web application to explore the Tor network. Based on the <a href="http://emberjs.com/">Ember.js framework</a>, it uses data from <a href="https://onionoo.torproject.org/">Onionoo</a> to display information about Tor relays and bridges.</p>
+
+<p>As <a href="https://lists.torproject.org/pipermail/tor-dev/2013-July/005122.html">Karsten pointed out</a>, this tool already has the same set of features as <a href="https://atlas.torproject.org/">Atlas</a> — the current recommended way to get details about relays — and even a few more: it can “list 10 fastest relays on start page” and “show bridge details”. As Onionoo was designed exactly to offer a backend for various visualization tools, Karsten thinks “it’s fine to have more than one website providing access to Onionoo data. Yay, diversity.”</p>
+
+<p>Feel free to play with <a href="http://makepanic.github.io/emberjs-tor-onionoo/">Tor Onionoo search</a> or have a look at <a href="https://github.com/makepanic/emberjs-tor-onionoo">its source code</a>.</p>
+
+<h1>Miscellaneous development news</h1>
+
+<p>Karsten Loesing has <a href="https://gitweb.torproject.org/tor.git/commit/2a61b0dd6be">updated GeoIP databases for Tor and Onionoo to July MaxMind databases</a> without their A1 Anonymous Proxy ranges. See <a href="https://bugs.torproject.org/6266">#6266</a> for more details on why and how we need to fix the data released by MaxMind.</p>
+
+<p>It looks like the ‘start-tor-browser’ shell script cannot be used to start the Tor Browser from the graphical file manager on Ubuntu 13.04. If you have any great ideas, <a href="https://bugs.torproject.org/9091">please chime in</a>.</p>
+
+<p>If you can write C code, you could make the lives of many relay operators easier by making tor configuration accept “bit/s” on top of the current “byte/s” [43]. The former, being more commonly used by network operators to describe bandwidth, could reduce a common case of confusion. It looks like <a href="https://bugs.torproject.org/9214">a patch would be pretty simple</a>!</p>
+
+<p>Work has started on a pluggable transport that would <a href="https://bugs.torproject.org/7167">combine the traffic obfuscation properties of obfsproxy with the address diversity of Flashproxy</a>.</p>
+
+<p>intrigeri has <a href="https://mailman.boum.org/pipermail/tails-dev/2013-July/003240.html">announced two “low-hanging fruits” sessions for Tails</a>. Feel free to join the #tails IRC channel on July 11th at 8:00 UTC or on July 13, 2013, at 7:00 UTC. “Everyone interested in contributing to Tails is warmly welcome to join! The idea is to spend a while together on many small tasks that take less than 2 hours each, and are waiting in our TODO list for too long.” He also gave a list of candidate tasks.</p>
+
+<p>As <a href="https://lists.torproject.org/pipermail/tor-qa/2013-July/000157.html">Erinn Clark pointed out</a>, the 3.x branch of Tor Browser is currently missing a map of relays similar to the one shown in Vidalia. The latter can be kept as a separate application, but this specific bit of functionality might simply be implementable using web technologies. Care to give it a try?</p>
+
+<h1>More monthly status reports for June 2013</h1>
+
+<p>Continuing from last week, more monthly reports are now available for June 2013: <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000280.html">George Kadianakis</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000284.html">Aaron G.</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000285.html">Runa A. Sandvik</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000286.html">Mike Perry</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000287.html">Karsten Loesing</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000288.html">Tails folks</a>, and the <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000289.html">Tor help desk</a>.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, luttigdev, dope457, whabib, Karsten Loesing and Peter Palfrader.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteer writers to watch the Tor community and report important news. Please see <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">the project page</a> and write down your name if you want to get involved!</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-firefox-1706esr">New Tor Browser Bundles with Firefox 17.0.6esr</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">firefox updates</a>
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-               |
-              14 May 2013
-          </p>
-        </header>
-        <div class="post-description">
-          <p>There is a new Firefox 17.0.6esr out and all of the Tor Browser Bundles (stable and alpha branches) have been updated. The new stable TBBs have a lot of new and updated Firefox patches, so those of you who were experiencing crashes should no longer be seeing that behavior. Please let us know if you do by <a href="https://trac.torproject.org/projects/tor">opening a ticket</a> with details.</p>
-
-<p>The stable Tor Browser Bundles are available at their <a href="https://www.torproject.org/download/download-easy.html.en">normal location</a>.</p>
-
-<p>The alpha Tor Browser Bundles are available <a href="https://www.torproject.org/projects/torbrowser.html.en#Download-torbrowserbundlealpha">here</a>.</p>
-
-<p><strong>Tor Browser Bundle (2.3.25-8)</strong></p>
-
-<ul>
-<li>Update Firefox to 17.0.6esr</li>
-<li>Update HTTPS Everywhere to 3.2</li>
-<li>Update Torbutton to 1.5.2</li>
-<li>Update libpng to 1.5.15</li>
-<li>Update NoScript to 2.6.6.1</li>
-<li><p>Firefox patch changes:</p>
-
-<ul>
-<li>Apply font limits to @font-face local() fonts and disable fallback
-rendering for @font-face. (closes: #8455)</li>
-<li>Use Optimistic Data SOCKS handshake (improves page load performance).
-(closes: #3875)</li>
-<li>Honor the Windows theme for inverse text colors (without leaking those
-colors to content). (closes: #7920)</li>
-<li>Increase pipeline randomization and try harder to batch pipelined
-requests together. (closes: #8470)</li>
-<li>Fix an image cache isolation domain key misusage. May fix several image
-cache related crash bugs with New Identity, exit, and certain websites.
-(closes: #8628)</li>
-</ul></li>
-<li><p>Torbutton changes:</p>
-
-<ul>
-<li>Allow session restore if the user allows disk actvity (closes: #8457)</li>
-<li>Remove the Display Settings panel and associated locales (closes: #8301)</li>
-<li>Fix &quot;Transparent Torification&quot; option. (closes: #6566)</li>
-<li>Fix a hang on New Identity. (closes: #8642)</li>
-</ul></li>
-<li><p>Build changes:</p>
-
-<ul>
-<li>Fetch our source deps from an https mirror (closes: #8286)</li>
-<li>Create watch scripts for syncing mirror sources and monitoring mirror
-integrity (closes: #8338)</li>
-</ul></li>
-</ul>
-
-<p><strong>Tor Browser Bundle (2.4.12-alpha-2)</strong></p>
-
-<ul>
-<li>Update Firefox to 17.0.6esr</li>
-<li>Update NoScript to 2.6.6.1</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/calea-2-and-tor">CALEA 2 and Tor</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">arma</a> under
-              
-                <a class="post-category post-category-js" href="#">advocacy</a>
-              
-                <a class="post-category post-category-js" href="#">data retention</a>
-              
-                <a class="post-category post-category-js" href="#">law enforcement</a>
-               |
-              09 May 2013
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Journalists and activists have been asking me this week about the news that the Obama administration is now <a href="http://www.nytimes.com/2013/05/08/us/politics/obama-may-back-fbi-plan-to-wiretap-web-users.html">considering</a> whether to support the latest version of the FBI&#39;s <a href="https://www.eff.org/foia/foia-records-problems-electronic-surveillance">&quot;Going Dark&quot;</a> legislation. Here are some points to add to the discussion.</p>
-
-<ul>
-<li>This is far from law currently. Nobody&#39;s even published any proposed text. Right now the White House is considering whether to back it, and now is a great time to help them understand how dangerous it would be for America.</li>
-<li>Forcing backdoors in communication tools is a mandate for insecurity. Haven&#39;t they been paying attention to just how much these same systems are under <a href="http://googleblog.blogspot.com/2011/06/ensuring-your-information-is-safe.html">attack</a> from foreign governments and criminals? Did they not learn any lessons from the wiretapping scandals in <a href="http://en.wikipedia.org/wiki/Greek_wiretapping_case_2004%E2%80%932005">Greece</a> and <a href="http://en.wikipedia.org/wiki/SISMI-Telecom_scandal">Italy</a>, where CALEA backdoors were used to surveil politicians, without law enforcement even knowing about it? You cannot add a backdoor to a communications system without making it more vulnerable to attack, both from insiders and from the outside.</li>
-<li>The Justice Department is being really short-sighted here by imagining that the world is black and white. We&#39;ve heard from people at the <a href="https://blog.torproject.org/blog/trip-report-october-fbi-conference">FBI</a>, DEA, NSA, etc who <a href="https://www.torproject.org/about/torusers.html.en#lawenforcement">use Tor for their job</a>. If we changed the design so we could snoop on people, those users should go use a system that isn&#39;t broken by design — such as one in another country. And if those users should, why wouldn&#39;t criminals switch too?</li>
-<li>In any case, it seems likely that the law won&#39;t apply to The Tor Project, since we don&#39;t run the Tor network and also it&#39;s not a service. (We write free open source software, and then people run it to form a network.)</li>
-<li>The current <a href="http://en.wikipedia.org/wiki/Communications_Assistance_for_Law_Enforcement_Act">CALEA</a> already has an ugly <a href="https://blog.torproject.org/blog/trip-report-german-foreign-office">trickle-down effect</a> on the citizens of other countries. Different governments have different standards for lawful access, but the technology doesn&#39;t distinguish. So when the Egyptian general plugs in his telco box and sees the connector labelled &quot;lawful access&quot;, he thinks to himself &quot;I *am* the law&quot; and proceeds with surveilling his citizens to stay in power. To put it bluntly, America&#39;s lawful intercept program undermines its foreign policy goals.</li>
-</ul>
-
-<p>And lastly, we should all keep in mind that they can&#39;t force us to do anything. You always have the alternative of stopping whatever it is you&#39;re doing. So for example if they try to &quot;force&quot; an individual <a href="https://www.torproject.org/docs/faq#KeyManagement">directory authority</a> operator to do something, the operator should just stop operating the authority (and then consider working with EFF and ACLU to establish precedent that such an attempt was illegal). And so on, all the way up the chain. Good thing the Internet is an international community.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-02412-alpha-packages-and-tor-browser-bundles">New Tor 0.2.4.12-alpha packages and Tor Browser Bundles</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-02415-rc-packages-available">Tor 0.2.4.15-rc packages available</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">erinn</a> under
               
@@ -253,58 +175,27 @@ integrity (closes: #8338)</li>
               
                 <a class="post-category post-category-js" href="#">tor alpha</a>
               
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+                <a class="post-category post-category-js" href="#">tor browser</a>
               
-                <a class="post-category post-category-js" href="#">tor release</a>
+                <a class="post-category post-category-js" href="#">updated packages</a>
                |
-              30 Apr 2013
+              09 Jul 2013
           </p>
         </header>
         <div class="post-description">
-          <p>There is a new alpha-release of Tor Browser, based on tor 0.2.4.12-alpha. Alpha versions of Vidalia Bundles and Expert bundles are also updated.</p>
+          <p>There&#39;s a new <a href="https://lists.torproject.org/pipermail/tor-talk/2013-July/028776.html">Tor 0.2.4.15-rc</a> out and all of the packages have been updated. This is a release candidate and will become the new Tor stable soon, so please test these extensively!</p>
 
-<p>This release also includes a patch to enable <a href="https://thunk.cs.uwaterloo.ca/optimistic-data-pets2010-rump.pdf">optimistic data</a> (PDF) which should significantly speed up your browsing experience. Please give them a try and let us know how they work for you.</p>
+<p>Regular packages can be found here:
+ <a href="https://www.torproject.org/download/download-easy.html.en" title="https://www.torproject.org/download/download-easy.html.en">https://www.torproject.org/download/download-easy.html.en</a></p>
 
-<p>You can download the alpha Tor Browser Bundles <a href="https://www.torproject.org/projects/torbrowser.html.en#Download-torbrowserbundlealpha">here</a>.</p>
+<p>Tor Browser Bundles are here:
+ <a href="https://www.torproject.org/projects/torbrowser.html.en" title="https://www.torproject.org/projects/torbrowser.html.en">https://www.torproject.org/projects/torbrowser.html.en</a></p>
 
-<p><strong>Tor Browser Bundle (2.4.12-alpha-1)</strong></p>
-
-<ul>
-<li>Update Tor to 0.2.4.12-alpha</li>
-<li>Update Torbutton to 1.5.2</li>
-<li>Update libpng to 1.5.15</li>
-<li>Update NoScript to 2.6.6</li>
-<li>Update PDF.js to 0.8.1</li>
-<li><p>Firefox patch changes:</p>
+<p><strong>Tor Browser Bundle (2.4.15-beta-1)</strong></p>
 
 <ul>
-<li>Apply font limits to @font-face local() fonts and disable fallback
-rendering for @font-face. (closes: #8455)</li>
-<li>Use Optimistic Data SOCKS handshake (improves page load performance).
-(closes: #3875)</li>
-<li>Honor the Windows theme for inverse text colors (without leaking those
-colors to content). (closes: #7920)</li>
-<li>Increase pipeline randomization and try harder to batch pipelined
-requests together. (closes: #8470)</li>
-<li>Fix an image cache isolation domain key misusage. May fix several image
-cache related crash bugs with New Identity, exit, and certain websites.
-(closes: #8628)</li>
-</ul></li>
-<li><p>Torbutton changes:</p>
-
-<ul>
-<li>Allow session restore if the user allows disk actvity (closes: #8457)</li>
-<li>Remove the Display Settings panel and associated locales (closes: #8301)</li>
-<li>Fix &quot;Transparent Torification&quot; option. (closes: #6566)</li>
-<li>Fix a hang on New Identity. (closes: #8642)</li>
-</ul></li>
-<li><p>Build changes:</p>
-
-<ul>
-<li>Fetch our source deps from an https mirror (closes: #8286)</li>
-<li>Create watch scripts for syncing mirror sources and monitoring mirror
-integrity (closes: #8338)</li>
-</ul></li>
+<li>Update Tor to 0.2.4.15-rc</li>
+<li>Update NoScript to 2.6.6.7</li>
 </ul>
 
         </div>
@@ -312,72 +203,163 @@ integrity (closes: #8338)</li>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/weekend-new-england-give-camp">A weekend at New England Give Camp</a></h2>
+          <h2 class="post-title"> <a href="/blog/join-us-tor-hack-day-munich-germany">JOIN US - Tor Hack Day, Munich, Germany</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
+              By <a class="post-author" href="#">kelley</a> under
               
-                <a class="post-category post-category-js" href="#">anonymity</a>
+                <a class="post-category post-category-js" href="#">dev meeting</a>
               
-                <a class="post-category post-category-js" href="#">cambridge</a>
-              
-                <a class="post-category post-category-js" href="#">cctv</a>
-              
-                <a class="post-category post-category-js" href="#">domestic violence</a>
-              
-                <a class="post-category post-category-js" href="#">dv</a>
-              
-                <a class="post-category post-category-js" href="#">intimate partner violence</a>
-              
-                <a class="post-category post-category-js" href="#">ipv</a>
-              
-                <a class="post-category post-category-js" href="#">microsoft</a>
-              
-                <a class="post-category post-category-js" href="#">new england give camp</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
+                <a class="post-category post-category-js" href="#">hack day</a>
                |
-              29 Apr 2013
+              08 Jul 2013
           </p>
         </header>
         <div class="post-description">
-          <h1>Trip Report for New England Give Camp 2013</h1>
+          <p>Join us for a public hack day on Friday, July 26, 2013 in Munich, Germany. Thank you to our hosts at the Technische Universität München ( <a href="http://www.tum.de" title="http://www.tum.de">http://www.tum.de</a>).</p>
 
-<p>I spent the entire weekend with <a href="http://newenglandgivecamp.org/">New England Give Camp</a> at <a href="http://microsoftcambridge.com">Microsoft Research</a> in Cambridge, MA. I was one of the non-profits, representing <a href="https://wiki.tpo.is">ipv tech</a>, Tor, and offering myself as a technical volunteer to help out other non-profits. Over the 48 hours, here&#39;s what I helped out doing:</p>
+<p>The agenda and conversations will be determined by you and Tor&#39;s team of developers and researchers - so bring your ideas, questions, projects and technical expertise with you!</p>
 
-<ul>
-<li><p><a href="http://www.transitionhouse.org/">Transition House</a></p>
+<p>This event is open to the public and free of charge - no RSVP necessary.</p>
 
-<ul>
-<li>Help evaluate their IT systems</li>
-<li>Look at, reverse engineer, and fix their Alice database system</li>
-</ul></li>
-<li><p><a href="http://www.emergedv.com/">Emerge</a></p>
+<p>Friday, July 26, 2013
+Start Time: 10:00 am
+Location: LRZ building, Sminarraum (H.E. 008), Bolzmannstrabe 1, 85748 Garching,
+Germany. NOTE: the room is to the right of the main entrance.</p>
 
-<ul>
-<li>Update their wordpress installation</li>
-<li>Help fix the rotating images on the site</li>
-</ul></li>
-<li><p><a href="https://wiki.tpo.is">ipv tech</a></p>
+<p>For questions please contact <a href="mailto:execdir@torproject.org">execdir@torproject.org</a></p>
 
-<ul>
-<li>Hack on <a href="http://fuerza.is">fuerza</a> app</li>
-<li>Get fuerza into a git repo, now <a href="https://gitorious.org/fuerza">here at gitorious</a></li>
-<li>rewrite the app to be markdown and static files to work offline</li>
-</ul></li>
-<li><p>Children&#39;s Charter</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-check-outage-03-and-04-july-2013">Tor Check Outage on 03 and 04 July 2013</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">abuse</a>
+              
+                <a class="post-category post-category-js" href="#">check</a>
+              
+                <a class="post-category post-category-js" href="#">dns queries from hell</a>
+              
+                <a class="post-category post-category-js" href="#">exitlist</a>
+              
+                <a class="post-category post-category-js" href="#">TorCheck</a>
+               |
+              04 Jul 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Over the past 24 hours <a href="https://check.torproject.org" title="https://check.torproject.org">https://check.torproject.org</a> has been unavailable due to excessive DNS queries to the exitlist service. It seems there are a number of individuals and companies with commercial products relying upon this volunteer service. We finally hit the point where we couldn&#39;t keep up with the queries and simply disabled the service.</p>
 
-<ul>
-<li>Help resurrect their hacked WordPress installation and build them a new site.</li>
-</ul></li>
-</ul>
+<p>This is a volunteer service offered as a proof of concept. We strongly encourage people to run their own. The code is available at <a href="https://svn.torproject.org/svn/check/trunk/" title="https://svn.torproject.org/svn/check/trunk/">https://svn.torproject.org/svn/check/trunk/</a>.</p>
 
-<p>I also did a 30 minute talk about technology and intimate partner violence. Over the past few years, I&#39;ve seen every possible technology used to stalk, harass, and abuse people--and those that help them. I&#39;m helping the victims and advocates use the same technologies to empower the victims and turn the tables on the abusers in most cases. The ability to be anonymous and be free from surveillance for once, even for an hour, is cherished by the victims and affected advocates.</p>
+<p>The new <a href="https://blog.torproject.org/blog/tor-browser-bundle-30alpha2-released">Tor Browser 3.0 alpha</a> series includes a new way to detect &quot;tor or not&quot; locally, without relying on a single point of failure service. This is the first step towards finally retiring check.torproject.org for good.</p>
 
-<p>Our team was great. Kevin, Paul, John, Bob, Carmine, Adam, and Sarah did a great job at keeping motivated, making progress, and joking along the way. Microsoft, Whole Foods, and a slew of sponsors offered endless food, sugary drinks, beautiful views, and encouragement throughout the weekend.</p>
+<p>As of 09:00 on 04 July 2013, the service is re-enabled. We reserve the right to take it down as needed without notice.</p>
 
-<p>Cambridge Community Television <a href="http://cctvcambridge.org/NEGiveCamp2013">interviewed me</a> at the very end of the event. There&#39;s also a Flickr group <a href="https://secure.flickr.com/groups/negc2013/">full of pictures</a>.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-july-3rd-2013">Tor Weekly News — July 3rd, 2013</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">lunar</a> under
+              
+                <a class="post-category post-category-js" href="#">tor weekly news</a>
+               |
+              03 Jul 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Welcome to the very first issue of Tor Weekly News, the weekly newsletter meant to cover what is happening in the vibrant Tor community.</p>
 
-<p>Overall it was a great experience. I encourage you to volunteer next year.</p>
+<h1>Deterministic, independently reproduced builds of Tor Browser Bundle</h1>
+
+<p>Mike Perry, Linus Nordberg and Georg Koppen each independently built identical binaries of the <a href="https://blog.torproject.org/blog/tor-browser-bundle-30alpha2-released">Tor Browser Bundle 3.0 alpha 2 release</a>, now <a href="https://archive.torproject.org/tor-package-archive/torbrowser/3.0a2/">available for download at the Tor Package Archive</a>.</p>
+
+<p>The <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build">build system</a>, first adopted for the release of 3.0 alpha 1, uses <a href="http://gitian.org/">Gitian</a> to enable anyone to produce byte-identical Tor Browser Bundle binary packages from source. This represents a major improvement in the security of the Tor software build and distribution processes against targeted attacks. The motivations and technical details of this work will appear in future Tor Project blog posts.</p>
+
+<h1>Minor progress on datagram-based transport</h1>
+
+<p><a href="https://blog.torproject.org/blog/moving-tor-datagram-transport">As Steven Murdoch explained in 2011</a>, in the current implementation of Tor, “when a packet gets dropped or corrupted on a link between two Tor nodes, […], all circuits passing through this pair of nodes will be stalled, not only the circuit corresponding to the packet which was dropped.” This is because traffic from multiple circuits heading into an OR node are multiplexed by default into a single TCP connection. However, when the reliability and congestion control requirements of TCP streams are enforced (by the operating system) on this multiplexed connection, a situation is created in which one poor quality circuit can disproportionately slow down the others.</p>
+
+<p>This shortcoming could be worked around by migrating Tor from TCP to a datagram-based transport protocol. Nick Mathewson opened <a href="https://bugs.torproject.org/9165">#9165</a> to track progress on the matter.</p>
+
+<p>Late last year, Steven Murdoch began an <a href="https://gitweb.torproject.org/sjm217/tor.git/shortlog/refs/heads/utp">experimental Tor branch using uTP</a>, a protocol “which provides reliable, ordered delivery while maintaining minimum extra delay”, and is already <a href="http://www.bittorrent.org/beps/bep_0029.html">used by uTorrent for peer-to-peer connections</a>. Nick Mathewson finally got to review his work and wrote several comments on <a href="https://bugs.torproject.org/9166">#9166</a>. The code isn’t close to production-quality right now; it is just good enough for performance testing.</p>
+
+<h1>obfsproxyssh</h1>
+
+<p>Yawning Angel sent out <a href="https://lists.torproject.org/pipermail/tor-dev/2013-June/005083.html">a request for comments</a> on the very first release of <a href="https://github.com/Yawning/obfsproxyssh">obfsproxyssh</a>, a pluggable transport that uses the ssh wire protocol to hide Tor traffic. Its behavior would appear to potential eavesdroppers to be “identical to a user sshing to a host, authenticating with a RSA public/private key pair and opening a direct-tcp channel to the ORPort of the bridge.”</p>
+
+<p>The announcement contains several open issues and questions. Feel free to have a look and voice your comments!</p>
+
+<h1>Crowdfunding for Tor exit relays and bridges</h1>
+
+<p>Moritz Bartl announced that he has started a <a href="http://www.indiegogo.com/projects/tor-anti-censorship-and-anonymity-infrastructure/">crowdfunding campaign for Tor exit relays and bridges</a>.</p>
+
+<p>The donations will be distributed equally among all Torservers.net partner organizations (Zwiebelfreunde e.V., DFRI, Nos Oignons, Swiss Privacy Foundation, Frënn vun der Ënn and NoiseTor).</p>
+
+<p>For a faster and better network, chip in and spread the word!</p>
+
+<h1>Tails 0.19 is out, new stable Tor Browser Bundles</h1>
+
+<p>On Wednesday, June 26, two of the most popular Tor projects both made new releases: the Tor Browser Bundle, and Tails, The Amnesiac Incognito Live System. Users are encouraged to upgrade as soon as possible.</p>
+
+<p>The <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-and-tor-02414-alpha-packages">stable Tor Browser Bundle was updated to version 2.3.25-10</a>, and includes fixes from upstream Firefox 17.0.7esr. <a href="https://tails.boum.org/news/version_0.19/">Tails 0.19</a> includes the new stable Tor Browser, along with an updated 3.9.5 kernel and minor security improvements to wireless, GNOME and GnuPG defaults.</p>
+
+<h1>Jenkins + Stem catching their first regression</h1>
+
+<p>Quoting <a href="https://lists.torproject.org/pipermail/tor-reports/2013-June/000262.html">Damian Johnson’s June status report</a>: “Our automated
+Jenkins test runs caught their first instance of tor regression. This
+concerned LOADCONF’s behavior after merging a branch for ticket #6752”.
+A <a href="https://bugs.torproject.org/9122">new ticket</a> was opened after Damian properly identified the issue.</p>
+
+<h1>First round of reports from GSoC projects</h1>
+
+<p><a href="https://lists.torproject.org/pipermail/tor-dev/2013-June/005078.html">Johannes Fürmann reported</a> on his project, a virtual network environment intended to simulate censorship for OONI (dubbed “Evil Genius”, after Descartes). <a href="https://lists.torproject.org/pipermail/tor-dev/2013-June/005082.html">Hareesan reported</a> on the steganography browser addon. <a href="https://lists.torproject.org/pipermail/tor-dev/2013-June/005085.html">Cristian-Matei Toader is working</a> on adding capabilities-based sandboxing to Tor on Linux, using the kernel’s seccomp syscall filtering mechanism. <a href="https://lists.torproject.org/pipermail/tor-dev/2013-June/005086.html">Chang Lan implemented</a> a HTTP proxy-based transport using CONNECT as the first step in his efforts to implement a general Tor-over-HTTP pluggable transport.</p>
+
+<h1>Monthly status reports for June 2013</h1>
+
+<p>The wave of regular monthly reports from Tor project members for the month of June has begun. <a href="https://lists.torproject.org/pipermail/tor-reports/2013-June/000262.html">Damian Johnson</a>’s was the first, followed soon after by reports from <a href="https://lists.torproject.org/pipermail/tor-reports/2013-June/000263.html">Philipp Winter</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000264.html">Colin C.</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000266.html">Nick Mathewson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000267.html">Lunar</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000268.html">Moritz Bartl</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000269.html">Jason Tsai</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000270.html">Andrew Lewman</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000271.html">Sherief Alaa</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000272.html">Kelley Misata</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000273.html">Matt Pagan</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2013-July/000276.html">Andrea Shepard</a>.</p>
+
+<h1>Tor on StackExchange</h1>
+
+<p>The <a href="http://area51.stackexchange.com/proposals/56447/tor-online-anonymity-privacy-and-security">proposed StackExchange Q&amp;A page for Tor</a> has left the “initial definition” stage and has entered the “commitment” stage on Area 51. During <a href="https://lists.torproject.org/pipermail/tor-talk/2013-June/028473.html">this stage</a>, interested users are asked to digitally “sign” the proposal with their name to help ensure the site will have an active community during its critical early days.</p>
+
+<h1>Forensic analysis of the Tor Browser Bundle</h1>
+
+<p>On Friday, June 28, Runa Sandvik published Tor Tech Report 2013-06-001, titled <a href="https://research.torproject.org/techreports/tbb-forensic-analysis-2013-06-28.pdf">Forensic Analysis of the Tor Browser Bundle on OS X, Linux, and Windows</a>, as part of a deliverable project for two Tor sponsors. The report is a detailed write-up of the forensic experiments Sandvik has been <a href="http://encrypted.cc/post/51552592311/forensic-analysis-of-tor-on-os-x">documenting on her blog</a>, the goal of which was “to identify traces left behind by the Tor Browser Bundle after extracting, using, and deleting the bundle”.</p>
+
+<p>In short, each platform indeed retains forensic traces of the existence of the Tor Browser Bundle. Many “are related to default operating system settings, some of which the bundle might not be able to remove. We therefore <a href="https://bugs.torproject.org/7033">propose the creation of a document</a> which lists steps our users can take to mitigate these traces on the different operating systems.”</p>
+
+<p>Of course, Tor Browser Bundle users wishing to take immediate action to prevent the creation of forensic traces are not out of luck: “the easiest way to avoid leaving traces on a computer system is to use <a href="https://tails.boum.org/">The Amnesiac Incognito Live System (Tails)</a>.”</p>
+
+<h1>Miscellaneous development news</h1>
+
+<p>David Goulet is <a href="https://lists.torproject.org/pipermail/tor-dev/2013-June/005069.html">making good progress</a> on his <a href="https://lists.torproject.org/pipermail/tor-dev/2013-June/004959.html">rewrite of torsocks</a> and should have a beta ready in a couple of weeks. He awaits your code reviews, comments and contributions.</p>
+
+<p>Leo Unglaub ran into some trouble with a dependency just as he was about to publish the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-June/005084.html">work-in-progress code for his Vidalia replacement</a>.</p>
+
+<p>Nick Mathewson did some analysis on <a href="https://bugs.torproject.org/7009">possible methods for reducing the volume of fetched directory information</a>, by running some scripts over the last month of consensus directories.</p>
+
+<h1>A vulnerability affecting microdescriptors in Tor?</h1>
+
+<p>On Friday, June 28 an anonymous individual <a href="https://twitter.com/ewrwerwtretetet/status/350815079882686464">contacted Tor developers</a> over Twitter <a href="http://pastebin.com/pRiMx0CW">claiming to have found a vulnerability</a> in the way microdescriptors are validated by Tor clients which would allow “determination of the source and end-point of a given [victim’s] tor connection with little more than a couple relays and some rogue directory authorities [both controlled by the adversary].”</p>
+
+<p><a href="https://lists.torproject.org/pipermail/tor-talk/2013-June/028699.html">Detailed</a> <a href="https://lists.torproject.org/pipermail/tor-talk/2013-June/028700.html">testing</a> by Nick Mathewson could not reproduce the behavior in the Tor client that was claimed to enable such an attack. After a lengthy Twitter debate with Mathewson, the reporter disappeared, no bugs have been filed, and it appears the vulnerability was nothing of the sort. Without being able to verify the existence of the claimed vulnerability, Mathewson <a href="https://lists.torproject.org/pipermail/tor-talk/2013-June/028701.html">concluded</a> that the reporter’s described attack was equivalent “at worst… to the ‘request filtering’ attack… which has defenses”.</p>
+
+<p>The issue was also <a href="http://seclists.org/fulldisclosure/2013/Jun/245">mentioned</a> (and likewise dismissed) on the security mailing list, Full Disclosure.</p>
+
+<p>For anyone interested in reporting vulnerabilities in Tor software, please avoid following that example. Until a process gets <a href="https://bugs.torproject.org/9186">documented</a>, the best way to report the discovery of a vulnerability is to get in touch with one of the Tor core developers using encrypted email.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, dope457, moskvax, Mike Perry, Nick Mathewson, mttp, and luttigdev.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteer writers who watch the Tor community and report about what is going on. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a> and write down your name if you want to get involved!</p>
 
         </div>
       </section>
@@ -388,7 +370,7 @@ integrity (closes: #8338)</li>
       
         <a href="/blog/page32" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 33 of 134</span>
+      <span class="page_number ">Page: 33 of 137</span>
       
         <a href="/blog/page34" class="next">Next</a>
       

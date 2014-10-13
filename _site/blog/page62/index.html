@@ -53,381 +53,239 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/different-ways-use-bridge">Different Ways to Use a Bridge</a></h2>
+          <h2 class="post-title"> <a href="/blog/december-2011-progress-report">December 2011 Progress Report</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">Sebastian</a> under
+              By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">Bridge</a>
+                <a class="post-category post-category-js" href="#">alpha release</a>
               
-                <a class="post-category post-category-js" href="#">bridge users</a>
+                <a class="post-category post-category-js" href="#">hidden services</a>
               
-                <a class="post-category post-category-js" href="#">bridges</a>
+                <a class="post-category post-category-js" href="#">openssl fixes</a>
               
-                <a class="post-category post-category-js" href="#">circumvention</a>
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">stable release</a>
+              
+                <a class="post-category post-category-js" href="#">tor releases</a>
                |
-              29 Nov 2011
+              15 Jan 2012
           </p>
         </header>
         <div class="post-description">
-          <p><strong>Different Ways to Use a Bridge</strong></p>
-
-<p>When some adversary prevents users from reaching the Tor network, our most popular answer is using bridge relays (or bridges for short). Those are hidden relays, not listed along with all the other relays in the networkstatus documents. Currently, we have about 600 of them, and censors are having different luck learning and blocking them — see <a href="https://blog.torproject.org/blog/research-problems-ten-ways-discover-tor-bridges">the 10 ways to discover Tor bridges blog post</a> for more on how discovery approaches may work. China appears to be the only place able to successfully block most bridges consistently, whereas other places occasionally manage to block Tor&#39;s handshake and as a byproduct block all bridges too.</p>
-
-<p>Bridge users can be broadly grouped in three camps:</p>
-
-<ul>
-<li>Tor is blocked, and some way — any way — to reach the network has to be found. The adversary is not very dangerous, but very annoying.</li>
-<li>Tor may or may not be blocked, but the user is trying to hide the fact they&#39;re hiding Tor. The adversary may be extremely dangerous.</li>
-<li>Other bridge users: Testing whether the bridge works (automated or manual), probing, people using bridges without their knowledge because they came pre-configured in their bundle.</li>
-</ul>
-
-<p>Here we examine the first two use cases more closely. Specifically, we want to look at properties of a bridge that must exist for it to be useful to a user.</p>
-
-<p><strong>Bridges — building blocks</strong></p>
-
-<p>First off, it is helpful to understand some basics about bridges and how they are used by normal users.</p>
-
-<p>Bridges are very similar to ordinary relays, in that they are operated by volunteers who made the decision to help people reach the Tor network. The difference to a normal relay is where the information about the bridge is published to — bridges can choose to either publish to the Bridge Authority (a special relay collecting all bridge addresses that it receives), or to not publish their information anywhere. The former are called public bridges, the latter private bridges.</p>
-
-<p>We don&#39;t have any information about the number of private bridges, but since the Bridge Authority collects data about the public bridges, we do know that bridges are used in the real world. See <a href="https://metrics.torproject.org/users.html#bridge-users">the bridge users</a> and <a href="https://metrics.torproject.org/network.html#networksize">networksize</a> graphs for some examples. Not having data about private bridges or their users means some of the analysis below is based on discussions with users of private bridges and our best estimates, and it can&#39;t be backed up by statistical data.</p>
-
-<p>The reason we&#39;re using a Bridge Authority and collecting information about bridges is that we want to give out bridges to people who aren&#39;t in a position to learn about a private bridge themselves.</p>
-
-<p>&quot;Learning about a bridge&quot; generally means learning about the bridge&#39;s IP address and port, so that a connection can be made. Optionally, the bridge identity fingerprint is included, too — this helps the client to verify that it is actually talking to the bridge, and not someone that is intercepting the network communication. For a private bridge, the operator has to pass on that information; public bridges wrap up some information about themselves in what is called their bridge descriptor and send that to the bridge authority. The bridge descriptor includes some statistical information, like aggregated user counts and countries of origin of traffic. Our analysis here focuses solely on the data provided by public bridges.</p>
-
-<p>Once a user has learned about some bridges, she configures her Tor client to use them, typically by entering them into the appropriate field in Vidalia. Alternatively, she might use a different controller or put the data into tor&#39;s configuration file directly.</p>
-
-<p><strong>Learning from bridge descriptor fetches</strong></p>
-
-<p>We&#39;ve been collecting bridge descriptor fetch statistics on the bridge authority, and are using this data to pose some questions and propose some changes. The statistics collected are how many bridge descriptors were served in total, and how many unique descriptors were served, as well as the 0, 25, 50, 75 and 100 percentiles of fetches per descriptor. Every 24 hours, the current statistics are written to disk and the counters reset. The current statistics are attached to this post, for closer inspection. We&#39;ve also prepared two graphs to easily see the data at a glance:</p>
-
-<p><img src="https://blog.torproject.org/files/bridge-total-downloads.png" alt="Total bridge downloads"></p>
-
-<p><img src="https://blog.torproject.org/files/bridge-downloads-per-desc.png" alt="Bridge downloads per descriptor"></p>
-
-<p>The first thing to note is that there aren&#39;t very many bridge descriptor fetches at all, which isn&#39;t a big surprise: The current Tor bundles don&#39;t fetch them when they&#39;re used in the typical way, that is by adding some bridges via Vidalia&#39;s interface after bridges were discovered via one of our bridge distribution channels. Over the past month, there have been between 3900 and 6600 fetches per day, with a median of 8 fetches per bridge. The most fetched descriptor is fetched up to 350 times per day, indicating that it does indeed belong to a bridge that was given out with a fingerprint and being used by Tor clients. We have gotten some reports that a bundle circulated with pre-configured bridges, and this could account for the many fetches.</p>
-
-<p>Secondly, most bridge descriptors are not even fetched from the authority. This is a clear indication that we can improve our odds of updating bridge clients with current bridge info if we can get them to request the information better.</p>
-
-<p><strong>Improving Tor&#39;s behaviour for the two user groups</strong></p>
-
-<p>The first group (&quot;Tor is blocked, and some way to reach the network has to be found&quot;) is mostly concerned about circumvention, without necessarily hiding that they&#39;re using Tor from someone. Typically, access to the Internet is filtered, but circumventing a filter isn&#39;t too risky and people are more concerned with access than hiding their tracks from a data-collecting adversary. Speed, bootstrapping performance, and little intervention/maintenance of a setup are the biggest goals.</p>
-
-<p>Adding auto-discovery mechanisms for bridges that changed their IP address will help this group gain a lot more robustness when it comes to maintaining connectivity against an adversary that blocks public relays, but isn&#39;t very quick in blocking all bridges. As far as we know, this is currently true for the majority of our bridge userbase.</p>
-
-<p>For the second group (&quot;Tor may or may not be blocked, but the user is trying to hide the fact they&#39;re hiding Tor&quot;), precise control over Tor&#39;s actions is much more important than constant connectivity, and private bridges might be utilized to that end as well. A user in this group wants to keep the bridges he&#39;s using secret, and puts up with frequent updates to the configuration for the added safety of only connecting to a pre-specified IP address:port combination. We can&#39;t do very much for a user belonging to this group with regard to bridges, but he will very much benefit from improvements made to our general fingerprintability resistance. Also options like the <a href="https://trac.torproject.org/projects/tor/ticket/3644">DisableNetwork</a> option (prevent touching the network in any kind of way until this option is changed) that was recently introduced to Tor help him.</p>
-
-<p>Another interesting point here is that we can indirectly improve the behaviour for the first group by not making it too easy to learn about bridges, because censors can use the same data to more effectively block them. This means that we shouldn&#39;t, for example, start giving out significantly more bridges to a single user.</p>
-
-<p>We&#39;ve written a <a href="https://lists.torproject.org/pipermail/tor-dev/2011-November/003097.html">proposal</a> to implement some changes in Tor, to better facilitate the needs of the first group of bridge users.</p>
-
-<p><thead><tr>
-<th>Attachment</th>
-<th>Size</th> </tr></thead><tbody>
- <tr class="odd">
-<td><a href="https://blog.torproject.org/files/bridge_desc_fetches_stats.txt">bridge<em>desc</em>fetches_stats.txt</a></td>
-<td>2.87 KB</td> </tr>
- <tr class="even">
-<td><a href="https://blog.torproject.org/files/bridge-downloads-per-desc.png">bridge-downloads-per-desc.png</a></td>
-<td>52.87 KB</td> </tr>
- <tr class="odd">
-<td><a href="https://blog.torproject.org/files/bridge-total-downloads.png">bridge-total-downloads.png</a></td>
-<td>42.33 KB</td> </tr>
-</tbody></p>
+          <p>Our progress report for December 2011 is available as a <a href="https://archive.torproject.org/monthly-report-archive/2011-December-Monthly-Report.pdf">pdf with pretty graphs</a> and <a href="https://archive.torproject.org/monthly-report-archive/2011-December-Monthly-Report.txt">text</a> file. Highlights are on hidden services fixes, openssl fixes, obfuscating proxy progress, and general updates on advocacy and releases.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-0238-alpha-out">Tor 0.2.3.8-alpha is out</a></h2>
+          <h2 class="post-title"> <a href="/blog/tails-010-out">Tails 0.10 is out</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
+              By <a class="post-author" href="#">tails</a> under
               
-                <a class="post-category post-category-js" href="#">alpha releases</a>
+                <a class="post-category post-category-js" href="#">anonymous operating system</a>
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-              
-                <a class="post-category post-category-js" href="#">windows</a>
+                <a class="post-category post-category-js" href="#">tails</a>
                |
-              24 Nov 2011
+              11 Jan 2012
           </p>
         </header>
         <div class="post-description">
-          <p>Tor 0.2.3.8-alpha fixes some crash and assert bugs, including a
- socketpair-related bug that has been bothering Windows users. It adds
- support to serve microdescriptors to controllers, so Vidalia&#39;s network
- map can resume listing relays (once Vidalia implements its side),
- and adds better support for hardware AES acceleration. Finally, it
- starts the process of adjusting the bandwidth cutoff for getting the
- &quot;Fast&quot; flag from 20KB to (currently) 32KB -- preliminary results show
- that tiny relays harm performance more than they help network capacity.</p>
+          <p><a href="https://tails.boum.org/">The Amnesic Incognito Live System (Tails)</a>, version 0.10, is out.</p>
 
-<p><strong>Changes in version 0.2.3.8-alpha - 2011-11-22</strong>
-<strong>Major bugfixes:</strong></p>
+<p><strong>Changes</strong></p>
+
+<p>Notable user-visible changes include:</p>
 
 <ul>
-<li>Initialize Libevent with the EVENT_BASE_FLAG_NOLOCK flag enabled, so
-that it doesn&#39;t attempt to allocate a socketpair. This could cause
-some problems on Windows systems with overzealous firewalls. Fix for
-bug 4457; workaround for Libevent versions 2.0.1-alpha through
-2.0.15-stable.</li>
-<li>Correctly sanity-check that we don&#39;t underflow on a memory
-allocation (and then assert) for hidden service introduction
-point decryption. Bug discovered by Dan Rosenberg. Fixes bug 4410;
-bugfix on 0.2.1.5-alpha.</li>
-<li>Remove the artificially low cutoff of 20KB to guarantee the Fast
-flag. In the past few years the average relay speed has picked
-up, and while the &quot;top 7/8 of the network get the Fast flag&quot; and
-&quot;all relays with 20KB or more of capacity get the Fast flag&quot; rules
-used to have the same result, now the top 7/8 of the network has
-a capacity more like 32KB. Bugfix on 0.2.1.14-rc. Fixes bug 4489.</li>
-<li>Fix a rare assertion failure when checking whether a v0 hidden
-service descriptor has any usable introduction points left, and
-we don&#39;t have enough information to build a circuit to the first
-intro point named in the descriptor. The HS client code in
-0.2.3.x no longer uses v0 HS descriptors, but this assertion can
-trigger on (and crash) v0 HS authorities. Fixes bug 4411.
-Bugfix on 0.2.3.1-alpha; diagnosed by frosty_un.</li>
-<li>Make bridge authorities not crash when they are asked for their own
-descriptor. Bugfix on 0.2.3.7-alpha, reported by Lucky Green.</li>
-<li>When running as a client, do not print a misleading (and plain
-wrong) log message that we&#39;re collecting &quot;directory request&quot;
-statistics: clients don&#39;t collect statistics. Also don&#39;t create a
-useless (because empty) stats file in the stats/ directory. Fixes
-bug 4353; bugfix on 0.2.2.34 and 0.2.3.7-alpha.</li>
-</ul>
-
-<p><strong>Major features:</strong></p>
+<li>Tor: upgrade to 0.2.2.35-1.</li>
+<li><p>Iceweasel</p>
 
 <ul>
-<li>Allow Tor controllers like Vidalia to obtain the microdescriptor
-for a relay by identity digest or nickname. Previously,
-microdescriptors were only available by their own digests, so a
-controller would have to ask for and parse the whole microdescriptor
-consensus in order to look up a single relay&#39;s microdesc. Fixes
-bug 3832; bugfix on 0.2.3.1-alpha.</li>
-<li>Use OpenSSL&#39;s EVP interface for AES encryption, so that all AES
-operations can use hardware acceleration (if present). Resolves
-ticket 4442.</li>
-</ul>
-
-<p><strong>Minor bugfixes (on 0.2.2.x and earlier):</strong></p>
+<li>Install Iceweasel 9.0 from the Debian Mozilla team&#39;s APT repository.</li>
+<li>Update Torbutton to 1.4.5.1-1.</li>
+<li>Support viewing any YouTube video that is available in HTML5 format.</li>
+<li>Use Scroogle (any languages) instead of Scroogle (English only) when booted in English. Many users choose English because their own language is not supported yet; let&#39;s not hide them search results in their own language.</li>
+<li>Install the NoScript Firefox extension; configure it the same way as the TBB does.</li>
+<li>Disable third-party cookies. They can be used to track users, which is bad. Besides, this is what TBB has been doing for years.</li>
+</ul></li>
+<li><p>Do not transparently proxy outgoing Internet connections through Tor. Instead drop all non-Torified Internet traffic. Hence applications has to be explicitly configured to use Tor in order to reach the Internet from now on.</p></li>
+<li><p>Software</p>
 
 <ul>
-<li>Detect failure to initialize Libevent. This fix provides better
-detection for future instances of bug 4457.</li>
-<li>Avoid frequent calls to the fairly expensive cull_wedged_cpuworkers
-function. This was eating up hideously large amounts of time on some
-busy servers. Fixes bug 4518; bugfix on 0.0.9.8.</li>
-<li>Don&#39;t warn about unused log_mutex in log.c when building with
---disable-threads using a recent GCC. Fixes bug 4437; bugfix on
-0.1.0.6-rc which introduced --disable-threads.</li>
-<li>Allow manual &#39;authenticate&#39; commands to the controller interface
-from netcat (nc) as well as telnet. We were rejecting them because
-they didn&#39;t come with the expected whitespace at the end of the
-command. Bugfix on 0.1.1.1-alpha; fixes bug 2893.</li>
-<li>Fix some (not actually triggerable) buffer size checks in usage of
-tor_inet_ntop. Fixes bug 4434; bugfix on Tor 0.2.0.1-alpha. Patch
-by Anders Sundman.</li>
-<li>Fix parsing of some corner-cases with tor_inet_pton(). Fixes
-bug 4515; bugfix on 0.2.0.1-alpha; fix by Anders Sundman.</li>
-<li>When configuring, starting, or stopping an NT service, stop
-immediately after the service configuration attempt has succeeded
-or failed. Fixes bug 3963; bugfix on 0.2.0.7-alpha.</li>
-<li>When sending a NETINFO cell, include the original address
-received for the other side, not its canonical address. Found
-by &quot;troll_un&quot;; fixes bug 4349; bugfix on 0.2.0.10-alpha.</li>
-<li>Rename the bench_{aes,dmap} functions to test_*, so that tinytest
-can pick them up when the tests aren&#39;t disabled. Bugfix on
-0.2.2.4-alpha which introduced tinytest.</li>
-<li>Fix a memory leak when we check whether a hidden service
-descriptor has any usable introduction points left. Fixes bug
-
-<ol>
-<li>Bugfix on 0.2.2.25-alpha.</li>
-</ol></li>
-<li>Fix a memory leak in launch_direct_bridge_descriptor_fetch() that
-occurred when a client tried to fetch a descriptor for a bridge
-in ExcludeNodes. Fixes bug 4383; bugfix on 0.2.2.25-alpha.</li>
-</ul>
-
-<p><strong>Minor bugfixes (on 0.2.3.x):</strong></p>
+<li>Upgrade Vidalia to 0.2.15-1+tails1. This version will not warn about new Tor versions (this is handled by Tails security check instead).</li>
+<li>Upgrade MAT to 0.2.2-1~bpo60+1.</li>
+<li>Upgrade VirtualBox guest software to 4.1.6-dfsg-2~bpo60+1, built against the ABI of X.Org backports.</li>
+<li>Upgrade I2P to 0.8.11; the start script (which was broken in Tails 0.9) is now fixed.</li>
+<li>Install unar (The Unarchiver) instead of the non-free unrar.</li>
+<li><a href="https://tails.boum.org/doc/encryption_and_privacy/secure_deletion/">Install Nautilus Wipe</a> instead of custom Nautilus scripts.</li>
+</ul></li>
+<li><p>Hardware support</p>
 
 <ul>
-<li>Make util unit tests build correctly with MSVC. Bugfix on
-0.2.3.3-alpha. Patch by Gisle Vanem.</li>
-<li>Successfully detect AUTH_CHALLENGE cells with no recognized
-authentication type listed. Fixes bug 4367; bugfix on 0.2.3.6-alpha.
-Found by frosty_un.</li>
-<li>If a relay receives an AUTH_CHALLENGE cell it can&#39;t answer,
-it should still send a NETINFO cell to allow the connection to
-become open. Fixes bug 4368; fix on 0.2.3.6-alpha; bug found by
-&quot;frosty&quot;.</li>
-<li>Log less loudly when we get an invalid authentication certificate
-from a source other than a directory authority: it&#39;s not unusual
-to see invalid certs because of clock skew. Fixes bug 4370; bugfix
-on 0.2.3.4-alpha and 0.2.3.6-alpha.</li>
-</ul>
-
-<p><strong>Minor features:</strong></p>
+<li>Upgrade Linux kernel to 3.1.6-1.</li>
+<li>Upgrade to X.Org from squeeze-backports.</li>
+<li>Install more, and more recent b43 firmwares.</li>
+<li>Upgrade barry to 0.15-1.2~bpo60+1.</li>
+</ul></li>
+<li><p>Internationalization</p>
 
 <ul>
-<li>Add two new config options for directory authorities:
-AuthDirFastGuarantee sets a bandwidth threshold for guaranteeing the
-Fast flag, and AuthDirGuardBWGuarantee sets a bandwidth threshold
-that is always sufficient to satisfy the bandwidth requirement for
-the Guard flag. Now it will be easier for researchers to simulate
-Tor networks with different values. Resolves ticket 4484.</li>
-<li>When Tor ignores a hidden service specified in its configuration,
-include the hidden service&#39;s directory in the warning message.
-Previously, we would only tell the user that some hidden service
-was ignored. Bugfix on 0.0.6; fixes bug 4426.</li>
-<li>When we fail to initialize Libevent, retry with IOCP disabled so we
-don&#39;t need to turn on multi-threading support in Libevent, which in
-turn requires a working socketpair(). This is a workaround for bug
-4457, which affects Libevent versions from 2.0.1-alpha through
-2.0.15-stable.</li>
-<li>Detect when we try to build on a platform that doesn&#39;t define
-AF_UNSPEC to 0. We don&#39;t work there, so refuse to compile.</li>
-<li>Update to the November 1 2011 Maxmind GeoLite Country database.</li>
-</ul>
-
-<p><strong>Packaging changes:</strong></p>
+<li>Add basic language support for Russian, Farsi and Vietnamese.</li>
+<li>Install some Indic fonts.</li>
+<li>Install some Russian fonts.</li>
+<li>Add Alt+Shift shortcut to switch keyboard layout.</li>
+</ul></li>
+<li><p>Miscellaneous</p>
 
 <ul>
-<li>Make it easier to automate expert package builds on Windows,
-by removing an absolute path from makensis.exe command.</li>
+<li>Support booting in &quot; <a href="https://tails.boum.org/doc/first_steps/windows_theme/">Windows XP-like camouflage mode</a>&quot;.</li>
+<li>Do not fetch APT translation files. Running apt-get update is heavy enough.</li>
+<li>Add MSN support thanks to msn-pecan.</li>
+<li>Add custom SSH client configuration:</li>
+<li>Prefer strong ciphers and MACs.</li>
+<li>Enable maximum compression level.</li>
+<li>Explicitly disable X11 forwarding.</li>
+<li>Connect as root by default, to prevent fingerprinting when username was not specified.</li>
+<li>Replace flawed FireGPG with a home-made GnuPG encryption applet; install a feature-stripped FireGPG that redirects users to <a href="https://tails.boum.org/doc/encryption_and_privacy/FireGPG_susceptible_to_devastating_attacks/">the documentation</a>, and don&#39;t run Seahorse applet anymore.</li>
+<li>Blank screen when lid is closed, rather than shutting down the system. The shutdown &quot;feature&quot; has caused data losses for too many people, it seems. There are many other ways a Tails system can be shut down in a hurry these days.</li>
+<li>Fix bug in the Pidgin nick generation that resulted in the nick &quot;XXX_NICK_XXX&quot; once out of twenty.</li>
+<li>Pre-configure the #tor IRC discussion channel in Pidgin.</li>
+<li>Reintroduce the htpdate notification, telling users when it&#39;s safe to use Tor Hidden Services.</li>
+<li>Various htpdate improvements.</li>
+</ul></li>
 </ul>
 
-<p><strong>Code simplifications and refactoring:</strong></p>
+<p>Plus the usual bunch of minor bug reports and improvements.</p>
 
-<ul>
-<li>Remove some redundant #include directives throughout the code.
-Patch from Andrea Gelmini.</li>
-<li>Unconditionally use OpenSSL&#39;s AES implementation instead of our
-old built-in one. OpenSSL&#39;s AES has been better for a while, and
-relatively few servers should still be on any version of OpenSSL
-that doesn&#39;t have good optimized assembly AES.</li>
-<li>Use the name &quot;CERTS&quot; consistently to refer to the new cell type;
-we were calling it CERT in some places and CERTS in others.</li>
-</ul>
+<p>See the <a href="http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.10">online Changelog</a> for technical details.</p>
 
-<p><strong>Testing:</strong></p>
+<p><strong>I want to try it / to upgrade!</strong></p>
 
-<ul>
-<li>Numerous new unit tests for functions in util.c and address.c by
-Anders Sundman.</li>
-<li>The long-disabled benchmark tests are now split into their own
-./src/test/bench binary.</li>
-<li>The benchmark tests can now use more accurate timers than
-gettimeofday() when such timers are available.</li>
-</ul>
+<p>See the <a href="https://tails.boum.org/getting_started/">Getting started</a> page.</p>
+
+<p><strong>Known issue</strong></p>
+
+<p>The memory erasure on Tails shutdown cannot guarantee that all memory in the 2 GB to 4 GB region is wiped. The improvements made in Tails 0.10 should at least make the situation better than previously.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-10">New Tor Browser Bundles</a></h2>
+          <h2 class="post-title"> <a href="/blog/using-tor-good">Using Tor hidden services for good</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">arab spring</a>
+              
+                <a class="post-category post-category-js" href="#">controversial content hosting</a>
+              
+                <a class="post-category post-category-js" href="#">globaleaks</a>
+              
+                <a class="post-category post-category-js" href="#">hidden services</a>
+              
+                <a class="post-category post-category-js" href="#">positive uses</a>
+              
+                <a class="post-category post-category-js" href="#">resilience</a>
+               |
+              08 Jan 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Getting good stories for Tor successes is tricky, because if Tor is doing its job, nobody notices. I know a lot of people who have really interesting Tor success stories and have no interest in telling the world who they are and how they managed (until that moment when everybody is reading about them, that is) to stay safe.</p>
+
+<p>Still, there are a bunch of other stories out there that haven&#39;t been documented as well. For example, I really like Nasser&#39;s story about his experiences in Mauritania:
+ <a href="http://www.technologyreview.com/computing/22427/page4/" title="http://www.technologyreview.com/computing/22427/page4/">http://www.technologyreview.com/computing/22427/page4/</a></p>
+
+<p>Hidden services have gotten less broad attention from the Tor user base, since most people who install Tor have a website in mind like twitter or indymedia that they want to visit safely. Some good use cases that we&#39;ve seen for hidden services in particular include:</p>
+
+<ul>
+<li><p>I know people (for example, in countries that have been undergoing revolutions lately) who run popular blogs but their blogs kept getting knocked offline by state-sponsored jerks. The common blogging software they used (like Wordpress) couldn&#39;t stand up to the ddos attacks and breakins. The solution was to split the blog into a public side, which is static html and has no logins, and a private side for posting, which is only reachable over a Tor hidden service. Now their blog works again and they&#39;re reaching their audiences. And as a bonus, the nice fellow hosting the private side for them doesn&#39;t need to let people know where it is, and even if somebody figures it out, the nice fellow hosting it doesn&#39;t have any IP addresses to hand over or lose.</p></li>
+<li><p>Whistleblowing websites want to provide documents from a platform that is hard for upset corporations or governments to censor. See e.g. <a href="http://globaleaks.org/" title="http://globaleaks.org/">http://globaleaks.org/</a></p></li>
+<li><p>Google for &#39;indymedia fbi seize&#39;. When Indymedia offers a hidden service version of their website, censoring organizations don&#39;t know which data centers to bully into handing over the hardware.</p></li>
+<li><p>Data retention laws in Europe (and soon in the US too at this rate) threaten to make centralized chat networks vulnerable to social network analysis (step one, collect all the data; step two, get broken into by corporations, criminals, external governments, you name it; step three comes identity theft, stalking, targeted scam jobs, etc etc). What if you had a chat network where all the users were on hidden services by default? Now there&#39;s no easy central point to learn who&#39;s talking to who and when. Building one and making it usable turns out to be hard. But good thing we have this versatile tool here as a building block.</p></li>
+</ul>
+
+<p>That&#39;s a start. It is certainly the case that we (Tor) spend most of our time making the technology better, and not so much of our time figuring out how to market it and change the world&#39;s perception on whether being safe online is worthwhile. Please help. :)</p>
+
+<p>You might also like
+ <a href="https://torproject.org/about/torusers.html.en" title="https://torproject.org/about/torusers.html.en">https://torproject.org/about/torusers.html.en</a>
+ <a href="https://blog.torproject.org/blog/we-need-your-good-tor-stories" title="https://blog.torproject.org/blog/we-need-your-good-tor-stories">https://blog.torproject.org/blog/we-need-your-good-tor-stories</a></p>
+
+<p>This blog post was adapted from an email to tor-talk by Roger. See the original email at <a href="https://lists.torproject.org/pipermail/tor-talk/2011-November/021997.html" title="https://lists.torproject.org/pipermail/tor-talk/2011-November/021997.html">https://lists.torproject.org/pipermail/tor-talk/2011-November/021997.htm...</a></p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/knock-knock-knockin-bridges-doors">Knock Knock Knockin&#39; on Bridges&#39; Doors</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">twilde</a> under
+              
+                <a class="post-category post-category-js" href="#">censorship</a>
+              
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+              
+                <a class="post-category post-category-js" href="#">GFW</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+              
+                <a class="post-category post-category-js" href="#">research results</a>
+               |
+              07 Jan 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Greetings! My name is Tim Wilde, Software Engineer at Team Cymru, Inc., and a big fan of the Tor Project and everything that they do. We&#39;ve helped out the Tor Project with a few investigations into probing/blocking of Tor by oppressive regimes, and the guys asked me to write this one up for the Tor Blog, so here I am! Note: any opinions expressed here are mine, nor those of Team Cymru or the Tor Project.</p>
+
+<p>In October 2011, <a href="https://trac.torproject.org/projects/tor/ticket/4185">ticket #4185</a> was filed in the Tor bug tracker by a user in China who found that their connections to US-based Tor bridge relays were being regularly cut off after a very short period of time. At the time we performed some basic experimentation and discovered that Chinese IPs (presumably at the behest of the Great Firewall of China, or GFW) would reach out to the US-based bridge and connect to it shortly after the Tor user in China connected, and, if successful, shortly thereafter the connection would be blocked by the GFW. There wasn&#39;t time for a detailed investigation and analysis at the time, but that kernel eventually grew into the investigation detailed below. We were, however, able to determine that limiting connections to the bridge relay to only the single IP expected to be its client would, in fact, block the probes and allow the connection to remain open for an extended period (&gt;48 hours in our testing).</p>
+
+<p>Between 05 DEC and 09 DEC 2011, we undertook a detailed and methodical investigation into probing and blocking of Tor connections originating within China. Unfortunately for our analysis, it appears that the GFW&#39;s active blocking of connections to Tor bridges had stopped, but we were still able to gather valuable data about the probing performed by the GFW, which previously led directly and verifiably to blocking.</p>
+
+<p>To this end we discovered two types of probing. First, &quot;garbage binary&quot; probes, containing nothing more than arbitrary (but sometimes repeated in later probes) binary data, were experienced by the non-China side of any connection that originated from China to TCP port 443 (HTTPS) in which an SSL negotiation was performed. This probe was performed in near-real-time after the connection was established, implying near-line-rate deep packet inspection (DPI) capabilities. TCP/443 connections not performing an SSL handshake, such as using the obfsproxy obfs2 protocol or a plain-text protocol, did not provoke probing. The purpose of these probes is unknown, and further investigation is difficult to justify when it seems relatively clear that these probes are not aimed at Tor.</p>
+
+<p>The second type of probe, on the other hand, is aimed quite directly at Tor. When a Tor client within China connected to a US-based bridge relay, we consistently found that at the next round 15 minute interval (HH:00, HH:15, HH:30, HH:45), the bridge relay would receive a probe from hosts within China that not only established a TCP connection, but performed an SSL negotiation, an SSL renegotiation, and then spoke the Tor protocol sufficiently to build a one-hop circuit and send a BEGIN_DIR cell. No matter what TCP port the bridge was listening on, once a Tor client from China connected, within 3 minutes of the next 15 minute interval we saw a series of probes including at least one connection speaking the Tor protocol.</p>
+
+<p>The good news is, we were able to isolate which characteristic of the Tor handshake the GFW was using to decide whether or not to initiate these probes. By making a simple change to the list of supported SSL ciphers in the &quot;hello&quot; packet sent by the Tor client within China, we were able to prevent the probes from taking place. This has been documented and is being discussed in <a href="https://trac.torproject.org/projects/tor/ticket/4744">ticket #4744</a>. This differs slightly from the <a href="https://blog.torproject.org/blog/iran-blocks-tor-tor-releases-same-day-fix">method used by Iran to block Tor in September 2011</a>, using the client-side of the SSL negotiation as its trigger rather than the server-side. It is likely, however, that technology capable of targeting either side of the connection to this degree could also target the other side, so it remains important to consider both the server and client sides of the Tor connection when attempting to blend in with normal, benign traffic.</p>
+
+<p>The bad news, however, is that this is happening at all. This probe again implies sophisticated near-line-rate DPI technology, coupled with a system that is aimed directly at Tor, using code that actually speaks the Tor protocol. Clearly there is a target painted firmly on Tor, and it is quite likely that the Chinese will continue to adapt their censorship technology as the Tor Project adapts to them.</p>
+
+<p>There is light at the end of the tunnel, though. A number of ideas have been put forward about new protocols, handshakes, and extensions to the Tor protocol that could be used to combat this type of censorship technology in a more long-term-sustainable way. <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/190-password-bridge-authorization.txt">Proposal 190</a> provides for password authorization for bridge relays. <a href="https://gitweb.torproject.org/obfsproxy.git/blob/HEAD:/doc/tor-obfs-howto.txt">obfsproxy</a> provides an extra layer on top of a Tor connection that makes it look like generic binary data. The Tor v3 link protocol/handshake, currently available and in testing in the 0.2.3.x-alpha series of Tor releases, eliminates SSL renegotiation in Tor session establishment, removing one of Tor&#39;s current &quot;sore thumbs&quot; that stick out from normal HTTPS SSL traffic.</p>
+
+<p>You&#39;re welcome to check out my <a href="https://gist.github.com/da3c7a9af01d74cd7de7">full report on this investigation</a> for more detail than I could provide in the blog post here. Thanks very much to everyone who assisted with the investigation and the report! It was fun to investigate and report on this, and I hope to have the opportunity to help out with similar adventures in the future.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/new-packages-openssl-updates">New packages with OpenSSL updates</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">erinn</a> under
               
-                <a class="post-category post-category-js" href="#">firefox</a>
+                <a class="post-category post-category-js" href="#">package updates</a>
               
                 <a class="post-category post-category-js" href="#">tbb</a>
               
-                <a class="post-category post-category-js" href="#">tor browser</a>
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
                |
-              24 Nov 2011
+              05 Jan 2012
           </p>
         </header>
         <div class="post-description">
-          <p>The Tor Browser Bundles have been updated to Firefox 8.0.1 along with a new Libevent and some extension updates.</p>
+          <p>The Tor Browser Bundles and other packages have been updated to <a href="http://openssl.org/news/secadv_20120104.txt">OpenSSL 1.0.0f and 0.9.8s</a>. All users are encouraged to update.</p>
 
 <p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
 
-<p><strong>Tor Browser Bundle (2.2.34-3)</strong></p>
+<p><strong>Tor Browser Bundle (2.2.35-4)</strong></p>
 
 <ul>
-<li>Update Firefox to 8.0.1</li>
-<li>Update Libevent to 2.0.16-stable</li>
-<li>Update NoScript to 2.2</li>
-<li>Update HTTPS Everywhere to 1.2.1</li>
-<li>Begin building Tor with --enable-gcc-warnings</li>
+<li>Update OpenSSL to 1.0.0f</li>
+<li>Update NoScript to 2.2.5</li>
 </ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/suggest-new-name-torouter-win-excito-b3">Suggest a new name for the Torouter, win an Excito B3</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">Runa</a> under
-              
-                <a class="post-category post-category-js" href="#">contest</a>
-              
-                <a class="post-category post-category-js" href="#">excito b3</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-              
-                <a class="post-category post-category-js" href="#">torouter</a>
-               |
-              21 Nov 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The Torouter is the codename for a hardware project that aims to provide users with a device that can easily be configured to run as a Tor bridge or relay. We are currently working on two devices; the <a href="https://www.excito.com/node/9">Excito B3</a> and the <a href="https://www.globalscaletechnologies.com/c-5-dreamplugs.aspx">DreamPlug</a>.</p>
-
-<p>Having two devices that are both called &quot;the Torouter&quot; can be a bit confusing, so we would like your help in renaming the Excito B3 Torouter!</p>
-
-<p>The best suggestion will not only be the new name for the Excito B3 Torouter, but the winner will also receive an Excito B3, a Tor t-shirt and stickers. Five runners-up will receive Tor t-shirts and stickers.</p>
-
-<p>To suggest new names for the Excito B3 Torouter, send an email to <em>tor-assistants AT torproject.org</em> with &quot;Torouter naming contest&quot; in the subject. The deadline is December 5, 2011.</p>
-
-<p><strong>UPDATE:</strong> We have received a lot of good naming suggestions for the Excito B3 Torouter, thank you to everyone who emailed us! We have decided that the new name for the Excito B3 Torouter is <strong>onionbox</strong> . An email has gone out to the lucky winner of a B3, a t-shirt and some stickers, as well as five-runners up who will all get t-shirts and stickers.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/run-tor-bridge-amazon-cloud">Run Tor as a bridge in the Amazon Cloud</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">Runa</a> under
-              
-                <a class="post-category post-category-js" href="#">bridge relays</a>
-              
-                <a class="post-category post-category-js" href="#">cloud</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-              
-                <a class="post-category post-category-js" href="#">tor cloud</a>
-               |
-              21 Nov 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The Tor Cloud project gives you a user-friendly way of deploying bridges to help users access an uncensored Internet. By setting up a bridge, you donate bandwidth to the Tor network and help improve the safety and speed at which users can access the Internet.</p>
-
-<p>Bridges are Tor relays that aren&#39;t listed in the main directory. This means that to use a bridge, you&#39;ll need to locate one first. And because there is no complete public list of all the bridges, they are also harder to block. A bridge will act as the first hop in a circuit, and will only forward traffic on to other relays in the Tor network.</p>
-
-<p>Setting up a Tor bridge on Amazon EC2 is simple and will only take you a couple of minutes. The images have been configured with automatic package updates and port forwarding, so you do not have to worry about Tor not working or the server not getting security updates.</p>
-
-<p>You should not have to do anything once the instance is up and running. Tor will start up as a bridge, confirm that it is reachable from the outside, and then tell the bridge authority that it exists. After that, the address for your bridge will be given out to users.</p>
-
-<p>To help new customers get started in the cloud, Amazon is introducing a free usage tier. The Tor Cloud images are all micro instances, and new customers will be able to run a free micro instance for a whole year. The Tor Cloud images have been configured with a bandwidth limit, so customers who don&#39;t qualify for the free usage tier should only have to pay an estimated $30 a month.</p>
-
-<p>For more information, see the <a href="https://cloud.torproject.org/">Tor Cloud</a> website.</p>
-
-<p><strong>UPDATE</strong> : Some users have asked about the AWS free usage tier and pointed out that it only includes 15 GB of bandwidth out per month. I have updated the Tor Cloud website (changes should go live soon) with the following:
-_
-The Tor Cloud images have been configured to use no more than 40 GB of bandwidth out per month. We have estimated that customers who do not qualify for the free usage tier will pay up to $30 a month. Customers who qualify for the free usage tier, but who run bridges that use more than 15 GB of bandwidth out per month, will pay up to $3 per month.
-_
-I hope that this better clarifies the cost of running a bridge in the Amazon cloud, let me know if you have any questions.</p>
 
         </div>
       </section>
@@ -438,7 +296,7 @@ I hope that this better clarifies the cost of running a bridge in the Amazon clo
       
         <a href="/blog/page61" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 62 of 134</span>
+      <span class="page_number ">Page: 62 of 137</span>
       
         <a href="/blog/page63" class="next">Next</a>
       

@@ -53,226 +53,438 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/toggle-or-not-toggle-end-torbutton">To Toggle, or not to Toggle: The End of Torbutton</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">mikeperry</a> under
-              
-                <a class="post-category post-category-js" href="#">firefox</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">torbutton</a>
-              
-                <a class="post-category post-category-js" href="#">usability</a>
-               |
-              02 May 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>In a random bar about two years ago, a Google Chrome developer asked me why Torbutton didn&#39;t just launch a new, clean Firefox profile/instance to deal with the tremendous number of state separation issues. Simply by virtue of him asking me this question, I realized how much better off Chrome was by implementing Incognito Mode this way and how much simpler it must have been for them overall (though they did not/do not deal with anywhere near as many issues as Torbutton does)...</p>
-
-<p>So I took a deep breath, and explained how the original use model of Torbutton and my initial ignorance at the size of the problem had led me through a series of incremental improvements to address the state isolation issue one item at a time. Since the toggle model was present at the beginning of this vision quest, it was present at the end.</p>
-
-<p>I realized at that same instant that in hindsight, this decision was monumentally stupid, and that I had been working harder, not smarter. However, I thought then that since we had the toggle model built, we might as well keep it: it allowed people to use their standard issue Firefoxes easily and painlessly with Tor.</p>
-
-<p>I now no longer believe even this much. I think we should completely do away with the toggle model, as well as the entire idea of Torbutton as a separate piece of user-facing software, and rely solely on the Tor Browser Bundles, except perhaps with the addition of standalone Tor+Vidalia binaries for use by experts and relay operators.</p>
-
-<p>The Tor Browser Bundles will include Torbutton, but we will no longer recommend that people use Torbutton without Tor Browser. Torbutton will be removed from addons.mozilla.org, and the Torbutton download page will clearly state that it is for experts only. If serious unfixed security issues begin to accumulate against the toggle model, we will stop providing Torbutton xpis at all.</p>
-
-<p>I believe this shift must be done for a few reasons: some usability, some technical. Since I feel the usability issues trump the technical ones, I&#39;ll discuss them first.</p>
-
-<p>Unfortunately, the Tor Project doesn&#39;t really have funding to conduct official usability studies to help us make the best choice, but I think that even without them, it is pretty clear that this migration is what we must do to improve the status quo.</p>
-
-<p>I think the average user is horribly confused by both the toggle model and the need to install additional software into Firefox (or conversely, the need to *also* install Tor software onto their computers after they install Torbutton). I also think that the average user is not likely to use this software safely. They are likely to log in to sites over Tor that they shouldn&#39;t, forget which tor mode they are in, and forget which mode certain tabs were opened under. These are all nightmare situations for anonymity and privacy.</p>
-
-<p>On the technical side, several factors are forcing us in the direction of a short-term fork of Firefox. The over-arching issue is that the set of bugfixes required to maintain the toggle model is a superset of those required to maintain the browser model. <a href="https://trac.torproject.org/projects/tor/report/39">Trac report #39</a> lists the bugs we must fix for the browser model, where as to maintain the toggle model, we must fix bugs from <a href="https://trac.torproject.org/projects/tor/report/14">trac report #14</a> in addition to the bugs in <a href="https://trac.torproject.org/projects/tor/report/39">report #39</a>.</p>
-
-<p>A similar issue exists with <a href="https://www.torproject.org/torbutton/en/design/#FirefoxBugs">bugs that must be fixed in Firefox</a>. The Firefox API bugs that need to be addressed to properly support the toggle model include rather esoteric and complicated issues that few groups other than Tor will find useful.</p>
-
-<p>This means more resistance from Mozilla to get the toggle mode bugs fixed or even merged, less likelihood the fixes will be used elsewhere, and more danger they will succumb to bitrot. As a result, the lag time between fix and deployment for low-priority Firefox bugs can be as long as 3 years. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=280661">Bug 280661</a> for an example.</p>
-
-<p>The Tor Browser bugs on the other hand are more directly usable by Firefox in its own Private Browsing Mode, which makes them more likely to merge quicker, and be maintained long-term. Also, because we are releasing our own Firefox-based browser, we will also have more control over experimenting with them and deploying these fixes to our users rapidly, as opposed to waiting for the next major Firefox release.</p>
-
-<p>So, we can either invest effort in improving the UI of Torbutton to better educate users to understand our particular rabbit-hole tunnel-vision of design choices, and also solving crazier Firefox bugs; or we can reconsider our user model and try to simplify our software.</p>
-
-<p>We don&#39;t have the manpower (ie: enough me) to do both. This means we should go with the simpler, easier option.</p>
-
-<p>We do face a small number of barriers and downsides associated with this plan. We are collecting the issues we need to address ASAP as child tickets of this bug:
- <a href="https://trac.torproject.org/projects/tor/ticket/2880" title="https://trac.torproject.org/projects/tor/ticket/2880">https://trac.torproject.org/projects/tor/ticket/2880</a></p>
-
-<p>Overall, the downsides seem to mostly apply to expert users and how they will adapt the custom Tor setups they have built. We don&#39;t anticipate a lot of long term issues with this group, as most of the configuration options of Torbutton will remain available, and users should still be able to install custom addons and configure their Tor Browser profile however they need (even to the point of running it side-by-side to a system tor instance that is used for non-web applications).</p>
-
-<p><a href="https://lists.torproject.org/pipermail/tor-talk/2011-April/020077.html">Additional discussion</a> about this issue has occurred on the tor-talk mailinglist.</p>
-
-<p>Hopefully this announcement doesn&#39;t ruin your day!</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/ipv6-future-i-hear">IPv6 is the future, I hear</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">nickm</a> under
-              
-                <a class="post-category post-category-js" href="#">development</a>
-              
-                <a class="post-category post-category-js" href="#">ipv6</a>
-               |
-              28 Apr 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>A while ago, I wrote up a description of what needs to be done to get Tor to be IPv6-compliant and sent it to the tor-dev mailinglist. I thought it might be neat to share this on the blog too, so that people know what&#39;s left to do before we an call Tor fully IPv6-compliant.</p>
-
-<p>Currently, I&#39;m hoping that for 0.2.3.x we can at least get to the point where bridges can handle IPv6-only clients and exits can handle IPv6 addresses. If we get further, that will be even better.</p>
-
-<hr>
-
-<h3>Overview</h3>
-
-<p>This document outlines what we&#39;ll have to do to make Tor fully support IPv6. It refers to other proposals, current and as-yet unwritten. It suggests a few incremental steps, each of which on its own should make Tor more useful in the brave new IPv6 future of tomorrow.</p>
-
-<h3>Motivation</h3>
-
-<p>Turns out, 4 billion addresses wasn&#39;t enough.</p>
-
-<h3>What needs to change</h3>
-
-<p>Tor uses the Internet in many ways. There are three main ways that will need to change for IPv6 support, from most urgent to least urgent.</p>
-
-<ol>
-<li>Tor must allow connections from IPv6-only clients. (Currently, routers and bridges do not listen on IPv6 addresses, and can&#39;t advertise that they support IPv6 addresses, so clients can&#39;t learn that they do.)</li>
-<li>Tor must transport IPv6 traffic and IPv6-related DNS traffic. (Currently, Tor only allows BEGIN cells to ask for connections to IPv4 targets or to hostnames, and only allows RESOLVE cells to request A and PTR records.)</li>
-<li>Tor must allow nodes to connect to one another over IPv6.</li>
-</ol>
-
-<p>Allowing IPv6-only clients is the most important, since unless we do, these clients will be unable to connect to Tor at all. Next most important is to support IPv6 DNS related dependencies and exiting to IPv6 services. Finally, allowing Tor nodes to support a dual stack of both IPv4 and IPv6 for interconnection seems like a reasonable step towards a fully hybrid v4/v6 Tor network.</p>
-
-<p>One implementation hurdle that will need to get resolved alongside these changes is to convert uint32_t to tor_addr_t in many more places in the Tor code, so we can handle addresses being either IPv4 or IPv6. There are a few cases, e.g. the local router list, where we&#39;ll want to think harder about the resource requirements of keeping tens of thousands of larger addresses in memory.</p>
-
-<p>More issues may of course also be discovered as we develop solutions for these issues, some of which may need to take priority.</p>
-
-<h3>Designs that we will need to do</h3>
-
-<p>For IPv6-only clients, we&#39;ll need to specify that routers can have multiple addresses and ORPorts.</p>
-
-<p>There is an old proposal (118) to try to allow multiple ORPorts per router. It&#39;s been accepted; it needs to be checked for correctness, updated to track other changes in more recent Tor versions, and updated to work with the new microdescriptor designs.</p>
-
-<p>Additionally, we&#39;ll need to audit the designs for all our codebase for places that might assume that IPs are a scarce resource. For example, clients assume that any two routers occupying an IPv4 /16 network are &quot;too close&quot; topologically to be used in the same circuit, and the bridgedb HTTPS distributor assumes that hopping from one /24 to another takes a little effort for most clients. The directory authorities assume that blacklisting an IP is an okay response to a bad router at that address. These and other places will instead need more appropriate notions of &quot;closeness&quot; and &quot;similarity&quot;.</p>
-
-<p>We&#39;ll want to consider geographic and political boundaries rather than purely mathematical notions such as the size of network blocks.</p>
-
-<p>We&#39;ll need a way to advertise IPv6 bridges, and to use them.</p>
-
-<p>For transporting IPv6-only traffic, we have another accepted design proposal (117). It has some open questions concerning proper behavior with respect to DNS lookups, and also needs to be checked and updated to track current Tor designs.</p>
-
-<p>We do not have a current accepted design proposal for allowing nodes to connect to each other via IPv6. Allowing opportunistic IPv6 traffic between nodes that can communicate with both IPv4 and IPv6 will be relatively simple, as will be bridges that have only an IPv6 address: both of these fall out relatively simply from designing a process for advertising and connecting to IPv6 addresses. The harder problem is in supporting IPv6-only Tor routers. For these, we&#39;ll need to consider network topology issues: having nodes that can&#39;t connect to all the other nodes will weaken one of our basic assumptions for path generation, so we&#39;ll need to make sure to do the analysis enough to tell whether this is safe.</p>
-
-<h3>Ready, fire, aim: An alternative methodology</h3>
-
-<p>At least one volunteer is currently working on IPv6 issues in Tor. If his efforts go well, it might be that our first design drafts for some of these open topics arrive concurrently with (or even in the form of!) alpha code to implement them. If so, we need to follow a variant of the design process, extracting design from code to evaluate it (rather than designing then coding). Probably, based on design review, some changes to code would be necessary.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/firefox-4-tor-browser-bundle-windows">Firefox 4 Tor Browser Bundle for Windows</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">firefox</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">windows</a>
-               |
-              24 Apr 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Windows users, your time has finally arrived! A new Tor Browser Bundle with Firefox 4 is available <a href="https://www.torproject.org/dist/torbrowser/tor-browser-2.2.24-1-alpha_en-US.exe">here</a> ( <a href="https://www.torproject.org/dist/torbrowser/tor-browser-2.2.24-1-alpha_en-US.exe.asc">sig</a>). The build infrastructure has moved to a Windows 7 machine, but this bundle has been tested on both WinXP and Win7. If you encounter any strange issues, please let me know here or <a href="https://trac.torproject.org">on our bug tracker</a>.</p>
-
-<p><strong>Tor Browser Bundle (2.2.24-1) alpha; suite=windows</strong></p>
-
-<ul>
-<li>Create new bundle for Firefox 4</li>
-<li>Update Tor to 0.2.2.24-alpha</li>
-<li>Update Torbutton to 1.3.2-alpha</li>
-<li>Update OpenSSL to 1.0.0d</li>
-<li>Update Libevent to 2.0.10-stable</li>
-<li>Update HTTPS-Everywhere to 0.9.9.development.4</li>
-<li>Add NoScript 2.0.9.9</li>
-<li>Add BetterPrivacy 1.49</li>
-<li>The Opa Heinz release</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/reading-links-15-april">Reading links, 15 April</a></h2>
+          <h2 class="post-title"> <a href="/blog/tails-072-released">Tails 0.7.2 Released</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">advocacy</a>
+                <a class="post-category post-category-js" href="#">anonymous operating system</a>
               
-                <a class="post-category post-category-js" href="#">anonymity</a>
+                <a class="post-category post-category-js" href="#">i2p</a>
               
-                <a class="post-category post-category-js" href="#">interesting reading</a>
+                <a class="post-category post-category-js" href="#">rejoice in your anonymity</a>
               
-                <a class="post-category post-category-js" href="#">privacy</a>
-              
-                <a class="post-category post-category-js" href="#">reading links</a>
-               |
-              16 Apr 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <ul>
-<li>MAFIAAfire firefox extension, in response to the ICE domain name take downs, <a href="http://www.mafiaafire.com/" title="http://www.mafiaafire.com/">http://www.mafiaafire.com/</a>. What happens when mafiaafire.com is taken down?</li>
-<li>US Government Outlines Online Internet ID System. Trust us. We&#39;re the Government. <a href="https://secure.dslreports.com/shownews/Government-Outlines-Online-Internet-ID-System-113743" title="https://secure.dslreports.com/shownews/Government-Outlines-Online-Internet-ID-System-113743">https://secure.dslreports.com/shownews/Government-Outlines-Online-Intern...</a></li>
-<li>European Court of Justice To Outlaw Internet Filtering, <a href="http://falkvinge.net/2011/04/14/european-court-of-justice-to-outlaw-internet-filtering-esp-for-copyright-enforcement/" title="http://falkvinge.net/2011/04/14/european-court-of-justice-to-outlaw-internet-filtering-esp-for-copyright-enforcement/">http://falkvinge.net/2011/04/14/european-court-of-justice-to-outlaw-inte...</a></li>
-<li>Surveillance Self-Defense by the EFF, <a href="https://ssd.eff.org/" title="https://ssd.eff.org/">https://ssd.eff.org/</a></li>
-<li>Over the firewall and into the fire, <a href="http://advocacy.globalvoicesonline.org/2011/04/14/over-the-firewall-and-into-the-fire/" title="http://advocacy.globalvoicesonline.org/2011/04/14/over-the-firewall-and-into-the-fire/">http://advocacy.globalvoicesonline.org/2011/04/14/over-the-firewall-and-...</a></li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/stockholm-hackfest-may-14th">Stockholm Hackfest, May 14th</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">advocacy</a>
-              
-                <a class="post-category post-category-js" href="#">code</a>
-              
-                <a class="post-category post-category-js" href="#">developers</a>
-              
-                <a class="post-category post-category-js" href="#">hackfest</a>
-              
-                <a class="post-category post-category-js" href="#">iis.se</a>
+                <a class="post-category post-category-js" href="#">tails</a>
               
                 <a class="post-category post-category-js" href="#">tor</a>
                |
-              15 Apr 2011
+              14 Jun 2011
           </p>
         </header>
         <div class="post-description">
-          <p>We&#39;re holding a Tor hackfest on Saturday, May 14th at Ringvägen 100, Stockholm.</p>
+          <p>An update to the fully anonymous operating system, Tails, is now available. Version 0.7.2 includes notable user-visible changes include:</p>
 
-<p>We&#39;ll be starting at 10 AM . Thanks to <a href="https://www.iis.se/" title="https://www.iis.se/">https://www.iis.se/</a> for hosting the event. We&#39;re hoping to provide pizza and drinks for lunch. We have a wiki page available to get an idea of what food you want and any topics you wish to see discussed. <a href="https://trac.torproject.org/projects/tor/wiki/2011StockholmHackfest" title="https://trac.torproject.org/projects/tor/wiki/2011StockholmHackfest">https://trac.torproject.org/projects/tor/wiki/2011StockholmHackfest</a></p>
+<p><cite><br>
+ * Iceweasel<br>
+          o Disable Torbutton&#39;s external application launch warning. ... which advises using Tails. Tails is running Tails.<br>
+          o FoxyProxy: install from Debian instead of the older one we previously shipped.</cite></p>
 
-<p>Please attend if you have some interest in programming, advocacy, marketing, or research with Tor, or are willing to be persuaded to entertain an interest. :) Tor&#39;s a small project (in terms of number of developers) that could really use your help.</p>
+<p>* Software
+ o Upgrade Linux kernel to Debian&#39;s 2.6.32-34squeeze1: fixes tons of bugs, closes a few security holes at well.
+ o haveged: install an official Debian backport instead of a custom backport.
+ o unrar: install the version from Debian&#39;s non-free repository. Users report unrar-free does not work well enough.</p>
 
-<p>Hope to see you on Saturday!</p>
+<p>Plus the usual bunch of minor bug reports and improvements. It can be downloaded from <a href="http://tails.boum.org/download/" title="http://tails.boum.org/download/">http://tails.boum.org/download/</a> or via bittorrent to save everyone some bandwidth.</p>
+
+<p>The fully detailed changelog can be found here, <a href="http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.7.2" title="http://git.immerda.ch/?p=amnesia.git;a=blob\_plain;f=debian/changelog;hb=refs/tags/0.7.2">http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=...</a></p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/improving-private-browsing-modes-do-not-track-vs-real-privacy-design">Improving Private Browsing Modes: &quot;Do-Not-Track&quot; vs Real Privacy by Design</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">chrome</a>
+              
+                <a class="post-category post-category-js" href="#">dnt</a>
+              
+                <a class="post-category post-category-js" href="#">do not track</a>
+              
+                <a class="post-category post-category-js" href="#">firefox</a>
+              
+                <a class="post-category post-category-js" href="#">incognito</a>
+              
+                <a class="post-category post-category-js" href="#">privacy by design</a>
+              
+                <a class="post-category post-category-js" href="#">private browsing</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+              
+                <a class="post-category post-category-js" href="#">torbutton</a>
+               |
+              13 Jun 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><strong>Updated 06/16/2011</strong> : Break off window.name into its own linkability issue. While ultimately it should be handled identically to the referer, that was not clear in the original text.
+<strong>Updated 07/01/2011</strong> : Add link to article about 81% consumer polling rate in favor of some form of Do Not Track...</p>
+
+<p>As I said in my <a href="https://blog.torproject.org/blog/toggle-or-not-toggle-end-torbutton">previous post</a>, the Tor Project hopes to work on <a href="https://trac.torproject.org/projects/tor/ticket/2871">a set of patches</a> that effectively improves the Private Browsing Mode of Firefox. Long term, we&#39;d love to merge these patches upstream, and/or see them obsoleted by better implementations.</p>
+
+<p>To help keep everyone on the same page with respect to this effort, I&#39;ve decided to take some time to describe what we envision as our ideal private browsing mode.</p>
+
+<p>Hopefully, such a mode would be useful for more than just Tor users. Indeed, there are many ways to obtain varying levels of IP address privacy once you have solid browser support for privacy by design. The average user is quite capable of going to a cafe and enabling private mode, and this ability can be explained to them in a single sentence by the UI. Arguably they can also obtain low-grade IP privacy simply by tethering to their cell phone, whose IP typically changes regularly. I am told that frequent IP rotation is also the norm for residential connections in Germany and much of the EU to deter services and malware. This is not to mention all of the commercial single-hop VPN and proxy privacy services out there that fail to provide actual browser privacy in their tools.</p>
+
+<p>We believe that the <a href="http://thehill.com/blogs/hillicon-valley/technology/168871-survey-shows-consumers-want-government-to-protect-their-privacy-online">attention surrounding the &quot;Do-Not-Track&quot; header</a> also indicates that network privacy is an important feature. However, we believe that it must be provided by design, as opposed to via a humble request to the adversary that is impossible to audit or enforce, especially outside of the United States. In his <a href="http://w2spconf.com/2011/papers/balaSlides.pdf">presentation</a> at <a href="http://w2spconf.com/2011/">W2SP</a>, <a href="http://www.research.att.com/%7Ebala/papers/">Balachander Krishnamurthy</a> compared the &quot;Do-Not-Track&quot; request header to the real-world equivalent of leaving your door unlocked with a posted notice that reads &quot;Do-Not-Rob&quot;. While many people actually do post &quot;No Trespassing&quot; and similar signs, no one expects these signs to replace actual security measures.</p>
+
+<p>Unfortunately, right now the only usable and effective web privacy option for the average user is to install an <a href="http://adblockplus.org/">ad-blocker</a> or <a href="http://www.ghostery.com/">similar software</a>. Personally, I see the need for an ad-blocker to achieve privacy as a huge failure of the web itself. If web tracking, profiling, and behavioral targeting is so extreme that it cannot be avoided except by blocking all ads, then the prevailing revenue model of the web is unsustainable. We must figure out a way to do non-intrusive, content-relevant advertising while still providing privacy, without relying on regulatory action that is unlikely to be enforceable.</p>
+
+<p>Ok, so enough preaching. What does privacy by design look like? I&#39;m going to describe a list of 7 key properties, some of which the major browser vendors already have or are working towards, but so far are not uniformly deployed in any browser, including even our own Tor Browser.</p>
+
+<ol>
+<li><strong>Make local privacy optional</strong></li>
+<li><strong>Avoid Linkability: Minimize privacy options, plugins and addons</strong></li>
+<li><strong>Avoid Linkability: Isolate all non-private mode identifiers and state</strong></li>
+<li><strong>Avoid Linkability: Isolate state per top-level domain</strong></li>
+<li><strong>Avoid Linkability: Reduce fingerprintable attributes</strong></li>
+<li><strong>Avoid Linkability: Reduce default referer information</strong></li>
+<li><strong>Avoid Linkability: Restrict window.name to referer policy</strong></li>
+</ol>
+
+<h1>Make local privacy optional</h1>
+
+<p>The browser vendors got it half right the first time around. There are many users who consider local storage privacy to be the primary feature they want from private browsing mode. However, we believe that local privacy is actually an orthogonal feature to network privacy: some users want both, but some only want one or the other.</p>
+
+<p>Therefore, we believe that users should be given the option in private browsing mode to choose if they want to record browsing history or not. Many users will want to use private mode regularly, and will only be concerned about ad network tracking as opposed to local storage (ie similar to the &quot;Do-Not-Track&quot; header&#39;s use case). These users will still want history and &quot;awesome bar&quot; functionality to work for them. Almost all users will want to maintain access to their bookmarks and previously stored history from within the mode.</p>
+
+<h1>Avoid Linkability: Minimize privacy options, plugins, and addons</h1>
+
+<p>Beyond the choice to store history and activity on disk, there <a href="https://trac.torproject.org/projects/tor/ticket/3100">should not be</a> numerous global options provided to private browsing modes.</p>
+
+<p>Each option that detectably alters browser behavior can be used as a fingerprinting tool on the part of ad networks. Similarly, <a href="http://blog.chromium.org/2010/06/extensions-in-incognito.html">all extensions should be disabled in the mode except as an opt-in basis</a>.</p>
+
+<p>Instead of global browser privacy options, <a href="https://wiki.mozilla.org/Privacy/Features/Site-based_data_management_UI">privacy decisions should be made per top-level url-bar domain</a> to eliminate the possibility of linkability between domains. For example, when a plugin object (or a JavaScript access of window.plugins) is present in a page, the user should be given the choice of allowing that plugin object <strong>for that top-level url-bar domain only</strong> . The same goes for exemptions to third party cookie policy, geo-location, and any other privacy permissions.</p>
+
+<p>If the user has indicated they do not care about local history storage, these permissions can be written to disk. Otherwise, they should remain memory-only.</p>
+
+<h1>Avoid Linkability: Isolate all non-private identifiers and state</h1>
+
+<p>All major browsers already make some effort to isolate explicit identifier state between non-private and private browsing (despite protest that their threat model does not actually require it). Obviously, privacy by design requires that this effort be continued.</p>
+
+<p>The ability to link users between private and non-private browsing modes via explicit identifiers, browser state, or TLS state should be considered a flaw in the mode. After all, the user may have gone to a wifi cafe to obtain IP address privacy, expecting identifier privacy from their browser. It is not fair to <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing#Use_Cases">the user</a> to abjectly fail to protect them in this case.</p>
+
+<h1>Avoid Linkability: Isolate state to top-level domain</h1>
+
+<p>However, users who want continuous &quot;Do-Not-Track&quot;-style privacy will likely use the mode regularly, possibly even exclusively, to avoid behavior advertising and associated tracking. <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing#The_Paranoid">These users</a> will also want to reduce the linkability between arbitrary sites they visit.</p>
+
+<p>This is a particular concern for Tor as many activists use web-based email, social networking sites, and other web services for organizing. Their activity in Tor Browser on one site should not trivially de-anonymize their activity on another site to ad networks and exits.</p>
+
+<p>To provide this property, all identifiers and state must be isolated to the top-level url bar domain, <a href="https://wiki.mozilla.org/Thirdparty">starting with cookies</a>, but extending to <a href="http://www.safecache.com/">the cache</a>, DOM Storage, client certificates, and HTTP auth.</p>
+
+<p>The benefit of this approach comes not only in the form of reduced linkability, but also in terms of simplified privacy UI. If all stored browser state and permissions become associated with the top-level url-bar domain, the six or seven different pieces of privacy UI governing these identifiers and permissions can become just <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=565965#c21">one piece of UI</a>, possibly with a context-menu option to drill down into specific types of state.</p>
+
+<p>We also believe that such an identifier model makes privacy relationships much more clear to the average user. Instead of having various disjoint relationships with and permissions for hundreds of omnipresent third-party domains, users will have one relationship with each of the top-level url-bar domains that they choose to interact with and authenticate to.</p>
+
+<p>Obviously, the downside of this enhanced protection against identifier linkability is that third party services that rely on third party cookie transmission may be impeded by this model. Long term, the hope is for standardized, in-browser support for services federated login and &quot;Like&quot; buttons. Google Chrome has actually implemented a feature called <a href="http://web-send.org/">Web-Send</a> that provides this functionality in a <a href="http://web-send.org/features.html">privacy preserving way</a>. They have even written a legacy HTML5 version that provides the same privacy properties, save for the need to trust <a href="http://webintroducer.net" title="http://webintroducer.net">http://webintroducer.net</a> for DOM Storage.</p>
+
+<p>We are also trying to introduce the notion of &quot;protected cookies&quot; in the alpha Tor Browser series, to allow users to specify they want to maintain a relationship with certain sites but not with others. To simplify this experience, we&#39;ve currently entirely disabled Third Party Cookies in Tor Browser, but we believe that this may end up breaking mashup and federated login sites that might still be able to function under the more lenient double-keyed cookie model.</p>
+
+<p>Several other interim steps are possible in the meantime. One could imagine iframe attributes that cause the browser chrome to request that a site be granted permission to set top-level cookies, or even a fully automated client-side mechanism that performs this promotion automatically for selected sites on mouse-click (such a mechanism is actually being prototyped by researchers right now).</p>
+
+<h1>Avoid Linkability: Reduce fingerprintable attributes</h1>
+
+<p>Once the linkability via explicit identifiers is eliminated, it becomes important to address the linkability that is possible through <a href="https://wiki.mozilla.org/Fingerprinting">browser fingerprinting</a>.</p>
+
+<p>Fingerprinting is a difficult issue to address, but that difficulty does not preclude a best-effort from being made at eliminating or mitigating the major culprits.</p>
+
+<p>Luckily, <a href="https://wiki.mozilla.org/Fingerprinting#Data">the major culprit</a> is plugin-provided information. Once plugins are restricted to only permitted top-level domains, fingerprinting linkability gets effectively reduced to the information available via CSS, Javascript, and HTTP headers.</p>
+
+<p>The largest culprits in CSS and Javascript are <a href="https://trac.torproject.org/projects/tor/ticket/2875">resolution and media information</a> (especially those properties that also provide information about the device and display as opposed to limiting information to the properties of the rendering window itself), the <a href="https://trac.torproject.org/projects/tor/ticket/2872">number of fonts that can be loaded per origin</a>, <a href="https://trac.torproject.org/projects/tor/ticket/3059">time-based fingerprints</a>, and <a href="https://trac.torproject.org/projects/tor/ticket/3323">WebGL device information</a>.</p>
+
+<p>It is likely that we need another Panopticlick-style study that focuses exclusively on CSS and Javascript to determine the relative importance of these components, but most of them can be addressed without serious breakage of functionality.</p>
+
+<h1>Avoid Linkability: Reduce default referer information</h1>
+
+<p>So far, the Tor Project has refrained from restricting referer primarily because we believe that restricting referer actually becomes less necessary if identifiers are isolated and linkability has been reduced.</p>
+
+<p>However, non-Tor users do have one important element of linkability: IP address. Even those that have an alternate Internet connection may still be bound to a single alternate IP. These users probably actually benefit in a real way from a restricted referer. It turns out a lot of <a href="http://w2spconf.com/2011/papers/privacyVsProtection.pdf">information is already smuggled or leaked via referrer</a> and URL parameters to third party sites, either deliberately or accidentally.</p>
+
+<p>Referer restriction could take multiple forms, but we believe more site flexibility is key. Sites actually have no way to restrict referer for most element types currently, and conversely, sites will always be able to subvert referer restrictions by smuggling the same data in POST or URL parameters.</p>
+
+<p>Therefore, we believe that referers should be restricted by default in private browsing mode using a same-origin policy where sites from different origins get either no referer, or a referer that is truncated to the top-level domain. However, sites should also be allowed to request an exemption to this rule on a per-site basis using an html attribute, which could trigger a chrome permissions request, or simply be granted automatically (on the assumption that they could just URL smuggle the data).</p>
+
+<p>While this may not seem like much of a protection, at least it allows us to differentiate negligence from deliberate information sharing, and to restrict information leakage in the default scenario. Again, because this data can always be transmitted between elements either directly or via a back-channel, it is better it be visible and apparent than covert.</p>
+
+<h1>Avoid Linkability: Restrict window.name to referer policy</h1>
+
+<p>Window.name poses many of the same conflicts as referer information. It gives sites a way to pass data between pages in the navigation lifespan of a tab. Sites can <a href="http://www.thomasfrank.se/sessionvars.html">use window.name to store data</a>, but are given no way to clear it easily. Hence it becomes very hard to differentiate deliberate data exchange from accidental leakage.</p>
+
+<p>Just like referer, it is obvious that window.name should be empty whenever the URL bar is rewritten by the user. There should be no legitimate, functional need for data exchange between two arbitrary random user-typed URL bar domains in any situation. Window.name on user-entered URLs should be cleared regardless of any changes to existing referer policy.</p>
+
+<p>Similarly, sites could be given the option to allow transmission of window.name to third party iframe elements, but the default should be to isolate window.name to the same origin policy. We do not believe this second step is required for Tor usage, but it may be helpful to non-Tor users, for similar reasons as the referer leakage.</p>
+
+<p>As such, <a href="https://trac.torproject.org/projects/tor/ticket/3414">our current plan</a> is to bind window.name&#39;s lifespan to the Referer header contents in our addon implementations.</p>
+
+<h1>Conclusion</h1>
+
+<p>We believe that privacy can be a differentiating feature for browsers. Even <a href="http://crypto.stanford.edu/%7Edabo/pubs/abstracts/privatebrowsing.html">early studies</a> revealed that many users immediately began using private browsing modes regularly, either by mistake or deliberately.</p>
+
+<p>We believe that <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing#Use_Cases">many of these users</a> deliberately use private browsing in cafes and on other alternate Internet connections assuming that they are being protected from ad tracking and behavioral analysis. We welcome user studies to determine what users actually expect and want from private browsing modes for the definitive answer, but obviously we&#39;re pretty convinced what the outcome will be.</p>
+
+<p>Privacy by design represents the technical realization of &quot;Do-Not-Track&quot;: the ability to actually opt-out (prevent) a complete behavior profile from being built to record and model your specific web viewing habits.</p>
+
+<p>In order for a private browsing mode to succeed in actually providing privacy by design, it must reduce activity linkability in all forms. Six out of the seven items mentioned above are really linkability issues at their core. Reducing the ability of the adversary to link private activity to non-private activity and also to other private activity is what privacy by design is all about. This reduction in linkability is what prevents a behavioral profile from being constructed.</p>
+
+<p>The Tor Project looks forward to a day where privacy by design becomes a key feature of major browsers. We would love to be able to ship a vastly simplified browser extension that contains only a compiled Tor binary and some minimal addon code that simply &quot;upgrades&quot; the user&#39;s private browsing mode into a fully functional anonymous mode. The ability to do this would vastly simplify our package offerings, and make it significantly easier to get our software into censored and oppressed regions.</p>
+
+<p>However, until then, we must do our best to attempt to provide software that we believe will provide the privacy and security that users have come to expect from us. For now, this means shipping our own browser.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/may-2011-progress-report">May 2011 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">bugfixes</a>
+              
+                <a class="post-category post-category-js" href="#">enhancements</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+               |
+              10 Jun 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The May 2011 progress report is available at the bottom of this post and at <a href="https://blog.torproject.org/files/2011-May-Monthly-Report.pdf" title="https://blog.torproject.org/files/2011-May-Monthly-Report.pdf">https://blog.torproject.org/files/2011-May-Monthly-Report.pdf</a>.</p>
+
+<p>Highlights include an experimental tor release, experimental vidalia release, some timing attack resistance work, some ECC work, updates on obfsproxy, and a datagram protocol comparison.</p>
+
+<p><thead><tr>
+<th>Attachment</th>
+<th>Size</th> </tr></thead><tbody>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/2011-May-Monthly-Report.pdf">2011-May-Monthly-Report.pdf</a></td>
+<td>688.86 KB</td> </tr>
+</tbody></p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/ipv6-and-tor-project-websites">IPv6 and Tor Project Websites</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">ipv6</a>
+              
+                <a class="post-category post-category-js" href="#">torproject websites</a>
+              
+                <a class="post-category post-category-js" href="#">world ipv6 day</a>
+               |
+              08 Jun 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>In February 2011, we enabled IPv6 access to the majority of our websites, such as <a href="http://www.torproject.org" title="www.torproject.org">www.torproject.org</a>, trac.torproject.org, archive.torproject.org, media.torproject.org, gitweb.torproject.org, and check.torproject.org. We&#39;ve seen a growing amount of ipv6 traffic going to www, gitweb, and archive since then.</p>
+
+<p>However, this isn&#39;t what people think about, nor want to hear about, when thinking of Tor and IPv6. Nick <a href="https://blog.torproject.org/blog/ipv6-future-i-hear">posted our efforts</a> on this front in late April. There is an opportunity for someone to make a big impact by helping us enable ipv6 in the tor codebase. We&#39;re keeping our thoughts in a <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/ideas/xxx-ipv6-plan.txt">draft proposal</a>. We have more thoughts about <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/117-ipv6-exits.txt">supporting IPv6 exits</a> written down in 2007.</p>
+
+<p>If IPv6 is the <a href="http://www.worldipv6day.org/">future</a>, protecting your privacy online should be part of that future. We&#39;re looking for help to make it happen.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-02226-beta-and-02227-beta-are-out">Tor 0.2.2.26-beta and 0.2.2.27-beta are out</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha releases</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              24 May 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><strong>Changes in version 0.2.2.27-beta - 2011-05-18</strong>
+ Tor 0.2.2.27-beta fixes a bridge-related stability bug in the previous
+ release, and also adds a few more general bugfixes.</p>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Fix a crash bug when changing bridges in a running Tor process.
+Fixes bug 3213; bugfix on 0.2.2.26-beta.</li>
+<li>When the controller configures a new bridge, don&#39;t wait 10 to 60
+seconds before trying to fetch its descriptor. Bugfix on
+0.2.0.3-alpha; fixes bug 3198 (suggested by 2355).</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Require that onion keys have exponent 65537 in microdescriptors too.
+Fixes more of bug 3207; bugfix on 0.2.2.26-beta.</li>
+<li>Tor used to limit HttpProxyAuthenticator values to 48 characters.
+Changed the limit to 512 characters by removing base64 newlines.
+Fixes bug 2752. Fix by Michael Yakubovich.</li>
+<li>When a client starts or stops using bridges, never use a circuit
+that was built before the configuration change. This behavior could
+put at risk a user who uses bridges to ensure that her traffic
+only goes to the chosen addresses. Bugfix on 0.2.0.3-alpha; fixes
+bug 3200.</li>
+</ul>
+
+<p><strong>Changes in version 0.2.2.26-beta - 2011-05-17</strong>
+ Tor 0.2.2.26-beta fixes a variety of potential privacy problems. It
+ also introduces a new &quot;socksport auto&quot; approach that should make it
+ easier to run multiple Tors on the same system, and does a lot of
+ cleanup to get us closer to a release candidate.</p>
+
+<p><strong>Security/privacy fixes:</strong></p>
+
+<ul>
+<li>Replace all potentially sensitive memory comparison operations
+with versions whose runtime does not depend on the data being
+compared. This will help resist a class of attacks where an
+adversary can use variations in timing information to learn
+sensitive data. Fix for one case of bug 3122. (Safe memcmp
+implementation by Robert Ransom based partially on code by DJB.)</li>
+<li>When receiving a hidden service descriptor, check that it is for
+the hidden service we wanted. Previously, Tor would store any
+hidden service descriptors that a directory gave it, whether it
+wanted them or not. This wouldn&#39;t have let an attacker impersonate
+a hidden service, but it did let directories pre-seed a client
+with descriptors that it didn&#39;t want. Bugfix on 0.0.6.</li>
+<li>On SIGHUP, do not clear out all TrackHostExits mappings, client
+DNS cache entries, and virtual address mappings: that&#39;s what
+NEWNYM is for. Fixes bug 1345; bugfix on 0.1.0.1-rc.</li>
+</ul>
+
+<p><strong>Major features:</strong></p>
+
+<ul>
+<li>The options SocksPort, ControlPort, and so on now all accept a
+value &quot;auto&quot; that opens a socket on an OS-selected port. A
+new ControlPortWriteToFile option tells Tor to write its
+actual control port or ports to a chosen file. If the option
+ControlPortFileGroupReadable is set, the file is created as
+group-readable. Now users can run two Tor clients on the same
+system without needing to manually mess with parameters. Resolves
+part of ticket 3076.</li>
+<li>Set SO_REUSEADDR on all sockets, not just listeners. This should
+help busy exit nodes avoid running out of useable ports just
+because all the ports have been used in the near past. Resolves
+issue 2850.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>New &quot;GETINFO net/listeners/(type)&quot; controller command to return
+a list of addresses and ports that are bound for listeners for a
+given connection type. This is useful when the user has configured
+&quot;SocksPort auto&quot; and the controller needs to know which port got
+chosen. Resolves another part of ticket 3076.</li>
+<li>Add a new ControlSocketsGroupWritable configuration option: when
+it is turned on, ControlSockets are group-writeable by the default
+group of the current user. Patch by Jérémy Bobbio; implements
+ticket 2972.</li>
+<li>Tor now refuses to create a ControlSocket in a directory that is
+world-readable (or group-readable if ControlSocketsGroupWritable
+is 0). This is necessary because some operating systems do not
+enforce permissions on an AF_UNIX sockets. Permissions on the
+directory holding the socket, however, seems to work everywhere.</li>
+<li>Rate-limit a warning about failures to download v2 networkstatus
+documents. Resolves part of bug 1352.</li>
+<li>Backport code from 0.2.3.x that allows directory authorities to
+clean their microdescriptor caches. Needed to resolve bug 2230.</li>
+<li>When an HTTPS proxy reports &quot;403 Forbidden&quot;, we now explain
+what it means rather than calling it an unexpected status code.
+Closes bug 2503. Patch from Michael Yakubovich.</li>
+<li>Update to the May 1 2011 Maxmind GeoLite Country database.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Authorities now clean their microdesc cache periodically and when
+reading from disk initially, not only when adding new descriptors.
+This prevents a bug where we could lose microdescriptors. Bugfix
+on 0.2.2.6-alpha. 2230</li>
+<li>Do not crash when our configuration file becomes unreadable, for
+example due to a permissions change, between when we start up
+and when a controller calls SAVECONF. Fixes bug 3135; bugfix
+on 0.0.9pre6.</li>
+<li>Avoid a bug that would keep us from replacing a microdescriptor
+cache on Windows. (We would try to replace the file while still
+holding it open. That&#39;s fine on Unix, but Windows doesn&#39;t let us
+do that.) Bugfix on 0.2.2.6-alpha; bug found by wanoskarnet.</li>
+<li>Add missing explanations for the authority-related torrc options
+RephistTrackTime, BridgePassword, and V3AuthUseLegacyKey in the
+man page. Resolves issue 2379.</li>
+<li>As an authority, do not upload our own vote or signature set to
+ourself. It would tell us nothing new, and as of 0.2.2.24-alpha,
+it would get flagged as a duplicate. Resolves bug 3026.</li>
+<li>Accept hidden service descriptors if we think we might be a hidden
+service directory, regardless of what our consensus says. This
+helps robustness, since clients and hidden services can sometimes
+have a more up-to-date view of the network consensus than we do,
+and if they think that the directory authorities list us a HSDir,
+we might actually be one. Related to bug 2732; bugfix on
+0.2.0.10-alpha.</li>
+<li>When a controller changes TrackHostExits, remove mappings for
+hosts that should no longer have their exits tracked. Bugfix on
+0.1.0.1-rc.</li>
+<li>When a controller changes VirtualAddrNetwork, remove any mappings
+for hosts that were automapped to the old network. Bugfix on
+0.1.1.19-rc.</li>
+<li>When a controller changes one of the AutomapHosts* options, remove
+any mappings for hosts that should no longer be automapped. Bugfix
+on 0.2.0.1-alpha.</li>
+<li>Do not reset the bridge descriptor download status every time we
+re-parse our configuration or get a configuration change. Fixes
+bug 3019; bugfix on 0.2.0.3-alpha.</li>
+</ul>
+
+<p><strong>Minor bugfixes (code cleanup):</strong></p>
+
+<ul>
+<li>When loading the microdesc journal, remember its current size.
+In 0.2.2, this helps prevent the microdesc journal from growing
+without limit on authorities (who are the only ones to use it in
+0.2.2). Fixes a part of bug 2230; bugfix on 0.2.2.6-alpha.
+Fix posted by &quot;cypherpunks.&quot;</li>
+<li>The microdesc journal is supposed to get rebuilt only if it is
+at least _half_ the length of the store, not _twice_ the length
+of the store. Bugfix on 0.2.2.6-alpha; fixes part of bug 2230.</li>
+<li>Fix a potential null-pointer dereference while computing a
+consensus. Bugfix on tor-0.2.0.3-alpha, found with the help of
+clang&#39;s analyzer.</li>
+<li>Avoid a possible null-pointer dereference when rebuilding the mdesc
+cache without actually having any descriptors to cache. Bugfix on
+0.2.2.6-alpha. Issue discovered using clang&#39;s static analyzer.</li>
+<li>If we fail to compute the identity digest of a v3 legacy keypair,
+warn, and don&#39;t use a buffer-full of junk instead. Bugfix on
+0.2.1.1-alpha; fixes bug 3106.</li>
+<li>Resolve an untriggerable issue in smartlist_string_num_isin(),
+where if the function had ever in the future been used to check
+for the presence of a too-large number, it would have given an
+incorrect result. (Fortunately, we only used it for 16-bit
+values.) Fixes bug 3175; bugfix on 0.1.0.1-rc.</li>
+<li>Require that introduction point keys and onion handshake keys
+have a public exponent of 65537. Starts to fix bug 3207; bugfix
+on 0.2.0.10-alpha.</li>
+</ul>
+
+<p><strong>Removed features:</strong></p>
+
+<ul>
+<li>Caches no longer download and serve v2 networkstatus documents
+unless FetchV2Networkstatus flag is set: these documents haven&#39;t
+haven&#39;t been used by clients or relays since 0.2.0.x. Resolves
+bug 3022.</li>
+</ul>
 
         </div>
       </section>
@@ -283,7 +495,7 @@
       
         <a href="/blog/page75" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 76 of 134</span>
+      <span class="page_number ">Page: 76 of 137</span>
       
         <a href="/blog/page77" class="next">Next</a>
       

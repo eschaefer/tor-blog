@@ -53,128 +53,7 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-30alpha2-released">Tor Browser Bundle 3.0alpha2 Released</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">mikeperry</a> under
-              
-                <a class="post-category post-category-js" href="#">deterministic builds</a>
-              
-                <a class="post-category post-category-js" href="#">gitian</a>
-              
-                <a class="post-category post-category-js" href="#">security</a>
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tbb-3.0</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">tor-browser-bundle</a>
-               |
-              01 Jul 2013
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The second alpha release in the <a href="https://blog.torproject.org/category/tags/tbb-30">3.0 series</a> of the Tor Browser Bundle is now available from the <a href="https://archive.torproject.org/tor-package-archive/torbrowser/3.0a2">Tor Package Archive</a>.</p>
-
-<p>In addition to providing important security updates to Firefox and Tor, these release binaries should now be exactly reproducible from the source code by anyone. They have been independently reproduced by at least 3 public builders using independent machines, and the Tor Package Archive contains all three builder&#39;s GPG signatures of the sha256sums.txt file in the package directory.</p>
-
-<p>To build your own identical copies of these bundles from source code, check out <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/">the official repository</a> and <a href="http://stackoverflow.com/questions/10303665/how-to-clone-a-specific-version-of-a-git-repository/10304054#10304054">use</a> git tag <strong>tbb-3.0alpha2-release</strong> (commit c0242c24bed086cc9c545c7bf2d699948792c1e3). <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build">These instructions</a> should explain things from there. If you notice any differences from the official bundles, I would love to hear about it!</p>
-
-<p>I will be writing a two part blog series explaining why this is important, and describing the technical details of how it was accomplished in the coming week or two. For now, <a href="https://mailman.stanford.edu/pipermail/liberationtech/2013-June/009257.html">a brief explanation</a> can be found on the <a href="https://mailman.stanford.edu/mailman/listinfo/liberationtech">Liberation Technologies</a> mailing list archive.</p>
-
-<h1>ChangeLog</h1>
-
-<ul>
-<li><p><strong>All Platforms:</strong></p>
-
-<ul>
-<li>Update Firefox to 17.0.7esr</li>
-<li>Update Tor to 0.2.4.14-alpha</li>
-<li>Include Tor&#39;s GeoIP file</li>
-<li>This should fix custom torrc issues with country-based node restrictions</li>
-<li>Fix several build determinism issues</li>
-<li>Include ChangeLog in bundles</li>
-</ul></li>
-<li><p><strong>Windows:</strong></p>
-
-<ul>
-<li>Fix many crash issues by disabling Direct2D support for now.</li>
-</ul></li>
-<li><p><strong>Mac:</strong></p>
-
-<ul>
-<li>Bug 8987: Disable TBB&#39;s &#39;Saved Application State&#39; disk records on OSX 10.7+</li>
-</ul></li>
-<li><p><strong>Linux:</strong></p>
-
-<ul>
-<li>Use Ubuntu&#39;s &#39;hardening-wrapper&#39; to build our Linux binaries</li>
-</ul></li>
-</ul>
-
-<p>The <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob_plain/HEAD:/Bundle-Data/Docs/ChangeLog.txt">complete 3.0 ChangeLog now lives here</a>.</p>
-
-<h1>Major Known Issues</h1>
-
-<ol>
-<li>Windows XP users may still experience crashes due to <a href="https://trac.torproject.org/projects/tor/ticket/9084">Bug 9084</a>.</li>
-<li>Transifex issues are still causing problems with missing translation text in some bundles</li>
-</ol>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-and-tor-02414-alpha-packages">New Tor Browser Bundles and Tor 0.2.4.14-alpha packages</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">firefox</a>
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tor alpha release</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser</a>
-               |
-              27 Jun 2013
-          </p>
-        </header>
-        <div class="post-description">
-          <p>All of the Tor Browser Bundles have been updated with the new Firefox 17.0.7esr. There is also a new Tor 0.2.4.14-alpha release and all of the packages have been updated with that as well.</p>
-
-<p><a href="https://www.torproject.org/download/download-easy" title="https://www.torproject.org/download/download-easy">https://www.torproject.org/download/download-easy</a></p>
-
-<p><strong>Tor Browser Bundle (2.3.25-10)</strong></p>
-
-<ul>
-<li>Update Firefox to 17.0.7esr</li>
-<li>Update zlib to 1.2.8</li>
-<li>Update HTTPS Everywhere to 3.2.2</li>
-<li>Update NoScript to 2.6.6.6</li>
-</ul>
-
-<p><strong>Tor Browser Bundle (2.4.15-alpha-1)</strong></p>
-
-<ul>
-<li>Update Tor to 0.2.4.14-alpha</li>
-<li>Update Firefox 17.0.7esr</li>
-<li>Update zlib to 1.2.8</li>
-<li>Update libpng to 1.5.16</li>
-<li>Update HTTPS Everywhere to 4.0development.8</li>
-<li>Update NoScript to 2.6.6.6</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tails-019-out">Tails 0.19 is out</a></h2>
+          <h2 class="post-title"> <a href="/blog/tails-020-out">Tails 0.20 is out</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">tails</a> under
               
@@ -184,13 +63,13 @@
               
                 <a class="post-category post-category-js" href="#">tails releases</a>
                |
-              25 Jun 2013
+              09 Aug 2013
           </p>
         </header>
         <div class="post-description">
-          <p>Tails, The Amnesic Incognito Live System, version 0.19, is out.</p>
+          <p>Tails, The Amnesic Incognito Live System, version 0.20, is out.</p>
 
-<p>All users must upgrade as soon as possible.</p>
+<p>All users must upgrade as soon as possible: this release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_0.19/">numerous security issues</a>.</p>
 
 <p><a href="https://tails.boum.org/download/">Download it now.</a></p>
 
@@ -202,37 +81,39 @@
 <li><p>New features</p>
 
 <ul>
-<li>Linux 3.9.5-1.</li>
-<li>Iceweasel 17.0.7esr + Torbrowser patches.</li>
-<li>Unblock Bluetooth, Wi-Fi, WWAN and WiMAX; block every other type of wireless device.</li>
+<li>Install Linux kernel 3.10.3-1 from Debian unstable.</li>
+<li>Iceweasel 17.0.8esr + Torbrowser patches.</li>
 </ul></li>
 <li><p>Bugfixes</p>
 
 <ul>
-<li>Fix write access to boot medium at the block device level.</li>
-<li>tails-greeter l10n-related fixes.</li>
-<li>gpgApplet: partial fix for clipboard emptying after a wrong passphrase was entered.</li>
+<li>Prevent Iceweasel from displaying a warning when leaving HTTPS web sites.</li>
+<li>Make Iceweasel use the correct, localized search engine.</li>
+<li>Fix Git access to https:// repositories.</li>
 </ul></li>
 <li><p>Minor improvements</p>
 
 <ul>
-<li>Drop GNOME proxy settings.</li>
-<li>Format newly created persistent volumes as ext4.</li>
-<li>GnuPG: don&#39;t connect to the keyserver specified by the key owner.</li>
-<li>GnuPG: locate keys only from local keyrings.</li>
-<li>Upgrade live-boot and live-config to the 3.0.x final version from Wheezy.</li>
+<li>Install Dasher, a predictive text entry tool.</li>
+<li>Add a wrapper around TrueCrypt which displays a warning about it soon being deprecated in Tails.</li>
+<li>Remove Pidgin libraries for all protocols but IRC and Jabber/XMPP. Many of the other protocols Pidgin support are broken in Tails and haven&#39;t got any security auditting.</li>
+<li>Disable the pre-defined Pidgin accounts so they do not auto-connect on Pidgin start.</li>
+<li>Include information about Alsa in WhisperBack reports.</li>
+<li>Explicitly restrict access to ptrace. While this setting was enabled by default in Debian&#39;s Linux 3.9.6-1, it will later disabled in 3.9.7-1. It&#39;s unclear what will happen next, so let&#39;s explicitly enable it ourselves.</li>
+<li>Do not display dialog when a message is sent in Claws Mail.</li>
+<li>Sync iceweasel preferences with the Torbrowser&#39;s.</li>
 </ul></li>
-<li><p>Localization: many translation updates all over the place.</p></li>
-<li><p>Test suite</p>
+<li><p>Localization</p>
 
 <ul>
-<li>Re-enable previously disabled boot device permissions test.</li>
+<li>Many translation updates all over the place.</li>
+<li>Merge all Tails-related POT files into one, and make use of intltoolize for better integration with Transifex.</li>
 </ul></li>
 </ul>
 
-<p>See the <a href="https://git-tails.immerda.ch/tails/plain/debian/changelog?id=0.19">online Changelog</a> for technical details.</p>
+<p>See the <a href="https://git-tails.immerda.ch/tails/plain/debian/changelog?id=0.20">online Changelog</a> for technical details.</p>
 
-<p><strong>Known issues</strong></p>
+<p><strong>Known issue</strong></p>
 
 <p>No new known issue but <a href="https://tails.boum.org/support/known_issues/">longstanding known issues</a>.</p>
 
@@ -244,138 +125,179 @@
 
 <p><strong>What&#39;s coming up?</strong></p>
 
-<p>The next Tails release is scheduled for early August.</p>
+<p>The next Tails release is scheduled for around September 19.</p>
 
-<p>Have a look to our <a href="https://tails.boum.org/contribute/roadmap/">roadmap</a> to see where we are heading to.</p>
+<p>Have a look to our <a href="https://labs.riseup.net/code/projects/tails/roadmap">roadmap</a> to see where we are heading to.</p>
 
-<p>Would you want to help? As explained in our <a href="https://tails.boum.org/contribute/">&quot;how to contribute&quot; documentation</a>, there are many ways <strong>you</strong> can contribute to Tails. If you want to help, come talk to us!</p>
+<p>Would you want to help? There are many ways <a href="https://tails.boum.org/contribute/">you can contribute</a>. If you want to help, <a href="https://tails.boum.org/support/">come talk to us</a>!</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/facebook-and-tor">Facebook and Tor</a></h2>
+          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-firefox-1708esr">New Tor Browser Bundles with Firefox 17.0.8esr</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">Runa</a> under
-              
-                <a class="post-category post-category-js" href="#">facebook</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
+              By <a class="post-author" href="#">erinn</a> under
                |
-              18 Jun 2013
+              09 Aug 2013
           </p>
         </header>
         <div class="post-description">
-          <p>A number of users have noticed that Facebook is blocking connections from the Tor network. Facebook is not blocking Tor deliberately. However, a high volume of malicious activity across Tor exit nodes triggered Facebook&#39;s site integrity systems which are designed to protect people who use the service. Tor and Facebook are working together to find a resolution.</p>
+          <p>All of the Tor Browser Bundles have been updated with Firefox 17.0.8esr which includes critical security fixes. All users are strongly encouraged to upgrade. To read more about which kinds of fixes are in this version of Firefox, please click <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.8">here</a>. This link is also included in the changelogs and we will continue to add it in the future versions of Tor Browser Bundle as well so that users can always be aware of major issues.</p>
 
-<p>For further questions please contact us at <a href="mailto:execdir@torproject.org">execdir@torproject.org</a>.</p>
+<p><a href="https://www.torproject.org/download/download-easy.html.en" title="https://www.torproject.org/download/download-easy.html.en">https://www.torproject.org/download/download-easy.html.en</a>
+ <a href="https://www.torproject.org/projects/torbrowser.html.en#downloads" title="https://www.torproject.org/projects/torbrowser.html.en#downloads">https://www.torproject.org/projects/torbrowser.html.en#downloads</a></p>
 
-<p><strong>Update from Facebook on June 18, 2013, 2:30 PM EST</strong> : Facebook&#39;s site integrity systems detected automated malicious activity coming from a significant number of Tor exit nodes. In order to protect people while we investigated the problem, access via these nodes was temporarily suspended. This issue has now been resolved and Tor access routes to Facebook restored.</p>
+<p><strong>Tor Browser Bundle (2.3.25-11)</strong></p>
+
+<ul>
+<li>Update Firefox to 17.0.8esr</li>
+</ul>
+
+<p><a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.8">https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.8</a></p>
+
+<ul>
+<li>Update HTTPS Everywhere to 3.3.1</li>
+<li>Update NoScript to 2.6.7</li>
+<li>Update LibPNG to 1.6.3</li>
+</ul>
+
+<p><strong>Tor Browser Bundle (2.4.15-beta-2)</strong></p>
+
+<ul>
+<li>Update Firefox to 17.0.8esr</li>
+</ul>
+
+<p><a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.8">https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.8</a></p>
+
+<ul>
+<li>HTTPS Everywhere to 4.0development.9</li>
+<li>Update PDF.js to 0.8.298</li>
+<li>Update NoScript to 2.6.6.9</li>
+<li>Update LibPNG to 1.6.3</li>
+</ul>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/announcing-tor-browser-bundle-30alpha1">Announcing Tor Browser Bundle 3.0alpha1</a></h2>
+          <h2 class="post-title"> <a href="/blog/nnedv-tech-summit-2013-report">NNEDV Tech Summit 2013 Report</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">mikeperry</a> under
+              By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">gitian</a>
+                <a class="post-category post-category-js" href="#">domestic violence</a>
+              
+                <a class="post-category post-category-js" href="#">helping</a>
+              
+                <a class="post-category post-category-js" href="#">ipv</a>
+              
+                <a class="post-category post-category-js" href="#">nnedv</a>
+              
+                <a class="post-category post-category-js" href="#">techsummit</a>
+               |
+              08 Aug 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>I was invited to talk for 90 minutes at NNEDV&#39;s <a href="http://nnedv.org/projects/safetynet/3701-techsummit2013.html">TechSummit 13</a> about privacy, helping victims, and Tor. My <a href="https://svn.torproject.org/svn/projects/presentations/2013-07-30-NNEDV-Presentation.pdf">presentation</a> covered a quick overview of Tor, why I&#39;m here talking about domestic violence and intimate partner abuse, and what we&#39;re doing to help. I also included four case studies of which highlight the role of technology in stalking and abuse. Videos of my talk may make their way online at some point. At the request of the audience, I walked through my <a href="https://svn.torproject.org/svn/projects/presentations/2013-01-27-WorldBank-fuerza-presentation.html">World Bank Hackathon</a> presentation to show how easy it is to infect a mobile phone and what an abuser will get out of such an action.</p>
+
+<p>The conference was held at the great <a href="http://www.hayesmansion.com/">Hayes Mansion</a> which allowed for lots of informal conversations in a more relaxed atmosphere. The attendees are a mix of advocates from around the world, law enforcement, commercial companies (such as Apple, Facebook, Google, Verizon, Mozilla, etc), and a number of lawyers from public and private organizations.</p>
+
+<p>I could only stay for one of the three-day conference, but once again, it was great to engage in conversations with people of all backgrounds. Many organizations are now more aware of Tor and interested in talking to us about using our technology and experience to help. Hopefully our continuing commitment to helping and <a href="https://blog.torproject.org/category/tags/ipv">past experience</a> in this area are beginning to make a difference.</p>
+
+<p>Overall, it was great to be invited and worth the trip.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-august-7th-2013">Tor Weekly News — August, 7th 2013</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">lunar</a> under
+              
+                <a class="post-category post-category-js" href="#">tor weekly news</a>
+               |
+              07 Aug 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Welcome to the 6<sup>th</sup> issue of Tor Weekly News, the weekly newsletter that covers what is happening in the resilient Tor community.</p>
+
+<h1>Large hidden services provider compromised, attacks older TBB versions</h1>
+
+<p><a href="https://blog.torproject.org/blog/hidden-services-current-events-and-freedom-hosting">Andrew Lewman wrote</a>: “Around midnight on August 4th we were notified by a few people that a large number of hidden service addresses have disappeared from the Tor network.”</p>
+
+<p>It turned out that Freedom Hosting, a company specializing in hosting websites accessible through Tor hidden services, was compromised. As Andrew puts it, “From what is known so far, the breach was used to configure the server in a way that it injects some sort of JavaScript exploit in the web pages delivered to users. This exploit is used to load a malware payload to infect user’s computers.” Andrew also reiterated that “the person, or persons, who run Freedom Hosting are in no way affiliated or connected to The Tor Project, Inc., the organization coordinating the development of the Tor software and research”.</p>
+
+<p>The Tor Browser is currently based on Mozilla Firefox 17 ESR. With the <a href="https://blog.mozilla.org/security/2013/08/04/investigating-security-vulnerability-report/">help of Mozilla</a> and <a href="http://tsyrklevich.net/tbb_payload.txt">other researchers</a> it was understood that the exploit used a vulnerability in Firefox JavaScript engine to attack Windows users of the Tor Browser Bundle. This vulnerability was <a href="https://www.mozilla.org/security/announce/2013/mfsa2013-53.html">fixed in Firefox 17.0.7 ESR</a> and subsequently in versions 2.3.25-10 ( <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-and-tor-02414-alpha-packages">released June 26 2013</a>), 2.4.15-alpha-1 ( <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-and-tor-02414-alpha-packages">released June 26 2013</a>) 3.0alpha2 ( <a href="https://blog.torproject.org/blog/tor-browser-bundle-30alpha2-released">released June 30 2013</a>) and 2.4.15-beta-1 ( <a href="https://blog.torproject.org/blog/tor-02415-rc-packages-available">released July 8 2013</a>).</p>
+
+<p>Users running updated versions, and those who have disabled JavaScript, are not affected by the exploit.</p>
+
+<p>Roger Dingledine issued a <a href="https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html">security advisory</a> with advice to mitigate future issues: “be sure you’re running a recent enough Tor Browser Bundle”, “be sure to keep up-to-date in the future”, “consider disabling JavaScript”, “consider switching to a “live system” approach like Tails”, “be aware that many other vectors remain for vulnerabilities in Firefox”. It is strongly advised to read the advisory in full.</p>
+
+<p>The versions of Firefox used in Pluggable Transport bundles are still vulnerable. Replacements have been built, with credit to David Fifield, but they are <a href="https://trac.torproject.org/projects/tor/ticket/9391">yet to be released</a>.</p>
+
+<p>The press is running many stories covering these events, several containing false information. A better example is <a href="http://www.wired.com/threatlevel/2013/08/freedom-hosting/">Kevin Poulsen’s article</a> published in Wired on August, 5th. It did however assert “the malware only targets Firefox 17 ESR, the version of Firefox that forms the basis of the Tor Browser Bundle”, in-fact most recent Tor Browser Bundle releases, with the exception of Pluggable Transports bundles, contained the patched version of Firefox ESR.</p>
+
+<h1>Monthly status reports for July 2013</h1>
+
+<p>The wave of regular monthly reports from Tor project members for the month of July has begun. <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000294.html">Philipp Winter</a> was first this time, followed by reports from <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000295.html">Arlo Breault</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000296.html">Nick Mathewson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000299.html">Noel David Torress Taño</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000297.html">Colin C.</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000298.html">Sherief Alaa</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000300.html">Karsten Loesing</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000301.html">Damian Johnson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000302.html">Mike Perry</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000303.html">George Kadianakis</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2013-August/000304.html">Andrew Lewman</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Tails developers issued a <a href="https://tails.boum.org/news/test_0.20-rc1/">call for testing</a> of the first release candidate of the upcoming 0.20 [21]. Send them your reports!</p>
+
+<p>Security researcher Jason Geffner presented a new tool to route all TCP/IP and DNS traffic through the Tor network on Windows called <a href="https://www.blackhat.com/us-13/briefings.html#Geffner2">Tortilla</a> during Black Hat USA 2013 and subsequently on the <a href="https://lists.torproject.org/pipermail/tor-talk/2013-August/029254.html">tor-talk mailing list</a>. Binary and source code are <a href="http://www.crowdstrike.com/community-tools/">available</a> and are awaiting reviews by the community.</p>
+
+<p>Wendell <a href="https://lists.torproject.org/pipermail/tor-talk/2013-July/029150.html">announced the first release of Tor.framework</a>, a “Cocoa framework that allows developers to write apps for Mac OS X and iOS that work over the Tor onion routing network”. No comments have been made yet. Feel free to look at the <a href="https://github.com/grabhive/Tor.framework">source code</a>, review and experiment.</p>
+
+<p><a href="https://lists.torproject.org/pipermail/tor-talk/2013-August/029203.html">Jerzy Łogiewa asked on tor-talk</a> if Tor hidden services could be made to work near the speed of the standard web. Arian Sanusi replied that speed of light was actually the limiting factor for latency issues: “if relays were homogeneous distributed among the globe, two random relays will be 1/4 earth circumference apart on average. […] That’s 400ms from finite speed of light. Switches, routers and relays along the way will add to that.”</p>
+
+<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-commits/2013-August/060173.html">Michael Marz</a> and <a href="https://lists.torproject.org/pipermail/tor-commits/2013-August/060250.html">Neo</a> for running new mirrors of the Tor website.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by dope457, malaparte, Lunar, harmony, and Yawning.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing-list</a> if you want to get involved!</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-security-advisory-old-tor-browser-bundles-vulnerable">Tor security advisory: Old Tor Browser Bundles vulnerable</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
               
                 <a class="post-category post-category-js" href="#">security</a>
               
                 <a class="post-category post-category-js" href="#">tbb</a>
               
-                <a class="post-category post-category-js" href="#">tbb-3.0</a>
-              
                 <a class="post-category post-category-js" href="#">tor browser</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">tor-browser-bundle</a>
-              
-                <a class="post-category post-category-js" href="#">usability</a>
                |
-              17 Jun 2013
+              05 Aug 2013
           </p>
         </header>
         <div class="post-description">
-          <p><strong>Update 2013/6/28:</strong> Describe workaround for the Windows d2d1.dll crash.</p>
+          <p>An attack that exploits a <a href="https://www.mozilla.org/security/announce/2013/mfsa2013-53.html">Firefox vulnerability in JavaScript</a> has been observed in the wild. Specifically, Windows users using the Tor Browser Bundle (which includes Firefox <a href="https://www.torproject.org/projects/torbrowser/design/">plus privacy patches</a>) appear to have been targeted.</p>
 
-<p>After almost 6 months of solid development, the Tor Project is proud to announce the first alpha in the <a href="https://blog.torproject.org/category/tags/tbb-30">3.0 series</a> of the Tor Browser Bundle!</p>
+<p>This vulnerability was <a href="https://blog.mozilla.org/security/2013/08/04/investigating-security-vulnerability-report/">fixed in Firefox 17.0.7 ESR</a>. The following versions of the Tor Browser Bundle include this fixed version:</p>
 
-<p>The 3.0alpha1 bundles are downloadable from the <a href="https://archive.torproject.org/tor-package-archive/torbrowser/3.0a1/">Tor Package Archive</a>.</p>
+<ul>
+<li>2.3.25-10 (released <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-and-tor-02414-alpha-packages">June 26 2013</a>)</li>
+<li>2.4.15-alpha-1 (released <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-and-tor-02414-alpha-packages">June 26 2013</a>)</li>
+<li>2.4.15-beta-1 (released <a href="https://blog.torproject.org/blog/tor-02415-rc-packages-available">July 8 2013</a>)</li>
+<li>3.0alpha2 (released <a href="https://blog.torproject.org/blog/tor-browser-bundle-30alpha2-released">June 30 2013</a>)</li>
+</ul>
 
-<h1>Release Highlights</h1>
+<p>Tor Browser Bundle users should ensure they&#39;re running a recent enough bundle version, and consider taking further security precautions.</p>
 
-<p>Here are the major highlights of the 3.0 series:</p>
-
-<ol>
-<li><strong>Usability, usability, usability!</strong></li>
-</ol>
-
-<p>We&#39;ve attempted to solve several major usability issues in this series, including:</p>
-
-<ol>
-<li><strong>No more Vidalia</strong></li>
-</ol>
-
-<p>The Tor process management is handled by the new Tor Launcher Firefox extension. If you want the Vidalia map and other features, you can point an existing Vidalia binary at control port 9151 after Tor Browser has launched, and it should still work (and even allow you to reconfigure the TBB Tor as a bridge or a relay).</p>
-
-<ol>
-<li><strong>Local homepage with search box</strong></li>
-</ol>
-
-<p>The browser now uses a local about:tor homepage instead of <a href="https://check.torproject.org" title="https://check.torproject.org">https://check.torproject.org</a>. A local verification against the Tor control port is still performed, to ensure Tor is working, and a link to <a href="https://check.torproject.org" title="https://check.torproject.org">https://check.torproject.org</a> is provided from the about:tor homepage for manual verification as well.</p>
-
-<ol>
-<li><strong>Guided Extraction for Windows</strong></li>
-</ol>
-
-<p>For Windows users, an NSIS-based extractor now guides you through the TBB extraction and ensures the extracted bundle ends up on your Desktop, or in a known location chosen by you (but make sure you have permissions on that location). Hopefully this will mean no more losing track of the extracted bundle files!</p>
-
-<ol>
-<li><strong>Email-sized bundles</strong></li>
-</ol>
-
-<p>The bundles are all under the 25M gmail attachment size limit, so direct email and gettor attachments are once again possible.</p>
-
-<ol>
-<li><strong>Improved build security and integrity verification</strong>
-We now use <a href="https://gitian.org/">Gitian</a> to build the bundles. The idea behind Gitian is to allow independent people to take our source code and produce exactly identical binaries on their own. We&#39;re not quite at the point where you always get a matching build, but the remaining differences are minor, and within a couple more releases we should have it fully reproducible. For now, we are <a href="https://people.torproject.org/%7Emikeperry/tbb-3.0alpha1-builds/">posting all of the builds</a> for comparison, and you can of course <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build">build and compare your own</a>.</li>
-</ol>
-
-<h1>Known issues</h1>
-
-<p>Of course, being an alpha release (in fact, the first alpha release of this series), we expect these bundles to have some issues. Here&#39;s the major user-facing issues that we know about so far:</p>
-
-<ol>
-<li><strong>Crash Issue: Windows Permissions</strong></li>
-</ol>
-
-<p>On Windows, if you install the bundle to anywhere other than the Desktop, permissions issues can cause the bundles to crash at startup.</p>
-
-<ol>
-<li><strong>Crash Issue: Windows Software Conflict(s)</strong></li>
-</ol>
-
-<p>There appears to be an issue with direct2d rendering acceleration that affects some video cards, and has a crash report with a module d2d1.dll. The simplest workaround is to right click on &#39;Start Tor Browser&#39; and select &quot;Properties-&gt;Compatibility-&gt;Run in Windows XP Compatibility mode&quot;.</p>
-
-<ol>
-<li><strong>Extraction: Delete or rename your old TBB directory first!</strong></li>
-</ol>
-
-<p>These bundles are significantly different than the previous alphas or stable releases. You must not extract this bundle on top of a previous TBB directory, or multiple things will break. If you want to preserve your bookmarks and history, you can do so by copying only the <strong>places.sqlite</strong> file from your old bundle directory into the new one. The good news is that the elimination of Vidalia should make it much simpler for us to finally deploy an autoupdater, but please bear with us until we can finally complete that important usability work.</p>
-
-<ol>
-<li><strong>Misc: Missing Translations</strong></li>
-</ol>
-
-<p>Some of the translations strings for the Tor Launcher startup got munged by Transifex. In particular, the Farsi and the German builds both have missing button labels and strings.</p>
-
-<p>If you experience any other issues, please let us know and/or <a href="https://trac.torproject.org/projects/tor/newticket">file a bug!</a></p>
+<p>Read the full advisory here:
+ <a href="https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html" title="https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html">https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.h...</a></p>
 
         </div>
       </section>
@@ -386,7 +308,7 @@ We now use <a href="https://gitian.org/">Gitian</a> to build the bundles. The id
       
         <a href="/blog/page30" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 31 of 134</span>
+      <span class="page_number ">Page: 31 of 137</span>
       
         <a href="/blog/page32" class="next">Next</a>
       

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor Weekly News — September 17th, 2014</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
+
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Tor Weekly News — September 17th, 2014</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">harmony</a> under
+              
+                <a class="post-category post-category-js" href="#">tor weekly news</a>
+               |
+              17 Sep 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Welcome to the thirty-seventh issue in 2014 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the community around Tor, the anonymity network that makes full use of its library card.</p>
+
+<h1>tor 0.2.5.7-rc is out</h1>
+
+<p>Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-talk/2014-September/034740.html">announced</a> the first release candidate in tor’s 0.2.5.x series. This version “fixes several regressions from earlier in the 0.2.5.x release series, and some long-standing bugs related to ORPort reachability testing and failure to send CREATE cells”; relay operators running it will also receive a warning if they try to configure a hidden service on the same process as their relay, as the public nature of much information about Tor relays <a href="https://bugs.torproject.org/12908#comment:5">can help identify services running on the same machine</a>. As ever, you can read the full list of improvements and fixes in Nick’s announcement, and download the source code from the Tor Project’s <a href="https://www.torproject.org/dist/">distribution directory</a>.</p>
+
+<h1>Tor protects library patrons’ right to privacy</h1>
+
+<p>April Glaser and Alison Macrina <a href="http://boingboing.net/2014/09/13/radical-librarianship-how-nin.html">published</a> an article for BoingBoing on efforts by Massachusetts librarians to guarantee their patrons’ right to access information without fear of surveillance or censorship. Macrina and her colleagues, in partnership with the ACLU of Massachusetts, have been giving workshops on the use of privacy-preserving technologies to other librarians, and spreading the word about the risk that pervasive surveillance poses to freedom of thought and intellectual inquiry.</p>
+
+<p>As the authors remark, “it’s no secret that libraries are among our most democratic institutions. Libraries provide access to information and protect patrons’ right to explore new ideas, no matter how controversial or subversive […] and protecting unfettered access to information is important whether that research is done using physical books or online search engines. But now it has become common knowledge that governments and corporations are tracking our digital lives, and that surveillance means our right to freely research information is in jeopardy”.</p>
+
+<p>Tor and Tails are a natural fit for any response to this problem, and BoingBoing reports that not only have “multiple Massachusetts libraries […] installed the Tor browser on all of their public PCs” following the workshops, some have even “set up Tor middle relays on their libraries’ networks”.</p>
+
+<p>It would be a shame, however, if these exciting developments were restricted to the state of Massachusetts. If you are a library user concerned about this issue, share the article with your local librarians. If you work in a library, contact the authors of the article at the addresses they provide to find out how you can offer privacy workshops and tools to your own community!</p>
+
+<h1>Hidden service enumeration and how to prevent it</h1>
+
+<p>When a Tor user wants to connect to a hidden service, their client makes a request over the Tor network to a relay acting as a “hidden service directory”, or HSDir. In return, the client receives a hidden service “descriptor” containing the information necessary for a connection to be made, including the set of <a href="https://www.torproject.org/docs/hidden-services">Introduction Points</a> that the hidden service is currently using.</p>
+
+<p>Hidden services would ideally not be discoverable unless the address is public or has been shared directly, but one of the weaknesses of the current protocol is that hidden service directories know which services they are serving descriptors for; this same shortcoming was an element of the <a href="https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">“RELAY_EARLY” traffic confirmation attack</a> discovered in July. Although the full set of descriptors is not published to all directories at once — at any given time, <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/rend-spec.txt#l496">six directories</a> are responsible for a service’s descriptor — the list is rotated frequently, so it would not be hard for an adversary to run a relay stable enough to gain the HSDir flag, and harvest hidden service addresses as they are uploaded to it in turn.</p>
+
+<p>Fabio Pietrosanti <a href="https://lists.torproject.org/pipermail/tor-talk/2014-September/034751.html">informed</a> the tor-talk mailing list of an experiment designed to detect this enumeration of hidden services: he set up thirty new hidden services, keeping their addresses secret, with each service running a script to report any attempts at access from outside. As the existence of these services was not disclosed to anyone, any requests to the service could only come from a client that had obtained the address from a directory which had previously held the descriptor, possibly “a malicious Tor relay acting as a TorHS directory, with Tor’s code modified to dump from the RAM memory the TorHS list, then harvest them with an http client/script/crawler”. After approximately a month, according to Fabio’s message, a client did indeed try to access one of the “honeypot” services.</p>
+
+<p>Regular readers of Tor Weekly News will <a href="https://lists.torproject.org/pipermail/tor-news/2013-December/000023.html">know</a> that the hidden service protocol is being fully redesigned, and this “next-generation” proposal already suggests <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/224-rend-spec-ng.txt#l571">defenses against this kind of attack</a>, but (as ever) more eyes are needed. If you’re interested, see George Kadianakis’ introduction to the <a href="https://blog.torproject.org/blog/hidden-services-need-some-love">issues facing hidden services</a>; those familiar with cryptography in C are welcome to review the discussion of this particular issue on the <a href="https://bugs.torproject.org/8106">bug tracker</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Nathan Freitas <a href="https://lists.mayfirst.org/pipermail/guardian-dev/2014-September/003773.html">announced</a> version 14.0.8.1 of Orbot, the Tor client for Android. The highlights of this release are an upgrade to tor 0.2.5.7-rc (see above), which solves an issue with the “airplane mode” feature, as well as a number of improvements to do with transparent proxying. Find the full changelog and download links in Nathan’s message.</p>
+
+<p>Juha Nurmi <a href="https://blog.torproject.org/blog/ahmia-search-after-gsoc-development">described</a> the current state of ahmia.fi, the search engine for hidden services, following a successful Google Summer of Code project. The post includes notes on the design, content statistics, and plans for future work.</p>
+
+<p>David Fifield called for a volunteer operating a “ <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007482.html">big fast bridge</a>” to take over the running of the <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a> pluggable transport: “I want to do this both to diffuse trust, so that I don’t run all the infrastructure, and because my bridge is not especially fast and I’m not especially adept at performance tuning”.</p>
+
+<p>David also <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007481.html">wondered</a> why the number of FTE users appeared to dip in late August, and explored possible reasons behind the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007480.html">correlation in usage statistics</a> for meek and Flashproxy, whose backends both run on the same bridge. Karsten Loesing <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007483.html">suggested</a> that the latter was because “we’re counting consensuses downloaded from a bridge via any supported transport, and then we’re attributing those downloads to specific transports based on what fraction of IPs connected per transport”.</p>
+
+<p>Tim <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007471.html">reported</a> on progress made towards a “ <a href="https://en.wikipedia.org/wiki/Fuzz_testing">fuzzer</a>” for Tor, based on the Tor research framework previously <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007232.html">announced</a> by Gareth Owen, including a draft design for the process and a list of patches against Tor made during development.</p>
+
+<p>Matt Pagan submitted his <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000650.html">status report</a> for August, while Roger Dingledine sent out the report for <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000649.html">SponsorF</a>.</p>
+
+<p>Karsten Loesing <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007469.html">posted</a> the minutes of last week’s Globe/Atlas developer IRC meeting.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by harmony, Lunar, Roger Dingledine, George Kadianakis, and special.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+        </div>
+      </section>
+  </div>
+
+</div>
+
+
+
+<div class="comments clearfix">
+  <div class="comments-loading">
+  <p><em>Comments will not load without Javascript enabled</em></p>
+  </div>
+</div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var loadingSection = document.body.querySelector('.comments-loading');
+    var icon = '<p>Comments Loading...</p><img alt="loading comments" src="/assets/images/comments-loading.gif">';
+
+    loadingSection.innerHTML = loadingSection.innerHTML + icon;
+
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/tor-weekly-news-%E2%80%94-september-17th-2014',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+
+    (document.getElementsByTagName('head')[0] ||
+      document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
+
+})();
+</script>
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

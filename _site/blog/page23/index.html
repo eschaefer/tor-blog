@@ -53,322 +53,564 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/thanks">Thanks!</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">advocacy</a>
-              
-                <a class="post-category post-category-js" href="#">thanks</a>
-               |
-              08 Oct 2013
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Thank you from The Tor Project for your support, advocacy, and help over the past few years!</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/yes-we-know-about-guardian-article">Yes, we know about the Guardian article</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">arma</a> under
-              
-                <a class="post-category post-category-js" href="#">gchq</a>
-              
-                <a class="post-category post-category-js" href="#">nsa</a>
-               |
-              04 Oct 2013
-          </p>
-        </header>
-        <div class="post-description">
-          <p>And also the Washington Post article.</p>
-
-<p>We&#39;re planning to write up a more detailed analysis later, but for now here&#39;s a place to centralize all the &quot;hey did you know about this article&quot; blog comments.</p>
-
-<p>And for the journalists out there who want a statement, here&#39;s my quote from the article:</p>
-
-<p>&quot;The good news is that they went for a browser exploit, meaning there&#39;s no indication they can break the Tor protocol or do traffic analysis on the Tor network. Infecting the laptop, phone, or desktop is still the easiest way to learn about the human behind the keyboard.</p>
-
-<p>Tor still helps here: you can target individuals with browser exploits, but if you attack too many users, somebody&#39;s going to notice. So even if the NSA aims to surveil everyone, everywhere, they have to be a lot more selective about which Tor users they spy on.</p>
-
-<p>Just using Tor isn&#39;t enough to keep you safe in all cases. Browser exploits, large-scale surveillance, and general user security are all challenging topics for the average internet user. These attacks make it clear that we, the broader internet community, need to keep working on better security for browsers and other internet-facing applications.&quot;</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/deterministic-builds-part-two-technical-details">Deterministic Builds Part Two: Technical Details</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">mikeperry</a> under
-              
-                <a class="post-category post-category-js" href="#">cyberpeace</a>
-              
-                <a class="post-category post-category-js" href="#">decentralization</a>
-              
-                <a class="post-category post-category-js" href="#">deterministic builds</a>
-              
-                <a class="post-category post-category-js" href="#">gitian</a>
-              
-                <a class="post-category post-category-js" href="#">National Insecurity Agency</a>
-              
-                <a class="post-category post-category-js" href="#">security</a>
-               |
-              04 Oct 2013
-          </p>
-        </header>
-        <div class="post-description">
-          <p>This is the second post in a two-part series on the build security improvements in the <a href="https://blog.torproject.org/category/tags/tbb-30">Tor Browser Bundle 3.0 release cycle</a>.</p>
-
-<p>The <a href="https://blog.torproject.org/blog/deterministic-builds-part-one-cyberwar-and-global-compromise">first post</a> described why such security is necessary. This post is meant to describe the technical details with respect to how such builds are produced.</p>
-
-<p>We achieve our build security through a reproducible build process that enables anyone to produce byte-for-byte identical binaries to the ones we release. Elsewhere on the Internet, this process is varyingly called &quot;deterministic builds&quot;, &quot;reproducible builds&quot;, &quot;idempotent builds&quot;, and probably a few other terms, too.</p>
-
-<p>To produce byte-for-byte identical packages, we use <a href="http://gitian.org/">Gitian</a> to build Tor Browser Bundle 3.0 and above, but that isn&#39;t the only option for achieving reproducible builds. We will first describe how we use Gitian, and then go on to enumerate the individual issues that Gitian solves for us, and that we had to solve ourselves through either wrapper scripts, hacks, build process patches, and (in one esoteric case for Windows) direct binary patching.</p>
-
-<h1>Gitian: What is it?</h1>
-
-<p><a href="http://gitian.org/howto.html">Gitian</a> is a thin wrapper around the Ubuntu virtualization tools written in a combination of Ruby and bash. It was originally developed by Bitcoin developers to ensure the build security and integrity of the Bitcoin software.</p>
-
-<p>Gitian uses Ubuntu&#39;s python-vmbuilder to create a qcow2 base image for an Ubuntu version and architecture combination and a set of git and tarball inputs that you specify in a &#39; <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/descriptors/linux/gitian-firefox.yml">descriptor</a>&#39;, and then proceeds to run a shell script that you provide to build a component inside that controlled environment. This build process produces an output set that includes the compiled result and another &quot;output descriptor&quot; that captures the versions and hashes of all packages present on the machine during compilation.</p>
-
-<p>Gitian requires either Intel VT support (for qemu-kvm), or LXC support, and currently only supports launching Ubuntu build environments from Ubuntu itself.</p>
-
-<h1>Gitian: How Tor Uses It</h1>
-
-<p><a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build">Tor&#39;s use of Gitian</a> is slightly more automated and also slightly different than how Bitcoin uses it.</p>
-
-<p>First of all, because Gitian supports only Ubuntu hosts and targets, we must cross compile everything for Windows and MacOS. Luckily, Mozilla <a href="https://developer.mozilla.org/en-US/docs/Cross_Compile_Mozilla_for_Mingw32">provides support</a> for <a href="http://mingw-w64.sourceforge.net/">MinGW-w64</a> as a &quot;third tier&quot; compiler, and does endeavor to work with the MinGW team to fix issues as they arise.</p>
-
-<p>To our further good fortune, we were able to use a MacOS cross compiler created by <a href="https://github.com/mingwandroid">Ray Donnelly</a> based on a <a href="https://github.com/mingwandroid/toolchain4">fork of &quot;Toolchain4&quot;</a>. We owe Ray a great deal for providing his compilers to the public, and he has been most excellent in terms of helping us through any issues we encountered with them. Ray is also working to <a href="https://github.com/diorcety/crosstool-ng.git">merge his patches</a> into the <a href="http://crosstool-ng.org/">crosstools-ng project</a>, to provide a more seamless build process to create rebuilds of his compilers. As of this writing, we are still using <a href="https://mingw-and-ndk.googlecode.com/files/multiarch-darwin11-cctools127.2-gcc42-5666.3-llvmgcc42-2336.1-Linux-120724.tar.xz">his binaries</a> in combination with the <a href="https://launchpad.net/%7Eflosoft/+archive/cross-apple/+packages">flosoft MacOS10.X SDK</a>.</p>
-
-<p>For each platform, we build the components of Tor Browser Bundle in 3 stages, with one descriptor per stage. The <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/descriptors/linux/gitian-tor.yml">first descriptor</a> builds Tor and its core dependency libraries (OpenSSL, libevent, and zlib) and produces one output zip file. The <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/descriptors/linux/gitian-firefox.yml">second descriptor</a> builds Firefox. The <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/descriptors/linux/gitian-bundle.yml">third descriptor</a> combines the previous two outputs along with our included Firefox addons and localization files to produce the actual localized bundle files.</p>
-
-<p>We <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/tree/HEAD:/gitian/">provide a Makefile and shellscript-based wrapper</a> around Gitian to automate the download and authentication of our source inputs prior to build, and to perform a final step that creates a sha256sums.txt file that lists all of the bundle hashes, and can be signed by any number of detached signatures, one for each builder.</p>
-
-<p>It is important to distribute multiple cryptographic signatures to prevent targeted attacks against stealing a single build signing key (because the signing key itself is of course another single point of failure). Unfortunately, GPG currently lacks support for verifying multiple signatures of the same document. Users must manually copy each detached signature they wish to verify into its proper .asc filename suffix. Eventually, we hope to create a stub installer or wrapper script of some kind to simplify this step, as well as add multi-signature support to the Firefox update process. We are also investigating adding a URL and a hash of the package list the <a href="https://gitweb.torproject.org/torspec.git/blob/master:/dir-spec.txt">Tor Consensus</a>, so that the Tor Consensus document itself authenticates our binary packages.</p>
-
-<p>We do not use the Gitian output descriptors or the Gitian signing tools, because the tools are used to sign Gitian&#39;s output descriptors. We found that Ubuntu&#39;s individual packages (which are listed in the output descriptors) varied too frequently to allow this mechanism to be reproducible for very long. However, we do include a <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/versions">list of input versions and hashes</a> used to produce each bundle in the bundle itself. The format of this versions file is the same that we use as input to download the sources. This means it should remain possible to re-build an arbitrary bundle for verification at a later date, assuming that any later updates to Ubuntu&#39;s toolchain packages do not change the output.</p>
-
-<h1>Gitian: Pain Points</h1>
-
-<p>Gitian is not perfect. In fact, many who have tried our build system have remarked that it is not even close to deterministic (and that for this and other reasons &#39;Reproducible Builds&#39; is a better term). In fact, it seems to experience build failures for quite unpredictible reasons related to bugs in one or more of qemu-kvm/LXC, make, qcow copy-on-write image support. These bugs are often intermittent, and simply restarting the build process often causes things to proceed smoothly. This has made the bugs exceedingly tricky to pinpoint and diagnose.</p>
-
-<p>Gitian&#39;s use of tags (especially signed tags) has some bugs and flaws. For this reason, we verify signatures ourselves after input fetching, and provide gitian only with explicit commit hashes for the input source repositories.</p>
-
-<p>We maintain a list of the most common issues in the <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build">build instructions</a>.</p>
-
-<h1>Remaining Build Reproducibility Issues</h1>
-
-<p>By default, the Gitian VM environment controls the following aspects of the build platform that normally vary and often leak into compiled software: hostname, build path, uname output, toolchain version, and time.</p>
-
-<p>However, Gitian is not enough by itself to magically produce reproducible builds. Beyond what Gitian provides, we had to patch a number of reproducibility issues in Firefox and some of the supporting tools on each platform. These include:</p>
-
-<ol>
-<li><strong>Reordering due to inode ordering differences (exposed via Python&#39;s os.walk())</strong></li>
-</ol>
-
-<p>Several places in the Firefox build process use python scripts to repackage both compiled library archives and zip files. In particular, they tend to obtain directory listings using os.walk(), which is dependent upon the inode ordering of the filesystem. We fix this by sorting those file lists in the applicable places.</p>
-
-<ol>
-<li><strong>LC_ALL localizations alter sorting order</strong></li>
-</ol>
-
-<p>Sorting only gets you so far, though, if someone from a different locale is trying to reproduce your build. Differences in your character sets will cause these sort orders to differ. For this reason, we set the LC_ALL environment variable to &#39;C&#39; at the top of our Gitian descriptors.</p>
-
-<ol>
-<li><strong>Hostname and other OS info leaks in LXC mode</strong></li>
-</ol>
-
-<p>For these cases, we simply patch the pieces of Firefox that include the hostname (primarily for <a href="about:buildconfig">about:buildconfig</a>).</p>
-
-<ol>
-<li><strong>Millisecond and below timestamps are not fixed by libfaketime</strong></li>
-</ol>
-
-<p>Gitian relies on <a href="http://www.code-wizards.com/projects/libfaketime/">libfaketime</a> to set the clock to a fixed value to deal with embedded timestamps in archives and in the build process. However, in some places, Firefox inserts millisecond timestamps into its supporting libraries as part of an informational structure. We simply zero these fields.</p>
-
-<ol>
-<li><strong>FIPS-140 mode generates throwaway signing keys</strong></li>
-</ol>
-
-<p>A rather insane subsection of the <a href="https://en.wikipedia.org/wiki/FIPS_140">FIPS-140</a> certification standard requires that you distribute signatures for all of your cryptographic libraries. The Firefox build process meets this requirement by generating a temporary key, using it to sign the libraries, and discarding the private portion of that key. Because there are many other ways to intercept the crypto outside of modifying the actual DLL images, we opted to simply remove these signature files from distribution. There simply is no way to verify code integrity on a running system without both OS and coprocessor assistance. Download package signatures make sense of course, but we handle those another way (as mentioned above).</p>
-
-<ol>
-<li><strong>On Windows builds, something mysterious causes 3 bytes to randomly vary
-in the binary.</strong></li>
-</ol>
-
-<p>Unable to determine the source of this, we just bitstomp the binary and regenerate the PE header checksums using strip... Seems fine so far! ;)</p>
-
-<ol>
-<li><strong>umask leaks into LXC mode in some cases</strong></li>
-</ol>
-
-<p>We fix this by manually setting umask at the top of our Gitian descriptors. Additionally, we found that we had to reset the permissions inside of tar and zip files, as the umask didn&#39;t affect them on some builds (but not others...)</p>
-
-<ol>
-<li><strong>Zip and Tar reordering and attribute issues</strong></li>
-</ol>
-
-<p>To aid with this and other issues with reproducibility, we created simple shell wrappers for <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/build-helpers/dzip.sh">zip</a> and <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/build-helpers/dtar.sh">tar</a> to eliminate the sources of non-determinism.</p>
-
-<ol>
-<li><strong>Timezone leaks</strong></li>
-</ol>
-
-<p>To deal with these, we set TZ=UTC at the top of our descriptors.</p>
-
-<h1>Future Work</h1>
-
-<p>The most common question we&#39;ve been asked about this build process is: What can be done to prevent the adversary from compromising the (substantially weaker) Ubuntu build and packaging processes, and further, what about the <a href="http://cm.bell-labs.com/who/ken/trust.html">Trusting Trust attack</a>?</p>
-
-<p>In terms of eliminating the remaining single points of compromise, the first order of business is to build all of our compilers and toolchain directly from sources via their own Gitian descriptors.</p>
-
-<p>Once this is accomplished, we can begin the process of building identical binaries from multiple different Linux distributions. This would require the adversary to compromise multiple Linux distributions in order to compromise the Tor software distribution.</p>
-
-<p>If we can support reproducible builds through cross compiling from multiple architectures (Intel, ARM, MIPS, PowerPC, etc), this also reduces the likelihood of a Trusting Trust attack surviving unnoticed in the toolchain (because the machine code that injects the payload would have to be pre-compiled and present for all copies of the cross-compiled executable code in a way that is still not visible in the sources).</p>
-
-<p>If those Linux distributions also support reproducible builds of the full build and toolchain environment (both <a href="https://wiki.debian.org/ReproducibleBuilds">Debian</a> and <a href="http://securityblog.redhat.com/2013/09/18/reproducible-builds-for-fedora/">Fedora</a> have started this), we can eliminate Trusting Trust attacks entirely by using <a href="http://www.schneier.com/blog/archives/2006/01/countering_trus.html">Diverse Double Compilation</a> between multiple independent distribution toolchains, and/or assembly audited compilers. In other words, we could use the distributions&#39; deterministic build processes to <a href="https://lwn.net/Articles/555902/">verify</a> that identical build environments are produced through Diverse Double Compilation.</p>
-
-<p>As can be seen, much work remains before the system is fully resistant against all forms of malware injection, but even in their current state, reproducible builds are a huge step forward in software build security. We hope this information helps other software distributors to follow the example set by Bitcoin and Tor.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-and-silk-road-takedown">Tor and the Silk Road takedown</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">arma</a> under
-              
-                <a class="post-category post-category-js" href="#">download warnings</a>
-              
-                <a class="post-category post-category-js" href="#">fbi</a>
-              
-                <a class="post-category post-category-js" href="#">hidden services</a>
-              
-                <a class="post-category post-category-js" href="#">operational security</a>
-              
-                <a class="post-category post-category-js" href="#">silk road</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-               |
-              03 Oct 2013
-          </p>
-        </header>
-        <div class="post-description">
-          <p>We&#39;ve had several requests by the press and others to talk about the Silk Road situation today. We only know what&#39;s going on by reading the same news sources everyone else is reading.</p>
-
-<p>In this case we&#39;ve been watching carefully to try to learn if there are any flaws with Tor that we need to correct. So far, nothing about this case makes us think that there are new ways to compromise Tor (the software or the network). The FBI says that their suspect made mistakes in operational security, and was found through actual detective work. Remember: Tor does not anonymize individuals when they use their legal name on a public forum, use a VPN with logs that are subject to a subpoena, or provide personal information to other services. See also the <a href="https://www.torproject.org/download/download#warning">list of warnings linked from the Tor download page</a>.</p>
-
-<p>Also, while we&#39;ve seen no evidence that this case involved breaking into the webserver behind the hidden service, we should take this opportunity to emphasize that Tor&#39;s hidden service feature (a way to publish and access content anonymously) won&#39;t keep someone anonymous when paired with unsafe software or unsafe behavior. It is up to the publisher to choose and configure server software that is resistant to attacks. Mistakes in configuring or maintaining a hidden service website can compromise the publisher&#39;s anonymity independent of Tor.</p>
-
-<p>And finally, Tor&#39;s design goals include preventing even The Tor Project from tracking users; hidden services are no different. We don&#39;t have any special access to or information about this hidden service or any other. Because Tor is open-source and it comes with detailed design documents and research papers, independent researchers can verify its security.</p>
-
-<p>Here are some helpful links to more information on these subjects:</p>
-
-<p>Technical details of hidden services:
- <a href="https://www.torproject.org/docs/hidden-services" title="https://www.torproject.org/docs/hidden-services">https://www.torproject.org/docs/hidden-services</a></p>
-
-<p>Our abuse FAQ:
- <a href="https://www.torproject.org/docs/faq-abuse" title="https://www.torproject.org/docs/faq-abuse">https://www.torproject.org/docs/faq-abuse</a></p>
-
-<p>For those curious about our interactions with law enforcement:
- <a href="https://blog.torproject.org/category/tags/law-enforcement" title="https://blog.torproject.org/category/tags/law-enforcement">https://blog.torproject.org/category/tags/law-enforcement</a>
- <a href="https://www.torproject.org/docs/faq#Backdoor" title="https://www.torproject.org/docs/faq#Backdoor">https://www.torproject.org/docs/faq#Backdoor</a></p>
-
-<p>Using Tor hidden services for good:
- <a href="https://blog.torproject.org/blog/using-tor-good" title="https://blog.torproject.org/blog/using-tor-good">https://blog.torproject.org/blog/using-tor-good</a></p>
-
-<p>Regarding the Freedom Hosting incident in August 2013, which is unrelated
-as far as we can tell:
- <a href="https://blog.torproject.org/blog/hidden-services-current-events-and-freedom-hosting" title="https://blog.torproject.org/blog/hidden-services-current-events-and-freedom-hosting">https://blog.torproject.org/blog/hidden-services-current-events-and-free...</a></p>
-
-<p>Some general hints on staying anonymous:
- <a href="https://www.torproject.org/about/overview#stayinganonymous" title="https://www.torproject.org/about/overview#stayinganonymous">https://www.torproject.org/about/overview#stayinganonymous</a></p>
-
-<p>The Tor Project is a nonprofit 501(c)(3) organization dedicated to providing tools to help people manage their privacy on the Internet. Our focus continues to be in helping ordinary citizens, victims of abuse, individuals in dangerous parts of the world, and <a href="https://www.torproject.org/about/torusers">others</a> stay aware and educated about how to keep themselves secure online.</p>
-
-<p>The global Tor team remains committed to building technology solutions to help keep the doors to freedom of expression open. We will continue to watch as the details of this situation unfold and respond when it is appropriate and useful.</p>
-
-<p>For further press related questions please contact us at <a href="mailto:execdir@torproject.org">execdir@torproject.org</a>.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-october-2nd-2013">Tor Weekly News — October 2nd, 2013</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-november-13th-2013">Tor Weekly News — November 13th, 2013</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">lunar</a> under
               
                 <a class="post-category post-category-js" href="#">tor weekly news</a>
                |
-              02 Oct 2013
+              13 Nov 2013
           </p>
         </header>
         <div class="post-description">
-          <p>Welcome to the fourteenth issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the much-discussed Tor community.</p>
+          <p>Welcome to the twentieth issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
 
-<h1>Tor Browser Bundle 3.0alpha4 released</h1>
+<h1>First beta release of Tor Browser Bundle 3.0</h1>
 
-<p>On September 28<sup>th</sup>, Mike Perry released the <a href="https://blog.torproject.org/blog/tor-browser-bundle-30alpha4-released">fourth alpha of the new Tor Browser Bundle 3.0 series</a>. The main highlights of this series are the important usability improvements that integrate Tor configuration and control into the browser itself, rather than relying on the unmaintained Vidalia interface.</p>
+<p>The <a href="https://www.torproject.org/projects/torbrowser.html">Tor Browser Bundle</a> is the Tor Project’s flagship product: an easy and straightforward way to browse the web with anonymity and privacy.</p>
 
-<p>The latest iteration is based on Firefox 17.0.9esr, which brings with it a lot of important security fixes. It also fixes a fingerprinting issue by randomizing the timestamp sent when establishing an HTTPS connection.</p>
+<p>With previous Tor Browser Bundles, users had to interact with two different applications, Vidalia and the browser itself. Vidalia was responsible for handling and configuring the tor daemon, and the browser had no knowledge of the connection status and other details. The result was confusing error messages, and mismatched user expectations.</p>
 
-<p>Two small but important usability improvements in the new Tor Launcher component were made: users can now directly copy and paste “bridge” lines from the <a href="https://bridges.torproject.org/">bridge database</a>, while clock-skews that would prevent Tor from functioning properly are now reported to users.</p>
+<p>With the 3.0 series of Tor Browser Bundle, the browser is directly responsible for configuring and handling the tor daemon. Users only see one single application. It’s clearer that only the browser will go through the Tor network. Starting and stopping the browser will take care of starting and stopping tor — no extra steps are required.</p>
 
-<p>Download your copy, test it, and report any problems you find. If you&#39;re feeling adventurous, you can also try out the crucial new security process by <a href="https://gitweb.torproject.org/builders/tor-browser-bundle.git/blob/HEAD:/gitian/README.build">independently reproducing the binaries</a> from the publicly-reviewable source code.</p>
+<p>Mike Perry, Kathleen Brade, Mark Smith, Georg Koppen, among others, are working hard to perfect many other usability and technical improvements that are part of Tor Browser Bundle 3.0 which has now reached the “beta” stage.</p>
 
-<h1>Tor mini-hackathon at GNU 30<sup>th</sup> anniversary</h1>
+<p>The new <a href="https://blog.torproject.org/blog/tor-browser-bundle-30beta1-released">3.0beta1 release</a> is based on Firefox 17.0.10esr for <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.10">security updates</a>, and contains several other small improvements and corrections.</p>
 
-<p>The Tor mini-hackathon at the <a href="https://www.gnu.org/gnu30/">GNU 30th anniversary event</a> took place over the weekend, and Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/030238.html">sent out a brief report</a> on how things went. As well as working on proposal 220, which involves improvements to Tor server identity keys, Nick merged some small patches into the Tor mainline branch, and collected promises of several more to come. He also directed a few enquiring minds towards Tor&#39;s online community, saying “I hope we’ll be seeing more of some of the folks I talked to on our mailing lists and IRC channels soon”.</p>
+<p>Current users of the 3.0 alpha series should update. Others should <a href="https://archive.torproject.org/tor-package-archive/torbrowser/3.0b1/">give it a try</a>!</p>
 
-<h1>Tor Stack Exchange page in private beta</h1>
+<h1>A critique of website traffic fingerprinting attacks</h1>
 
-<p>The <a href="http://tor.stackexchange.com">Tor Stack Exchange page</a>, which <a href="http://area51.stackexchange.com/proposals/56447/tor-online-anonymity-privacy-and-security">reached 100% commitment</a> last week, has now been moved into the ‘private beta’ stage. Runa Sandvik <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/030187.html">clarified</a> that “the purpose behind it is to ensure that users who committed to the site’s proposal have a chance to start asking and answering questions, as well as help with the initial community building activities that will define and shape the site”. She added that “the more experts who participate in the private beta, the more certain it is that our page will move on to the next stage (i.e. the public beta).”</p>
+<p>For a new <a href="https://blog.torproject.org/blog/critique-website-traffic-fingerprinting-attacks">blog post</a>, Mike Perry took the time to reflect on fingerprinting attacks on website traffic. These are attacks “where the adversary attempts to recognize the encrypted traffic patterns of specific web pages without using any other information. In the case of Tor, this attack would take place between the user and the Guard node, or at the Guard node itself.”</p>
 
-<p>Fruitful discussions are already taking place: Karsten Loesing wrote to the wider community on the question of <a href="https://lists.torproject.org/pipermail/tor-relays/2013-September/002936.html">what to do about contact information for bridge operators</a> after it was posed on Stack Exchange.</p>
+<p>In the post, Mike lays down three distinct types of adversary that could mount fingerprinting attacks: partial blocking of Tor, identification of visitors of a set of targeted pages, and identification of all web pages visited by a user.</p>
 
-<p>Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005519.html">put out a call</a> for Tor developers and anonymity researchers to participate in answering questions on the site, adding “Steven, Philipp, Jens, and I can&#39;t do it by ourselves.” If you have expert knowledge to contribute, please send an email to <a href="mailto:help@rt.torproject.org">help@rt.torproject.org</a> to get an invitation!</p>
+<p>In theory, such attacks could pose devastating threats to Tor users. But in practice, “false positives matter” together with other factors that affect the classification accuracy. Mike gives a comprehensive introduction to these issues before reviewing five research papers published between 2011 and 2013. Each of them are summarized together with their shortcomings.</p>
 
-<h1>liballium: Pluggable Transports utility library in C</h1>
+<p>Mike concludes that “defense work has not been as conclusively studied as these papers have claimed, and that defenses are actually easier than is presently assumed by the current body of literature.” He encourages researchers to re-evaluate existing defenses “such as <a href="http://freehaven.net/anonbib/cache/LZCLCP_NDSS11.pdf">HTTPOS</a>, SPDY and pipeline randomization, <a href="https://bugs.torproject.org/7028">Guard node adaptive padding</a>, and <a href="http://freehaven.net/anonbib/cache/morphing09.pdf">Traffic Morphing</a>“, and to think about “the development of additional defenses”. Mike ends his post by mentioning that some new defenses can also be dual purpose and help with end-to-end correlation attacks.</p>
 
-<p>Yawning Angel announced a new library to ease the task of writing <a href="https://www.torproject.org/docs/pluggable-transports.html">pluggable transports</a>. liballium is a “simple library that handles the Tor Pluggable Transport Configuration protocol. The idea is for this library to be the C/C++ equivalent to <a href="https://gitweb.torproject.org/pluggable-transports/pyptlib.git">pyptlib</a> (and maybe more, depending on how much time I have to work on it).”</p>
+<h1>The “bananaphone” pluggable transport</h1>
 
-<p>The <a href="https://github.com/Yawning/liballium">code is available</a> for review featuring “a reasonably well commented example.”</p>
+<p><a href="https://www.torproject.org/docs/pluggable-transports.html">Pluggable transports</a> is how Tor traffic can be transformed from a
+client to a bridge in order to hide it from Deep Packet Inspection filters.</p>
 
-<p>Feel free to follow up with “questions, comments, feedback”!</p>
+<p>Improving upon the <a href="https://github.com/leif/bananaphone">initial work of Leif Ryge</a>, David Stainton has been working on the new <a href="https://github.com/david415/obfsproxy/tree/david-bananaphone">“bananaphone” pluggable transport for obfsproxy</a>. The latter implements “reverse hash encoding“, described by Leif Ryge as “a steganographic encoding scheme which transforms a stream of binary data into a stream of tokens (e.g., something resembling natural language text) such that the stream can be decoded by concatenating the hashes of the tokens.”</p>
 
-<h1>Tor Help Desk Roundup</h1>
+<p>For a concrete example, that means that using <a href="http://www.gutenberg.org/cache/epub/29468/pg29468.txt">Project Gutenberg’s Don Quixote</a> as corpus, one can encode “my little poney” into “lock whisper: yellow tremendous, again suddenly breathing. master’s faces; fees, beheld convinced there calm” and back again!</p>
 
-<p>Multiple users wrote to the help desk asking for guidance setting up hidden service sites. The most straightforward documentation for hidden services is in the <a href="https://www.torproject.org/docs/faq.html.en#torrc">torrc file</a> itself. A <a href="https://www.torproject.org/docs/tor-hidden-service.html.en">more in-depth guide</a> can be found on the Tor Project website. The website also documents how <a href="https://www.torproject.org/docs/hidden-services.html.en">hidden services work</a>. Technical details can be found in the <a href="https://gitweb.torproject.org/torspec.git?a=blob_plain;hb=HEAD;f=rend-spec.txt">Rendezvous Specification document</a>.</p>
-
-<h1>Monthly status reports for September 2013</h1>
-
-<p>The wave of regular monthly reports from Tor project members for the month of September has begun. <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000341.html">Runa Sandvik</a> released her report first, followed by reports from <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000342.html">Damian Johnson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000343.html">Philipp Winter</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000344.html">Sherief Alaa</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000345.html">Noel David Torres Taño</a>.</p>
+<p>While it’s probably not going to be the most compact pluggable transport, “bananaphone” looks like a promising project.</p>
 
 <h1>Miscellaneous news</h1>
 
-<p>Mike Perry published his <a href="http://pgp.mit.edu:11371/pks/lookup?op=get&amp;search=0x29846B3C683686CC">new GPG public key</a>, <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005518.html">adding</a>: “this new key will be used to sign email from me going forward, and will be used to sign software releases until such time as I get around to creating a second set of keys on a hardware token for that purpose”.</p>
+<p>Christian Grothoff, Matthias Wachs and Hellekin Wolf are working on getting <a href="https://lists.torproject.org/pipermail/tor-dev/2013-November/005747.html">special-use domain names for P2P networks reserved</a> according to <a href="https://tools.ietf.org/html/rfc6761">RFC 6761</a>: “the goal is to reserve .onion, .exit, .i2p, .gnu and .zkey (so that they don’t become ordinary commercial TLDs at some point)”.</p>
 
-<p>David Fifield <a href="https://blog.torproject.org/blog/pluggable-transports-bundles-2417-beta-2-pt3-firefox-1709esr">updated the Pluggable Transports bundles using the latest Tor Browser Bundle</a>. In order to benefit from the improvements and security fixes, please update!</p>
+<p>The Tails team has released their report on <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000383.html">Tails activity during the month of October</a>. Things are happening on many fronts, have a look!</p>
 
-<p>intrigeri sent a <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003719.html">release schedule for Tails 0.21</a>. The first release candidate should be out on October 20th.</p>
+<p>Andrea Shepard has been working on new scheduler code for Tor. Its goal is to remove the limitation that “we can only see one channel at a time when making scheduling decisions.” Balancing between circuits without opening new attack vectors is tricky, Andrea is asking for <a href="https://lists.torproject.org/pipermail/tor-dev/2013-November/005761.html">comments on potential heuristics</a>.</p>
 
-<p>Roger Dingledine sent out “a list of criteria to consider when evaluating pluggable transports for readiness of deployment to users”, asking for comments on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005528.html">his initial draft</a>.</p>
+<p>Justin Findlay has <a href="https://lists.torproject.org/pipermail/tor-dev/2013-November/005762.html">recreated some of the website diagrams</a> in the versatile SVG format.</p>
 
-<p>If you have the necessary hardware and want to help Tails out, please test two upcoming features: <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003744.html">persistent printer settings</a> and <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003757.html">support for more SD card readers</a> (the “sdio” type).</p>
+<p>Roger <a href="https://lists.torproject.org/pipermail/tor-talk/2013-November/031001.html">asked the community</a> to create a “Tor, king of anonymity” graphic for his presentations. Griffin Boyce made a <a href="http://i.imgur.com/PmuFz4n.jpg">“queen of anonymity” picture</a>, Lazlo Westerhof <a href="http://i.imgur.com/vYZSu6Q.png">crowned the onion</a> and Matt Pagan did the <a href="http://i.imgur.com/2yIMmcQ.png">full Tor logo</a> .</p>
+
+<p>David Fifield released the new <a href="https://blog.torproject.org/blog/pluggable-transports-bundles-2417-rc-1-pt2-firefox-17010esr">Pluggable Transports Tor Browser Bundle version 2.4.17-rc-1-pt2</a> based on Tor Browser Bundle 2.4.17-rc-1. The only change from the previous release of the pluggable transport bundle is a <a href="https://bugs.torproject.org/10030#comment:20">workaround</a> that makes transports resume working on Mac OS X Mavericks.</p>
+
+<h1>Tor help desk round-up</h1>
+
+<p>Recently users have been writing the help desk asking for assistance verifying the signature on their Tor Browser Bundle package. These users said they found the <a href="https://torproject.org/docs/verifying-signatures.html">instructions on the official Tor Project page</a> confusing. One person reported being unsure of how to open a terminal on their computer. Another person did not know how to save the package signature onto the Desktop. Yet another person reported they were able to verify the signature only after discovering that their GnuPG program was named gpg2.exe rather than gpg.exe. A ticket on <a href="https://bugs.torproject.org/10073">improving the signature verification page</a> has been opened.</p>
+
+<p>One user mentioned wanting to use the Tor Browser Bundle as their default browser but being unable to do so because their online bank required Java. Java is disabled in the Tor Browser Bundle because it can bypass the browser proxy settings and leak the client’s real IP address over the network.</p>
 
 <hr>
 
-<p>This issue of Tor Weekly News has been assembled by harmony, Lunar, dope457, and Matt Pagan.</p>
+<p>This issue of Tor Weekly News has been assembled by Lunar, dope457, David Stainton, sqrt2, and Roger Dingledine.</p>
 
 <p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/pluggable-transports-bundles-2417-rc-1-pt2-firefox-17010esr">Pluggable transports bundles 2.4.17-rc-1-pt2 with Firefox 17.0.10esr</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">dcf</a> under
+              
+                <a class="post-category post-category-js" href="#">flashproxy</a>
+              
+                <a class="post-category post-category-js" href="#">obfsproxy</a>
+              
+                <a class="post-category post-category-js" href="#">pluggable transports</a>
+               |
+              12 Nov 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>There are new Pluggable Transports Tor Browser Bundles with Firefox 17.0.10esr. They are made from the <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-firefox-17010esr">Tor Browser Bundle release</a> of November 1.</p>
+
+<ul>
+<li><a href="https://www.torproject.org/dist/torbrowser/tor-pluggable-transports-browser-2.4.17-rc-1-pt2_en-US.exe">Windows</a> ( <a href="https://www.torproject.org/dist/torbrowser/tor-pluggable-transports-browser-2.4.17-rc-1-pt2_en-US.exe.asc">sig</a>)</li>
+<li><a href="https://www.torproject.org/dist/torbrowser/osx/TorBrowser-Pluggable-Transports-2.4.17-rc-1-pt2-osx-i386-en-US.zip">Mac OS X</a> ( <a href="https://www.torproject.org/dist/torbrowser/osx/TorBrowser-Pluggable-Transports-2.4.17-rc-1-pt2-osx-i386-en-US.zip.asc">sig</a>)</li>
+<li><a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-i686-2.4.17-rc-1-pt2-dev-en-US.tar.gz">GNU/Linux 32-bit</a> ( <a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-i686-2.4.17-rc-1-pt2-dev-en-US.tar.gz.asc">sig</a>)</li>
+<li><a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-x86_64-2.4.17-rc-1-pt2-dev-en-US.tar.gz">GNU/Linux 64-bit</a> ( <a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-x86_64-2.4.17-rc-1-pt2-dev-en-US.tar.gz.asc">sig</a>)</li>
+</ul>
+
+<p>These are mostly the same as 2.4.17-rc-1-pt1 released a few days ago, the only change being <a href="https://trac.torproject.org/projects/tor/ticket/10030#comment:20">a workaround</a> that allows them to run on OS X Mavericks.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/critique-website-traffic-fingerprinting-attacks">A Critique of Website Traffic Fingerprinting Attacks</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">machine learning</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+              
+                <a class="post-category post-category-js" href="#">statistics</a>
+              
+                <a class="post-category post-category-js" href="#">traffic analysis</a>
+               |
+              07 Nov 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Website traffic fingerprinting is an attack where the adversary attempts to recognize the encrypted traffic patterns of specific web pages without using any other information. In the case of Tor, this attack would take place between the user and the Guard node, or at the Guard node itself.</p>
+
+<p>There are two models under which these attacks are typically studied: The &quot;closed world&quot; scenario, and the &quot;open world&quot; scenario. In the &quot;closed world&quot; scenario, the only traffic patterns the classifier ever sees are for web pages that it has already been trained on, and it typically must successfully label all of them. This is meant to simulate situations where users only use Tor for viewing a small set of censored web pages and nothing else. The &quot;open world&quot; scenario is slightly more realistic in that it attempts to examine the ability of the adversary to recognize a few censored pages out of a much larger set of uncensored pages, some of which it has never seen before.</p>
+
+<p>It is important to note that in both models, these papers are reporting results on their ability to classify individual <strong>pages</strong> and not overall websites, despite often using the terms website and webpage interchangeably.</p>
+
+<p>The most comprehensive study of the statistical properties of this attack against Tor was done by Panchenko et al. In their &quot;closed world&quot; study, they evaluated their success rates of classifying 775 web pages. In their &quot;open world&quot; study, they classified a handful of censored pages in 5000 page subsets of 1,000,000 total web pages.</p>
+
+<p>Since then, a series of smaller scale follow-on attack papers have claimed improved success rates since Panchenko&#39;s study, and in at least two instances these papers even claimed to completely invalidate any attempt at defense based only on partial results.</p>
+
+<p>While there may have been some improvements in classifier accuracy in these papers over Panchenko, defenses were &quot;broken&quot; and dismissed primarily by taking a number of shortcuts that ignore basic properties of machine learning theory and statistics in order to enable their claims of success.</p>
+
+<p>Despite these subsequent improvements in these attacks, we are still skeptical of the efficacy of this attack in a real world scenario, and believe that only minimal defenses will be needed to ensure the attack continues to be unusable in practice.</p>
+
+<p>This post will be divided into the following areas: First, we will attempt to distill the adversary model used by this body of work, and describe the adversary&#39;s goals. Then, we will review the basic properties of machine learning theory and statistics that govern classifier accuracy and real-world performance. Next, we will make these properties concrete by briefly discussing additional real-world sources of hidden complexity in the website traffic fingerprinting problem domain. We will then specifically enumerate both the useful contributions and the shortcuts taken by various work to date. Finally, we will conclude with suggestions and areas for improvement in future work.</p>
+
+<h2>Pinning Down the Adversary Model</h2>
+
+<p>Website traffic fingerprinting attack papers assume that an adversary is for some reason either unmotivated or unable to block Tor outright, but is instead very interested in detecting patterns of specific activity inside Tor-like traffic flows.</p>
+
+<p>The exact motivation for this effort on behalf of the adversary is typically not specified, but there seem to be three possibilities, in order of increasing difficulty for the adversary:</p>
+
+<ol>
+<li>The adversary is interested in blocking specific censored webpage traffic patterns, while still leaving the rest of the Tor-like traffic unmolested (perhaps because Tor&#39;s packet obfuscation layer looks like something legitimate that the adversary wants to avoid blocking).</li>
+<li>The adversary is interested in identifying all of the users that visit a small, specific set of targeted pages.</li>
+<li>The adversary is interested in recognizing every single web page a user visits.</li>
+</ol>
+
+<p>Unfortunately, it seems that machine learning complexity theory and basic statistics are heavily stacked against all three of these goals.</p>
+
+<h2>Theoretical Issues: Factors Affecting Classification Accuracy</h2>
+
+<p>Machine Learning theory tells us that the accuracy of a classifier is affected by four main factors: the size of the hypothesis space (ie the information-theoretic complexity of the classification categories), the accuracy of feature extraction and representation (the bias in the hypothesis space), the size of the instance space (the world size), and the number of training examples provided to the classifier.</p>
+
+<p>Bounds have actually been established on the effect of each of these areas to the likelihood of achieving a given accuracy rate, and any good undergraduate course in Machine Learning will cover these topics in detail. For a concise review of these accuracy bounds, we recommend Chapters 5 and 7 of <a href="http://www.amazon.com/Machine-Learning-Tom-M-Mitchell/dp/0070428077">Machine Learning by Tom Mitchell</a>.</p>
+
+<p>The brief summary is this: as the <a href="https://en.wikipedia.org/wiki/VC_dimension">number and/or complexity of classification categories</a> increases while reliable feature information does not, the classifier eventually runs out of descriptive feature information, and either true positive accuracy goes down or the false positive rate goes up. This error is called the <a href="http://www.cs.washington.edu/education/courses/csep573/98sp/lectures/lecture8/sld050.htm">bias in the hypothesis space</a>. In fact, even for unbiased hypothesis spaces, the number of training examples required to achieve a reasonable error bound is <a href="https://en.wikipedia.org/wiki/Probably_approximately_correct_learning#Equivalence">a function of</a> the number and complexity of the classification categories.</p>
+
+<p>It turns out that the effects of all of these factors are actually observable in the papers that managed to study a sufficient world size.</p>
+
+<p>First, for the same world size and classifier technique, every work that examined both the open and closed worlds reports much higher accuracy rates for the open world than for the closed world. This is due to the higher hypothesis space complexity involved in labeling every page in the closed world, as opposed to labeling only a very small subset of censored targets in the open world. This confirms the above machine learning theory, and tells us that that an adversary that is attempting to recognize every single web page in existence is going to have a very difficult time getting any accuracy, as compared to one who is classifying only a select interesting subset.</p>
+
+<p>It is also clearly visible in <a href="http://freehaven.net/anonbib/cache/wpes11-panchenko.pdf">Panchenko&#39;s large-scale open world study</a> that increasing the world size contributes to a slower, but still steady decline in open world accuracy in Figure 4 below. The effect of the hypothesis space complexity (increased number of pages to classify) on the open world can also be seen in the rising false positive rates of Figure 5 below (this rise may seem small, but in the next section we will show how even tiny increases in false positives are in fact devastating to the attack).</p>
+
+<p><img src="https://people.torproject.org/%7Emikeperry/images/Fig4.png" alt=""> <img src="https://people.torproject.org/%7Emikeperry/images/Fig5.png" alt=""></p>
+
+<p>Every other attack paper since then has neglected to use world sizes large enough to observe these effects in sufficient detail, but again, machine learning theory tells us they are still there, just beyond the published data points.</p>
+
+<h2>Practical Issues: False Positives Matter. A Lot.</h2>
+
+<p>Beyond classifier accuracy and the factors that affect it, the practical applicability of the website traffic fingerprinting attack is also affected by some basic statistical results. These statistics (which <a href="http://www.raid-symposium.org/raid99/PAPERS/Axelsson.pdf">have been examined</a> in other computer security-related application domains of machine learning) show that false positives end up destroying the effectiveness of classification unless they are vanishingly small (much less than 10^-6).</p>
+
+<p>It actually turns out that false positives are especially damaging to this attack, perhaps even more so than most other application domains. In the website traffic fingerprinting attack, false positive results are a built-in property of the world: if one or more pages&#39; traffic patterns are similar enough to a target page&#39;s pattern to trigger a false positive, these sets of pages will always be misclassified as the target page every time that traffic pattern is present. Unlike end-to-end timing correlation, the adversary does not get to benefit from information derived from repeated visits (except in narrow, contrived scenarios that we will address in our literature review below).</p>
+
+<p>What&#39;s more is that this also means that small world sizes directly impact the false positive rate. As you increase the world size, the likelihood of including a page that matches a traffic stream of your target page also increases.</p>
+
+<p>To demonstrate the damaging effects of false positives on the attack, we will now consider the effects of false positives on the adversary&#39;s two remaining feasible goals: flagging users who visit a specific controversial web page over Tor, and censoring only a subset of Tor-like traffic.</p>
+
+<p>In the event where the adversary is attempting to recognize visits to highly sensitive material (such as a specific web page about a particular protest action) and is interested in gathering a list of suspects who visit the web page, it is easy to see that even with very high accuracy rates, the suspect list quickly grows without bound.</p>
+
+<p>To see this, note that the probability of at least one false positive over N independent page loads is given by <strong>1 - (1-fp)^N</strong> , where fp is the probability of a false positive.</p>
+
+<p>Even with a false positive rate as low as 0.2% (which is typical for this literature, and again is also lower than reality due to small world sizes), after performing just N=100 different page loads, 18% of the userbase will be falsely accused of visiting targeted material at least once. After each user has performed N=1000 different page loads, 86.5% of that user base will have been falsely accused of visiting the target page at least once. In fact, many of these users will be falsely accused much more frequently than that (as per the <a href="https://en.wikipedia.org/wiki/Binomial_distribution#Probability_mass_function">Binomial Distribution</a>).</p>
+
+<p>If instead of trying to enumerate specific visitors, the adversary is trying to interfere with the traffic patterns of certain web pages, the accuracy value that matters is the Bayesian Detection Rate, which is the probability that a traffic pattern was actually due to a censored/target page visit given that the detector said it was recognized. This is written as <strong>P(Censored|Classified)</strong> .</p>
+
+<p>Using Bayes Theorem, it is possible to convert from the true and false positive rates of <strong>P(Classified|Censored)</strong> and <strong>P(Classified|~Censored)</strong> to the Bayesian Detection Rate of <strong>P(Censored|Classified)</strong> like so:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">P(Censored|Classified) =
+ P(Classified|Censored)*P(Censored) /
+  (P(Censored)*P(Classified|Censored) +
+   P(~Censored)*P(Classified|~Censored))
+</code></pre></div>
+<p>Under conditions of low censorship (0.1% -- such as when the Tor traffic successfully blends in with a large volume of innocuous Internet traffic, or when Tor is used for both censorship circumvention and general privacy), with a true positive rate of 0.6 and a false positive rate of 0.005, we have:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">P(Censored|Classified) = 0.6*.001/(.001*0.6+.999*.005)
+P(Censored|Classified) = 0.10
+P(~Censored|Classified) = 1 - P(Censored|Classified)
+P(~Censored|Classified) = 0.90
+</code></pre></div>
+<p>This means that when a traffic pattern is classified as a censored/target page, there is a 90% chance that the classifier is actually telling the adversary to interfere with an unrelated traffic stream, and only a 10% chance that the classifier was actually correct.</p>
+
+<p>This phenomenon was <a href="http://www.raid-symposium.org/raid99/PAPERS/Axelsson.pdf">explored in detail</a> in the Intrusion Detection System literature, and is the reason why anomaly and classification-based antivirus and IDS systems have failed to materialize in the marketplace (despite early success in academic literature).</p>
+
+<h2>Practical Issues: Multipliers of World Size are Common</h2>
+
+<p>Beyond the above issues, there are a number of additional sources of world size and complexity in the website traffic fingerprinting problem domain that are completely unaddressed by the literature.</p>
+
+<p>Again, it is important to remember that despite the use of the word &quot;website&quot; in their titles, these attacks operate on classifying instances of traffic patterns created by single <strong><em>pages</em></strong> , and not entire <strong><em>sites</em></strong> . For some sites, there may be little difference between one page and another. For many sites, the difference between component pages is significant.</p>
+
+<p>It is also important to note that the total number of pages on the web is actually quite larger than the number of items indexed by Google (which is quite a bit larger than even the 1,000,000 page crawl used by Panchenko). In particular, the effects of dynamically generated pages, unindexed pages, rapidly updated pages, interactive pages, and authenticated webapps have been neglected in these studies, and their various possible traffic patterns contribute a very large number of additional web traffic patterns to the world, especially when the different manners in which users interact with them are taken into account.</p>
+
+<p>Beyond this, each page actually also has at least 8 different common traffic patterns consisting of the combination of the following common browser configurations: Cached vs non-cached; Javascript enabled vs disabled; adblocked vs non-adblocked. In each of these combinations, different component resources are loaded for a given page. In fact, the cached vs non-cached property is not just binary: arbitrary combinations of content elements on any given page may be cached by the browser from a previous visit to a related resource. What&#39;s more, in Tor Browser, either restarting the browser or using the &quot;New Identity&quot; button causes all of this caching state to be reset.</p>
+
+<p>In addition, similarities between non-web and web traffic also complicate the problem domain. For just one example, it is likely that an open tab with a Twitter query in it generates similar traffic patterns to a Tor-enabled XMPP or IRC client.</p>
+
+<p>All of these factors increase the complexity of the hypothesis space and the instance space, which as we demonstrated above, will necessarily reduce the accuracy of the attack in both theory and practice.</p>
+
+<h2>Literature Review: Andriy Panchenko et al</h2>
+
+<p>Title: <strong><a href="http://freehaven.net/anonbib/cache/wpes11-panchenko.pdf">Website Fingerprinting in Onion Routing Based Anonymization Networks</a></strong></p>
+
+<p>As mentioned previously, Panchenko&#39;s work (actually the first work to successfully apply website traffic fingerprinting to Tor) is still the most comprehensive study to date.</p>
+
+<p>Here is a brief list of its strengths:</p>
+
+<ol>
+<li>The world sizes are huge.</li>
+</ol>
+
+<p>5000 page subsets of 1,000,000 pages may still have representational issues compared to the real world, but this is still the largest study to date.</p>
+
+<ol>
+<li>Careful feature extraction (hypothesis space construction).</li>
+</ol>
+
+<p>The reason why this work succeeded where earlier works failed is because rather than simply toss raw data into a machine learning algorithm, they were extremely careful with the representation of data for their classifiers. This likely enabled both the efficiency that allowed such a large world size, and reduced the bias in the hypothesis space that would otherwise lead to low accuracy and high false positives at such large world sizes.</p>
+
+<ol>
+<li>In the &quot;open world&quot;, they varied the type of censored target sites to evaluate accuracy.</li>
+</ol>
+
+<p>Instead of merely picking the target pages that were easiest to classify (such as video sites), they varied the type of target pages and explored the effects on both true and false positive accuracy. None of the other literature to date has examined this effect in detail.</p>
+
+<ol>
+<li>They are careful to tune their classifiers to minimize false positives.</li>
+</ol>
+
+<p>Modern classifiers typically allow you to trade off between false positives and false negatives. Given how deeply false positives impact the adversary&#39;s goals, this is very important.</p>
+
+<ol>
+<li>They demonstrate knowledge of all of the factors involved in PAC theory and practical classifier accuracy.</li>
+</ol>
+
+<p>All of the other papers to date simply omit one or more of the following: data on feature extraction, the contribution of individual features to accuracy, the number of training examples, the effect of target size on both the open and closed world, the effect of target page types on accuracy, and the effects of world size on accuracy.</p>
+
+<p>While impressive, it does miss a few details:</p>
+
+<ol>
+<li>It fails to acknowledge that false positives are a property of specific sites.</li>
+</ol>
+
+<p>In reality, nearly every false positive they experienced in a given subset of 5000 pages is a false positive that will likely appear in a classifier that is run against the entire 1,000,000 page dataset. They probably should have tallied the total false positives over multiple runs for this reason, and analyzed their properties.</p>
+
+<ol>
+<li>It still fails to provide a realistic adversary model in order to justify claims that the attack actually accomplishes what the adversary wants.</li>
+</ol>
+
+<h2>Literature Review: Kevin P. Dyer et al</h2>
+
+<p>Title: <strong><a href="http://freehaven.net/anonbib/cache/oakland2012-peekaboo.pdf">Peek-a-Boo, I Still See You: Why Efficient Traffic Analysis Countermeasures Fail</a></strong></p>
+
+<p>This work attempts to evaluate several defenses against the website traffic fingerprinting attack, and also attempts to evaluate an &quot;idealized best case&quot; defense called BuFLO.</p>
+
+<p>On the positive side, the work makes the following contributions:</p>
+
+<ol>
+<li>It creates an ideal high-overhead tunable defense (BuFLO) that can be compared against other practical defenses.</li>
+<li>It is quite clear about its definitions of accuracy and experimental setup.</li>
+<li><a href="https://kpdyer.com/publications/oakland2012-peekaboo-0.1.tar.gz">Source code is provided</a>!</li>
+</ol>
+
+<p>However, the work had the following rather serious shortcomings:</p>
+
+<ol>
+<li>Close world only, and a very small closed world at that.</li>
+</ol>
+
+<p>This is the single largest issue with this attack paper. You cannot claim that all defenses are broken forever if a classifier is only able to somewhat correctly classify 500 pages or less (and only 128 pages in their defense studies!), even in a closed world.</p>
+
+<ol>
+<li>Exaggerated claims give no credit to (or detailed analysis of) relative strengths of defenses.</li>
+</ol>
+
+<p>Despite the fact that their exaggerated claims are made possible due to their small world size of only 128 pages, the authors do not acknowledge that some light weight defenses <strong>did</strong> in fact do far better than others in their experiments. In light of the fact that their world size was woefully small, the authors work would have been substantially more humble in terms of acknowledging the effectiveness of some defenses, and should have spent more time focusing on why some defenses did better against some classifiers, what the overhead costs were, and what classifier features were most impacted by each defense.</p>
+
+<ol>
+<li>It does not give statistics on which sites suffer high rates of misclassification.</li>
+</ol>
+
+<p>Even in their small world size, is it likely that they stumbled upon a few pages that ended up consistently misclassified. Which were these? How often does that happen out of arbitrary 128 page subsets?</p>
+
+<ol>
+<li>Features are evaluated, but not in terms of their contribution to accuracy.</li>
+</ol>
+
+<p>There are several standard ways of evaluating the contribution of features to accuracy under various conditions. The authors appeared to employ none of them.</p>
+
+<h2>Literature Review: Xiang Cai et al</h2>
+
+<p>Title: <strong><a href="http://freehaven.net/anonbib/cache/ccs2012-fingerprinting.pdf">Touching from a Distance: Website Fingerprinting Attacks and Defenses</a></strong></p>
+
+<p>This work also attempts to evaluate several additional defenses against the website traffic fingerprinting attack, proposes a Hidden Markov Model extension of the attack to classify web sites in addition to pages, and also attempts to evaluate the BuFLO defense from the &quot;Peek-a-boo&quot; paper, as well as a lower-overhead variant.</p>
+
+<p>On the positive side, the following useful contributions were made:</p>
+
+<ol>
+<li>A low-resource &quot;congestion sensitive&quot; version of Dyer et al&#39;s BuFLO defense is presented.</li>
+</ol>
+
+<p>This defense is also tunable, and deserves a more fair evaluation than was given to it by its own creators. Hopefully they will follow up on it.</p>
+
+<ol>
+<li>An automatic feature extraction mechanism is built in to the classifier.</li>
+</ol>
+
+<p>The work uses an edit distance algorithm to automatically extract features (pairwise transposition, insertion, deletions and substitutions) rather than manual specification and extraction.</p>
+
+<p>However, this paper also shares many of the Peek-a-boo paper&#39;s shortcomings above, and has some of its own.</p>
+
+<ol>
+<li>Minimal edit distance classifiers are ideally suited for a closed world.</li>
+</ol>
+
+<p>The DLSVM classifier finds the shortest edit distance between a single testing instance and the model instances from training. This is a useful heuristic for a closed world, where you know that your training instance will match *something* from your model, but how well does it fare when you have to tune a cutoff to decide when a given traffic stream&#39;s edit distance is too large to be among your censored target pages? It seems likely that it is still better than Panchenko&#39;s classifier in the open world, but this has not been proven conclusively, especially since the effect of site uniqueness on the classifier was not examined.</p>
+
+<ol>
+<li>Glosses over effects of defenses on edit distance components.</li>
+</ol>
+
+<p>Even though edit distance classifiers do not have explicit features, they still have implicit ones. It would be useful to study the effect of low-resource defenses on the most information-heavy components of the edit distances. Or better: to analyze how to tailor their BuFLO variant to target these components in an optimal way.</p>
+
+<ol>
+<li>Defenses were not given a fair analysis.</li>
+</ol>
+
+<p>In the specific case of both Tor Browser&#39;s pipeline defense and <a href="a%20href=">HTTPOS</a>, an analysis of the actual prevalence of pipelining and server side support for the HTTPOS feature set was not performed. Nor were statistics on actual request combination and reordering given, nor were the effects on the feature components analyzed.</p>
+
+<ol>
+<li>Navigation-based Hidden Markov Models are user-specific, and will also suffer from Garbage-In Garbage-Out false positive properties.</li>
+</ol>
+
+<p>While a Hidden Markov Model would appear to provide increased accuracy by being able to utilize multiple observations, the reality of web usage is that users&#39; navigation patterns are not uniform and will vary by individual and social group, especially for news/portal sites and for social networks. For example, people often navigate off of Twitter to view outside links, and some people share more links than others. It is quite likely that the HMM will consider any link portal (or any repetitive background network activity) that has an occasional false positive match for Twitter to be mistaken for such intermittent Twitter usage.</p>
+
+<h2>Literature Review: Tao Wang and Ian Goldberg</h2>
+
+<p>Title: <strong><a href="http://freehaven.net/anonbib/cache/wpes13-fingerprinting.pdf">Improved Website Fingerprinting on Tor</a></strong></p>
+
+<p>This paper improves upon the work by Cai et al by statistically removing Tor flow control cells, improving the training performance of the classifier, and by performing a small-scale open world study of edit distance based classifiers. It also provides some limited analysis of difficult to classify sites.</p>
+
+<p>The paper has the following issues:</p>
+
+<ol>
+<li>A broken implementation of Tor Browser&#39;s defense was studied, despite warnings to the contrary.</li>
+</ol>
+
+<p>Last year, <a href="https://trac.torproject.org/projects/tor/ticket/8470">we discovered serious issues</a> with the HTTP Pipeline randomization defense that were introduced during the transition from Firefox 4 to Firefox 10, and that other issues may have been present in the Firefox 4 version as well. These issues were corrected during the transition to Firefox 17, and the pipeline randomization defense was vastly improved, but the authors still chose to evaluate the broken version, despite our offers for assistance. Moreover, like previous work, an analysis of the actual prevalence of server-side pipelining support and request combination and reordering was not performed.</p>
+
+<ol>
+<li>Small world size.</li>
+</ol>
+
+<p>This paper studies a smaller closed world size than the previous edit distance based work (100 pages instead of 1000), and uses only 1000 pages for its open world study.</p>
+
+<ol>
+<li>Target site types were not varied in the open world.</li>
+</ol>
+
+<p>Unlike Panchenko&#39;s work, the types of sites chosen as censored targets were fixed, not varied. This makes it hard to evaluate the effects of types of sites with either very distinct or more typical traffic patterns on the accuracy of their classifier.</p>
+
+<p><a href="https://cs.uwaterloo.ca/%7Et55wang/">Source code is provided</a>, however, so it may be possible to revisit and correct some of these issues, at least.</p>
+
+<h2>Concluding Remarks: Suggestions for Future Work</h2>
+
+<p>This post is not meant to dismiss the website traffic fingerprinting attack entirely. It is merely meant to point out that defense work has not been as conclusively studied as these papers have claimed, and that defenses are actually easier than is presently assumed by the current body of literature.</p>
+
+<p>We believe that the theoretical and practical issues enumerated in this post demonstrate that defenses do not need to be terribly heavy-weight to be effective. It is likely that in practice, relatively simple defenses will still substantially increase the false positive rate of this attack when it is performed against large numbers of web pages (and non-web background traffic), against large volumes of Tor-like traffic, against large numbers of users, or any combination thereof.</p>
+
+<p>We therefore encourage a re-evaluation of existing defenses such as <a href="http://freehaven.net/anonbib/cache/LZCLCP_NDSS11.pdf">HTTPOS</a>, SPDY and pipeline randomization, and <a href="https://trac.torproject.org/projects/tor/ticket/7028">Guard node adaptive padding</a>, <a href="http://freehaven.net/anonbib/cache/morphing09.pdf">Traffic Morphing</a>, as well as the development of additional defenses.</p>
+
+<p>It is possible that some types of pages (especially those on video sites, file locker sites, and sites with very large content elements) may make natural false posties rare, especially when classified among smaller, more typical pages. For instance, it is unlikely to be possible to generate false positives when the classifier needs only to distinguish between pages from Wikipedia versus Youtube, but it is likely that generic large content and video downloads can be obfuscated such that it is hard to recognize the specific video or download site with minimal relative overhead.</p>
+
+<p>As in the work done by Panchenko, we also suggest evaluating each of your classifier&#39;s explicit or implicit features for their <a href="https://en.wikipedia.org/wiki/Feature_selection">relative contribution to overall accuracy</a> (especially among similar classes of sites) as this will help guide the padding and obfuscation behaviors of any defenses you or others might devise. The high-information component features or edit distances can be analyzed and used as input to a statistically adaptive padding defense, for example.</p>
+
+<p>In any event, please do contact us if you&#39;re interested in studying these or other defenses in Tor Browser or Tor itself.</p>
+
+<p>If you are not interested in helping improve the defenses of Tor, do not have time to perform such evaluations in a thorough manner, or have already previously published a website traffic fingerprinting attack paper yourself, we request that you publish or at least provide us with the source code and the data sets involved in your attack, so that we or others can reproduce your results and evaluate potential defenses as well.</p>
+
+<h2>Concluding Remarks: Dual Purpose Defenses</h2>
+
+<p>It turns out that some defenses against the website traffic fingerprinting attack are also useful against the end-to-end correlation attack. In particular, defenses that increase the rate of false positives of website traffic fingerprinting using padding and other one-ended schemes is very likely to increase the rate of false positives for end-to-end correlation, especially under situations where either limited record-keeping capacity, sample-based analysis, or link-level encryption reduce connection and inter-packet timing information.</p>
+
+<p>If a defense introduces false positive between many different web pages in website traffic fingerprinting by manipulating the traffic patterns at the entrance of the Tor network but not the exit, it will be very likely to introduce false positives during correlation between the entrance and exit traffic of simultaneous downloads of these same pages. As in website traffic fingerprinting, it turns out that even a small amount of false positives will <a href="http://archives.seul.org/or/dev/Sep-2008/msg00016.html">frustrate a dragnet adversary attempting end-to-end correlation</a>.</p>
+
+<p>End-to-end correlation is a much more difficult problem, and we may not ever solve the problem of repeated observations. However, we likely can increase the number and duration of successful observations that correlation attacks will require to build high confidence, especially if the user base grows very large, and if the web moves to higher adoption rates of TLS (so that HTTP identifiers are not available to provide long-term linkability at exit nodes).</p>
+
+<p>Promising defenses include <a href="https://trac.torproject.org/projects/tor/ticket/7028">Adaptive Padding</a>, <a href="http://freehaven.net/anonbib/cache/morphing09.pdf">Traffic Morphing</a>, and various <a href="http://dev.online6.eu/spdytor/">transformation and prediction proxies</a> at the exit node (which could also help performance while we&#39;re at it).</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-november-6th-2013">Tor Weekly News — November 6th, 2013</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">lunar</a> under
+              
+                <a class="post-category post-category-js" href="#">tor weekly news</a>
+               |
+              06 Nov 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Welcome to the nineteenth issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/tor-news">weekly newsletter</a> that covers what is happening in the up-to-date Tor community.</p>
+
+<h1>Tails 0.21 is out</h1>
+
+<p>The <a href="https://tails.boum.org/news/version_0.21/">Tails developers anounced the 34th release</a> of the live system based on Debian and Tor that preserves the privacy and anonymity of its users.</p>
+
+<p>The new version fixes two holes that gave too much power to the POSIX user running the desktop: Tor control port cannot be directly accessed anymore to disallow configuration changes and IP address retrieval, and the persistence settings now requires privileged access. On top of these specific changes, the release include <a href="https://tails.boum.org/security/Numerous_security_holes_in_0.20.1/">security fixes</a> from the Firefox 17.0.10esr release and for a few other Debian packages.</p>
+
+<p>More visible improvements include the ability to persist printer settings, support for running from more SD card reader types, and a panel launcher for the password manager. For the curious, more details can be found in the <a href="https://git-tails.immerda.ch/tails/plain/debian/changelog">full changelog</a>.</p>
+
+<p>As with every releases: be sure to upgrade!</p>
+
+<h1>New Tor Browser Bundles based on Firefox 17.0.10esr</h1>
+
+<p>Erinn Clark released <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-firefox-17010esr">new versions of the Tor Browser Bundle</a> on November 1st. The previously “beta” bundles have moved to the “release candidate” stage and are almost identical to the stable ones, except for the version of the tor daemon. A couple of days later, David Fifield also released <a href="https://blog.torproject.org/blog/pluggable-transports-bundles-2417-rc-1-pt1-firefox-17010esr">updated “pluggable transport“ bundles</a>.</p>
+
+<p>The new bundles include all <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.10">security fixes from Firefox 17.0.10esr</a>, and updated versions of libpng, NoScript and HTTPS Everywhere. It also contains a handful of improvements and fixes to the Tor Browser patches.</p>
+
+<p>Users of older version of the Tor Browser bundles should already have been reminded to upgrade by the notification system. Don&#39;t forget about it!</p>
+
+<p>This should be the last bundles based on the 17 branch of Firefox as it is going to be superseded by the 24 branch as the new long-term supported version in 6 weeks. Major progress has already been made by Mike Perry and Pearl Crescent to <a href="https://trac.torproject.org/projects/tor/query?keywords=%7Eff24-esr">update the Tor Browser changes and review the new code base</a>.</p>
+
+<h1>Monthly status reports for October 2013</h1>
+
+<p>The wave of regular monthly reports from Tor project members for the
+month of October has begun early this time to reach the tor-reports
+mailing-list: <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000367.html">Damian Johnson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000369.html">Linus Nordberg</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000370.html">Karsten Loesing</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000371.html">Philipp Winter</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000372.html">Ximin Luo</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2012-November/000373.html">Lunar</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000374.html">Kelley Misata</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000375.html">Matt Pagan</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000376.html">Sherief Alaa</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000377.html">Nick Mathewson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000378.html">Pearl Crescent</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000379.html">George Kadianakis</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000380.html">Colin Childs</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000381.html">Arlo Breault</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2013-November/000382.html">Sukhbir Singh</a>.</p>
+
+<h1>Tor Help Desk Roundup</h1>
+
+<p>One person asked why the lock icon on the Tor Project&#39;s website was not outlined in green. Sites that use HTTPS can purchase different types of SSL certificates. Some certificate issuers offer certificates that supply ownership information, such as the physical address of the website operator, for a higher price. Sites that use these certificates get the lock icon by their URL outlined in green. The Tor Project adds protection to the validity of our SSL certificate a different way, by supplying our <a href="https://www.torproject.org/docs/faq.html#SSLcertfingerprint">SSL certificate fingerprint on our FAQ page</a>. You can double check that fingerprint on any of the <a href="https://torproject.org/getinvolved/mirrors.html">Tor Project&#39;s mirror pages</a> as well.</p>
+
+<p>One person wanted to known why a website they were visiting over Firefox was telling them that they were not using Tor, even though Vidalia told them that Tor was running. By default, the Tor Browser Bundle does not anonymize all the traffic on your computer. Only the traffic you send through the Tor Browser Bundle will be anonymized. If you have Firefox and the Tor Browser open at the same time, the traffic you send through Firefox will not be anonymous. Using Firefox and Tor Browser Bundle at the same time is not a great idea because the two interfaces are almost identical, and it is easy to get the two browsers mixed up, even if you know what you are doing.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>The <a href="https://blog.torproject.org/blog/torbirdy-012-our-third-beta-release">third beta release of TorBirdy has been released</a> as version 0.1.2. Among several other fixes and improvements it restores proper usage of Tor when used with Thunderbird 24. Be sure to <a href="https://www.torproject.org/dist/torbirdy/torbirdy-0.1.2.xpi">upgrade</a>!</p>
+
+<p>starlight <a href="https://lists.torproject.org/pipermail/tor-relays/2013-October/003187.html">reported</a> on running a Tor relays with the daemon compiled with the AddressSanitizer memory error detector available since GCC 4.8.</p>
+
+<p>Isis Lovecruft <a href="https://lists.torproject.org/pipermail/tor-dev/2013-November/005713.html">has sent two proposals</a> for improvements to BridgeDB. One is finished and addresses the switch to a “Distributed Database System and RDBMS”. The second is still in draft stage and “specifies a system for social distribution of the centrally-stored bridges within BridgeDB”.</p>
+
+<p>Karsten Loesing <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005700.html">announced</a> the availability of a new tech report he wrote with Steven J. Murdoch, and Rob Jansen: <a href="https://research.torproject.org/techreports/libutp-2013-10-30.pdf">Evaluation of a libutp-based Tor Datagram Implementation</a>. Be sure to have a look if you are interested in one of the “promising approach to overcome Tor’s performance-related problems”.</p>
+
+<p>SiNA Rabbani <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005703.html">has been asking</a> for comments on two documents he wrote about how use cases and design of a “point-and-click” hidden service blogging tool, as part of the <a href="https://trac.torproject.org/projects/tor/attachment/wiki/org/sponsors/Otter/Cute">Cute Otter project</a>.</p>
+
+<p>David Goulet <a href="https://lists.torproject.org/pipermail/tor-dev/2013-November/005728.html">released third rc of Torsocks 2.0.0</a> with a lot of fixes and improvements. Available to download from GitHub and also as Debian <a href="http://packages.debian.org/experimental/torsocks">package from the experimental distribution</a>.</p>
+
+<p>Christian is working on a <a href="https://lists.torproject.org/pipermail/tor-dev/2013-November/005725.html">new round of improvements for Globe</a>, a web application to learn about relays and bridges of the Tor network. The project seems close to be mature enough to replace Atlas <a href="https://lists.torproject.org/pipermail/tor-dev/2013-November/005735.html">according to some</a>.</p>
+
+<p>A discussion on the tor-relays mailing list prompted Roger Dingledine to ask about <a href="https://lists.torproject.org/pipermail/tor-relays/2013-November/003240.html">changing the current default exit policy</a> of the tor daemon. The current “restricted exit node” policy has been in place since 2003. As this has surprised some operators, switching the default policy to “middle node” is under consideration.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, dope457, Matt Pagan, and Philipp Winter.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-30beta1-released">Tor Browser Bundle 3.0beta1 Released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">deterministic builds</a>
+              
+                <a class="post-category post-category-js" href="#">gitian</a>
+              
+                <a class="post-category post-category-js" href="#">security</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tbb-3.0</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">tor-browser-bundle</a>
+               |
+              06 Nov 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The first beta release in the <a href="https://blog.torproject.org/category/tags/tbb-30">3.0 series</a> of the Tor Browser Bundle is now available from the Tor Package Archive:
+ <a href="https://archive.torproject.org/tor-package-archive/torbrowser/3.0b1/" title="https://archive.torproject.org/tor-package-archive/torbrowser/3.0b1/">https://archive.torproject.org/tor-package-archive/torbrowser/3.0b1/</a></p>
+
+<p>This release includes <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox17.0.10">important security updates to Firefox</a>, as well as a fix for a startup crash bug on Windows XP.</p>
+
+<p>This release also reorganizes the bundle directory structure to simplify implementation of the FIrefox updater in future releases. This means that extracting the bundle over previous installation will likely not preserve your preferences or bookmarks, and may cause other issues.</p>
+
+<p>This release has also introduced a <a href="https://trac.torproject.org/projects/tor/ticket/10102">build reproducibility issue on Windows</a>, hence it is signed only by two keys. We should have this issue fixed by the next beta.</p>
+
+<p>Here is the complete ChangeLog:</p>
+
+<ul>
+<li><p>All Platforms:</p>
+
+<ul>
+<li>Update Firefox to 17.0.10esr</li>
+<li>Update NoScript to 2.6.8.2</li>
+<li>Update HTTPS-Everywhere to 3.4.2</li>
+<li>Bug #9114: Reorganize the bundle directory structure to ease future autoupdates</li>
+<li>Bug #9173: Patch Tor Browser to auto-detect profile directory if launched without the wrapper script.</li>
+<li>Bug #9012: Hide Tor Browser infobar for missing plugins.</li>
+<li>Bug #8364: Change the default entry page for the addons tab to the installed addons page.</li>
+<li>Bug #9867: Make flash objects really be click-to-play if flash is enabled.</li>
+<li>Bug #8292: Make getFirstPartyURI log+handle errors internally to simplify caller usage of the API</li>
+<li>Bug #3661: Remove polipo and privoxy from the banned ports list.</li>
+<li>misc: Fix a potential memory leak in the Image Cache isolation</li>
+<li>misc: Fix a potential crash if OS theme information is ever absent</li>
+<li>Update Tor-Launcher to 0.2.3.1-beta</li>
+<li>Bug #9114: Handle new directory structure</li>
+<li>misc: Tor Launcher now supports Thunderbird</li>
+<li>Update Torbutton to 1.6.4</li>
+<li>Bug #9224: Support multiple Tor socks ports for about:tor status check</li>
+<li>Bug #9587: Add TBB version number to about:tor</li>
+<li>Bug #9144: Workaround to handle missing translation properties</li>
+</ul></li>
+<li><p>Windows:</p>
+
+<ul>
+<li>Bug #9084: Fix startup crash on Windows XP.</li>
+</ul></li>
+<li><p>Linux:</p>
+
+<ul>
+<li>Bug #9487: Create detached debuginfo files for Linux Tor and Tor Browser binaries.</li>
+</ul></li>
+</ul>
 
         </div>
       </section>
@@ -379,7 +621,7 @@ as far as we can tell:
       
         <a href="/blog/page22" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 23 of 134</span>
+      <span class="page_number ">Page: 23 of 137</span>
       
         <a href="/blog/page24" class="next">Next</a>
       

@@ -53,301 +53,224 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-6">New Tor Browser Bundles</a></h2>
+          <h2 class="post-title"> <a href="/blog/trip-report-arab-bloggers-meeting-oct-3-7">Trip report, Arab Bloggers Meeting, Oct 3-7</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
+              By <a class="post-author" href="#">arma</a> under
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
+                <a class="post-category post-category-js" href="#">arab spring</a>
               
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">torbrowser</a>
-               |
-              10 Sep 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The Tor Browser Bundles have been updated with a bunch of bug fixes.</p>
-
-<p><strong>Important note to Windows users:</strong> in the last release we enabled automatic port selection for Tor and this had very unexpected side effects on many Windows machines. It turns out that there are a number of consumer firewalls that don&#39;t like things connecting on high ports, which was the default. We&#39;re looking into <a href="https://trac.torproject.org/projects/tor/ticket/3943">smarter</a> <a href="https://trac.torproject.org/projects/tor/ticket/3948">ways</a> to handle this failure mode, but until we find one, we have reverted the behavior to using the previous static port. We&#39;re very sorry for the huge inconvenience this caused and hope you will find these bundles more bug-free! As ever, if you don&#39;t, please <a href="https://trac.torproject.org/">let us know</a>.
- <a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
-
-<p><strong>Tor Browser Bundle (2.2.32-4)</strong></p>
-
-<p><strong>Windows fixes</strong>
-  - Disable automatic port selection to accommodate Windows users with
- firewalls that don&#39;t allow connections or traffic on high ports (closes: #3952, #3945)</p>
-
-<p><strong>Linux fixes</strong></p>
-
-<ul>
-<li>Fix Makefile to allow for automatic retrieval of Qt and libpng (closes: #2255)</li>
-<li>Remove symlinks from tarball (closes: #2312)</li>
-</ul>
-
-<p><strong>General fixes and updates</strong></p>
-
-<ul>
-<li><p>New Firefox patches</p>
-
-<ul>
-<li>Prevent Firefox from loading all system plugins besides Flash (closes: #2826, #3547)</li>
-<li>Prevent content-preferences service from writing website urls and their settings to disk (closes: #3229)</li>
-</ul></li>
-<li><p>Update Torbutton to 1.4.3</p>
-
-<ul>
-<li>Don&#39;t let Torbutton inadvertently enable automatic updating in Firefox (closes: #3933)</li>
-<li>Fix auto-scroll on Twitter (closes: #3960)</li>
-<li>Allow site zoom information to be stored (closes: #3928)</li>
-<li>Make permissions and disk errors human-readable (closes: #3649)</li>
-</ul></li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-5">New Tor Browser Bundles</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">firefox privacy</a>
-              
-                <a class="post-category post-category-js" href="#">firefox updates</a>
-              
-                <a class="post-category post-category-js" href="#">security fixes</a>
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser</a>
-               |
-              05 Sep 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The Tor Browser Bundles have been updated again, this time with Firefox 6.0.2, Torbutton 1.4.2, and more privacy-enhancing patches. <strong>Windows users:</strong> if you had problems running the last bundles, please try this. We believe the problem is fixed, but let us <a href="https://trac.torproject.org/">know</a> if it&#39;s not.</p>
-
-<p><a href="https://www.torproject.org/download/download-easy" title="https://www.torproject.org/download/download-easy">https://www.torproject.org/download/download-easy</a></p>
-
-<p><strong>Tor Browser Bundle (2.2.32-3)</strong></p>
-
-<ul>
-<li>Update Firefox to 6.0.2</li>
-<li><p>New Firefox patches:</p>
-
-<ul>
-<li>Improve cache APIs to enable better isolation (closes: #3666)</li>
-<li>Provide auth headers to on-modify-request (closes: #3907)</li>
-<li>Randomize HTTP pipelining as an experimental website traffic fingerprinting defense (closes: #3914)</li>
-<li>Enable HTTP pipelining in TBB prefs.js (closes: #3913)</li>
-</ul></li>
-<li><p>Update Torbutton to 1.4.2</p>
-
-<ul>
-<li>bug 3879: Fix broken framed sites (yopmail, gmane, gmaps, etc)</li>
-<li>bug 3337: Fetch check.tp.o page to check versions (TBB only)</li>
-<li>Bug 3754: Fix SafeCache OCSP errors (fix for TBB only)</li>
-</ul></li>
-<li><p>Update NoScript to 2.1.2.7</p></li>
-</ul>
-
-<p><strong>Windows fixes</strong></p>
-
-<ul>
-<li>Add missing C runtime libraries so WinXP users can use TBB again. Fix found by velope.</li>
-</ul>
-
-<p><strong>Linux fixes</strong></p>
-
-<ul>
-<li>Update libpng to 1.4.8 (closes: #3906)</li>
-<li>Make the TBB launch script work when using a relative symlink (closes: #2525)</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/experimental-defense-website-traffic-fingerprinting">Experimental Defense for Website Traffic Fingerprinting</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">mikeperry</a> under
-              
-                <a class="post-category post-category-js" href="#">anonymity</a>
-              
-                <a class="post-category post-category-js" href="#">anonymity features</a>
-              
-                <a class="post-category post-category-js" href="#">attacks</a>
-              
-                <a class="post-category post-category-js" href="#">protecting users</a>
-              
-                <a class="post-category post-category-js" href="#">research</a>
+                <a class="post-category post-category-js" href="#">internet censorship</a>
               
                 <a class="post-category post-category-js" href="#">surveillance</a>
               
-                <a class="post-category post-category-js" href="#">traffic analysis</a>
+                <a class="post-category post-category-js" href="#">training</a>
+              
+                <a class="post-category post-category-js" href="#">trip report</a>
                |
-              05 Sep 2011
+              16 Oct 2011
           </p>
         </header>
         <div class="post-description">
-          <p><strong>Updated 09/05/2011</strong> : Add link to actual <a href="https://gitweb.torproject.org/torbrowser.git/blob/maint-2.2:/src/current-patches/0006-Randomize-HTTP-pipeline-order-and-depth.patch">implementation patch</a> on gitweb</p>
+          <p>Jake, Arturo, and I went to <a href="http://arabloggers.com/blog/">Tunisia</a> Oct 3-7 to teach a bunch of bloggers from Arab countries about Tor and more generally about Internet security and privacy. The previous meetings were in Lebanon; it&#39;s amazing to reflect that the world has changed enough that <a href="http://samibengharbia.com/">Sami</a> can hold it in his home country now.</p>
 
-<p>Website fingerprinting is the act of recognizing web traffic through surveillance despite the use of encryption or anonymizing software. The general idea is to leverage the fact that many web sites have specific fixed request patterns and response byte counts that are known beforehand. This information can be used to recognize your web traffic despite attempts at encryption or tunneling. Websites that have an abundance of static content and a fixed request structure tend to be vulnerable to this type of surveillance. Unfortunately, there is enough static content on most websites for this to be the case.</p>
+<p>The conference was one day of keynotes with lots of press attention, and then three days of <a href="http://en.wikipedia.org/wiki/Unconference">unconference</a>-style workshops.</p>
 
-<p><a href="http://guh.nu/projects/ta/safeweb/safeweb.pdf">Early work</a> was quick to determine that simple packet-based encryption schemes (such as wireless and/or VPN encryption) were insufficient to prevent recognition of traffic patterns created by popular websites in the encrypted stream. Later, a <a href="http://research.microsoft.com/pubs/119060/WebAppSideChannel-final.pdf">small-scale study</a> determined that a lot of information could be extracted from HTTPS streams using these same approaches against specific websites.</p>
+<p>On the keynote day, Jake and Arturo did a talk on mobile privacy, pointing out the wide variety of ways that the telephone network is &quot;the best surveillance tool ever invented&quot;. The highlight for the day was when Moez Chakchouk, the head of the Tunisian Internet Agency (ATI), did a talk explicitly stating that Tunisia had been using Smartfilter since 2002, that Smartfilter had been giving Tunisia discounts in exchange for beta-testing their products for other countries in the region like Saudi Arabia, and that it was time for Tunisia to stop wasting money on expensive filters that aren&#39;t good for the country anyway.</p>
 
-<p>Despite these early results, whenever researchers tried naively applying these techniques to Tor-like systems, they failed to come up with publishable results (meaning the attack did not work against Tor), due largely to the fixed 512 byte cell size, as well as the multiplexing of Tor client traffic over a single TLS connection.</p>
+<p>We did a four-hour Tor training on the first workshop day. We covered what to look for in a circumvention or privacy tool (open source good, open design good, open analysis of security properties good, centralization bad). All the attendees left with a working Tor Browser Bundle install (well, all the attendees except the fellow with the ipad). We got many of them to install <a href="http://www.pidgin.im/">Pidgin</a> and <a href="http://www.cypherpunks.ca/otr/">OTR</a> as well, but ran into some demo bugs around the Jabber connect server config that derailed some users. I look forward to having the <a href="https://blog.torproject.org/blog/tor-im-browser-bundle-discontinued-temporarily">Tor IM Browser Bundle</a> back in action now that we&#39;ve fixed some Pidgin security bugs.</p>
 
-<p>However, last month, a group of researchers <a href="http://lorre.uni.lu/%7Eandriy/papers/acmccs-wpes11-fingerprinting.pdf">succeeded in performing this attack</a> where the others had failed. Their success hinged largely on their use of a simplified yet well-chosen feature set for training their classifiers. Where other researchers simply dumped packet sizes and timings into their classifiers and unsurprisingly got poor results against Tor traffic, this group extracted the time, quantity and direction of traffic, and discarded irrelevant control information such as TCP ACKs.</p>
+<p>We did a three-hour general security and privacy Q&amp;A on the second workshop day, covering topics like whether Skype is safe, how else can they do VoIP, how can they trust various software, a demo of what sniffing the network can show, iphone vs android vs blackberry, etc. It ended with a walk-through of how <em>*we*</em> keep our laptops secure, so people could see how far down the rabbit hole they can go.</p>
 
-<p>While the research methodology of the attack side of their work is particularly exemplary (certainly the most thorough study in website fingerprinting to date), their results are still likely insufficient to deploy against the network and expect to catch people engaging in single visits of forbidden websites. For such a use case, even their relatively low false positive rate is going to cause a lot of issues when deployed against large quantities of traffic. Concurrent use of multiple AJAX-enabled websites and/or other applications will also frustrate an attacker. Even without concurrent activity, their &quot;open-world&quot; experiment (the most realistic scenario for dragnet surveillance of Tor traffic) shows true positive accuracy of around 55%.</p>
+<p>Syria and Israel seem to be the scariest adversaries in the area right now, in terms of oppression technology and willingness to use it. Or said another way, if you live in Syria or Palestine, you are especially screwed. We heard some really sad and disturbing stories; but those stories aren&#39;t mine to tell here.</p>
 
-<p>However, repeated observations over long periods of time are likely sufficient to develop certainty. It is also possible that extracting actual application data lengths from Tor TLS headers would add additional accuracy.</p>
+<p>We helped to explain the implications of the 54 gigs of Bluecoat logs that got published from inside Syria, detailing URLs and the IP addresses that fetched them. (The IP addresses were scrubbed from the published version of the logs, but the URLs, user agents, timestamps, etc still contain quite sensitive info.)
+ <a href="http://advocacy.globalvoicesonline.org/2011/10/10/bluecoat-us-technology-surveilling-syrian-citizens-online/" title="http://advocacy.globalvoicesonline.org/2011/10/10/bluecoat-us-technology-surveilling-syrian-citizens-online/">http://advocacy.globalvoicesonline.org/2011/10/10/bluecoat-us-technology...</a></p>
 
-<p>Hence, this is a rather nasty attack. It is basically a one-ended version of the age-old end-to-end correlation attack (where an adversary attempts to observe both the entrance to the network and the exits to correlate traffic flows). With the website fingerprinting attack, the adversary only needs to observe a single entry (a bridge, a guard node, or a regional firewall) of the network to begin gathering information about users who use that entry point.</p>
+<p>Perhaps most interesting in the Bluecoat logs is the evidence of Bluecoat devices phoning home to get updates. So much for Bluecoat&#39;s claims that they don&#39;t provide support to Syria. If the US government chose to enforce its existing laws against American companies selling surveillance tools to Syria, it would be a great step toward making Tor users safer in Syria right now: no doubt Syria has some smart people who can configure things locally, but it&#39;s way worse when Silicon Valley engineers provide new filter rules to detect protocols like Tor for no additional charge.</p>
 
-<p>However, because the attack is only one-ended, many defenses that would be useless against the full end-to-end attack can be considered. In the countermeasures section of their paper, the researchers point out that a Firefox addon that simply performs background HTTP requests concurrent to normal user activity was enough to foil their classifier.</p>
+<p>The pervasiveness of video cameras and journalists at the meeting was surprising. I&#39;m told the previous Arab blogger meeting was just a bunch of geeks sitting around their laptops talking about how to improve their countries and societies. Now that the Twitter Revolution is hot in the press, I guess all the Western media now want a piece of the action.</p>
 
-<p>We disagree with the background fetch approach because it seems that a slightly more sophisticated attack would train a separate classifier to recognize the background cover traffic and then subtract it before attempting to classify the remainder. In the face of this concern, it seems that the background request defense is not worth the additional network load until it can be further studied in detail.</p>
+<p>On the third workshop day we learned that there was a <a href="http://info-tunisie.net/high-tech/actualite/tic/21955-tunisie--iptelecom-expo-2011-les-6-et-7-octobre">surveillance corporate expo</a> happening in the same hotel as the blogger meeting. We crashed it and collected some brochures. We also found a pair of students from a nearby university who had set up a booth to single-handedly try to offset the evil of the expo. They were part of a security student group at their university that had made a magazine that talked among other things about Tor, Tunisian filtering, etc. We gave them a big pile of Tor stickers.</p>
 
-<p>Instead, we are deploying an <a href="https://trac.torproject.org/projects/tor/ticket/3914">experimental defense</a> in <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-5">today&#39;s Tor Browser Bundle release</a> that is specifically designed to reduce the information available for feature extraction without adding overhead. The defense is to enable <a href="https://secure.wikimedia.org/wikipedia/en/wiki/HTTP_pipelining">HTTP pipelining</a>, and to randomize the pipeline size as well as the order of requests. The <a href="https://gitweb.torproject.org/torbrowser.git/blob/maint-2.2:/src/current-patches/0006-Randomize-HTTP-pipeline-order-and-depth.patch">source code to the implementation</a> can be viewed on gitweb.</p>
+<p>On our extra day after the workshops, we visited Moez at his Internet Agency and interviewed him for a few hours about the state of filtering in his country. He confirmed that they renewed their Smartfilter license until Sept 2012, and that they still filter &quot;the groups that want it&quot; (government and schools), but for technical reasons they have turned off the global filters (they broke and nobody has fixed them). We pointed out that since an external company operates their filters — including for their military — then that company not only has freedom to censor anything they want, but they also get to see every single request when deciding whether to censor it. Moez used the phrase &quot;national sovereignty&quot; when explaining why it isn&#39;t a great idea for Tunisia to outsource their filtering. Great point: it would be foolish to imagine that this external company isn&#39;t logging things for their own purposes, whether that&#39;s &quot;improving their product&quot; or something more sinister. As we keep seeing, collecting a large data set and then hoping to keep it secret never seems to work out.</p>
 
-<p>Since normal, non-randomized pipelining is still off by default to this day in Firefox, we are assuming that the published attack results are against serialized request/response behavior, which provides significantly more feature information to the attacker. In particular, we believe a randomized pipeline will eliminate or reduce the utility of the &#39;Size Marker&#39;, &#39;Number Marker&#39;, &#39;Number of Packets&#39;, and &#39;Occurring Packet Sizes&#39; features on sites that support pipelining, due to the batching of requests and responses of arbitrary sizes. More generally, the randomized pipeline should obscure the request vs response size and request ordering information available to the classifier.</p>
+<p>One of the points Jake kept hammering on throughout the week was &quot;if <em>*anything*</em> is being filtered, then you have to realize that they&#39;re surveilling <em>*everything*</em> in order to make those filtering decisions.&quot; The Syrian logs help to drive the point home but it seems like a lot of people haven&#39;t really internalized it yet. We still find people thinking of Tor solely as an &quot;anti-filter&quot; tool and not considering the surveillance angle.</p>
 
-<p>Our hope is that the randomized pipeline defense will therefore increase the duration of observation required to establish certainty that a site is being visited, by lowering the true positive rate and/or raising the false positive rate beyond what the researchers observed.</p>
-
-<p>We do not expect this defense to be foolproof. We create it as a prototype, and request that future research papers do not treat the defense as if it were the final solution against website fingerprinting of Tor traffic. In particular, not all websites support pipelining (in fact, an unknown number may deliberately disable it to reduce load), and even those that do will still leak the initial response size as well as the total response size to the attacker. Pipelining may also be disabled by malicious or simply misconfigured exits.</p>
-
-<p>However, the defense could also be improved. We did not attempt to determine the optimal pipeline size or distribution, and are relying on the research community to tweak these parameters as they evaluate the defense.</p>
-
-<p>We could also take more extreme measures, such as building pipelining support into Tor exit nodes. Perhaps better still, we could deploy an <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/ideas/xxx-using-spdy.txt">HTTP to SPDY translation service at exits</a>. The more efficient request bundling of <a href="http://dev.chromium.org/spdy">SPDY</a> would likely obscure request vs response size information yet further. However, as these translations are potentially fragile as well as labor-intensive to implement and deploy, we are unlikely to take these measures without further feedback from and study by the research community.</p>
-
-<p>Alternatively, or perhaps additionally, defenses could be deployed at the <a href="https://gitweb.torproject.org/obfsproxy.git/blob/HEAD:/doc/protocol-spec.txt">obfsproxy plugin layer</a>. Defenses there would not help against an adversary at the bridge or guard node, but would help against regional firewalls.</p>
-
-<p>We would love to hear feedback from the research community about these approaches, and look forward to hearing more results of future attack and defense work along these and other avenues.</p>
+<p>After the meeting with Moez, we went to visit one of the universities. We talked to a few dozen students who were really excited to find us there — to the point that they quickly located a video camera and interviewed us on the spot. They brought us to their security class, and informed the professor that we would be speaking for the first half hour of it. We gave an impassioned plea for them to learn more about Tor and teach other people in their country how to be safe online. I think the group of students there could be really valuable for creating local technical Tor resources. As a bonus, the traditional path for a computer science graduate of this university is to go work at Tunisia Telecom, the monopoly telco that hosts the filtering boxes &amp;mdash the more we can influence the incoming generations, the more the change will grow.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/diginotar-damage-disclosure">DigiNotar Damage Disclosure</a></h2>
+          <h2 class="post-title"> <a href="/blog/vidalia-0215-out">Vidalia 0.2.15 is out!</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">ioerror</a> under
+              By <a class="post-author" href="#">chiiph</a> under
               
-                <a class="post-category post-category-js" href="#">ca certificates</a>
+                <a class="post-category post-category-js" href="#">bug fixes</a>
               
-                <a class="post-category post-category-js" href="#">https</a>
+                <a class="post-category post-category-js" href="#">vidalia</a>
               
-                <a class="post-category post-category-js" href="#">ohdiginotaryoudidnt</a>
-              
-                <a class="post-category post-category-js" href="#">ssl certifications</a>
-              
-                <a class="post-category post-category-js" href="#">tor client safety</a>
-              
-                <a class="post-category post-category-js" href="#">tor network safety</a>
-              
-                <a class="post-category post-category-js" href="#">tor project website</a>
+                <a class="post-category post-category-js" href="#">vidalia releases</a>
                |
-              04 Sep 2011
+              12 Oct 2011
           </p>
         </header>
         <div class="post-description">
-          <p>About an hour ago I was contacted by the Dutch Government with more details about the <a href="https://blog.torproject.org/blog/diginotar-debacle-and-what-you-should-do-about-it">DigiNotar Debacle</a>. It seems that they&#39;re doing a great job keeping on top of things and doing the job that DigiNotar should&#39;ve done in July. They sent a spreadsheet with a list of 531 entries on the currently known bad DigiNotar related certificates.</p>
+          <p>Hello everybody,</p>
 
-<p>The list isn&#39;t pretty and I&#39;ve decided that in the interest of defenders everywhere without special connections, I&#39;m going to disclose it. The people that I have spoken with in the Dutch Government agree with this course of action.</p>
+<p>I&#39;m happy to announce a new version for Vidalia, 0.2.15.</p>
 
-<p>This disclosure will absolutely not help any attacker as it does not contain the raw certificates; it is merely metadata about the certificates that were issued. It includes who we should not trust in the future going forward and it shows what is missing at the moment. This is an incomplete list because DigiNotar&#39;s audit trail is incomplete.</p>
+<p>If you find any bugs or have ideas on how to improve Vidalia, please
+remember to go to <a href="https://trac.torproject.org/" title="https://trac.torproject.org/">https://trac.torproject.org/</a> and file a ticket for it!</p>
 
-<p>This is the list of CA roots that should probably never be trusted again:</p>
+<p>You can find the source tarball and its signature in here:
+ <a href="https://www.torproject.org/dist/vidalia/vidalia-0.2.15.tar.gz" title="https://www.torproject.org/dist/vidalia/vidalia-0.2.15.tar.gz">https://www.torproject.org/dist/vidalia/vidalia-0.2.15.tar.gz</a>
+ <a href="https://www.torproject.org/dist/vidalia/vidalia-0.2.15.tar.gz.asc" title="https://www.torproject.org/dist/vidalia/vidalia-0.2.15.tar.gz.asc">https://www.torproject.org/dist/vidalia/vidalia-0.2.15.tar.gz.asc</a></p>
 
-<p>DigiNotar Cyber CA
- DigiNotar Extended Validation CA
- DigiNotar Public CA 2025
- DigiNotar Public CA - G2
- Koninklijke Notariele Beroepsorganisatie CA
- Stichting TTP Infos CA</p>
+<p>TBB and other packages are going to be here soon, please be patient.</p>
 
-<p>The most egregious certs issued were for *.*.com and *.*.org while certificates for Windows Update and certificates for other hosts are of limited harm by comparison. The attackers also issued certificates in the names of other certificate authorities such as &quot;VeriSign Root CA&quot; and &quot;Thawte Root CA&quot; as we witnessed with <a href="https://blog.torproject.org/blog/detecting-certificate-authority-compromises-and-web-browser-collusion">ComodoGate</a>, although we cannot determine whether they succeeded in creating any intermediate CA certs. That&#39;s really saying something about the amount of damage a single compromised CA might inflict with poor security practices and regular internet luck.</p>
+<p>Here&#39;s what changed:</p>
 
-<p>Of particular note is this certificate:
-CN=*.RamzShekaneBozorg.com,SN=PK000229200006593,OU=Sare Toro Ham Mishkanam,L=Tehran,O=Hameye Ramzaro Mishkanam,C=IR</p>
+<p><strong>0.2.15 07-Oct-2011</strong></p>
 
-<p>The text here appears to be be an entry like any other but it is infact a calling card from a Farsi speaker. RamzShekaneBozorg.com is not a valid domain as of this writing.</p>
+<ul>
+<li>Draw the bandwidth graph curves based on the local maximum, not
+the global maximum. Fixes bug 2188.</li>
+<li>Add an option for setting up a non-exit relay to the Sharing
+configuration panel. This is meant to clarify what an exit policy
+and an exit relay are. Resolves bug 2644.</li>
+<li>Display time statistics for bridges in UTC time, rather than local
+time. Fixes bug 3342.</li>
+<li>Change the parameter for ordering the entries in the Basic Log
+list from currentTime to currentDateTime to avoid missplacing
+entries from different days.</li>
+<li>Check the tor version and that settings are sanitized before
+trying to use the port autoconfiguration feature. Fixes bug 3843.</li>
+<li>Provide a way to hide Dock or System Tray icons in OSX. Resolves
+ticket 2163.</li>
+<li>Make new processes appear at front when they are started (OSX
+specific).</li>
+</ul>
 
-<p>Thanks to an anonymous Farsi speaker, I now understand that the above certificate is actually a comment to anyone who bothers to read between the lines:
-&quot;RamzShekaneBozorg&quot; is &quot;great cracker&quot;
-&quot;Hameyeh Ramzaro Mishkanam&quot; translates to &quot;I will crack all encryption&quot;
-&quot;Sare Toro Ham Mishkanam&quot; translates to &quot;i hate/break your head&quot;</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-8">New Tor Browser Bundles</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">torbutton</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia releases</a>
+               |
+              12 Oct 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Tor Browser Bundles have been updated to Vidalia 0.2.15. The OS X and Linux bundles have Torbutton 1.4.4, but a hotfix for Windows was released with 1.4.4.1 because 1.4.4 had a minor issue that prevented the Windows bundle from going to <a href="https://check.torproject.org" title="https://check.torproject.org">https://check.torproject.org</a>.</p>
 
-<p>Without any further delay, I&#39;ve uploaded <a href="https://blog.torproject.org/files/rogue-certs-2011-09-04.xlsx">the original spreadsheet</a> and <a href="https://blog.torproject.org/files/rogue-certs-2011-09-04.csv">a CSV text file</a> for people who don&#39;t trust spreadsheets. The information contained in both files should be the same. Hopefully this information will help people to mitigate certain harm from the <a href="https://blog.torproject.org/blog/diginotar-debacle-and-what-you-should-do-about-it">DigiNotar Debacle</a>.</p>
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Tor Browser Bundle (2.2.33-3)</strong></p>
+
+<ul>
+<li>Update Vidalia to 0.2.15</li>
+<li>Update Torbutton to 1.4.4.1</li>
+<li>Update NoScript to 2.1.4</li>
+<li>Remove trailing dash from Windows version number (closes: #4160)</li>
+<li>Make Tor Browser (Aurora) fail closed when not launched with a TBB profile
+(closes: #4192)</li>
+</ul>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/support-tor-network-donate-exit-node-providers">Support the Tor Network: Donate to Exit Node Providers</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">distributed trust</a>
+              
+                <a class="post-category post-category-js" href="#">exits</a>
+              
+                <a class="post-category post-category-js" href="#">performance</a>
+              
+                <a class="post-category post-category-js" href="#">relays</a>
+               |
+              10 Oct 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Tor network is run by volunteers, and for the most part is entirely independent of the software development effort led by The Tor Project, Inc. While The Tor Project, Inc is a 501(c)3 non-profit that is <a href="https://www.torproject.org/donate/donate.html.en">happy to take donations</a> to create more and better software, up until recently there was no way for you to fund deployment of more relays to improve network capacity and performance, aside from running those relays yourself.</p>
+
+<p>We&#39;re happy to announce that both <a href="https://www.noisebridge.net/wiki/Tor">Noisebridge</a> and <a href="https://www.torservers.net">TorServers.net</a> are now able to take donations directly for the purpose of running high capacity Tor exit nodes.</p>
+
+<p>Noisebridge is a US 501(c)3 non-profit, which means that for US citizens, <a href="http://tor.noisebridge.net/">donations</a> are tax deductible. Torservers.net is a German non-profit organization whose <a href="https://www.torservers.net/donate.html">donations</a> are tax deductible for German citizens (and <a href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:62007J0318:EN:HTML">also potentially</a> for citizens of other EU member states).</p>
+
+<p>What are the pluses and minuses of donating as opposed to running your own relay? Glad you asked!</p>
+
+<p>While it is relatively easy and risk-free to run a middle relay or a bridge, running an exit can be tough. You have to seek out a <a href="https://trac.torproject.org/projects/tor/wiki/doc/TheOnionRouter/GoodBadISPs">friendly ISP</a>, explain Tor to them, and then navigate a <a href="https://blog.torproject.org/blog/tips-running-exit-node-minimal-harassment">laundry list of Internet bureaucracies</a> to ensure that when abuse happens, the burden of <a href="https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/TorAbuseTemplates">answering complaints</a> falls upon you and not your ISP.</p>
+
+<p>These barriers are all made easier the larger your budget is. On top of this, like most things, bandwidth is cheaper in bulk. But not just <a href="http://www.costco.com/Browse/Product.aspx?prodid=11487214">Costco cheaper</a>: exponential-growth cheaper, all the way up into the gigabit range (and perhaps beyond, but no one has run a Tor node on anything faster).</p>
+
+<p>At these scales, large exit nodes can pay as little as $1/mo per dedicated megabit/second. Sometimes less. This means that <a href="https://www.paypal.com/subscriptions/business=treasurer%40noisebridge.net&amp;item_name=Noisebridge%20Tor%20Node%20Project&amp;cy_code=USD&amp;no_note=1&amp;no_shipping=1&amp;a3=30&amp;p3=1&amp;t3=M&amp;src=1">adding $30/mo</a> to the hosting budget of a large exit node can buy almost 40 times more full-duplex dedicated bandwidth than a similarly priced business upgrade to your home ADSL line would buy, and about 50 times more bandwidth than Amazon EC2 instances at the entry-level price of $0.08 per half-duplex gigabyte, not counting CPU costs. ( <a href="https://www.torproject.org/docs/bridges">Bridge</a> economics in terms of IP address space availability might still favor Amazon EC2, but that is a different discussion).</p>
+
+<p>The downside to donation is that network centralization can lead to a more fragile and a more observable network. If these nodes fail, the network will definitely feel the <a href="https://metrics.torproject.org/performance.html">performance</a> <a href="https://lists.torproject.org/pipermail/tor-talk/2011-September/021493.html">loss</a>. In terms of observability, fewer nodes also means that fewer points of surveillance are required to deanonymize users (though <a href="http://archives.seul.org/or/dev/Sep-2008/msg00016.html">some argue</a> that more users will make such surveillance less reliable, no one has yet rigorously quantified that result against actual attacks).</p>
+
+<p>Therefore, if you are able to run a high capacity relay or exit yourself (or have access to cheap/free/ <a href="https://gitweb.torproject.org/tor.git/blob/master:/contrib/linux-tor-prio.sh">unused</a> bandwidth at your work/school), running your own relay is definitely preferred. If you are part of the Tor community and want to accept donations, we&#39;d love to add you to our <a href="https://www.torproject.org/docs/faq#RelayDonations">recommended donor list</a>. Please join us on the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-relays">tor-relays mailing list</a> to discuss <a href="https://github.com/noisetor/">node configuration</a> and <a href="https://www.torservers.net/wiki/guides">setup</a>.</p>
+
+<p>However, if configuring and maintaining a high capacity relay is not for you, donating a portion of the monthly hosting budgets of either of these organizations is an excellent way to support anonymity, privacy, and censorship circumvention for very large numbers of people.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/september-2011-progress-report">September 2011 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">iran</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">protocol enhancements</a>
+               |
+              09 Oct 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>In September 2011 we made progress in a number of areas, such as handling issues in Iran&#39;s use of DPI to block tor, new versions of Tor, Tails 0.8 release, and more.</p>
+
+<p>The PDF and plaintext versions of the report can be found attached to this blog post or at our monthly report archive:</p>
+
+<p><a href="https://archive.torproject.org/monthly-report-archive/2011-September-Monthly-Report.pdf" title="https://archive.torproject.org/monthly-report-archive/2011-September-Monthly-Report.pdf">https://archive.torproject.org/monthly-report-archive/2011-September-Mon...</a></p>
+
+<p>and</p>
+
+<p><a href="https://archive.torproject.org/monthly-report-archive/2011-September-Monthly-Report.txt" title="https://archive.torproject.org/monthly-report-archive/2011-September-Monthly-Report.txt">https://archive.torproject.org/monthly-report-archive/2011-September-Mon...</a></p>
 
 <p><thead><tr>
 <th>Attachment</th>
 <th>Size</th> </tr></thead><tbody>
  <tr class="odd">
-<td><a href="https://blog.torproject.org/files/rogue-certs-2011-09-04.xlsx">rogue-certs-2011-09-04.xlsx</a></td>
-<td>106.41 KB</td> </tr>
+<td><a href="https://blog.torproject.org/files/2011-September-Monthly-Report.pdf">2011-September-Monthly-Report.pdf</a></td>
+<td>672.87 KB</td> </tr>
+ <tr class="even">
+<td><a href="https://blog.torproject.org/files/2011-September-Monthly-Report.txt">2011-September-Monthly-Report.txt</a></td>
+<td>35.72 KB</td> </tr>
 </tbody></p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-4">New Tor Browser Bundles</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">ohdiginotaryoudidnt</a>
-              
-                <a class="post-category post-category-js" href="#">package updates</a>
-              
-                <a class="post-category post-category-js" href="#">security fixes</a>
-              
-                <a class="post-category post-category-js" href="#">tbb torbrowser</a>
-               |
-              01 Sep 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>We have updated the stable Tor Browser Bundles to Firefox 6.</p>
-
-<p><strong>There are no longer any stable Tor Browser Bundles with the 3.6.x series of Firefox.</strong> We were using pre-built binaries on some platforms and owing to the recent <a href="https://blog.torproject.org/blog/diginotar-debacle-and-what-you-should-do-about-it">DigiNotar debacle</a>, we no longer felt comfortable shipping versions of Firefox that we were unable to patch. We build all Firefox 6 binaries from source, with our own <a href="https://gitweb.torproject.org/torbrowser.git/tree/refs/heads/maint-2.2:/src/current-patches">set of patches</a>, including some <a href="https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f603a3bf3716f6165caa1">specific to the DigiNotar issue</a>.</p>
-
-<p>We&#39;d originally planned to drop support for Firefox 3.6 bundles on September 10th, but this moved up the date a bit. The new Tor Browser Bundles are much more feature-rich than the previous bundles, but users may still experience unexpected behavior. Please report all bugs to <a href="https://trac.torproject.org/" title="https://trac.torproject.org/">https://trac.torproject.org/</a>.</p>
-
-<p>Windows users will see the biggest difference between the old stable bundle and the new stable bundle. In addition to upgrading Firefox, it includes the latest stable release of <a href="http://blog.torproject.org/blog/tor-02232-released">Tor 0.2.2.32</a>, <a href="http://blog.torproject.org/blog/vidalia-0214-out">Vidalia 0.2.14</a> and <a href="http://blog.torproject.org/blog/torbutton-141-released">Torbutton 1.4.1</a>. These three upgrades together allow you to run the Tor Browser Bundle at the same time as a system Tor, or even multiple copies of the Tor Browser Bundle in different directories, by <a href="https://trac.torproject.org/projects/tor/ticket/2264">dynamically choosing available ports</a>.</p>
-
-<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
-
-<p><strong>Tor Browser Bundle (2.2.32-2)</strong></p>
-
-<ul>
-<li>Update Firefox to 6.0.1, with an additional patch to exclude DigiNotar completely
-
-<ul>
-<li><a href="https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f603a3bf3716f6165caa1" title="https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f603a3bf3716f6165caa1">https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f...</a></li>
-</ul></li>
-</ul>
-
-<p>For the full saga, read:</p>
-
-<ul>
-<li><a href="http://blog.mozilla.com/security/2011/08/29/fraudulent-google-com-certificate/" title="http://blog.mozilla.com/security/2011/08/29/fraudulent-google-com-certificate/">http://blog.mozilla.com/security/2011/08/29/fraudulent-google-com-certif...</a></li>
-<li><p><a href="http://googleonlinesecurity.blogspot.com/2011/08/update-on-attempted-man-in-middle.html" title="http://googleonlinesecurity.blogspot.com/2011/08/update-on-attempted-man-in-middle.html">http://googleonlinesecurity.blogspot.com/2011/08/update-on-attempted-man...</a></p>
-
-<ul>
-<li><strong>OS X specific:</strong> Rebuild 32-bit binaries with backwards compatibility options so TBB works on OSX 10.5 (closes: #3671)</li>
-<li>Update Libevent to 2.0.14-stable</li>
-<li>Update torbrowser.version string in prefs.js to have more information (see #3504)</li>
-<li>Enable internationalized bundles by adding and changing the
-general.useragent.locale pref in prefs.js</li>
-</ul></li>
-</ul>
 
         </div>
       </section>
@@ -358,7 +281,7 @@ general.useragent.locale pref in prefs.js</li>
       
         <a href="/blog/page67" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 68 of 134</span>
+      <span class="page_number ">Page: 68 of 137</span>
       
         <a href="/blog/page69" class="next">Next</a>
       

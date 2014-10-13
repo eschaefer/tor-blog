@@ -53,46 +53,248 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/transparency-openness-and-our-2013-financials">Transparency, Openness, and our 2013 Financials</a></h2>
+          <h2 class="post-title"> <a href="/ahmia-search-after-gsoc-development">Ahmia search after GSoC development</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
+              By <a class="post-author" href="#">juha</a> under
               
-                <a class="post-category post-category-js" href="#">donations</a>
+                <a class="post-category post-category-js" href="#">ahmia</a>
               
-                <a class="post-category post-category-js" href="#">financial statements</a>
+                <a class="post-category post-category-js" href="#">ahmia.fi</a>
               
-                <a class="post-category post-category-js" href="#">Form 990</a>
+                <a class="post-category post-category-js" href="#">crawling</a>
               
-                <a class="post-category post-category-js" href="#">Form PC</a>
+                <a class="post-category post-category-js" href="#">GSoC 2014</a>
               
-                <a class="post-category post-category-js" href="#">freedom</a>
+                <a class="post-category post-category-js" href="#">hidden services</a>
               
-                <a class="post-category post-category-js" href="#">growing</a>
+                <a class="post-category post-category-js" href="#">onion</a>
               
-                <a class="post-category post-category-js" href="#">privacy</a>
-              
-                <a class="post-category post-category-js" href="#">success</a>
+                <a class="post-category post-category-js" href="#">search engine</a>
                |
-              26 Jul 2014
+              07 Sep 2014
           </p>
         </header>
         <div class="post-description">
-          <p>2013 was a great year for Tor. The increasing awareness of the lack of privacy online, increasing Internet censorship around the world, and general interest in encryption has helped continue to keep us in the public mind. As a result, our supporters have increased our funding to keep us on the leading edge of our field, this of course, means you. We&#39;re happy to have more developers, advocates, and support volunteers. We&#39;re encouraged as the general public talks about Tor to their friends and neighbors. Join us as we continue to fight for your privacy and freedom on the Internet!</p>
+          <p>The Google Summer of Code (GSoC) was an excellent opportunity to improve on the Ahmia search engine. With Google&#39;s stipend and friendly mentoring from The Tor Project, I was able to concentrate on development of my search engine project. Thank you all!</p>
 
-<p>After completing the standard audit, our 2013 state and federal <a href="https://www.torproject.org/about/financials.html.en">tax filings</a> are available. We publish all of our related tax documents because we believe in transparency. All US non-profit organizations are required by law to make their tax filings available to the public on request by US citizens. We want to make them available for all.</p>
+<p><a href="https://trac.torproject.org/projects/tor/wiki/doc/gsoc">GSoC 2014</a> is over, but I am sticking around to continue developing and maintaining Ahmia.</p>
 
-<p>Part of our transparency is simply publishing the tax documents for your review. The other part is publishing what we&#39;re <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors">working on</a> in detail. We hope you&#39;ll join us in furthering our mission (a) to develop, improve and distribute free, publicly available tools and programs that promote free speech, free expression, civic engagement and privacy rights online; (b) to conduct scientific research regarding, and to promote the use of and knowledge about, such tools, programs and related issues around the world; (c) to educate the general public around the world about privacy rights and anonymity issues connected to Internet use.</p>
+<p>Here is the current status of ahmia after GSoC development:</p>
 
-<p>All of this means you can look through our <a href="https://gitweb.torproject.org/">source code</a>, including our <a href="https://www.torproject.org/docs/documentation#DesignDoc">design documents</a>, and all open tasks, enhancements, and bugs available on our <a href="https://trac.torproject.org/">tracking system</a>. Our <a href="https://research.torproject.org/">research</a> reports are available as well. From a technical perspective, all of this free software, documentation, and code allows you and others to assess the safety and trustworthiness of our research and development. On another level, we have a 10 year track record of doing high quality work, saying what we&#39;re going to do, and doing what we said.</p>
+<h2>Introduction</h2>
 
-<p>Internet privacy and anonymity is more important and rare than ever. Please help keep us going through <a href="https://www.torproject.org/getinvolved/volunteer.html.en">getting involved</a>, <a href="https://www.torproject.org/donate/donate.html.en">donations</a>, or advocating for a free Internet with privacy, anonymity, and keeping control of your identity.</p>
+<p>Ahmia is <a href="https://github.com/juhanurmi/ahmia/">open-source search engine software</a> for Tor hidden service websites. You can test the running search engine at <a href="https://ahmia.fi/search/">ahmia.fi</a>.</p>
+
+<p>Building a search engine for anonymous web sites running inside the Tor network is an interesting problem. Tor enables web servers to <a href="https://www.torproject.org/docs/hidden-services">hide their location</a> and Tor users can connect to these authenticated hidden services while the server and the user both stay anonymous. However, finding web content is hard without a good search engine and therefore a search engine is needed for the Tor network.</p>
+
+<p>Web search engines are needed to navigate and search the web. There were no search engines for searching hidden service web content, so I decided to build a search engine specially for Tor. I registered ahmia.fi and started development on it as a side project in 2010.</p>
+
+<p>This development involved programming and testing web crawlers, thinking of ways to find hidden service addresses (since the protocol does not allow enumeration), learning about the Tor community, and implementing a filtering policy. Moreover, I implemented <a href="https://ahmia.fi/documentation/">an API</a> that empowers other Tor services that publish content to integrate with Ahmia.</p>
+
+<p>As a result, Ahmia is a working search engine that indexes, searches and catalogs content published on Tor Hidden Services. Furthermore, it is an environment to share meaningful statistics, insights and news about the Tor network itself.</p>
+
+<h2>Interesting Summer of Code</h2>
+
+<p>One of my best memories from the summer is the Tor Project&#39;s Summer 2014 Developers meeting that was hosted by Mozilla in Paris, France. I have always admired the people who are working on the Tor Project.</p>
+
+<p>I also loved the coding itself. Finally I had time to improve the Ahmia search engine and its many features. <a href="https://github.com/juhanurmi/ahmia/commits/master">I did a lot of work</a> and liked it.</p>
+
+<p>Some journalist were very interested in my work: Carola Frediani asked if I could analyze the content of hidden services. I coded a script that fetches every front page&#39;s HTML, I gathered all the keywords, headers and description texts and made a simple word cloud visualization.</p>
+
+<p><img src="https://ahmia.fi/static/visuals/content.png" alt="Hidden website content visualization."></p>
+
+<p>It is a simple way to glance what is published on the hidden websites.</p>
+
+<p>Carola found this data useful and used it in her presentation at <a href="http://www.sotn.it" title="www.sotn.it">www.sotn.it</a> on June 11th.</p>
+
+<h2>Technical design of ahmia</h2>
+
+<p>The Ahmia web service is written using the Django web framework. As a result, the server-side language is Python. On the client-side, most of the pages are plain HTML. There are some pages that require JavaScript, but the search itself works without client-side JavaScript.</p>
+
+<p>The components of Ahmia are:</p>
+
+<ul>
+<li>Django front-end site</li>
+<li>PostgreSQL database for the site</li>
+<li>Custom scripts to download data about hidden services</li>
+<li>Django-Haystack connection to Solr database</li>
+<li>Apache Solr for the crawled data</li>
+<li>OnionBot crawler that gathers data to Solr database</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/juhanurmi/ahmia/master/technical_architecture.png" alt="Technical architecture."></p>
+
+<p><a href="https://github.com/juhanurmi/ahmia/blob/master/README.md">See installation and developing tutorial</a></p>
+
+<h2>Search</h2>
+
+<p>The full-text search is implemented using Django-Haystack. The search is using crawled website data that is saved to Apache Solr.</p>
+
+<h2>OnionDir</h2>
+
+<p><a href="https://ahmia.fi/address/">OnionDir</a> is a list of known online hidden service addresses. A separate script gathers this list and fetches information fields from the HTML (title, keywords, description etc.). Furthermore, users can freely edit these fields.</p>
+
+<p>We&#39;ve also started a convention where hidden service admins can add a file to their website, called <a href="https://ahmia.fi/documentation/descriptionProposal/">description.json</a>, to offer an official description of their site in Ahmia.</p>
+
+<p>As a result, this information is shown in <a href="https://ahmia.fi/address/#/search=Description%20downloaded%20directly%20from%20the%20hidden%20service.">the OnionDir page</a> and over 80 domains are already using this method.</p>
+
+<h2>Statistics</h2>
+
+<p>We are gathering statistics from hidden services. As a result, we can represent and share <a href="https://ahmia.fi/documentation/">meaningful data about hidden services</a> and <a href="https://ahmia.fi/stats/viewer">visualize it</a>.</p>
+
+<p>We are gathering three types of popularity data:</p>
+
+<ol>
+<li>Tor2web nodes share their visiting statistics to Ahmia</li>
+<li>Number of public WWW backlinks to hidden services</li>
+<li>Number of clicks in the search results</li>
+</ol>
+
+<p>The click counter tells the total number of clicks on a search result in ahmia.fi</p>
+
+<h2>Filtering</h2>
+
+<p>We have decided to filter any sites related to child porn from our search results. Ahmia is removing everything related to these websites. These websites may not be actual child porn sites. They are rather sites where users can post content (forums, file and image uploads etc.) and as the result there have been, momentarily at least, some suspicious content that has not been moderated in a reasonable period of time. Ahmia.fi does not have the time to monitor these sites carefully and we are banning sites from our public index if we see any evidence of child abuse. Of course, the ban is removed if the site itself contacts us and we review the website to be OK.</p>
+
+<p>In practice, Ahmia calculates the MD5 sums of the banned domains for use as a filtering policy. Moreover, we are sharing this list and Tor2web nodes can use the list to filter out pages.</p>
+
+<p>At the moment, there seems to be 1228 hidden website domains online and 7 of them has been filtered because they are possibly sharing child porn content.</p>
+
+<h2>OnionBot</h2>
+
+<p><a href="https://github.com/juhanurmi/ahmia/tree/master/onionbot">OnionBot</a> is a crawler for hidden service websites based on the Scrapy framework. It crawls the Tor network and passes data to the search database. OnionBot requires the Tor software (using Tor2web mode) and Polipo. The results are saved to Apache Solr.</p>
+
+<h2>Apache Solr</h2>
+
+<p>Apache Solr is a popular, open source enterprise search platform. Its major features include powerful full-text search, hit highlighting, faceted search, and near real-time indexing.</p>
+
+<p>The <a href="https://github.com/juhanurmi/ahmia/blob/master/solr/schema.xml">schema.xml</a> file contains all of the details about which fields your documents can contain, and how those fields should be dealt with when adding documents to the index, or when querying those fields.</p>
+
+<h2>Security measures for privacy</h2>
+
+<p>In the software</p>
+
+<ul>
+<li>We do not log any IP addresses, see <a href="https://github.com/juhanurmi/ahmia/tree/master/apache2">Apache configuration</a></li>
+<li>We are gathering real-time clicks, however, this data is not shown accurately</li>
+</ul>
+
+<p>In the host ahmia.fi</p>
+
+<ul>
+<li>Backend servers are run separately and they do not have any knowledge about the end-users</li>
+<li>All servers are hosted in countries with strong privacy laws. For example, Finland and the Netherlands</li>
+<li>Communication between servers is encrypted</li>
+<li>Only a few trustworthy people know the locations of the back-end servers and are able to access them</li>
+</ul>
+
+<h2>Future work</h2>
+
+<p>GSoC 2014 was fun and productive!</p>
+
+<p>There is a lot more to do. However, I do not have time to do everything myself. Of course, I am coding when I have time and maintaining the search engine.</p>
+
+<p>In addition, I am going to write a scientific article about the implementation.</p>
+
+<p>Is there anyone who would be interested in developing Ahmia.fi?</p>
+
+<p>Is anyone familiar with Solr and would know how to tweak it for full text search?</p>
+
+<p>Furthermore, any kind of help would be most welcome. There are always Linux admin duties, HTML/CSS design, bug fixing, Django development, etc...</p>
+
+<p><strong>For further information, please don&#39;t hesitate to contact me by e-mail: juha.nurmi@ahmia.fi</strong></p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-browser-363-released">Tor Browser 3.6.3 is released</a></h2>
+          <h2 class="post-title"> <a href="/tor-weekly-news-%E2%80%94-september-3rd-2014">Tor Weekly News — September 3rd, 2014</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">harmony</a> under
+              
+                <a class="post-category post-category-js" href="#">tor weekly news</a>
+               |
+              03 Sep 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Welcome to the thirty-fifth issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+
+<h1>Tor Browser 3.6.5 and 4.0-alpha-2 are out</h1>
+
+<p>The Tor Browser team put out two new releases of the privacy-preserving web browser. Among the major changes, version 3.6.5 upgrades Firefox to 24.8.0esr, and includes an improved prompt to help users defend against <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/033969.html">HTML5 canvas image fingerprinting</a>, following a <a href="https://bugs.torproject.org/12684">patch</a> by Isis Lovecruft. Version 4.0-alpha-2 additionally includes the code for the forthcoming Tor Browser auto-updater (switched off by default) and <a href="https://lists.torproject.org/pipermail/tor-qa/2014-September/000458.html">“better hardening for Windows and Linux builds”</a>.</p>
+
+<p>As ever, you can download the new releases along with their signature files from the Tor Project’s <a href="https://www.torproject.org/dist/torbrowser/">distribution directory</a>. Please upgrade as soon as you can.</p>
+
+<h1>Tails 1.1.1 is out</h1>
+
+<p>The Tails team <a href="https://tails.boum.org/news/version_1.1.1/">released</a> version 1.1.1 of the Debian- and Tor-based live operating system. As well as upgrading key components like Tor, Iceweasel, and Linux, this release disables I2P by default when Tails is booted, in response to the <a href="https://tails.boum.org/security/Security_hole_in_I2P_0.9.13/">vulnerability recently disclosed by Exodus Intelligence</a>. Like Truecrypt, “i2p” must now be specified as a parameter on booting by users who wish to use it.</p>
+
+<p>A number of other security fixes and routine improvements make this an important update for all Tails users. See the full changelog in the team’s announcement, then update from a running copy of Tails 1.1 if you have one, or head to the <a href="https://tails.boum.org/download/">download page</a> if you don’t.</p>
+
+<h1>Helping Internet services accept anonymous users</h1>
+
+<p>Without a large and diverse network, run by thousands of dedicated volunteers, Tor would be nowhere near as useful or popular as it currently is. Although the current situation might at times seem fragile, there are still many places where it is feasible to host Tor exit nodes.</p>
+
+<p>However, Tor would become much less attractive to users if they found themselves unable to reach or interact with their favorite websites while using it, a situation that is unfortunately growing more common as site administrators and engineers react negatively to instances of abusive Tor traffic by banning anonymous connections outright. Tor users and developers, as well as members of other online communities (such as <a href="https://meta.wikimedia.org/wiki/Grants:IdeaLab/Partnership_between_Wikimedia_community_and_Tor_community">Wikimedia</a>), have tried to address the issue before, but real progress has yet to be made.</p>
+
+<p>Roger Dingledine wrote a <a href="https://blog.torproject.org/blog/call-arms-helping-internet-services-accept-anonymous-users">“call to arms”</a> explaining the problem in detail and exploring possible paths to a solution: “Step one is to enumerate the set of websites and other Internet services that handle Tor connections differently from normal connections […]. Step two is to sort the problem websites based on how amenable they would be to our help”.</p>
+
+<p>Since the problem involves humans as much as it does machines, anyone working on it will have to be both “technical” but also ”good at activism”. If you fit that description, OTF has expressed interest in funding work on this issue through their <a href="https://www.opentechfund.org/labs/fellowships">Information Controls Fellowship Program</a>. Please read Roger’s blog post in full for more details.</p>
+
+<h1>Monthly status reports for August 2014</h1>
+
+<p>The wave of regular monthly reports from Tor project members for the month of August has begun. <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000626.html">Damian Johnson</a> released his report first, followed by reports from <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000627.html">Georg Koppen</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000628.html">Sherief Alaa</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000629.html">Noel Torres</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000630.html">Kevin P Dyer</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000633.html">Nick Mathewson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000635.html">Lunar</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000636.html">Arthur D. Edelstein</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000637.html">Karsten Loesing</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000638.html">Andrew Lewman</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000639.html">Arlo Breault</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000640.html">Pearl Crescent</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000641.html">Michael Schloh von Bennewitz</a>.</p>
+
+<p>Lunar also reported on behalf of the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000634.html">help desk</a>, and Mike Perry did the same for the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000642.html">Tor Browser team</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Yawning Angel <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007420.html">released</a> a new set of experimental Tor Browser builds containing the proposed obfs4 pluggable transport, along with a changelog; “questions, comments, feedback” are welcome on the email thread or the <a href="https://bugs.torproject.org/12130">bug ticket</a> tracking the deployment of obfs4.</p>
+
+<p>Arturo Filastò <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007450.html">announced</a> the release of version 1.1.0 of oonibackend, the tool “ <a href="https://pypi.python.org/pypi/oonibackend">used by ooniprobe</a> to discover the addresses of test helpers (via the bouncer) to submit reports to (via the collector) and to perform some measurements that require a backend system to talk to (via test helpers)”.</p>
+
+<p>meejah <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007426.html">posted</a> a list of tasks to be completed in order to bring Tor Weather to a deployable state, following the recent rewrite effort and the Google Summer of Code project by Sreenatha Bhatlapenumarthi.</p>
+
+<p>Israel Leiva submitted a <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007427.html">summary</a> of work completed as part of the “Revamp GetTor” Google Summer of Code project: “The plan for now is to keep doing tests and deploy it asap (hopefully during September).”</p>
+
+<p>Mike Perry <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007417.html">posted</a> an <a href="https://gitweb.torproject.org/user/mikeperry/torspec.git/blob/refs/heads/multihop-padding-primitives:/proposals/ideas/xxx-multihop-padding-primitives.txt">updated version</a> of the proposal for website fingerprinting countermeasures which he co-authored with Marc Juarez as part of the latter’s Google Summer of Code project.</p>
+
+<p>Lunar gave a <a href="http://meetings-archive.debian.net/pub/debian-meetings/2014/debconf14/webm/Reproducible_Builds_for_Debian_a_year_later.webm">talk</a> at this year’s DebConf on the effort to build Debian packages deterministically, which is inspired in large part by <a href="https://blog.torproject.org/blog/deterministic-builds-part-one-cyberwar-and-global-compromise">Tor Browser’s use of the same technology</a>. <a href="http://lists.alioth.debian.org/pipermail/reproducible-builds/Week-of-Mon-20140901/000198.html">Major progress</a> was achieved during the conference.</p>
+
+<p>David Fifield submitted a <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007429.html">breakdown</a> of the costs incurred by the infrastructure that supports the <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a> pluggable transport since its introduction. The total to date from both the Google App Engine and Amazon AWS front domains? $6.56.</p>
+
+<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-August/000653.html">P D</a> and <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-August/000673.html">Daniel Pajonzeck</a> for running mirrors of the Tor Project website and software!</p>
+
+<p>Also on the subject of mirrors, Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-September/000675.html">alerted</a> the tor-mirrors mailing list to the fact that the Tor Project website (specifically the distribution directory) will shortly be increasing in size to eight or nine gigabytes, as a result of the soon-to-be-implemented <a href="https://bugs.torproject.org/4234">Tor Browser updater</a>. Mirror operators will need to ensure that they can provide enough disk space to accommodate the change.</p>
+
+<p>whonixqubes <a href="https://lists.torproject.org/pipermail/tor-talk/2014-August/034562.html">announced</a> the release of an integrated version of the Whonix and Qubes operating systems: “I look forward to helping make Qubes + Whonix integration even tighter and more seamless throughout the future.”</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>The help desk has been asked if Tor can make a website visit appear to come from China. Tor connections appear to originate from the country where the exit relay in use is located; since Tor is blocked in China, there are zero exit relays in China. A visualization of the different country-locations of exit relays can be found on Tor’s <a href="https://metrics.torproject.org/bubbles.html#country-exits-only">metrics page</a>.</p>
+
+<h1>News from Tor StackExchange</h1>
+
+<p>Anony Mouse wanted to know why Facebook shows the location of the user’s last login over Tor as <a href="https://tor.stackexchange.com/q/3364/88">Baghdad or Dhaka</a>, instead of the real location of the exit relay. qbi posted a <a href="https://twitter.com/qbi/status/506550322308055040">screenshot</a> showing this issue. According to Facebook, this information is based on an approximation, but this approximation locates all Tor exit relays either in Baghdad or in Dhaka.</p>
+
+<p>user3500 <a href="https://tor.stackexchange.com/q/3961/88">wants to contribute to Tor</a> and asks how this can be done as an inexperienced developer. Jens Kubieziel replied with several possibilities, including reading the volunteer page and Tor Weekly News: in particular, the section containing easy development tasks might be a good start. Roya pointed out that any contribution is better than no contribution, and encouraged user3500 to just get started. Umut Seven recommended writing unit tests.</p>
+
+<p>Kras wants to use FoxyProxy in connection with Tor Browser Bundle and <a href="https://tor.stackexchange.com/q/3239/88">asks if it is safe to do so</a>. At the moment, there is only an answer saying “yes”, without any explanation. What is your experience? Is it safe for a user to install and use FoxyProxy?</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by harmony, Matt Pagan, Lunar, qbi, and Arlo Breault.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/tor-browser-365-and-40-alpha-2-are-released">Tor Browser 3.6.5 and 4.0-alpha-2 are released</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">mikeperry</a> under
               
@@ -104,36 +306,92 @@
               
                 <a class="post-category post-category-js" href="#">tor browser bundle</a>
                |
-              25 Jul 2014
+              03 Sep 2014
           </p>
         </header>
         <div class="post-description">
-          <p>The third pointfix release of the 3.6 series is available from the <a href="https://www.torproject.org/download/download-easy.html">Tor Browser Project page</a> and also from our <a href="https://www.torproject.org/dist/torbrowser/3.6.3/">distribution directory</a>.</p>
+          <h1>Tor Browser 3.6.5</h1>
 
-<p>This release features <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox24.7">important security updates</a> to Firefox.</p>
+<p>The fifth pointfix release of the 3.6 series is available from the <a href="https://www.torproject.org/download/download-easy.html">Tor Browser Project page</a> and also from our <a href="https://www.torproject.org/dist/torbrowser/3.6.5/">distribution directory</a>.</p>
 
-<p>Here is the complete changelog:</p>
+<p>This release features <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox24.8">important security updates</a> to Firefox.</p>
+
+<p>This release also features improvements to the canvas image extraction permissions prompt, and will now log offending script urls to the browser console. It also restores the missing RELRO hardening option to the Linux bundles, and disables NTLM and Negotiate HTTP auth (which can leak sensitive information about the computer). To avoid resolution fingerprinting, popups are also opened in new tabs by default.</p>
+
+<p>Here is the complete changelog for 3.6.5:</p>
 
 <ul>
 <li><p>All Platforms</p>
 
 <ul>
-<li>Update Firefox to 24.7.0esr</li>
-<li>Update obfsproxy to 0.2.12</li>
-<li>Update FTE to 0.2.17</li>
-<li>Update NoScript to 2.6.8.33</li>
-<li>Update HTTPS Everywhere to 3.5.3</li>
-<li>Bug 12673: Update FTE bridges</li>
-<li>Update Torbutton to 1.6.11.0</li>
-<li>Bug 12221: Remove obsolete Javascript components from the toggle era</li>
-<li>Bug 10819: Bind new third party isolation pref to Torbutton security UI</li>
-<li>Bug 9268: Fix some window resizing corner cases with DPI and taskbar size.</li>
+<li>Update Firefox to 24.8.0esr</li>
+<li>Update NoScript to 2.6.8.39</li>
+<li>Update HTTPS Everywhere to 4.0.0</li>
+<li>Update Torbutton to 1.6.12.1</li>
+<li>Bug 12684: New strings for canvas image extraction message</li>
+<li>Bug 8940: Move RecommendedTBBVersions file to <a href="http://www.torproject.org" title="www.torproject.org">www.torproject.org</a></li>
+<li>Bug 9531: Workaround to avoid rare hangs during New Identity </li>
+<li>Bug 12684: Improve Canvas image extraction permissions prompt</li>
+<li>Bug 7265: Only prompt for first party canvas access. Log all scripts<br>
+that attempt to extract canvas images to Browser console.</li>
+<li>Bug 12974: Disable NTLM and Negotiate HTTP Auth</li>
+<li>Bug 2874: Remove Components.* from content access (regression)</li>
+<li>Bug 9881: Open popups in new tabs by default </li>
 </ul></li>
 <li><p>Linux:</p>
 
 <ul>
-<li>Bug 11102: Set Window Class to &quot;Tor Browser&quot; to aid in Desktop navigation</li>
-<li>Bug 12249: Don&#39;t create PT debug files anymore</li>
+<li>Bug 12103: Adding RELRO hardening back to browser binaries. </li>
+</ul></li>
+</ul>
+
+<h1>Tor Browser 4.0-alpha-2</h1>
+
+<p>In addition, we are also releasing the second alpha in the 4.0 series, available for download on the <a href="https://www.torproject.org/projects/torbrowser.html.en#downloads-alpha">extended downloads page</a>.</p>
+
+<p>This release also includes <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox24.8">important security updates</a> to Firefox.</p>
+
+<p>In addition to including the changes in 3.6.5, this release also is the first Tor Browser release to enable the in-browser Firefox-based updater. This means that if all goes well, 4.0-alpha-2 users will notified of an available update via a notification similar to that in Firefox. You will then be able to download and install it directly via the browser UI. By default, neither the download nor the update will happen automatically, so if you are not feeling adventurous, you need not allow it to update in this way. Even if you are feeling adventurous, you should probably back up your Tor Browser directory before updating.</p>
+
+<p>In addition to the updater, this release should also re-enable the basic hardening features on Windows, including ASLR, DEP, and SSP.</p>
+
+<p>Furthermore, the NoScript behavior in this release has changed. Selecting &quot;Temporarily allow scripts&quot; will now automatically allow all scripts in a page. This was done for usability reasons, to make it easier for novice users to run Tor Browser with scripting disabled most of the time. This will also hopefully make it possible for more people to use the &quot;High Security&quot; setting in our upcoming <a href="https://trac.torproject.org/projects/tor/ticket/9387">Security Slider</a>, which will have Javascript disabled globally via NoScript by default.</p>
+
+<p>Here is the complete changelog for 4.0-alpha-2:</p>
+
+<ul>
+<li><p>All Platforms</p>
+
+<ul>
+<li>Update Firefox to 24.8.0esr</li>
+<li>Update NoScript to 2.6.8.39</li>
+<li>Update Tor Launcher to 0.2.7.0</li>
+<li>Bug 11405: Remove firewall prompt from wizard.</li>
+<li>Bug 12895: Mention @riseup.net as a valid bridge request email address</li>
+<li>Bug 12444: Provide feedback when “Copy Tor Log” is clicked.</li>
+<li>Bug 11199: Improve error messages if Tor exits unexpectedly </li>
+<li>Update Torbutton to 1.6.12.1</li>
+<li>Bug 12684: New strings for canvas image extraction message</li>
+<li>Bug 8940: Move RecommendedTBBVersions file to <a href="http://www.torproject.org" title="www.torproject.org">www.torproject.org</a></li>
+<li>Bug 12684: Improve Canvas image extraction permissions prompt</li>
+<li>Bug 7265: Only prompt for first party canvas access. Log all scripts<br>
+that attempt to extract canvas images to Browser console.</li>
+<li>Bug 12974: Disable NTLM and Negotiate HTTP Auth</li>
+<li>Bug 2874: Remove Components.* from content access (regression)</li>
+<li>Bug 4234: Automatic Update support (off by default)</li>
+<li>Bug 9881: Open popups in new tabs by default</li>
+<li>Meek Pluggable Transport:</li>
+<li>Bug 12766: Use TLSv1.0 in meek-http-helper to blend in with Firefox 24 </li>
+</ul></li>
+<li><p>Windows:</p>
+
+<ul>
+<li>Bug 10065: Enable DEP, ASLR, and SSP hardening options </li>
+</ul></li>
+<li><p>Linux:</p>
+
+<ul>
+<li>Bug 12103: Adding RELRO hardening back to browser binaries. </li>
 </ul></li>
 </ul>
 
@@ -144,94 +402,7 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-july-23rd-2014">Tor Weekly News — July 23rd, 2014</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">lunar</a> under
-              
-                <a class="post-category post-category-js" href="#">tor weekly news</a>
-               |
-              23 Jul 2014
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Welcome to the twenty-ninth issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
-
-<h1>Tails 1.1 is out!</h1>
-
-<p>Tails, the Debian-based live system that protects its users’ communications by ensuring they are all sent through the Tor network, has been updated. This <a href="https://tails.boum.org/news/version_1.1/">new 1.1 release</a> reminds Tails users of the <a href="https://tails.boum.org/contribute/relationship_with_upstream/">distribution’s roots in Debian</a>: Tails is now based on the current stable version of Debian, dubbed “Wheezy”.</p>
-
-<p>This means that almost all software components have been updated. One noticeable example is the desktop environment. The user experience of the GNOME 3 in fallback mode should be similar to previous Tails versions, but things will look a bit differently than they used to.</p>
-
-<p>One of the most keenly-awaited features of this new version is the support for UEFI firmware. Mac users now have only to <a href="https://tails.boum.org/doc/first_steps/start_tails/#usb-mac">press the Alt key</a> while booting their computer to start Tails from a DVD or USB stick. The same goes for owners of computers displaying “Windows 8” stickers. And, talking of Windows 8, the <a href="https://tails.boum.org/doc/first_steps/startup_options/windows_camouflage/">camouflage mode</a> has been updated to look more like it, instead of the now discontinued XP.</p>
-
-<p>This new release also contains <a href="https://tails.boum.org/security/Numerous_security_holes_in_1.0.1">security fixes</a>, and minor tweaks over the previous versions.</p>
-
-<p>Because of the newly-introduced support for UEFI and the amount of upgraded software, incremental upgrades will not be offered for Tails 1.1. A full upgrade is needed through the Tails Installer. The safest method for upgrading Tails sticks is to go through a freshly burned DVD. Be sure to have a look at the list of <a href="https://tails.boum.org/news/version_1.1/#index2h1">known issues</a> to learn about other oddities that might happen in the process.</p>
-
-<h1>PETS 2014</h1>
-
-<p>The fourteenth Privacy Enhancing Technologies Symposium was held in Amsterdam, Netherlands, July 16-18, 2014. A wide range of research in privacy enhancing technologies was presented, with many of relevance to Tor. Keynotes were given by Martin Ortlieb, Senior User Experience Researcher in Privacy at Google, and William Binney, a former NSA employee.</p>
-
-<p>Some papers focusing on Tor include:</p>
-
-<ul>
-<li><a href="https://petsymposium.org/2014/papers/Winter.pdf">Spoiled Onions: Exposing Malicious Tor Exit Relays</a> by Philipp Winter, Richard Köwer, Martin Mulazzani, Markus Huber, Sebastian Schrittwieser, Stefan Lindskog, and Edgar Weippl</li>
-<li><a href="https://petsymposium.org/2014/papers/Dingledine.pdf">One Fast Guard for Life (or 9 months)</a> by Roger Dingledine, Nicholas Hopper, George Kadianakis, and Nick Mathewson</li>
-<li><a href="https://petsymposium.org/2014/papers/Jansen.pdf">From Onions to Shallots: Rewarding Tor Relays with TEARS</a> by Rob Jansen, Andrew Miller, Paul Syverson, and Bryan Ford</li>
-<li><a href="https://petsymposium.org/2014/papers/Ghosh.pdf">A TorPath to TorCoin: Proof-of-Bandwidth Altcoins for Compensating Relays</a> by Mainak Ghosh, Miles Richardson, Bryan Ford, and Rob Jansen</li>
-<li><a href="https://petsymposium.org/2014/papers/Thomas.pdf">Measuring the Leakage of Onion at the Root, A measurement of Tor’s .onion pseudo-top-level domain in the global domain name system</a> by Matthew Thomas and Aziz Mohaisen</li>
-</ul>
-
-<p>Also announced at PETS was the 2014 PET Award for Outstanding Research in Privacy Enhancing Technologies, for <a href="https://freedom-to-tinker.com/blog/shmat/a-scanner-darkly-protecting-user-privacy-from-perceptual-applications/">A Scanner Darkly: Protecting User Privacy From Perceptual Applications</a> by Suman Jana, Arvind Narayanan†, and Vitaly Shmatikov. The winner of the best student paper at PETS was <a href="https://petsymposium.org/2014/papers/Miller.pdf">I Know Why You Went to the Clinic: Risks and Realization of HTTPS Traffic Analysis</a> by Brad Miller, Ling Huang, A. D. Joseph and J. D. Tygar .</p>
-
-<p>Prior to PETS, there was a Tor meet-up which Moritz Bartl reported as a <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/033936.html">great success</a>. Hopefully there will also be such an event at the 2015 PETS, to be held in Philadelphia, US, in the week of June 29, 2015.</p>
-
-<h1>Miscellaneous news</h1>
-
-<p><a href="https://pypi.python.org/pypi/txtorcon">txtorcon</a>, the Tor control protocol implementation for the <a href="https://twistedmatrix.com/">Twisted framework</a>, received a <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007166.html">new minor release</a>. Version 0.10.1 fixes “a couple bugs introduced along with the endpoints feature in 0.10.0”.</p>
-
-<p>Roger Dingledine <a href="https://blog.torproject.org/blog/recent-black-hat-2014-talk-cancellation">posted</a> an official reaction to the cancellation of a proposed talk at the upcoming Blackhat2014 conference dealing with possible deanonymization attacks on Tor users and hidden services.</p>
-
-<p>Tor ships with a <a href="https://gitweb.torproject.org/tor.git/blob_plain/HEAD:/contrib/operator-tools/tor-exit-notice.html">sample webpage</a> that can be used by exit node operators to identify their system as such to anyone wishing to identify the source of Tor traffic. Operators most often copy and adapt this template to the local situation. Mick Morgan discovered than his version was <a href="https://lists.torproject.org/pipermail/tor-relays/2014-July/004982.html">out of sync</a> and contained broken links. “If other operators are similarly using a page based on the old template, they may wish to update”, Mick advised.</p>
-
-<p>Michael Rogers, one of the developers of <a href="https://briarproject.org/">Briar</a>, <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007161.html">announced</a> a <a href="https://fulpool.org/cgi-bin/mailman/listinfo/hidden-services">new mailing list</a> for discussing peer-to-peer-based communication systems based on Tor hidden services. As Briar and other systems might be “running into similar issues”, a shared place to discuss them seemed worthwhile.</p>
-
-<p>Karsten Loesing and Philipp Winter are <a href="https://blog.torproject.org/blog/looking-front-end-web-developers-network-status-websites-atlas-and-globe">looking for front-end web developers</a>: “We are looking for somebody to fork and extend one of the two main Tor network status websites <a href="https://atlas.torproject.org/">Atlas</a> or <a href="https://globe.torproject.org/">Globe</a>” writes Karsten. Both websites currently need love and new maintainers. Please reach out if you want to help!</p>
-
-<p>The database which holds Tor bridges, usually called <a href="https://gitweb.torproject.org/bridgedb.git">BridgeDB</a>, is able to give out bridge addresses through email. This feature was recently extended to make the email autoresponder support more bridge types, which required introducing new keywords that must be used in the initial request. Matthew Finkel is looking for <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007164.html">feedback</a> on the current set of commands and how they could be improved.</p>
-
-<p>Lunar wrote a <a href="https://lists.torproject.org/pipermail/tor-reports/2014-July/000593.html">detailed report</a> on his week at the Libre Software Meeting in Montpellier, France. The report covers the booth jointly held with <a href="https://nos-oignons.net/">Nos Oignons</a>, his talk in the security track, and several contacts made with other free software projects.</p>
-
-<p>Here’s another round of reports from Google Summer of Code students: the mid-term: Amogh Pradeep on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007152.html">Orbot and Orfox improvements</a>, Israel Leiva on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007156.html">GetTor revamp</a>, Quinn Jarrell on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007157.html">pluggable transport combiner</a>, Juha Nurmi on the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-July/000594.html">ahmia.fi project</a>, Marc Juarez on <a href="https://lists.torproject.org/pipermail/tor-reports/2014-July/000595.html">website fingerprinting defenses</a>, and Daniel Martí on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007163.html">incremental updates to consensus documents</a>.</p>
-
-<p>Tim Retout <a href="http://retout.co.uk/blog/2014/07/21/apt-transport-tor">announced</a> that <a href="https://tracker.debian.org/pkg/apt-transport-tor">apt-transport-tor</a> 0.2.1 has entered Debian unstable. This package enables APT to download Debian packages through Tor.</p>
-
-<p><a href="https://atlas.torproject.org/">Atlas</a> can now also be used to search for Tor bridges. In the past, Atlas was only able to search for relays. This was made possible thanks to <a href="https://bugs.torproject.org/6320">a patch</a> developed by Dmitry Eremin-Solenikov.</p>
-
-<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-July/000642.html">Tim Semeijn</a> and <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-July/000646.html">Tobias Bauer</a> for setting up new mirrors of the Tor Project’s website and its software.</p>
-
-<h1>Tor help desk roundup</h1>
-
-<p>Some Linux users have experienced missing dependency errors when trying to install Tor Browser from their operating system’s software repositories. Tor Browser should only be installed from the Tor Project’s website, and never from a software repository. In other words, using apt-get or yum to install Tor Browser is discouraged. Downloading and verifying Tor Browser from the Tor Project website allows users to keep up with important security updates as they are released.</p>
-
-<h1>News from Tor StackExchange</h1>
-
-<p>user3224 wants to log in to its Google, Microsoft etc. accounts and wonders <a href="https://tor.stackexchange.com/q/3603/88">if they will know the real name and other personal information</a>. Roya and mirimir explained that if someone logs into an already personalized account Tor can’t anonymize this user. Instead it might be wise to use Tor to register a pseudonym and also use an anonymous operating system like Tails or Whonix.</p>
-
-<p>escapologybb has set up a Raspberry Pi. It serves as SOCKS proxy for the internal network. While everyone can use it, escapologybb asks what the security implications are and <a href="https://tor.stackexchange.com/q/3596/88">if this lowers the overall anonymity</a>. If you know a good answer please share your knowledge with the users of Tor StackExchange.</p>
-
-<hr>
-
-<p>This issue of Tor Weekly News has been assembled by Lunar, Steven Murdoch, harmony, Philipp Winter, Matt Pagan, qbi, and Karsten Loesing.</p>
-
-<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tails-11-out">Tails 1.1 is out</a></h2>
+          <h2 class="post-title"> <a href="/tails-111-out">Tails 1.1.1 is out</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">tails</a> under
               
@@ -241,53 +412,45 @@
               
                 <a class="post-category post-category-js" href="#">tails releases</a>
                |
-              22 Jul 2014
+              02 Sep 2014
           </p>
         </header>
         <div class="post-description">
-          <p>Tails, The Amnesic Incognito Live System, version 1.1, is out.</p>
+          <p>Tails, The Amnesic Incognito Live System, version 1.1.1, is out.</p>
 
-<p>All users must <a href="https://tails.boum.org/doc/first_steps/upgrade/">upgrade</a> as soon as possible: this release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_1.0.1/">numerous security issues</a>.</p>
+<p>All users must <a href="https://tails.boum.org/doc/first_steps/upgrade/">upgrade</a> as soon as possible: this release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_1.1/">numerous security issues</a>.</p>
+
+<p><a href="https://tails.boum.org/download/">Download it now.</a></p>
 
 <p><strong>Changes</strong></p>
 
 <p>Notable user-visible changes include:</p>
 
 <ul>
-<li><p>Rebase on Debian Wheezy</p>
-
-<ul>
-<li>Upgrade literally thousands of packages.</li>
-<li>Migrate to GNOME3 fallback mode.</li>
-<li>Install LibreOffice instead of OpenOffice.</li>
-</ul></li>
-<li><p>Major new features</p>
-
-<ul>
-<li>UEFI boot support, which should make Tails boot on modern hardware and Mac computers.</li>
-<li>Replace the Windows XP camouflage with a Windows 8 camouflage.</li>
-<li>Bring back VirtualBox guest modules, installed from Wheezy backports. Full functionality is only available when using the 32-bit kernel.</li>
-</ul></li>
 <li><p>Security fixes</p>
 
 <ul>
-<li>Fix write access to boot medium via udisks ( <a href="https://labs.riseup.net/code/issues/6172">ticket #6172</a>).</li>
-<li>Upgrade the web browser to 24.7.0esr-0+tails1~bpo70+1 (Firefox 24.7.0esr + Iceweasel patches + Torbrowser patches).</li>
-<li>Upgrade to Linux 3.14.12-1 (fixes CVE-2014-4699).</li>
-<li>Make persistent file permissions safer ( <a href="https://labs.riseup.net/code/issues/7443">ticket #7443</a>).</li>
+<li>Upgrade the web browser to 24.8.0esr-0+tails1~bpo70+1 (Firefox 24.8.0esr + Iceweasel patches + Torbrowser patches).</li>
+<li>Add an I2P boot parameter. Without adding &quot;i2p&quot; to the kernel command line, I2P will not be accessible for the Live user. I2P was also upgraded to 0.9.14.1-1~deb7u+1, and stricter firewall rules are applied to it, among other security enhancements.</li>
+<li>Upgrade Tor to 0.2.4.23-2~d70.wheezy+1 (fixes CVE-2014-5117).</li>
+<li>Upgrade Linux to 3.14.15-2 (fixes CVE-2014-3534, CVE-2014-4667 and CVE-2014-4943).</li>
+<li>Prevent dhclient from sending the hostname over the network ( <a href="https://labs.riseup.net/code/issues/7688">ticket #7688</a>).</li>
+<li>Override the hostname provided by the DHCP server ( <a href="https://labs.riseup.net/code/issues/7769">ticket #7769</a>).</li>
 </ul></li>
 <li><p>Bugfixes</p>
 
 <ul>
-<li>Fix quick search in Tails Greeter&#39;s Other languages window (Closes: <a href="https://labs.riseup.net/code/issues/5387">ticket #5387</a>)</li>
+<li>Don&#39;t ship OpenJDK 6: I2P prefers v7, and we don&#39;t need both ( <a href="https://labs.riseup.net/code/issues/7807">ticket #7807</a>).</li>
+<li>Prevent Tails Installer from updating the system partition properties on MBR partitions ( <a href="https://labs.riseup.net/code/issues/7716">ticket #7716</a>).</li>
 </ul></li>
 <li><p>Minor improvements</p>
 
 <ul>
-<li>Don&#39;t install Gobby 0.4 anymore. Gobby 0.5 has been available in Debian since Squeeze, now is a good time to drop the obsolete 0.4 implementation.</li>
-<li>Require a bit less free memory before checking for upgrades with Tails Upgrader. The general goal is to avoid displaying &quot;Not enough memory available to check for upgrades&quot; too often due to over-cautious memory requirements checked in the wrapper.</li>
-<li>Whisperback now sanitizes attached logs better with respect to DMI data, IPv6 addresses, and serial numbers ( <a href="https://labs.riseup.net/code/issues/6797">ticket #6797</a>, <a href="https://labs.riseup.net/code/issues/6798">ticket #6798</a>, <a href="https://labs.riseup.net/code/issues/6804">ticket #6804</a>).</li>
-<li>Install the BookletImposer PDF imposition toolkit.</li>
+<li>Upgrade to Torbutton 1.6.12.1.</li>
+<li>Install gnome-user-guide ( <a href="https://labs.riseup.net/code/issues/7618">ticket #7618</a>).</li>
+<li>Install cups-pk-helper ( <a href="https://labs.riseup.net/code/issues/7636">ticket #7636</a>).</li>
+<li>Update the SquashFS sort file, which should speed up boot from DVD ( <a href="https://labs.riseup.net/code/issues/6372">ticket #6372</a>).</li>
+<li>Compress the SquashFS more aggressively ( <a href="https://labs.riseup.net/code/issues/7706">ticket #7706</a>) which should make the Tails ISO image smaller.</li>
 </ul></li>
 </ul>
 
@@ -295,24 +458,19 @@
 
 <p><strong>Known issues</strong></p>
 
-<ul>
-<li><a href="https://tails.boum.org/news/version_1.1/#index2h1">New known issues in Tails 1.1</a>.</li>
-<li><a href="https://tails.boum.org/support/known_issues/">Longstanding known issues</a>.</li>
-</ul>
+<p><a href="https://tails.boum.org/support/known_issues/">Longstanding</a> known issues.</p>
 
 <p><strong>I want to try it or to upgrade!</strong></p>
 
 <p>Go to the <a href="https://tails.boum.org/download/">download</a> page.</p>
 
-<p>Note that for this release there are some special actions needed when <a href="https://tails.boum.org/news/version_1.1/#index5h1">upgrading from ISO</a> and <a href="https://tails.boum.org/news/version_1.1/#index6h1">automatically upgrading from Tails 1.1~rc1</a>.</p>
-
 <p><strong>What&#39;s coming up?</strong></p>
 
-<p>The next Tails release is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for September 2.</p>
+<p>The next Tails release is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for October 14.</p>
 
 <p>Have a look to our <a href="https://labs.riseup.net/code/projects/tails/roadmap">roadmap</a> to see where we are heading to.</p>
 
-<p>Would you want to help? There are many ways <a href="https://tails.boum.org/contribute/"><strong>you</strong> can contribute to Tails</a>. If you want to help, come talk to us!</p>
+<p>Do you want to help? There are many ways <a href="https://tails.boum.org/contribute/"><strong>you</strong> can contribute to Tails</a>. If you want to help, come talk to us!</p>
 
 <p><strong>Support and feedback</strong></p>
 
@@ -323,41 +481,49 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/recent-black-hat-2014-talk-cancellation">On the recent Black Hat 2014 Talk Cancellation</a></h2>
+          <h2 class="post-title"> <a href="/call-arms-helping-internet-services-accept-anonymous-users">A call to arms: Helping Internet services accept anonymous users</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
+              By <a class="post-author" href="#">arma</a> under
               
-                <a class="post-category post-category-js" href="#">attacks</a>
+                <a class="post-category post-category-js" href="#">advocacy</a>
               
-                <a class="post-category post-category-js" href="#">blackhat</a>
-              
-                <a class="post-category post-category-js" href="#">patches</a>
-              
-                <a class="post-category post-category-js" href="#">press queries</a>
-              
-                <a class="post-category post-category-js" href="#">responses</a>
-              
-                <a class="post-category post-category-js" href="#">responsible disclosure</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
+                <a class="post-category post-category-js" href="#">research</a>
                |
-              22 Jul 2014
+              29 Aug 2014
           </p>
         </header>
         <div class="post-description">
-          <p>As posted by Roger on the <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/033954.html">Tor-Talk</a> mailing list:</p>
+          <p>Looking for a way to help the Internet stay open and free? This topic needs some dedicated people to give it more attention — it could easily grow to as large a project as Tor itself. In the short term, OTF&#39;s <a href="https://www.opentechfund.org/labs/fellowships">Information Controls Fellowship Program</a> has expressed interest in funding somebody to get this project going, and EFF&#39;s Eva Galperin has said she&#39;d be happy to manage the person as an OTF fellow at EFF, with mentorship from Tor people. The first round of those proposals has a deadline in a few days, but if that timeframe doesn&#39;t work for you, this problem isn&#39;t going away: let us know and we can work with you to help you coordinate other funding.</p>
 
-<p>Hi folks,</p>
+<h2>The problem</h2>
 
-<p>Journalists are asking us about the Black Hat talk on attacking Tor that got cancelled. We&#39;re still working with CERT to do a coordinated disclosure of the details (hopefully this week), but I figured I should share a few details with you earlier than that.</p>
+<p>We used to think there are two main ways that the Tor network can fail. First, legal or policy pressure can make it so nobody is willing to run a relay. Second, pressure on or from Internet Service Providers can reduce the number of places willing to host exit relays, which in turn squeezes down the anonymity that the network can provide. Both of these threats are hard to solve, but they are challenges that we&#39;ve known about for a decade, and due in large part to strong ongoing collaborations we have a pretty good handle on them.</p>
 
-<p>1) We did not ask Black Hat or CERT to cancel the talk. We did (and still do) have questions for the presenter and for CERT about some aspects of the research, but we had no idea the talk would be pulled before the announcement was made.</p>
+<p>We missed a third threat to Tor&#39;s success: a growing number of websites treat users from anonymity services differently. Slashdot doesn&#39;t let you post comments over Tor, Wikipedia won&#39;t let you edit over Tor, and Google sometimes gives you a captcha when you try to search (depending on what other activity they&#39;ve seen from that exit relay lately). Some sites like Yelp go further and refuse to even serve pages to Tor users.</p>
 
-<p>2) In response to our questions, we were informally shown some materials. We never received slides or any description of what would be presented in the talk itself beyond what was available on the Black Hat Webpage.</p>
+<p>The result is that the Internet as we know it is siloing. Each website operator works by itself to figure out how to handle anonymous users, and generally neither side is happy with the solution. The problem isn&#39;t limited to just Tor users, since these websites face basically the same issue with users from open proxies, users from AOL, users from Africa, etc.</p>
 
-<p>3) We encourage research on the Tor network along with responsible disclosure of all new and interesting attacks. Researchers who have told us about bugs in the past have found us pretty helpful in fixing issues, and generally positive to work with.</p>
+<p>Two recent trends make the problem more urgent. First, sites like Cloudflare, Akamai, and Disqus create bottlenecks where their components are used by many websites. This centralization impacts many websites at once when e.g. Cloudflare changes its strategy for how to handle Tor users. Second, services increasingly outsource their blacklisting, such that e.g. Skype refuses connections from IP addresses that run Tor exit relays, not because they worry about abuse via Tor (it&#39;s hard to use Skype over Tor), but because their blacklist provider has an incentive to be overbroad in its blocking. (Blacklist providers compete in part by having &quot;the most complete&quot; list, and in many cases it&#39;s hard for services to notice that they&#39;re losing contributions from now-missing users.)</p>
 
-<p>[Edit 30 July 2014: here is the <a href="https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">security advisory</a> we posted.]</p>
+<p>Technical mechanisms do exist to let anonymous users interact with websites in ways that control abuse better. Simple technical approaches include &quot;you can read but you can&#39;t post&quot; or &quot;you have to log in to post&quot;. More complex approaches track reputation of users and give them access to site features based on past behavior of the user rather than on past behavior of their network address. Several research designs suggest using <a href="http://freehaven.net/anonbib/#oakland11-formalizing">anonymous credentials</a>, where users anonymously receive a cryptographic credential and then prove to the website that they possess a credential that hasn&#39;t been blacklisted — without revealing their credential, so the website can&#39;t link them to their past behavior.</p>
+
+<p>Social mechanisms have also proven effective in some cases, ranging from community moderation (I hear Wikipedia Germany manually approves edits from users who don&#39;t have sufficiently reputable accounts), to flagging behavior from Tor users (even though you don&#39;t know *which* Tor user it is) so other participants can choose how to interact with them.</p>
+
+<p>But applying these approaches to real-world websites has not gone well overall. Part of the challenge is that the success stories are not well-publicized, so each website feels like it&#39;s dealing with the question in isolation. Some sites do in fact face quite different problems, which require different solutions: Wikipedia doesn&#39;t want jerks to change the content of pages, whereas Yelp doesn&#39;t want competitors to scrape all its pages. We can also imagine that some companies, like ones that get their revenue from targeted advertising, are fundamentally uninterested in allowing anonymous users at all.</p>
+
+<h2>A way forward</h2>
+
+<p>The solution I envision is to get a person who is both technical and good at activism to focus on this topic. Step one is to enumerate the set of websites and other Internet services that handle Tor connections differently from normal connections, and look for patterns that help us identify the common (centralized) services that impact many sites. At the same time, we should make a list of solutions — technical and social — that are in use today. There are a few community-led starts on the Tor wiki already, like <a href="https://trac.torproject.org/projects/tor/wiki/org/projects/DontBlockMe">the DontBlockMe page</a> and a <a href="https://trac.torproject.org/projects/tor/wiki/org/doc/ListOfServicesBlockingTor">List of Services Blocking Tor</a>.</p>
+
+<p>Step two is to sort the problem websites based on how amenable they would be to our help. Armed with the toolkit of options we found in step one, we should go to the first (most promising) site on the list and work with them to understand their problem. Ideally we can adapt one of the ideas from the toolkit; otherwise we&#39;ll need to invent and develop a new approach tailored to their situation and needs. Then we should go to the second site on the list with our (now bigger) toolkit, and so on down the list. Once we have some success stories, we can consider how to scale better, such as holding a conference where we invite the five best success cases plus the next five unsolved sites on our list.</p>
+
+<p>A lot of the work will be building and maintaining social connections with engineers at the services, to help them understand what&#39;s possible and to track regressions (for example, every year or so Google gets a new engineer in charge of deciding when to give out Captchas, and they seem to have no institutional memory of how the previous one decided to handle Tor users). It might be that the centralization of Cloudflare et al can be turned around into an advantage, where making sure they have a good practices will scale to help many websites at once.</p>
+
+<p>EFF is the perfect organization to lead this charge, given its community connections, its campaigns like <a href="https://www.eff.org/who-has-your-back-2014">Who has your back?</a>, and its more (at least more than Tor ;) neutral perspective on the topic. And now, when everybody is sympathetic about the topic of surveillance, is a great time to try to take back some ground. We have a wide variety of people who want to help, from scientists and research groups who would help with technical solutions if only they understood the real problems these sites face, to users and activists who can help publicize both the successful cases and the not-yet-successful cases.</p>
+
+<p>Looking ahead to the future, I&#39;m also part of an upcoming research collaboration with Dan Boneh, Andrea Forte, Rachel Greenstadt, Ryan Henry, Benjamin Mako Hill, and Dan Wallach who will look both at the technical side of the problem (building more useful ideas for the toolkit) and also the social side of the problem: how can we quantify the loss to Wikipedia, and to society at large, from turning away anonymous contributors? Wikipedians say &quot;we have to blacklist all these IP addresses because of trolls&quot; and &quot;Wikipedia is rotting because nobody wants to edit it anymore&quot; in the same breath, and we believe these points are related. The group is at the &quot;applying for an NSF grant&quot; stage currently, so it will be a year or more before funding appears, but I mention it because we should get somebody to get the ball rolling now, and hopefully we can expect reinforcements to appear as momentum builds.</p>
+
+<p>In summary, if this call to arms catches your eye, your next steps are to think about what you most want to work on to get started, and how you would go about doing it. You can apply for an OTF fellowship, or we can probably help you find other funding sources as needed too.</p>
 
         </div>
       </section>
@@ -368,7 +534,7 @@
       
         <a href="/blog/page2" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 3 of 134</span>
+      <span class="page_number ">Page: 3 of 137</span>
       
         <a href="/blog/page4" class="next">Next</a>
       

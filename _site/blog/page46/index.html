@@ -53,74 +53,77 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tails-013-out">Tails 0.13 is out!</a></h2>
+          <h2 class="post-title"> <a href="/blog/tails-015-out">Tails 0.15 is out!</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">tails</a> under
               
                 <a class="post-category post-category-js" href="#">anonymous operating system</a>
               
                 <a class="post-category post-category-js" href="#">tails</a>
+              
+                <a class="post-category post-category-js" href="#">tails releases</a>
                |
-              19 Sep 2012
+              28 Nov 2012
           </p>
         </header>
         <div class="post-description">
-          <p>Tails 0.13 brings its lot of small but useful improvements and fixes a few security issues.</p>
+          <p>Tails, The Amnesic Incognito Live System, version 0.15, is out.</p>
 
-<p><a href="https://tails.boum.org/download/">Download it now.</a></p>
+<p>All users must upgrade as soon as possible.</p>
+
+<p><a href="https://tails.boum.org/getting_started/">Download it now</a></p>
+
+<p>Thank you, and congrats, to everyone who helped make this happen!</p>
 
 <p><strong>Changes</strong></p>
 
 <p>Notable user-visible changes include:</p>
 
 <ul>
-<li><strong>Use white-list</strong> /principle of least privilege <strong>approach for local services</strong> .
-Only users that need a certain local (i.e. hosted on loopback) service
-(according to our use cases) are granted access to it by our firewall;
-all other users are denied access.</li>
-<li>Allow to modify language and layout in the &quot;Advanced options&quot; screen
-of the greeter.</li>
-<li>Enable four workspaces in the Windows XP camouflage. This allows
-users to quickly switch to a more innocent looking workspace in case
-they are working on sensitive data and attract unwanted attention.
-The workspace switcher applet isn&#39;t there, though, since there&#39;s no
-such thing in Windows XP, so switching is only possible via keyboard
-shortcuts.</li>
-<li>Claws Mail now saves local/POP emails in its dot-directory by default
-instead of the non-persistent <code>~/Mail</code> directory. <em>Users who are already
-using persistence for Claws will have to perform this change manually.</em></li>
-<li>Add support for wireless regulation.</li>
-<li>Hide the <em>TailsData</em> partition in desktop applications.</li>
-<li><p><strong>Tor</strong></p>
+<li>Tor 0.2.3.25</li>
+<li><p>Major new features</p>
 
 <ul>
-<li>Upgrade to 0.2.2.39.</li>
+<li><a href="https://tails.boum.org/doc/first_steps/persistence/configure/">Persistence for browser bookmarks</a>.</li>
+<li>Support for <a href="https://tails.boum.org/doc/first_steps/startup_options/bridge_mode/">obfsproxy bridges</a>.</li>
 </ul></li>
-<li><p><strong>Iceweasel</strong></p>
+<li><p>Minor improvements</p>
 
 <ul>
-<li>Upgrade iceweasel to 10.0.7esr-2 (Extended Support Release).</li>
+<li>Add the Hangul (Korean) Input Method Engine for SCIM.</li>
+<li>Preliminary support for some OpenPGP SmartCard readers.</li>
+<li>Support printers that need HPIJS PPD and/or the IJS driver.</li>
+<li>Optimize fonts display for LCD.</li>
+<li>Update TrueCrypt to version 7.1a.</li>
 </ul></li>
-<li><p><strong>Hardware support</strong></p>
+<li><p>Bugfixes</p>
 
 <ul>
-<li>Upgrade Linux to 3.2.23-1.</li>
+<li>Fix gpgApplet menu display in Windows camouflage mode.</li>
+<li>Fix Tor reaching an inactive state if it is restarted in &quot;bridge mode&quot;,
+e.g. during the time synchronization process.</li>
 </ul></li>
-<li><p><strong>Software</strong></p>
+<li><p>Iceweasel</p>
 
 <ul>
-<li>Upgrade I2P to version 0.9.1.</li>
-<li>Install GNOME System Monitor.</li>
-<li>Upgrade WhisperBack to 1.6, with many UI improvements and new translations.</li>
+<li>Update iceweasel to 10.0.11esr-1+tails1.</li>
+<li>Update HTTPS Everywhere to version 3.0.4.</li>
+<li>Update NoScript to version 2.6.</li>
+<li>Fix bookmark to I2P router console.</li>
 </ul></li>
-<li><p>Ship a <strong>first version of the incremental update system</strong> . Updates are not
-currently triggered automatically, but this will allow tests to be done
-on larger scales.</p></li>
+<li><p>Localization</p>
+
+<ul>
+<li>The Tails USB installer, tails-persistence-setup and tails-greeter
+are now translated into Bulgarian.</li>
+<li>Update Chinese translation for tails-greeter.</li>
+<li>Update Euskadi translation for WhisperBack.</li>
+</ul></li>
 </ul>
 
-<p>Plus the usual bunch of minor bug reports and improvements.</p>
+<p>Plus the usual bunch of bug reports and minor improvements.</p>
 
-<p>See the <a href="http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.13">online Changelog</a> for technical details.</p>
+<p>See the <a href="http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.15">online Changelog</a> for technical details.</p>
 
 <p>Don&#39;t hesitate to <a href="https://tails.boum.org/support/">get in touch with us</a>.</p>
 
@@ -129,210 +132,146 @@ on larger scales.</p></li>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/some-thoughts-crime-attack">Some thoughts on the CRIME attack</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">nickm</a> under
-              
-                <a class="post-category post-category-js" href="#">crime</a>
-              
-                <a class="post-category post-category-js" href="#">security</a>
-              
-                <a class="post-category post-category-js" href="#">tls</a>
-               |
-              14 Sep 2012
-          </p>
-        </header>
-        <div class="post-description">
-          <p>By this point, some people have started to ask me about the Rizzo and Duong&#39;s new <a href="http://www.ekoparty.org//2012/juliano-rizzo.php">CRIME</a> attack on TLS.</p>
-
-<p>The short version is the same as with <a href="https://blog.torproject.org/blog/tor-and-beast-ssl-attack">BEAST</a> last year: Tor is not affected. TorBrowser is not affected. Other applications may be affected; please consult your app vendor.</p>
-
-<p>Here&#39;s the longer version, in case you&#39;re more curious. This is going to assume a little technical background, but not too much.</p>
-
-<p><strong>The attack</strong> : CRIME exploits TLS compression to learn secret cookies. (Approximate description follows.) The attacker uses JavaScript (or some other means) to cause a client to make an encrypted, compressed request to a webserver. Part of that request (for example, the URL) is under the attacker&#39;s control. Part of that request (for example, the cookie) is secret. TLS does not hide the length of what it&#39;s transmitting[*], so the attacker can learn the length of the compressed request. The length of the compressed request will depend on how much redundancy there is between the attacker-controlled data and the rest of the request (including the secret). By learning how much redundancy there was, the attacker can learn how many bytes of attacker-controlled information were shared with the secret, and thereby how many bytes.</p>
-
-<p>You can imagine it as something like a sophisticated game of <a href="http://en.wikipedia.org/wiki/Mastermind_(board_game)">Mastermind</a>: the attacker gets to guess a cookie, and they learn something how much of the cookie they guessed right. With enough guesses, they can learn the cookie, which lets them impersonate the client to the server.</p>
-
-<p><a href="Okay,%20not%20all%20TLS%20implementation%20reveal%20the%20exact%20length%20of%20what%20they&#x27;re%20encrypting.%20If%20they&#x27;re%20using%20CBC,%20they&#x27;ll%20round%20up%20to%20the%20nearest%2016%20bytes.%20But%20that&#x27;s%20still%20enough%20information%20about%20the%20compressed%20data&#x27;s%20length%20for%20this%20attack%20to%20work.">*</a></p>
-
-<p><strong>Is Tor vulnerable?</strong> Tor isn&#39;t vulnerable because Tor (mostly!) never compresses anything secret before encrypting it. Tor doesn&#39;t use TLS compression at all. The only compressed data in Tor are pieces of directory information; and nearly all directory information is public knowledge, and downloaded by all clients.</p>
-
-<p>The only non-public pieces of directory information in Tor are bridge descriptors and hidden-service descriptors. But these are only transmitted compressed on their own, and never compressed along with something adversary-controlled.</p>
-
-<p><strong>What about TorBrowser?</strong> TorBrowser isn&#39;t affected by CRIME as it stands either: It has disabled SPDY, and it has never enabled TLS compression.</p>
-
-<p>Other browsers are probably affected; please check your browser vendor for updates.</p>
-
-<p><strong>So, what about the rest of the internet?</strong></p>
-
-<p>If you write, maintain, or use an application that uses TLS compression, you should probably just turn off the TLS compression until you figure out whether it&#39;s safe for your application.</p>
-
-<p>The CRIME attack exploits a few key properties of HTTPS (the encrypted web protocol that uses the TLS encryption protocol). These properties are:</p>
-
-<ul>
-<li>The TLS protocol doesn&#39;t hide the length of what it&#39;s encrypting. (It hides it not at all with stream ciphers, and not at all well with block ciphers.)</li>
-<li>TLS has an optional compression feature where data can be compressed before it&#39;s encrypted.</li>
-<li>The length of the compressed record depends on the value of what is being compressed. (This is inevitable with lossless compression.)</li>
-<li>The same secret is sent over and over.</li>
-<li>The attacker can make the client generate compressed requests that contain attacker-controlled data in the same stream with secret data.</li>
-</ul>
-
-<p>So it doesn&#39;t look the internet is out of the woods yet here: I don&#39;t believe we&#39;ve seen the end of the CRIME attack. Even when TLS compression is disabled, we&#39;ll still need to worry about other compression: HTTP transfer encodings, for example. If an HTTPS page contains both an a secret part (like an anti-XSS token) and an attacker-controlled part, that&#39;s possibly enough for the attack to succeed. I predict that we&#39;ll be finding vulnerabilities of this type for a while, in nearly anything complicated that uses compression.</p>
-
-<p>So, what can be done for programs and protocols in general (not just HTTP)?</p>
-
-<ol>
-<li>Don&#39;t use compression.</li>
-<li>Never compress anything containing a secret.</li>
-<li>Never compress secret data and attacker-controlled data in the same compression stream without flushing the compression state between the two.</li>
-<li>Don&#39;t send the same secret over and over.</li>
-</ol>
-
-<p>Option 1 won&#39;t please the engineers: bandwidth savings from compression are real.</p>
-
-<p>I hear some advocacy for options 2 or 3, but they&#39;re pretty fiddly. They require programmers to do something that programmers have historically been pretty bad at: tagging all of the tainted or the sensitive data in their programs, without exception. I predict that among people who take this approach with complex programs or websites, it&#39;s going to be pretty common to miss at least one secret or at least one attacker-controlled data vector.</p>
-
-<p>Option 4 is what I like most, but it&#39;s going to require more crypto and engineering. It&#39;s the 21st century, after all. Cookies are a stupid way to authenticate; we have had better authentication protocols for decades.</p>
-
-<p><strong>Oh, and one more thing to worry about</strong> : Predictable data compressed along with a secret can be pretty bad too. Suppose for example that there&#39;s a fine-grained timestamp that gets compressed over and over along with the same secret, and the attacker can view the length of each compresed stream, and make a good guess about the timestamp&#39;s value. This leaks some information about the secret to the attacker, and with enough measurements, is probably enough to attack some systems.</p>
-
-<p><strong>In Summary</strong> :</p>
-
-<p>The CRIME attack is very clever indeed. I&#39;m looking forward to seeing the authors&#39; talk/code in full once they&#39;re public.</p>
-
-<p>CRIME is very bad against HTTPS, and makes TLS compression also look risky. Make sure your browser is updated.</p>
-
-<p>Tor is not affected. TorBrowser&#39;s HTTPS is not affected. TorBrowser doesn&#39;t do SPDY.</p>
-
-<p>And despite what you&#39;re hearing, this is not a TLS-specific or HTTPS-specific attack. All compress-and-encrypt combinations could probably use some attention, and should probably be considered suspect until they can get evaluated. This is going to be hard, since you can&#39;t just look at the encryption layer: you need to look at the compressed data stream itself, to see whether it&#39;s going to compress the same secrets secrets together with attacker-controlled or attacker-known values over and over.</p>
-
-<p>So, who wants to have a crack at X11-over-compressed-SSH? Anybody know any fun automated systems built on top of PGP?</p>
-
-<p>And y&#39;know, while you&#39;re looking for places that compress secrets, it&#39;s probably a good idea to think about timing side-channels from your compression too.</p>
-
-<p><strong>Acknowledgements</strong> : my thanks to Juliano for explaining the attack to me and helping me understand its ramifications. Lots of the analysis above is due to a conversation with him. Thanks also to Juliano and Thai for coming up with the attack. Thanks to Robert Ransom for feedback and corrections on the first draft of this post.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-bundles-security-release">New bundles (security release)</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">release candidate</a>
-              
-                <a class="post-category post-category-js" href="#">security fixes</a>
-              
-                <a class="post-category post-category-js" href="#">stable release</a>
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-               |
-              12 Sep 2012
-          </p>
-        </header>
-        <div class="post-description">
-          <p>New Bundles (security release)</p>
-
-<p>All of the available bundles of Tor have been updated for the latest stable Tor 0.2.2.39 release and the 0.2.3.22-rc release. These releases fix a remote crash bug found in Tor and all users and relays are <strong>STRONGLY</strong> encouraged to update immediately.</p>
-
-<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
-
-<p>Further notes about Tor Browser Bundle updates:</p>
-
-<p>The random port selection has been temporarily disabled in the Linux and Mac OS X alpha bundles. Most of you probably didn&#39;t notice any random port selection happpening at all, but if you encounter a problem running a system Tor and your Tor Browser Bundle at the same time, you can switch to the stable bundles for now. The next update should have a fix that allows us to re-enable automatic port selection.</p>
-
-<p><strong>Tor Browser Bundle (2.2.39-1)</strong></p>
-
-<ul>
-<li>Update Tor to 0.2.2.39</li>
-<li>Update NoScript to 2.5.4</li>
-</ul>
-
-<p><strong>Tor Browser Bundle (2.3.22-alpha-1)</strong></p>
-
-<ul>
-<li>Update Tor to 0.2.3.22-rc</li>
-<li>Temporarily use fixed Control and SOCKS ports as a workaround for #6803</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/www-archive-ns-and-rsync-1">www, archive, ns, and rsync +1</a></h2>
+          <h2 class="post-title"> <a href="/blog/transparency-openness-and-our-2011-financial-docs">Transparency, openness, and our 2011 financial docs</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">archive</a>
+                <a class="post-category post-category-js" href="#">anonymity</a>
               
-                <a class="post-category post-category-js" href="#">debian</a>
+                <a class="post-category post-category-js" href="#">Form 990</a>
               
-                <a class="post-category post-category-js" href="#">infrastructure</a>
+                <a class="post-category post-category-js" href="#">Form PC</a>
               
-                <a class="post-category post-category-js" href="#">listera</a>
+                <a class="post-category post-category-js" href="#">free software</a>
               
-                <a class="post-category post-category-js" href="#">mirror</a>
+                <a class="post-category post-category-js" href="#">freedom</a>
               
-                <a class="post-category post-category-js" href="#">nameserver</a>
+                <a class="post-category post-category-js" href="#">IRS</a>
               
-                <a class="post-category post-category-js" href="#">rsync</a>
+                <a class="post-category post-category-js" href="#">openness</a>
               
-                <a class="post-category post-category-js" href="#">server</a>
+                <a class="post-category post-category-js" href="#">privacy</a>
               
-                <a class="post-category post-category-js" href="#">www</a>
+                <a class="post-category post-category-js" href="#">transparency</a>
                |
-              11 Sep 2012
+              26 Nov 2012
           </p>
         </header>
         <div class="post-description">
-          <p>Thanks to <a href="http://www.debian.org/">Debian</a> for providing a fine server capable of providing redundancy for a number of services. This new server is in live rotation for <a href="https://archive.torproject.org" title="https://archive.torproject.org">https://archive.torproject.org</a>, <a href="https://www.torproject.org" title="https://www.torproject.org">https://www.torproject.org</a>, acts as one of our primary DNS servers, and provides rsync for the archive data store. It mirrors 165GB of data hourly. The server is located in Darmstadt, Germany and provides a copy of the services on the European continent.</p>
+          <p>After our standard audit, our 2011 state and federal <a href="https://www.torproject.org/about/financials.html.en">tax filings</a> are available. We publish all of our related tax documents because we believe in transparency. All US non-profit organizations are required by law to make their tax filings available to the public on request by US citizens. We want to make them available for all.</p>
 
-<p>The addition of a second server allows us to implement some changes to the way we allow others to mirror our data sets. The primary server behind archive.torproject.org is also known as rsync.torproject.org. It now solely serves up rsync.torproject.org. If you have scripts that periodically mirror archive.torproject.org, you probably want to update them for rsync.torproject.org.</p>
+<p>Part of our transparency is simply publishing the tax documents for your review. The other part is publishing what we&#39;re <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors">working on</a> in detail. We hope you&#39;ll join us in furthering our mission (a) to develop, improve and distribute free, publicly available tools and programs that promote free speech, free expression, civic engagement and privacy rights online; (b) to conduct scientific research regarding, and to promote the use of and knowledge about, such tools, programs and related issues around the world; (c) to educate the general public around the world about privacy rights and anonymity issues connected to Internet use.</p>
 
-<p>Thanks to the Debian Sysadmin Team for the server and hosting!</p>
+<p>All of this means you can look through all of our <a href="https://gitweb.torproject.org/">source code</a>, including our <a href="https://www.torproject.org/docs/documentation#DesignDoc">design documents</a>, and all open tasks, enhancements, and bugs available on our <a href="https://trac.torproject.org/">tracking system</a>. Our <a href="https://research.torproject.org/">research</a> reports are available as well. From a technical perspective, all of this free software, documentation, and code allows you and others to assess the safety and trustworthiness of our research and development. On another level, we have a 10 year track record of doing high quality work, saying what we&#39;re going to do, and doing what we said.</p>
+
+<p>The world is moving towards new norms for reduced personal privacy and control. This makes anonymity all that more rare and valuable. Please help keep us going through <a href="https://www.torproject.org/getinvolved/volunteer.html.en">getting involved</a>, <a href="https://www.torproject.org/donate/donate.html.en">donations</a>, or advocating for a free Internet with privacy, anonymity, and keeping control of your identity.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-21">New Tor Browser Bundles</a></h2>
+          <h2 class="post-title"> <a href="/blog/employers-against-domestic-violence-and-technology-panel">Employers Against Domestic Violence and Technology Panel</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
+              By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">firefox updates</a>
+                <a class="post-category post-category-js" href="#">abuse</a>
               
-                <a class="post-category post-category-js" href="#">https everywhere</a>
+                <a class="post-category post-category-js" href="#">cyberstalking</a>
               
-                <a class="post-category post-category-js" href="#">tbb</a>
+                <a class="post-category post-category-js" href="#">domestic violence</a>
               
-                <a class="post-category post-category-js" href="#">tor browser</a>
+                <a class="post-category post-category-js" href="#">EADV</a>
               
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+                <a class="post-category post-category-js" href="#">helping survivors</a>
+              
+                <a class="post-category post-category-js" href="#">helping victims</a>
+              
+                <a class="post-category post-category-js" href="#">stalking</a>
+              
+                <a class="post-category post-category-js" href="#">technology for good</a>
                |
-              29 Aug 2012
+              19 Nov 2012
           </p>
         </header>
         <div class="post-description">
-          <p>The stable Tor Browser Bundles have all been updated to the latest Firefox 10.0.07esr release.</p>
+          <p>I was invited by <a href="http://employersagainstdomesticviolence.org/">Employers Against Domestic Violence</a> to give a talk about technology and stalking as part of a larger panel.</p>
 
-<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+<p>On Friday the 16th, I presented Tor and our work with victims of abuse and stalking to around 50 people. Most of my <a href="https://svn.torproject.org/svn/projects/presentations/2012-11-16-EADV-Tech-Stalking-Advice.pdf">full presentation</a> covered the basics of Tor, a demo of <a href="https://tails.boum.org">Tails Live System</a>, and then some user stories. Most of the people in the audience were already DV advocates and aware of the way technology is used to harm or manipulate others. The user stories have come from a number of places, between phone calls, email support, and actually being out in the world talking to survivors or advocates who want to help.</p>
 
-<p><strong>Tor Browser Bundle (2.2.38-2)</strong></p>
+<p>I co-presented with Sarah from <a href="https://www.abine.com">Abine</a> and Valenda from <a href="http://gbls.org/">Greater Boston Legal Services</a>. All three of our presentations can be found on Tor&#39;s <a href="https://people.torproject.org/%7Eandrew/2012-11-16-EADV/">people server</a>.</p>
 
-<ul>
-<li>Update Firefox to 10.0.7esr</li>
-<li>Update Libevent to 2.0.20-stable</li>
-<li>Update NoScript to 2.5.2</li>
-<li>Update HTTPS Everywhere to 2.2.1</li>
-</ul>
+<p>Afterwards, a number of people came up to me to ask about getting Tails or Tor Browser, or to simply introduce themselves. I met a cyber-stalking survivor I&#39;ve only helped via email and phone over the past year or so. I look forward to doing more of these types of events locally.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/scripps-j-school-ohio-university-trip-report">Scripps J School at Ohio University Trip Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">andy alexander</a>
+              
+                <a class="post-category post-category-js" href="#">athens ohio</a>
+              
+                <a class="post-category post-category-js" href="#">committee to protect journalists</a>
+              
+                <a class="post-category post-category-js" href="#">cpj</a>
+              
+                <a class="post-category post-category-js" href="#">east africa</a>
+              
+                <a class="post-category post-category-js" href="#">ew scripps</a>
+              
+                <a class="post-category post-category-js" href="#">journalism school</a>
+              
+                <a class="post-category post-category-js" href="#">ohio university</a>
+               |
+              13 Nov 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Ohio University EW Scripps Journalism School Trip Report for 07 to 09 November 2012</p>
+
+<p>Danny O&#39;Brien of <a href="https://cpj.org/">Committee to Protect Journalists</a> and I were invited to talk to journalism students at the <a href="http://scrippsjschool.org/">E.W. Scripps School of Journalism</a> in <a href="http://www.ohio.edu/">Ohio University</a>. The topics were around computer security risks and protections from the perspective of journalists. CPJ maintains a great guide for reporters to survive dangerous situations appropriately called the <a href="https://cpj.org/reports/2012/04/journalist-security-guide.php">Journalist Security Guide</a>. This covers both offline and online situations. My role was to highlight the experience of Tor, what we&#39;ve seen, and how we&#39;ve protected both citizen and professional journalists the world over. I also covered using <a href="https://tails.boum.org">Tails</a> as one tool in your toolbox to let you do the work of a journalist from anywhere.</p>
+
+<p><a href="http://scrippsjschool.org/faculty/faculty_details.php?oak=%20alexanda">Andy Alexander</a> was our host for the three days. We started off with a great dinner to share information about what both Danny and I have learned over the past few years in working with journalists. Andy has a long career of experience in foreign correspondence and reporting. His experiences covering a few decades highlight the need for journalists to learn how to protect themselves when reporting anywhere in the world.</p>
+
+<p>The next day was a first-year class about journalism in general. Danny and I presented to around 200 students. The computer couldn&#39;t read my USB drive, so I couldn&#39;t use <a href="https://svn.torproject.org/svn/projects/presentations/2012-11-08-Scripps-IIJ-Presentation.pdf">my presentation</a>, rather I used the website to quickly cover Tor, how it works, and why journalists should care. I then discussed a range of attacks against an individual from fairly basic malware infections through more advanced traffic analysis and content swapping. My <a href="http://wiki.daviddarts.com/PirateBox">PirateBox</a> did work, so anyone could get the presentations and copies of Tor locally if they so desired.</p>
+
+<p>We had a great lunch with <a href="http://scrippsjschool.org/faculty/faculty_details.php?oak=%20kalyango">Professor Kalyango</a> and then head off to <a href="http://woub.org/news">WOUB</a> for a 30 minute podcast/radio interview.</p>
+
+<p>Afterwards, we went off to the main panel event to talk to fourth year and graduate students about online security and the risks for journalists. Once again, the USB drive couldn&#39;t be read, but the <a href="http://wiki.daviddarts.com/PirateBox">PirateBox</a> worked fine. The lecture lasted around 90 minutes with a Q&amp;A session. Unlike the freshman class, a number of people had questions or wanted to verify what Danny and I stated.</p>
+
+<p>We were then taken out to dinner by the top students at the J School. It was a great Middle Eastern kabob place to have an hour of discussions with the students.</p>
+
+<p>And thanks to <a href="http://www.athensinteractivist.com/">Lindsay</a> for getting up at 06:30 to drive me to the airport and for the great discussion along the way. I look forward to reading her dispatches from East Africa in the near future.</p>
+
+<p>Also published via email at <a href="https://lists.torproject.org/pipermail/tor-reports/2012-November/000082.html" title="https://lists.torproject.org/pipermail/tor-reports/2012-November/000082.html">https://lists.torproject.org/pipermail/tor-reports/2012-November/000082....</a></p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/updated-tor-cloud-images-0">Updated Tor Cloud images</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">relays</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">tor-cloud</a>
+               |
+              12 Nov 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p><a href="https://cloud.torproject.org/">The Tor Cloud</a> images for all the seven regions have been updated to include the latest cloud image for stable Ubuntu release 12.04.1 LTS (Precise Pangolin). These new images are available on the Tor Cloud website. You will not need to start a new instance you are already running a Tor Cloud instance with Ubuntu Precise.</p>
 
         </div>
       </section>
@@ -343,7 +282,7 @@ on larger scales.</p></li>
       
         <a href="/blog/page45" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 46 of 134</span>
+      <span class="page_number ">Page: 46 of 137</span>
       
         <a href="/blog/page47" class="next">Next</a>
       

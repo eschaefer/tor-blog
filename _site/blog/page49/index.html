@@ -53,69 +53,212 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/2012-florence-hackfest">2012 Florence Hackfest</a></h2>
+          <h2 class="post-title"> <a href="/blog/tails-013-out">Tails 0.13 is out!</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
+              By <a class="post-author" href="#">tails</a> under
               
-                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+                <a class="post-category post-category-js" href="#">anonymous operating system</a>
               
-                <a class="post-category post-category-js" href="#">florence</a>
-              
-                <a class="post-category post-category-js" href="#">hackfest</a>
-              
-                <a class="post-category post-category-js" href="#">italy</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
+                <a class="post-category post-category-js" href="#">tails</a>
                |
-              21 Jun 2012
+              19 Sep 2012
           </p>
         </header>
         <div class="post-description">
-          <p>On July 5 and 6 we are holding an open hackfest at the <a href="http://www.unifi.it/">Università degli Studi di Firenze</a> in Florence, Italy.</p>
+          <p>Tails 0.13 brings its lot of small but useful improvements and fixes a few security issues.</p>
 
-<p>Please attend if you have some interest in programming, advocacy, marketing, or (network security/anonymity/computer science/etc) research with Tor, or are willing to be persuaded to entertain an interest. :) Tor&#39;s a small project (in terms of number of developers) that could really use your help.</p>
+<p><a href="https://tails.boum.org/download/">Download it now.</a></p>
 
-<p>The majority language will be English, but there will be some Italian speakers at the hackfest.</p>
+<p><strong>Changes</strong></p>
 
-<p>More details can be found on the <a href="https://trac.torproject.org/projects/tor/wiki/org/meetings/2012FlorenceHackfest">Florence Hackfest</a> wiki page.</p>
+<p>Notable user-visible changes include:</p>
 
-<p>See you in Florence!</p>
+<ul>
+<li><strong>Use white-list</strong> /principle of least privilege <strong>approach for local services</strong> .
+Only users that need a certain local (i.e. hosted on loopback) service
+(according to our use cases) are granted access to it by our firewall;
+all other users are denied access.</li>
+<li>Allow to modify language and layout in the &quot;Advanced options&quot; screen
+of the greeter.</li>
+<li>Enable four workspaces in the Windows XP camouflage. This allows
+users to quickly switch to a more innocent looking workspace in case
+they are working on sensitive data and attract unwanted attention.
+The workspace switcher applet isn&#39;t there, though, since there&#39;s no
+such thing in Windows XP, so switching is only possible via keyboard
+shortcuts.</li>
+<li>Claws Mail now saves local/POP emails in its dot-directory by default
+instead of the non-persistent <code>~/Mail</code> directory. <em>Users who are already
+using persistence for Claws will have to perform this change manually.</em></li>
+<li>Add support for wireless regulation.</li>
+<li>Hide the <em>TailsData</em> partition in desktop applications.</li>
+<li><p><strong>Tor</strong></p>
+
+<ul>
+<li>Upgrade to 0.2.2.39.</li>
+</ul></li>
+<li><p><strong>Iceweasel</strong></p>
+
+<ul>
+<li>Upgrade iceweasel to 10.0.7esr-2 (Extended Support Release).</li>
+</ul></li>
+<li><p><strong>Hardware support</strong></p>
+
+<ul>
+<li>Upgrade Linux to 3.2.23-1.</li>
+</ul></li>
+<li><p><strong>Software</strong></p>
+
+<ul>
+<li>Upgrade I2P to version 0.9.1.</li>
+<li>Install GNOME System Monitor.</li>
+<li>Upgrade WhisperBack to 1.6, with many UI improvements and new translations.</li>
+</ul></li>
+<li><p>Ship a <strong>first version of the incremental update system</strong> . Updates are not
+currently triggered automatically, but this will allow tests to be done
+on larger scales.</p></li>
+</ul>
+
+<p>Plus the usual bunch of minor bug reports and improvements.</p>
+
+<p>See the <a href="http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.13">online Changelog</a> for technical details.</p>
+
+<p>Don&#39;t hesitate to <a href="https://tails.boum.org/support/">get in touch with us</a>.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-19">New Tor Browser Bundles</a></h2>
+          <h2 class="post-title"> <a href="/blog/some-thoughts-crime-attack">Some thoughts on the CRIME attack</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
+              By <a class="post-author" href="#">nickm</a> under
               
-                <a class="post-category post-category-js" href="#">firefox</a>
+                <a class="post-category post-category-js" href="#">crime</a>
               
-                <a class="post-category post-category-js" href="#">tbb</a>
+                <a class="post-category post-category-js" href="#">security</a>
               
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">tor stable</a>
-              
-                <a class="post-category post-category-js" href="#">torbutton</a>
+                <a class="post-category post-category-js" href="#">tls</a>
                |
-              12 Jun 2012
+              14 Sep 2012
           </p>
         </header>
         <div class="post-description">
-          <p>The Tor Browser Bundles have been updated with a bunch of new software: Tor 0.2.2.37, Vidalia 0.2.19, and we have switched to using Firefox&#39;s long-term stable release (10.0.5esr).</p>
+          <p>By this point, some people have started to ask me about the Rizzo and Duong&#39;s new <a href="http://www.ekoparty.org//2012/juliano-rizzo.php">CRIME</a> attack on TLS.</p>
+
+<p>The short version is the same as with <a href="https://blog.torproject.org/blog/tor-and-beast-ssl-attack">BEAST</a> last year: Tor is not affected. TorBrowser is not affected. Other applications may be affected; please consult your app vendor.</p>
+
+<p>Here&#39;s the longer version, in case you&#39;re more curious. This is going to assume a little technical background, but not too much.</p>
+
+<p><strong>The attack</strong> : CRIME exploits TLS compression to learn secret cookies. (Approximate description follows.) The attacker uses JavaScript (or some other means) to cause a client to make an encrypted, compressed request to a webserver. Part of that request (for example, the URL) is under the attacker&#39;s control. Part of that request (for example, the cookie) is secret. TLS does not hide the length of what it&#39;s transmitting[*], so the attacker can learn the length of the compressed request. The length of the compressed request will depend on how much redundancy there is between the attacker-controlled data and the rest of the request (including the secret). By learning how much redundancy there was, the attacker can learn how many bytes of attacker-controlled information were shared with the secret, and thereby how many bytes.</p>
+
+<p>You can imagine it as something like a sophisticated game of <a href="http://en.wikipedia.org/wiki/Mastermind_(board_game)">Mastermind</a>: the attacker gets to guess a cookie, and they learn something how much of the cookie they guessed right. With enough guesses, they can learn the cookie, which lets them impersonate the client to the server.</p>
+
+<p><a href="Okay,%20not%20all%20TLS%20implementation%20reveal%20the%20exact%20length%20of%20what%20they&#x27;re%20encrypting.%20If%20they&#x27;re%20using%20CBC,%20they&#x27;ll%20round%20up%20to%20the%20nearest%2016%20bytes.%20But%20that&#x27;s%20still%20enough%20information%20about%20the%20compressed%20data&#x27;s%20length%20for%20this%20attack%20to%20work.">*</a></p>
+
+<p><strong>Is Tor vulnerable?</strong> Tor isn&#39;t vulnerable because Tor (mostly!) never compresses anything secret before encrypting it. Tor doesn&#39;t use TLS compression at all. The only compressed data in Tor are pieces of directory information; and nearly all directory information is public knowledge, and downloaded by all clients.</p>
+
+<p>The only non-public pieces of directory information in Tor are bridge descriptors and hidden-service descriptors. But these are only transmitted compressed on their own, and never compressed along with something adversary-controlled.</p>
+
+<p><strong>What about TorBrowser?</strong> TorBrowser isn&#39;t affected by CRIME as it stands either: It has disabled SPDY, and it has never enabled TLS compression.</p>
+
+<p>Other browsers are probably affected; please check your browser vendor for updates.</p>
+
+<p><strong>So, what about the rest of the internet?</strong></p>
+
+<p>If you write, maintain, or use an application that uses TLS compression, you should probably just turn off the TLS compression until you figure out whether it&#39;s safe for your application.</p>
+
+<p>The CRIME attack exploits a few key properties of HTTPS (the encrypted web protocol that uses the TLS encryption protocol). These properties are:</p>
+
+<ul>
+<li>The TLS protocol doesn&#39;t hide the length of what it&#39;s encrypting. (It hides it not at all with stream ciphers, and not at all well with block ciphers.)</li>
+<li>TLS has an optional compression feature where data can be compressed before it&#39;s encrypted.</li>
+<li>The length of the compressed record depends on the value of what is being compressed. (This is inevitable with lossless compression.)</li>
+<li>The same secret is sent over and over.</li>
+<li>The attacker can make the client generate compressed requests that contain attacker-controlled data in the same stream with secret data.</li>
+</ul>
+
+<p>So it doesn&#39;t look the internet is out of the woods yet here: I don&#39;t believe we&#39;ve seen the end of the CRIME attack. Even when TLS compression is disabled, we&#39;ll still need to worry about other compression: HTTP transfer encodings, for example. If an HTTPS page contains both an a secret part (like an anti-XSS token) and an attacker-controlled part, that&#39;s possibly enough for the attack to succeed. I predict that we&#39;ll be finding vulnerabilities of this type for a while, in nearly anything complicated that uses compression.</p>
+
+<p>So, what can be done for programs and protocols in general (not just HTTP)?</p>
+
+<ol>
+<li>Don&#39;t use compression.</li>
+<li>Never compress anything containing a secret.</li>
+<li>Never compress secret data and attacker-controlled data in the same compression stream without flushing the compression state between the two.</li>
+<li>Don&#39;t send the same secret over and over.</li>
+</ol>
+
+<p>Option 1 won&#39;t please the engineers: bandwidth savings from compression are real.</p>
+
+<p>I hear some advocacy for options 2 or 3, but they&#39;re pretty fiddly. They require programmers to do something that programmers have historically been pretty bad at: tagging all of the tainted or the sensitive data in their programs, without exception. I predict that among people who take this approach with complex programs or websites, it&#39;s going to be pretty common to miss at least one secret or at least one attacker-controlled data vector.</p>
+
+<p>Option 4 is what I like most, but it&#39;s going to require more crypto and engineering. It&#39;s the 21st century, after all. Cookies are a stupid way to authenticate; we have had better authentication protocols for decades.</p>
+
+<p><strong>Oh, and one more thing to worry about</strong> : Predictable data compressed along with a secret can be pretty bad too. Suppose for example that there&#39;s a fine-grained timestamp that gets compressed over and over along with the same secret, and the attacker can view the length of each compresed stream, and make a good guess about the timestamp&#39;s value. This leaks some information about the secret to the attacker, and with enough measurements, is probably enough to attack some systems.</p>
+
+<p><strong>In Summary</strong> :</p>
+
+<p>The CRIME attack is very clever indeed. I&#39;m looking forward to seeing the authors&#39; talk/code in full once they&#39;re public.</p>
+
+<p>CRIME is very bad against HTTPS, and makes TLS compression also look risky. Make sure your browser is updated.</p>
+
+<p>Tor is not affected. TorBrowser&#39;s HTTPS is not affected. TorBrowser doesn&#39;t do SPDY.</p>
+
+<p>And despite what you&#39;re hearing, this is not a TLS-specific or HTTPS-specific attack. All compress-and-encrypt combinations could probably use some attention, and should probably be considered suspect until they can get evaluated. This is going to be hard, since you can&#39;t just look at the encryption layer: you need to look at the compressed data stream itself, to see whether it&#39;s going to compress the same secrets secrets together with attacker-controlled or attacker-known values over and over.</p>
+
+<p>So, who wants to have a crack at X11-over-compressed-SSH? Anybody know any fun automated systems built on top of PGP?</p>
+
+<p>And y&#39;know, while you&#39;re looking for places that compress secrets, it&#39;s probably a good idea to think about timing side-channels from your compression too.</p>
+
+<p><strong>Acknowledgements</strong> : my thanks to Juliano for explaining the attack to me and helping me understand its ramifications. Lots of the analysis above is due to a conversation with him. Thanks also to Juliano and Thai for coming up with the attack. Thanks to Robert Ransom for feedback and corrections on the first draft of this post.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/new-bundles-security-release">New bundles (security release)</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">release candidate</a>
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+              
+                <a class="post-category post-category-js" href="#">stable release</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+               |
+              12 Sep 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>New Bundles (security release)</p>
+
+<p>All of the available bundles of Tor have been updated for the latest stable Tor 0.2.2.39 release and the 0.2.3.22-rc release. These releases fix a remote crash bug found in Tor and all users and relays are <strong>STRONGLY</strong> encouraged to update immediately.</p>
 
 <p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
 
-<p><strong>Tor Browser Bundle (2.2.37-1)</strong></p>
+<p>Further notes about Tor Browser Bundle updates:</p>
+
+<p>The random port selection has been temporarily disabled in the Linux and Mac OS X alpha bundles. Most of you probably didn&#39;t notice any random port selection happpening at all, but if you encounter a problem running a system Tor and your Tor Browser Bundle at the same time, you can switch to the stable bundles for now. The next update should have a fix that allows us to re-enable automatic port selection.</p>
+
+<p><strong>Tor Browser Bundle (2.2.39-1)</strong></p>
 
 <ul>
-<li>Update Tor to 0.2.2.37</li>
-<li>Switch Firefox to 10.0.5esr, since we will be tracking the extended stable releases for TBB stable versions</li>
-<li>Update Vidalia to 0.2.19</li>
-<li>Update Torbutton to 1.4.6</li>
-<li>Update NoScript to 2.4.4</li>
+<li>Update Tor to 0.2.2.39</li>
+<li>Update NoScript to 2.5.4</li>
+</ul>
+
+<p><strong>Tor Browser Bundle (2.3.22-alpha-1)</strong></p>
+
+<ul>
+<li>Update Tor to 0.2.3.22-rc</li>
+<li>Temporarily use fixed Control and SOCKS ports as a workaround for #6803</li>
 </ul>
 
         </div>
@@ -123,107 +266,73 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-18">New Tor Browser Bundles</a></h2>
+          <h2 class="post-title"> <a href="/blog/www-archive-ns-and-rsync-1">www, archive, ns, and rsync +1</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">archive</a>
+              
+                <a class="post-category post-category-js" href="#">debian</a>
+              
+                <a class="post-category post-category-js" href="#">infrastructure</a>
+              
+                <a class="post-category post-category-js" href="#">listera</a>
+              
+                <a class="post-category post-category-js" href="#">mirror</a>
+              
+                <a class="post-category post-category-js" href="#">nameserver</a>
+              
+                <a class="post-category post-category-js" href="#">rsync</a>
+              
+                <a class="post-category post-category-js" href="#">server</a>
+              
+                <a class="post-category post-category-js" href="#">www</a>
+               |
+              11 Sep 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Thanks to <a href="http://www.debian.org/">Debian</a> for providing a fine server capable of providing redundancy for a number of services. This new server is in live rotation for <a href="https://archive.torproject.org" title="https://archive.torproject.org">https://archive.torproject.org</a>, <a href="https://www.torproject.org" title="https://www.torproject.org">https://www.torproject.org</a>, acts as one of our primary DNS servers, and provides rsync for the archive data store. It mirrors 165GB of data hourly. The server is located in Darmstadt, Germany and provides a copy of the services on the European continent.</p>
+
+<p>The addition of a second server allows us to implement some changes to the way we allow others to mirror our data sets. The primary server behind archive.torproject.org is also known as rsync.torproject.org. It now solely serves up rsync.torproject.org. If you have scripts that periodically mirror archive.torproject.org, you probably want to update them for rsync.torproject.org.</p>
+
+<p>Thanks to the Debian Sysadmin Team for the server and hosting!</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-21">New Tor Browser Bundles</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">erinn</a> under
               
-                <a class="post-category post-category-js" href="#">tbb</a>
+                <a class="post-category post-category-js" href="#">firefox updates</a>
               
-                <a class="post-category post-category-js" href="#">tor</a>
+                <a class="post-category post-category-js" href="#">https everywhere</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
               
                 <a class="post-category post-category-js" href="#">tor browser</a>
               
                 <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">tor stable</a>
                |
-              05 Jun 2012
+              29 Aug 2012
           </p>
         </header>
         <div class="post-description">
-          <p>The Tor Browser Bundles and other packages have all been updated to the latest Tor 0.2.2.36 stable version.</p>
+          <p>The stable Tor Browser Bundles have all been updated to the latest Firefox 10.0.07esr release.</p>
 
 <p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
 
-<p><strong>Tor Browser Bundle (2.2.36-1)</strong></p>
+<p><strong>Tor Browser Bundle (2.2.38-2)</strong></p>
 
 <ul>
-<li>Update Tor to 0.2.2.36</li>
-<li>Update NoScript to 2.3.4</li>
-<li>Update HTTPS Everywhere to 2.0.5</li>
+<li>Update Firefox to 10.0.7esr</li>
+<li>Update Libevent to 2.0.20-stable</li>
+<li>Update NoScript to 2.5.2</li>
+<li>Update HTTPS Everywhere to 2.2.1</li>
 </ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/update-censorship-ethiopia">An update on the censorship in Ethiopia</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">Runa</a> under
-              
-                <a class="post-category post-category-js" href="#">censorship circumvention</a>
-              
-                <a class="post-category post-category-js" href="#">deep packet inspection</a>
-              
-                <a class="post-category post-category-js" href="#">dpi</a>
-              
-                <a class="post-category post-category-js" href="#">ethiopia</a>
-              
-                <a class="post-category post-category-js" href="#">internet censorship</a>
-              
-                <a class="post-category post-category-js" href="#">tor blocked</a>
-               |
-              03 Jun 2012
-          </p>
-        </header>
-        <div class="post-description">
-          <p>A few days ago, we published a blog post exposing the use of <a href="https://blog.torproject.org/blog/ethiopia-introduces-deep-packet-inspection">Deep Packet Inspection (DPI) to filter all Internet traffic in Ethiopia</a>, including connections to the Tor network. We concluded that they are doing some sort of TLS fingerprinting, but had not been able to figure out exactly what they are fingerprinting on. Since then, we have managed to determine exactly how Ethiopia blocks Tor and we have developed a workaround. We will publish a full technical analysis very soon.</p>
-
-<p>The long-term solution for Tor users in Ethiopia is to use the <a href="https://www.torproject.org/projects/obfsproxy">Obfsproxy Tor Browser Bundle</a>. The bundles are, unfortunately, not up to date at the moment, but this is something we are working on (see <a href="https://trac.torproject.org/projects/tor/ticket/5937">#5937</a> for details). In the meantime, try using one of the following three bridges:</p>
-
-<p>213.138.103.17:443
-107.21.149.216:443
-46.137.226.203:55440</p>
-
-<p>If the bridges are not working, or you have questions, send an email to <a href="mailto:help@rt.torproject.org">help@rt.torproject.org</a>.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/ethiopia-introduces-deep-packet-inspection">Ethiopia Introduces Deep Packet Inspection</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">Runa</a> under
-              
-                <a class="post-category post-category-js" href="#">censorship circumvention</a>
-              
-                <a class="post-category post-category-js" href="#">deep packet inspection</a>
-              
-                <a class="post-category post-category-js" href="#">dpi</a>
-              
-                <a class="post-category post-category-js" href="#">ethiopia</a>
-              
-                <a class="post-category post-category-js" href="#">internet censorship</a>
-              
-                <a class="post-category post-category-js" href="#">tor blocked</a>
-               |
-              31 May 2012
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The Ethiopian Telecommunication Corporation, which happens to be the sole telecommunication service provider in Ethiopia, has deployed or begun testing Deep Packet Inspection (DPI) of all Internet traffic. We have previously analyzed the same kind of censorship in <a href="https://blog.torproject.org/blog/knock-knock-knockin-bridges-doors">China</a>, <a href="https://blog.torproject.org/blog/iran-partially-blocks-encrypted-network-traffic">Iran</a>, and <a href="https://blog.torproject.org/blog/kazakhstan-upgrades-censorship-deep-packet-inspection">Kazakhstan</a>.</p>
-
-<p>Reports show that Tor stopped working a week ago -- even with bridges configured. Websites such as <a href="https://gmail.com/">https://gmail.com/</a>, <a href="https://facebook.com/">https://facebook.com/</a>, <a href="https://twitter.com/">https://twitter.com/</a>, and even <a href="https://torproject.org/">https://torproject.org/</a> continue to work. The graphs below show the effects of this deployment of censorship based on Deep Packet Inspection:</p>
-
-<p><img src="https://media.torproject.org/image/blog-images/direct-users-off-2012-03-02-off-72-2012-05-31-et.png" alt=""></p>
-
-<p><img src="https://media.torproject.org/image/blog-images/bridge-users-2012-03-02-72-2012-05-31-et.png" alt=""></p>
-
-<p>An analysis of data collected by a volunteer shows that they are doing some sort of TLS fingerprinting. The TLS server hello, which is sent by the Tor bridge after the TLS client hello, never reaches the client. We don&#39;t know exactly what they are fingerprinting on, but our guess is that it is either the client hello or the server hello. An illustration can be found in this <a href="https://media.torproject.org/image/blog-images/2012-05-31-ethiopia-dpi-blocking-of-tor.png">network flow diagram</a>.</p>
-
-<p>Thanks to Philipp Winter and George Kadianakis for helping me analyze the data. If you have more information about the censorship in Ethiopia, please email <a href="mailto:help@rt.torproject.org">help@rt.torproject.org</a>.</p>
 
         </div>
       </section>
@@ -234,7 +343,7 @@
       
         <a href="/blog/page48" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 49 of 134</span>
+      <span class="page_number ">Page: 49 of 137</span>
       
         <a href="/blog/page50" class="next">Next</a>
       

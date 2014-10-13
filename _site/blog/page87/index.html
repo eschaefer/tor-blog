@@ -53,174 +53,102 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/arm-release-140">Arm Release 1.4.0</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">atagar</a> under
-              
-                <a class="post-category post-category-js" href="#">arm</a>
-               |
-              01 Dec 2010
-          </p>
-        </header>
-        <div class="post-description">
-          <p>After over a year it&#39;s about time that I announced an arm release so here it is! What&#39;s new since <a href="http://archives.seul.org/or/talk/Aug-2009/msg00040.html">August of 2009</a>, you ask? Lots. The project has been under very active development, continuing to add usability improvements to make relay operation nicer and less error prone. If you&#39;re really curious what I&#39;ve been up to this last year then it&#39;s all available in the <a href="http://www.atagar.com/arm/log.php">change log</a>.</p>
-
-<p>For those unfamiliar, arm is a terminal monitor for Tor relays and, to a growing extent, end users. It provides:</p>
-
-<ul>
-<li>resource usage (bandwidth, cpu, and memory usage)</li>
-<li>general relaying information (nickname, fingerprint, flags, or/dir/controlports)</li>
-<li>event log with optional regex filtering and deduplication</li>
-<li>connections correlated against tor&#39;s consensus data (ip, connection types, relay details, etc)</li>
-<li>an editor to quickly alter Tor&#39;s configuration</li>
-<li>torrc configuration file with syntax highlighting and validation</li>
-</ul>
-
-<p>and quite a bit more via a curses interface. For screenshots and downloads visit:
-_ <a href="http://www.atagar.com/arm/">http://www.atagar.com/arm/</a>_</p>
-
-<p>Peter and I are currently working on getting its debs in shape so hopefully this&#39;ll soon be available via repositories for Debian and Ubuntu too. RPM builds are available, though I don&#39;t have a test system so beware: there be dragons (possibly).</p>
-
-<p>If there&#39;s any python hackers out there interested in dabbling in a bit of Tor UI development, then I&#39;d love to have some company. Suggestions, bug reports and feedback are also be very welcome. Cheers! -Damian</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-02219-alpha-out">Tor 0.2.2.19-alpha is out</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-02129-released-security-patches">Tor 0.2.1.29 is released (security patches)</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">erinn</a> under
               
-                <a class="post-category post-category-js" href="#">alpha release</a>
+                <a class="post-category post-category-js" href="#">security fixes</a>
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
-              
-                <a class="post-category post-category-js" href="#">openssl</a>
-              
-                <a class="post-category post-category-js" href="#">openssl fixes</a>
+                <a class="post-category post-category-js" href="#">stable releases</a>
               
                 <a class="post-category post-category-js" href="#">tor</a>
                |
-              26 Nov 2010
+              17 Jan 2011
           </p>
         </header>
         <div class="post-description">
-          <p>Yet another OpenSSL security patch broke its compatibility with Tor:
-Tor 0.2.2.19-alpha makes relays work with OpenSSL 0.9.8p and 1.0.0.b.</p>
+          <p>Tor 0.2.1.29 continues our recent code security audit work. The main
+fix resolves a remote heap overflow vulnerability that can allow remote
+code execution. Other fixes address a variety of assert and crash bugs,
+most of which we think are hard to exploit remotely.</p>
+
+<p><strong>All Tor users should upgrade.</strong></p>
 
 <p><a href="https://www.torproject.org/download/download" title="https://www.torproject.org/download/download">https://www.torproject.org/download/download</a></p>
 
-<p>The original announcement is at <a href="http://archives.seul.org/or/talk/Nov-2010/msg00172.html" title="http://archives.seul.org/or/talk/Nov-2010/msg00172.html">http://archives.seul.org/or/talk/Nov-2010/msg00172.html</a></p>
-
-<p>Changes in version 0.2.2.19-alpha - 2010-11-21
-<strong>Major bugfixes:</strong></p>
+<p>Changes in version 0.2.1.29 - 2011-01-15
+<strong>Major bugfixes (security):</strong></p>
 
 <ul>
-<li>Resolve an incompatibility with openssl 0.9.8p and openssl 1.0.0b:
-No longer set the tlsext_host_name extension on server SSL objects;
-but continue to set it on client SSL objects. Our goal in setting
-it was to imitate a browser, not a vhosting server. Fixes bug 2204;
-bugfix on 0.2.1.1-alpha.</li>
+<li>Fix a heap overflow bug where an adversary could cause heap
+corruption. This bug probably allows remote code execution
+attacks. Reported by &quot;debuger&quot;. Fixes CVE-2011-0427. Bugfix on
+0.1.2.10-rc.</li>
+<li>Prevent a denial-of-service attack by disallowing any
+zlib-compressed data whose compression factor is implausibly
+high. Fixes part of bug 2324; reported by &quot;doorss&quot;.</li>
+<li>Zero out a few more keys in memory before freeing them. Fixes
+bug 2384 and part of bug 2385. These key instances found by
+&quot;cypherpunks&quot;, based on Andrew Case&#39;s report about being able
+to find sensitive data in Tor&#39;s memory space if you have enough
+permissions. Bugfix on 0.0.2pre9.</li>
 </ul>
 
-<p><strong>Minor bugfixes:</strong></p>
+<p><strong>Major bugfixes (crashes):</strong></p>
 
 <ul>
-<li>Try harder not to exceed the maximum length of 50 KB when writing
-statistics to extra-info descriptors. This bug was triggered by very
-fast relays reporting exit-port, entry, and dirreq statistics.
-Reported by Olaf Selke. Bugfix on 0.2.2.1-alpha. Fixes bug 2183.</li>
-<li>Publish a router descriptor even if generating an extra-info
-descriptor fails. Previously we would not publish a router
-descriptor without an extra-info descriptor; this can cause fast
-exit relays collecting exit-port statistics to drop from the
-consensus. Bugfix on 0.1.2.9-rc; fixes bug 2195.</li>
+<li>Prevent calls to Libevent from inside Libevent log handlers.
+This had potential to cause a nasty set of crashes, especially
+if running Libevent with debug logging enabled, and running
+Tor with a controller watching for low-severity log messages.
+Bugfix on 0.1.0.2-rc. Fixes bug 2190.</li>
+<li>Add a check for SIZE_T_MAX to tor_realloc() to try to avoid
+underflow errors there too. Fixes the other part of bug 2324.</li>
+<li>Fix a bug where we would assert if we ever had a
+cached-descriptors.new file (or another file read directly into
+memory) of exactly SIZE_T_CEILING bytes. Fixes bug 2326; bugfix
+on 0.2.1.25. Found by doorss.</li>
+<li>Fix some potential asserts and parsing issues with grossly
+malformed router caches. Fixes bug 2352; bugfix on Tor 0.2.1.27.
+Found by doorss.</li>
 </ul>
 
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-02127-released">Tor 0.2.1.27 is released.</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">bug fixes</a>
-              
-                <a class="post-category post-category-js" href="#">directory authorities</a>
-              
-                <a class="post-category post-category-js" href="#">minor features</a>
-              
-                <a class="post-category post-category-js" href="#">openssl fixes</a>
-              
-                <a class="post-category post-category-js" href="#">stable release</a>
-               |
-              26 Nov 2010
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Tor 0.2.1.27 makes relays work with OpenSSL 0.9.8p and 1.0.0.b --yet another OpenSSL security patch broke its compatibility with Tor. We also took this opportunity to fix several crash bugs, integrate a new directory authority, and update the bundled GeoIP database.</p>
-
-<p>If you operate a relay, please upgrade.</p>
-
-<p><a href="https://www.torproject.org/download/download" title="https://www.torproject.org/download/download">https://www.torproject.org/download/download</a></p>
-
-<p>The original release announcement is at
- <a href="http://archives.seul.org/or/announce/Nov-2010/msg00000.html" title="http://archives.seul.org/or/announce/Nov-2010/msg00000.html">http://archives.seul.org/or/announce/Nov-2010/msg00000.html</a></p>
-
-<p>Changes in version 0.2.1.27 - 2010-11-23
-<strong>Major bugfixes:</strong></p>
+<p><strong>Minor bugfixes (other):</strong></p>
 
 <ul>
-<li>Resolve an incompatibility with OpenSSL 0.9.8p and OpenSSL 1.0.0b: No longer set the tlsext_host_name extension on server SSL objects; but continue to set it on client SSL objects. Our goal in setting
-it was to imitate a browser, not a vhosting server. Fixes bug 2204; bugfix on 0.2.1.1-alpha.</li>
-<li>Do not log messages to the controller while shrinking buffer freelists. Doing so would sometimes make the controller connection try to allocate a buffer chunk, which would mess up the internals
-of the freelist and cause an assertion failure. Fixes bug 1125; fixed by Robert Ransom. Bugfix on 0.2.0.16-alpha.</li>
-<li>Learn our external IP address when we&#39;re a relay or bridge, even if we set PublishServerDescriptor to 0. Bugfix on 0.2.0.3-alpha,
-where we introduced bridge relays that don&#39;t need to publish to be useful. Fixes bug 2050.</li>
-<li>Do even more to reject (and not just ignore) annotations on router descriptors received anywhere but from the cache. Previously
-we would ignore such annotations at first, but cache them to disk anyway. Bugfix on 0.2.0.8-alpha. Found by piebeer.</li>
-<li>When you&#39;re using bridges and your network goes away and your bridges get marked as down, recover when you attempt a new socks
-connection (if the network is back), rather than waiting up to an hour to try fetching new descriptors for your bridges. Bugfix on
-0.2.0.3-alpha; fixes bug 1981.</li>
-</ul>
-
-<p><strong>Major features:</strong></p>
-
-<ul>
-<li>Move to the November 2010 Maxmind GeoLite country db (rather than the June 2009 ip-to-country GeoIP db) for our statistics that
-count how many users relays are seeing from each country. Now we&#39;ll have more accurate data, especially for many African countries.</li>
-</ul>
-
-<p><strong>New directory authorities:</strong></p>
-
-<ul>
-<li>Set up maatuska (run by Linus Nordberg) as the eighth v3 directory authority.</li>
-</ul>
-
-<p><strong>Minor bugfixes:</strong></p>
-
-<ul>
-<li>Fix an assertion failure that could occur in directory caches or bridge users when using a very short voting interval on a testing network. Diagnosed by Robert Hogan. Fixes bug 1141; bugfix on 0.2.0.8-alpha.</li>
-<li>Enforce multiplicity rules when parsing annotations. Bugfix on 0.2.0.8-alpha. Found by piebeer.</li>
-<li>Allow handshaking OR connections to take a full KeepalivePeriod seconds to handshake. Previously, we would close them after IDLE_OR_CONN_TIMEOUT (180) seconds, the same timeout as if they were open. Bugfix on 0.2.1.26; fixes bug 1840. Thanks to mingw-san for analysis help.</li>
-<li>When building with --enable-gcc-warnings on OpenBSD, disable warnings in system headers. This makes --enable-gcc-warnings pass on OpenBSD 4.8.</li>
+<li>Fix a bug with handling misformed replies to reverse DNS lookup
+requests in DNSPort. Bugfix on Tor 0.2.0.1-alpha. Related to a
+bug reported by doorss.</li>
+<li>Fix compilation on mingw when a pthreads compatibility library
+has been installed. (We don&#39;t want to use it, so we shouldn&#39;t
+be including pthread.h.) Fixes bug 2313; bugfix on 0.1.0.1-rc.</li>
+<li>Fix a bug where we would declare that we had run out of virtual
+addresses when the address space was only half-exhausted. Bugfix
+on 0.1.2.1-alpha.</li>
+<li>Correctly handle the case where AutomapHostsOnResolve is set but
+no virtual addresses are available. Fixes bug 2328; bugfix on
+0.1.2.1-alpha. Bug found by doorss.</li>
+<li>Correctly handle wrapping around when we run out of virtual
+address space. Found by cypherpunks, bugfix on 0.2.0.5-alpha.</li>
 </ul>
 
 <p><strong>Minor features:</strong></p>
 
 <ul>
-<li>Exit nodes didn&#39;t recognize EHOSTUNREACH as a plausible error code, and so sent back END_STREAM_REASON_MISC. Clients now recognize a new stream ending reason for this case: END_STREAM_REASON_NOROUTE. Servers can start sending this code when enough clients recognize it. Bugfix on 0.1.0.1-rc; fixes part of bug 1793.</li>
-<li>Build correctly on mingw with more recent versions of OpenSSL 0.9.8. Patch from mingw-san.</li>
+<li>Update to the January 1 2011 Maxmind GeoLite Country database.</li>
+<li>Introduce output size checks on all of our decryption functions.</li>
 </ul>
 
-<p><strong>Removed files:</strong></p>
+<p><strong>Build changes:</strong></p>
 
 <ul>
-<li>Remove the old debian/ directory from the main Tor distribution. The official Tor-for-debian git repository lives at the URL <a href="https://git.torproject.org/debian/tor.git" title="https://git.torproject.org/debian/tor.git">https://git.torproject.org/debian/tor.git</a></li>
-<li>Stop shipping the old doc/website/ directory in the tarball. We changed the website format in late 2010, and what we shipped in 0.2.1.26 really wasn&#39;t that useful anyway.</li>
+<li>Tor does not build packages correctly with Automake 1.6 and earlier;
+added a check to Makefile.am to make sure that we&#39;re building with
+Automake 1.7 or later.</li>
+<li>The 0.2.1.28 tarball was missing src/common/OpenBSD_malloc_Linux.c
+because we built it with a too-old version of automake. Thus that
+release broke ./configure --enable-openbsd-malloc, which is popular
+among really fast exit relays on Linux.</li>
 </ul>
 
         </div>
@@ -228,174 +156,256 @@ count how many users relays are seeing from each country. Now we&#39;ll have mor
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundle-packages">New Tor Browser Bundle packages</a></h2>
+          <h2 class="post-title"> <a href="/blog/lots-new-tor-packages">Lots of new Tor packages</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">erinn</a> under
               
                 <a class="post-category post-category-js" href="#">alpha releases</a>
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
+                <a class="post-category post-category-js" href="#">apple osx love</a>
+              
+                <a class="post-category post-category-js" href="#">ppc</a>
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+              
+                <a class="post-category post-category-js" href="#">security updates</a>
               
                 <a class="post-category post-category-js" href="#">stable releases</a>
               
                 <a class="post-category post-category-js" href="#">tbb</a>
               
+                <a class="post-category post-category-js" href="#">tor</a>
+              
                 <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">torbrowser</a>
+              
+                <a class="post-category post-category-js" href="#">updated packages</a>
                |
-              26 Nov 2010
+              17 Jan 2011
           </p>
         </header>
         <div class="post-description">
-          <p>There are new browser bundles out with the updated Tor versions (0.2.2.19-alpha and 0.2.1.27) that work with the latest OpenSSL.</p>
+          <p>A new Tor stable ( <a href="https://www.torproject.org/dist/tor-0.2.1.29.tar.gz">0.2.1.29</a>) ( <a href="https://www.torproject.org/dist/tor-0.2.1.29.tar.gz.asc">sig</a>) and Tor alpha ( <a href="https://www.torproject.org/dist/tor-0.2.2.21-alpha.tar.gz">0.2.2.21-alpha</a>) ( <a href="https://www.torproject.org/dist/tor-0.2.2.21-alpha.tar.gz.asc">sig</a>) have been released and all users are strongly encouraged to upgrade.</p>
 
-<p><strong>Windows Tor Browser Bundles</strong>
-There were some controversial changes recently made to the Windows bundle, and for those I apologize. I have removed BetterPrivacy and NoScript from them pending further testing. The whole changelog:</p>
-
-<p><strong>1.3.13: Released 2010-11-25</strong></p>
+<p>The following packages have been released:</p>
 
 <ul>
-<li>update Tor to 0.2.1.27</li>
-<li>update Pidgin to 2.7.5</li>
-<li>update OpenSSL to 0.9.8p</li>
-<li>fix Firefox extension install path so extensions show in the installed add-ons list</li>
-<li>disable Firefox&#39;s ability to search the Windows registry path for system-wide
-plugins and extensions (closes: <a href="https://trac.torproject.org/projects/tor/ticket/2118">#2118</a>)</li>
-<li>remove NoScript and BetterPrivacy from stable bundle until they receive more
-testing</li>
+<li>Windows expert packages (stable &amp; alpha)</li>
+<li>Vidalia bundles (stable &amp; alpha for Windows, and OS X ppc &amp; x86)</li>
+<li>Tor Browser Bundles for Windows, Linux, and OS X (see below for other updates)</li>
+<li>RPM packages (stable &amp; alpha)</li>
+<li>Debian and Ubuntu packages (stable &amp; alpha)</li>
 </ul>
 
-<p><strong>OS X and Linux bundles</strong></p>
+<p>You can download all of these from <a href="https://www.torproject.org/download">our download page</a> or package repositories.</p>
 
-<p><strong>OS X</strong>
-<strong>1.0.6: Released 2020-11-24</strong></p>
+<p>If you encounter any problems, please file a bug on our <a href="https://trac.torproject.org/">bug tracker</a>.</p>
+
+<p><strong>Tor Browser Bundles</strong></p>
+
+<p><strong>Windows Bundles</strong>
+<strong>1.3.17: Released 2011-01-16</strong></p>
 
 <ul>
-<li>Update Tor to 0.2.2.19-alpha</li>
+<li>Update Tor to 0.2.1.29</li>
 </ul>
 
-<p><strong>Linux</strong>
-<strong>1.0.17: Released 2010-11-24</strong></p>
+<p><strong>Linux Bundles</strong>
+<strong>1.1.3: Released 2011-01-16</strong></p>
 
 <ul>
-<li>Update Tor to 0.2.2.19-alpha</li>
+<li>Update Tor to 0.2.2.21-alpha</li>
+<li>Update NoScript to 2.0.9.3</li>
 </ul>
 
-<p>Please report bugs on <a href="https://trac.torproject.org/">our bug tracker</a>.</p>
+<p><strong>OS X Bundles</strong>
+<strong>1.0.10: Released 2011-01-16</strong></p>
+
+<ul>
+<li>Update Tor to 0.2.2.21-alpha</li>
+<li>Update NoScript to 2.0.9.3</li>
+</ul>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-02218-alpha-available">Tor 0.2.2.18-alpha available</a></h2>
+          <h2 class="post-title"> <a href="/blog/update-tor-usage-tunisia">Update on Tor usage in Tunisia</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">alpha release</a>
+                <a class="post-category post-category-js" href="#">cautious optimism</a>
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
+                <a class="post-category post-category-js" href="#">internet censorship</a>
               
-                <a class="post-category post-category-js" href="#">feature enhancements</a>
+                <a class="post-category post-category-js" href="#">tunisia</a>
+              
+                <a class="post-category post-category-js" href="#">users</a>
                |
-              17 Nov 2010
+              14 Jan 2011
           </p>
         </header>
         <div class="post-description">
-          <p>Tor 0.2.2.18-alpha fixes several crash bugs that have been nagging us lately, makes unpublished bridge relays able to detect their IP address, and fixes a wide variety of other bugs to get us much closer to a stable release.</p>
+          <p>It has been reported that the Tunisian President has <a href="http://english.aljazeera.net/news/africa/2011/01/2011113192110570350.html">stopped the Internet censorship</a> in the country. We have confirmation from a few Tunisians that Tor works from within the country, without requiring bridges. And that Youtube and some other sites are no longer censored. There is cautious optimism that this is real, however many continue to use Tor to protect their Internet traffic as a safeguard.</p>
 
-<p><a href="https://www.torproject.org/download/download" title="https://www.torproject.org/download/download">https://www.torproject.org/download/download</a></p>
+<p>Two graphs show the current state of Tor usage in Tunisia:</p>
 
-<p>Packages will be appearing over the next few days. The original version of this announcement is at <a href="http://archives.seul.org/or/talk/Nov-2010/msg00082.html" title="http://archives.seul.org/or/talk/Nov-2010/msg00082.html">http://archives.seul.org/or/talk/Nov-2010/msg00082.html</a>.</p>
+<p><img src="https://blog.torproject.org/files/bridge-users-2011-01-14-tn-2010-10-16.png" alt=""></p>
 
-<p>Changes in version 0.2.2.18-alpha - 2010-11-16
- o Major bugfixes:
- - Do even more to reject (and not just ignore) annotations on
- router descriptors received anywhere but from the cache. Previously
- we would ignore such annotations at first, but cache them to disk
- anyway. Bugfix on 0.2.0.8-alpha. Found by piebeer.
- - Do not log messages to the controller while shrinking buffer
- freelists. Doing so would sometimes make the controller connection
- try to allocate a buffer chunk, which would mess up the internals
- of the freelist and cause an assertion failure. Fixes bug 1125;
- fixed by Robert Ransom. Bugfix on 0.2.0.16-alpha.
- - Learn our external IP address when we&#39;re a relay or bridge, even if
- we set PublishServerDescriptor to 0. Bugfix on 0.2.0.3-alpha,
- where we introduced bridge relays that don&#39;t need to publish to
- be useful. Fixes bug 2050.
- - Maintain separate TLS contexts and certificates for incoming and
- outgoing connections in bridge relays. Previously we would use the
- same TLS contexts and certs for incoming and outgoing connections.
- Bugfix on 0.2.0.3-alpha; addresses bug 988.
- - Maintain separate identity keys for incoming and outgoing TLS
- contexts in bridge relays. Previously we would use the same
- identity keys for incoming and outgoing TLS contexts. Bugfix on
- 0.2.0.3-alpha; addresses the other half of bug 988.
- - Avoid an assertion failure when we as an authority receive a
- duplicate upload of a router descriptor that we already have,
- but which we previously considered an obsolete descriptor.
- Fixes another case of bug 1776. Bugfix on 0.2.2.16-alpha.
- - Avoid a crash bug triggered by looking at a dangling pointer while
- setting the network status consensus. Found by Robert Ransom.
- Bugfix on 0.2.2.17-alpha. Fixes bug 2097.
- - Fix a logic error where servers that _didn&#39;t_ act as exits would
- try to keep their server lists more aggressively up to date than
- exits, when it was supposed to be the other way around. Bugfix
- on 0.2.2.17-alpha.</p>
+<p><img src="https://blog.torproject.org/files/direct-users-2011-01-14-tn-2010-10-16.png" alt=""></p>
 
-<p>o Minor bugfixes (on Tor 0.2.1.x and earlier):
- - When we&#39;re trying to guess whether we know our IP address as
- a relay, we would log various ways that we failed to guess
- our address, but never log that we ended up guessing it
- successfully. Now add a log line to help confused and anxious
- relay operators. Bugfix on 0.1.2.1-alpha; fixes bug 1534.
- - Bring the logic that gathers routerinfos and assesses the
- acceptability of circuits into line. This prevents a Tor OP from
- getting locked in a cycle of choosing its local OR as an exit for a
- path (due to a .exit request) and then rejecting the circuit because
- its OR is not listed yet. It also prevents Tor clients from using an
- OR running in the same instance as an exit (due to a .exit request)
- if the OR does not meet the same requirements expected of an OR
- running elsewhere. Fixes bug 1859; bugfix on 0.1.0.1-rc.
- - Correctly describe errors that occur when generating a TLS object.
- Previously we would attribute them to a failure while generating a
- TLS context. Patch by Robert Ransom. Bugfix on 0.1.0.4-rc; fixes
- bug 1994.
- - Enforce multiplicity rules when parsing annotations. Bugfix on
- 0.2.0.8-alpha. Found by piebeer.
- - Fix warnings that newer versions of autoconf produced during
- ./autogen.sh. These warnings appear to be harmless in our case,
- but they were extremely verbose. Fixes bug 2020.</p>
+<p><thead><tr>
+<th>Attachment</th>
+<th>Size</th> </tr></thead><tbody>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/bridge-users-2011-01-14-tn-2010-10-16.png">bridge-users-2011-01-14-tn-2010-10-16.png</a></td>
+<td>9.28 KB</td> </tr>
+ <tr class="even">
+<td><a href="https://blog.torproject.org/files/direct-users-2011-01-14-tn-2010-10-16.png">direct-users-2011-01-14-tn-2010-10-16.png</a></td>
+<td>13.45 KB</td> </tr>
+</tbody></p>
 
-<p>o Minor bugfixes (on Tor 0.2.2.x):
- - Enable protection of small arrays whenever we build with gcc
- hardening features, not only when also building with warnings
- enabled. Fixes bug 2031; bugfix on 0.2.2.14-alpha. Reported by keb.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/december-2010-progress-report">December 2010 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">new packages</a>
+              
+                <a class="post-category post-category-js" href="#">new releases</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">scalability</a>
+               |
+              11 Jan 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><strong>New Releases</strong></p>
 
-<p>o Minor features:
- - Make hidden services work better in private Tor networks by not
- requiring any uptime to join the hidden service descriptor
- DHT. Implements ticket 2088.
- - Rate-limit the &quot;your application is giving Tor only an IP address&quot;
- warning. Addresses bug 2000; bugfix on 0.0.8pre2.
- - When AllowSingleHopExits is set, print a warning to explain to the
- relay operator why most clients are avoiding her relay.
- - Update to the November 1 2010 Maxmind GeoLite Country database.</p>
+<ul>
+<li>On December 14, we released updated Tor Browser Bundles for Windows, OSX, and
+Linux, <a href="https://blog.torproject.org/blog/new-tor-browser-bundle-packages-0" title="https://blog.torproject.org/blog/new-tor-browser-bundle-packages-0">https://blog.torproject.org/blog/new-tor-browser-bundle-packages-0</a></li>
+<li>On December 17th, we released an updated -stable version of Tor, 0.2.1.28.
+Tor 0.2.1.28 does some code cleanup to reduce the risk of remotely exploitable
+bugs. Thanks to Willem Pinckaers for notifying us of the issue. The Common
+Vulnerabilities and Exposures project has assigned CVE-2010-1676 to this issue.
+We also took this opportunity to change the IP address for one of our directory
+authorities, and to update the geoip database we ship.
+<a href="https://blog.torproject.org/blog/tor-02128-released-security-patches" title="https://blog.torproject.org/blog/tor-02128-released-security-patches">https://blog.torproject.org/blog/tor-02128-released-security-patches</a></li>
+<li>On December 17th, we released an updated -alpha version of Tor,
+0.2.2.20-alpha. Tor 0.2.2.20-alpha does some code cleanup to reduce the risk of remotely exploitable bugs. We also fix a variety of other significant bugs, change the IP address for one of our directory authorities, and update the minimum version
+that Tor relays must run to join the network. <a href="https://blog.torproject.org/blog/tor-02220-alpha-out-security-patches" title="https://blog.torproject.org/blog/tor-02220-alpha-out-security-patches">https://blog.torproject.org/blog/tor-02220-alpha-out-security-patches</a></li>
+</ul>
 
-<p>o Code simplifications and refactoring:
- - When we fixed bug 1038 we had to put in a restriction not to send
- RELAY_EARLY cells on rend circuits. This was necessary as long
- as relays using Tor 0.2.1.3-alpha through 0.2.1.18-alpha were
- active. Now remove this obsolete check. Resolves bug 2081.
- - Some options used different conventions for uppercasing of acronyms
- when comparing manpage and source. Fix those in favor of the
- manpage, as it makes sense to capitalize acronyms.
- - Remove the torrc.complete file. It hasn&#39;t been kept up to date
- and users will have better luck checking out the manpage.
- - Remove the obsolete &quot;NoPublish&quot; option; it has been flagged
- as obsolete and has produced a warning since 0.1.1.18-rc.
- - Remove everything related to building the expert bundle for OS X.
- It has confused many users, doesn&#39;t work right on OS X 10.6,
- and is hard to get rid of once installed. Resolves bug 1274.</p>
+<p><strong>Enhancements that make Tor a better tool for users in censored
+countries.</strong></p>
+
+<ul>
+<li>Mike spent the past month and a half primarily working on preparing
+Torbutton for Firefox 4. This was a rather difficult task, as a lot has changed
+in this release, and the Javascript debugger doesn&#39;t yet support Firefox 4. The
+new mechanism works just fine for replacing XPCOM components. He also took the
+opportunity to clean up the code a bit. Firefox 3.5 and Firefox 4 both added
+some new APIs that make our job easier. We no longer rely so heavily on
+reimplementing pieces of Firefox using XPCOM re-registration. In fact, the only
+component we still need to hook is the external app launcher, to provide our
+warning message.</li>
+<li>Mike reviewed a proposed Chrome API at: <a href="https://groups.google.com/a/chromium.org/group/chromium-dev/browse_thread/thread/4c318fb01062678a/89a11a7cbaa48d5f" title="https://groups.google.com/a/chromium.org/group/chromium-dev/browse\_thread/thread/4c318fb01062678a/89a11a7cbaa48d5f">https://groups.google.com/a/chromium.org/group/chromium-dev/browse_threa...</a>. The main goal there was to try to steer them away from declarative models and more towards blocking callback APIs that will work better for us. We&#39;ll see if it works.</li>
+</ul>
+
+<p><strong>Blocking Resistance</strong></p>
+
+<p>Steven worked on plans of how to make Tor look more like other protocols, for
+when Tor&#39;s HTTPS-like cloaking is broken or someone blocks Tor along with HTTPS.
+The proposal is to allow Tor bridges to be configured to use one or more plugins
+which offer translation between Tor and obfuscated-Tor. There is now a proposal
+draft here:</p>
+
+<p><a href="https://gitweb.torproject.org/tor.git/blob/HEAD:/doc/spec/proposals/ideas/xxx-pluggable-transport.txt" title="https://gitweb.torproject.org/tor.git/blob/HEAD:/doc/spec/proposals/ideas/xxx-pluggable-transport.txt">https://gitweb.torproject.org/tor.git/blob/HEAD:/doc/spec/proposals/idea...</a>. Steven wrote a first proof-of-concept (albeit not compliant with the proposal), for a HTTP-like protocol, and put the code here: <a href="https://gitweb.torproject.org/sjm217/pluggable-transport.git" title="https://gitweb.torproject.org/sjm217/pluggable-transport.git">https://gitweb.torproject.org/sjm217/pluggable-transport.git</a>. A screenshot of the a Wireshark dump of Steven successfully accessing check.torproject.org is at: <a href="http://www.cl.cam.ac.uk/%7Esjm217/volatile/pluggable-transport.png" title="http://www.cl.cam.ac.uk/~sjm217/volatile/pluggable-transport.png">http://www.cl.cam.ac.uk/~sjm217/volatile/pluggable-transport.png</a>.</p>
+
+<p><strong>Outreach and Advocacy</strong></p>
+
+<ul>
+<li>Karen spoke at the Reykjavík Digital Freedom Conference, <a href="http://www.fsfi.is/radstefna2010/" title="http://www.fsfi.is/radstefna2010/">http://www.fsfi.is/radstefna2010/</a>.</li>
+<li>Erinn spoke at Moscow State University, <a href="http://www.linux.org.ru/news/security/5624240" title="http://www.linux.org.ru/news/security/5624240">http://www.linux.org.ru/news/security/5624240</a>.</li>
+<li>Many tor people attended the CCC&#39;s 27C3,
+<a href="http://events.ccc.de/congress/2010/wiki/Main_Page" title="http://events.ccc.de/congress/2010/wiki/Main\_Page">http://events.ccc.de/congress/2010/wiki/Main_Page</a>.</li>
+<li>Karen participated in ``Hivos Digital Natives With a Cause?&#39;&#39; Thinkathon,
+<a href="http://www.hivos.net/Hivos-Knowledge-Programme/Themes/Digital-Natives-with-a-Cause/Publications/Digital-Natives-with-a-Cause-Thinkathon-Position-Papers" title="http://www.hivos.net/Hivos-Knowledge-Programme/Themes/Digital-Natives-with-a-Cause/Publications/Digital-Natives-with-a-Cause-Thinkathon-Position-Papers">http://www.hivos.net/Hivos-Knowledge-Programme/Themes/Digital-Natives-wi...</a>.</li>
+</ul>
+
+<p><strong>Bridge relay and bridge authority work</strong>
+Jacob and Runa continue work on making it easy for people to become Tor bridge
+relays by default. The Torouter project is very much an alpha code quality project, but making progress on OpenWRT-based wireless access points and the Excito B3 hardware. The project page is kept up-to-date at <a href="https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/Torouter" title="https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/Torouter">https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/Torouter</a>.</p>
+
+<p><strong>Scalability</strong></p>
+
+<ul>
+<li>Karsten wrote a technical report with an &quot;Overview of Statistical Data in the Tor Network&quot;. The idea is to give this report to interested researchers who want to know what statistical data we have. The report is available at <a href="https://metrics.torproject.org/papers/data-2010-12-29.pdf" title="https://metrics.torproject.org/papers/data-2010-12-29.pdf">https://metrics.torproject.org/papers/data-2010-12-29.pdf</a>.</li>
+<li>Erinn and Sebastian worked on some Thandy &amp; Hudson hacking accomplishing:
+1) Hudson and Windows finally cooperate, so now we can have a Windows autobuilder; and 2) setup a basic instance of Thandy-the secure software update platform.</li>
+<li>Mike did a quick modification to the TorFlow statsplitter.py script to have it output the results from the extra-info descriptors to give us breakdowns on port stats in more readable percentages, to compare the default exit policy of blutmagie to Amunet. It looks like the default exit policy causes you to write a heck of a lot more data, and over half of the read data is misc ports. Using these stats to produce new consensus weights to account for this seems like a good task to do.</li>
+</ul>
+
+<p><strong>Translations</strong>
+We fully migrated from our own Pootle-based translation system to Transifex, <a href="https://www.transifex.net/projects/p/torproject/" title="https://www.transifex.net/projects/p/torproject/">https://www.transifex.net/projects/p/torproject/</a>. A number of translations for various products have already come through for German, Arabic, Burmese, Simplified Chinese, Dutch, Finnish, French, Indonesian, Italian, Norwegian, Persian, Polish, and Romanian.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundle-packages-1">New Tor Browser Bundle packages</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+              
+                <a class="post-category post-category-js" href="#">security updates</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">torbrowser</a>
+              
+                <a class="post-category post-category-js" href="#">updated packages</a>
+               |
+              10 Jan 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Tor Browser Bundles have all been updated with some important security fixes and it is advised that all users upgrade. Geolocation has been disabled and some prefs added as a workaround for <a href="https://trac.torproject.org/projects/tor/ticket/2338">bug 2338</a>. A full list of changes is in <a href="https://gitweb.torproject.org/torbrowser.git/blobdiff/bdf8d711b08935bbd37979270dc30347d1cb2c44..2c895ec8f004427744579f466a73a8ebb576c8ec:/build-scripts/config/prefs.js">the diff</a>.</p>
+
+<p><strong>Linux bundles</strong></p>
+
+<p><strong>1.1.2: Released 2011-01-09</strong></p>
+
+<ul>
+<li>Update Firefox preferences to be more secure and disable geolocation to address #2338</li>
+</ul>
+
+<p><strong>OS X bundle</strong>
+<strong>1.0.9: Released 2011-01-09</strong></p>
+
+<ul>
+<li>Update Firefox preferences to be more secure and disable geolocation to address #2338</li>
+</ul>
+
+<p><strong>Windows bundles</strong>
+<strong>1.3.16: Released 2011-01-09</strong></p>
+
+<ul>
+<li>Update Firefox preferences to be more secure and disable geolocation to address #2338</li>
+</ul>
 
         </div>
       </section>
@@ -406,7 +416,7 @@ testing</li>
       
         <a href="/blog/page86" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 87 of 134</span>
+      <span class="page_number ">Page: 87 of 137</span>
       
         <a href="/blog/page88" class="next">Next</a>
       

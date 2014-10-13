@@ -53,78 +53,213 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/thank-you-our-donors">Thank you to our donors</a></h2>
+          <h2 class="post-title"> <a href="/blog/obfsproxy-next-step-censorship-arms-race">Obfsproxy: the next step in the censorship arms race</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
+              By <a class="post-author" href="#">arma</a> under
               
-                <a class="post-category post-category-js" href="#">anonymity online</a>
+                <a class="post-category post-category-js" href="#">bridges</a>
               
-                <a class="post-category post-category-js" href="#">donor appreciation</a>
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
               
-                <a class="post-category post-category-js" href="#">fighting for the future</a>
+                <a class="post-category post-category-js" href="#">internet censorship</a>
               
-                <a class="post-category post-category-js" href="#">hugs</a>
+                <a class="post-category post-category-js" href="#">iran</a>
               
-                <a class="post-category post-category-js" href="#">thanks</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
+                <a class="post-category post-category-js" href="#">obfsproxy</a>
                |
-              28 Dec 2011
+              16 Feb 2012
           </p>
         </header>
         <div class="post-description">
-          <p>2011 was an exciting year for communications security. Online communications helped to support activists in the Middle East&#39;s &quot;Arab Spring&quot; as they toppled Tunisia&#39;s Ben Ali and Egypt&#39;s Mubarak. Tor&#39;s entry nodes and hidden &quot;bridge&quot; entry points have seen <a href="https://metrics.torproject.org/users.html">increased usage</a> from Iran and Syria, as citizens there seek to communicate securely and evade government censorship. Secretary of State Clinton has made Internet Freedom part of the U.S. State Department&#39;s agenda, while here in the United States, advertisers have developed more sophisticated ways to track browsers&#39; online activity.</p>
+          <p>On Feb 9, Iran <a href="https://blog.torproject.org/blog/iran-partially-blocks-encrypted-network-traffic">started to filter SSL connections</a> on much of their network. Since the Tor protocol uses SSL, that means Tor stopped working too — even Tor with bridges, since bridges use SSL too.</p>
 
-<p>The Tor Project can help, but the censors and snoops are never very far behind. We must keep improving our software and network, researching its security against new threats, and training users to communicate safely. As a non-profit, we depend on your donations of money, relays, and advocacy to keep making progress.</p>
+<p>We&#39;ve been quietly developing Obfsproxy, a new tool to make it easier to change how Tor traffic looks on the network. In late 2011 Iran <a href="http://freehaven.net/%7Ekarsten/volatile/top-3-direct-users-relative-2011-12-13.png">moved into the #2 position</a> in global Tor user count, and several important political events are scheduled in Iran this month and next. This situation seemed like a good time to test our new tool while also helping improve Internet freedom around the world.</p>
 
-<p>In the past year, Tor released new versions to improve security and blocking resistance, <a href="https://blog.torproject.org/blog/iran-blocks-tor-tor-releases-same-day-fix">including a same-day fix</a> to a block detected in Iran. We have enhanced translations in more than a dozen languages including Farsi, Arabic, and Chinese; presented security and anonymity research; and taught security practices to groups including journalists, activists, law enforcement, and survivors of domestic violence.</p>
+<p>We started with a &quot;Tor Obfsproxy Browser Bundle&quot; with two test obfsproxy bridges in it, to verify that it worked in-country. Then we got over 300 volunteers running more obfsproxy bridges (even with our <a href="https://www.torproject.org/projects/obfsproxy-instructions.html.en">complex build instructions</a>!), and picked fourteen fast stable trustworthy obfsproxy bridges for an updated bundle which we put out the morning of Feb 11. We spent the weekend fixing usability, stability, and scalability bugs, and put out <a href="https://www.torproject.org/projects/obfsproxy#download">another bundle</a> on Feb 13 with new versions of Vidalia, Tor, and Obfsproxy.</p>
 
-<p>Please help us keep the Internet open and private for all.</p>
+<p>Thousands of people in Iran successfully used the Obfsproxy Bundle over the weekend:</p>
 
-<p>If you would like to keep up to date with Tor, please visit our donor thank you page at <a href="https://www.torproject.org/donate/thankyou" title="https://www.torproject.org/donate/thankyou">https://www.torproject.org/donate/thankyou</a>.</p>
+<p><img src="https://blog.torproject.org/files/obfsproxy-usage-2012-02-15-4.png" alt="Obfsproxy users in Iran"></p>
 
-<p>Donate securely online at <a href="https://www.torproject.org/donate" title="https://www.torproject.org/donate">https://www.torproject.org/donate</a></p>
+<p>We did some spot-checking and it seems that the new addresses on Feb 14 are mostly different from the new addresses on Feb 13; but I would guess these are mostly returning users with dynamic IP addresses, rather than actually fresh users. More importantly, these people will be thinking about Obfsproxy next time the filter cracks down — and based on current events, that next time won&#39;t be far off. Finally, even though it looks like <a href="https://metrics.torproject.org/users.html?graph=direct-users&amp;start=2012-01-12&amp;end=2012-02-16&amp;country=ir&amp;events=on&amp;dpi=72#direct-users">SSL and Tor are back</a>, I expect Iran will keep throttling SSL traffic as they&#39;ve been doing for months, so the Obfsproxy bundle will still be more fun to use in Iran than the normal Tor bundles.</p>
+
+<p><strong>How does it work?</strong></p>
+
+<p>Deep Packet Inspection (DPI) algorithms classify Internet traffic by protocol. That is, they look at a given traffic flow and decide whether it&#39;s http, ssl, bittorrent, vpn, etc. Governments like Iran, China, and Syria increasingly use these tools (and they often purchase them from Western corporations, but <a href="https://media.torproject.org/video/28c3-4800-en-how_governments_have_tried_to_block_tor_h264.mp4">that&#39;s a different story</a>) to implement their country-wide censorship, either by looking for a given protocol and outright blocking it, or by more subtle mechanisms like squeezing down the bandwidth available to a given protocol to discourage its use.</p>
+
+<p>Obfsproxy&#39;s role is to make it easy for Tor&#39;s traffic flows to look like whatever we like. This way Tor can focus on security and anonymity, and Obfsproxy can focus on appearance. The first thing we decided to try looking like was nothing at all: the &quot;obfs2&quot; module adds an encryption wrapper around Tor&#39;s traffic, using a <a href="https://gitweb.torproject.org/obfsproxy.git/blob/HEAD:/doc/obfs2/protocol-spec.txt">handshake</a> that has no recognizable byte patterns.</p>
+
+<p>It won&#39;t work perfectly. For example, the traffic flows will still have recognizable timing, volume, and packet size characteristics; a good entropy test would show that the handshake looks way more random than most handshakes; and the censors could always press the &quot;only allow protocols my DPI box recognizes&quot; panic button. Each step in this arms race aims to force the censor to a) put more development time and DPI resources into examining flows, and b) risk more false positives, that is, risk blocking innocent users that they didn&#39;t realize they&#39;d be blocking.</p>
+
+<p>This particular new obfuscating layer isn&#39;t the most important feature of Obfsproxy. The best part is that makes it easy to design, deploy, and test other obfuscating layers without messing with the rest of Tor. There&#39;s a lot of research into trying to make traffic flows look like other protocols, so for example we could rewrite the Tor flows as valid http that the DPI engine considers harmless. That problem is harder than it sounds — and it sounds hard. But by making a separate component that only has to worry about how the traffic looks, other researchers can try out different strategies without needing to learn so much about the rest of Tor. This approach will also let us easily <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/180-pluggable-transport.txt">plug in other transports</a> like <a href="https://telex.cc/">Telex</a>, and it will also let <strong><em>other</em></strong> circumvention projects reuse Obfsproxy so they don&#39;t have to reinvent our wheels.</p>
+
+<p><strong>Moving forward</strong></p>
+
+<p>One of the choices we faced was how widely and loudly to mention the bundle. While we think it would be hard and/or risky for attackers to block the Obfsproxy <em>protocol</em>, the bundle included 14 preconfigured bridge addresses, and censors could just plug those addresses into their blacklists. We started the weekend telling people to only tell their close friends, but on Sunday we opted for a broader publicity push inside the activist community for two reasons. First, the new Vidalia release (0.2.17) lets users configure their own obfsproxy bridge addresses, so if the preconfigured addresses get blocked the user can just put in new ones. Second, it became clearer that the blocking would let up in a few days once the immediate political pressure was over, and we decided it was more important to get the word out about Obfsproxy in general so these users will know about it next time.</p>
+
+<p>I should point out that I don&#39;t think they were targeting Tor here. They were targeting popular websites that use SSL, like Gmail and Facebook. Tor was collateral damage because we opted to make Tor traffic look like SSL. That said, we should not forget that we are on their radar: they <a href="https://blog.torproject.org/blog/iran-blocks-tor-tor-releases-same-day-fix">targeted Tor by DPI in September 2011</a>, and the <a href="http://www.nu.nl/internet/2603449/mogelijk-nepsoftware-verspreid-naast-aftappen-gmail.html">Diginotar breakin</a> obtained a fake SSL cert for torproject.org.</p>
+
+<p>The next choice we face is: what other communities should we tell? The bundle works great in China too, where their aggressive censorship has been <a href="https://blog.torproject.org/blog/knock-knock-knockin-bridges-doors">a real hassle</a> for us the past year or so. Some other countries in Asia appear to be newly using DPI to recognize Tor traffic (more on that in an upcoming blog post). We have more development work to do before we can keep up with the China arms race, including teaching obfsproxy bridges to automatically report their addresses to us and teaching our <a href="https://bridges.torproject.org/">bridgedb service</a> to give them out, and we need to answer research questions around <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">getting more bridges</a>, <a href="https://blog.torproject.org/blog/bridge-distribution-strategies">giving them out in smarter ways</a>, <a href="https://blog.torproject.org/blog/research-problem-five-ways-test-bridge-reachability">learning when they get blocked</a>, and <a href="https://blog.torproject.org/blog/research-problems-ten-ways-discover-tor-bridges">making it hard for censors to find them</a>. We also need to spread the word carefully, since the arms race is as much about <a href="https://www.torproject.org/press/presskit/2010-09-16-circumvention-features.pdf">not drawing the attention of the censors</a> as it is about the technology. But the Obfsproxy Bundle works out of the box right now in every censoring country we know of, so we shouldn&#39;t be <em>too</em> quiet about it.</p>
+
+<p>And finally, thanks go to George Kadianakis for taking Obfsproxy on as his <a href="http://code.google.com/soc/">Google Summer of Code 2011</a> <a href="https://lists.torproject.org/pipermail/tor-talk/2011-April/020234.html">Project</a>; to Nick Mathewson for mentoring him and getting the Obfsproxy architecture going in the right direction; to Sebastian Hahn for spending all weekend with me fixing bugs and making packages; and to Karsten Loesing, Erinn Clark, Robert Ransom, Runa Sandvik, Nick, George, and the broader Tor community for stepping up over the weekend to help us take it from &quot;early prototype&quot; to &quot;deployed software in use by 5000+ people&quot; in 72 hours.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-12">New Tor Browser Bundles</a></h2>
+          <h2 class="post-title"> <a href="/blog/kazakhstan-upgrades-censorship-deep-packet-inspection">Kazakhstan upgrades censorship to deep packet inspection</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+              
+                <a class="post-category post-category-js" href="#">deep packet inspection</a>
+              
+                <a class="post-category post-category-js" href="#">dpi</a>
+              
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">kazakhstan</a>
+              
+                <a class="post-category post-category-js" href="#">obfsproxy</a>
+              
+                <a class="post-category post-category-js" href="#">tor blocked</a>
+               |
+              16 Feb 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>In December 2011 we were aware of Kazakhstan <a href="http://www.hrw.org/news/2011/12/17/kazakhstan-investigate-violence-oil-rich-western-region">increasing Internet censorship</a> in response to some unrest and protests in Zhanaozen in the west. The censorship was then deployed around the country, in many cases with the <a href="http://www.washingtontimes.com/news/2011/dec/30/kazakhstan-social-networking-ban-censorship-debate/">full support of the populace</a>. The initial invesitgation showed simple IP address blocking coupled with basic dns censorship. Tor continued to work without incident until this week.</p>
+
+<p>JSC KazTransCom, <a href="http://bgp.he.net/AS35104#_asinfo">AS35104</a>, has deployed or begun testing deep packet inspection (dpi) of all Internet traffic. They specifically target SSL-based protocols for blocking. This includes Tor, IPsec, and PPTP-based technologies, as well as some SSL-based VPNs. Business and private users of these technologies are equally affected.</p>
+
+<p>An example of the censorship, as recorded by volunteers in country, can be found in this <a href="https://media.torproject.org/misc/2012-02-14-kazakhstan-dpi-blocking-of-tor.txt">network flow diagram</a>. Kazakhstan is identifying and blocking the SSL client key exchange during the setup of an SSL connection. <a href="https://metrics.torproject.org/users.html?graph=direct-users&amp;start=2011-11-18&amp;end=2012-02-16&amp;country=kz&amp;events=on&amp;dpi=72#direct-users">This graph</a> shows the effects of this deployment of censorship based on dpi.</p>
+
+<p>Luckily, due to our <a href="https://blog.torproject.org/blog/obfsproxy-next-step-censorship-arms-race">recent experience with Iran</a> we have an answer for people: <a href="https://www.torproject.org/projects/obfsproxy.html.en">use obfsproxy</a>. Obfsproxy continues to work in Kazakhstan, as well as Iran. In fact, it works in any country where dpi is used to censor citizens&#39; access to the Internet.</p>
+
+<p>Thank you to the volunteers for spending their Valentine&#39;s Day collecting and analyzing data.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/vidalia-0217-out">Vidalia 0.2.17 is out!</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">chiiph</a> under
+              
+                <a class="post-category post-category-js" href="#">release</a>
+              
+                <a class="post-category post-category-js" href="#">stable</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia</a>
+               |
+              13 Feb 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Hello everyone, it&#39;s been a while since we had a Vidalia release, so we thought &quot;why not make two?&quot;.</p>
+
+<p>On a more serious comment, the only difference between 0.2.16 and 0.2.17 is what translations are in. Since we changed our translations workflow, we needed to update the availability policy. Basically, every new translation that has more than 90% done gets enabled. If any of the enabled translations drop bellow the 75% done, we take them out.</p>
+
+<p>Remember that if you find any bugs, you can report them at <a href="https://trac.torproject.org/" title="https://trac.torproject.org/">https://trac.torproject.org/</a>.</p>
+
+<p>Here&#39;s what changed since 0.2.15:</p>
+
+<p>0.2.17 11-Feb-2012</p>
+
+<ul>
+<li>Improve the translation policy: do not remove translations that
+are not under 75% done. This re enables Polish and Catalan.</li>
+</ul>
+
+<p>0.2.16 11-Feb-2012</p>
+
+<ul>
+<li>Make the default data directory in windows be located in the Local
+AppData instead of the Roaming one. Fixes bug 2319.</li>
+<li>Do not launch Firefox with every CIRCUIT_ESTABLISHED signal, do it
+only if Firefox isn&#39;t open yet. Fixes bug 2943.</li>
+<li>Uses TAKEOWNERSHIP and __OwningControllerProcess to avoid leaving
+tor running in background if Vidalia exits unexpectedly. Fixes bug
+3463.</li>
+<li>Attempt to remove port.conf file before using it to avoid a race
+condition between tor and Vidalia. Fixes bug 4048.</li>
+<li>Do not allow users to check the &quot;My ISP blocks...&quot; checkbox
+without entering any bridges. Also updates the
+documentation. Fixes bug 4290.</li>
+<li>Check that the authentication-cookie file length is exactly 32
+bytes long. Fixes bug 4304.</li>
+<li>Explicitly disable ControlPort auto. Fixes bug 4379.</li>
+<li>Make the non exit relay option backward compatible with Vidalia &lt;
+0.2.14 so that it doesn&#39;t confuse users. Fixes bug 4642.</li>
+<li>Sets the preferred size for the GUI layout so it doesn&#39;t squeeze
+widges when the size isn&#39;t big enough. Fixes bug 4656.</li>
+<li>Removes the option to have only HTTPProxy since it does not work
+any more as it used to do with older tor versions. Users should
+use HTTP/HTTPSProxy instead. Fixes bug 4724.</li>
+<li>Add a hidden configuration option called SkipVersionCheck so
+systems like Tails can force Vidalia to skip checking tor&#39;s
+version. Resolves ticket 4736.</li>
+<li>When Tor has cached enough information it bootstraps faster than
+what takes Vidalia connect to it, so Vidalia does not see the
+event to update the progress bar. Now Vidalia explicitly asks for
+bootstrap-phase when it connects to Tor, and updates the progress
+to what is actually happening instead of hanging in
+&quot;Authenticating to Tor&quot;. Fixes bug 4827.</li>
+<li>Fix size hints in the main window layout so that tilling window
+managers display the window properly. Thanks to Mike Warren for
+the fix. Fixes bug 4907.</li>
+<li>Vidalia only validates IPv4 bridge lines. IPv6 bridges are now
+available, and there will be pluggable transport bridge lines. So
+the validation is now delegated to Tor through SETCONF.</li>
+<li>Explicitly disable SocksPort auto by setting it to its default
+(9050). Fixes bug 4598.</li>
+<li>Sets __ReloadTorrcOnSIGHUP to 0 if SAVECONF failed, which means
+the user can&#39;t write the torrc file. Fixes bug 4833.</li>
+<li>Enable new translations that are &gt;90% done. The new languages are:
+Bulgarian, Czech, Hebrew, Greek, Indonesian, Korean,
+Dutch. Resolves ticket 5051.</li>
+<li>Remove translations that aren&#39;t ready enough: Japanese, Thai,
+Albanian, Vietnamese, Chinese (Taiwan), Polish, Catalan and
+Burmese.</li>
+</ul>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-14">New Tor Browser Bundles</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">erinn</a> under
               
-                <a class="post-category post-category-js" href="#">firefox</a>
+                <a class="post-category post-category-js" href="#">firefox updates</a>
+              
+                <a class="post-category post-category-js" href="#">libevent</a>
               
                 <a class="post-category post-category-js" href="#">tbb</a>
               
                 <a class="post-category post-category-js" href="#">tor browser</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia</a>
                |
-              23 Dec 2011
+              13 Feb 2012
           </p>
         </header>
         <div class="post-description">
-          <p>The Tor Browser Bundles have been updated to Firefox 9.0.1. Originally they were updated to Firefox 9 and both changelogs are listed below.</p>
+          <p>The Tor Browser Bundles have all been updated to the latest Firefox (10.0.1) as well as a number of other software version updates, such as the latest Vidalia.</p>
 
 <p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
 
-<p><strong>Tor Browser Bundle (2.2.35-3)</strong></p>
+<p><strong>Tor Browser Bundle (2.2.35-6)</strong></p>
 
 <ul>
-<li>Update Firefox to 9.0.1</li>
-</ul>
-
-<p><strong>Tor Browser Bundle (2.2.35-2)</strong></p>
-
-<ul>
-<li>Update Firefox to 9.0</li>
-<li>Update Torbutton to 1.4.5.1</li>
-<li>Update Noscript to 2.2.4</li>
-<li><p>New Firefox patches</p>
-
-<ul>
-<li>Provide client values only to CSS Media Queries and disable several Mozilla extensions that seem fingerprintable</li>
-</ul></li>
+<li>Update Firefox to 10.0.1</li>
+<li>Update Vidalia to 0.2.17</li>
+<li>Update Libevent to 2.0.17-stable</li>
+<li>Update NoScript to 2.3</li>
 </ul>
 
         </div>
@@ -132,152 +267,29 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/temporary-website-outagesare-fixed">Temporary Website Outages....are fixed</a></h2>
+          <h2 class="post-title"> <a href="/blog/january-2012-progress-report">January 2012 Progress Report</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">check</a>
+                <a class="post-category post-category-js" href="#">bridge strategies</a>
               
-                <a class="post-category post-category-js" href="#">gitweb</a>
+                <a class="post-category post-category-js" href="#">metrics</a>
               
-                <a class="post-category post-category-js" href="#">godzilla wins</a>
+                <a class="post-category post-category-js" href="#">progress report</a>
               
-                <a class="post-category post-category-js" href="#">hosting provider attacked</a>
+                <a class="post-category post-category-js" href="#">tails releases</a>
               
-                <a class="post-category post-category-js" href="#">no love for us today</a>
-              
-                <a class="post-category post-category-js" href="#">svn</a>
-              
-                <a class="post-category post-category-js" href="#">trac</a>
-              
-                <a class="post-category post-category-js" href="#">websites down</a>
-              
-                <a class="post-category post-category-js" href="#">www</a>
+                <a class="post-category post-category-js" href="#">tor releases</a>
                |
-              21 Dec 2011
+              12 Feb 2012
           </p>
         </header>
         <div class="post-description">
-          <p>Update 2011-12-21 20:06 (GMT-5): everything is back online and operating within acceptable parameters.</p>
+          <p>Our progress report for January 2012 is available now. Highlights include two Tails releases, a summary of support calls for the past six months with actual user stories, a trip to Egypt for the &#39;Change your world&#39; summit, updated metrics codebase, discussion of a new voting method, and lots of translation updates.</p>
 
-<p>As of late last night 20 Dec (GMT-5) our website hosting provider is
-experiencing a sustained attack. The attack is not directed at Tor, but
-someone else on the same network. The effect is that parts of our
-website infrastructure are intermittently unreachable. This includes
-the following domains in torproject.org: www, trac, gitweb, doxygen,
-cloud, svn, and check.</p>
+<p>Available as a pdf with full color graphs, <a href="https://archive.torproject.org/monthly-report-archive/2012-January-Monthly-Report.pdf" title="https://archive.torproject.org/monthly-report-archive/2012-January-Monthly-Report.pdf">https://archive.torproject.org/monthly-report-archive/2012-January-Month...</a></p>
 
-<p>The most visible outage is check.torproject.org. Every Tor Browser
-Bundle user will attempt to reach this url on start up. You are
-currently seeing a browser-generated timeout message as the site is
-unreachable.</p>
-
-<p>We&#39;re working to setup a new instance of check.torproject.org on a
-different machine today.</p>
-
-<p>Originally posted to tor-talk, <a href="https://lists.torproject.org/pipermail/tor-talk/2011-December/022457.html" title="https://lists.torproject.org/pipermail/tor-talk/2011-December/022457.html">https://lists.torproject.org/pipermail/tor-talk/2011-December/022457.htm...</a></p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/announcing-tor-farsi-blog">Announcing the Tor Farsi blog</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">Runa</a> under
-              
-                <a class="post-category post-category-js" href="#">blog</a>
-              
-                <a class="post-category post-category-js" href="#">farsi</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-               |
-              20 Dec 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>We are happy to announce the launch of the <a href="https://fa-blog.torproject.org/">Tor Farsi blog</a>. The site is created in response to the great reception of Tor and circumvention tools amongst Iranian users. The goal of this site is to be a one-stop place to find Tor related material in Farsi.</p>
-
-<p>The Farsi team will translate white papers, summaries of select posts, and important updates relevant to Tor. We want to create a community of Farsi-speaking Tor users and empower them with information about anonymity and privacy on the Internet. We hope this community will spread this information to others to help them with their Internet anonymity and privacy needs.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-02310-alpha-out-security-fix">Tor 0.2.3.10-alpha is out (security fix)</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">alpha releases</a>
-              
-                <a class="post-category post-category-js" href="#">bugfixes</a>
-              
-                <a class="post-category post-category-js" href="#">security critical</a>
-              
-                <a class="post-category post-category-js" href="#">security fixes</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-               |
-              16 Dec 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p><strong>Tor 0.2.3.10-alpha fixes a critical heap-overflow security issue in
- Tor&#39;s buffers code. Absolutely everybody should upgrade.</strong></p>
-
-<p>The bug relied on an incorrect calculation when making data continuous
- in one of our IO buffers, if the first chunk of the buffer was
- misaligned by just the wrong amount. The miscalculation would allow an
- attacker to overflow a piece of heap-allocated memory. To mount this
- attack, the attacker would need to either open a SOCKS connection to
- Tor&#39;s SocksPort (usually restricted to localhost), or target a Tor
- instance configured to make its connections through a SOCKS proxy
- (which Tor does not do by default).</p>
-
-<p>Good security practice requires that all heap-overflow bugs should be
- presumed to be exploitable until proven otherwise, so we are treating
- this as a potential code execution attack. Please upgrade immediately!
- This bug does not affect bufferevents-based builds of Tor. Special
- thanks to &quot;Vektor&quot; for reporting this issue to us!</p>
-
-<p>This release also contains a few minor bugfixes for issues discovered
- in 0.2.3.9-alpha.</p>
-
-<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
-
-<p><strong>Changes in version 0.2.3.10-alpha - 2011-12-16</strong></p>
-
-<p><strong>Major bugfixes</strong></p>
-
-<ul>
-<li>Fix a heap overflow bug that could occur when trying to pull
-data into the first chunk of a buffer, when that chunk had
-already had some data drained from it. Fixes CVE-2011-2778;
-bugfix on 0.2.0.16-alpha. Reported by &quot;Vektor&quot;.</li>
-</ul>
-
-<p><strong>Minor bugfixes</strong></p>
-
-<ul>
-<li>If we can&#39;t attach streams to a rendezvous circuit when we
-finish connecting to a hidden service, clear the rendezvous
-circuit&#39;s stream-isolation state and try to attach streams
-again. Previously, we cleared rendezvous circuits&#39; isolation
-state either too early (if they were freshly built) or not at all
-(if they had been built earlier and were cannibalized). Bugfix on
-0.2.3.3-alpha; fixes bug 4655.</li>
-<li>Fix compilation of the libnatpmp helper on non-Windows. Bugfix on
-0.2.3.9-alpha; fixes bug 4691. Reported by Anthony G. Basile.</li>
-<li>Fix an assertion failure when a relay with accounting enabled
-starts up while dormant. Fixes bug 4702; bugfix on 0.2.3.9-alpha.</li>
-</ul>
-
-<p><strong>Minor features</strong></p>
-
-<ul>
-<li>Update to the December 6 2011 Maxmind GeoLite Country database.</li>
-</ul>
+<p>or as a plain text file for portability and readability, <a href="https://archive.torproject.org/monthly-report-archive/2012-January-Monthly-Report.txt" title="https://archive.torproject.org/monthly-report-archive/2012-January-Monthly-Report.txt">https://archive.torproject.org/monthly-report-archive/2012-January-Month...</a></p>
 
         </div>
       </section>
@@ -288,7 +300,7 @@ starts up while dormant. Fixes bug 4702; bugfix on 0.2.3.9-alpha.</li>
       
         <a href="/blog/page59" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 60 of 134</span>
+      <span class="page_number ">Page: 60 of 137</span>
       
         <a href="/blog/page61" class="next">Next</a>
       

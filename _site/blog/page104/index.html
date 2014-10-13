@@ -53,371 +53,263 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-1210-released">Tor Browser Bundle 1.2.10 Released</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-02122-released">Tor 0.2.1.22 Released</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">bridges</a>
-              
-                <a class="post-category post-category-js" href="#">libevent updates</a>
-              
-                <a class="post-category post-category-js" href="#">openssl fixes</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">vidalia updates</a>
-               |
-              21 Nov 2009
-          </p>
-        </header>
-        <div class="post-description">
-          <p>On November 20, we released an updated Tor Browser Bundle, version 1.2.10, which includes:</p>
-
-<ul>
-<li>updated Vidalia to 0.2.6</li>
-<li>updated Pidgin to 2.6.3</li>
-<li>updated Tor to 0.2.1.20</li>
-<li>updated Firefox to 3.0.15</li>
-<li>updated OpenSSL to 0.9.8l</li>
-<li>updated libevent to 1.4.13</li>
-</ul>
-
-<p>You can download the updated version at <a href="https://www.torproject.org/torbrowser/" title="https://www.torproject.org/torbrowser/">https://www.torproject.org/torbrowser/</a></p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/installing-and-using-tor">Installing and using Tor</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">bridges</a>
-              
-                <a class="post-category post-category-js" href="#">documentation</a>
-              
-                <a class="post-category post-category-js" href="#">freedom house</a>
-              
-                <a class="post-category post-category-js" href="#">installing and using tor</a>
-              
-                <a class="post-category post-category-js" href="#">instructions</a>
-              
-                <a class="post-category post-category-js" href="#">internet freedom</a>
-              
-                <a class="post-category post-category-js" href="#">tinyvid</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">videos</a>
-              
-                <a class="post-category post-category-js" href="#">youtube</a>
-               |
-              20 Nov 2009
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Thanks to Rob at <a href="http://www.freedomhouse.org">Freedom House</a> for putting together some videos about how to get, install, and use Tor, Tor Browser Bundle, and Bridges.</p>
-
-<ul>
-<li>Installing and Using Tor, <a href="http://tinyvid.tv/show/3lejztnthk2tm" title="http://tinyvid.tv/show/3lejztnthk2tm">http://tinyvid.tv/show/3lejztnthk2tm</a></li>
-<li>Installing and Using the Tor Browser Bundle, <a href="http://tinyvid.tv/show/b0e2hzylie8r" title="http://tinyvid.tv/show/b0e2hzylie8r">http://tinyvid.tv/show/b0e2hzylie8r</a></li>
-<li>Installing and Using Bridges with Tor, <a href="http://tinyvid.tv/show/3uiwckrlqynqv" title="http://tinyvid.tv/show/3uiwckrlqynqv">http://tinyvid.tv/show/3uiwckrlqynqv</a></li>
-</ul>
-
-<p>Freedom House has put together other videos on various tools to use to stay secure online at, <a href="http://www.youtube.com/freedom4internet" title="http://www.youtube.com/freedom4internet">http://www.youtube.com/freedom4internet</a>.</p>
-
-<p>Check them out and leave constructive feedback. I&#39;m sure Rob will appreciate help with translating these videos as well.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-02120-released">Tor 0.2.1.20 Released</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">bugfixes</a>
-              
-                <a class="post-category post-category-js" href="#">bundle upgrades</a>
+                <a class="post-category post-category-js" href="#">bug fixes</a>
               
                 <a class="post-category post-category-js" href="#">performance enhancements</a>
               
-                <a class="post-category post-category-js" href="#">vidalia updates</a>
+                <a class="post-category post-category-js" href="#">security critical</a>
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+              
+                <a class="post-category post-category-js" href="#">stable release</a>
                |
-              13 Nov 2009
+              23 Jan 2010
           </p>
         </header>
         <div class="post-description">
-          <p>Tor 0.2.1.20 fixes a crash bug when you&#39;re accessing many hidden services
-at once, prepares for more performance improvements, and fixes a bunch
-of smaller bugs.</p>
+          <p>Tor 0.2.1.22 rotates two of the seven v3 directory authority keys and
+locations, due to a security breach of some of the Torproject servers:
+ <a href="http://archives.seul.org/or/talk/Jan-2010/msg00161.html" title="http://archives.seul.org/or/talk/Jan-2010/msg00161.html">http://archives.seul.org/or/talk/Jan-2010/msg00161.html</a></p>
 
-<p>The Windows and OS X bundles also include a more recent Vidalia, and
-switch from Privoxy to Polipo.</p>
+<p>It also fixes a privacy problem in bridge directory authorities -- it
+would tell you its whole history of bridge descriptors if you make the
+right directory request.</p>
 
-<p>The OS X installers are now drag and drop. It&#39;s best to un-install
-Tor/Vidalia and then install this new bundle, rather than upgrade. If
-you want to upgrade, you&#39;ll need to update the paths for Tor and Polipo
-in the Vidalia Settings window.</p>
+<p>Everybody should upgrade:
+ <a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a></p>
 
-<p><a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a></p>
+<p>Changes in version 0.2.1.22 - 2010-01-19
+ o Directory authority changes:
+ - Rotate keys (both v3 identity and relay identity) for moria1
+ and gabelmoo.</p>
 
-<p>Changes in version 0.2.1.20 - 2009-10-15
- o Major bugfixes:</p>
-
-<ul>
-<li>Send circuit or stream sendme cells when our window has decreased
-by 100 cells, not when it has decreased by 101 cells. Bug uncovered
-by Karsten when testing the &quot;reduce circuit window&quot; performance
-patch. Bugfix on the 54th commit on Tor -- from July 2002,
-before the release of Tor 0.0.0. This is the new winner of the
-oldest-bug prize.
-
-<ul>
-<li>Fix a remotely triggerable memory leak when a consensus document
-contains more than one signature from the same voter. Bugfix on
-0.2.0.3-alpha.</li>
-<li>Avoid segfault in rare cases when finishing an introduction circuit
-as a client and finding out that we don&#39;t have an introduction key
-for it. Fixes bug 1073. Reported by Aaron Swartz.</li>
-</ul></li>
-</ul>
-
-<p>o Major features:</p>
-
-<ul>
-<li>Tor now reads the &quot;circwindow&quot; parameter out of the consensus,
-and uses that value for its circuit package window rather than the
-default of 1000 cells. Begins the implementation of proposal 168.</li>
-</ul>
-
-<p>o New directory authorities:</p>
-
-<ul>
-<li>Set up urras (run by Jacob Appelbaum) as the seventh v3 directory
-authority.
-
-<ul>
-<li>Move moria1 and tonga to alternate IP addresses.</li>
-</ul></li>
-</ul>
-
-<p>o Minor bugfixes:</p>
-
-<ul>
-<li>Fix a signed/unsigned compile warning in 0.2.1.19.
-
-<ul>
-<li>Fix possible segmentation fault on directory authorities. Bugfix on
-0.2.1.14-rc.</li>
-<li>Fix an extremely rare infinite recursion bug that could occur if
-we tried to log a message after shutting down the log subsystem.
-Found by Matt Edman. Bugfix on 0.2.0.16-alpha.</li>
-<li>Fix an obscure bug where hidden services on 64-bit big-endian
-systems might mis-read the timestamp in v3 introduce cells, and
-refuse to connect back to the client. Discovered by &quot;rotor&quot;.
-Bugfix on 0.2.1.6-alpha.</li>
-<li>We were triggering a CLOCK_SKEW controller status event whenever
-we connect via the v2 connection protocol to any relay that has
-a wrong clock. Instead, we should only inform the controller when
-it&#39;s a trusted authority that claims our clock is wrong. Bugfix
-on 0.2.0.20-rc; starts to fix bug 1074. Reported by SwissTorExit.</li>
-<li>We were telling the controller about CHECKING_REACHABILITY and
-REACHABILITY_FAILED status events whenever we launch a testing
-circuit or notice that one has failed. Instead, only tell the
-controller when we want to inform the user of overall success or
-overall failure. Bugfix on 0.1.2.6-alpha. Fixes bug 1075. Reported
-by SwissTorExit.</li>
-<li>Don&#39;t warn when we&#39;re using a circuit that ends with a node
-excluded in ExcludeExitNodes, but the circuit is not used to access
-the outside world. This should help fix bug 1090. Bugfix on
-0.2.1.6-alpha.</li>
-<li>Work around a small memory leak in some versions of OpenSSL that
-stopped the memory used by the hostname TLS extension from being
-freed.</li>
-</ul></li>
-</ul>
-
-<p>o Minor features:</p>
-
-<ul>
-<li>Add a &quot;getinfo status/accepted-server-descriptor&quot; controller
-command, which is the recommended way for controllers to learn
-whether our server descriptor has been successfully received by at
-least on directory authority. Un-recommend good-server-descriptor
-getinfo and status events until we have a better design for them.</li>
-</ul>
+<p>o Major bugfixes:
+ - Stop bridge directory authorities from answering dbg-stability.txt
+ directory queries, which would let people fetch a list of all
+ bridge identities they track. Bugfix on 0.2.1.6-alpha.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/vidalia-026-released">Vidalia 0.2.6 Released</a></h2>
+          <h2 class="post-title"> <a href="/blog/net-freedom-secretary-clinton-and-tor">Net Freedom, Secretary Clinton, and Tor</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
+                <a class="post-category post-category-js" href="#">internet freedom</a>
               
-                <a class="post-category post-category-js" href="#">vidalia release</a>
+                <a class="post-category post-category-js" href="#">secretary clinton</a>
                |
-              12 Nov 2009
+              23 Jan 2010
           </p>
         </header>
         <div class="post-description">
-          <p>On November 2, we released Vidalia 0.2.6. Primarily a bugfix release for OS X issues. The changed items are:</p>
+          <p>I attended the speech given by Secretary Clinton on Jan 21, 2010, <a href="http://www.state.gov/secretary/rm/2010/01/135519.htm" title="http://www.state.gov/secretary/rm/2010/01/135519.htm">http://www.state.gov/secretary/rm/2010/01/135519.htm</a>. Most of it was a rehashing of what many of us already know and believe, but it&#39;s still good to hear the US Govt &quot;gets it&quot; and is trying to promote the openness on which the Internet has thrived. You can watch the full speech at <a href="http://netfreedom.state.gov" title="http://netfreedom.state.gov">http://netfreedom.state.gov</a>. Interestingly, someone got to ask the anonymity question before me,</p>
 
-<ul>
-<li>Remove the erroneous comma in the default vidalia.conf in the
-Mac OS X drag-and-drop bundle, since we now dump whatever the
-user types into a QString rather than parsing it into a
-QStringList.</li>
-<li>Updated the Arabic, Russian and Slovenian translations.</li>
-</ul>
+<blockquote>
+<p>QUESTION: You talked about anonymity on line and how we have to prevent that. But you also talk about censorship by governments. And I’m struck by – having a veil of anonymity in certain situations is actually quite beneficial. So are you looking to strike a balance between that and this emphasis on censorship?</p>
 
-<p>Packages for OS X and Windows can be found at <a href="https://www.torproject.org/vidalia/" title="https://www.torproject.org/vidalia/">https://www.torproject.org/vidalia/</a>.</p>
+<p>SECRETARY CLINTON: Absolutely. I mean, this is one of the challenges we face. On the one hand, anonymity protects the exploitation of children. And on the other hand, anonymity protects the free expression of opposition to repressive governments. Anonymity allows the theft of intellectual property, but anonymity also permits people to come together in settings that gives them some basis for free expression without identifying themselves.</p>
+
+<p>None of this will be easy. I think that’s a fair statement. I think, as I said, we all have varying needs and rights and responsibilities. But I think these overriding principles should be our guiding light. We should err on the side of openness and do everything possible to create that, recognizing, as with any rule or any statement of principle, there are going to be exceptions.</p>
+
+<p>So how we go after this, I think, is now what we’re requesting many of you who are experts in this area to lend your help to us in doing. We need the guidance of technology experts. In my experience, most of them are younger than 40, but not all are younger than 40. And we need the companies that do this, and we need the dissident voices who have actually lived on the front lines so that we can try to work through the best way to make that balance you referred to.</p>
+</blockquote>
+
+<p>It is good that she tries to balance the good versus evil, but believes that &quot;we should err on the side of openness and do everything possible to create that&quot;. I also think she mixes anonymity, anonymous speech, and an open internet as if they were all one. We&#39;re happy to help clarify and explain how Tor and anonymity online can be beneficial.</p>
+
+<p>I never did find the person who asked the question, he at least deserves a Tor sticker. ;)</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/october-2009-progress-report">October 2009 Progress Report</a></h2>
+          <h2 class="post-title"> <a href="/blog/updates-internet-censorship-poland">Updates on Internet Censorship in Poland</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
+                <a class="post-category post-category-js" href="#">internet censorship</a>
               
-                <a class="post-category post-category-js" href="#">enhancements</a>
-              
-                <a class="post-category post-category-js" href="#">progress report</a>
-              
-                <a class="post-category post-category-js" href="#">tor releases</a>
-              
-                <a class="post-category post-category-js" href="#">vidalia releases</a>
+                <a class="post-category post-category-js" href="#">poland</a>
                |
-              12 Nov 2009
+              22 Jan 2010
           </p>
         </header>
         <div class="post-description">
-          <p><strong>New releases, new hires, new funding</strong>
-Christian Fromme joins Tor to work on development and maintenance of the growing number of tools we’ve created over the past year. Christian is a great python hacker with a strong security mindset. He’s going to enhance and maintain the tools such as tor weather, get-tor, bridge database, tor control, tor flow, check.torproject.org, etc. Christian has been a volunteer developer for the past year helping to enhance get-tor, tor weather, and generally helping out with our python coding needs.</p>
+          <p>Recently, the proposal to create a Registry of Banned Websites and Services was approved. More details can be found at</p>
 
-<p>On October 10, we released Tor version 0.2.2.4-alpha. The release notes can be read at <a href="https://blog.torproject.org/blog/tor-0224-alpha-released" title="https://blog.torproject.org/blog/tor-0224-alpha-released">https://blog.torproject.org/blog/tor-0224-alpha-released</a> or below:
-<strong>Major bugfixes:</strong></p>
+<p><a href="http://globalvoicesonline.org/2010/01/21/poland-government-approves-proposal-to-create-registry-of-banned-websites-and-services/" title="http://globalvoicesonline.org/2010/01/21/poland-government-approves-proposal-to-create-registry-of-banned-websites-and-services/">http://globalvoicesonline.org/2010/01/21/poland-government-approves-prop...</a></p>
 
-<ul>
-<li>Fix several more asserts in the circuit build times code, for example one that causes Tor to fail to start once we have accumulated 5000 build times in the state file. Bugfixes on 0.2.2.2-alpha; fixes bug 1108.</li>
-</ul>
+<p>and a letter to the President at: <a href="http://polishlinux.org/poland/polish-internet-users-against-the-censorship-of-the-net/" title="http://polishlinux.org/poland/polish-internet-users-against-the-censorship-of-the-net/">http://polishlinux.org/poland/polish-internet-users-against-the-censorsh...</a></p>
 
-<p><strong>New directory authorities:</strong></p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-project-infrastructure-updates">Tor Project infrastructure updates</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha release</a>
+              
+                <a class="post-category post-category-js" href="#">security updates</a>
+              
+                <a class="post-category post-category-js" href="#">stable release</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              22 Jan 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>You should upgrade to Tor 0.2.1.22 or 0.2.2.7-alpha:
+ <a href="https://www.torproject.org/easy-download.html.en" title="https://www.torproject.org/easy-download.html.en">https://www.torproject.org/easy-download.html.en</a></p>
 
-<ul>
-<li>Move moria1 and Tonga to alternate IP addresses.</li>
-</ul>
+<p>In early January we discovered that two of the seven servers that run directory
+authorities were compromised (moria1 and gabelmoo), along with
+metrics.torproject.org, a new server we&#39;d recently set up to serve
+metrics data and graphs. The three servers have since been reinstalled
+with service migrated to other servers.</p>
 
-<p><strong>Minor features:</strong></p>
+<p>We made fresh identity keys for the two directory authorities, which is
+why you need to upgrade.</p>
 
-<ul>
-<li>Log SSL state transitions at debug level during handshake, and include SSL states in error messages. This may help debug future SSL handshake issues.</li>
-<li>Add a new ”Handshake” log domain for activities that happen during the TLS handshake.</li>
-<li>Revert to the ”June 3 2009” ip-to-country file. The September one seems to have removed most US IP addresses.</li>
-<li>Directory authorities now reject Tor relays with versions less than 0.1.2.14. This step cuts out four relays from the current network, none of which are very big.</li>
-</ul>
+<p>Moria also hosted our git repository and svn repository. We took the
+services offline as soon as we learned of the breach. It appears the
+attackers didn&#39;t realize what they broke into -- just that they had
+found some servers with lots of bandwidth. The attackers set up some ssh
+keys and proceeded to use the three servers for launching other attacks.
+We&#39;ve done some preliminary comparisons, and it looks like git and svn
+were not touched in any way.</p>
 
-<p><strong>Minor bugfixes:</strong></p>
+<p>We&#39;ve been very lucky the past few years regarding security. It still
+seems this breach is unrelated to Tor itself. To be clear, it doesn&#39;t
+seem that anyone specifically attacked our servers to get at Tor. It
+seems we were attacked for the cpu capacity and bandwidth of the servers,
+and the servers just happened to also carry out functions for Tor.</p>
 
-<ul>
-<li>Fix a couple of smaller issues with gathering statistics. Bugfixes on 0.2.2.1-alpha.</li>
-<li>Fix two memory leaks in the error case of circuit build times parse state. Bugfix on 0.2.2.2-alpha.</li>
-<li>Don’t count one-hop circuits when we’re estimating how long it takes circuits to build on average. Otherwise we’ll set our circuit build timeout lower than we should. Bugfix on 0.2.2.2-alpha.</li>
-<li>Directory authorities no longer change their opinion of, or vote on, whether a router is Running, unless they have themselves been online long enough to have some idea. Bugfix on 0.2.0.6-alpha. Fixes bug 1023.</li>
-</ul>
+<p>We&#39;ve tried to address the most common questions below.</p>
 
-<p><strong>Code simplifications and refactoring:</strong></p>
+<p><strong>I read that Tor&#39;s encryption keys were compromised, is this true?</strong></p>
 
-<ul>
-<li>Revise our unit tests to use the ”tinytest” framework, so we can run tests in their own processes, have smarter setup/teardown code, and so on. The unit test code has moved to its own subdirectory, and has been split into multiple modules.</li>
-</ul>
+<p>No. The operating systems were compromised, not tor. The tor source, and running Tor Directory Authorities were left untouched. It appears the
+attackers didn&#39;t realize what they broke into -- just that they had
+found some servers with lots of bandwidth. We&#39;ve generated new Directory Authority keys out of an abundance of caution.</p>
 
-<p>On October 11, we released Tor 0.2.2.5-alpha. The release notes can be read at <a href="https://blog.torproject.org/blog/tor-0225-alpha-released" title="https://blog.torproject.org/blog/tor-0225-alpha-released">https://blog.torproject.org/blog/tor-0225-alpha-released</a> or below:
-<strong>Major bugfixes:</strong></p>
+<p><strong>Does this mean someone could have matched users up to their
+destinations?</strong></p>
 
-<ul>
-<li>Make the tarball compile again. Oops. Bugfix on 0.2.2.4-alpha.</li>
-</ul>
+<p>No. By design, Tor requires a majority of directory authorities (four
+in this case) to generate a consensus; and like other relays in the
+Tor network, directory authorities don&#39;t know enough to match a user
+and traffic or destination.</p>
 
-<p><strong>New directory authorities:</strong></p>
+<p><strong>Does this mean somebody could have changed the Tor source?</strong></p>
 
-<ul>
-<li>Move dizum to an alternate IP address.</li>
-<li>Code simplifications and refactorings</li>
-<li>Numerous changes, bugfixes, and workarounds from Nathan Freitas to help Tor build correctly for Android phones.</li>
-</ul>
+<p>No, we&#39;ve checked the source. It does mean you should upgrade so your
+client knows about all the currently valid directory authorities.</p>
 
-<p>On October 14th we released Vidalia 0.2.5. The release notes can be read at <a href="https://blog.torproject.org/blog/vidalia-025-released" title="https://blog.torproject.org/blog/vidalia-025-released">https://blog.torproject.org/blog/vidalia-025-released</a> or below:</p>
+<p>** Does this mean someone could have learned more about Tor than an
+ordinary user?**</p>
 
-<ul>
-<li>Add support in the Network settings page for configuring the Socks4Proxy and Socks5Proxy* options that were added in Tor 0.2.2.1-alpha. Patch from Christopher Davis.</li>
-<li>Add a ”Automatically distribute my bridge address” checkbox (enabled by default) to the bridge relay settings options. (Ticket #524)</li>
-<li>Add ports 7000 and 7001 to the list of ports excluded by the IRC category in the exit policy configuration tab. (Ticket #517)</li>
-<li>Add a context menu for highlighted event items in the ”Basic” message log view that allows the user to copy the selected item text to the clipboard.</li>
-<li>Maybe fix a time conversion bug that could result in Vidalia displaying the wrong uptime for a relay in the network map. Stop trying to enforce proper quoting and escaping of arguments to be given to the proxy executable (e.g., Polipo). Now the user is on their own for properly formatting the command line used to start the proxy executable. (Ticket #523)</li>
-</ul>
+<p>Since our software and specifications are open, everyone already has
+access to almost everything on these machines... except some old bridge
+descriptors, which we give out only in small batches as entry points for
+blocked clients.</p>
 
-<p><strong>Design, develop, and implement enhancements that make Tor a better tool for users in censored countries.</strong></p>
+<p><strong>Can I trust Tor&#39;s security?</strong></p>
 
-<p>Jacob and Nathan Frietas finished development of Orbot, a tor client and relay with a graphical control interface for the Android mobile operating system. More details can be found at <a href="http://openideals.com/2009/10/22/orbot-proxy/" title="http://openideals.com/2009/10/22/orbot-proxy/">http://openideals.com/2009/10/22/orbot-proxy/</a>.</p>
+<p>We&#39;ve taken steps to fix the weaknesses identified and to harden our
+systems further. Tor has a track record of openness and transparency,
+with its source code and specifications and also with its operations.
+Moreover, we&#39;re disclosing breaches such as this so you can monitor our
+status. You shouldn&#39;t assume those who don&#39;t disclose security breaches
+never have any!</p>
 
-<p>Karsten rewrote the directory archive script that evaluates whether an IP address was a relay at a given point in the past in Python.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/start-tor-legal-support-directory">Start of a Tor Legal Support Directory</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">australia</a>
+              
+                <a class="post-category post-category-js" href="#">austria</a>
+              
+                <a class="post-category post-category-js" href="#">exit relays</a>
+              
+                <a class="post-category post-category-js" href="#">finland</a>
+              
+                <a class="post-category post-category-js" href="#">germany</a>
+              
+                <a class="post-category post-category-js" href="#">legal support</a>
+              
+                <a class="post-category post-category-js" href="#">netherlands</a>
+              
+                <a class="post-category post-category-js" href="#">switzerland</a>
+              
+                <a class="post-category post-category-js" href="#">tor legal support directory</a>
+              
+                <a class="post-category post-category-js" href="#">tor relay operators</a>
+              
+                <a class="post-category post-category-js" href="#">usa</a>
+               |
+              12 Jan 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Over the past few months, a number of exit relay operators have contacted us asking for help with some legal issues encountered while running their relay. While we can&#39;t provide legal advice in all jurisdictions, we can frequently find you a next hop in the legal chain to get you the advice or representation you need. Sometimes this advice is free/pro-bono, other times it is not. It&#39;s up to the legal organization to decide if they can take your case or refer you to someone else.</p>
 
-<p>Started comparing free and commercial GeoIP databases for their accuracy. It would be great if someone else (a student?) would pick up this work and move it forward.</p>
+<p>Rather than keep a secret list of people willing to help, we&#39;re building a public list for operators to contact directly, in their own country. A big thanks to Fred and Gwen at the EFF for helping to start this list and for making introductions. And, of course, a big thanks to the organizations for agreeing to be listed and for offering support to Tor relay operators.</p>
 
-<p><strong>Grow the Tor network and user base. Outreach.</strong></p>
+<p>If you&#39;d like to add your name to this list, please let me know.</p>
 
-<ul>
-<li>Andrew attended the Salzburg Global Seminar SIM Initiative 2020 Vision: Setting a Long-Term Agenda for Global Media Development from October 3 - 8. <a href="http://www.salzburgglobal.org/2009/sim.cfm?nav=news&amp;IDMedia=1" title="http://www.salzburgglobal.org/2009/sim.cfm?nav=news&amp;IDMedia=1">http://www.salzburgglobal.org/2009/sim.cfm?nav=news&amp;IDMedia=1</a>. A quick writeup of the seminar was posted at <a href="https://blog.torproject.org/blog/seminar-salzburg-global" title="https://blog.torproject.org/blog/seminar-salzburg-global">https://blog.torproject.org/blog/seminar-salzburg-global</a>.</li>
-<li>Roger gave a talk at Drexel University, <a href="https://www.cs.drexel.edu/research/colloquia" title="https://www.cs.drexel.edu/research/colloquia">https://www.cs.drexel.edu/research/colloquia</a>.</li>
-<li>Andrew gave a talk about Freedom of Speech, Online Censorship, and Tor at the US Agency for International Development. It was attended by members of US AID, State Department, and National Security Staff from The White House.</li>
-<li>Roger, Jacob, Karsten, and Mike attended the 2009 Google Summer of Code Mentors Summit at Google HQ.</li>
-<li>Andrew gave a talk about Tor and its Privacy by Design at the 2009 Access and Privacy Workshop in Toronto, Canada. <a href="http://www.verney.ca/onap2009/agenda_dynamic.php" title="http://www.verney.ca/onap2009/agenda\_dynamic.php">http://www.verney.ca/onap2009/agenda_dynamic.php</a>.</li>
-<li>Jacob gave a talk at the 25th NorduNet Conference, <a href="http://www.nordu.net/conference/ndn2009web/welcome.html" title="http://www.nordu.net/conference/ndn2009web/welcome.html">http://www.nordu.net/conference/ndn2009web/welcome.html</a>.</li>
-<li>Andrew, Wendy, and others were interviewed for a Tech Review article on Tor being blocked by the Chinese Government for the first time ever, <a href="http://www.technologyreview.com/printer_friendly_article.aspx?id=23736" title="http://www.technologyreview.com/printer\_friendly\_article.aspx?id=23736">http://www.technologyreview.com/printer_friendly_article.aspx?id=23736</a>.</li>
-<li>Karsten attended EMANICS Workshop on Network Security in Bremen, Germany, and gave a 90-minute talk on Tor and my metrics work.</li>
-<li>Karsten and Sebastian attended PET-CON 2009.2 in Regensburg, Germany, and talked about measuring sensitive data in the Tor network.</li>
-<li>Finished paper on ”A Case Study on Measuring Statistical Data in the Tor Anonymity Network” together with Steven and Roger and submitted it to WECSR 2010.</li>
-</ul>
+<p>The current list of legal support organizations by country is:</p>
 
-<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong>
-Testing program updates to Tor Browser Bundle destined for the next release. The multi-protocol instant messaging client we use, Pidgin, includes voip and video chat functionality. Vidalia 0.2.5 inclusion to make the process of acquiring bridge addresses or becoming a bridge easier.</p>
+<p><strong>Finland</strong> :
+Turre Legal
+ <a href="http://www.turre.com/" title="http://www.turre.com/">http://www.turre.com/</a>
+Fax +358985657006
+contact person: Herkko Hietanen
+ <a href="http://www.turre.com/lawyers/" title="http://www.turre.com/lawyers/">http://www.turre.com/lawyers/</a></p>
 
-<p><strong>Bridge relay and bridge authority work.</strong>
-The bridge distribution backend is now far more reliable than it was, and the algorithm has been retuned with design from Nick and Roger. Now the bridgedb code is much more willing to hand out a user’s first few bridges, but it is much harder to get it to hand out a whole bunch of bridges.</p>
+<p><strong>The Netherlands</strong> :
+Bits of Freedom
+ <a href="http://www.bof.nl" title="http://www.bof.nl">http://www.bof.nl</a></p>
 
-<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong>
-Nick rewrote the directory authority backend code to be able to provide multiple flavors of directory info: a new flavor that can be used for low-directory-bandwidth clients, and the existing flavor to support existing clients. This is the authority-side of proposals 158 and 162; once the authorities are migrated to this, we can start rolling out the client-side. Once it’s done, the directory overhead for clients should be dramatically reduced.</p>
+<p><strong>Australia</strong> :
+Electronic Frontier Australia
+ <a href="http://www.efa.org.au/" title="http://www.efa.org.au/">http://www.efa.org.au/</a>
+email: <a href="mailto:email@efa.org.au">email@efa.org.au</a>
+Phone: +61 2 9011 1088
+Fax: +61 2 8002 400</p>
 
-<p><strong>More reliable (e.g. split) download mechanism.</strong>
-Christian rolled out changes to the email auto-responder, get-tor, to better handle emails coming to us in various languages. 50% more emails are being answered correctly since the change.
-Thanks to some open internet activists in India, we have a fine new mirror of the Tor website in country at <a href="http://www.torproject.org.in/" title="http://www.torproject.org.in/">http://www.torproject.org.in/</a>.
-4 new website mirrors joined, 4 existing mirrors left.</p>
+<p><strong>Germany, Switzerland, Austria</strong> :
+Chaos Computer Club
+ <a href="http://www.ccc.de/" title="http://www.ccc.de/">http://www.ccc.de/</a>
+ <a href="mailto:anonymizer@ccc.de">anonymizer@ccc.de</a></p>
 
-<p><strong>Translation work</strong></p>
+<p>Zwiebelfreunde e.V.
+ <a href="http://www.zwiebelfreunde.de/" title="http://www.zwiebelfreunde.de/">http://www.zwiebelfreunde.de/</a>
+ <a href="mailto:support@torservers.net">support@torservers.net</a></p>
 
-<ul>
-<li>6 German updates to the website.</li>
-<li>114 Italian updates to Torbutton.</li>
-<li>17 Italian updates to the website.</li>
-<li>Updated Arabic translation of Torbutton.</li>
-<li>Complete Burmese translation of Torbutton.</li>
-<li>Complete Burmese translation of Torcheck.</li>
-<li>Complete Danish translation of Torcheck.</li>
-<li>Brazilian translation of Torbutton.</li>
-</ul>
+<p><strong>United States</strong> :
+Electronic Frontier Foundation
+ <a href="http://www.eff.org/about/contact" title="http://www.eff.org/about/contact">http://www.eff.org/about/contact</a>
+ <a href="mailto:information@eff.org">information@eff.org</a></p>
+
+<p><strong>Switzerland</strong> :
+ <a href="http://www.privacyfoundation.ch" title="http://www.privacyfoundation.ch">http://www.privacyfoundation.ch</a></p>
 
         </div>
       </section>
@@ -428,7 +320,7 @@ Thanks to some open internet activists in India, we have a fine new mirror of th
       
         <a href="/blog/page103" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 104 of 134</span>
+      <span class="page_number ">Page: 104 of 137</span>
       
         <a href="/blog/page105" class="next">Next</a>
       

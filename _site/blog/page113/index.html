@@ -53,297 +53,235 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-123-and-124-released">Tor Browser Bundle 1.2.3 and 1.2.4 Released</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-128-released">Tor Browser Bundle 1.2.8 released</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
-              
-                <a class="post-category post-category-js" href="#">enhancements</a>
-              
-                <a class="post-category post-category-js" href="#">release candidate</a>
+                <a class="post-category post-category-js" href="#">openssl fixes</a>
               
                 <a class="post-category post-category-js" href="#">tor browser bundle</a>
-               |
-              13 Jul 2009
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Tor Browser Bundle 1.2.3 was released on July 8, 2009. It contains the following changes:</p>
-
-<ul>
-<li>Update Vidalia to 0.1.14</li>
-<li>Update Tor to 0.2.1.17-rc</li>
-<li>Update Pidgin to 2.5.8</li>
-</ul>
-
-<p>TBB 1.2.3 was replaced by 1.2.4 on July 11, 2009 to include:</p>
-
-<ul>
-<li>Include libeay32.dll from OpenSSL 0.9.8k to make QT happy</li>
-<li>Update Vidalia to 0.1.15</li>
-</ul>
-
-<p>TBB 1.2.4 is available at <a href="https://torproject.org/torbrowser" title="https://torproject.org/torbrowser">https://torproject.org/torbrowser</a>.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-02117rc-released">Tor 0.2.1.17-rc released</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">bug fixes</a>
-              
-                <a class="post-category post-category-js" href="#">release candidate</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-               |
-              13 Jul 2009
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Tor 0.2.1.17-rc marks the fourth -- and hopefully last -- release
-candidate for the 0.2.1.x series. It lays the groundwork for further
-client performance improvements, and also fixes a big bug with directory
-authorities that were causing them to assign Guard and Stable flags
-poorly.</p>
-
-<p>The Windows bundles also finally include the geoip database that we
-thought we&#39;d been shipping since 0.2.0.x (oops), and the OS X bundles
-should actually install Torbutton rather than giving you a cryptic
-failure message (oops).</p>
-
-<p>This is a release candidate! That means that we don&#39;t know of any
-remaining show-stopping bugs, and 0.2.1.18 will be the new stable if
-there are no problems. Please test it, and tell us about any problems
-that you find.</p>
-
-<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
-
-<p>Changes in version 0.2.1.17-rc - 2009-07-02
-<strong>Major features:</strong></p>
-
-<ul>
-<li>Clients now use the bandwidth values in the consensus, rather than
-the bandwidth values in each relay descriptor. This approach opens
-the door to more accurate bandwidth estimates once the directory
-authorities start doing active measurements. Implements more of
-proposal 141.</li>
-</ul>
-
-<p><strong>Major bugfixes:</strong></p>
-
-<ul>
-<li>When Tor clients restart after 1-5 days, they discard all their
-cached descriptors as too old, but they still use the cached
-consensus document. This approach is good for robustness, but
-bad for performance: since they don&#39;t know any bandwidths, they
-end up choosing at random rather than weighting their choice by
-speed. Fixed by the above feature of putting bandwidths in the
-consensus. Bugfix on 0.2.0.x.</li>
-<li>Directory authorities were neglecting to mark relays down in their
-internal histories if the relays fall off the routerlist without
-ever being found unreachable. So there were relays in the histories
-that haven&#39;t been seen for eight months, and are listed as being
-up for eight months. This wreaked havoc on the &quot;median wfu&quot;
-and &quot;median mtbf&quot; calculations, in turn making Guard and Stable
-flags very wrong, hurting network performance. Fixes bugs 696 and
-
-<ol>
-<li>Bugfix on 0.2.0.6-alpha.</li>
-</ol></li>
-</ul>
-
-<p><strong>Minor bugfixes:</strong></p>
-
-<ul>
-<li>Serve the DirPortFrontPage page even when we have been approaching
-our quotas recently. Fixes bug 1013; bugfix on 0.2.1.8-alpha.</li>
-<li>The control port would close the connection before flushing long
-replies, such as the network consensus, if a QUIT command was issued
-before the reply had completed. Now, the control port flushes all
-pending replies before closing the connection. Also fixed a spurious
-warning when a QUIT command is issued after a malformed or rejected
-AUTHENTICATE command, but before the connection was closed. Patch
-by Marcus Griep. Bugfix on 0.2.0.x; fixes bugs 1015 and 1016.</li>
-<li>When we can&#39;t find an intro key for a v2 hidden service descriptor,
-fall back to the v0 hidden service descriptor and log a bug message.
-Workaround for bug 1024.</li>
-</ul>
-
-<p><strong>Minor features:</strong></p>
-
-<ul>
-<li>If we&#39;re a relay and we change our IP address, be more verbose
-about the reason that made us change. Should help track down
-further bugs for relays on dynamic IP addresses.</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-02035stable-bundles-updated">Tor 0.2.0.35-stable bundles updated</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">stable release</a>
               
                 <a class="post-category post-category-js" href="#">vidalia release</a>
                |
-              13 Jul 2009
+              20 Aug 2009
           </p>
         </header>
         <div class="post-description">
-          <p>Updated Vidalia-bundle packages with Tor 0.2.0.35 are released. The only thing that&#39;s changed is the update of Vidalia from 0.1.14 to 0.1.15. You can retrieve the updated packages from <a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a></p>
+          <p>Tor Browser Bundle 1.2.8 is released. The big changes are the inclusion of statically linked openssl dlls to resolve a few geoip lookup and functionality issues with Vidalia, and the upgrade to the <a href="//blog.torproject.org/blog/vidalia-022-released">new Vidalia 0.2.2</a>.</p>
+
+<p>Available at <a href="https://torproject.org/torbrowser" title="https://torproject.org/torbrowser">https://torproject.org/torbrowser</a></p>
+
+<p>The full list of updates and fixes:</p>
+
+<ul>
+<li>update Torbutton to 1.2.2</li>
+<li>update Vidalia to 0.2.2</li>
+<li>compile OpenSSL 0.9.8k with Visual C to make dlls</li>
+<li>update Pidgin to 2.6.1</li>
+</ul>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/june-2009-progress-report">June 2009 Progress Report</a></h2>
+          <h2 class="post-title"> <a href="/blog/investigating-http-proxy-performance-tor">Investigating http proxy performance with Tor</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+                <a class="post-category post-category-js" href="#">caching</a>
               
-                <a class="post-category post-category-js" href="#">bugfixes</a>
+                <a class="post-category post-category-js" href="#">faster firefox</a>
               
-                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+                <a class="post-category post-category-js" href="#">faster tor</a>
               
-                <a class="post-category post-category-js" href="#">progress report</a>
+                <a class="post-category post-category-js" href="#">open research</a>
               
-                <a class="post-category post-category-js" href="#">releases</a>
+                <a class="post-category post-category-js" href="#">performance</a>
+              
+                <a class="post-category post-category-js" href="#">polipo</a>
+              
+                <a class="post-category post-category-js" href="#">privoxy</a>
+              
+                <a class="post-category post-category-js" href="#">socks5</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia bundle</a>
                |
-              12 Jul 2009
+              19 Aug 2009
           </p>
         </header>
         <div class="post-description">
-          <p><strong>New releases</strong></p>
+          <p>A while ago there was a thread on <a href="http://archives.seul.org/or/talk/">OR-TALK</a> that devolved into</p>
 
-<p>On June 20th we released Tor 0.2.1.16-rc.
-On June 21st, we released Tor Browser Bundle 1.2.1.
-On June 23rd, we released Tor Browser Bundle 1.2.2.
-On June 24th, we released Tor 0.2.0.35-stable. We expect that this release is the last of the 0.2.0.x -stable series, soon to be replaced with the 0.2.1.x series.
-On June 30th, we released Vidalia 0.1.14.</p>
+<blockquote>
+<p>&quot;why does Tor still ship ancient privoxy?&quot;</p>
+</blockquote>
 
-<p><strong>Censorship circumvention</strong></p>
+<p>and</p>
 
-<p>Packaged rpms for Red Flag Linux version 6. Red Flag Linux is reported to be the new operating system for all Internet cafe&#39;s in China. So far, no one has seen this conversion actually happen, but now we&#39;re ready if it does.</p>
+<blockquote>
+<p>&quot;why are you shipping polipo with the Tor Browser Bundle instead of current privoxy?&quot;</p>
+</blockquote>
 
-<p>Our email autoresponder, gettor , received a number of patches to deal with dkim issues, including finding a dkim bug that prevented yahoo email users from fetching Tor. This bug has been fixed. Additionally, we&#39;ve whitelisted some domains where we
-see we&#39;re having lots of use but dkim isn&#39;t always configured properly. We&#39;ve had thousands of users from China using gettor.</p>
+<p>For those interested, the thread is here, <a href="http://archives.seul.org/or/talk/Jul-2009/msg00063.html" title="http://archives.seul.org/or/talk/Jul-2009/msg00063.html">http://archives.seul.org/or/talk/Jul-2009/msg00063.html</a>.</p>
 
-<p><strong>Outreach/Advocacy</strong></p>
+<p>Scott had a good argument for why we should update the bundles to the latest privoxy, and I agree, we should. But then I started thinking about why we needed a proxy at all. Almost all browsers support socks5 direct, isn&#39;t that faster than a middleman proxy?</p>
 
-<p>Andrew, Roger, and Wendy attended Computers, Freedom, and Privacy 2009 Conference ( <a href="http://www.cfp2009.org" title="http://www.cfp2009.org">http://www.cfp2009.org</a>). Andrew presented a “quicktake” talk on “Who uses Tor?”. Andrew and Roger, along with Paul Syverson, and a North African blogger, hosted a panel on “It Takes A Village To Be Anonymous”. Due to the sensitive situation surrounding the blogger, this panel was not recorded.</p>
+<p>This got me thinking about why polipo is in the TBB, but not the other packages. The TBB &quot;feels faster&quot; when using Tor than using the installed Tor, Vidalia, and Privoxy. However, I couldn&#39;t find any actual testing of performance of polipo vs. privoxy vs. socks5 direct.</p>
 
-<p>Andrew talked with the Committee to Protect Journalists ( <a href="http://cpj.org" title="http://cpj.org">http://cpj.org</a>) about online security and circumvention tools.</p>
+<p>So I did it myself, in a loose manner. I wanted to quantify &quot;feels faster&quot;.</p>
 
-<p>Jillian C. York blogged at KnightPulse about “Average citizens browse anonymously
-”, <a href="http://www.knightpulse.org/blog/09/06/04/average-citizens-browse-anonymously" title="http://www.knightpulse.org/blog/09/06/04/average-citizens-browse-anonymously">http://www.knightpulse.org/blog/09/06/04/average-citizens-browse-anonymo...</a></p>
+<p>The raw data from all the testing is :</p>
 
-<p>Due to Iranian&#39;s usage of Tor during the recent election, the general press/media conducted a few interviews with Andrew:</p>
+<ul>
+<li>Tamper Data as xml,</li>
+<li>proxy config files,</li>
+<li>and results in a spreadsheet.</li>
+</ul>
 
-<ol>
-<li>Computer World, <a href="http://www.computerworld.com/action/article.do?command=viewArticleBasic&amp;articleId=9134471&amp;intsrc=news_ts_head" title="http://www.computerworld.com/action/article.do?command=viewArticleBasic&amp;articleId=9134471&amp;intsrc=news\_ts\_head">http://www.computerworld.com/action/article.do?command=viewArticleBasic&amp;...</a></li>
-<li>Cnet News, <a href="http://news.cnet.com/8301-13578_3-10267287-38.html" title="http://news.cnet.com/8301-13578\_3-10267287-38.html">http://news.cnet.com/8301-13578_3-10267287-38.html</a></li>
-<li>Deutche Welle, <a href="http://www.dw-world.de/dw/article/0,,4400882,00.html" title="http://www.dw-world.de/dw/article/0,,4400882,00.html">http://www.dw-world.de/dw/article/0,,4400882,00.html</a></li>
-<li>Technology Review, <a href="http://www.technologyreview.com/web/22893/" title="http://www.technologyreview.com/web/22893/">http://www.technologyreview.com/web/22893/</a></li>
-<li>Origo, in Hungary, <a href="http://www.origo.hu/techbazis/internet/20090618-a-kiberforradalmarok-fegyverei-eszkozok-anonim-netezeshez.html" title="http://www.origo.hu/techbazis/internet/20090618-a-kiberforradalmarok-fegyverei-eszkozok-anonim-netezeshez.html">http://www.origo.hu/techbazis/internet/20090618-a-kiberforradalmarok-feg...</a></li>
-<li>O&#39;Reilly, <a href="http://radar.oreilly.com/2009/06/tor-and-the-legality-of-runnin.html" title="http://radar.oreilly.com/2009/06/tor-and-the-legality-of-runnin.html">http://radar.oreilly.com/2009/06/tor-and-the-legality-of-runnin.html</a></li>
-<li>Washington Times, <a href="http://www.washingtontimes.com/news/2009/jun/26/protesters-use-navy-technology-to-avoid-censorship/?feat=home_headlines" title="http://www.washingtontimes.com/news/2009/jun/26/protesters-use-navy-technology-to-avoid-censorship/?feat=home\_headlines">http://www.washingtontimes.com/news/2009/jun/26/protesters-use-navy-tech...</a></li>
-<li>Arte TV video interview, the 30-minute video interview can&#39;t be put online, but will be shown to their viewers in late June/early July 2009. <a href="http://www.arte.tv" title="http://www.arte.tv">http://www.arte.tv</a></li>
-<li>EFF, <a href="http://www.eff.org/deeplinks/2009/06/help-protesters-iran-run-tor-relays-bridges" title="http://www.eff.org/deeplinks/2009/06/help-protesters-iran-run-tor-relays-bridges">http://www.eff.org/deeplinks/2009/06/help-protesters-iran-run-tor-relays...</a></li>
-<li>A Houston Radio station did an on-air interview, but didn&#39;t put the interview online.</li>
-<li>A Romanian newspaper did an interview, but didn&#39;t put the story online.</li>
-<li>Public Rado International did a more in-depth interview. They expect it to be on PBS Radio and BBC Radio 4 in early July 2009.</li>
-</ol>
+<p>This is all contained in <a href="http://freehaven.net/%7Ephobos/polipo-v-privoxy.tar.gz" title="http://freehaven.net/~phobos/polipo-v-privoxy.tar.gz">http://freehaven.net/~phobos/polipo-v-privoxy.tar.gz</a> {.asc). There is a README as well. And yes, the ruby script is a quick and dirty hack.</p>
 
-<p>A number of blogs and other media picked up these original interviews and spread the word even further:</p>
+<p>I tested a few scenarios:</p>
 
-<ol>
-<li>Wall Street Journal, <a href="http://blogs.wsj.com/digits/2009/06/18/iranians-using-tor-to-anonymize-web-use/" title="http://blogs.wsj.com/digits/2009/06/18/iranians-using-tor-to-anonymize-web-use/">http://blogs.wsj.com/digits/2009/06/18/iranians-using-tor-to-anonymize-w...</a></li>
-<li>CBS News, <a href="http://www.cbsnews.com/blogs/2009/06/17/politics/politicalhotsheet/entry5094825.shtml" title="http://www.cbsnews.com/blogs/2009/06/17/politics/politicalhotsheet/entry5094825.shtml">http://www.cbsnews.com/blogs/2009/06/17/politics/politicalhotsheet/entry...</a></li>
-<li><a href="http://curtisschweitzer.net/blog/?p=2995" title="http://curtisschweitzer.net/blog/?p=2995">http://curtisschweitzer.net/blog/?p=2995</a></li>
-<li><a href="http://voices.allthingsd.com/20090618/iranians-using-tor-to-anonymize-web-use/" title="http://voices.allthingsd.com/20090618/iranians-using-tor-to-anonymize-web-use/">http://voices.allthingsd.com/20090618/iranians-using-tor-to-anonymize-we...</a></li>
-<li><a href="http://www.dailyfinance.com/2009/06/24/nokia-and-siemens-in-iran-controversy/" title="http://www.dailyfinance.com/2009/06/24/nokia-and-siemens-in-iran-controversy/">http://www.dailyfinance.com/2009/06/24/nokia-and-siemens-in-iran-controv...</a></li>
-<li><a href="http://www.muslimnews.co.uk/news/news.php?article=16360" title="http://www.muslimnews.co.uk/news/news.php?article=16360">http://www.muslimnews.co.uk/news/news.php?article=16360</a></li>
-</ol>
+<p>1) native <a href="http://www.pps.jussieu.fr/%7Ejch/software/polipo/">polipo</a> and <a href="http://www.privoxy.org/">privoxy</a> without using Tor.
+2) polipo and privoxy forwarding to Tor localhost:9050.
+3) firefox socks5 direct to Tor via localhost:9050.</p>
 
-<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong></p>
+<p>The summary of results:</p>
 
-<p>Tor Browser Bundle 1.2.1 and 1.2.2 released in June. Planning a migration of the base operating system for the Incognito LiveCD to switch from Gentoo to an Ubuntu variant. We can always use help in maintaining Incognito.</p>
+<ul>
+<li>Native polipo is 54.5% faster on average than native privoxy. This could be due to polipo&#39;s caching, http 1.1 pipelining, and it can serve bits as fast as they come in from the network. Privoxy needs to load the whole page, scan it, and then send it to the client. Even if privoxy filtering is disabled, it still works the same way.</li>
+<li>Polipo caching shines with Tor usage. Performance is still about 40% faster with polipo than privoxy. Common images are cached, and served from the memory cache in single-digit millisecond ranges. Privoxy needs to wait for Tor to wholly deliver the bits. Caching is faster, this we know already. However, from a user perspective, it&#39;s just faster to load pages.</li>
+<li>socks5 in Firefox 3.5.2 did better than I expected. It was about twice as slow as polipo, but still twice as fast as privoxy. I chalk this up to the tor circuit variability more than anything else.</li>
+<li>I tried testing a click to a second page to see how much polipo caching helps people reading different pages on the same site. It helps, but not as much as I expected. Polipo ranged from slower than privoxy to 40-100% faster. Too much variability to make a real determination.</li>
+</ul>
 
-<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong></p>
+<p>Caveats: Testing under tor is highly variable. I used the same circuits for both the polipo and privoxy tests to minimize variability. However, I can&#39;t control node load and congestion.</p>
 
-<p>June was spent documenting, stabilizing, and streamlining the bandwidth authority scanner, which has been runningfor a while on the Directory Authority named ides.</p>
+<p>Out of 23 get requests for the Torproject.org/index.html.en, 17 are for the country flags. Perhaps we should load these last at the bottom of the page, or do something else to speed up the torproject page load.</p>
 
-<p>It is good enough to start running on multiple authorities now to produce actual results for clients to use.</p>
+<p>As I was doing this, I kept thinking of other ways to do it better;</p>
 
-<p><strong>More reliable (e.g. split) download mechanism.</strong></p>
+<ul>
+<li>time requests and bits between tor, the http proxy, and the browser. How long does each request take to get from the browser, to the proxy, to tor and back across each layer? how much latency does each piece of software add to the request and delivery?</li>
+<li>automate testing and let it run on a normal tor client over weeks. This will average out tor network variability and show &quot;typical&quot; user experience.</li>
+<li>Pick a sampling of the top 100 websites by visits worldwide and measure their performance with the three methods, fully instrumented as in #1.</li>
+<li>Do user experience measurements. Pay/ask/bribe people to sit in front of a computer, video record their browsing and feedback, and ask for a rating of each configuration (socks5, polipo, privoxy, and a placebo).</li>
+<li>re-run #2 and run gcov to watch the code paths used in each piece of software, and figure out what can be optimized for performance.</li>
+<li>test various &quot;private browsing modes&quot; through tor to see which browser is faster; firefox, safari, chromium, torfox, or torora.</li>
+<li>how can we better tune polipo caching dynamically based on system ram config? Does having 1GB of cache provide significant benefits over the default?</li>
+</ul>
 
-<p>Our email autoresponder, gettor , received a number of patches to deal with dkim issues, including finding a dkim bug that prevented yahoo email users from fetching Tor. This bug
-has been fixed. Additionally, we&#39;ve whitelisted some domains where we see we&#39;re having lots of use but dkim isn&#39;t always configured properly. We&#39;ve had thousands of users from China using gettor.</p>
+<p>I&#39;m sure there are lots of things wrong with my measurements, minimal analysis, and results.</p>
 
-<p>The Tor Check website (check.torproject.org) had a few bugs and we&#39;ve fixed all but two. We sometimes still have false negatives (because the Tor client doesn&#39;t know to fetch the consensus at any specific time) and we also still sometimes barf python exceptions because mod_python has some weird exception from time to time. We also accepted a patch from Marcus Greip that extends the TorBulkExitList to allow arbitrary ports rather than just port 80.</p>
-
-<p><strong>Footprints from Tor Browser Bundle.</strong></p>
-
-<p>Reduced the scanning for plugins Portable Firefox can do on launch of the application. There is still an issue where Firefox displays other plugins to users, but they aren&#39;t actually valid plugins and won&#39;t run on command. Firefox acquires the names through queries to the Windows Registry.</p>
-
-<p><strong>Translations</strong></p>
-
-<p>16 Polish website updates
-8 Italian website updates
-3 German website updates</p>
+<p>Constructive criticism is welcome.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/time-directory-authority-outside-useu">Time for a Directory Authority outside US/EU</a></h2>
+          <h2 class="post-title"> <a href="/blog/har2009-video-tor-performance">Roger&#39;s HAR2009 talk on Tor performance</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
+              By <a class="post-author" href="#">arma</a> under
               
-                <a class="post-category post-category-js" href="#">argentina</a>
+                <a class="post-category post-category-js" href="#">performance</a>
               
-                <a class="post-category post-category-js" href="#">directory authority</a>
+                <a class="post-category post-category-js" href="#">talks</a>
               
-                <a class="post-category post-category-js" href="#">isp</a>
-              
-                <a class="post-category post-category-js" href="#">japan</a>
-              
-                <a class="post-category post-category-js" href="#">malaysia</a>
-              
-                <a class="post-category post-category-js" href="#">panama</a>
-              
-                <a class="post-category post-category-js" href="#">singapore</a>
-              
-                <a class="post-category post-category-js" href="#">south africa</a>
+                <a class="post-category post-category-js" href="#">videos</a>
                |
-              11 Jul 2009
+              19 Aug 2009
           </p>
         </header>
         <div class="post-description">
-          <p>I&#39;m researching where to host one or two Directory Authorities outside
-the US and EU.</p>
+          <p>Jake, Mike, Karsten, Sebastian, and I attended <a href="https://har2009.org/">Hacking at Random</a> last week in The Netherlands. I did a <a href="https://har2009.org/program/events/33.en.html">talk</a> on Tor performance challenges — basically walking through the key pieces of the <a href="https://blog.torproject.org/blog/why-tor-is-slow">&quot;Why Tor is Slow&quot;</a> document that we wrote in March.</p>
 
-<p>It&#39;s been suggested to me that Argentina, South Africa, Panama,
-Singapore, Malaysia, and Japan are fine locales for a well-connected,
-dedicated server. I&#39;m looking for a relatively low end dedicated server
-that can transit 2-4 TB a month at relatively cheap prices (say
-US$200/mo or less).</p>
+<p>As usual with European hacking cons, they produced a really well-done video just days after my talk. So if you want to get the highlights on what we&#39;re doing to speed up Tor and what roadblocks remain, <a href="http://freehaven.net/%7Earma/har2009_Why_Tor_is_slow.mp4">take a look at the video</a> and also the <a href="http://freehaven.net/%7Earma/slides-har2009.pdf">slides that come with it</a>.</p>
 
-<p>If you have experience and contacts at various providers, I&#39;m all ears.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/testing-tor-browser-bundle-127dev">Testing Tor Browser Bundle 1.2.7-dev</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">openssl fixes</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">usability enhancements</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia releases</a>
+               |
+              16 Aug 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>I&#39;ve updated the Tor Browser Bundle with torbutton 1.2.2, the <a href="//blog.torproject.org/blog/vidalia-022-released">new Vidalia 0.2.2</a>, and openssl 0.9.8k compiled with Microsoft Visual C to handle ssl compatibility issues with various versions of Windows.</p>
 
-<p>Thanks!</p>
+<p>If this works, it will be the new Tor Browser Bundle 1.2.8. Please test away.</p>
+
+<p>The full list of changes:</p>
+
+<ul>
+<li>update Torbutton to 1.2.2</li>
+<li>update Vidalia to 0.2.2</li>
+<li>compile OpenSSL 0.9.8k with Visual C to make dlls</li>
+</ul>
+
+<p>There is an issue for some people using a clean Windows XP, Vista, 7 which would either require we ship the Visual C redistributable package, or compile OpenSSL ourselves with Visual C. The symptoms were the &quot;find bridges now&quot; button didn&#39;t appear in Vidalia 0.2.x, and the relays would never get flags. A few people posted comments to this blog about lacking flags and geoip information with TBB.</p>
+
+<p>This is now fixed (at least it works on a freshly installed and patched WinXP system).</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/vidalia-022-released">Vidalia 0.2.2 Released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">openssl fixes</a>
+              
+                <a class="post-category post-category-js" href="#">usability enhancements</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia releases</a>
+               |
+              15 Aug 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Vidalia 0.2.2 is released. It addresses an issue with openssl which causes the geoip lookups to fail on various versions of Windows. It also switches from the Nullsoft Installer to the Microsoft System Installer for better compatibility with Microsoft Windows.</p>
+
+<p>There are now separate Apple OS X builds, one for PowerPC architectures and one for i386 architectures. No more Universal binary bloat to download.</p>
+
+<p>The changes are:</p>
+
+<ul>
+<li>When the user clicks &quot;Browse&quot; in the Advanced settings page to locate
+a new torrc, set the initial directory shown in the file dialog to the
+current location of the user&#39;s torrc. (Ticket #505)</li>
+<li>Use &#39;ditto&#39; to strip the architectures we don&#39;t want from the Qt
+frameworks installed into the app bundle with the dist-osx,
+dist-osx-bundle and dist-osx-split-bundle build targets.</li>
+<li>Fix a bug in the CMakeLists.txt files for ts2po and po2ts that caused
+build errors on Panther for those two tools.</li>
+<li>Include rebuilt OpenSSL libraries in the Windows packages that are
+built with the static (/MT) version of the Microsoft Visual C++
+Runtime. Otherwise, we would require users to install the MSVC
+Redistributable, which doesn&#39;t work for portable installations such as
+the Tor Browser Bundle.</li>
+<li>Remove the NSIS file for the Vidalia installer since we now ship
+MSI-based installers on Windows.</li>
+</ul>
 
         </div>
       </section>
@@ -354,7 +292,7 @@ US$200/mo or less).</p>
       
         <a href="/blog/page112" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 113 of 134</span>
+      <span class="page_number ">Page: 113 of 137</span>
       
         <a href="/blog/page114" class="next">Next</a>
       

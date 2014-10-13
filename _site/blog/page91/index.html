@@ -53,310 +53,263 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-mac-os-x">Tor Browser Bundle for Mac OS X</a></h2>
+          <h2 class="post-title"> <a href="/blog/new-openssl-vulnerability-tor-not-affected">New OpenSSL vulnerability; Tor not affected</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
+              By <a class="post-author" href="#">nickm</a> under
               
-                <a class="post-category post-category-js" href="#">alpha releases</a>
+                <a class="post-category post-category-js" href="#">analysis</a>
               
-                <a class="post-category post-category-js" href="#">portable bundles</a>
+                <a class="post-category post-category-js" href="#">bugs</a>
               
-                <a class="post-category post-category-js" href="#">tbb</a>
+                <a class="post-category post-category-js" href="#">openssl</a>
               
-                <a class="post-category post-category-js" href="#">torbrowser</a>
+                <a class="post-category post-category-js" href="#">security</a>
                |
-              15 Sep 2010
+              16 Nov 2010
           </p>
         </header>
         <div class="post-description">
-          <p>Tor Browser Bundle for Mac OS X is now available for the i386 architecture in 11 languages. <strong>Snow Leopard users</strong> : please read about the known bugs at the bottom of the post.</p>
+          <p>There&#39;s a new buffer overflow vulnerability in versions of OpenSSL from 0.9.8f through 0.9.8o, and 1.0.0 through 1.0.0a. You can read <a href="http://openssl.org/news/secadv_20101116.txt">the security advisory</a> for the whole story.</p>
 
-<p>The Tor Browser Bundle lets you use Tor without needing to install any software. It can run off a USB flash drive, comes with a pre-configured web browser and is self-contained.</p>
+<p>So far as we can tell from our current analysis, Tor is <strong>not</strong> affected. Here&#39;s why:</p>
 
-<p>You can download it from the <a href="https://www.torproject.org/torbrowser/">Tor Browser</a> page which also has instructions about how to extract and use it.</p>
+<p>The advisory says:</p>
 
-<p>The bundle comes with the following software:</p>
+<blockquote>
+<p>Any OpenSSL based TLS server is vulnerable if it is multi-threaded and uses OpenSSL&#39;s internal caching mechanism. Servers that are multi-process and/or disable internal session caching are NOT affected.</p>
+</blockquote>
 
-<ul>
-<li><a href="https://www.torproject.org/">Tor 0.2.2.15-alpha</a></li>
-<li><a href="https://www.torproject.org/vidalia/">Vidalia 0.2.10</a> -- cross-platform controller GUI for the Tor software</li>
-<li><a href="https://www.pps.jussieu.fr/%7Ejch/software/polipo/">Polipo 1.0.4.1</a> -- caching web proxy</li>
-<li><a href="http://www.mozilla.com/firefox/">Firefox/Namoroka 3.6.9</a> -- web browser</li>
-<li><a href="https://www.torproject.org/torbutton/">Torbutton 1.2.5</a> -- Firefox extension to enable or disable the browser&#39;s use of Tor</li>
-<li><a href="http://noscript.net/">NoScript 2.0.2.3</a> -- Firefox extension to only allow scripts from trusted sites</li>
-<li><a href="https://www.eff.org/https-everywhere">HTTPS-Everywhere 0.2.2</a> -- Firefox extension to provide encryption to a major number of websites</li>
-</ul>
+<p>Tor qualifies for <strong>both</strong> of the safe cases: Tor <em>does</em> disable OpenSSL&#39;s internal session caching. This happens in the file src/common/tortls.c, when we call <tt>SSL<em>CTX</em>set<em>session</em>cache<em>mode(result-&gt;ctx,SSL</em>SESS<em>CACHE</em>OFF)</tt>. Tor has done this since since version 0.0.2pre6 back in 2003.</p>
 
-<p>This is a beta version which has primarily been tested on an i386 Leopard machine.</p>
+<p>Also, though Tor is multithreaded, Tor only calls SSL functionality from a single thread. Thus, no thread other than the main thread will examine or alter the TLS session cache, or any TLS session at all.</p>
 
-<p>Early testers on Snow Leopard report that Firefox does not launch the first time they launch the Tor Browser Bundle app. The workaround for this is currently to stop Tor with Vidalia and then restart it. They also say that the Torbutton status bar on the bottom of the Firefox window does not show up, but Torbutton functions properly. Please give us feedback and <a href="https://trac.torproject.org/">file bugs</a>.</p>
+<p>So it would appear that Tor itself is in the clear. Nonetheless, your other applications might not be. If you&#39;re running other SSL services that might be affected, be sure to apply patches from your OS and/or your application to stay safe.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/boston-tor-hackers-join-us-sunday-september-19th">Boston Tor Hackers:  Join us Sunday September 19th</a></h2>
+          <h2 class="post-title"> <a href="/blog/2009-annual-report">2009 Annual Report</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">code</a>
+                <a class="post-category post-category-js" href="#">annual report</a>
               
-                <a class="post-category post-category-js" href="#">developers</a>
+                <a class="post-category post-category-js" href="#">data release</a>
               
-                <a class="post-category post-category-js" href="#">hackfest</a>
+                <a class="post-category post-category-js" href="#">progress reports</a>
               
-                <a class="post-category post-category-js" href="#">theories</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
+                <a class="post-category post-category-js" href="#">transparency</a>
                |
-              15 Sep 2010
+              16 Nov 2010
           </p>
         </header>
         <div class="post-description">
-          <p>We&#39;re holding a Tor hackfest this Sunday, the 19th. Tor&#39;s Chief Architect, Nick Mathewson, will be explaining Tor&#39;s goals and what the project has been up to lately, and then we&#39;ll pick a few day-sized projects to work on together with his help.</p>
+          <p>Today, the Tor Project releases the first in a series of <a href="https://www.torproject.org/about/financials.html.en">annual reports</a>. Drawing on our monthly reports, blog posts, and research papers, we produced a summary of research, advocacy, and outreach efforts during the year. It is both an introduction to the Tor Project and a way to keep track of our progress. There has been a lot of that in the past couple of years, so we hope you will take a look at the 2009 report and stay tuned for 2010.</p>
 
-<p>We&#39;ll be meeting at 2pm in the new Media Lab building (E14), room 240, thanks to the Center for Future Civic Media at MIT. Since the building is closed on Sundays, please e-mail <a href="mailto:chris-torfest@printf.net">chris-torfest@printf.net</a> before Sunday to get a phone number to use to be let in. We&#39;re hoping to provide pizza and drinks, and we&#39;ll finish up and move to Grendel&#39;s Den around 9pm.</p>
-
-<p>Map: <a href="http://whereis.mit.edu/?go=E14" title="http://whereis.mit.edu/?go=E14">http://whereis.mit.edu/?go=E14</a></p>
-
-<p>Please attend if you have some programming experience and are interested in Tor, or are willing to be persuaded to entertain an interest. :) Tor&#39;s a small project (in terms of number of developers) that could really use your help.</p>
-
-<p>Please RSVP if you can make it. Hope to see you on Sunday!</p>
+<p>The 2009 annual report can be downloaded at
+ <a href="https://www.torproject.org/about/findoc/2009-TorProject-Annual-Report.pdf" title="https://www.torproject.org/about/findoc/2009-TorProject-Annual-Report.pdf">https://www.torproject.org/about/findoc/2009-TorProject-Annual-Report.pd...</a></p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/google-chrome-incognito-mode-tor-and-fingerprinting">Google Chrome Incognito Mode, Tor, and Fingerprinting</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">mikeperry</a> under
-              
-                <a class="post-category post-category-js" href="#">chrome</a>
-              
-                <a class="post-category post-category-js" href="#">EFF</a>
-              
-                <a class="post-category post-category-js" href="#">firefox</a>
-              
-                <a class="post-category post-category-js" href="#">google</a>
-              
-                <a class="post-category post-category-js" href="#">panopticlick</a>
-              
-                <a class="post-category post-category-js" href="#">privacy</a>
-              
-                <a class="post-category post-category-js" href="#">private browsing</a>
-              
-                <a class="post-category post-category-js" href="#">threat models</a>
-              
-                <a class="post-category post-category-js" href="#">torbutton</a>
-               |
-              14 Sep 2010
-          </p>
-        </header>
-        <div class="post-description">
-          <p>A few months back, I posted that <a href="https://blog.torproject.org/blog/firefox-private-browsing-mode-torbutton-and-fingerprinting">we have been in discussion</a> with Mozilla about improving their Private Browsing mode to resist <a href="https://wiki.mozilla.org/Fingerprinting">fingerprinting</a> and the <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing">network adversary</a>. As I mentioned there, we have also been doing the same thing with Google for Google Chrome. Google has taken the same approach as Firefox for their Incognito mode, which means that it provides little to no protections against a network adversary.</p>
-
-<p>This means that Chrome Incognito mode is not safe to use with Tor.</p>
-
-<h1>The Story So Far</h1>
-
-<p>In general, Incognito&#39;s major shortcomings are plugins, fingerprinting, DNS leaks, SSL state leaks, auto-formfill and site-specific zoom. The Applied Crypto research group at Stanford recently published a <a href="http://crypto.stanford.edu/%7Edabo/pubs/abstracts/privatebrowsing.html">comparison of the four major browser&#39;s private browsing modes</a> against a dedicated local and remote adversary which details some of these issues. The added poison for Tor is that plugins and DNS leaks can also reveal your IP address and complete web activity to the network adversary.</p>
-
-<p>So, starting almost a year ago, we began providing feedback on Google Chrome&#39;s extension system APIs to ensure that Google is aware of the APIs that we and others need to write defenses against a network adversary.</p>
-
-<p>We drew up <a href="https://groups.google.com/group/chromium-extensions/browse_thread/thread/ceba26ca9e2f6a78/e83920020719a6b2">a wish list of API categories</a> that would be useful for privacy enhancing extensions. Many of the items on that first list were a bit far-reaching, and not all were strictly required to produce a Tor Mode for Google Chrome.</p>
-
-<p>Over the past year, a rather astonishing amount of progress has been made on the Google Chrome Extension API set and also on many items of that list. In fact, work is now in progress on all the major API sets that we need to build a Tor Mode for Google Chrome, to port <a href="https://blog.torproject.org/blog/https-everywhere-firefox-addon-helps-you-encrypt-web-traffic">HTTPS Everywhere</a>, and also write a separate extension to provide defenses against fingerprinting and a network adversary, all using much simpler mechanisms that we had to use for the equivalent functionality in Firefox. It should also soon be possible for many similar privacy and security enhancing extensions to follow suit.</p>
-
-<h1>Key Security and Privacy Enhancing APIs</h1>
-
-<p>The three API sets that will make this possible are <a href="http://www.chromium.org/developers/design-documents/extensions/notifications-of-web-request-and-navigation">Web Request</a>, <a href="https://code.google.com/chrome/extensions/dev/content_scripts.html">Content Scripts</a>, and the <a href="http://dev.chromium.org/developers/design-documents/extensions/proxy%20proposal">Proxy APIs</a>. Our prolific Tor volunteer <a href="http://roberthogan.net/">Robert Hogan</a> has also been doing some work on <a href="https://code.google.com/p/chromium/issues/detail?id=30877">SSL related issues</a> that will prove crucial, as well.</p>
-
-<p>Each of these API sets, however, has its own shortcomings, rough edges, and missing pieces that need to be taken care of before it becomes suitable for us to use. I&#39;ve been spending my time over the past couple months looking over these rough spots, documenting them, and informing Google. I&#39;m also lucky enough to have my brother on the inside: he&#39;s one of the Google Chrome engineers who is working on these very APIs.</p>
-
-<p>With his help, I&#39;ve identified three major stumbling blocks to us and anyone else who is interested in writing security and privacy enhancing extensions on their platform.</p>
-
-<h1>Three Major Stumbling Blocks</h1>
-
-<p>The first major stumbling block is that not only do we need to convince Google that these APIs are useful and needed, but there also has to be a way for them to implement the APIs easily, cleanly, and with very little overhead. Google Chrome is a very fine-tuned high performance browser, and keeping it this way is priority #1 for Google. At the present time, all of the extension APIs are asynchronous, and delivery is optimized so that increasing the number of installed extensions listening for events has negligible to absolutely zero effect on page load time.</p>
-
-<p>However, security and privacy enhancing extensions will need the ability to actually block and modify requests with certainty. This means that fully asynchronous notification and response is not a viable option for some events.</p>
-
-<p>Therefore, last month, I wrote up a <a href="https://groups.google.com/a/chromium.org/group/chromium-extensions/browse_thread/thread/17ea6efa15bfea0a">review of the Web Request APIs</a>, describing a method that could allow for blocking versions of three of the APIs to function with minimal performance impact, which is the key factor in Google&#39;s decision to provide them.</p>
-
-<p>The second major stumbling block is the fact that none of the Google Extension APIs have yet been used to provide any real added security against any threat model, let alone one as <a href="https://www.torproject.org/torbutton/design/#adversary">advanced as the one Torbutton employs</a>. Extensions such as <a href="https://chrome.google.com/extensions/detail/flcpelgcagfhfoegekianiofphddckof?hl=en">KB SSL Enforcer</a> and <a href="http://www.chromeextensions.org/appearance-functioning/adblock/">Adblock Plus for Chrome</a> do not actually have any security guarantees beyond that which they can get through asynchronous DOM manipulation. There are also magical &quot;special&quot; urls and types of requests that currently are exempt from extension notification or control.</p>
-
-<p>This is a real potential danger for us, and one that we only narrowly dodged with Firefox due only to the significantly more flexibility we have on that platform to reimplement arbitrary browser components, and to use different APIs and observers at different levels of notification. We have learned the hard way over the years that any URLs that go through special codepaths can leave the browser vulnerable to plugin injection, fingerprinting, unmasking, and exploitation.</p>
-
-<p>Because of this, I took the time to write up <a href="https://groups.google.com/a/chromium.org/group/chromium-extensions/browse_thread/thread/f5a73572eb040bea">what extensions using the Chrome APIs for security will expect</a>. This includes things like uniform applicability, no functional surprises, and no unilateral exemptions.</p>
-
-<p>The third stumbling block is how Google initially approached Incognito mode and privacy, and extension development in general. The entire extension system is built upon least privilege to ensure security rather than code reviews and audits. Extensions must request permissions to perform classes of actions, and Google is wary of creating permissions that are attractive to (semi-)malicious extensions that want control over everything.</p>
-
-<p>Therefore, it was first believed that no extension should be allowed in Incognito mode, because no assurances could be made about its willingness or ability not to record usage information. This June, my brother finally <a href="http://blog.chromium.org/2010/06/extensions-in-incognito.html">flipped the switch</a> to allow extensions to be run in Incognito mode, but only with with manual and explicit user approval, after installation.</p>
-
-<p>As such, the behavior of an Incognito-specific extension still has not received a lot of attention at Google. This caused me to write a third post to describe <a href="https://groups.google.com/a/chromium.org/group/chromium-extensions/browse_thread/thread/8a46d570807c9a72">how Incognito-specific extensions might function</a>. My hope is that this will help provide another perspective towards extension developers in terms of adding privacy and security to Incognito mode, and to encourage discussions about how to best allow it.</p>
-
-<h1>The Road Ahead</h1>
-
-<p>We&#39;re still many more months away from being able to write a full and working version of Tor Mode, HTTPS Everywhere, or the fingerprint resistance addon, but we&#39;re at least much closer than before, and everything seems to be heading in the right direction, so far.</p>
-
-<p>For those who want to track our progress, as well as Google&#39;s, you can see the <a href="https://trac.torproject.org/projects/tor/ticket/1925">entire list of remaining/important issues</a> on our bugtracker.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/august-2010-progress-report">August 2010 Progress Report</a></h2>
+          <h2 class="post-title"> <a href="/blog/october-2010-progress-report">October 2010 Progress Report</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">alpha releases</a>
+                <a class="post-category post-category-js" href="#">arm</a>
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">https everywhere</a>
+              
+                <a class="post-category post-category-js" href="#">metrics</a>
               
                 <a class="post-category post-category-js" href="#">progress report</a>
               
-                <a class="post-category post-category-js" href="#">scalability</a>
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
               
                 <a class="post-category post-category-js" href="#">translations</a>
                |
-              13 Sep 2010
+              09 Nov 2010
           </p>
         </header>
         <div class="post-description">
-          <p><strong>Releases</strong></p>
+          <p><strong>New Releases</strong></p>
 
 <ul>
-<li>On August 21st we released Tor Browser Bundle 1.0.10 for GNU/Linux. See <a href="https://blog.torproject.org/blog/tor-browser-bundle-1010-gnulinux-released" title="https://blog.torproject.org/blog/tor-browser-bundle-1010-gnulinux-released">https://blog.torproject.org/blog/tor-browser-bundle-1010-gnulinux-releas...</a></li>
-<li>On August 18, we released Tor 0.2.2.15-alpha. It fixes a big bug in hidden service availability, fixes a variety of other bugs that were preventing performance experiments from moving forward, fixes several bothersome memory leaks, and generally closes a lot of smaller bugs that have been filling up trac lately. See <a href="https://blog.torproject.org/blog/tor-02215-alpha-released" title="https://blog.torproject.org/blog/tor-02215-alpha-released">https://blog.torproject.org/blog/tor-02215-alpha-released</a></li>
-<li>Released two new versions of Orbot, Tor for Android.
-&gt; Version 1.0.2
-&gt; - added &quot;check&quot; yes/no dialog prompt
-&gt; - debugged iptables/transprox settings on Android 1.6 and 2.2
-&gt; - added proxy settings help screen and fixed processSettings() NPE
-&gt;
-&gt; Version 1.0.1
-&gt; - found and fixed major bug in per-app trans proxying; list of apps was being cached and iptables rules were not properly updated as the user changed the selection in the list</li>
-<li>On August 6, we released Libevent 2.0.6-rc, the first release
-candidate of the new Libevent 2.0 series. The main new feature that
-we want from Libevent 2.0 is its support for buffer-based (rather than
-socket-based) network abstractions, which will let us support Windows the
-way it wants to be supported. The new Libevent includes a wide variety of
-other features that will make our lives easier too, ranging from making
-it easier to support multi-threaded crypto operations to making it easier
-to modularly change Tor&#39;s transport from TLS-over-TCP to other options. See <a href="http://levent.git.sourceforge.net/git/gitweb.cgi?p=levent/levent;a=blob;f=ChangeLog;hb=fe008ed656766266b93cdf2083f5b8bc50e6aad3" title="http://levent.git.sourceforge.net/git/gitweb.cgi?p=levent/levent;a=blob;f=ChangeLog;hb=fe008ed656766266b93cdf2083f5b8bc50e6aad3">http://levent.git.sourceforge.net/git/gitweb.cgi?p=levent/levent;a=blob;...</a></li>
+<li>On October 29th, we released updated Tor Browser Bundles for OS X, Linux, and Windows. This is an upgrade to Firefox 3.6.12 which fixes a critical bug and OS X users&#39; Torbutton will now show up. <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-released-take-two" title="https://blog.torproject.org/blog/new-tor-browser-bundles-released-take-two">https://blog.torproject.org/blog/new-tor-browser-bundles-released-take-t...</a></li>
+<li>On October 28th, we released new OSX Vidalia bundles which include Tor 0.2.2.17-alpha. Vidalia 0.2.10 changed the way we deal with the geoip databases by dropping the remote geoip lookups. This caused a lot of headaches for OS X users because of the layout of the package, but it&#39;s fixed in this version. <a href="https://blog.torproject.org/blog/mac-os-x-vidalia-bundle-02217-alpha-out" title="https://blog.torproject.org/blog/mac-os-x-vidalia-bundle-02217-alpha-out">https://blog.torproject.org/blog/mac-os-x-vidalia-bundle-02217-alpha-out</a></li>
+<li>On October 27th, we released a new Tor Check to fix links to documentation urls, and clarify what users should do when getting the success result. <a href="https://check.torproject.org" title="https://check.torproject.org">https://check.torproject.org</a>.</li>
+<li>On October 27th, we released new Tor Browser Bundles for OSX, Linux, and Windows. The main notable upgrades for these are Firefox 3.6.11 and Pidgin 2.7.4 in the Windows IM bundle. <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-released" title="https://blog.torproject.org/blog/new-tor-browser-bundles-released">https://blog.torproject.org/blog/new-tor-browser-bundles-released</a></li>
+<li>On October 29th, we released new Tor Browser Bundles. This is an upgrade to Firefox 3.6.12 which fixes a critical bug and OS X users&#39; Torbutton will now show up. <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-released-take-two" title="https://blog.torproject.org/blog/new-tor-browser-bundles-released-take-two">https://blog.torproject.org/blog/new-tor-browser-bundles-released-take-t...</a></li>
+<li>On October 17th, The HTTPS Everywhere Extension for Firefox version 0.2.3.development.1 was released.</li>
+<li>On October 6th, Arm 1.3.7 was released. <a href="http://www.atagar.com/arm/" title="http://www.atagar.com/arm/">http://www.atagar.com/arm/</a>. Changelog at <a href="http://www.atagar.com/arm/log.php" title="http://www.atagar.com/arm/log.php">http://www.atagar.com/arm/log.php</a></li>
+<li>On October 7th, we released a hotfix to Arm 1.3.7: fix (10/7/10, r23463): crashing from type issue in the graph panel (caught by tomb)</li>
+<li>On October 9th, we released the new <a href="https://www.torproject.org" title="https://www.torproject.org">https://www.torproject.org</a> website after 4 months of design and conversion work. It features an entirely redesigned Information Architecture, user experience design, and codebase. Andrew, Roger, Sebastian, Runa, and many volunteers contributed to this release.</li>
 </ul>
-
-<p><strong>Funding</strong>
-We finished the first year of our NSF grant, and wrote up the annual
-(interim) report on what metrics work we&#39;ve done and what research
-projects we&#39;ve helped with. We were then awarded the second year of the
-two-year grant.</p>
 
 <p><strong>Design, develop, and implement enhancements that make Tor a better
-tool for users in censored countries.</strong></p>
+tool for users in censored countries.</strong>
+Nick continued to work on the codebase around microdescriptors. Microdescriptors will allow clients on very low bandwidth connections to use the tor network more quickly than waiting to download the current directory information.</p>
 
-<p>Continuing research into China&#39;s Great Firewall shows bridges are surviving for 1-2 weeks before being blocked. We&#39;re working to improve the bridge database such that it only gives out bridges that work in a requested country. Right now, we hand out a random selection of 3 bridges regardless of potential country of usage. In China, bridges and relays are still blocked by IP address and TCP port combinations.</p>
-
-<p><strong>Architecture and technical design docs for Tor enhancements
-related to blocking-resistance.</strong></p>
-
-<p>We&#39;ve brainstormed future tasks that need to be done for Tor, broken down
-into two sets by upcoming priority:
- <a href="https://trac.torproject.org/projects/tor/wiki/sponsors/SponsorD/March2011" title="https://trac.torproject.org/projects/tor/wiki/sponsors/SponsorD/March2011">https://trac.torproject.org/projects/tor/wiki/sponsors/SponsorD/March201...</a>
-and
- <a href="https://trac.torproject.org/projects/tor/wiki/sponsors/SponsorD/June2011" title="https://trac.torproject.org/projects/tor/wiki/sponsors/SponsorD/June2011">https://trac.torproject.org/projects/tor/wiki/sponsors/SponsorD/June2011</a></p>
-
-<p>We wrote up project sketches of how to tackle some of these tasks, such as:</p>
+<p><strong>Grow the Tor network and user base. Outreach.</strong></p>
 
 <ul>
-<li>Bridge relay images for the cloud. <a href="https://trac.torproject.org/projects/tor/ticket/1853" title="https://trac.torproject.org/projects/tor/ticket/1853">https://trac.torproject.org/projects/tor/ticket/1853</a></li>
-<li>Bundling the http request and headers with the initial begin cell, to save a round-trip and improve client preformance. <a href="https://trac.torproject.org/projects/tor/ticket/1849" title="https://trac.torproject.org/projects/tor/ticket/1849">https://trac.torproject.org/projects/tor/ticket/1849</a></li>
-<li>A performance experiment to raise the minimum bandwidth for being a relay, thus reducing the overall capacity of the network but improving the average performance of each relay. <a href="https://trac.torproject.org/projects/tor/ticket/1854" title="https://trac.torproject.org/projects/tor/ticket/1854">https://trac.torproject.org/projects/tor/ticket/1854</a></li>
-<li>A preliminary design for UDP transport between Tor relays. <a href="https://trac.torproject.org/projects/tor/ticket/1855" title="https://trac.torproject.org/projects/tor/ticket/1855">https://trac.torproject.org/projects/tor/ticket/1855</a></li>
-<li>Tor clients should remember bridge relay information and statistics across restarts. <a href="https://trac.torproject.org/projects/tor/ticket/1852" title="https://trac.torproject.org/projects/tor/ticket/1852">https://trac.torproject.org/projects/tor/ticket/1852</a></li>
-<li>We should have bridge relays automatically monitor whether they can reach websites like Baidu, to give us early warnings when the bridges become blocked. <a href="https://trac.torproject.org/projects/tor/ticket/1851" title="https://trac.torproject.org/projects/tor/ticket/1851">https://trac.torproject.org/projects/tor/ticket/1851</a></li>
+<li>Roger speaks at Internet Dagarna in Sweden, <a href="http://www.internetdagarna.se/" title="http://www.internetdagarna.se/">http://www.internetdagarna.se/</a>. The video of his talk is provided by the Internet Foundation at
+<a href="http://www.youtube.com/watch?v=35l56KjTCb8&amp;p=5BE29144D1FD2779" title="http://www.youtube.com/watch?v=35l56KjTCb8&amp;p=5BE29144D1FD2779">http://www.youtube.com/watch?v=35l56KjTCb8&amp;p=5BE29144D1FD2779</a>.</li>
+<li>Roger, Ian, and others attended WPES2010, Workshop on Privacy in the Electronic Society, <a href="http://wpes10.csi.muohio.edu/" title="http://wpes10.csi.muohio.edu/">http://wpes10.csi.muohio.edu/</a>.</li>
+<li>Roger, Ian, and others attended 17th ACM Conference on Computer and Communications Security, <a href="http://www.sigsac.org/ccs/CCS2010/" title="http://www.sigsac.org/ccs/CCS2010/">http://www.sigsac.org/ccs/CCS2010/</a>.</li>
+<li>Roger, Paul, and Andrew attended the Information Technology Study Group (ITSG).</li>
+<li>Jacob attended Bluehat, <a href="http://technet.microsoft.com/en-us/security/cc261637.aspx" title="http://technet.microsoft.com/en-us/security/cc261637.aspx">http://technet.microsoft.com/en-us/security/cc261637.aspx</a>.</li>
+<li>Roger gave a lecture at the State University of New York -Stonybrook.</li>
+<li>Jacob attended the Workshop on Elliptic Curve Cryptography, <a href="http://2010.eccworkshop.org/" title="http://2010.eccworkshop.org/">http://2010.eccworkshop.org/</a>.</li>
+<li>Roger, Mike, Jacob, Erinn represented Tor at the Google Summer of Code Mentor Summit.</li>
+<li>Roger gave a lecture at Stanford University, <a href="http://crypto.stanford.edu/seclab/sem.html" title="http://crypto.stanford.edu/seclab/sem.html">http://crypto.stanford.edu/seclab/sem.html</a>.</li>
+<li>Andrew, Karen, and Linus met with the Swedish Foreign Ministry, Swedish International Development Agency, <a href="http://www.sida.se/" title="http://www.sida.se/">http://www.sida.se/</a>, and NORDUnet, <a href="http://www.nordu.net/" title="http://www.nordu.net/">http://www.nordu.net/</a>.</li>
 </ul>
 
-<p><strong>Outreach and Advocacy</strong></p>
-
-<ul>
-<li>Roger met with the University of California - San Diego research group to help them better understand the research challenges in Tor. The full trip report is available at <a href="https://blog.torproject.org/blog/trip-report-ucsd" title="https://blog.torproject.org/blog/trip-report-ucsd">https://blog.torproject.org/blog/trip-report-ucsd</a>. Roger&#39;s presentation can be found at <a href="https://svn.torproject.org/svn/projects/presentations/slides-ucsd10.pdf" title="https://svn.torproject.org/svn/projects/presentations/slides-ucsd10.pdf">https://svn.torproject.org/svn/projects/presentations/slides-ucsd10.pdf</a>.</li>
-<li>Roger met with a researcher from The Cooperative Association for Internet Data Analysis (CAIDA) to discuss Tor, metrics, and analyzing our growing collection of data about the Tor network.</li>
-<li>Roger attended the &quot;Workshop on Cyber Security Data for Experimentation&quot; organized by the National Science Foundation (NSF). The premise of the workshop was that many academics need real-world data sets to solve problems, whereas industry is the place with the real-world data sets and they don&#39;t have any real reason to share. By getting the academics and the industry people talking, with government funders nearby, they hoped to better understand the problems and maybe move things forward.
-Roger was there (and on the first panel) because of Tor&#39;s work on gathering Tor network snapshots, performance data, and user statistics. Tor&#39;s approach represents one way out of the trap where researchers never quite get the data they want, or if they do it isn&#39;t open enough (which hinders whether anybody else can reproduce their results). The full trip report is available at <a href="https://blog.torproject.org/blog/trip-report-nsf-data-workshop" title="https://blog.torproject.org/blog/trip-report-nsf-data-workshop">https://blog.torproject.org/blog/trip-report-nsf-data-workshop</a>.</li>
-<li>Roger did a talk to a half dozen NSF program managers, to bring them up to speed on what Tor is up to and what sort of measurement and research projects we&#39;re working on and should work on next. The presentation can be found at <a href="https://svn.torproject.org/svn/projects/presentations/slides-nsf10.pdf" title="https://svn.torproject.org/svn/projects/presentations/slides-nsf10.pdf">https://svn.torproject.org/svn/projects/presentations/slides-nsf10.pdf</a>.</li>
-<li>Erinn discussed Tor and free software at DebConf 2010 in New York City. <a href="http://debconf10.debconf.org/" title="http://debconf10.debconf.org/">http://debconf10.debconf.org/</a>.</li>
-<li>Andrew and Paul presented at The International Conference on Cyber Security. <a href="http://www.iccs.fordham.edu/" title="http://www.iccs.fordham.edu/">http://www.iccs.fordham.edu/</a>. Andrew&#39;s presentation can be found at <a href="https://svn.torproject.org/svn/projects/presentations/2010-iccs-tor-overview.pdf" title="https://svn.torproject.org/svn/projects/presentations/2010-iccs-tor-overview.pdf">https://svn.torproject.org/svn/projects/presentations/2010-iccs-tor-over...</a>. Paul presented the current attacks on Tor&#39;s design from a research perspective, as well as giving a briefing on current topics of research into trusted routing within Tor.</li>
-<li>Ian, Roger, and others attended Usenix Security 2010, <a href="http://www.usenix.org/events/sec10/index.html" title="http://www.usenix.org/events/sec10/index.html">http://www.usenix.org/events/sec10/index.html</a>.</li>
-</ul>
-
-<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong></p>
-
-<ul>
-<li>Torbrowser Bundle for GNU/Linux version 1.0.10 released. See above for the details.</li>
-<li>Torbrowser Bundle for OSX works on OS X 10.4 and 10.5. 10.6 users continue to experience issues with the launching of the Firefox browser. Erinn and Steven are continuing to debug the 10.6 issues.</li>
-</ul>
+<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong>
+Working with the TA(I)LS LiveCD/LiveUSB team to get architecture designs, specifications, and goals written down and published. The desired state is to be able to analyze the live system for a number of security and anonymity properties through security and code audits.</p>
 
 <p><strong>Bridge relay and bridge authority work.</strong></p>
 
-<p>We&#39;re developing designs to better handle bridge distribution. Part of this is to enable Tor clients to become bridges and then relays by default. The other part of this is for Tor clients to always have a set of working bridges, requesting new bridges in advance, or be able to track bridge address changes and update accordingly.</p>
+<p>Mike began investigating the odd reality that we only report 500 bridges available at any point in time. Hundreds to thousands of people become bridges each week, but only around 500 are reported as being available at any point in time. This seems an odd coincidence to Mike and others. Research continues.</p>
 
 <p><strong>Scalability, load balancing, directory overhead, efficiency.</strong></p>
 
 <ul>
-<li>Accepted Proposal 174 for &quot;Optimistic Data for Tor: Server Side&quot; from Ian Goldberg. This change will save one OP-Exit round trip (down to one from two). There are still two SOCKS Client-OP round trips (negligible time) and two Exit-Server round trips. Depending on the ratio of the Exit-Server (Internet) RTT to the OP-Exit (Tor) RTT, this will decrease the latency by 25 to 50 percent. Experiments validate these predictions. [Goldberg, PETS 2010 rump session; see https://thunk.cs.uwaterloo.ca/optimistic-data-pets2010-rump.pdf] The full proposal can be read at <a href="https://gitweb.torproject.org/tor.git/blob_plain/HEAD:/doc/spec/proposals/174-optimistic-data-server.txt" title="https://gitweb.torproject.org/tor.git/blob\_plain/HEAD:/doc/spec/proposals/174-optimistic-data-server.txt">https://gitweb.torproject.org/tor.git/blob_plain/HEAD:/doc/spec/proposal...</a>.</li>
-<li>Mike Perry fixed a number of bugs in the bandwidth authority and exit scanner codebases. The exit scanner codebase is updated with the work of a Google Summer of Code student.</li>
-<li>A Google Summer of Code student, Harry Bock, worked on improving the Tor DNSEL codebase. TorDNSEL is a DNSBL-style interface for querying information about Tor exit nodes, to be more thorough, more usable, and more maintainable. Out of this effort came TorBEL, a set of specifications and Python tools that try to address this problem. The full writeup on the new software can be found on our blog at <a href="https://blog.torproject.org/blog/torbel-tor-bulk-exit-list-tools" title="https://blog.torproject.org/blog/torbel-tor-bulk-exit-list-tools">https://blog.torproject.org/blog/torbel-tor-bulk-exit-list-tools</a>.</li>
+<li>Karsten incorporated Kevin Berry&#39;s Google Summer of Code work into the metrics portal, <a href="https://blog.torproject.org/blog/tor-metrics-google-summer-code-2010" title="https://blog.torproject.org/blog/tor-metrics-google-summer-code-2010">https://blog.torproject.org/blog/tor-metrics-google-summer-code-2010</a>. This enables all graphs to be dynamically generated with minimal load to the server.</li>
+<li>Karsten and Sebastian continue to research an alternate way to more accurately count Tor users while still preserving their anonymity by design. They expect to have a report out in December 2010.</li>
+<li>Mike fixed some bugs relating to Bandwidth and Exit Authorities. These fixes are for code stability.</li>
+<li>Update to the October 1 2010 Maxmind GeoLite Country database. This updates the mapping of IP Address to Geolocation of relays.</li>
+<li>Nick commits a huge number of bug fixes, code refactoring, and general logic corrections as discovered through code audits, buffer events integration, and volunteer reviews.</li>
+<li>Karsten extended total relay bandwidth graph, <a href="https://metrics.torproject.org/network.html#bandwidth" title="https://metrics.torproject.org/network.html#bandwidth">https://metrics.torproject.org/network.html#bandwidth</a> by bandwidth history as
+reported by relays and added new graph on directory bytes written by relays, <a href="https://metrics.torproject.org/network.html#dirbytes" title="https://metrics.torproject.org/network.html#dirbytes">https://metrics.torproject.org/network.html#dirbytes</a>.</li>
+<li>Karsten changed most servlets to JSPs, added database connection pool, made the
+Tomcat application generate CSV files upon request, etc. These changes
+are not visible to most people, but they were necessary to clean up the
+grown metrics website. As a result, it&#39;s much easier now to add new
+graphs to the website.</li>
+<li>Karsten helped a volunteer to write a Python version of the VisiTor script, <a href="https://metrics.torproject.org/tools.html#visitor" title="https://metrics.torproject.org/tools.html#visitor">https://metrics.torproject.org/tools.html#visitor</a>,
+and wrote a spec for the exit list file format, <a href="https://trac.torproject.org/projects/tor/ticket/2064#comment:1" title="https://trac.torproject.org/projects/tor/ticket/2064#comment:1">https://trac.torproject.org/projects/tor/ticket/2064#comment:1</a>.</li>
+<li>Karsten found a new approach for combining directory request statistics from multiple relays to estimate total user numbers. The result is a much more reliable metric than the one we&#39;re using right now, <a href="https://metrics.torproject.org/users.html#direct-users" title="https://metrics.torproject.org/users.html#direct-users">https://metrics.torproject.org/users.html#direct-users</a>. Asked Olaf Selke (operator of blugmagie), Teun Nijssen (operator of TORy), and a few more to turn on directory request statistics on their relays. Updated tech report on Privacy-preserving Ways to Estimate the Number of Tor Users with new results, <a href="https://gitweb.torproject.org/karsten/metrics.git/blob_plain/refs/heads/counting-users:/report/counting-users/countingusers.pdf" title="https://gitweb.torproject.org/karsten/metrics.git/blob\_plain/refs/heads/counting-users:/report/counting-users/countingusers.pdf">https://gitweb.torproject.org/karsten/metrics.git/blob_plain/refs/heads/...</a>.</li>
 </ul>
 
-<p><strong>Translations</strong>
-Runa implemented a change to the publishing of translated website pages. We now only publish a non-English page to the website if the text is 80% translated or more. This has cleared out hundreds of older, untranslated pages from the website that were misinforming and confusing readers.</p>
+<p><strong>Footprints from Tor Browser Bundle.</strong>
+Tor Browser Bundle in OS X contains sandboxing technology by Robert Malmgren AB, <a href="http://www.romab.com/" title="http://www.romab.com/">http://www.romab.com/</a>. The sandbox is designed to both protect the user from security exploits in Firefox and restrict the footprint left on a system by the Tor Browser Bundle. Currently, this solution is OS X only.</p>
 
-<p>Updated translations for all documents in Arabic, Persian, German, French, Polish, Romanian, Russian, Norwegian, Mandarin Chinese, and Turkish.</p>
+<p><strong>Translation work, ultimately a browser-based approach.</strong>
+Updated translations in Spanish, Ukrainian, Mandarin, Dutch, German, Greek, Urdu, Italian, and Icelandic.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/trip-report-nsf-data-workshop">Trip report, NSF data workshop</a></h2>
+          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-released-take-two">New Tor Browser Bundles released (take two)</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">arma</a> under
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">microsoft windows</a>
+              
+                <a class="post-category post-category-js" href="#">osx</a>
+              
+                <a class="post-category post-category-js" href="#">osx fixes</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">torbutton</a>
+              
+                <a class="post-category post-category-js" href="#">windows bundles</a>
                |
-              30 Aug 2010
+              29 Oct 2010
           </p>
         </header>
         <div class="post-description">
-          <p>On Friday (Aug 27), I attended the &quot;Workshop on Cyber Security Data for Experimentation&quot; organized by the National Science Foundation (NSF). The premise of the <a href="http://www.gtisc.gatech.edu/nsf_workshop10_agenda.html">workshop</a> was that many academics need real-world data sets to solve problems, whereas industry is the place with the real-world data sets and they don&#39;t have any real reason to share. By getting the academics and the industry people talking, with government funders nearby, they hoped to better understand the problems and maybe move things forward.</p>
+          <p>We have some more new Tor Browser Bundles out. This is an upgrade to Firefox 3.6.12 which fixes a critical bug and OS X users&#39; Torbutton will now show up.</p>
 
-<p>I was there (and on the first panel) because of Tor&#39;s work on <a href="https://metrics.torproject.org/">gathering Tor network snapshots, performance data, and user statistics</a>. Tor&#39;s approach represents one way out of the trap where researchers never quite get the data they want, or if they do it isn&#39;t open enough (which hinders whether anybody else can reproduce their results).</p>
+<p><strong><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle for Windows 1.3.12</a></strong></p>
 
-<p>They also asked me to do the wrapup for the workshop. Here are the eight insights that I presented there (with a little bit of commentary from me) -- each of them is a topic that came up during the workshop that I thought warranted more attention.</p>
+<p>1.3.12: Release 2010-10-28</p>
 
-<p>1) Researchers already have data, it&#39;s just not the data they think they want. Either they need to clean / understand / better analyze what they already have, or they need to figure out where they can gather the data themselves (universities sure have lots of users), or they can turn to organizations like PREDICT (or Tor) that are aggregating data sets for the purpose of making them available for researchers.</p>
+<ul>
+<li>Update Firefox to 3.6.12</li>
+</ul>
 
-<p>Too many data sets from industry come with restrictions. At best you&#39;ll get your data under some sort of bilateral agreement. Whatever happened to public open data that everybody can look at? After all, often you won&#39;t know what you want to look for until you&#39;ve had some time with the data.</p>
+<p><strong><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle for Mac OS X 1.0.4</a></strong></p>
 
-<p>We need to better investigate the intersection of &quot;what we can safely gather in an open way&quot; (i.e. without gathering too many personal details) and &quot;what questions we can answer with it&quot; (if you sanitize the data too far, there&#39;s nothing interesting left). I guess the streetlights are brighter over the data sets from antivirus companies, networking companies, etc, so everybody wants to look there. But if it takes multiple years of workshops and everybody&#39;s still frustrated, maybe it&#39;s time to look at other options?</p>
+<p>1.0.4: Released 2010-10-28</p>
 
-<p>2) Data preservation questions. When a student moves on, it&#39;s common that nobody knows how to continue using what gets left behind. The industry side similarly finds internships too short to be a reliable investment: interns disappear right about the time they start to provide value.</p>
+<ul>
+<li>Update Firefox to 3.6.12</li>
+<li>Fix weird Torbutton location so users can tell it&#39;s installed</li>
+</ul>
 
-<p>3) Standardized data sets vs specialized data sets. On the one hand, we want standardized public open data sets (think traces for voice recognition), so everybody is doing research from the same starting point. On the other hand, many researchers want to develop specialized data sets to answer new questions -- they find that gathering new data in response to a specific question is a much better strategy. How should we reconcile these conflicting scientific goals?</p>
+<p><strong><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle for GNU/Linux 1.0.15</a></strong></p>
 
-<p>4) Existing databases need labelling -- for example, if you&#39;re looking at a traffic flow and you want to identify what protocols were in use, you need somebody to annotate it with the ground truth (what protocols actually were in use) or you&#39;ll never know if your algorithms are producing useful answers. Metadata is critical, but it&#39;s expensive to build and maintain. Corporations tend to regard the labelling work as their competitive advantage and keep it to themselves.</p>
+<p>1.0.15: Released 2010-10-28</p>
 
-<p>5) &quot;Building individual relationships is the only way to get your data.&quot; That was a quote from several people on the academia side, and nobody on the industry side disputed it. If you have to spend a few years interacting with the person who controls the data before you have a chance of seeing it, that sure doesn&#39;t seem to scale well.</p>
+<ul>
+<li>Update Firefox to 3.6.12</li>
+</ul>
 
-<p>6) &quot;The goal of research is not to write papers. It&#39;s to solve problems.&quot; That&#39;s a quote from the industry side. They regard research that&#39;s intellectually interesting as often unrelated to the real-world problems that their company needs to solve. The incentives in academia are structured around publication, and we shouldn&#39;t confuse that with actually solving problems.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-released">New Tor Browser Bundles released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">microsoft windows</a>
+              
+                <a class="post-category post-category-js" href="#">osx</a>
+              
+                <a class="post-category post-category-js" href="#">osx fixes</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">windows bundles</a>
+               |
+              28 Oct 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We have some new Tor Browser Bundles out. The main notable upgrades for these are Firefox 3.6.11 and Pidgin 2.7.4 in the Windows IM bundle.</p>
 
-<p>7) Internal Review Boards (IRBs) are uniformly not equipped to evaluate this sort of research. They ask questions like whether you&#39;re going to draw blood from your users (and get answers like &quot;not intentionally, ha ha&quot;). At the same time, there are serious legal, ethical, and technical questions that need to be considered for a lot of these data sets -- both in terms of gathering data and in terms of using data. Academics looking at these issues should check out the <a href="http://www.cs.stevens.edu/%7Espock/wecsr2011/">Workshop on the Ethics of Computer Security Research</a>.</p>
+<p><strong><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle for Windows 1.3.11</a></strong></p>
 
-<p>8) Both sides took the opportunity to ask NSF for money. Some of the academics suggested that NSF could help to cover the cost of interns (one of the most successful ways to get industry data these days is to send one of your students as a &quot;data envoy&quot; for the summer; but as industry research groups tighten their budgets, competition for the remaining slots is increasingly fierce). The industry representatives on the other hand reiterated several times how much more cooperative they could be if somebody gave their shareholders a reason to look at sharing data as anything more than a risk.</p>
+<p>1.3.11: Release 2010-10-25</p>
 
-<p>Going back to the Tor perspective, there were also some good lessons to be learned from Doug Maughan&#39;s lunchtime talk. (Doug was the program manager for the DARPA program that funded Tor back in 2002-2003.) Doug has been coordinating a group called <a href="https://www.predict.org/">PREDICT</a>, which aggregates network operations data sets for security researchers. Despite having many terabytes of data, they&#39;re not getting much traction in the research world. Is it because they haven&#39;t done a good job marketing what they can offer? Do they need forums to build a community around their data? Do they not have the right data yet? Tor&#39;s <a href="https://metrics.torproject.org/">metrics and data</a> project will be re-encountering these lessons in the coming years, so we should keep an eye on PREDICT.</p>
+<ul>
+<li>Update Firefox to 3.6.11</li>
+<li>Update Pidgin to 2.7.4</li>
+</ul>
 
-<p>As a final note, one of the NSF program managers found me afterwards and said that NSF should fund an EAGER (a small two-year grant) to combine a data-mining expert with the Tor data and see what insights can be extracted from it. If you are that data-mining expert, please contact us.</p>
+<p><strong><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle for Mac OS X 1.0.3</a></strong></p>
+
+<p>1.0.3: Released 2010-10-25</p>
+
+<ul>
+<li>Update Firefox to 3.6.11</li>
+</ul>
+
+<p><strong><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle for GNU/Linux 1.0.14</a></strong></p>
+
+<p>1.0.14: Released 2010-10-24</p>
+
+<ul>
+<li>Update Firefox to 3.6.11</li>
+</ul>
 
         </div>
       </section>
@@ -367,7 +320,7 @@ Runa implemented a change to the publishing of translated website pages. We now 
       
         <a href="/blog/page90" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 91 of 134</span>
+      <span class="page_number ">Page: 91 of 137</span>
       
         <a href="/blog/page92" class="next">Next</a>
       

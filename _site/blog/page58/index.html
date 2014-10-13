@@ -53,7 +53,178 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/iran-partially-blocks-encrypted-network-traffic">Iran partially blocks encrypted network traffic</a></h2>
+          <h2 class="post-title"> <a href="/blog/activists-iran-and-syria-targeted-malicious-computer-software">Activists in Iran and Syria targeted with malicious computer software</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+              
+                <a class="post-category post-category-js" href="#">iran</a>
+              
+                <a class="post-category post-category-js" href="#">malware</a>
+              
+                <a class="post-category post-category-js" href="#">privacy</a>
+              
+                <a class="post-category post-category-js" href="#">security</a>
+              
+                <a class="post-category post-category-js" href="#">syria</a>
+               |
+              15 Mar 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>In February 2012 we learned that activists in Iran and Syria were targeted with two different types of malicious computer software. We received a copy of each malware, and Jonathan Tomek from <a href="http://threatgrid.com/">ThreatGRID</a> helped with the analysis.</p>
+
+<p><strong>How you get infected</strong></p>
+
+<p>The malicious software is spread as email attachments, and as files sent via Instant Messaging and Skype. The software looks like two completely harmless files; a Microsoft PowerPoint slide show and an image file. The malicious software will silently install itself on your computer when you open one of the files.</p>
+
+<p>Malicious software, such as the two copies we analyzed, is normally designed to gather sensitive information and gain unauthorized access to a computer system. The seemingly harmless PowerPoint slide show turned out to be a keylogger, while the image file was really a backdoor, providing the attacker with full access to the system.</p>
+
+<p>Both the keylogger and the backdoor will transfer data to www(dot)meroo(dot)no-ip(dot)org, on port 778. This domain name used to point to a server at a government-owned telecommunications company in Syria, but was later updated to point to a <a href="http://www.linode.com/">Linode</a> server in London, UK. <a href="http://www.no-ip.com/">No-IP</a> have since pointed the domain name to an invalid IP address (0.0.0.0).</p>
+
+<p>Most anti-virus software will be able to detect and remove both the <a href="https://www.virustotal.com/file/cef080a347339eb37e7efb33ed458044610946c5af404c5eae06309953111cf5/analysis/">keylogger</a> and the <a href="https://www.virustotal.com/file/f64434efd243e1a099ed4dee008286caebfcf407b245f72c5ec59222995702f4/analysis/">backdoor</a>. You may try updating your anti-virus software, running it, and using it to remove the malware if anything pops up. However, the safest course of action is to re-install the operating system on your computer.</p>
+
+<p>The EFF wrote a blog post called _ <a href="https://www.eff.org/deeplinks/2012/03/how-find-syrian-government-malware-your-computer-and-remove-it">How to Find and Protect Yourself Against the Pro-Syrian-Government Malware on Your Computer</a><em>. In the post, they recommend _&quot;that you take steps to protect yourself from being infected by not running any software received through e-mail, not installing software at all except over HTTPS, and not installing software from unfamiliar sources even if recommended by a pop-up ad or a casual recommendation from a friend.&quot;</em>.</p>
+
+<p><strong>PowerPoint slide show: keylogger</strong></p>
+
+<p>When you first try to open the PowerPoint slide show, you will get a security warning asking if you really want to allow this file to run. The <em>Name</em> field points to the following executable file: <em>C:\Program Files\Common Files\VMConvert32\wmccds.exe</em></p>
+
+<p>If you ignore the warning and click <em>Run</em>, a self-extracting rar file will install the malware (the <em>wmccds</em> executable) onto your computer. The PowerPoint slide show will then open and you will see a series of images and some text in Farsi. The malware will not activate until you reboot your computer.</p>
+
+<p>The first time you reboot, the malware will activate and start logging your keystrokes. If you are running Windows 7, you will see the same warning as mentioned above, and you have to click <em>Run</em> before the malware is actually activated. Older versions of Windows will not display this warning when you reboot.</p>
+
+<p>The malware will modify the Windows startup script to ensure that the keylogger is always running when you are using the computer. The keylogger will affect your whole system, and it will even send the contents of your clipboard to the attacker. The Tor Browser Bundle does not protect you if you have a keylogger on your system.</p>
+
+<p><strong>Windows screen saver: backdoor</strong></p>
+
+<p>The Windows screen saver contains a type of malware that is a bit more complex than the one described above. When you run the Windows screen saver, it will start an image program and show you a picture (we saw a picture of a rifle, but that is not always the case). Meanwhile, the malicious software installs a backdoor onto your computer and opens a connection to www(dot)meroo(dot)no-ip(dot)org, using port 778.</p>
+
+<p>The backdoor (<em>1122333.exe</em> in the <em>Documents and Settings</em> folder), which is similar to the DarkComet Remote Administration Tool, allows the attacker to connect to your computer and do anything that he or she wants, including logging keystrokes and acting as the system administrator. The malware will modify the Windows startup script to ensure that the connection is always open.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/avoid-risk-and-protect-online-identity">Avoid risk and protect online identity</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+               |
+              14 Mar 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>A number of good blog posts have been written about how you can avoid risk, protect your online identity, blog safely and so on. We decided to collect links to some of these posts so that you can easily find the information most relevant to you.</p>
+
+<p><a href="https://www.eff.org/wp/blog-safely">How to Blog Safely (About Work or Anything Else)</a> is a guide written by the <a href="https://www.eff.org/">EFF</a>. The guide talks about how you can use Tor to blog anonymously, and offers a few simple precautions to help you maintain control of your privacy.</p>
+
+<p><a href="http://www.problogger.net/archives/2006/02/07/blog-stalkers-personal-safety-for-bloggers/">Blog Stalkers – Personal Safety for Bloggers</a> is a post written by <a href="http://www.problogger.net/archives/author/darren/">Darren Rowse</a>. The blog post tells the story of how Rowse had to deal with a stalker for some time, and lists some things to consider regarding the information you reveal online about yourself and your family.</p>
+
+<p><a href="http://advocacy.globalvoicesonline.org/projects/guide/">Anonymous Blogging with WordPress &amp; Tor</a> is a guide written by <a href="http://globalvoicesonline.org/author/ezuckerman/">Ethan Zuckerman</a> for <a href="http://advocacy.globalvoicesonline.org/">Global Voices Advocacy</a>. The guide walks you through how you can use Tor, WordPress and various free email accounts to blog anonymously.</p>
+
+<p><a href="https://www.eff.org/wp/defending-privacy-us-border-guide-travelers-carrying-digital-devices">Defending Privacy at the U.S. Border: A Guide for Travelers Carrying Digital Devices</a> is a guide by the <a href="https://www.eff.org/">EFF</a>. The guide explains why your devices can be searched at the border, how the U.S. Government searches devices, and gives advice on how to protect your data.</p>
+
+<p><a href="//www.eff.org/https-everywhere">HTTPS Everywhere</a> is a Firefox and Chrome extension that encrypts your communications with many major websites, making your browsing more secure. HTTPS Everywhere is a produced as a collaboration between The Tor Project and the <a href="https://www.eff.org/">EFF</a>.</p>
+
+<p><a href="http://www.microsoft.com/security/family-safety/blogging.aspx">Safety tips on blogging</a> from <a href="http://www.microsoft.com">Microsoft</a>. This short guide lists some basic guidelines for bloggers, and also gives some advice to parents about how they can talk to their kids about the Internet and blogging.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/set-bridge-or-relay-and-join-tor-network-today">Set up a bridge or a relay and join the Tor network today</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">Runa</a> under
+              
+                <a class="post-category post-category-js" href="#">bridge relays</a>
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">cloud</a>
+              
+                <a class="post-category post-category-js" href="#">relays</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">tor cloud</a>
+              
+                <a class="post-category post-category-js" href="#">video</a>
+               |
+              12 Mar 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Tor network relies on volunteers to donate bandwidth. The more people who run Tor as a bridge or a relay, the faster and safer the network becomes. <a href="https://www.tacticaltech.org/">Tactical Tech</a> created a video to encourage you to join the Tor Network. The video, and information about how you can set up a bridge or a relay, can be found on <a href="https://www.torproject.org/relays">https://www.torproject.org/relays</a>. If you want to help us translate the video into your language, let us know!</p>
+
+<p>The full HD video can be found here: <a href="https://media.torproject.org/video/2012-03-04-BuildingBridges-HD.ogv">https://media.torproject.org/video/2012-03-04-BuildingBridges-HD.ogv</a></p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/alpha-bundles-available-testing">Alpha Bundles Available for Testing</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha releases</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia</a>
+               |
+              06 Mar 2012
+          </p>
+        </header>
+        <div class="post-description">
+          <p>There are new alpha Tor Browser Bundles and Vidalia Bundles available for testing!</p>
+
+<p>These bundles include the latest Vidalia 0.3.1 alpha release and Tor 0.2.3.12-alpha.</p>
+
+<p>Right now they are technology previews, so they aren&#39;t on the main download page yet, but please try them out and give us feedback in our <a href="https://trac.torproject.org">bug tracker</a>.</p>
+
+<p><strong>Download links</strong></p>
+
+<p><strong>Windows</strong></p>
+
+<ul>
+<li><a href="https://archive.torproject.org/tor-package-archive/technology-preview/tor-browser-2.3.12-alpha-1_en-US.exe">Tor Browser Bundle for Windows</a> ( <a href="https://archive.torproject.org/tor-package-archive/technology-preview/tor-browser-2.3.12-alpha-1_en-US.exe.asc">sig</a>)</li>
+</ul>
+
+<p><strong>Mac OS X</strong></p>
+
+<ul>
+<li><a href="https://archive.torproject.org/tor-package-archive/technology-preview/TorBrowser-2.3.12-alpha-1-osx-i386-en-US.zip">Tor Browser Bundle for Mac OS X</a> ( <a href="https://archive.torproject.org/tor-package-archive/technology-preview/TorBrowser-2.3.12-alpha-1-osx-i386-en-US.zip.asc">sig</a>)</li>
+</ul>
+
+<p><strong>Linux</strong></p>
+
+<ul>
+<li><a href="https://archive.torproject.org/tor-package-archive/technology-preview/tor-browser-gnu-linux-i686-2.3.12-alpha-1-en-US.tar.gz">Tor Browser Bundle for Linux (32-bit)</a> ( <a href="https://archive.torproject.org/tor-package-archive/technology-preview/tor-browser-gnu-linux-i686-2.3.12-alpha-1-en-US.tar.gz.asc">sig</a>)</li>
+<li><a href="https://archive.torproject.org/tor-package-archive/technology-preview/tor-browser-gnu-linux-x86_64-2.3.12-alpha-1-en-US.tar.gz">Tor Browser Bundle for Linux (64-bit)</a> ( <a href="https://archive.torproject.org/tor-package-archive/technology-preview/tor-browser-gnu-linux-x86_64-2.3.12-alpha-1-en-US.tar.gz.asc">sig</a>)</li>
+</ul>
+
+<p>There are also normal Vidalia bundles available for Windows and 32-bit non-ppc OS X (10.5 and up) here:</p>
+
+<p><strong>Windows</strong></p>
+
+<ul>
+<li><a href="https://archive.torproject.org/tor-package-archive/technology-preview/vidalia-bundle-0.2.3.12-alpha-0.3.1.exe">Vidalia Bundle for Windows</a> ( <a href="https://archive.torproject.org/tor-package-archive/technology-preview/vidalia-bundle-0.2.3.12-alpha-0.3.1.exe.asc">sig</a>)</li>
+</ul>
+
+<p><strong>Mac OS X</strong></p>
+
+<ul>
+<li><a href="https://archive.torproject.org/tor-package-archive/technology-preview/vidalia-bundle-0.2.3.12-alpha-0.3.1-i386.dmg">Vidalia Bundle for Mac OS X</a> ( <a href="https://archive.torproject.org/tor-package-archive/technology-preview/vidalia-bundle-0.2.3.12-alpha-0.3.1-i386.dmg.asc">sig</a>)</li>
+</ul>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/updates-kazakhstan-internet-censorship">Updates on Kazakhstan Internet Censorship</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
@@ -61,273 +232,29 @@
               
                 <a class="post-category post-category-js" href="#">dpi</a>
               
-                <a class="post-category post-category-js" href="#">iranian censorship</a>
+                <a class="post-category post-category-js" href="#">internet censorship</a>
               
-                <a class="post-category post-category-js" href="#">keyword filtering</a>
+                <a class="post-category post-category-js" href="#">kazakhstan</a>
               
-                <a class="post-category post-category-js" href="#">positive futures</a>
-              
-                <a class="post-category post-category-js" href="#">ssl blocking</a>
+                <a class="post-category post-category-js" href="#">network data</a>
                |
-              10 Feb 2012
+              02 Mar 2012
           </p>
         </header>
         <div class="post-description">
-          <p>Over the past two days we&#39;ve been hearing from, and working with, a number of Iranians having difficulty using Tor from inside Iran. It seems the Iranian government has ramped up censorship in three ways: deep packet inspection (dpi) of SSL traffic, selective blocking of IP Address and TCP port combinations, and some keyword filtering. For instance, they have partially blocked access to Tor&#39;s website, torproject.org, via IP address (such as 86.59.30.36) and port 443 (which is the HTTPS port). The third level of blocking is by keywords, such as searching for the word &#39;tor&#39; via regular, non-encrypted search engine websites.</p>
+          <p>Two weeks ago <a href="https://blog.torproject.org/blog/kazakhstan-upgrades-censorship-deep-packet-inspection">we announced</a> the use of deep packet inspection to censor the Internet in Kazakhstan. Over those two weeks we&#39;ve continued working on how they are blocking native tor connections. The good news is that our <a href="https://www.torproject.org/projects/obfsproxy.html.en">obfsproxy bundle</a> continues to work well in country. Thanks to wanoskarnet, ann, and others for their help.</p>
 
-<p>The blocks on SSL are not complete and not nationwide. Where blocking is in place, initial investigations show they are identifying the beginning of the SSL handshake and simply interrupting the handshake. We continue to research and investigate solutions with the assumption that SSL will eventually be blocked nationwide inside Iran. Our goal is to defeat their dpi signatures and allow tor to work by default.</p>
+<p>We have some network-level data captures at both ends to help us assess what is occuring. It seems the Kazakhstan firewall finds something unique in the TLS &quot;Server Hello&quot; message as sent by the Tor relay or bridge and therefore blocks subsequent communications. IP address and TCP port are irrelevant to the censorship. Research continues. Anonymized network flows are available here:</p>
 
-<p>The Iran Media Program has <a href="http://iranmediaresearch.com/en/blog/101/12/02/09/840">posted their thoughts</a> on what is happening from a journalist&#39;s perspective.</p>
+<p>.kz client to relay: <a href="https://media.torproject.org/misc/2012-02-28-tor-kz-client-flow.txt" title="https://media.torproject.org/misc/2012-02-28-tor-kz-client-flow.txt">https://media.torproject.org/misc/2012-02-28-tor-kz-client-flow.txt</a></p>
 
-<p>So far, it seems the majority of Tor users are not affected by these blocks. Iran is still the #2 country based on direct usage, <a href="https://metrics.torproject.org/users.html?graph=direct-users&amp;country=ir#direct-users" title="https://metrics.torproject.org/users.html?graph=direct-users&amp;country=ir#direct-users">https://metrics.torproject.org/users.html?graph=direct-users&amp;country=ir#...</a>. This number is on the decline, however.</p>
+<p>and</p>
 
-<p>More details to follow as we have them.</p>
+<p>the relay view of that same conversation: <a href="https://media.torproject.org/misc/2012-02-28-tor-kz-bridge-relay-flow.txt" title="https://media.torproject.org/misc/2012-02-28-tor-kz-bridge-relay-flow.txt">https://media.torproject.org/misc/2012-02-28-tor-kz-bridge-relay-flow.tx...</a></p>
 
-<p><strong>Update</strong> 2011-02-10 18:05 UTC: We are working on making our obfuscating proxy more stable and easier to deploy. If you can compile code, following <a href="https://lists.torproject.org/pipermail/tor-talk/2012-February/023070.html">these directions</a> will help. We&#39;re also working on Amazon EC2 instances of obfsproxy for point and click deployment.</p>
+<p>Here&#39;s a graph of what this censorship looks like nationwide. The red dots are probable censorship events.</p>
 
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-13">New Tor Browser Bundles</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">firefox updates</a>
-              
-                <a class="post-category post-category-js" href="#">openssl</a>
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-               |
-              03 Feb 2012
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The Tor Browser Bundles have all been updated to the latest Firefox (10.0) as well as a number of other software version updates.</p>
-
-<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
-
-<p><strong>Tor Browser Bundle (2.2.35-5)</strong></p>
-
-<ul>
-<li>Update Firefox to 10.0</li>
-<li>Update Qt to 4.7.4</li>
-<li>Update OpenSSL to 1.0.0g</li>
-<li>Update zlib to 1.2.6</li>
-<li>Update HTTPS Everywhere to 1.2.2</li>
-<li>Update NoScript to 2.2.8</li>
-<li><p>New Firefox patches</p>
-
-<ul>
-<li>Limit the number of fonts per document</li>
-</ul></li>
-</ul>
-
-<p><strong>Linux changes</strong></p>
-
-<ul>
-<li>Put documentation in remove-shared-lib-symlinks debug dumps (closes: <a href="https://trac.torproject.org/projects/tor/ticket/4984">#4984</a>)</li>
-</ul>
-
-<p><strong>Windows changes</strong></p>
-
-<ul>
-<li>Make sure mozconfig always gets copied into the Firefox build directory
-(closes: <a href="https://trac.torproject.org/projects/tor/ticket/4879">#4879</a>)</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tale-new-censors-vodafone-uk-t-mobile-uk-o2-uk-and-t-mobile-usa">A tale of new censors - Vodafone UK, T-Mobile UK, O2 UK, and T-Mobile USA</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">ioerror</a> under
-              
-                <a class="post-category post-category-js" href="#">filtering censorship website tmobile vodafone o2</a>
-               |
-              18 Jan 2012
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The <a href="http://www.gnu.org/philosophy/right-to-read.html">right to read</a> is a fictional story but it warns of a future that has already started to arrive; it paints a picture where information is controlled with a heavy hand and simply reading, let alone speaking is an extremely dangerous activity. In the words of William Gibson, <em>&quot;The future is already here — it&#39;s just not very evenly distributed&quot;</em>. Restrictions on the right to read though the Internet perfectly match this observation. A lot should be said about perceptions of censorship, and it is often thought that places like Syria or Iran are unique. Generally, people in the West hold that those countries obviously censor as is consistent with facts of life in a supposedly non-free country. This probably holds a lot of truth but it absolutely fails to address the core of the issue — these countries and those networks are not unique.</p>
-
-<p>In fact, we find uncensored networks to almost be an abnormal state. The so-called free countries in the West often shape and tamper with network traffic. They often also log data and even <a href="https://www.eff.org/cases/nsa?tid=534">collaborate with governments</a>. Generally, people don&#39;t see evidence of this and as a result, they often perceive that their Internet connections aren&#39;t monitored or censored. These days are quickly coming to an end and while it sounds like hyperbole, here are examples in the United Kingdom and in the United States of America.</p>
-
-<p>Recently it has come to our attention that our <a href="http://www.torproject.org/">primary website</a> is filtered by Vodafone in the UK, by 3 (three.co.uk) in the UK, by O2 in the UK, and by T-Mobile in the UK and the USA. It used to be the case that we only saw filtering and censorship events in places like Egypt, Syria, or Iran and now we&#39;re going to explore what those attacks look like in the context of the UK and the USA.</p>
-
-<p>When a visitor uses a pre-paid account on the T-Mobile USA network and attempts to visit <a href="http://www.torproject.org/" title="http://www.torproject.org/">http://www.torproject.org/</a>, they are redirected to <a href="https://blog.torproject.org/files/tmobile-pre-paid-censorship_0.png">a block page</a>. This is enabled by default without user&#39;s affirmative consent and only savvy privileged users may even attempt to disable this censorship. There is an <a href="http://support.t-mobile.com/docs/DOC-2144">informational page about the T-Mobile censorship system</a> and it explains that this censorship may be disabled. We&#39;ve heard reports that attempts to disable the censorship are not always successful and this certainly doesn&#39;t bode well for an easy and censorship-free Internet experience.</p>
-
-<p>The T-Mobile USA network censorship appears to be simple to bypass: it appears to only trigger when a client sends Host: torproject.org on TCP port 80 and visitors that use <a href="https://www.torproject.org/">HTTPS</a> will probably not notice or be obviously impacted by their censorship.</p>
-
-<p>This kind of censorship raises all kinds of interesting questions. I suspect it raises US legal and social questions as well. The Tor Project is a registered 501c3 non-profit corporation in the state of Massachusetts, and the block was experienced in California. Does this count as interfering with interstate commerce? What duty of care does T-Mobile USA have when it relies on systems or infrastructure funded by the public? What duty of care do they have as a common carrier?</p>
-
-<p>Similarly, when a user on the UK Vodafone network visits <a href="http://www.torproject.org/" title="http://www.torproject.org/">http://www.torproject.org/</a> they are greeted by <a href="https://blog.torproject.org/files/www.torproject.org-vodafone.png">a block page as well</a>. You can visit this <a href="http://online.vodafone.co.uk/dispatch/Portal/ContentControlServlet?type=restricted">block page</a> without directly using their networks. Detecting their filters is straightforward and we see tampering at the sixth hop.</p>
-
-<p>Here is a tcptraceroute to TCP port 80 of torproject.org from an Ubuntu machine connected to the Internet via Vodafone UK:
-<code>
-Tracing the path to www.torproject.org (86.59.30.36) on TCP port 80 (www), 30 hops max
- 1 192.168.1.1 2.379 ms 1.011 ms 1.313 ms
- 2 10.252.225.61 90.998 ms 133.672 ms 95.963 ms
- 3 10.252.224.186 78.865 ms 91.722 ms 91.415 ms
- 4 * * *
- 5 10.203.64.130 88.502 ms 73.259 ms 80.765 ms
- 6 www.torproject.org (86.59.30.36) [open] 77.927 ms 152.599 ms 96.399 ms
-</code></p>
-
-<p>Here is a normal traceroute to torproject.org from an Ubuntu machine connected to the internet via Vodafone UK:
-<code>
-traceroute to www.torproject.org (86.59.30.36), 30 hops max, 60 byte packets
- 1 192.168.1.1 (192.168.1.1) 9.669 ms 9.583 ms 9.460 ms
- 2 10.252.225.61 (10.252.225.61) 98.084 ms 98.046 ms 98.224 ms
- 3 10.252.224.219 (10.252.224.219) 98.760 ms 109.326 ms 109.261 ms
- 4 host203.msm.che.vodafone (10.203.64.154) 109.087 ms 127.554 ms 127.426 ms
- 5 * * *
- 6 * * *
- 7 * * *
- 8 * * *
- 9 85.205.0.110 (85.205.0.110) 180.920 ms 180.692 ms 180.652 ms
-10 85.205.0.109 (85.205.0.109) 180.659 ms 180.473 ms *
-11 85.205.116.5 (85.205.116.5) 260.480 ms * 85.205.116.1 (85.205.116.1) 152.107 ms
-12 92.79.213.157 (92.79.213.157) 152.265 ms 152.099 ms 151.808 ms
-13 92.79.209.210 (92.79.209.210) 151.453 ms 151.124 ms 92.79.203.254 (92.79.203.254) 151.129 ms
-14 vin-145-254-19-130.arcor-ip.net (145.254.19.130) 157.978 ms vin-145-254-19-126.arcor-ip.net (145.254.19.126) 119.699 ms 129.820 ms
-15 te3-1-vix-iec-c2.ix.sil.at (193.203.0.6) 129.999 ms 136.314 ms 136.338 ms
-16 86.59.118.145 (86.59.118.145) 136.033 ms 135.826 ms 135.666 ms
-17 www.torproject.org (86.59.30.36) 151.282 ms 118.185 ms 114.603 ms
-</code></p>
-
-<p>We&#39;ve additionally found that pre-paid T-Mobile UK accounts also experience censorship that is similar to T-Mobile USA. Detection of their filter is possible with some of the techniques that I&#39;ve demonstrated, and it is quite trivial to see that TCP port 80 and 443 are treated in a special way.</p>
-
-<p>Here is a tcptraceroute to TCP port 80 of torproject.org from an Ubuntu machine connected to the Internet via T-Mobile UK:
-<code>
-Tracing the path to torproject.org (38.229.72.14) on TCP port 80 (www), 30 hops max
- 1 * * *
- 2 10.126.241.49 305.721 ms 429.908 ms 449.875 ms
- 3 10.70.16.221 480.031 ms 339.890 ms 429.951 ms
- 4 10.70.17.87 480.447 ms 449.365 ms 439.979 ms
- 5 vescum.torproject.org (38.229.72.14) [open] 459.935 ms 659.964 ms 449.849 ms
-</code></p>
-
-<p>Here is a tcptraceroute to TCP port 443 of torproject.org from an Ubuntu machine connected to the Internet via T-Mobile UK:
-<code>
-Tracing the path to torproject.org (86.59.30.36) on TCP port 443 (https), 30 hops max
- 1 * * *
- 2 10.126.241.53 357.474 ms 360.016 ms 389.772 ms
- 3 10.70.16.217 490.136 ms 409.878 ms 359.945 ms
- 4 10.70.17.87 469.956 ms 489.883 ms 389.868 ms
- 5 www.torproject.org (86.59.30.36) 410.024 ms 420.494 ms 399.888 ms
- 6 10.70.17.66 389.470 ms 429.923 ms 339.861 ms
- 7 10.70.16.50 430.002 ms 349.850 ms 450.012 ms
- 8 10.70.17.103 339.900 ms 389.836 ms 390.031 ms
- 9 149.254.199.162 369.851 ms * 924.522 ms
-10 10.126.168.218 420.035 ms 379.878 ms 409.968 ms
-11 xe-1-3-2-19.lon10.ip4.tinet.net (77.67.73.209) 469.942 ms 480.002 ms 499.940 ms
-12 xe-5-3-0.vie20.ip4.tinet.net (89.149.180.6) 399.851 ms 379.892 ms 379.929 ms
-13 silver-server-gw.ip4.tinet.net (77.67.82.234) 419.899 ms 479.926 ms 449.923 ms
-14 www.torproject.org (86.59.30.36) 389.925 ms 449.789 ms 549.993 ms
-15 www.torproject.org (86.59.30.36) [open] 419.869 ms 469.997 ms 479.839 ms
-</code></p>
-
-<p>Compare with a normal traceroute to torproject.org from an Ubuntu machine connected to the Internet via T-Mobile UK:
-<code>
-traceroute to torproject.org (38.229.72.14), 30 hops max, 60 byte packets
- 1 * * *
- 2 10.126.241.49 (10.126.241.49) 99.671 ms 99.856 ms 159.584 ms
- 3 10.70.16.221 (10.70.16.221) 179.672 ms 190.046 ms 159.760 ms
- 4 10.70.16.50 (10.70.16.50) 190.250 ms 179.356 ms 90.611 ms
- 5 10.70.17.103 (10.70.17.103) 90.565 ms 110.275 ms 90.508 ms
- 6 149.254.199.162 (149.254.199.162) 110.476 ms 110.449 ms 110.391 ms
- 7 10.126.168.214 (10.126.168.214) 70.022 ms 70.062 ms 60.303 ms
- 8 xe-1-3-2-19.lon10.ip4.tinet.net (77.67.73.209) 60.322 ms 69.380 ms 69.383 ms
- 9 * * *
-10 limelight-lon-gw.ip4.tinet.net (213.200.77.118) 59.798 ms 60.535 ms 179.659 ms
-11 tge11-1.fr4.lga.llnw.net (69.28.172.149) 240.999 ms 221.715 ms 221.191 ms
-12 tge14-4.fr4.ord.llnw.net (69.28.189.53) 230.570 ms 229.966 ms 210.814 ms
-13 tge7-1.fr3.ord.llnw.net (69.28.172.41) 210.575 ms 200.446 ms 199.453 ms
-14 ve8.fr3.ord4.llnw.net (68.142.80.130) 169.521 ms 148.181 ms 168.037 ms
-15 cymru.tge6-3.fr3.ord4.llnw.net (68.142.73.198) 248.264 ms 229.474 ms 249.066 ms
-16 vescum.torproject.org (38.229.72.14) 249.289 ms 249.234 ms 259.448 ms
-</code></p>
-
-<p>In the examples above we see that T-Mobile UK treats TCP port 80 in a special manner and effectively stops users from reaching our web site. This is an attack against users who attempt to connect to our infrastructure. This attack, while primitive, demonstrates an active and malicious action on the part of the above named Internet providers.</p>
-
-<p>We&#39;ve additionally seen reports of the UK O2 network blocking connections to <a href="http://www.torproject.org/" title="http://www.torproject.org/">http://www.torproject.org/</a> in exactly the same way that Vodafone UK blocks access. The O2 filter has been covered in the <a href="http://www.wired.co.uk/news/archive/2011-03/04/o2-mobile-web-filtering">popular media in the recent past</a> and we&#39;re sad to hear that they&#39;ve decided to include Tor&#39;s website in their race to the bottom.</p>
-
-<p>In all the above cases we do not see DNS tampering but rather outright <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">Man-In-The-Middle attacks</a> against connections to our web server. These censorship systems do not currently implement a Man-In-The-Middle attack against the SSL services offered by our web server. It is not much of a stretch of the imagination to think that such an action may be a future plan; we&#39;ve <a href="https://blog.torproject.org/blog/detecting-certificate-authority-compromises-and-web-browser-collusion">seen</a> it <a href="https://blog.torproject.org/blog/diginotar-damage-disclosure">elsewhere</a>.</p>
-
-<p>Current users of the Tor network are not impacted by this filtering, but these networks are attempting to deny new users the ability to start using Tor without extensive efforts. You can <a href="https://bango.net/O2AV/wUnsuccessful.aspx?action=sessionTimeout&amp;httpsRedirect=1">view their filter page</a> without using their service; the <a href="https://bango.net/O2AV/mUnsuccessful.aspx?action=noMSISDN&amp;httpsRedirect=1&amp;httpsRedirect=1">exact block page</a> is also available externally. It appears that it is possible for users to disable this censorship by providing a credit card as a proof of age. This is not exactly a privacy-friendly tactic. The O2 Twitter account <a href="https://twitter.com/#!/O2/status/159560963106947072">contacted me</a> and said they were willing to review their censorship policy for torproject.org but they did not offer to remove the censorship entirely.</p>
-
-<p>This trend of providing partially censored Internet in what we all think of as free countries is alarming. Are we supposed to look the other way because the mobile Internet isn&#39;t the same as the &quot;real&quot; Internet? Should we worry that Vodafone&#39;s capabilities and behavior here remind us of <a href="http://www.rawstory.com/rs/2011/01/28/vodafone-confirms-role-egypts-cellular-internet-blackout/">what they did in Egypt last year</a>? It would seem that the war over network neutrality is far from won.</p>
-
-<p>(Investigation and research thanks go to Andrew Lewman, Steven Murdoch and Runa Sandvik of the <a href="https://www.torproject.org/">Tor Project</a>, SiNA of <a href="http://www.redteam.io/">RedTeam LLC</a>, Jim Killock, Lee Maguire, Peter Bradwell of the <a href="http://www.openrightsgroup.org/">Open Rights Group</a> and their project <a href="http://blocked.org.uk/">blocked.org.uk</a> and Richard Clayton from the <a href="http://www.cl.cam.ac.uk/%7Ernc1/">University of Cambridge</a>.)</p>
-
-<p><thead><tr>
-<th>Attachment</th>
-<th>Size</th> </tr></thead><tbody>
- <tr class="odd">
-<td><a href="https://blog.torproject.org/files/www.torproject.org-vodafone.png">www.torproject.org-vodafone.png</a></td>
-<td>235.81 KB</td> </tr>
- <tr class="even">
-<td><a href="https://blog.torproject.org/files/tmobile-pre-paid-censorship_0.png">tmobile-pre-paid-censorship.png</a></td>
-<td>317.21 KB</td> </tr>
-</tbody></p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/blackout-against-copyright-overreach-stop-sopa-and-pipa">Blackout Against Copyright Overreach: Stop SOPA and PIPA</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">wseltzer</a> under
-              
-                <a class="post-category post-category-js" href="#">law</a>
-              
-                <a class="post-category post-category-js" href="#">PIPA</a>
-              
-                <a class="post-category post-category-js" href="#">SOPA</a>
-               |
-              17 Jan 2012
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The Tor Project doesn&#39;t usually get involved with U.S. copyright debates. But SOPA and PIPA (the House&#39;s &quot;Stop Online Piracy Act&quot; and the Senate&#39;s &quot;Protect-IP Act&quot;) go beyond enforcement of copyright. These copyright bills would strain the infrastructure of the Internet, on which many free communications -- anonymous or identified -- depend. Originally, the bills proposed that so-called &quot;rogue sites&quot; should be blocked through the Internet&#39;s Domain Name System (DNS). That would have broken DNSSEC security and shared U.S. censorship tactics with those of China&#39;s &quot;great firewall.&quot;</p>
-
-<p>Now, while we hear that DNS-blocking is off the table, the bills remain threatening to the network of intermediaries who carry online speech. Most critically to Tor, SOPA contained a provision forbidding &quot;circumvention&quot; of court-ordered blocking that was written broadly enough that it <a href="http://wendy.seltzer.org/blog/archives/2011/12/15/stopping-sopas-anti-circumvention.html">could apply to Tor</a> -- which helps its users to &quot;circumvent&quot; local-network censorship. Further, both bills broaden the reach of intermediary liability, to hold conduits and search engines liable for user-supplied infringement. The private rights of action and &quot;safe harbors&quot; could force or encourage providers to censor well beyond the current DMCA&#39;s &quot;notice and takedown&quot; provision (of which <a href="https://www.chillingeffects.org/">Chilling Effects</a> documents numerous burdens and abuses).</p>
-
-<p>On January 18, we&#39;re joining <a href="https://blog.wikimedia.org/2012/01/16/wikipedias-community-calls-for-anti-sopa-blackout-january-18/">Wikipedia</a>, <a href="http://blog.reddit.com/2012/01/stopped-they-must-be-on-this-all.html">Reddit</a>, the <a href="http://blog.media.mit.edu/2012/01/media-lab-is-against-sopa-and-pipa.html">MIT Media Lab</a>, and <a href="http://americancensorship.org/">hundreds of others</a> in protest, turning a portion of the Tor site black to call attention to copyright balance and remind the US Congress and voters of the value of the open Internet.</p>
-
-<p>U.S. citizens, please call or write, to <a href="http://americancensorship.org/">urge your representatives to stop SOPA and PIPA</a>. Elsewhere in the world, keep an eye out for similar legislation. and bring the fight there too.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/updated-tor-cloud-images">Updated Tor Cloud images</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">Runa</a> under
-              
-                <a class="post-category post-category-js" href="#">bridge relays</a>
-              
-                <a class="post-category post-category-js" href="#">cloud</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-              
-                <a class="post-category post-category-js" href="#">tor cloud</a>
-               |
-              16 Jan 2012
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The <a href="https://cloud.torproject.org/">Tor Cloud</a> images for all the seven regions have been updated to include the _ <a href="http://www.atagar.com/arm/">anonymizing relay monitor (arm)</a>_. This works much like top does for system usage, providing real time statistics for bandwidth, cpu, memory usage, current Tor configuration, connection details etc.</p>
-
-<p>If you&#39;re already running a Tor Cloud instance and wish to install arm, connect to your instance with SSH and run <em>sudo aptitude install tor-arm</em>.</p>
+<p><center><a href="https://media.torproject.org/image/blog-images/direct-users-off-2011-12-03-on-300-2012-03-02-kz.png"><img src="https://media.torproject.org/image/blog-images/direct-users-off-2011-12-03-on-300-2012-03-02-kz.png" height="200" width="320"></a></center>. The full image is here, <a href="https://media.torproject.org/image/blog-images/direct-users-off-2011-12-03-on-300-2012-03-02-kz.png" title="https://media.torproject.org/image/blog-images/direct-users-off-2011-12-03-on-300-2012-03-02-kz.png">https://media.torproject.org/image/blog-images/direct-users-off-2011-12-...</a></p>
 
         </div>
       </section>
@@ -338,7 +265,7 @@ traceroute to torproject.org (38.229.72.14), 30 hops max, 60 byte packets
       
         <a href="/blog/page57" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 58 of 134</span>
+      <span class="page_number ">Page: 58 of 137</span>
       
         <a href="/blog/page59" class="next">Next</a>
       

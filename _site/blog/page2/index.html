@@ -53,241 +53,199 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-browser-364-and-40-alpha-1-are-released">Tor Browser 3.6.4 and 4.0-alpha-1 are released</a></h2>
+          <h2 class="post-title"> <a href="/tails-112-out">Tails 1.1.2 is out</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
+              By <a class="post-author" href="#">tails</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymous operating system</a>
+              
+                <a class="post-category post-category-js" href="#">tails</a>
+              
+                <a class="post-category post-category-js" href="#">tails releases</a>
                |
-              12 Aug 2014
+              25 Sep 2014
           </p>
         </header>
         <div class="post-description">
-          <p>The fourth pointfix release of the 3.6 series is available from the <a href="https://www.torproject.org/download/download-easy.html">Tor Browser Project page</a> and also from our <a href="https://www.torproject.org/dist/torbrowser/3.6.4/">distribution directory</a>.</p>
+          <p>Tails, The Amnesic Incognito Live System, version 1.1.2, is out.</p>
 
-<p>This release features an update to OpenSSL to address the latest round of <a href="https://www.openssl.org/news/secadv_20140806.txt">OpenSSL security issues</a>. Tor Browser should only be vulnerable to one of these issues - the null pointer dereference. As this issue is only a DoS, we are not considering this a critical security update, but users are advised to upgrade anyway. This release also features an update to Tor to alert users of the <a href="https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">RELAY_EARLY attack</a> via a log message, and a fix for a hang that was happening to some users at startup/Tor network bootstrap.</p>
+<p>This release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_1.1.1/">numerous security issues</a> and all users must <a href="https://tails.boum.org/doc/first_steps/upgrade/">upgrade</a> as soon as possible.</p>
 
-<p>Here is the complete changelog for 3.6.4:</p>
+<p>We prepared this release mainly to fix a <a href="https://blog.mozilla.org/security/2014/09/24/rsa-signature-forgery-in-nss/">serious flaw</a> in the Network Security Services (NSS) library used by Firefox and other products allows attackers to create forged RSA certificates.</p>
+
+<p>Before this release, users on a compromised network could be directed to sites using a fraudulent certificate and mistake them for legitimate sites. This could deceive them into revealing personal information such as usernames and passwords. It may also deceive users into downloading malware if they believe it’s coming from a trusted site.</p>
+
+<p><strong>Changes</strong></p>
+
+<p>Notable user-visible changes include:</p>
 
 <ul>
-<li><p><strong>Tor Browser 3.6.4 -- All Platforms</strong></p>
+<li>Security fixes
 
 <ul>
-<li>Update Tor to 0.2.4.23</li>
-<li>Update Tor launcher to 0.2.5.6</li>
-<li>Update OpenSSL to 1.0.1i</li>
-<li>Backported Tor Patches:</li>
-<li>Bug 11654: Properly apply the fix for malformed bug11156 log message</li>
-<li>Bug 11200: Fix a hang during bootstrap introduced in the initial
-bug11200 patch.</li>
-<li>Update NoScript to 2.6.8.36</li>
-<li>Bug 9516: Send Tor Launcher log messages to Browser Console</li>
-<li>Update Torbutton to 1.6.11.1</li>
-<li>Bug 11472: Adjust about:tor font and logo positioning to avoid overlap</li>
-<li>Bug 12680: Fix Torbutton about url.</li>
+<li>Upgrade the web browser to 24.8.0esr-0+tails3~bpo70+1</li>
+<li>Install Linux 3.16-1</li>
+<li>Numerous other software upgrades that fix security issues: GnuPG, APT, DBus, Bash, and packages built from the bind9 and libav source packages</li>
 </ul></li>
 </ul>
 
-<p>In addition, we are also releasing the first alpha of the 4.0 series, available for download on the <a href="https://www.torproject.org/projects/torbrowser.html.en#downloads-alpha">extended downloads page</a>.</p>
+<p>See the <a href="https://git-tails.immerda.ch/tails/plain/debian/changelog">online Changelog</a> for technical details.</p>
 
-<p>This alpha paves the way to our upcoming autoupdater by reorganizing the directory structure of the browser. This means that in-place upgrades from Tor Browser 3.6 (by extracting/copying over the old directory) will not work.</p>
+<p><strong>Known issues</strong></p>
 
-<p>This release also features Tor 0.2.5.6, and some new defaults for NoScript to make the script permissions for a given url bar domain automatically cascade to all third parties by default (though this may be changed in the NoScript configuration).</p>
+<p><a href="https://tails.boum.org/support/known_issues/">Longstanding</a> known issues.</p>
 
-<ul>
-<li><p><strong>Tor Browser 4.0-alpha-1 -- All Platforms</strong></p>
+<p><strong>I want to try it or to upgrade!</strong></p>
 
-<ul>
-<li>Ticket 10935: Include the Meek Pluggable Transport (version 0.10)</li>
-<li>Two modes of Meek are provided: Meek over Google and Meek over Amazon</li>
-<li>Update Firefox to 24.7.0esr</li>
-<li>Update Tor to 0.2.5.6-alpha</li>
-<li>Update OpenSSL to 1.0.1i</li>
-<li>Update NoScript to 2.6.8.36</li>
-<li>Script permissions now apply based on URL bar</li>
-<li>Update HTTPS Everywhere to 5.0development.0</li>
-<li>Update Torbutton to 1.6.12.0</li>
-<li>Bug 12221: Remove obsolete Javascript components from the toggle era</li>
-<li>Bug 10819: Bind new third party isolation pref to Torbutton security UI</li>
-<li>Bug 9268: Fix some window resizing corner cases with DPI and taskbar size.</li>
-<li>Bug 12680: Change Torbutton URL in about dialog.</li>
-<li>Bug 11472: Adjust about:tor font and logo positioning to avoid overlap</li>
-<li>Bug 9531: Workaround to avoid rare hangs during New Identity</li>
-<li>Update Tor Launcher to 0.2.6.2</li>
-<li>Bug 11199: Improve behavior if tor exits</li>
-<li>Bug 12451: Add option to hide TBB&#39;s logo</li>
-<li>Bug 11193: Change &quot;Tor Browser Bundle&quot; to &quot;Tor Browser&quot;</li>
-<li>Bug 11471: Ensure text fits the initial configuration dialog</li>
-<li>Bug 9516: Send Tor Launcher log messages to Browser Console</li>
-<li>Bug 11641: Reorganize bundle directory structure to mimic Firefox</li>
-<li>Bug 10819: Create a preference to enable/disable third party isolation</li>
-<li>Backported Tor Patches:</li>
-<li>Bug 11200: Fix a hang during bootstrap introduced in the initial
-bug11200 patch.</li>
-</ul></li>
-<li><p><strong>Tor Browser 4.0-alpha-1 -- Linux Changes</strong></p>
+<p>Go to the <a href="https://tails.boum.org/download/">download</a> page.</p>
 
-<ul>
-<li>Bug 10178: Make it easier to set an alternate Tor control port and password</li>
-<li>Bug 11102: Set Window Class to &quot;Tor Browser&quot; to aid in Desktop navigation</li>
-<li>Bug 12249: Don&#39;t create PT debug files anymore</li>
-</ul></li>
-</ul>
+<p>As no software is ever perfect, we maintain a list of <a href="https://tails.boum.org/support/known_issues/">problems that affects the last release of Tails</a>.</p>
 
-<p>The list of <a href="https://trac.torproject.org/projects/tor/query?keywords=%7Etbb-helpdesk-frequent&amp;status=!closed">frequently encountered known issues</a> is also available in our bug tracker.</p>
+<p><strong>What&#39;s coming up?</strong></p>
+
+<p>The next Tails release is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for October 14.</p>
+
+<p>Have a look to our <a href="https://labs.riseup.net/code/projects/tails/roadmap">roadmap</a> to see where we are heading to.</p>
+
+<p>Do you want to help? There are many ways <a href="https://tails.boum.org/contribute/"><strong>you</strong> can contribute to Tails</a>. If you want to help, come talk to us!</p>
+
+<p><strong>Support and feedback</strong></p>
+
+<p>For support and feedback, visit the <a href="https://tails.boum.org/support/">Support section</a> on the Tails website.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-august-6th-2014">Tor Weekly News — August 6th, 2014</a></h2>
+          <h2 class="post-title"> <a href="/tor-weekly-news-%E2%80%94-september-24th-2014">Tor Weekly News — September 24th, 2014</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">lunar</a> under
+              By <a class="post-author" href="#">harmony</a> under
               
                 <a class="post-category post-category-js" href="#">tor weekly news</a>
                |
-              06 Aug 2014
+              24 Sep 2014
           </p>
         </header>
         <div class="post-description">
-          <p>Welcome to the thirty-first issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+          <p>Welcome to the thirty-eighth issue in 2014 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the Tor community.</p>
 
-<h1>Tor and the RELAY_EARLY traffic confirmation attack</h1>
+<h1>The EFF concludes its 2014 Tor Challenge</h1>
 
-<p>Roger Dingledine ended several months of concern and speculation in the Tor community with a security advisory posted to the <a href="https://lists.torproject.org/pipermail/tor-announce/2014-July/000094.html">tor-announce mailing list</a> and the <a href="https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">Tor blog</a>.</p>
+<p>As Tor Weekly News <a href="https://lists.torproject.org/pipermail/tor-news/2014-June/000049.html">reported</a> in June, over the last few months the Electronic Frontier Foundation has been holding its second Tor Challenge to improve the strength and diversity of the Tor network by inspiring people to run Tor relays. The 2014 Challenge is now over, and Rainey Reitman of the EFF posted <a href="https://www.eff.org/deeplinks/2014/09/tor-challenge-inspires-1635-tor-relays">some thoughts</a> on the campaign and its outcome.</p>
 
-<p>In it, he gave details of a five-month-long active attack on operators and users of Tor hidden services that involved a variant of the so-called “Sybil attack”: the attacker signed up “around 115 fast non-exit relays” (now removed from the Tor network), and configured them to inject a traffic header signal consisting of RELAY_EARLY cells to “tag” any hidden service descriptor requests received by malicious relays — a tag which could then be picked up by other bad nodes acting as <a href="https://www.torproject.org/docs/faq#EntryGuards">entry guards</a>, in the process identifying clients which requested information about a particular hidden service.</p>
+<p>1635 Tor relays (including 326 exit relays) were started up or had their capacity increased as part of the 2014 Tor Challenge, compared to 549 at the end of the last campaign in 2011. As Rainey wrote, this number “far exceeded our hopes”; the success can be attributed to a coordinated promotional effort by the EFF, the Free Software Foundation, the Freedom of the Press Foundation, and the Tor Project, as well as to “the 1,000 individuals who cared enough to help contribute bandwidth to the Tor network.” Thanks to everyone who participated!</p>
 
-<p>The attack is suspected to be linked to a <a href="https://blog.torproject.org/blog/recent-black-hat-2014-talk-cancellation">now-cancelled talk that was due to be delivered at the BlackHat security conference</a>. There have been several fruitful and positive research projects involving theoretical attacks on Tor’s security, but this was not among them. Not only were there problems with the process of responsible disclosure, but, as Roger wrote, “the attacker encoded the name of the hidden service in the injected signal (as opposed to, say, sending a random number and keeping a local list mapping random number to hidden service name)”, thereby “[putting] users at risk indefinitely into the future”.</p>
+<p>It’s important to remember, though, that new relays only benefit Tor users as long as they stay running. Advice and support from experienced relay operators can always be found on the #tor IRC channel or the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-relays">tor-relays mailing list</a>; if you missed out on the Tor Challenge this year but still want to contribute to a stronger, more stable Tor network, take a look at the <a href="https://www.torproject.org/docs/tor-doc-relay">Tor website</a> for advice on how to get started.</p>
 
-<p>On the other hand, it is important to note that “while this particular variant of the traffic confirmation attack allows high-confidence and efficient correlation, the general class of passive (statistical) traffic confirmation attacks remains unsolved and would likely have worked just fine here”. In other words, the tagging mechanism used in this case is the innovation; the other element of the attack is a known weakness of low-latency anonymity systems, and defending against it is a much harder problem.</p>
+<h1>Guardiness and Tor’s directory authorities</h1>
 
-<p>“Users who operated or accessed hidden services from early February through July 4 should assume they were affected” and act accordingly; in the case of hidden service operators, this may mean changing the location of the service. Accompanying the advisory were two new releases for both the stable and alpha tor branches (0.2.4.23 and 0.2.5.6-alpha); both include a fix for the signal-injection issue that causes tor to drop circuits and give a warning if RELAY_EARLY cells are detected going in the wrong direction (towards the client), and both prepare the ground for clients to move to single entry guards (rather than sets of three) in the near future. Relay operators should be sure to upgrade; a point-release of the Tor Browser will offer the same fixes to ordinary users. Nusenu <a href="https://lists.torproject.org/pipermail/tor-relays/2014-August/005046.html">suggested</a> that relay operators regularly check their logs for the new warning, “even if the attack origin is not directly attributable from a relay’s point of view”. Be sure to read the full security advisory for a fuller explanation of the attack and its implications.</p>
+<p>When a Tor relay is first assigned the Guard flag by the directory authorities (or “dirauths”) it sees a dip in the amount of traffic passing through it, because Guard capacity is a scarce resource on the Tor network and, as Roger Dingledine explained <a href="https://blog.torproject.org/blog/lifecycle-of-a-new-relay">last year</a>, “all the rest of the clients back off from using you for their middle hops, because when they see the Guard flag, they assume that you have plenty of load already from clients using you as their first hop”, an assumption which is only correct after clients have had enough opportunity to select the new guard. With the recent move to single entry guards, an even longer period of time may pass before a young guard can be selected as a first hop by old clients.</p>
 
-<h1>Why is bad-relays a closed mailing list?</h1>
+<p>“Guardiness”, or GuardFraction, is a <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/236-single-guard-node.txt#l101">proposed measurement</a> to let dirauths, and therefore clients, work out how much of a relay’s capacity is being used for first hops by clients, and how much for second and third hops, by finding the fraction of recent consensuses in which the relay has been given the Guard flag; the “dead period” following the assignment of the flag can then be avoided. George Kadianakis <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007489.html">published</a> an analysis of ways in which dirauths’ votes could be extended to include this guardiness measurement, taking into account the time and effort required to parse large numbers of Tor consensuses very quickly. The initial proposal was to ask dirauths to run a script each hour that would extract the data required for parsing into “summary files”: Sebastian Hahn <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007526.html">asked</a> how this measure might fail in different situations, and Peter Palfrader <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007490.html">suggested</a> that loading every consensus into a database for later querying might be more efficient.</p>
 
-<p>Damian Johnson and Philipp Winter have been working on improving the process of <a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays">reporting bad relays</a>. The process starts by having users report odd behaviors to the bad-relays mailing list.</p>
-
-<p>Only a few trusted volunteers receive and review these reports. Nusenu <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/034198.html">started a discussion on tor-talk</a> advocating for more transparency. Nusenu argues that an open list would “likely get more confirm/can’t confirm feedback for a given badexit candidate”, and that it would allow worried users to act faster than operators of directory authorities.</p>
-
-<p>Despite being “usually on the side of transparency”, Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/034219.html">described</a> being “stuck” on the issue, “because the arms race is so lopsidedly against us”.</p>
-
-<p>Roger explains: “we can scan for whether exit relays handle certain websites poorly, but if the list that we scan for is public, then exit relays can mess with other websites and know they’ll get away with it. We can scan for incorrect behavior on various ports, but if the list of ports and the set of behavior we do is public, then again relays are free to mess with things we don’t look for.”</p>
-
-<p>A better future and more transparency probably lies in adaptive test systems run by multiple volunteer groups. Until they come to existence, as a small improvement, Philipp Winter <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/034216.html">wrote</a> it was probably safe to publish why relays were disabled, through “short sentence along the lines of ‘running HTTPS MitM’ or ‘running sslstrip’”.</p>
-
-<h1>Monthly status reports for July 2014</h1>
-
-<p>Time for monthly reports from Tor project members. The July 2014 round was opened by <a href="https://lists.torproject.org/pipermail/tor-reports/2014-July/000598.html">Georg Koppen</a>, followed by <a href="https://lists.torproject.org/pipermail/tor-reports/2014-July/000599.html">Philipp Winter</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000601.html">Sherief Alaa</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000603.html">Lunar</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000604.html">Nick Mathewson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000605.html">Pearl Crescent</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000608.html">George Kadianakis</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000609.html">Matt Pagan</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000610.html">Isis Lovecruft</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000611.html">Griffin Boyce</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000612.html">Arthur Edelstein</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000614.html">Karsten Loesing</a>.</p>
-
-<p>Lunar reported on behalf of the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000602.html">help desk</a> and Mike Perry for the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000607.html">Tor Browser team</a>.</p>
+<p>“This feature is by far the trickiest part of prop236 (guard node security) and I wanted to inform all dirauths of our plan and ask for feedback on the deployment procedure”, wrote George. If you have any comments to add to the discussion so far, please send them to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-dev">tor-dev mailing list</a>.</p>
 
 <h1>Miscellaneous news</h1>
 
-<p>Anthony G. Basile announced a new release of tor-ramdisk, an i686 or x86_64 uClibc-based micro Linux distribution whose only purpose is to host a Tor server. <a href="http://opensource.dyc.edu/pipermail/tor-ramdisk/2014-August/000132.html">Version 20140801</a> updates Tor to version 0.2.4.23, and the kernel to 3.15.7 with Gentoo’s hardened patches.</p>
+<p>The Tails team wants to make sure that all the Debian packages on which Tails relies are “in good shape” before Jessie, the next Debian release, is frozen on 5th November. To that end, the team called for testing both of the <a href="https://mailman.boum.org/pipermail/tails-testers/2014-September/000071.html">software itself</a> and its <a href="https://mailman.boum.org/pipermail/tails-l10n/2014-September/001553.html">translations</a> — if you’d like to help, find full instructions and links to the “barely-working” experimental disk images in the announcements.</p>
 
-<p>meejah has <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007295.html">announced</a> a new command-line application. <a href="https://github.com/meejah/carml">carml</a> is a versatile set of tools to “query and control a running Tor”. It can do things like “list and remove streams and circuits; monitor stream, circuit and address-map events; watch for any Tor event and print it (or many) out; monitor bandwidth; run any Tor control-protocol command; pipe through common Unix tools like grep, less, cut, etcetera; download TBB through Tor, with pinned certs and signature checking; and even spit out and run xplanet configs (with router/circuit markers)!” The application is written in Python and uses the <a href="https://txtorcon.readthedocs.org/">txtorcon library</a>. meejah describes it as early-alpha and warns that it might contain “serious, anonymity-destroying bugs”. Watch out!</p>
+<p><a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a>, the pluggable transport that routes Tor traffic through platforms which are “too big to block”, now works with Microsoft Azure in addition to the already-supported Google App Engine and Amazon Web Services. David Fifield <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007525.html">posted</a> the announcement, which contains instructions for those who want to start using the new front domain.</p>
 
-<p>Only two weeks left for the Google Summer of Code students, and the last round of reports but one: Juha Nurmi on the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000600.html">ahmia.fi project</a>, Marc Juarez on <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000606.html">website fingerprinting defenses</a>, Amogh Pradeep on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007282.html">Orbot and Orfox improvements</a>, Zack Mullaly on the <a href="https://lists.eff.org/pipermail/https-everywhere/2014-August/002199.html">HTTPS Everywhere secure ruleset update mechanism</a>, Israel Leiva on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007284.html">GetTor revamp</a>, Quinn Jarrell on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007285.html">pluggable transport combiner</a>, Daniel Martí on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007287.html">incremental updates to consensus documents</a>, Noah Rahman on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007288.html">Stegotorus enhancements</a>, and Sreenatha Bhatlapenumarthi on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007293.html">Tor Weather rewrite</a>.</p>
+<p>Sebastian Hahn <a href="https://lists.torproject.org/pipermail/tor-talk/2014-September/034898.html">announced</a> that gabelmoo, the Tor directory authority which he administers, has moved to a new IP address. “You should not notice any kind of disturbance from this, and everything should continue to work as normal.”</p>
 
-<p>The Tails team is looking for testers to solve a possible incompatibility in one of the recommended installation procedures. If you have a running Tails system, a spare USB stick and some time, <a href="https://mailman.boum.org/pipermail/tails-testers/2014-July/000059.html">please help</a>. Don’t miss the <a href="https://mailman.boum.org/pipermail/tails-testers/2014-July/000060.html">recommended command-line options</a>!</p>
+<p>Released in December 2013, the SafePlug is a $49 router that promises its users “complete security and anonymity” online by sending all of their traffic through Tor. Annie Edmundson from Princeton University released a <a href="https://freedom-to-tinker.com/blog/annee/security-audit-of-safeplug-tor-in-a-box/">summary</a> of <a href="https://www.usenix.org/system/files/conference/foci14/foci14-edmundson.pdf">research presented during FOCI’14</a> in which the authors point out several security problems in the implementation of the SafePlug administration interface, and also highlight other structural issues. “The most crucial problem with a torifying proxy is that it uses a bring-your-own-browser system, as opposed to a hardened browser, and therefore is susceptible to browser-based privacy leaks. This is why it’s better to use the Tor Browser Bundle […]”, wrote Annie.</p>
 
-<p>The <a href="https://citizenlab.org/summerinstitute/2014.html">Citizen Lab Summer Institute</a> took place at the University of Toronto from July 28 to 31. The event brought together policy and technology researchers who focus on Internet censorship and measurement. A lot of great work was presented including but not limited to a proposal to measure the chilling effect, ongoing work to deploy <a href="http://freehaven.net/anonbib/cache/usenix11-telex.pdf">Telex</a>, and several projects to measure censorship in different countries. Some Tor-related work was also presented: Researchers are working on understanding how the Tor network is used for political purposes. Another project makes use of TCP/IP side channels to <a href="https://arxiv.org/pdf/1312.5739.pdf">measure the reachability of Tor relays from within China</a>.</p>
+<p>The upcoming Tor Messenger is based on <a href="http://instantbird.com/">Instantbird</a>. One key feature that was identified as missing in the latter is support for <a href="https://otr.cypherpunks.ca/">Off-the-Record encryption</a>. After months of discussions and reviews to determine the right programming interface, Arlo Breault got the necessary core <a href="https://hg.mozilla.org/comm-central/rev/e2c85d70fda2">modifications</a> <a href="https://hg.mozilla.org/users/florian_queze.net/purple/rev/6550fcf407f0">merged</a>.</p>
 
-<p>The Electronic Frontier Foundation wrote two blog posts to show why Tor is important for universities and how universities can help the Tor network. The <a href="https://www.eff.org/deeplinks/2014/08/tor-campus-part-i-its-been-done-and-should-happen-again">first part</a> explains why Tor matters, gives several examples of universities already contributing to the Tor network, and outlines a few reasons for hosting new Tor nodes. The <a href="https://www.eff.org/deeplinks/2014/08/tor-campus-part-ii-icebreakers-and-risk-mitigation-strategies">second part</a> gives actual tips on where to start, and how to do it best.</p>
+<p>Roger Dingledine wrote up a <a href="https://trac.torproject.org/projects/tor/wiki/doc/TorControlPortWalkthrough-HS">walkthrough</a> of the controller events you might see when accessing Tor hidden services. “In theory the controller events should help you understand how far we got at reaching a hidden service when the connection fails. In practice it’s <a href="https://bugs.torproject.org/13206">a bit overwhelming</a>”.</p>
+
+<p>In the first message posted to the recently-created <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/onionoo-announce">onionoo-announce mailing list</a>, Karsten Loesing <a href="https://lists.torproject.org/pipermail/onionoo-announce/2014/000000.html">explained</a> a minor improvement that should allow Onionoo clients to determine when they need to be upgraded to a new protocol version.</p>
+
+<p>Leiah, whose design work has featured on many of Tor’s company publications, <a href="https://bugs.torproject.org/13117">posted</a> a mock-up of a possible new look for the Tor blog.</p>
+
+<p>Patrick Schleizer <a href="https://lists.torproject.org/pipermail/tor-talk/2014-September/034909.html">announced</a> the release of version 9 of Whonix, the anonymous operating system based on Tor, Debian, and security-by-isolation.</p>
 
 <h1>Tor help desk roundup</h1>
 
-<p>Users occasionally ask if there is any way to set Tor Browser as the default browser on their system. Currently this is not possible, although it <a href="https://bugs.torproject.org/12763">may be possible</a> in a future Tor Browser release. In the mean time, Tails provides another way to prevent accidentally opening hyperlinks in a non-Tor browser.</p>
+<p>The help desk has been asked how to configure a VPN to prevent a website from learning that a user is using Tor. We consider positioning a VPN between one’s exit node and the destination site to be totally unsafe, and not much more anonymous than using a VPN without Tor. By design, Tor <a href="https://www.torproject.org/docs/faq.html.en#HideExits">allows the destination site to know</a> that a visitor is using Tor. The better solution is to email the website owner and ask them to stop blocking Tor. The longer-term solution is that Tor needs someone willing to coordinate with websites to design <a href="https://blog.torproject.org/blog/call-arms-helping-internet-services-accept-anonymous-users">engagement solutions</a> that work for Tor users and for big websites.</p>
+
+<h1>News from Tor StackExchange</h1>
+
+<p>Jobiwan has a machine on their network which should act as a SOCKS proxy. When Tor Browser is configured to use this proxy, it complains that <a href="https://tor.stackexchange.com/q/4173/88">Tor is not working in this browser</a>. However, Jobiwan is able to visit hidden services with these settings, and wants to know why this message is printed and if it is safe to use Tor Browser this way. Do you know a good answer to this question? If so, please share your thoughts.</p>
+
+<p>Andy Smith asks if <a href="https://tor.stackexchange.com/q/4050/88">slow relays are useful</a> for the Tor network. Roya suggests that a large number of slow relays is better than a small number of fast relays, at least anonymity-wise, because this helps to grow diversity in the network and makes it harder for an attacker to deanonymize users. On the other hand, user194 and Relay Operator write that a slow relay does not provide much benefit for the network. They recommend spending a few dollars more to rent a fast virtual server.</p>
 
 <h1>Easy development tasks to get involved with</h1>
 
-<p>Tor Launcher is the Tor controller shipped with Tor Browser written in JavaScript. Starting with Firefox 14 the “nsILocalFile” interface has been <a href="https://bugs.torproject.org/10573">deprecated and replaced with the “nsIFile” interface</a>. What we should do is replace all instances of “nsILocalFile” with “nsIFile” and see if anything else needs fixing to make Tor Launcher still work as expected. If you know a little bit about Firefox extensions and want to give this a try, clone the <a href="https://gitweb.torproject.org/tor-launcher.git">repository</a>, make the necessary changes, run “make package”, and tell us whether something broke in interesting ways.</p>
+<p>The tor daemon has a SafeLogging configuration option that removes all potentially sensitive parts of log messages and replaces them with “[scrubbed]”. However, this option does not cover hidden services operated by the tor daemon. Extending this option involves scanning through some code, but Nick says it could be some interesting code; if you’re up to reading and patching some C code and then reading some (hopefully scrubbed) logs, this ticket may be for you. Be sure to post your branch for review on the <a href="https://bugs.torproject.org/2743">ticket</a>.</p>
 
 <hr>
 
-<p>This issue of Tor Weekly News has been assembled by Lunar, harmony, Matt Pagan, Philipp Winter, David Fifield, Karsten Loesing, and Roger Dingledine.</p>
+<p>This issue of Tor Weekly News has been assembled by harmony, Lunar, qbi, Matt Pagan, Karsten Loesing, Arlo Breault, and Roger Dingledine.</p>
 
-<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the project page <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-july-30th-2014">Tor Weekly News — July 30th, 2014</a></h2>
+          <h2 class="post-title"> <a href="/tor-weekly-news-%E2%80%94-september-17th-2014">Tor Weekly News — September 17th, 2014</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">lunar</a> under
+              By <a class="post-author" href="#">harmony</a> under
               
                 <a class="post-category post-category-js" href="#">tor weekly news</a>
                |
-              30 Jul 2014
+              17 Sep 2014
           </p>
         </header>
         <div class="post-description">
-          <p>Welcome to the thirtieth issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+          <p>Welcome to the thirty-seventh issue in 2014 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the community around Tor, the anonymity network that makes full use of its library card.</p>
 
-<h1>Tor Browser 3.6.3 is out</h1>
+<h1>tor 0.2.5.7-rc is out</h1>
 
-<p>A <a href="https://blog.torproject.org/blog/tor-browser-363-released">new pointfix release for the 3.6 series of the Tor Browser</a> is out. Most components have been updated and a couple of small issues fixed. Details are available in the release announcement.</p>
+<p>Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-talk/2014-September/034740.html">announced</a> the first release candidate in tor’s 0.2.5.x series. This version “fixes several regressions from earlier in the 0.2.5.x release series, and some long-standing bugs related to ORPort reachability testing and failure to send CREATE cells”; relay operators running it will also receive a warning if they try to configure a hidden service on the same process as their relay, as the public nature of much information about Tor relays <a href="https://bugs.torproject.org/12908#comment:5">can help identify services running on the same machine</a>. As ever, you can read the full list of improvements and fixes in Nick’s announcement, and download the source code from the Tor Project’s <a href="https://www.torproject.org/dist/">distribution directory</a>.</p>
 
-<p>The release fixes <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox24.7">import security updates</a> from Firefox. Be sure to <a href="https://www.torproject.org/download/download-easy.html">upgrade</a>! Users of the experimental <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a> bundles have <a href="https://people.torproject.org/%7Edcf/pt-bundle/3.6.3-meek-1/">not been forgotten</a>.</p>
+<h1>Tor protects library patrons’ right to privacy</h1>
 
-<h1>New Tor stable and alpha releases</h1>
+<p>April Glaser and Alison Macrina <a href="http://boingboing.net/2014/09/13/radical-librarianship-how-nin.html">published</a> an article for BoingBoing on efforts by Massachusetts librarians to guarantee their patrons’ right to access information without fear of surveillance or censorship. Macrina and her colleagues, in partnership with the ACLU of Massachusetts, have been giving workshops on the use of privacy-preserving technologies to other librarians, and spreading the word about the risk that pervasive surveillance poses to freedom of thought and intellectual inquiry.</p>
 
-<p>Two new releases of Tor are out. The new <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/034180.html">0.2.5.6-alpha release</a> “brings us a big step closer to slowing down the risk from guard rotation, and fixes a variety of other issues to get us closer to a release candidate”.</p>
+<p>As the authors remark, “it’s no secret that libraries are among our most democratic institutions. Libraries provide access to information and protect patrons’ right to explore new ideas, no matter how controversial or subversive […] and protecting unfettered access to information is important whether that research is done using physical books or online search engines. But now it has become common knowledge that governments and corporations are tracking our digital lives, and that surveillance means our right to freely research information is in jeopardy”.</p>
 
-<p>Once directory authorities have upgraded, they will “assign the Guard flag to the fastest 25% of the network”. Some experiments showed that “for the current network, this results in about 1100 guards, down from 2500.”</p>
+<p>Tor and Tails are a natural fit for any response to this problem, and BoingBoing reports that not only have “multiple Massachusetts libraries […] installed the Tor browser on all of their public PCs” following the workshops, some have even “set up Tor middle relays on their libraries’ networks”.</p>
 
-<p>The complementary change to <a href="https://gitweb.torproject.org/torspec.git/blob_plain/HEAD:/proposals/236-single-guard-node.txt">moving the number of entry guards down to one</a> is the introduction of two new consensus parameters. <em>NumEntryGuards</em> and <em>NumDirectoryGuards</em> will respectively set the number of entry guards and directory guards that clients will use. The default for <em>NumEntryGuards</em> is currently three, but this will allow a reversible switch to one in a near future.</p>
+<p>It would be a shame, however, if these exciting developments were restricted to the state of Massachusetts. If you are a library user concerned about this issue, share the article with your local librarians. If you work in a library, contact the authors of the article at the addresses they provide to find out how you can offer privacy workshops and tools to your own community!</p>
 
-<p>Several important fixes have been backported to the stable branch in the <a href="https://lists.torproject.org/pipermail/tor-announce/2014-July/000093.html">0.2.4.23 release</a>. Source packages are available at the regular location . Binary packages have already landed in Debian ( <a href="https://tracker.debian.org/news/560607">unstable</a>, <a href="https://tracker.debian.org/news/560611">experimental</a>) and the rest should follow shortly.</p>
+<h1>Hidden service enumeration and how to prevent it</h1>
 
-<h1>Security issue in Tails 1.1 and earlier</h1>
+<p>When a Tor user wants to connect to a hidden service, their client makes a request over the Tor network to a relay acting as a “hidden service directory”, or HSDir. In return, the client receives a hidden service “descriptor” containing the information necessary for a connection to be made, including the set of <a href="https://www.torproject.org/docs/hidden-services">Introduction Points</a> that the hidden service is currently using.</p>
 
-<p><a href="https://tails.boum.org/security/Security_hole_in_I2P_0.9.13/">Several vulnerabilities have been discovered in I2P which is shipped in Tails 1.1 and earlier</a>. <a href="https://geti2p.net/">I2P</a> is an anonymous overlay network with many similarities to Tor. There was quite some confusion around the disclosure process of this vulnerability. Readers are encouraged to read <a href="https://tails.boum.org/news/On_0days_exploits_and_disclosure/">what the Tails team has written about it</a>.</p>
+<p>Hidden services would ideally not be discoverable unless the address is public or has been shared directly, but one of the weaknesses of the current protocol is that hidden service directories know which services they are serving descriptors for; this same shortcoming was an element of the <a href="https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">“RELAY_EARLY” traffic confirmation attack</a> discovered in July. Although the full set of descriptors is not published to all directories at once — at any given time, <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/rend-spec.txt#l496">six directories</a> are responsible for a service’s descriptor — the list is rotated frequently, so it would not be hard for an adversary to run a relay stable enough to gain the HSDir flag, and harvest hidden service addresses as they are uploaded to it in turn.</p>
 
-<p>Starting I2P in Tails normally requires a click on the relevant menu entry. Once started, the security issues can lead to the deanonymization of a Tails user who visits a malicious web page. As a matter of precaution, the Tails team recommends removing the “i2p” package each time Tails is started.</p>
+<p>Fabio Pietrosanti <a href="https://lists.torproject.org/pipermail/tor-talk/2014-September/034751.html">informed</a> the tor-talk mailing list of an experiment designed to detect this enumeration of hidden services: he set up thirty new hidden services, keeping their addresses secret, with each service running a script to report any attempts at access from outside. As the existence of these services was not disclosed to anyone, any requests to the service could only come from a client that had obtained the address from a directory which had previously held the descriptor, possibly “a malicious Tor relay acting as a TorHS directory, with Tor’s code modified to dump from the RAM memory the TorHS list, then harvest them with an http client/script/crawler”. After approximately a month, according to Fabio’s message, a client did indeed try to access one of the “honeypot” services.</p>
 
-<p>I2P has fixed the issue in <a href="https://geti2p.net/en/blog/post/2014/07/26/0.9.14-Release">version 0.9.14</a>. It is likely to be included in the next Tails release, but the team is also <a href="https://mailman.boum.org/pipermail/tails-dev/2014-July/006459.html">discussing</a> implementing more in-depth protections that would be required in order to keep I2P in Tails.</p>
-
-<h1>Reporting bad relays</h1>
-
-<p>“Bad” relays are malicious, misconfigured, or otherwise broken Tor relays. As anyone is free to volunteer bandwidth and processing power to spin up a new relay, users can encounter such bad relays once in a while. Getting them out of everyone’s circuits is thus important.</p>
-
-<p>Damian Johnson and Philipp Winter have been working on <a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays">improving and documenting</a> the process of reporting bad relays. “While we do regularly scan the network for bad relays, we are also dependent on the wider community to help us spot relays which don’t act as they should” <a href="https://blog.torproject.org/blog/how-report-bad-relays">wrote</a> Philipp.</p>
-
-<p>When observing unusual behaviors, one way to learn about the current exit relay before reporting it is to use the <a href="https://check.torproject.org/">Check</a> service. This method can be inaccurate and tends to be a little bit cumbersome. The good news is that Arthur Edelstein is <a href="https://trac.torproject.org/projects/tor/ticket/8641#comment:12">busy integrating</a> more feedback on Tor circuits being used directly into the Tor Browser.</p>
+<p>Regular readers of Tor Weekly News will <a href="https://lists.torproject.org/pipermail/tor-news/2013-December/000023.html">know</a> that the hidden service protocol is being fully redesigned, and this “next-generation” proposal already suggests <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/224-rend-spec-ng.txt#l571">defenses against this kind of attack</a>, but (as ever) more eyes are needed. If you’re interested, see George Kadianakis’ introduction to the <a href="https://blog.torproject.org/blog/hidden-services-need-some-love">issues facing hidden services</a>; those familiar with cryptography in C are welcome to review the discussion of this particular issue on the <a href="https://bugs.torproject.org/8106">bug tracker</a>.</p>
 
 <h1>Miscellaneous news</h1>
 
-<p>The Tor Project, Inc. has completed its <a href="https://blog.torproject.org/blog/transparency-openness-and-our-2013-financials">standard financial audit for the year 2013</a>. <a href="https://www.torproject.org/about/findoc/2013-TorProject-Form990.pdf">IRS Form 990</a>, <a href="https://www.torproject.org/about/findoc/2013-TorProject-FormPC.pdf">Massachusetts Form PC</a>, and the <a href="https://www.torproject.org/about/findoc/2013-TorProject-FinancialStatements.pdf">Financial Statements</a> are now available for anyone to review. Andrew Lewman explained: “we publish all of our related tax documents because we believe in transparency. All US non-profit organizations are required by law to make their tax filings available to the public on request by US citizens. We want to make them available for all.”</p>
+<p>Nathan Freitas <a href="https://lists.mayfirst.org/pipermail/guardian-dev/2014-September/003773.html">announced</a> version 14.0.8.1 of Orbot, the Tor client for Android. The highlights of this release are an upgrade to tor 0.2.5.7-rc (see above), which solves an issue with the “airplane mode” feature, as well as a number of improvements to do with transparent proxying. Find the full changelog and download links in Nathan’s message.</p>
 
-<p>CJ <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/034006.html">announced</a> the release of <a href="https://orwall.org/">orWall</a> (previously named Torrific), a new Android application that “will force applications selected through Orbot while preventing unchecked applications to have network access”.</p>
+<p>Juha Nurmi <a href="https://blog.torproject.org/blog/ahmia-search-after-gsoc-development">described</a> the current state of ahmia.fi, the search engine for hidden services, following a successful Google Summer of Code project. The post includes notes on the design, content statistics, and plans for future work.</p>
 
-<p>The <a href="http://www.thaliproject.org/mediawiki/index.php?title=Main_Page">Thali project</a> aims to use hidden services to host web content. As part of the effort, they have written a <a href="https://github.com/thaliproject/Tor_Onion_Proxy_Library">cross-platform Java library</a>. “The code handles running the binary, configuring it, managing it, starting a hidden service, etc.” <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/034046.html">wrote</a> Yaron Goland.</p>
+<p>David Fifield called for a volunteer operating a “ <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007482.html">big fast bridge</a>” to take over the running of the <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a> pluggable transport: “I want to do this both to diffuse trust, so that I don’t run all the infrastructure, and because my bridge is not especially fast and I’m not especially adept at performance tuning”.</p>
 
-<p>Gareth Owen <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007232.html">released</a> a Java-based Tor research framework . The goal is to enable researchers to try things out without having to deal with the full tor source. “At present, it is a fully functional client with a number of examples for hidden services and SOCKS. You can build arbitrary circuits, build streams, send junk cells, etc.” wrote Gareth.</p>
+<p>David also <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007481.html">wondered</a> why the number of FTE users appeared to dip in late August, and explored possible reasons behind the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007480.html">correlation in usage statistics</a> for meek and Flashproxy, whose backends both run on the same bridge. Karsten Loesing <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007483.html">suggested</a> that the latter was because “we’re counting consensuses downloaded from a bridge via any supported transport, and then we’re attributing those downloads to specific transports based on what fraction of IPs connected per transport”.</p>
 
-<p>Version 0.2.3 of <a href="https://bridges.torproject.org/">BridgeDB</a> has been deployed. Among other <a href="https://gitweb.torproject.org/bridgedb.git/blob/2a6d5463:/CHANGELOG">changes</a>, <a href="https://bugs.torproject.org/11139#comment:15">owners of riseup.net email accounts can now request bridges through email</a>.</p>
+<p>Tim <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007471.html">reported</a> on progress made towards a “ <a href="https://en.wikipedia.org/wiki/Fuzz_testing">fuzzer</a>” for Tor, based on the Tor research framework previously <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007232.html">announced</a> by Gareth Owen, including a draft design for the process and a list of patches against Tor made during development.</p>
 
-<p>The first candidate for Orbot 14.0.5 has been released. “This update includes improved management of the background processes, the ability to easily change the local SOCKS port (to avoid conflicts on some Samsung Galaxy and Note devices), and the fancy new notification dialog, showing your current exit IPs and country” <a href="https://lists.mayfirst.org/pipermail/guardian-dev/2014-July/003667.html">wrote</a> Nathan Freitas.</p>
+<p>Matt Pagan submitted his <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000650.html">status report</a> for August, while Roger Dingledine sent out the report for <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000649.html">SponsorF</a>.</p>
 
-<p>While working on guard nodes, George Kadianakis realized that “the data structures and methods of the guard nodes code are not very robust”. Nick Mathewson and George have been busy trying to <a href="https://bugs.torproject.org/12595">come up with better abstractions</a>. More brains working on the problem would be welcome!</p>
-
-<p>Mike Perry <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007246.html">posted</a> “a summary of the primitives that Marc Juarez aims to implement for his Google Summer of Code project on prototyping defenses for Website Traffic Fingerprinting and follow-on research”. Be sure to have a look if you want to help prevent website fingerprint attacks.</p>
-
-<p>A new draft proposal “for making all relays also be directory servers (by default)” has been <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007247.html">submitted</a> by Matthew Finkel. Among the motivations, Matthew wrote: “In a network where every router is a
-directory server, the profiling and partitioning attack vector is reduced to the guard (for clients who use them), which is already in a privileged position for this. In addition, with the increased set size, relay descriptors and documents are more readily available and it diversifies the providers.” This change might make the transition to a single guard safer. Feedback welcome!</p>
-
-<p>Noah Rahman <a href="https://lists.torproject.org/pipermail/tor-dev/2014-July/007248.html">reported</a> on the progress of the Stegotorus Google Summer of Code project.</p>
-
-<h1>Tor help desk roundup</h1>
-
-<p>A number of Iranian Tor users have reported that Tor no longer works out of the box in Iran, and the Tor Metrics portal shows a corresponding <a href="https://metrics.torproject.org/users.html?graph=userstats-relay-country&amp;start=2014-04-30&amp;end=2014-07-28&amp;country=ir&amp;events=on#userstats-relay-country">drop in the number of directly-connecting users there</a>. Collin Anderson investigated the situation and reported that the Telecommunication Company of Iran had begun <a href="https://bugs.torproject.org/12727">blocking the Tor network by blacklisting connections to Tor’s directory authorities</a>. Tor users can circumvent this block by getting bridges from <a href="https://bridges.torproject.org/">BridgeDB</a> and entering the bridge addresses they receive into their Tor Browser.</p>
+<p>Karsten Loesing <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007469.html">posted</a> the minutes of last week’s Globe/Atlas developer IRC meeting.</p>
 
 <hr>
 
-<p>This issue of Tor Weekly News has been assembled by Lunar, Matt Pagan, harmony, and Philipp Winter.</p>
+<p>This issue of Tor Weekly News has been assembled by harmony, Lunar, Roger Dingledine, George Kadianakis, and special.</p>
 
 <p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
 
@@ -296,118 +254,196 @@ directory server, the profiling and partitioning attack vector is reduced to the
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">Tor security advisory: &quot;relay early&quot; traffic confirmation attack</a></h2>
+          <h2 class="post-title"> <a href="/tor-0257-rc-out">Tor 0.2.5.7-rc is out</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">arma</a> under
               
-                <a class="post-category post-category-js" href="#">entry guards</a>
+                <a class="post-category post-category-js" href="#">little-t-tor</a>
               
-                <a class="post-category post-category-js" href="#">hidden services</a>
+                <a class="post-category post-category-js" href="#">tor</a>
               
-                <a class="post-category post-category-js" href="#">research</a>
-              
-                <a class="post-category post-category-js" href="#">security advisory</a>
+                <a class="post-category post-category-js" href="#">tor-releases</a>
                |
-              30 Jul 2014
+              11 Sep 2014
           </p>
         </header>
         <div class="post-description">
-          <p>This advisory was posted on the <a href="https://lists.torproject.org/pipermail/tor-announce/2014-July/000094.html">tor-announce</a> mailing list.</p>
+          <p>Tor 0.2.5.7-rc fixes several regressions from earlier in the 0.2.5.x release series, and some long-standing bugs related to ORPort reachability testing and failure to send CREATE cells. It is the first release candidate for the Tor 0.2.5.x series.</p>
 
-<h2>SUMMARY:</h2>
+<p>The tarball and signature file are currently available from<br>
+ <a href="https://www.torproject.org/dist/" title="https://www.torproject.org/dist/">https://www.torproject.org/dist/</a><br>
+and packages and bundles will be available soon.</p>
 
-<p>On July 4 2014 we found a group of relays that we assume were trying to deanonymize users. They appear to have been targeting people who operate or access Tor hidden services. The attack involved modifying Tor protocol headers to do traffic confirmation attacks.</p>
+<p>Changes in version 0.2.5.7-rc - 2014-09-11</p>
 
-<p>The attacking relays joined the network on January 30 2014, and we removed them from the network on July 4. While we don&#39;t know when they started doing the attack, users who operated or accessed hidden services from early February through July 4 should assume they were affected.</p>
+<ul>
+<li><p>Major bugfixes (client, startup):</p>
 
-<p>Unfortunately, it&#39;s still unclear what &quot;affected&quot; includes. We know the attack looked for users who fetched hidden service descriptors, but the attackers likely were not able to see any application-level traffic (e.g. what pages were loaded or even whether users visited the hidden service they looked up). The attack probably also tried to learn who published hidden service descriptors, which would allow the attackers to learn the location of that hidden service. In theory the attack could also be used to link users to their destinations on normal Tor circuits too, but we found no evidence that the attackers operated any exit relays, making this attack less likely. And finally, we don&#39;t know how much data the attackers kept, and due to the way the attack was deployed (more details below), their protocol header modifications might have aided other attackers in deanonymizing users too.</p>
+<ul>
+<li>Start making circuits as soon as DisabledNetwork is turned off.<br>
+When Tor started with DisabledNetwork set, it would correctly<br>
+conclude that it shouldn&#39;t build circuits, but it would mistakenly<br>
+cache this conclusion, and continue believing it even when<br>
+DisableNetwork is set to 0. Fixes the bug introduced by the fix<br>
+for bug 11200; bugfix on 0.2.5.4-alpha.</li>
+<li>Resume expanding abbreviations for command-line options. The fix<br>
+for bug 4647 accidentally removed our hack from bug 586 that<br>
+rewrote HashedControlPassword to __HashedControlSessionPassword<br>
+when it appears on the commandline (which allowed the user to set<br>
+her own HashedControlPassword in the torrc file while the<br>
+controller generates a fresh session password for each run). Fixes<br>
+bug 12948; bugfix on 0.2.5.1-alpha.</li>
+<li>Warn about attempts to run hidden services and relays in the same<br>
+process: that&#39;s probably not a good idea. Closes ticket 12908. </li>
+</ul></li>
+<li><p>Major bugfixes (relay):</p>
 
-<p>Relays should upgrade to a recent Tor release ( <a href="https://lists.torproject.org/pipermail/tor-announce/2014-July/000093.html">0.2.4.23</a> or <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/034180.html">0.2.5.6-alpha</a>), to close the particular protocol vulnerability the attackers used — but remember that preventing traffic confirmation in general remains an open research problem. Clients that upgrade (once new Tor Browser releases are ready) will take another step towards limiting the number of entry guards that are in a position to see their traffic, thus reducing the damage from future attacks like this one. Hidden service operators should consider changing the location of their hidden service.</p>
+<ul>
+<li>Avoid queuing or sending destroy cells for circuit ID zero when we<br>
+fail to send a CREATE cell. Fixes bug 12848; bugfix on 0.0.8pre1.<br>
+Found and fixed by &quot;cypherpunks&quot;.</li>
+<li>Fix ORPort reachability detection on relays running behind a<br>
+proxy, by correctly updating the &quot;local&quot; mark on the controlling<br>
+channel when changing the address of an or_connection_t after the<br>
+handshake. Fixes bug 12160; bugfix on 0.2.4.4-alpha. </li>
+</ul></li>
+<li><p>Minor features (bridge):</p>
 
-<h2>THE TECHNICAL DETAILS:</h2>
+<ul>
+<li>Add an ExtORPortCookieAuthFileGroupReadable option to make the<br>
+cookie file for the ExtORPort g+r by default. </li>
+</ul></li>
+<li><p>Minor features (geoip):</p>
 
-<p>We believe they used a combination of two classes of attacks: a traffic confirmation attack and a Sybil attack.</p>
+<ul>
+<li>Update geoip and geoip6 to the August 7 2014 Maxmind GeoLite2<br>
+Country database. </li>
+</ul></li>
+<li><p>Minor bugfixes (logging):</p>
 
-<p>A traffic confirmation attack is possible when the attacker controls or observes the relays on both ends of a Tor circuit and then compares traffic timing, volume, or other characteristics to conclude that the two relays are indeed on the same circuit. If the first relay in the circuit (called the &quot;entry guard&quot;) knows the IP address of the user, and the last relay in the circuit knows the resource or destination she is accessing, then together they can deanonymize her. You can read more about traffic confirmation attacks, including pointers to many research papers, at this blog post from 2009:
- <a href="https://blog.torproject.org/blog/one-cell-enough" title="https://blog.torproject.org/blog/one-cell-enough">https://blog.torproject.org/blog/one-cell-enough</a></p>
+<ul>
+<li>Reduce the log severity of the &quot;Pluggable transport proxy does not<br>
+provide any needed transports and will not be launched.&quot; message,<br>
+since Tor Browser includes several ClientTransportPlugin lines in<br>
+its torrc-defaults file, leading every Tor Browser user who looks<br>
+at her logs to see these notices and wonder if they&#39;re dangerous.<br>
+Resolves bug 13124; bugfix on 0.2.5.3-alpha.</li>
+<li>Downgrade &quot;Unexpected onionskin length after decryption&quot; warning<br>
+to a protocol-warn, since there&#39;s nothing relay operators can do<br>
+about a client that sends them a malformed create cell. Resolves<br>
+bug 12996; bugfix on 0.0.6rc1.</li>
+<li>Log more specific warnings when we get an ESTABLISH_RENDEZVOUS<br>
+cell on a cannibalized or non-OR circuit. Resolves ticket 12997.</li>
+<li>When logging information about an EXTEND2 or EXTENDED2 cell, log<br>
+their names correctly. Fixes part of bug 12700; bugfix<br>
+on 0.2.4.8-alpha.</li>
+<li>When logging information about a relay cell whose command we don&#39;t<br>
+recognize, log its command as an integer. Fixes part of bug 12700;<br>
+bugfix on 0.2.1.10-alpha.</li>
+<li>Escape all strings from the directory connection before logging<br>
+them. Fixes bug 13071; bugfix on 0.1.1.15. Patch from &quot;teor&quot;. </li>
+</ul></li>
+<li><p>Minor bugfixes (controller):</p>
 
-<p>The particular confirmation attack they used was an active attack where the relay on one end injects a signal into the Tor protocol headers, and then the relay on the other end reads the signal. These attacking relays were stable enough to get the HSDir (&quot;suitable for hidden service directory&quot;) and Guard (&quot;suitable for being an entry guard&quot;) <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/dir-spec.txt#l1775">consensus flags</a>. Then they injected the signal whenever they were used as a hidden service directory, and looked for an injected signal whenever they were used as an entry guard.</p>
+<ul>
+<li>Restore the functionality of CookieAuthFileGroupReadable. Fixes<br>
+bug 12864; bugfix on 0.2.5.1-alpha.</li>
+<li>Actually send TRANSPORT_LAUNCHED and HS_DESC events to<br>
+controllers. Fixes bug 13085; bugfix on 0.2.5.1-alpha. Patch<br>
+by &quot;teor&quot;. </li>
+</ul></li>
+<li><p>Minor bugfixes (compilation):</p>
 
-<p>The way they injected the signal was by sending sequences of &quot;relay&quot; vs &quot;relay early&quot; commands down the circuit, to encode the message they want to send. For <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/tor-spec.txt#l364">background</a>, Tor has two types of cells: link cells, which are intended for the adjacent relay in the circuit, and relay cells, which are passed to the other end of the circuit. In 2008 we added a new kind of relay cell, called a &quot;relay early&quot; cell, which is used to prevent people from building very long paths in the Tor network. (Very long paths can be used to <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/110-avoid-infinite-circuits.txt%20">induce congestion</a> and aid in <a href="http://freehaven.net/anonbib/#congestion-longpaths">breaking anonymity</a>). But the fix for infinite-length paths introduced a <a href="https://trac.torproject.org/projects/tor/ticket/1038">problem with accessing hidden services</a>, and one of the side effects of our fix for bug 1038 was that while we limit the number of outbound (away from the client) &quot;relay early&quot; cells on a circuit, we <a href="https://lists.torproject.org/pipermail/tor-commits/2009-July/014679.html">don&#39;t limit</a> the number of inbound (towards the client) relay early cells.</p>
+<ul>
+<li>Fix compilation of test.h with MSVC. Patch from Gisle Vanem;<br>
+bugfix on 0.2.5.5-alpha.</li>
+<li>Make the nmake make files work again. Fixes bug 13081. Bugfix on<br>
+0.2.5.1-alpha. Patch from &quot;NewEraCracker&quot;.</li>
+<li>In routerlist_assert_ok(), don&#39;t take the address of a<br>
+routerinfo&#39;s cache_info member unless that routerinfo is non-NULL.<br>
+Fixes bug 13096; bugfix on 0.1.1.9-alpha. Patch by &quot;teor&quot;.</li>
+<li>Fix a large number of false positive warnings from the clang<br>
+analyzer static analysis tool. This should make real warnings<br>
+easier for clang analyzer to find. Patch from &quot;teor&quot;. Closes<br>
+ticket 13036. </li>
+</ul></li>
+<li><p>Distribution (systemd):</p>
 
-<p>So in summary, when Tor clients contacted an attacking relay in its role as a Hidden Service Directory to publish or retrieve a hidden service descriptor (steps 2 and 3 on <a href="https://www.torproject.org/docs/hidden-services">the hidden service protocol diagrams</a>), that relay would send the hidden service name (encoded as a pattern of relay and relay-early cells) back down the circuit. Other attacking relays, when they get chosen for the first hop of a circuit, would look for inbound relay-early cells (since nobody else sends them) and would thus learn which clients requested information about a hidden service.</p>
+<ul>
+<li>Verify configuration file via ExecStartPre in the systemd unit<br>
+file. Patch from intrigeri; resolves ticket 12730.</li>
+<li>Explicitly disable RunAsDaemon in the systemd unit file. Our<br>
+current systemd unit uses &quot;Type = simple&quot;, so systemd does not<br>
+expect tor to fork. If the user has &quot;RunAsDaemon 1&quot; in their<br>
+torrc, then things won&#39;t work as expected. This is e.g. the case<br>
+on Debian (and derivatives), since there we pass &quot;--defaults-torrc<br>
+/usr/share/tor/tor-service-defaults-torrc&quot; (that contains<br>
+&quot;RunAsDaemon 1&quot;) by default. Patch by intrigeri; resolves<br>
+ticket 12731. </li>
+</ul></li>
+<li><p>Documentation:</p>
 
-<p>There are three important points about this attack:</p>
-
-<p><strong>A)</strong> The attacker encoded the name of the hidden service in the injected signal (as opposed to, say, sending a random number and keeping a local list mapping random number to hidden service name). The encoded signal is encrypted as it is sent over the TLS channel between relays. However, this signal would be easy to read and interpret by anybody who runs a relay and receives the encoded traffic. And we might also worry about a global adversary (e.g. a large intelligence agency) that records Internet traffic at the entry guards and then tries to break Tor&#39;s link encryption. The way this attack was performed weakens Tor&#39;s anonymity against these other potential attackers too — either while it was happening or after the fact if they have traffic logs. So if the attack was a research project (i.e. not intentionally malicious), it was deployed in an irresponsible way because it puts users at risk indefinitely into the future.</p>
-
-<p>(This concern is in addition to the general issue that it&#39;s probably unwise from a legal perspective for researchers to attack real users by modifying their traffic on one end and wiretapping it on the other. Tools like <a href="http://shadow.github.io/">Shadow</a> are great for testing Tor research ideas out in the lab.)</p>
-
-<p><strong>B)</strong> This protocol header signal injection attack is actually pretty neat from a research perspective, in that it&#39;s a bit different from previous tagging attacks which targeted the application-level payload. Previous tagging attacks modified the payload at the entry guard, and then looked for a modified payload at the exit relay (which can see the decrypted payload). Those attacks don&#39;t work in the other direction (from the exit relay back towards the client), because the payload is still encrypted at the entry guard. But because this new approach modifies (&quot;tags&quot;) the cell headers rather than the payload, every relay in the path can see the tag.</p>
-
-<p><strong>C)</strong> We should remind readers that while this particular variant of the traffic confirmation attack allows high-confidence and efficient correlation, the general class of passive (statistical) traffic confirmation attacks remains unsolved and would likely have worked just fine here. So the good news is traffic confirmation attacks aren&#39;t new or surprising, but the bad news is that they still work. See <a href="https://blog.torproject.org/blog/one-cell-enough" title="https://blog.torproject.org/blog/one-cell-enough">https://blog.torproject.org/blog/one-cell-enough</a> for more discussion.</p>
-
-<p>Then the second class of attack they used, in conjunction with their traffic confirmation attack, was a standard <a href="http://en.wikipedia.org/wiki/Sybil_attack">Sybil attack</a> — they signed up around 115 fast non-exit relays, all running on 50.7.0.0/16 or 204.45.0.0/16. Together these relays summed to about 6.4% of the Guard capacity in the network. Then, in part because of our current <a href="https://blog.torproject.org/blog/improving-tors-anonymity-changing-guard-parameters">guard rotation parameters</a>, these relays became entry guards for a significant chunk of users over their five months of operation.</p>
-
-<p>We actually noticed these relays when they joined the network, since the <a href="https://gitweb.torproject.org/doctor.git">DocTor</a> scanner <a href="https://lists.torproject.org/pipermail/tor-consensus-health/2014-January/004134.html">reported them</a>. We considered the set of new relays at the time, and made a decision that it wasn&#39;t that large a fraction of the network. It&#39;s clear there&#39;s room for improvement in terms of how to let the Tor network grow while also ensuring we maintain social connections with the operators of all large groups of relays. (In general having a widely diverse set of relay locations and relay operators, yet not allowing any bad relays in, seems like a hard problem; on the other hand our detection scripts did notice them in this case, so there&#39;s hope for a better solution here.)</p>
-
-<p>In response, we&#39;ve taken the following short-term steps:</p>
-
-<p><strong>1)</strong> Removed the attacking relays from the network.</p>
-
-<p><strong>2)</strong> Put out a software update for relays to prevent &quot;relay early&quot; cells from being used this way.</p>
-
-<p><strong>3)</strong> Put out a software update that will (once enough clients have upgraded) let us tell clients to move to using one entry guard rather than three, to reduce exposure to relays over time.</p>
-
-<p><strong>4)</strong> Clients can tell whether they&#39;ve received a relay or relay-cell. For expert users, the new Tor version warns you in your logs if a relay on your path injects any relay-early cells: look for the phrase &quot;Received an inbound RELAY_EARLY cell&quot;.</p>
-
-<p>The following longer-term research areas remain:</p>
-
-<p><strong>5)</strong> Further growing the Tor network and diversity of relay operators, which will reduce the impact from an adversary of a given size.</p>
-
-<p><strong>6)</strong> Exploring better mechanisms, e.g. social connections, to limit the impact from a malicious set of relays. We&#39;ve also formed a group to pay more attention to suspicious relays in the network:
- <a href="https://blog.torproject.org/blog/how-report-bad-relays" title="https://blog.torproject.org/blog/how-report-bad-relays">https://blog.torproject.org/blog/how-report-bad-relays</a></p>
-
-<p><strong>7)</strong> Further reducing exposure to guards over time, perhaps by extending the guard rotation lifetime:
- <a href="https://blog.torproject.org/blog/lifecycle-of-a-new-relay" title="https://blog.torproject.org/blog/lifecycle-of-a-new-relay">https://blog.torproject.org/blog/lifecycle-of-a-new-relay</a>
- <a href="https://blog.torproject.org/blog/improving-tors-anonymity-changing-guard-parameters" title="https://blog.torproject.org/blog/improving-tors-anonymity-changing-guard-parameters">https://blog.torproject.org/blog/improving-tors-anonymity-changing-guard...</a></p>
-
-<p><strong>8)</strong> Better understanding statistical traffic correlation attacks and whether padding or other approaches can mitigate them.</p>
-
-<p><strong>9)</strong> Improving the hidden service design, including making it harder for relays serving as hidden service directory points to learn what hidden service address they&#39;re handling:
- <a href="https://blog.torproject.org/blog/hidden-services-need-some-love" title="https://blog.torproject.org/blog/hidden-services-need-some-love">https://blog.torproject.org/blog/hidden-services-need-some-love</a></p>
-
-<h2>OPEN QUESTIONS:</h2>
-
-<p><strong>Q1)</strong> Was this the Black Hat 2014 talk that got canceled recently?
-<strong>Q2)</strong> Did we find all the malicious relays?
-<strong>Q3)</strong> Did the malicious relays inject the signal at any points besides the HSDir position?
-<strong>Q4)</strong> What data did the attackers keep, and are they going to destroy it? How have they protected the data (if any) while storing it?</p>
-
-<p>Great questions. We spent several months trying to extract information from the researchers who were going to give the Black Hat talk, and eventually we did get some hints from them about how &quot;relay early&quot; cells could be used for traffic confirmation attacks, which is how we started looking for the attacks in the wild. They haven&#39;t answered our emails lately, so we don&#39;t know for sure, but it seems likely that the answer to Q1 is &quot;yes&quot;. In fact, we hope they *were* the ones doing the attacks, since otherwise it means somebody else was. We don&#39;t yet know the answers to Q2, Q3, or Q4.</p>
+<ul>
+<li>Adjust the URLs in the README to refer to the new locations of<br>
+several documents on the website. Fixes bug 12830. Patch from<br>
+Matt Pagan.</li>
+<li>Document &#39;reject6&#39; and &#39;accept6&#39; ExitPolicy entries. Resolves<br>
+ticket 12878. </li>
+</ul></li>
+</ul>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/how-report-bad-relays">How to report bad relays</a></h2>
+          <h2 class="post-title"> <a href="/tor-weekly-news-%E2%80%94-september-10th-2014">Tor Weekly News — September 10th, 2014</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phw</a> under
+              By <a class="post-author" href="#">harmony</a> under
               
-                <a class="post-category post-category-js" href="#">badexit</a>
-              
-                <a class="post-category post-category-js" href="#">exit relay</a>
-              
-                <a class="post-category post-category-js" href="#">mitm</a>
+                <a class="post-category post-category-js" href="#">tor weekly news</a>
                |
-              29 Jul 2014
+              10 Sep 2014
           </p>
         </header>
         <div class="post-description">
-          <p>We now have a <a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays">wiki page</a> which explains how bad relays should be reported to the Tor Project. A bad relay can be malicious, misconfigured, or otherwise broken. Once such a relay is reported, a subset of vigilant Tor developers (currently Roger, Peter, Damian, Karsten, and I) first tries to reproduce the issue. If it&#39;s reproducible, we attempt to get in touch with the relay operator and work on the issue together. However, if the relay has no contact information or we cannot reach the operator, we will resort to assigning flags (such as BadExit) to the reported relay which instructs clients to no longer use the relay in the future. In severe cases, we are also able to remove the relay descriptor from the network consensus which effectively makes the relay disappear. To get an idea of what bad behavior was documented in the past, have a look at this (no longer maintained) <a href="https://trac.torproject.org/projects/tor/wiki/doc/badRelays">wiki page</a> or these <a href="http://www.cs.columbia.edu/%7Emikepo/papers/tordecoys.raid11.pdf">research</a> <a href="http://www.cs.kau.se/philwint/spoiled_onions/pets2014.pdf">papers</a>.</p>
+          <p>Welcome to the thirty-sixth issue in 2014 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
 
-<p>We regularly scan the network for bad relays using <a href="https://gitweb.torproject.org/user/phw/exitmap.git">exitmap</a> but there are several other great tools such as <a href="https://gitweb.torproject.org/torflow.git/blob/HEAD:/NetworkScanners/ExitAuthority/README.ExitScanning">Snakes on a Tor</a>, <a href="https://code.google.com/p/torscanner/">torscanner</a>, <a href="http://www.thoughtcrime.org/software/tortunnel/">tortunnel</a>, and <a href="http://detector.io/DetecTor.html">DetecTor</a>. We are also dependent on the wider community to help us spot relays which don&#39;t act as they should. So if you think that you stumbled upon a bad relay while using Tor, please report it to us by sending an email to <a href="mailto:bad-relays@lists.torproject.org">bad-relays@lists.torproject.org</a>. To find out which relay is currently being used as your exit relay, please visit our <a href="https://check.torproject.org">Check service</a>. Just tell us the relay&#39;s IP address (Check tells you what your IP address appears to be) and the behavior you observed. Then, we can begin to investigate!</p>
+<h1>More monthly status reports for August 2014</h1>
+
+<p>The wave of regular monthly reports from Tor project members for the month of August continued, with reports from  <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000643.html">Yawning Angel</a>,  <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000644.html">George Kadianakis</a>,  <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000646.html">Isis Lovecruft</a>,  <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000647.html">Colin C.</a>, and  <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000648.html">Griffin Boyce</a>.</p>
+
+<p>Arturo Filastò reported on behalf of the  <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000645.html">OONI team</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Nathan Freitas  <a href="https://lists.mayfirst.org/pipermail/guardian-dev/2014-September/003752.html">announced</a> the release of Orbot 14.0.8, containing “some fixes for people who like to fiddle with transproxy/iptables settings, which can lead to the device getting into a bad network state”, as well as for “a common freak crash that was occuring on app exit in some cases.” See Nathan’s message for a full changelog and download links.</p>
+
+<p>Mike Perry  <a href="https://lists.torproject.org/pipermail/tor-talk/2014-September/034606.html">asked for comments</a> on his proposal to drop Tor Browser support for Mac OS X 10.6, which is no longer receiving security updates from Apple. This means that the Tor Browser team would only have to distribute standard-sized 64-bit builds for Mac OS X rather than the oversized 32+64-bit set. Users who are unable to upgrade their operating system would still be able to use Tails for their Tor browsing needs.</p>
+
+<p>Hartmut Haase  <a href="https://lists.torproject.org/pipermail/tor-talk/2014-September/034666.html">reported</a> that Tor Browser occasionally fails to open, despite a successful connection being made to the Tor network; several other users confirmed that they are also experiencing this problem. Georg Koppen  <a href="https://lists.torproject.org/pipermail/tor-talk/2014-September/034678.html">suggested</a> that the issue is the one covered by  <a href="https://bugs.torproject.org/10804">bug ticket #10804</a>: “Solving this is high on the priority list, but alas not as high as getting everything ready for the switch to ESR31.”</p>
+
+<p>Thanks to  <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-September/000681.html">Peter Ludikovsky</a> and  <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-September/000685.html">goll</a> for running mirrors of the Tor Project website and software archive!</p>
+
+<p>Andrew Lewman  <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-September/000690.html">published</a> the results of a test he ran to answer the question “Why not just use CloudFlare for mirrors of the Tor Project website?”: “The results are that using CloudFlare doesn’t offload the binaries, which are what make up the bulk of traffic on the mirror […] I’ve started to look at CDN providers to see if there are affordable services which can offload the entire site itself.”</p>
+
+<p>As part of an ongoing effort to rescue the Tor blog from rot and ruin caused by broken Drupal code, ultrasandwich <a href="https://bugs.torproject.org/10022#comment:22">set up</a> an  <a href="http://tor-blog.deadhare.com/">unofficial preview</a> of a possible blog based on the Jekyll static site generator. If you want to contribute to the revamp of the Tor Project website, including the blog, the  <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/www-team">www-team mailing list</a> awaits your comments and ideas!</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>Users want to know if their personal information is safe when they use Tor Browser. Personal accounts are no less secure using Tor Browser than they are using the web without Tor: the problem of authenticating websites and preventing eavesdropping has been addressed outside of the Tor context through HTTPS. That’s why the Tor Browser ships with the  <a href="https://www.eff.org/https-everywhere">HTTPS-Everywhere browser extension</a> — for every website you visit, HTTPS-Everywhere checks whether or not that website is known to have an HTTPS version, and if so it connects to the site using HTTPS instead of HTTP. Tor + HTTPS provides full end-to-end encryption when visiting any site that offers its content via HTTPS. Using HTTPS with Tor helps keep users’ web accounts secure.</p>
+
+<h1>Easy development tasks to get involved with</h1>
+
+<p>If a single human or organization runs more than one relay, they should configure all their relays to be in the same “family”, the goal being to prevent clients from using more than one of these relays in the same circuit. However, the config option used for this, MyFamily, only accepts relay fingerprints that are preceeded by $, unlike most other config options. It would be great if this option accepted fingerprints preceeded by $, as well as without it. Nick Mathewson says this ticket would be pretty easy, so why not give it a try? It does sound like some fun C hacking. Be sure to post your patch to the  <a href="https://bugs.torproject.org/12093">ticket</a>.</p>
+
+<p>Back in the day, the tor daemon, which is the core of the Tor network, compiled and ran on Windows 98. But that’s history, and aren’t we all glad? Somebody should identify and drop support code for all Windows versions prior to Windows XP. Nick says “this is mainly going to be a matter of identifying cases where we use LoadLibrary and GetProcAddress to find always-present-functions in always-present DLLs.” If the previous sentence made any sense to you, maybe you’re a good person to help with this! Be sure to comment on the  <a href="https://bugs.torproject.org/11444">ticket</a> if you have a branch to review.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by harmony, Matt Pagan, Karsten Loesing, and Lunar.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the  <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the  <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
 
         </div>
       </section>
@@ -418,7 +454,7 @@ directory server, the profiling and partitioning attack vector is reduced to the
       
         <a href="/blog/page1" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 2 of 134</span>
+      <span class="page_number ">Page: 2 of 137</span>
       
         <a href="/blog/page3" class="next">Next</a>
       

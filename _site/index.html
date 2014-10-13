@@ -53,372 +53,288 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-august-27th-2014">Tor Weekly News — August 27th, 2014</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">harmony</a> under
-              
-                <a class="post-category post-category-js" href="#">tor weekly news</a>
-               |
-              27 Aug 2014
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Welcome to the thirty-fourth issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
-
-<h1>Orfox: a new Firefox-based secure browser for Android</h1>
-
-<p>With the growing popularity of pocket computers (also known as “phones”), users need to have access to censorship-circumvention and anonymity systems on these devices as well as on their desktop or laptop machines. While there is currently no supported implementation of Tor for Apple’s iOS, the <a href="https://guardianproject.info">Guardian Project</a> works closely with the Tor Project to produce (amongst other software) a Tor client for Android named <a href="https://guardianproject.info/apps/orbot/">Orbot</a>. Mobile applications can be proxied through Orbot just as they can through the Tor client on other operating systems, but mobile web browsing potentially suffers from the same issues that the Tor Browser was designed to protect against, such as disk leaks and a large attack surface. The Guardian Project has therefore also been maintaining a dedicated mobile browser for use with Orbot under the name <a href="https://guardianproject.info/apps/orweb/">Orweb</a>.</p>
-
-<p>Orweb is based on WebView, and is limited by that browser’s features; flaws such as the <a href="https://guardianproject.info/2014/06/30/recent-news-on-orweb-flaws/">potential HTML5 IP leak</a>, while possible to work around in the short term, have made it clear that the best future for secure mobile browsing lies in a switch to an application based on Firefox/Fennec/GeckoView.</p>
-
-<p>Following a successful Google Summer of Code project by <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007379.html">Amogh Pradeep</a> and work by other Guardian Project members, Nathan Freitas <a href="https://lists.mayfirst.org/pipermail/guardian-dev/2014-August/003717.html">announced</a> that “a real working version” of Orfox, the new Orbot-compatible mobile browser, is now available. “All the necessary defaults [have been] changed to match Tor Browser’s defaults as closely as possible”; the developers also “remove the Android permissions for things like camera, mic, GPS” and “turn off webrtc.”</p>
-
-<p>“We still need to figure out which preferences and features map between the desktop mobile browser and the Android version, so there is quite a bit of work to do”, but you can download and test this initial version by following the links in Nathan’s email. “Over the next few months we hope to launch this as our new official browser for Orbot, and deprecate Orweb as quickly as possible”, he concluded.</p>
-
-<h1>Miscellaneous news</h1>
-
-<p>A new release of ooniprobe, the network interference data collector for <a href="https://ooni.torproject.org/">OONI</a>, was <a href="https://lists.torproject.org/pipermail/ooni-dev/2014-August/000147.html">announced</a> by Arturo Filastò. Version 1.1.0 introduces a new command line tool “for listing the reports that have not been published to a collector and that allows the probe operator to choose which ones they would like to upload”. The new version also improves the privacy of the reports by sanitizing file paths.</p>
-
-<p>Developers of applications using <a href="https://onionoo.torproject.org/">Onionoo</a> — the web service to learn about currently running Tor relays and bridges — are invited to join the new <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/onionoo-announce">onionoo-announce mailing list</a>. Keeping the list low volume, Karsten Loesing plans on using it to announce major protocol changes, scheduled maintenance, major bug fixes, and other important news.</p>
-
-<p>Yawning Angel has <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007404.html">made available</a> an experimental version of the Tor Browser that includes the latest version of the <a href="https://github.com/Yawning/obfs4">obfs4</a> pluggable transport. Testing on Windows and OS X would be particularly welcome.</p>
-
-<p>Fabian Keil <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007412.html">reported</a> that FreeBSD now includes ports of liballium and obfsclient.</p>
-
-<p>JusticeRage <a href="https://lists.torproject.org/pipermail/tor-relays/2014-August/005168.html">explained</a> how relay operators who offer exiting on port 25 can protect the reputation of their domain name by using the Sender Policy Framework.</p>
-
-<p>Sreenatha Bhatlapenumarthi sent the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007399.html">final GSoC report</a> for the Tor Weather rewrite project. Juha Nurmi sent <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000625.html">another report</a> on the development of ahmia.fi.</p>
-
-<p>Thanks to s7r for hosting a new <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-August/000669.html">mirror</a> of the Tor Project’s website and software!</p>
-
-<h1>Tor help desk roundup</h1>
-
-<p>Users of different VPN (Virtual Private Network) services have told the help desk that Tor Browser has difficulty connecting to Tor when a VPN is in use. Using Tor with a VPN is not supported. For a trusted entry into the Tor network, bridges and pluggable transports are recommended, while for anonymizing all network traffic coming from a computer, <a href="https://tails.boum.org/">Tails</a> is recommended.</p>
-
-<h1>Easy development tasks to get involved with</h1>
-
-<p>The bandwidth authority scanners measure the actual bandwidth offered by Tor relays in order to get accurate information into the Tor consensus. The measurement process currently splits up the set of relays that are to be measured into 4 subsets, with the goal that measuring each of these subsets should take <a href="https://bugs.torproject.org/3440">about the same time</a>. However, this is not the case. Measuring subsets 2 and 3 is about twice as fast as measuring subset 1, and subset 4 is twice as fast as subset 2 and 3. If you&#39;re up for doing some experiments to split up the set into more equal subsets, please let us know about your findings on the ticket.</p>
-
-<hr>
-
-<p>This issue of Tor Weekly News has been assembled by Lunar, harmony, Matt Pagan, Karsten Loesing, and dope457.</p>
-
-<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-august-20th-2014">Tor Weekly News — August 20th, 2014</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">harmony</a> under
-              
-                <a class="post-category post-category-js" href="#">tor weekly news</a>
-               |
-              20 Aug 2014
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Welcome to the thirty-third issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the community around Tor, <a href="https://www.dailydot.com/entertainment/aphex-twin-deep-web-album-syro/">Aphex Twin’s favorite anonymity network</a>.</p>
-
-<h1>Tor Browser 3.6.4 and 4.0-alpha-1 are out</h1>
-
-<p>Erinn Clark took to the <a href="https://blog.torproject.org/blog/tor-browser-364-and-40-alpha-1-are-released">Tor Blog</a> to announce two new releases by the Tor Browser team. The stable version (3.6.4) contains fixes for several new OpenSSL bugs, although since Tor should only be vulnerable to one of them, and “as this issue is only a DoS”, it is not considered a critical security update. This release also brings Tor Browser users the fixes that give log warnings about the RELAY_EARLY traffic confirmation attack explained <a href="https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">last month</a>. Please be sure to upgrade as soon as possible.</p>
-
-<p>Alongside this stable release, the first alpha version of Tor Browser 4.0 is now available. Among the most exciting new features of this series is the inclusion of the <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a> pluggable transport. In contrast to the bridge-based transports already available in Tor Browser, meek relies on a principle of “too big to block”, as its creator David Fifield <a href="https://blog.torproject.org/blog/how-use-%E2%80%9Cmeek%E2%80%9D-pluggable-transport#comment-70044">explained</a>: “instead of going through a bridge with a secret address, you go through a known domain ( <a href="http://www.google.com" title="www.google.com">www.google.com</a> for example) that the censor will be reluctant to block. You don’t need to look up any bridge addresses before you get started”. meek currently supports two “front domains”, Google and Amazon Web Services; it may therefore be especially useful for users behind extremely restrictive national or local firewalls. David posted a fuller explanation of meek, and how to configure it, in a <a href="https://blog.torproject.org/blog/how-use-%E2%80%9Cmeek%E2%80%9D-pluggable-transport">separate blog post</a>.</p>
-
-<p>This alpha release also “paves the way to [the] upcoming autoupdater by reorganizing the directory structure of the browser”, as Erinn wrote. This means that users upgrading from any previous Tor Browser series cannot extract the new version over their existing Tor Browser folder, or it will not work.</p>
-
-<p>You can consult the full list of changes and bugfixes for both versions in Erinn’s post, and download the new releases themselves from the <a href="https://www.torproject.org/dist/torbrowser/">Tor website</a>.</p>
-
-<h1>The Tor network no longer supports designating relays by name</h1>
-
-<p>Since the <a href="https://gitweb.torproject.org/tor.git/blob/161d7d1:/src/config/torrc.in#l20">very first versions of Tor</a>, relay operators have been able to specify “nicknames” for their relays. Such nicknames were initially meant to be unique across the network, and operators of directory authorities would manually “bind” a relay identity key after verifying the nickname. The process became formalized with the “Named” flag introduced in the <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/attic/dir-spec-v2.txt#l427">0.1.1 series</a>, and later automated with the 0.2.0 series. If a relay held a unique nickname for long enough, the authoritywould recognize the binding, and subsequently reserve the name for half a year.</p>
-
-<p>Nicknames are useful because it appears humans are not very good at thinking using long strings of random bits. Initially, they made it possible to understand what was happening in the network more easily, and to designate a specific relay in an abbreviated way. Having two relays in the network with the same nickname is not really problematic when one is looking at nodes, or a list in <a href="https://globe.torproject.org/#/search/query=Unnamed">Globe</a>, as relays can always be differentiated by their IP addresses or identity keys.</p>
-
-<p>But complications arise when nicknames are used to specify one relay to the exclusion of another. If the wrong relay gets selected, it can become a security risk. Even though <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/122-unnamed-flag.txt">real efforts</a> have been made to improve the situation, properly enforcing uniqueness has always been problematic, and a burden for the few directory authorities that handle naming.</p>
-
-<p>Back in April, the <a href="https://blog.torproject.org/blog/openssl-bug-cve-2014-0160">“Heartbleed” bug</a> forced many relays to switch to a new identity key, thus losing their “Named” flag. Because this meant that anyone designating relays by their nickname would now have a hard time continuing to do so, Sebastian Hahn decided to use the opportunity to <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/235-kill-named-flag.txt">get rid of the idea entirely</a>.</p>
-
-<p>This week, Sebastian <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007348.html">wrote</a>: “Code review down to 0.2.3.x has shown that the naming-related code hasn’t changed much at all, and no issues were found which would mean a Named-flag free consensus would cause any problems. gabelmoo and tor26 have stopped acting as Naming Directory Authorities, and — pending any issues — will stay that way.”</p>
-
-<p>This means that although you can still give your relay a nickname in its configuration file, designating relays by nickname for any other purpose (such as telling Tor to avoid using certain nodes) has now stopped working. “If you — in your Tor configuration file — refer to any relay by name and not by identity hash, please change that immediately. Future versions of Tor will not support using names in the configuration at all”, <a href="https://lists.torproject.org/pipermail/tor-talk/2014-August/034380.html">warns Sebastian</a>.</p>
-
-<h1>Miscellaneous news</h1>
-
-<p>meejah <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007375.html">announced</a> the release of version 0.11.0 of txtorcon, a Twisted-based Python controller library for Tor. This release brings several API improvements; see meejah’s message for full release notes and instructions on how to download it.</p>
-
-<p>Mike Perry posted an <a href="https://blog.torproject.org/blog/isec-partners-conducts-tor-browser-hardening-study">overview</a> of a recent report put together by iSEC Partners and commissioned by the Open Technology Fund to explore “current and future hardening options for the Tor Browser”. Among other things, Mike’s post addresses the report’s immediate hardening recommendations, latest thoughts on the proposed Tor Browser “security slider”, and longer-term security development measures, as well as ways in which the development of Google Chrome could inform Tor Browser’s own security engineering.</p>
-
-<p>Nick Mathewson asked for <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007355.html">comments</a> on Trunnel, “a little tool to automatically generate binary encoding and parsing code based on C-like structure descriptions” intended to prevent “Heartbleed”-style vulnerabilities from creeping into Tor’s binary-parsing code in C. “My open questions are: Is this a good idea? Is it a good idea to use this in Tor? Are there any tricky bugs left in the generated code? What am I forgetting to think of?”, wrote Nick.</p>
-
-<p>George Kadianakis followed up his <a href="https://lists.torproject.org/pipermail/tor-dev/2014-June/007042.html">journey to the core</a> of what Tor does when trying to connect to entry guards in the absence of a network connection with <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007346.html">another post</a> running through some possible improvements to Tor’s behavior in these situations: “I’m looking forward to some feedback on the proposed algorithms as well as improvements and suggestions”.</p>
-
-<p>Arturo Filastò <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007353.html">requested feedback</a> on some proposed changes to the format of the “test deck” used by ooni-probe, the main project of the Open Observatory of Network Interference. “A test deck is basically a way of telling it ‘Run this list of OONI tests with these inputs and by the way be sure you also set these options properly when doing so’…This new format is supposed to overcome some of the limitations of the old design and we hope that a major redesign will not be needed in the near future”, wrote Arturo.</p>
-
-<p>Tor’s importance to users who are at risk, for a variety of reasons, makes it an attractive target for creators of malware, who distribute fake or modified versions of Tor software for malicious purposes. Following a recent report of a fake Tor Browser in circulation, Julien Voisin carried out an investigation of the compromised software, and posted a <a href="http://dustri.org/b/torbundlebrowserorg.html">detailed analysis</a> of the results. To ensure you are protected against this sort of attack, make sure you <a href="https://www.torproject.org/docs/verifying-signatures">verify</a> any Tor software you download before running it!</p>
-
-<p>Arlo Breault submitted a <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000622.html">status report for July</a>.</p>
-
-<p>As the annual Google Summer of Code season draws to a close, Tor’s GSoC students are submitting their final reports. Israel Leiva reported on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007368.html">revamp of GetTor</a>, Marc Juarez on the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000623.html">framework for website fingerprinting countermeasures</a>, Juha Nurmi on <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000624.html">ahmia.fi</a>, Noah Rahman on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007377.html">Stegotorus enhancement</a>, Amogh Pradeep on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007379.html">Orbot+Orfox</a>, Daniel Martí on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007386.html">consensus diffs</a>, Mikhail Belous on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007389.html">multicore tor daemon work</a>, Zack Mullaly on the <a href="https://lists.eff.org/pipermail/https-everywhere/2014-August/002234.html">secure ruleset updater for HTTPS Everywhere</a>, and Quinn Jarrell on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007393.html">Fog, the pluggable transport combiner</a>.</p>
-
-<h1>Tor help desk roundup</h1>
-
-<p>The help desk has been asked if it is possible to set up an anonymous blog using Tor. The <a href="https://github.com/kloesing/hyde/blob/master/publisher-manual/index.md">Hyde project</a>, developed by Karsten Loesing, documents the step-by-step process of using Tor, Jekyll, and Nginx to host an anonymous blog as a hidden service.</p>
-
-<h1>News from Tor StackExchange</h1>
-
-<p>The Tor StackExchange site is looking for another <a href="https://meta.tor.stackexchange.com/q/207/88">friendly and helpful moderator</a>. Moderators need to take care of flagged items (spam, me-too comments, etc.), and are liaisons between the community and StackExchange’s community team. So, if you’re interested, have a look at the <a href="http://blog.stackoverflow.com/2009/05/a-theory-of-moderation/">theory of moderation</a> and post an answer to the question at the Tor StackExchange Meta site.</p>
-
-<hr>
-
-<p>This issue of Tor Weekly News has been assembled by Lunar, harmony, David Fifield, qbi, Matt Pagan, Sebastian Hahn, Ximin Luo, and dope457.</p>
-
-<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/isec-partners-conducts-tor-browser-hardening-study">iSEC Partners Conducts Tor Browser Hardening Study</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">mikeperry</a> under
-              
-                <a class="post-category post-category-js" href="#">security</a>
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser</a>
-               |
-              19 Aug 2014
-          </p>
-        </header>
-        <div class="post-description">
-          <p>In May, the <a href="https://www.opentechfund.org/">Open Technology Fund</a> commissioned <a href="https://www.isecpartners.com/">iSEC Partners</a> to study current and future hardening options for the Tor Browser. The Open Technology Fund is the primary funder of Tor Browser development, and it commissions security analysis and review for all of the projects that it funds as a standard practice. We worked with iSEC to define the scope of the engagement to focus on the following six main areas:</p>
-
-<ol>
-<li>Review of the current state of hardening in Tor Browser</li>
-<li>Investigate additional hardening options and instrumentation</li>
-<li>Perform historical vulnerability analysis on Firefox, in order to make informed vulnerability surface reduction recommendations</li>
-<li>Investigate image, audio, and video codecs and their respective library&#39;s vulnerability history</li>
-<li>Review our current about:config settings, both for vulnerability surface reduction and security</li>
-<li>Review alternate/obscure protocol and application handlers</li>
-</ol>
-
-<p>The <a href="https://github.com/iSECPartners/publications/tree/master/reports/Tor%20Browser%20Bundle">complete report</a> is available in the iSEC publications github repo. All tickets related to the report can be found using the <a href="https://trac.torproject.org/projects/tor/query?status=!closed&amp;keywords=%7Etbb-isec-report">tbb-isec-report keyword</a>. General Tor Browser security tickets can be found using the <a href="https://trac.torproject.org/projects/tor/query?status=!closed&amp;keywords=%7Etbb-security">tbb-security keyword</a>.</p>
-
-<h1>Major Findings and Recommendations</h1>
-
-<p>The report had the following high-level findings and recommendations.</p>
-
-<ul>
-<li><strong>Address Space Layout Randomization is disabled on Windows and Mac</strong></li>
-</ul>
-
-<p>Due to our use of cross-compilation and non-standard toolchains in <a href="https://blog.torproject.org/blog/deterministic-builds-part-two-technical-details">our reproducible build system</a>, several hardening features have ended up disabled. We have known about the Windows issues prior to this report, and should have a fix for them soon. However, the MacOS issues are news to us, and appear to require that we build 64 bit versions of the Tor Browser for full support. The parent ticket for all basic hardening issues in Tor Browser is <a href="https://trac.torproject.org/projects/tor/ticket/10065">bug #10065</a>.</p>
-
-<ul>
-<li><strong>Participate in Pwn2Own</strong></li>
-</ul>
-
-<p>iSEC recommended that we find a sponsor to fund a <a href="http://www.pwn2own.com/">Pwn2Own</a> reward for bugs specific to Tor Browser in a semi-hardened configuration. We are very interested in this idea and would love to talk with anyone willing to sponsor us in this competition, but we&#39;re not yet certain that our hardening options will have stabilized with enough lead time for the 2015 contest next March.</p>
-
-<ul>
-<li><strong>Test and recommend the Microsoft Enhanced Mitigation Experience Toolkit on Windows</strong></li>
-</ul>
-
-<p>The <a href="https://support.microsoft.com/kb/2458544">Microsoft Enhanced Mitigation Experience Toolkit</a> is an optional toolkit that Windows users can run to further harden Tor Browser against exploitation. We&#39;ve created <a href="https://trac.torproject.org/projects/tor/ticket/12820">bug #12820</a> for this analysis.</p>
-
-<ul>
-<li><strong>Replace the Firefox memory allocator (jemalloc) with ctmalloc/PartitionAlloc</strong></li>
-</ul>
-
-<p>PartitionAlloc is a memory allocator designed by Google specifically to mitigate common heap-based vulnerabilities by hardening free lists, creating partitioned allocation regions, and using guard pages to protect metadata and partitions. Its basic hardening features can be picked up by using it as a simple malloc replacement library (as ctmalloc). <a href="https://trac.torproject.org/projects/tor/ticket/10281">Bug #10281</a> tracks this work.</p>
-
-<ul>
-<li><strong>Make use of advanced ParitionAlloc features and other instrumentation to reduce the risk from use-after-free vulnerabilities</strong></li>
-</ul>
-
-<p>The iSEC vulnerability review found that the overwhelming majority of vulnerabilities to date in Firefox were use-after-free, followed closely by general heap corruption. In order to mitigate these vulnerabilities, we would need to make use of the heap partitioning features of PartitionAlloc to actually ensure that allocations are partitioned (for example, by using the existing tags from Firefox&#39;s <a href="about:memory">about:memory</a>). We will also investigate enabling assertions in limited areas of the codebase, such as the refcounting system, the JIT and the Javascript engine.</p>
-
-<h1>Vulnerability Surface Reduction (Security Slider)</h1>
-
-<p>A large portion of the report was also focused on analyzing historical Firefox vulnerability data and other sources of large vulnerability surface for a planned &quot;Security Slider&quot; UI in Tor Browser.</p>
-
-<p>The Security Slider was first suggested by Roger Dingledine as a way to make it easy for users to trade off between functionality and security, gradually disabling features ranked by both vulnerability count and web prevalence/usability impact.</p>
-
-<p>The report makes several recommendations along these lines, but a brief distillation can be found on the <a href="https://trac.torproject.org/projects/tor/ticket/9387#comment:43">ticket for the slider</a>.</p>
-
-<p>At a high level, we plan for four levels in this slider. &quot;Low&quot; security will be the current Tor Browser settings, with the addition of JIT support. &quot;Medium-Low&quot; will disable most of the JIT, and make HTML5 media click-to-play via NoScript. &quot;Medium-High&quot; will disable the rest of the JIT, will disable JS on non-HTTPS url bar origins, and disable SVG. &quot;High&quot; will fully disable Javascript, block remote fonts via NoScript, and disable all media codecs except for WebM (which will remain click-to-play).</p>
-
-<h1>The Long Term</h1>
-
-<p>A web browser is a very large and complicated piece of software, and while we believe that the <a href="https://www.torproject.org/projects/torbrowser/design/#privacy">privacy properties</a> of Tor Browser are better than those of every other web browser currently available, it is very important to us that we raise the bar to successful code execution and exploitation of Tor Browser as well.</p>
-
-<p>We are very eager to see the deployment of <a href="https://wiki.mozilla.org/Security/Sandbox">sandboxing support in Firefox</a>, which should go a long way to improving the security of Tor Browser as well. To improve security for their users, Mozilla has recently shifted <a href="https://groups.google.com/forum/#!searchin/mozilla.dev.platform/e10s/mozilla.dev.platform/q0Ku_8j26Pc/OtHXnNThv0IJ">10 engineers</a> into the Electrolysis project, which provides the groundwork for producing a multiprocess sandbox architecture for the desktop Firefox. This will allow them to provide a Google Chrome style security sandbox for website content, to reduce the risk from software vulnerabilities, and generally impede exploitability.</p>
-
-<p>Until that time, we will also be investigating providing <a href="https://trac.torproject.org/projects/tor/ticket/10599">hardened builds of Tor Browser</a> using the <a href="https://code.google.com/p/address-sanitizer/wiki/AddressSanitizer">AddressSanitizer</a> and <a href="https://gcc.gnu.org/wiki/vtv">Virtual Table Verification</a> features of newer GCC releases. While this will not eliminate all vectors of memory corruption-based exploitation (in particular, the hardening properties of AddressSanitizer are not as good as those provided by <a href="www.github.com/santoshn/softboundcets-34/">SoftBounds+CETS</a> for example, but that compiler is not yet production-ready), it should raise the bar to exploitation. We are hopeful that these builds in combination with PartitionAlloc and the Security Slider will satisfy the needs of our users who require high security and who are willing to trade performance and usability in order to get it.</p>
-
-<p>We also hope to include optional <a href="https://trac.torproject.org/projects/tor/ticket/5791">application-wide sandboxes</a> for Tor Browser as part of the official distribution.</p>
-
-<h1>Why not Google Chrome?</h1>
-
-<p>It is no secret that in many ways, both we and Mozilla are playing catch-up to reach the level of code execution security provided by Google Chrome, and in fact closely following the Google Chrome security team was one of the recommendations of the iSEC report.</p>
-
-<p>In particular, Google Chrome benefits from a <a href="http://www.chromium.org/Home/chromium-security/guts">multiprocess sandboxing architecture</a>, as well as several further <a href="http://www.chromium.org/Home/chromium-security/brag-sheet">hardening options and innovations</a> (such as PartitionAlloc).</p>
-
-<p>Unfortunately, our budget for the browser project is still very constrained compared to the amount of work that is required to provide the <a href="https://www.torproject.org/projects/torbrowser/design/#privacy">privacy properties we feel are important</a>, and Firefox remains a far more cost-effective platform for us for several reasons. In particular, Firefox&#39;s flexible extension system, fully scriptable UI, solid proxy support, and its long Extended Support Release cycle all allow us to accomplish far more with fewer resources than we could with any other web browser.</p>
-
-<p>Further, Google Chrome is far less amenable to supporting <a href="https://www.torproject.org/projects/torbrowser/design/#privacy">basic web privacy</a> and Tor-critical features (such as solid proxy support) than Mozilla Firefox. <a href="https://blog.torproject.org/blog/google-chrome-incognito-mode-tor-and-fingerprinting">Initial efforts</a> to work with the Google Chrome team saw some success in terms of adding APIs that are crucial to addons such as HTTPS-Everywhere, but we ran into several roadblocks when it came to Tor-specific features and changes. In particular, <a href="https://trac.torproject.org/projects/tor/wiki/doc/ImportantGoogleChromeBugs#ProxyBypassBugs">several bugs required for basic proxy-safe Tor support</a> for Google Chrome&#39;s Incognito Mode ended up blocked for various reasons. The <a href="https://code.google.com/p/chromium/issues/detail?id=80722">worst offender</a> on this front is the use of the Microsoft Windows CryptoAPI for certificate validation, without any alternative. This bug means that certificate revocation checking and intermediate certificate retrieval happen outside of the browser&#39;s proxy settings, and is subject to alteration by the OEM and/or the enterprise administrator. Worse, beyond the Tor proxy issues, the use of this OS certificate validation API means that the OEM and enterprise also have a simple entry point for installing their own root certificates to enable transparent HTTPS man-in-the-middle, with full browser validation and no user consent or awareness. All of this is not to mention the need for defenses against <a href="https://www.torproject.org/projects/torbrowser/design/#identifier-linkability">third party tracking</a> and <a href="https://www.torproject.org/projects/torbrowser/design/#fingerprinting-linkability">fingerprinting</a> to prevent the linking of Tor activity to non-Tor usage, and which would also be useful for the wider non-Tor userbase.</p>
-
-<p>While we&#39;d love for this situation to change, and are open to working with Google to improve things, at present it means that our only option for Chrome is to maintain an even more invasive fork than our current Firefox patch set, with much less likelihood of a future merge than with Firefox. As a ballpark estimate, maintaining such a fork would require somewhere between 3 and 5 times the engineering staff and infrastructure we currently have at our disposal, in addition to the ramp-up time to port our current feature set over.</p>
-
-<p>Unless either our funding situation or Google&#39;s attitude towards the features we require changes, Mozilla Firefox will remain the best platform for us to demonstrate that it is in fact possible to provide <a href="http://www.w3.org/2012/dnt-ws/position-papers/21.pdf">true privacy by design</a> for the web for those who want it. It is very distressing that this means playing catch-up and forcing our users to make usability tradeoffs in exchange for improved browser security, but we will continue to do what we can to improve that situation, both with Mozilla and with our own independent efforts.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/how-use-%E2%80%9Cmeek%E2%80%9D-pluggable-transport">How to use the “meek” pluggable transport</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">dcf</a> under
-              
-                <a class="post-category post-category-js" href="#">censorship circumvention</a>
-              
-                <a class="post-category post-category-js" href="#">pluggable transports</a>
-               |
-              15 Aug 2014
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The recently released 4.0-alpha-1 version of Tor Browser includes <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a>, a new <a href="https://www.torproject.org/docs/pluggable-transports.html">pluggable transport</a> for censorship circumvention. meek tunnels your Tor traffic through HTTPS, and uses a technique called “domain fronting” to hide the fact that you are communicating with a Tor bridge—to the censor it looks like you are talking to some other web site. For more details, see the <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek#Overview">overview</a> and the <a href="https://trac.torproject.org/projects/tor/wiki/doc/AChildsGardenOfPluggableTransports#meek">Child’s Garden of Pluggable Transports</a>.</p>
-
-<p>You only need meek if your Internet connection is censored so that you can’t use ordinary Tor. Even then, you should try other pluggable transports first, because they have less overhead. My recommended order for trying transports is:</p>
-
-<ol>
-<li>obfs3</li>
-<li>fte</li>
-<li>scramblesuit</li>
-<li>meek</li>
-<li>flashproxy</li>
-</ol>
-
-<p>Use meek if other transports don’t work for you, or if you want to help development by testing it. I have been using meek for my day-to-day browsing for a few months now.</p>
-
-<p>All pluggable transports have some overhead. You might find that meek feels slower than ordinary Tor. We’re working on some tickets that will make it faster in the future: <a href="https://trac.torproject.org/projects/tor/ticket/12428" title="Make it possible to have multiple requests and responses in flight">#12428</a>, <a href="https://trac.torproject.org/projects/tor/ticket/12778" title="Put meek HTTP headers on a diet">#12778</a>, <a href="https://trac.torproject.org/projects/tor/ticket/12857" title="Use streaming downloads">#12857</a>.</p>
-
-<p>At this point, there are two different backends supported. <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek#AmazonCloudFront">meek-amazon</a> makes it look like you are talking to an Amazon Web Services server (when you are actually talking to a Tor bridge), and <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek#GoogleAppEngine">meek-google</a> makes it look like you are talking to the Google search page (when you are actually talking to a Tor bridge). It is likely that both will work for you. If one of them doesn’t work, try the other.</p>
-
-<p>These instructions and screenshots are for the 4.0-alpha-1 release. If they change in future releases, they will be updated at <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek#Quickstart" title="https://trac.torproject.org/projects/tor/wiki/doc/meek#Quickstart">https://trac.torproject.org/projects/tor/wiki/doc/meek#Quickstart</a>.</p>
-
-<h1>How to use meek</h1>
-
-<p>First, download a meek-capable version of Tor Browser for your platform and language.</p>
-
-<ul>
-<li><a href="https://www.torproject.org/projects/torbrowser.html#downloads-alpha" title="https://www.torproject.org/projects/torbrowser.html#downloads-alpha">https://www.torproject.org/projects/torbrowser.html#downloads-alpha</a></li>
-</ul>
-
-<p><a href="https://www.torproject.org/docs/verifying-signatures.html">Verify the signature</a> and run the bundle according to the instructions for <a href="https://www.torproject.org/projects/torbrowser.html#windows">Windows</a>, <a href="https://www.torproject.org/projects/torbrowser.html#macosx">OS X</a>, or <a href="https://www.torproject.org/projects/torbrowser.html#linux">GNU/Linux</a>.</p>
-
-<p>On the first screen, where it says <em>Which of the following best describes your situation?</em>, click the <strong>Configure</strong> button.</p>
-
-<p><center><img src="https://people.torproject.org/~dcf/graphs/blogfiles/4.0-alpha-1-meek-conf-0.png" alt="Tor Network Settings “Which of the following best describes your situation?” screen with the “Configure” button highlighted."></center></p>
-
-<p>On the screen that says <em>Does this computer need to use a proxy to access the Internet?</em>, say <strong>No</strong> unless you know you need to use a proxy. meek supports using an upstream proxy, but most users don’t need it.</p>
-
-<p><center><img src="https://people.torproject.org/~dcf/graphs/blogfiles/4.0-alpha-1-meek-conf-1.png" alt="Tor Network Settings “Does this computer need to use a proxy to access the Internet?” screen with “No” selected."></center></p>
-
-<p>On the screen that says <em>Does this computer&#39;s Internet connection go through a firewall that only allows connections to certain ports?</em>, say <strong>No</strong> . As an HTTPS transport, meek only uses web ports, which are allowed by most firewalls.</p>
-
-<p><center><img src="https://people.torproject.org/~dcf/graphs/blogfiles/4.0-alpha-1-meek-conf-2.png" alt="Tor Network Settings “Does this computer's Internet connection go through a firewall that only allows connections to certain ports?” screen with “No” selected."></center></p>
-
-<p>On the screen that says <em>Does your Internet Service Provider (ISP) block or otherwise censor connections to the Tor Network?</em>, say <strong>Yes</strong> . Saying Yes will lead you to the screen for configuring pluggable transports.</p>
-
-<p><center><img src="https://people.torproject.org/~dcf/graphs/blogfiles/4.0-alpha-1-meek-conf-3.png" alt="Tor Network Settings “Does your Internet Service Provider (ISP) block or otherwise censor connections to the Tor Network?” screen with “Yes” selected."></center></p>
-
-<p>On the pluggable transport screen, select <strong>Connect with provided bridges</strong> and choose either <strong>meek-amazon</strong> or <strong>meek-google</strong> from the list. Probably both of them will work for you, so choose whichever feels faster. If one of them doesn’t work, try the other. Then click the <strong>Connect</strong> button.</p>
-
-<p><center><img src="https://people.torproject.org/~dcf/graphs/blogfiles/4.0-alpha-1-meek-conf-4.png" alt="Tor Network Settings “You may use the provided set of bridges or you may obtain and enter a custom set of bridges.” screen with “meek-google” selected."></center></p>
-
-<p>If it doesn’t work, you can write to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-dev">tor-dev mailing list</a>, or to me personally at <a href="mailto:dcf@torproject.org">dcf@torproject.org</a>, or file a <a href="https://trac.torproject.org/projects/tor/newticket?component=meek">new ticket</a>.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-august-13th-2014">Tor Weekly News — August 13th, 2014</a></h2>
+          <h2 class="post-title"> <a href="/tor-weekly-news-%E2%80%94-october-8th-2014">Tor Weekly News — October 8th, 2014</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">lunar</a> under
               
                 <a class="post-category post-category-js" href="#">tor weekly news</a>
                |
-              13 Aug 2014
+              08 Oct 2014
           </p>
         </header>
         <div class="post-description">
-          <p>Welcome to the thirty-second issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+          <p>Welcome to the fortieth issue in 2014 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
 
-<h1>Torsocks 2.0 is now considered stable</h1>
+<h1>Setup ooniprobe in five minutes</h1>
 
-<p><a href="https://gitweb.torproject.org/torsocks.git/blob/HEAD:/README.md">Torsocks</a> is a wrapper program that will force an application’s network connections to go through the Tor network. David Goulet <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007330.html">released</a> version 2.0.0, blessing the new codebase as stable after <a href="https://lists.torproject.org/pipermail/tor-dev/2013-June/004959.html">more than a year of efforts</a>.</p>
+<p>New versions of the <a href="https://ooni.torproject.org/">Open Observatory of Network Interference</a> (OONI) tools are out. On October 1st, Arturo Filastò <a href="https://lists.torproject.org/pipermail/ooni-dev/2014-October/000171.html">announced</a> ooniprobe 1.2.0 and oonibackend 1.1.4.</p>
 
-<p>David’s original email highlighted several reasons for a complete rewrite of torsocks. Among the issues were maintainability, error handling, thread safety, and a lack of proper compatibility layer for multiple architectures. The new implementation addresses all these issues while staying about the same size as the previous version (4,000 lines of C according to sloccount), and test coverage has been vastly extended.</p>
+<p>“One of the most interesting new features that are now part of ooniprobe is the ability to generate test decks for the country you are in a way that is much easier than before”, wrote Arturo.</p>
 
-<p>Torsocks comes in handy when a piece of software does not natively support the use of a SOCKS proxy. In most cases, the new version may be safer, as torsocks will prevent DNS requests and non-torified connections from happening.</p>
+<p>He added: “As a matter of fact to start contributing useful measurements it’s just a matter of <a href="https://pypi.python.org/pypi/ooniprobe#ooni-in-5-minutes">5 minutes of setup</a>.” So don’t be shy about adding your measurements to the project!</p>
 
-<p>Integrators and power users should watch their steps while migrating to the new version. The configuration file format has changed, and some applications might behave differently as more system calls are now restricted.</p>
+<h1>Monthly status reports for September 2014</h1>
 
-<h1>Next generation Hidden Services and Introduction Points</h1>
+<p>The wave of regular monthly reports from Tor project members for the month of September has begun. <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000652.html">Juha Nurmi</a> released his report first, followed by reports from <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000653.html">Georg Koppen</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-September/000654.html">Damian Johnson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000655.html">George Kadianakis</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000656.html">Matt Pagan</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000658.html">Lunar</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000659.html">Sherief Alaa</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000660.html">Leiah Jansen</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000661.html">Harmony</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000662.html">Pearl Crescent</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000663.html">Nick Mathewson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000665.html">Karsten Loesing</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000666.html">Sukhbir Singh</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000669.html">Nicolas Vigier</a> (in addition to <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000667.html">July</a> and <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000668.html">August</a>), <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000670.html">Arlo Breault</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000672.html">J. Todaro</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000673.html">Colin C.</a></p>
 
-<p>When Tor clients need to connect to a Hidden Service, the first step is to create a circuit to its “Introduction Point”. There, the Tor client serving the Hidden Service will be waiting through another circuit to agree on a “Rendezvous Point” and pursue the communication through circuits connecting to this freshly selected Tor node.</p>
-
-<p>This general design is not subject to any changes in the <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/224-rend-spec-ng.txt">revision of hidden services</a> currently being worked on. But there are still some questions left unanswered regarding the best way to select Introduction Points. George Kadianakis <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007335.html">summarized</a> them as: “How many IPs should an HS have? Which relays can be IPs? What’s the lifetime of an IP?”</p>
-
-<p>For each of these questions, George collected possible answers and assessed whether or not they could respond to several attacks identified in the past. Anyone interested should help with the research needed and join the discussion.</p>
-
-<p>In the meantime, Michael Rogers is also trying to <a href="https://fulpool.org/pipermail/hidden-services/2014-August/000019.html">find ways</a> to improve hidden service performance in mobile contexts. One way to do so would be to “keep the set of introduction points as stable as possible”. However, a naive approach to doing so would ease the job of attackers trying to locate a hidden service. The idea would be to always use the same guard and middle node for a given introduction point, but this might also open the doors to new attacks. Michael suggests experimenting with the recently published <a href="https://github.com/drgowen/tor-research-framework">Java research framework</a> to gain a better understanding of the implications.</p>
-
-<h1>More status reports for July 2014</h1>
-
-<p>The wave of regular monthly reports from Tor project members for the month of July continued, with submissions from <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000615.html">Andrew Lewman</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000616.html">Colin C.</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000617.html">Damian Johnson</a>.</p>
-
-<p>Roger Dingledine sent out the report for <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000619.html">SponsorF</a>. Arturo Filastò described what the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000621.html">OONI team</a> was up to. The <a href="https://tails.boum.org/news/report_2014_06-07/">Tails team</a> covered their activity for June and July.</p>
+<p>Lunar also reported on <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000657.html">Tor help desk</a>, Mike Perry for the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000664.html">Tor Browser team</a>, and Arturo Filastò for <a href="https://lists.torproject.org/pipermail/tor-reports/2014-October/000671.html">OONI</a>.</p>
 
 <h1>Miscellaneous news</h1>
 
-<p>Two Tor Browser releases are at QA stage: <a href="https://lists.torproject.org/pipermail/tor-qa/2014-August/000436.html">4.0-alpha-1</a> including meek and a new directory layout, and <a href="https://lists.torproject.org/pipermail/tor-qa/2014-August/000439.html">3.6.4</a> for security fixes.</p>
+<p>Orbot users should rejoice at the news that <a href="https://orwall.org/">orWall</a> 1.0.0 has been <a href="https://lists.torproject.org/pipermail/tor-talk/2014-October/035040.html">released</a>! orWall will force selected applications through Tor while preventing unauthorized applications to have any network access. “Any feedback from Tor/Orbot users interests me in order to improve orWall. I think the current release is pretty good, but as the main dev I’m maybe not that neutral regarding this statement” joked CJ.</p>
 
-<p>The recent serious <a href="https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">attack against Tor hidden services</a> was also a Sybil attack: a large number of malicious nodes joined the network at once. This led to a renewal of interest in detecting Sybil attacks against the Tor network more quickly. Karsten Loesing published <a href="https://github.com/kloesing/SAD">some code</a> computing similarity metrics, and David Fifield has explored <a href="https://bugs.torproject.org/12813">visualizations</a> of the consensus that made the recent attack visible.</p>
+<p>The OONI project has been “developing a test that allows probes in censored countries to test which bridges are blocked and which are not”. George Kadianakis is <a href="https://lists.torproject.org/pipermail/tor-dev/2014-October/007585.html">seeking help</a> to create interesting visualization of the resulting data. He shared a sketch about <a href="https://people.torproject.org/%7Easn/bridget_vis/countries_pts.jpg">countries and pluggable transports</a> and another one showing <a href="https://people.torproject.org/%7Easn/bridget_vis/tbb_blocked_timeline.jpg">time before blocks happened</a>.</p>
 
-<p>Gareth Owen sent out an <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007328.html">update</a> about the Java Tor Research Framework. This prompted a discussion with George Kadianakis and Tim about the best way to perform <a href="https://en.wikipedia.org/wiki/Fuzz_testing">fuzz testing</a> on Tor. Have a look if you want to comment on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007334.html">Tim’s approaches</a>.</p>
+<p>Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-dev/2014-October/007580.html">announced</a> the release of <a href="https://gitweb.torproject.org/trunnel.git">Trunnel</a> 1.3. Trunnel is a code generator for binary encoders/decoders. Nick adds: “Some code that it has generated has been merged into the Tor master branch for the 0.2.6 release series, though that code is not yet in active use.“</p>
 
-<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-August/000651.html">Daniel Thill</a> for running a mirror of the Tor Project website!</p>
+<p>David Fifield sent a <a href="https://lists.torproject.org/pipermail/tor-dev/2014-October/007576.html">summary</a> of the costs incurred by the <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a> pluggable transport for the month of September 2014. More details are included in the email, but costs are currently very low: “$3.85 for App Engine, $4.59 for Amazon, $0.00 for Azure”.</p>
 
-<p>ban <a href="https://lists.torproject.org/pipermail/tor-relays/2014-August/005073.html">mentioned</a> a new service collecting donations for the Tor network. <a href="https://oniontip.com/">OnionTip</a>, set up by Donncha O’Cearbhaill, will collect bitcoins and redistribute them to relay operators who put a bitcoin address in their contact information. As the redistribution is currently done according to the consensus weight, Sebastian Hahn <a href="https://lists.torproject.org/pipermail/tor-relays/2014-August/005077.html">warned</a> that this might encourage people to “cheat the consensus weight” because that now means “more money from oniontip”.</p>
+<p>Virgil Griffith <a href="https://lists.torproject.org/pipermail/tor-talk/2014-October/035076.html">shared</a> a yet unpublished tech report on Tor growth. To pick just one finding, the Tor network’s bandwidth has been doubling every 13–14 months so far.</p>
 
-<p>Juha Nurmi sent <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000620.html">another update</a> on the ahmia.fi GSoC project.</p>
+<p>The Knight Foundation is going to <a href="https://www.newschallenge.org/challenge/libraries/brief.html">fund projects</a> for “the future of libraries”. The <a href="https://www.newschallenge.org/challenge/libraries/submissions/the-library-freedom-project-bringing-privacy-education-and-digital-tools-to-local-communities-through-libraries">Library Freedom Project</a> wants to teach “librarians about privacy rights, law, and tech tools to protect patrons from dragnet surveillance”. It’s based on their <a href="http://boingboing.net/2014/09/13/radical-librarianship-how-nin.html">previous experience</a> promoting Tor and other privacy tools in Massachusetts libraries. Show them support!</p>
 
-<h1>News from Tor StackExchange</h1>
+<p>The US National Science Foundation is <a href="https://lists.torproject.org/pipermail/tor-talk/2014-October/035059.html">seeking input</a> to lay out a future Privacy Research Strategy. The deadline being October 17th, Roger Dingledine suggests: “if anybody here has partially written ideas that they want to put together into a submission, please do!”</p>
 
-<p>arvee wants to <a href="https://tor.stackexchange.com/q/3802/88">redirect some TCP connections through Tor on OS X</a>; <a href="http://darkk.net.ru/redsocks/">Redsocks</a> should help to route packets for port 443 over Tor . mirimir explained that given the user&#39;s pf configuration, the setting “SocksPort 8888” was probably missing.</p>
-
-<p>meee asked a question and offered a bounty for an answer: the circuit handshake entry in Tor’s log file contains some numbers, and meee wants to <a href="https://tor.stackexchange.com/q/3213/88">know what their meaning is</a>: “Circuit handshake stats since last time: 1833867/1833868 TAP, 159257/159257 NTor.”</p>
+<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-October/000713.html">opi</a> for running a new mirror of the Tor Project’s website and software.</p>
 
 <h1>Easy development tasks to get involved with</h1>
 
-<p>The bridge distributor <a href="https://bridges.torproject.org/">BridgeDB</a> usually gives out bridges by responding to user requests via HTTPS and email. A while ago, BridgeDB also gave out bridges to a very small number of people who would then redistribute bridges using their social network. We would like to resume sending bridges to these people, but only if BridgeDB can be <a href="https://bugs.torproject.org/9332">made to send them via GnuPG-encrypted emails</a>. If you’d like to dive into the BridgeDB code and add support for GnuPG-encrypted emails, please take a look at the ticket and give it a try.</p>
+<p><a href="https://github.com/TheTorProject/ooni-backend">oonibackend</a> is used by ooni, the <a href="https://ooni.torproject.org/">Open Observatory of Network Interference</a>, to run in the background and perform tasks like discovering addresses of test helpers and performing measurements that require a backend system to talk to. When oonibackend was changed to fix compatibility with Twisted 13.1 it <a href="https://bugs.torproject.org/13116">lost its ability to start tor and then drop privileges</a>. Arturo suspects that the correct way of doing this is to place the logic for starting tor inside of preApplication or startService. But from a quick research he suspects that Twisted does not support returning Deferreds in there. He also points to two relevant Twisted tickets ( <a href="https://twistedmatrix.com/trac/ticket/5941">1</a>, <a href="https://twistedmatrix.com/trac/ticket/6813">2</a>). If you have experience with Twisted and want to help debug or even solve this problem, be sure to post your thoughts or patches to the ticket.</p>
 
 <hr>
 
-<p>This issue of Tor Weekly News has been assembled by Lunar, qbi, Karsten Loesing, harmony, and Philipp Winter.</p>
+<p>This issue of Tor Weekly News has been assembled by Lunar, harmony, and Karsten Loesing.</p>
 
 <p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/closer-look-great-firewall-china">A closer look at the Great Firewall of China</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phw</a> under
+              
+                <a class="post-category post-category-js" href="#">censorship</a>
+              
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+              
+                <a class="post-category post-category-js" href="#">dpi</a>
+              
+                <a class="post-category post-category-js" href="#">GFW</a>
+               |
+              06 Oct 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Over the last years, we learned a lot about how the Great Firewall of China <a href="https://blog.torproject.org/blog/knock-knock-knockin-bridges-doors">is</a> <a href="http://www.cs.kau.se/philwint/gfw/">blocking</a> <a href="http://arxiv.org/pdf/1312.5739v1.pdf">Tor</a>. Some questions remained unanswered, however. Roya, Mueen, Jed, and I just published a <a href="http://www.cs.unm.edu/%7Eroyaen/gfw/">project</a> which seeks to answer some of these open questions. Being curious as we are, we tried to find answers to the following questions:</p>
+
+<ul>
+<li>Is the filtering decentralised (i.e., happening in provinces) or centralised (i.e., happening in Internet exchange points (IXP))?</li>
+<li>Are there any temporal patterns in the filtering? Or in other words, are there certain times when people are more likely to be able to connect to Tor?</li>
+<li>Similarly, are there any spatial patterns? Are folks in some special regions of China able to connect to Tor while others cannot?</li>
+<li>When a computer in China tries to connect to a Tor relay, what part of the TCP handshake is blocked?</li>
+</ul>
+
+<p>It turns out that some of these questions are quite tricky to answer. For example, to find spatial patterns, we need to be able to measure the connectivity between <em>many</em> Tor relays and <em>many</em> clients in China. However, we are not able to control <em>even a single</em> one of these machines. So how do we proceed from here? As so often, side channels come to the rescue! In particular, we made use of two neat network measurement side channels which are the <a href="http://arxiv.org/pdf/1312.5739v1.pdf">hybrid idle scan</a> and the SYN backlog scan. The backlog scan is a new side channel we discovered and discuss in our paper. Equipped with these two powerful techniques, we were able to infer if there is packet loss between relay A and client B even though we cannot control A and B.</p>
+
+<p>You might notice that our measurement techniques are quite different from most other Internet censorship studies which rely on machines inside the censoring country. While our techniques give us a lot more geographical coverage, they come at a price which is flexibility; we are limited to measuring Internet filtering on the IP layer. More sophisticated filtering techniques such as deep packet inspection remain outside our scope.</p>
+
+<p>Now what we did was to measure the connectivity between several dozen Tor relays and computers in China over four weeks which means that we collected plenty of data points, each of which telling us &quot;was A able to talk to B at time T?&quot;. These data points reveal a number of interesting things:</p>
+
+<ul>
+<li>It appears that many IP addresses inside the China Education and Research Network (CERNET) are able to connect to at least our Tor relay.</li>
+<li>Apart from the CERNET netblock, the filtering seems to be quite effective despite occasional country-wide downtimes.</li>
+<li>It seems like the filtering is centralised at the IXP level instead of being decentralised at the provincial level. That makes sense from the censor&#39;s point of view because it is cheap, effective, and easy to control.</li>
+</ul>
+
+<p>Now what does all of this mean for Tor users? Our results show that China still has a tight grip on its communication infrastructure, especially on the IP and TCP layer. That is why our circumvention efforts mostly focus on the application layer (with <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a> being an exception) and pluggable transport protocols such as <a href="http://www.cs.kau.se/philwint/scramblesuit/">ScrambleSuit</a> (which is now part of the experimental version of <a href="https://www.torproject.org/projects/torbrowser.html.en#downloads-alpha">TorBrowser</a>) and <a href="https://gitweb.torproject.org/pluggable-transports/obfs4.git">obfs4</a> are specifically designed to thwart the firewall&#39;s <a href="http://www.cs.kau.se/philwint/gfw/">active probing attacks</a>.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/tor-weekly-news-%E2%80%94-october-1st-2014">Tor Weekly News — October 1st, 2014</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">harmony</a> under
+              
+                <a class="post-category post-category-js" href="#">tor weekly news</a>
+               |
+              01 Oct 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Welcome to the thirty-ninth issue in 2014 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the Tor community.</p>
+
+<h1>Tor 0.2.4.24 and 0.2.5.8-rc are out</h1>
+
+<p>Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-talk/2014-September/034937.html">announced</a> new releases in both the stable and the alpha branches of the core Tor software. Clients accessing hidden services should experience faster and more robust connections as they will now send the correct rendezvous point address. “They used to send the wrong address, which would still work some of the time because they also sent the identity digest of the rendezvous point, and if the hidden service happened to try connecting to the rendezvous point from a relay that already had a connection open to it, the relay would reuse that connection”. This fix also prevents the <a href="https://en.wikipedia.org/wiki/Endianness">endianness</a> of the client’s system from being leaked to the hidden service.</p>
+
+<p>The only other changes in these releases are an update of the geoip databases and the location of the <a href="https://lists.torproject.org/pipermail/tor-talk/2014-September/034898.html">gabelmoo directory authority</a>. As usual, you can download the source code from the Tor <a href="https://www.torproject.org/dist/">distribution directory</a>.</p>
+
+<h1>Tor Browser 3.6.6 and 4.0-alpha-3 are out</h1>
+
+<p>Mike Perry announced two new releases by the Tor Browser team. <a href="https://blog.torproject.org/blog/tor-browser-366-released">Tor Browser 3.6.6</a> includes a workaround for the <a href="https://bugs.torproject.org/10804">bug</a> that has sometimes been preventing the browser window from opening after an apparently successful connection to the Tor network; it also stops intermediate SSL certificates from being written to disk. In addition to these fixes, <a href="https://blog.torproject.org/blog/tor-browser-40-alpha-3-released">Tor Browser 4.0-alpha-3</a> resolves a number of issues to do with the upcoming Tor Browser updater, including the mistaken upgrade of non-English Tor Browsers to the English-language version. As this bug is only fixed in the new release, users upgrading from 4.0-alpha-2 will still experience this issue during the process. Furthermore, “meek transport users will need to restart their browser a second time after upgrade if they use the in-browser updater. We are still trying to get to the bottom of <a href="https://bugs.torproject.org/13247">this issue</a>”, wrote Mike.</p>
+
+<p>Both releases also include important Firefox security updates, so all users should upgrade as soon as possible. See Mike’s announcements for full details, and get your copy from the <a href="https://www.torproject.org/projects/torbrowser.html">project page</a> or the <a href="https://www.torproject.org/dist/torbrowser/">distribution directory</a>.</p>
+
+<h1>Tails 1.1.2 is out</h1>
+
+<p>The second point release in the Tails 1.1.x series was <a href="https://tails.boum.org/news/version_1.1.2/">put out</a> by the Tails team, “mainly to fix a serious flaw in the Network Security Services (NSS) library used by Firefox and other products that allows attackers to create forged RSA certificates. Before this release, users on a compromised network could be directed to sites using a fraudulent certificate and mistake them for legitimate sites.”</p>
+
+<p>Other packages affected by recently-disclosed security flaws and updated in this version include APT, bash, and GnuPG, so all Tails users should make sure to upgrade as soon as possible. If you have a running copy of Tails, you can make use of the incremental upgrades system; otherwise, head to the <a href="https://tails.boum.org/download/index">download page</a> for more information.</p>
+
+<h1>obfs4 is ready for general deployment: bridge operators needed!</h1>
+
+<p><a href="https://www.torproject.org/docs/pluggable-transports">Pluggable transports</a>, the circumvention techniques which allow users to access the Tor network from censored areas by disguising the fact that the Tor protocol is being used, are about to take another step forward with the release of obfs4, and Yawning Angel <a href="https://lists.torproject.org/pipermail/tor-relays/2014-September/005372.html">sent out</a> a brief discussion of this new protocol.</p>
+
+<p>obfs4 offers a number of developments over the obfs3 and ScrambleSuit protocols, until now the most sophisticated pluggable transports in use on the Tor network. Like ScrambleSuit, obfs4 improves on obfs3 to “ <a href="https://gitweb.torproject.org/pluggable-transports/obfs4.git/blob/refs/heads/master:/doc/obfs4-spec.txt">provide resilience against active attackers and to disguise flow signatures</a>”, while a safer and more efficient key-exchange process than ScrambleSuit’s should make it impossible for attackers to launch man-in-the-middle attacks based on the client/bridge shared secret.</p>
+
+<p>Like its predecessors in the obfsproxy series, obfs4 is a bridge-based transport, meaning that volunteers are needed to operate relays running an implementation of the new protocol before users can take advantage of it. The current implementation, obfs4proxy, is now available to download either as <a href="https://gitweb.torproject.org/pluggable-transports/obfs4.git">source code</a> or as a package from Debian’s <a href="https://packages.debian.org/sid/obfs4proxy">unstable repositories</a>. Those who want to try browsing over the new protocol can download Yawning’s <a href="https://people.torproject.org/%7Eyawning/volatile/tor-browser-obfs4-20140926/">experimental Tor Browsers</a>, and if you’re willing to run an obfs4 bridge, please see Yawning’s message for all the relevant details — “questions, comments, and bridges appreciated”!</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Anthony G. Basile <a href="https://lists.torproject.org/pipermail/tor-talk/2014-September/034950.html">announced</a> the release of version 20140925 of tor-ramdisk, the micro Linux distribution whose only purpose is to host a Tor server in an environment that maximizes security and privacy. This release includes updates to Tor, BusyBox, OpenSSL, and the Linux kernel.</p>
+
+<p>As part of the current push to better understand hidden services and their use on the Tor network, Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-relays/2014-September/005352.html">asked</a> relay operators who are “comfortable compiling Tor from git” and who “want to help investigate what fraction of Tor network load comes from hidden service use” to check out the new hs-stats git branch. This version “will collect per-thirty-minute statistics about number of circuits and number of cells your relay sees that have to do with exiting, with hidden services, with circuits where you&#39;re not the final hop, and a fourth none-of-the-above category”, which can then be posted to the appropriate <a href="https://bugs.torproject.org/13192">ticket</a> on the bug tracker or sent to Roger directly.</p>
+
+<p>Yawning Angel <a href="https://lists.torproject.org/pipermail/tor-relays/2014-September/005344.html">sent</a> a “friendly reminder” to ScrambleSuit bridge operators, asking them to upgrade to tor-0.2.5.x if they haven’t already: “If you are running a ScrambleSuit bridge with tor-0.2.4.x, it is useless. Users that happen to be served your ScrambleSuit bridge will not be able to connect, because the password is missing”.</p>
+
+<p>Mike Perry <a href="https://lists.torproject.org/pipermail/tor-relays/2014-September/005335.html">asked</a> relay operators, particularly those running exit relays, to contribute information about the “hardware, CPU cores, and uplink” of their servers, and how much these cost per month, in order to “put together some estimates on bounds of the current value and cost of the capacity of the Tor network as it is, and use that to generate some rough guestimates on what it would cost to grow it”.</p>
+
+<p>In response to the possible integration of Tor as a “private browsing mode” by a major browser vendor, Andrew Lewman <a href="https://lists.torproject.org/pipermail/tor-dev/2014-September/007533.html">kicked off</a> a discussion of ways in which the Tor network might be scaled up to accommodate “hundreds of millions” of extra users.</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>In Firefox, it is possible to drag a URL from the Navigation Toolbar to the Desktop in order to create a shortcut to a website, and the help desk has been asked why this functionality is disabled in Tor Browser. A Desktop shortcut to a URL, when clicked, would be opened by the operating system’s default browser, not by Tor Browser. Permitting this behavior would open the door to confusion as to whether or not a user was visiting a link over Tor, and would violate the “Proxy Obedience” requirement of the <a href="https://www.torproject.org/projects/torbrowser/design/#proxy-obedience">Tor Browser design</a>.</p>
+
+<h1>News from Tor StackExchange</h1>
+
+<p>Tor StackExchange has started its <a href="https://meta.tor.stackexchange.com/q/221/88">site self-evaluation</a> for September 2014. <a href="http://tor.stackexchange.com/review/site-eval">Ten questions</a> were selected and you’re asked to review them. Are they good or is there room for improvement? Please have a look at the questions and rate them.</p>
+
+<p>Jens Kubieziel noted that users mix up the terms <a href="https://tor.stackexchange.com/q/4192/88">Tor, Tor Browser and torbrowser-launcher</a>, so he explained each of them to users of the Q&amp;A page.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by harmony, qbi, Lunar, Matt Pagan, dope457, and Yawning Angel.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the team <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">mailing list</a> if you want to get involved!</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/tor-browser-40-alpha-3-released">Tor Browser 4.0-alpha-3 is released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tbb-4.0</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+               |
+              26 Sep 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The third alpha release of the 4.0 series is available from the <a href="https://www.torproject.org/projects/torbrowser.html.en#downloads-alpha">extended downloads page</a> and also from our <a href="https://www.torproject.org/dist/torbrowser/4.0-alpha-3/">distribution directory</a>.</p>
+
+<p>The individual bundles of this release are signed by Georg Koppen. You can find his key fingerprint on the <a href="https://www.torproject.org/docs/signing-keys.html.en">Signing Keys</a> page. It is:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">pub 4096R/4B7C3223 2013-07-30
+ Fingerprint = 35CD74C24A9B15A19E1A81A194373AA94B7C3223
+</code></pre></div>
+<p><strong>IMPORTANT UPDATER ISSUES</strong> :</p>
+
+<ul>
+<li>We discovered <a href="https://trac.torproject.org/projects/tor/ticket/13245">Bug 13245</a> will cause non-English Tor Browsers to update to the English version. This bug has been fixed in this release, but 4.0a2 users will still be updated to the English version if they use the in-browser updater.</li>
+<li>Meek Transport users will need to restart their browser a second time after upgrade if they use the in-browser updater. We are still trying to get to the bottom of <a href="https://trac.torproject.org/projects/tor/ticket/13247">this issue.</a></li>
+</ul>
+
+<p>This release also features <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox24.8.1">important security updates</a> to Firefox.</p>
+
+<p>Here is the complete changelog:</p>
+
+<ul>
+<li><p>All Platforms</p>
+
+<ul>
+<li>Update Tor to 0.2.5.8-rc</li>
+<li>Update Firefox to 24.8.1esr</li>
+<li>Update meek to 0.11</li>
+<li>Update NoScript to 2.6.8.42</li>
+<li>Update Torbutton to 1.6.12.3</li>
+<li>Bug 13091: Use &quot;Tor Browser&quot; everywhere</li>
+<li>Bug 10804: Workaround fix for some cases of startup hang </li>
+<li>Bug 13091: Use &quot;Tor Browser&quot; everywhere</li>
+<li>Bug 13049: Browser update failure (self.update is undefined)</li>
+<li>Bug 13047: Updater should not send Kernel and GTK version</li>
+<li>Bug 12998: Prevent intermediate certs from being written to disk</li>
+<li>Bug 13245: Prevent non-english TBBs from upgrading to english version. </li>
+</ul></li>
+<li><p>Linux:</p>
+
+<ul>
+<li>Bug 9150: Make RPATH unavailable on Tor binary.</li>
+<li>Bug 13031: Add full RELRO protection. </li>
+</ul></li>
+</ul>
+
+<p>The list of <a href="https://trac.torproject.org/projects/tor/query?keywords=%7Etbb-helpdesk-frequent&amp;status=!closed">frequently encountered known issues</a> is also available in our bug tracker.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/tor-browser-366-released">Tor Browser 3.6.6 is released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tbb-3.6</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+               |
+              25 Sep 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The sixth pointfix release of the 3.6 series is available from the <a href="https://www.torproject.org/download/download-easy.html">Tor Browser Project page</a> and also from our <a href="https://www.torproject.org/dist/torbrowser/3.6.6/">distribution directory</a>.</p>
+
+<p>This release features <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox24.8.1">important security updates</a> to Firefox.</p>
+
+<p>Here is the complete changelog for 3.6.6:</p>
+
+<ul>
+<li><p>All Platforms</p>
+
+<ul>
+<li>Update Tor to tor-0.2.4.24</li>
+<li>Update Firefox to 24.8.1esr</li>
+<li>Update NoScript to 2.6.8.42</li>
+<li>Update HTTPS Everywhere to 4.0.1</li>
+<li>Bug 12998: Prevent intermediate certs from being written to disk</li>
+<li>Update Torbutton to 1.6.12.3</li>
+<li>Bug 13091: Use &quot;Tor Browser&quot; everywhere</li>
+<li>Bug 10804: Workaround fix for some cases of startup hang </li>
+</ul></li>
+<li><p>Linux</p>
+
+<ul>
+<li>Bug 9150: Make RPATH unavailable on Tor binary. </li>
+</ul></li>
+</ul>
+
+<p>The list of <a href="https://trac.torproject.org/projects/tor/query?keywords=%7Etbb-helpdesk-frequent&amp;status=!closed">frequently encountered known issues</a> is also available in our bug tracker.</p>
 
         </div>
       </section>
@@ -429,7 +345,7 @@
       
         <span class="previous">Previous</span>
       
-      <span class="page_number ">Page: 1 of 134</span>
+      <span class="page_number ">Page: 1 of 137</span>
       
         <a href="/blog/page2" class="next">Next</a>
       

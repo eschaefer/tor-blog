@@ -53,227 +53,490 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/may-2008-progress-report">May 2008 Progress Report</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor%2C-germany%2C-and-data-retention">Tor, Germany, and Data Retention</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+               |
+              17 Oct 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>With the &quot;enforcement&quot; phase of Germany&#39;s data retention law coming into effect on January 1 2009, it&#39;s time to start considering design modifications for Tor to make us more resistant. There are many different pieces to consider, including</p>
+
+<ul>
+<li>How should we change path selection so Tor clients are less at risk from German ISPs that decide to log?</li>
+<li>What exactly will German ISPs log, and who is supposed to have access to it?</li>
+<li>What suggestions should we give to German Tor relay operators, and German privacy advocates in general, about how they should fight this law without putting themselves too much at risk?</li>
+</ul>
+
+<p>I propose some technical changes to Tor in this or-dev post:
+ <a href="http://archives.seul.org/or/dev/Oct-2008/msg00001.html" title="http://archives.seul.org/or/dev/Oct-2008/msg00001.html">http://archives.seul.org/or/dev/Oct-2008/msg00001.html</a></p>
+
+<p>Stay tuned for the policy suggestions -- perhaps we&#39;ll cover those at 25C3!</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/online-anonymity-debate-south-korea">Online Anonymity Debate in South Korea</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">cyber defamation</a>
+              
+                <a class="post-category post-category-js" href="#">democracy</a>
+              
+                <a class="post-category post-category-js" href="#">online anonymity</a>
+              
+                <a class="post-category post-category-js" href="#">south korea</a>
+              
+                <a class="post-category post-category-js" href="#">whistleblowers</a>
+               |
+              17 Oct 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p><a href="http://www.tmcnet.com/usubmit/-online-anonymity-hotly-debated-south-korea-/2008/10/15/3707066.htm">An article</a> about the debate over online anonymity in South Korea caught my eye for a few reasons. The topic of online anonymity periodically rises to the social consciousness in South Korea. This time, it&#39;s about the suicide of a well-known actress, <a href="http://en.wikipedia.org/wiki/Choi_Jin-sil">Choi Jin-sil</a>. It&#39;s sad that she chose to commit suicide, and I&#39;m sorry she felt she had no where to go for help. However, blaming the Internet for her death is dubious at best. The Internet is a collection of networks. The Internet is a thing, not a person. While I dislike rude telemarketers, I don&#39;t blame the telephone company for providing the connection. In this case, there seemed to be a subset of people bent on defaming her regardless of the circumstances, while using the Internet as their communication medium.</p>
+
+<p>The real goal behind this upswelling of support for banning anonymity is to pass the Cyber Defamation Law. This appears to be the equivalent of user verification where all online activities must be in a real name and, in some way, verifiable.</p>
+
+<blockquote>
+<p>&quot;We will press hard to pass the Cyber Defamation Law and the real-name system,&quot; Hong Joon-pyo, the ruling Grand National Party&#39;s floor leader, told reporters last week. &quot;It is wrong to neglect the fact that violence is rampant online, due to anonymity.&quot;</p>
+</blockquote>
+
+<p>Defamation is already a crime in South Korea. The irony is that the person who possibly first defamed Choi Jin-sil has been found, a person only known by their last name, Paik. According to the article,</p>
+
+<blockquote>
+<p>&quot;Paik was questioned by investigators soon after Choi&#39;s suicide and ultimately indicted for defamation.&quot;</p>
+</blockquote>
+
+<p>Normally, the articles on how online anonymity is bad for the world end here. In this case, the article closes with how online anonymity is what probably helped bring South Korea into the democracy it has today.</p>
+
+<p>A great quote from Park Jun-chul,</p>
+
+<blockquote>
+<p>&quot;If there is no anonymity, not so many people will risk saying what is really happening at work places, schools, or in the society.&quot;</p>
+</blockquote>
+
+<p>This ties right into what we&#39;ve already seen happen online with activists, <a href="https://www.torproject.org/torusers.html.en#activists" title="https://www.torproject.org/torusers.html.en#activists">https://www.torproject.org/torusers.html.en#activists</a></p>
+
+<p><a href="http://www.guardian.co.uk/technology/2008/oct/09/news.internet">The Guardian</a> has a better overview covering both the positive and negative uses of online anonymity in South Korea.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-0.2.1.6-alpha-released">Tor 0.2.1.6-alpha Released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha</a>
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+               |
+              15 Oct 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Tor 0.2.1.6-alpha further improves performance and robustness of hidden
+services, starts work on supporting per-country relay selection, and
+fixes a variety of smaller issues.</p>
+
+<p>The original announcement can be found at
+ <a href="http://archives.seul.org/or/talk/Oct-2008/msg00093.html" title="http://archives.seul.org/or/talk/Oct-2008/msg00093.html">http://archives.seul.org/or/talk/Oct-2008/msg00093.html</a></p>
+
+<p>Changes in version 0.2.1.6-alpha - 2008-09-30</p>
+
+<ul>
+<li><p>Major features:</p>
+
+<ul>
+<li>Implement proposal 121: make it possible to build hidden services
+that only certain clients are allowed to connect to. This is
+enforced at several points, so that unauthorized clients are unable
+to send INTRODUCE cells to the service, or even (depending on the
+type of authentication) to learn introduction points. This feature
+raises the bar for certain kinds of active attacks against hidden
+services. Code by Karsten Loesing.</li>
+<li>Relays now store and serve v2 hidden service descriptors by default,
+i.e., the new default value for HidServDirectoryV2 is 1. This is
+the last step in proposal 114, which aims to make hidden service
+lookups more reliable.</li>
+<li>Start work to allow node restrictions to include country codes. The
+syntax to exclude nodes in a country with country code XX is
+&quot;ExcludeNodes {XX}&quot;. Patch from Robert Hogan. It still needs some
+refinement to decide what config options should take priority if
+you ask to both use a particular node and exclude it.</li>
+<li>Allow ExitNodes list to include IP ranges and country codes, just
+like the Exclude*Nodes lists. Patch from Robert Hogan.</li>
+</ul></li>
+<li><p>Major bugfixes:</p>
+
+<ul>
+<li>Fix a bug when parsing ports in tor_addr_port_parse() that caused
+Tor to fail to start if you had it configured to use a bridge
+relay. Fixes bug 809. Bugfix on 0.2.1.5-alpha.</li>
+<li>When extending a circuit to a hidden service directory to upload a
+rendezvous descriptor using a BEGIN_DIR cell, almost 1/6 of all
+requests failed, because the router descriptor had not been
+downloaded yet. In these cases, we now wait until the router
+descriptor is downloaded, and then retry. Likewise, clients
+now skip over a hidden service directory if they don&#39;t yet have
+its router descriptor, rather than futilely requesting it and
+putting mysterious complaints in the logs. Fixes bug 767. Bugfix
+on 0.2.0.10-alpha.</li>
+<li>When fetching v0 and v2 rendezvous service descriptors in parallel,
+we were failing the whole hidden service request when the v0
+descriptor fetch fails, even if the v2 fetch is still pending and
+might succeed. Similarly, if the last v2 fetch fails, we were
+failing the whole hidden service request even if a v0 fetch is
+still pending. Fixes bug 814. Bugfix on 0.2.0.10-alpha.</li>
+<li>DNS replies need to have names matching their requests, but
+these names should be in the questions section, not necessarily
+in the answers section. Fixes bug 823. Bugfix on 0.2.1.5-alpha.</li>
+</ul></li>
+<li><p>Minor features:</p>
+
+<ul>
+<li>Update to the &quot;September 1 2008&quot; ip-to-country file.</li>
+<li>Allow ports 465 and 587 in the default exit policy again. We had
+rejected them in 0.1.0.15, because back in 2005 they were commonly
+misconfigured and ended up as spam targets. We hear they are better
+locked down these days.</li>
+<li>Use a lockfile to make sure that two Tor processes are not
+simultaneously running with the same datadir.</li>
+<li>Serve the latest v3 networkstatus consensus via the control
+port. Use &quot;getinfo dir/status-vote/current/consensus&quot; to fetch it.</li>
+<li>Better logging about stability/reliability calculations on directory
+servers.</li>
+<li>Drop the requirement to have an open dir port for storing and
+serving v2 hidden service descriptors.</li>
+<li>Directory authorities now serve a /tor/dbg-stability.txt URL to
+help debug WFU and MTBF calculations.</li>
+<li>Implement most of Proposal 152: allow specialized servers to permit
+single-hop circuits, and clients to use those servers to build
+single-hop circuits when using a specialized controller. Patch
+from Josh Albrecht. Resolves feature request 768.</li>
+<li>Add a -p option to tor-resolve for specifying the SOCKS port: some
+people find host:port too confusing.</li>
+<li>Make TrackHostExit mappings expire a while after their last use, not
+after their creation. Patch from Robert Hogan.</li>
+<li>Provide circuit purposes along with circuit events to the controller.</li>
+</ul></li>
+<li><p>Minor bugfixes:</p>
+
+<ul>
+<li>Fix compile on OpenBSD 4.4-current. Bugfix on 0.2.1.5-alpha.
+Reported by Tas.</li>
+<li>Fixed some memory leaks -- some quite frequent, some almost
+impossible to trigger -- based on results from Coverity.</li>
+<li>When testing for libevent functions, set the LDFLAGS variable
+correctly. Found by Riastradh.</li>
+<li>Fix an assertion bug in parsing policy-related options; possible fix
+for bug 811.</li>
+<li>Catch and report a few more bootstrapping failure cases when Tor
+fails to establish a TCP connection. Cleanup on 0.2.1.x.</li>
+<li>Avoid a bug where the FastFirstHopPK 0 option would keep Tor from
+bootstrapping with tunneled directory connections. Bugfix on
+0.1.2.5-alpha. Fixes bug 797. Found by Erwin Lam.</li>
+<li>When asked to connect to A.B.exit:80, if we don&#39;t know the IP for A
+and we know that server B rejects most-but-not all connections to
+port 80, we would previously reject the connection. Now, we assume
+the user knows what they were asking for. Fixes bug 752. Bugfix
+on 0.0.9rc5. Diagnosed by BarkerJr.</li>
+<li>If we are not using BEGIN_DIR cells, don&#39;t attempt to contact hidden
+service directories if they have no advertised dir port. Bugfix
+on 0.2.0.10-alpha.</li>
+<li>If we overrun our per-second write limits a little, count this as
+having used up our write allocation for the second, and choke
+outgoing directory writes. Previously, we had only counted this when
+we had met our limits precisely. Fixes bug 824. Patch from by rovv.
+Bugfix on 0.2.0.x (??).</li>
+<li>Avoid a &quot;0 divided by 0&quot; calculation when calculating router uptime
+at directory authorities. Bugfix on 0.2.0.8-alpha.</li>
+<li>Make DNS resolved controller events into &quot;CLOSED&quot;, not
+&quot;FAILED&quot;. Bugfix on 0.1.2.5-alpha. Fix by Robert Hogan. Resolves
+bug 807.</li>
+<li>Fix a bug where an unreachable relay would establish enough
+reachability testing circuits to do a bandwidth test -- if
+we already have a connection to the middle hop of the testing
+circuit, then it could establish the last hop by using the existing
+connection. Bugfix on 0.1.2.2-alpha, exposed when we made testing
+circuits no longer use entry guards in 0.2.1.3-alpha.</li>
+<li>If we have correct permissions on $datadir, we complain to stdout
+and fail to start. But dangerous permissions on
+$datadir/cached-status/ would cause us to open a log and complain
+there. Now complain to stdout and fail to start in both cases. Fixes
+bug 820, reported by seeess.</li>
+<li>Remove the old v2 directory authority &#39;lefkada&#39; from the default
+list. It has been gone for many months.</li>
+</ul></li>
+<li><p>Code simplifications and refactoring:</p>
+
+<ul>
+<li>Revise the connection_new functions so that a more typesafe variant
+exists. This will work better with Coverity, and let us find any
+actual mistakes we&#39;re making here.</li>
+<li>Refactor unit testing logic so that dmalloc can be used sensibly
+with unit tests to check for memory leaks.</li>
+<li>Move all hidden-service related fields from connection and circuit
+structure to substructures: this way they won&#39;t eat so much memory.</li>
+</ul></li>
+</ul>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/september-2008-progress-report">September 2008 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha</a>
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">facebook</a>
+              
+                <a class="post-category post-category-js" href="#">lectures</a>
+              
+                <a class="post-category post-category-js" href="#">media articles</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">rpm</a>
+              
+                <a class="post-category post-category-js" href="#">stable</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia</a>
+               |
+              15 Oct 2008
+          </p>
+        </header>
+        <div class="post-description">
+          <p><strong>Releases</strong>
+Vidalia 0.1.9 (released September 2) fixes a big pile of bugs and inconveniences in the earlier releases. This new release marks the first &quot;stable&quot; release of Vidalia, in that we have now branched into a stable (0.1.x) branch and a development (0.2.x) branch.
+ <a href="http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.9/CHANGELOG" title="http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.9/CHANGELOG">http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.9/CHANG...</a></p>
+
+<p>Tor 0.2.0.31 (released September 3) addresses two potential anonymity issues, starts to fix a big bug we&#39;re seeing where in rare cases traffic from one Tor stream gets mixed into another stream, and fixes a variety of smaller issues.
+ <a href="http://archives.seul.org/or/announce/Sep-2008/msg00000.html" title="http://archives.seul.org/or/announce/Sep-2008/msg00000.html">http://archives.seul.org/or/announce/Sep-2008/msg00000.html</a></p>
+
+<p>Tor 0.2.1.6-alpha (released September 30) further improves performance and robustness of hidden services, starts work on supporting per-country relay selection, and fixes a variety of smaller issues.
+ <a href="http://archives.seul.org/or/talk/Oct-2008/msg00093.html" title="http://archives.seul.org/or/talk/Oct-2008/msg00093.html">http://archives.seul.org/or/talk/Oct-2008/msg00093.html</a></p>
+
+<p><strong>Circumvention Enhancements</strong>
+From the Vidalia 0.1.9 ChangeLog:
+&quot;Correct the location of the simplified Chinese help files so they will actually load again.&quot;</p>
+
+<p>From the Tor 0.2.1.6-alpha ChangeLog:
+&quot;Start work to allow node restrictions to include country codes. The syntax to exclude nodes in a country with country code XX is &quot;ExcludeNodes {XX}&quot;. Patch from Robert Hogan. It still needs some refinement to decide what config options should take priority if you ask to both use a particular node and exclude it.&quot;
+This feature should allow users in China to specify that they don&#39;t want to enter (and/or exit) in China, which in theory could provide stronger security for them.</p>
+
+<p>From the Tor 0.2.1.6-alpha ChangeLog:
+&quot;Allow ports 465 and 587 in the default exit policy again. We had rejected them in 0.1.0.15, because back in 2005 they were commonly misconfigured and ended up as spam targets. We hear they are better locked down these days.&quot;
+This feature lets people use GMail with Tor in more flexible ways. This approach is especially important for people trying to send email in certain configurations when their network wants to block or monitor them.</p>
+
+<p>From the Tor 0.2.1.6-alpha ChangeLog:
+&quot;Provide circuit purposes along with circuit events to the controller.&quot;
+This change will allow Vidalia to mark circuits in its graphical interface, so users don&#39;t get confused about why Tor is building strange circuits in the background when it&#39;s really just doing encrypted directory updates.</p>
+
+<p>Matt and Andrew fixed a bug in the Vidalia bundle installer where it tried to detect if Firefox was installed, and unclick the &quot;install Torbutton&quot; option if not, but it didn&#39;t detect right. Now if Firefox is missing we put up a warning explanation about how you really ought to be using Tor with Firefox.</p>
+
+<p>We also finally started working on a fix for the Vidalia bug where if Vidalia launches Tor and then crashes later, when you start Vidalia again it&#39;ll cryptically ask for your control password.
+ <a href="https://wiki.torproject.org/noreply/TheOnionRouter/TorFAQ#TorPasswordPrompt" title="https://wiki.torproject.org/noreply/TheOnionRouter/TorFAQ#TorPasswordPrompt">https://wiki.torproject.org/noreply/TheOnionRouter/TorFAQ#TorPasswordPro...</a>
+The first fix is to add a &quot;reset&quot; button to the cryptic message, that kills Tor for you and restarts it, and a &quot;help&quot; button that explains what&#39;s going on. These will be out in the next development Vidalia release, hopefully in October.</p>
+
+<p>Camilo Viecco submitted a patch for our RPM spec (build) file to let us build Red Hat / SuSE packages for 64-bit architectures. Andrew included these patches in 0.2.1.6-alpha.</p>
+
+<p><strong>Advocacy</strong>
+Steven Murdoch taught a lecture at the FIDIS/IFIP Brno Summer School in the Czech Republic.
+ <a href="http://www.buslab.org/SummerSchool2008/" title="http://www.buslab.org/SummerSchool2008/">http://www.buslab.org/SummerSchool2008/</a>
+The presentation was on anti-censorship in general especially on Tor. The students seemed to be interested so he encouraged them to look at Tor and see if there is anything they&#39;d like to work on. We will see if anything comes from that.</p>
+
+<p>We&#39;ve also been discussing creating a Facebook application, for allowing relay operators to show off that they are running a Tor relay and hopefully encourage more to do so. We think this is a good enough idea to try building it, so Steven has started to do so. As well as adding bling to a user&#39;s profile, it would also allow us to map the network of node operators. This is one of the more promising research fields to resist Sybil attacks, see e.g.
+&quot;A Sybil-proof one-hop DHT, Chris Lesniewski-Laas&quot;
+ <a href="http://pdos.csail.mit.edu/papers/sybil-dht-socialnets08.pdf" title="http://pdos.csail.mit.edu/papers/sybil-dht-socialnets08.pdf">http://pdos.csail.mit.edu/papers/sybil-dht-socialnets08.pdf</a></p>
+
+<p>Steven had a related story regarding host-based security from his trainings in Kyrgyzstan and Poland. See also
+ <a href="http://www.f-secure.com/weblog/archives/00001494.html" title="http://www.f-secure.com/weblog/archives/00001494.html">http://www.f-secure.com/weblog/archives/00001494.html</a></p>
+
+<p>Jacob was in a story by Declan about Internet Traceback plans:
+&quot;The Chinese Government, the NSA, Verisign and the ITU are getting together to trace users&quot;
+ <a href="http://news.cnet.com/8301-13578_3-10040152-38.html" title="http://news.cnet.com/8301-13578\_3-10040152-38.html">http://news.cnet.com/8301-13578_3-10040152-38.html</a></p>
+
+<p>The current issue of Make Magazine has an article on how to use Tor:
+ <a href="http://www.make-digital.com/make/vol15/?pg=102" title="http://www.make-digital.com/make/vol15/?pg=102">http://www.make-digital.com/make/vol15/?pg=102</a></p>
+
+<p>Helped Kasimir add new Tor controller features so Torstatus can switch to using the v3 directory system:
+ <a href="http://trunk.torstatus.kgprog.com/" title="http://trunk.torstatus.kgprog.com/">http://trunk.torstatus.kgprog.com/</a></p>
+
+<p><strong>Ease of Use</strong>
+Steven is working on a new branch of Vidalia that can be used in Tor Browser Bundle, for launching Firefox directly without needing the extra installer scripts called &quot;Firefox Portable&quot;. If we get this working, then we can hopefully make progress on running multiple Firefoxes at once (one used for Tor launched by TBB, and one used for non-Tor).
+ <a href="http://trac.vidalia-project.net/browser/vidalia/branches/alt-launcher" title="http://trac.vidalia-project.net/browser/vidalia/branches/alt-launcher">http://trac.vidalia-project.net/browser/vidalia/branches/alt-launcher</a></p>
+
+<p>Jacob Appelbaum worked on a set of instructions for rebranding Firefox, if we decide that we need to call the browser that ships in the Tor Browser Bundle something other than &quot;Firefox&quot;. The instructions aren&#39;t complete, for example because we need more replacement logos.
+ <a href="https://svn.torproject.org/svn/torbrowser/trunk/build-scripts/branding/" title="https://svn.torproject.org/svn/torbrowser/trunk/build-scripts/branding/">https://svn.torproject.org/svn/torbrowser/trunk/build-scripts/branding/</a>
+It looks like the process of rebranding Firefox 3 is much more straightforward. We have &quot;move to FF3&quot; on our TBB roadmap.</p>
+
+<p>Work by Martin and Kyle on the Tor VM project continues. We have a very early prototype available now:
+ <a href="http://peertech.org/files/demo/testinfo.html" title="http://peertech.org/files/demo/testinfo.html">http://peertech.org/files/demo/testinfo.html</a>
+and we hope to give it some more testing and better documentation in the coming months.</p>
+
+<p><strong>Scalability</strong>
+Joel Reardon, Ian Goldberg&#39;s student at Waterloo, has finished the final version of his thesis &quot;Improving Tor using a TCP-over-DTLS tunnel&quot;:
+ <a href="http://uwspace.uwaterloo.ca/handle/10012/4011" title="http://uwspace.uwaterloo.ca/handle/10012/4011">http://uwspace.uwaterloo.ca/handle/10012/4011</a>
+We funded this research (along with 4x matching funding from MITACS in Canada) in the hopes that it would move us close enough to being able to switch to a UDP design that we can put it on the Tor development roadmap at some point. Many large challenges remain, but this is also promising work in that it shows that we can expect very serious performance improvements if we go this route.</p>
+
+<p>We&#39;ve started hunting more thoroughly for solutions to Bug 676:
+ <a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=696" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=696">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=696</a>
+The issue is that some of the v3 directory authorities are keeping bad statistics on uptimes and stability of relays, which means they are not assigning the Stable or Guard flag correctly to them. The result is that the networkstatus consensus mislabels them, and clients end up not choosing relays or circuits in an efficient manners. This bug not only results in bad performance for clients, but also results in overloading some relays, leading to worse performance.</p>
+
+<p>From the Tor 0.2.1.6-alpha ChangeLog:
+&quot;Implement most of Proposal 152: allow specialized servers to permit single-hop circuits, and clients to use those servers to build single-hop circuits when using a specialized controller. Patch from Josh Albrecht. Resolves feature request 768.&quot;
+&quot;Fixed some memory leaks -- some quite frequent, some almost impossible to trigger -- based on results from Coverity.&quot;</p>
+
+<p>Several security- and integrity-related bugfixes from Tor 0.2.0.31:
+&quot;Make sure that two circuits can never exist on the same connection with the same circuit ID, even if one is marked for close. This is conceivably a bugfix for bug 779. Bugfix on 0.1.0.4-rc.&quot;
+&quot;Relays now reject risky extend cells: if the extend cell includes a digest of all zeroes, or asks to extend back to the relay that sent the extend cell, tear down the circuit. Ideas suggested by rovv.&quot;
+&quot;If not enough of our entry guards are available so we add a new one, we might use the new one even if it overlapped with the current circuit&#39;s exit relay (or its family). Anonymity bugfix pointed out by rovv.&quot;</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/august-2008-progress-report">August 2008 Progress Report</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
                 <a class="post-category post-category-js" href="#">bridges</a>
               
-                <a class="post-category post-category-js" href="#">browser bundle</a>
+                <a class="post-category post-category-js" href="#">incognito</a>
               
                 <a class="post-category post-category-js" href="#">progress report</a>
               
-                <a class="post-category post-category-js" href="#">tor</a>
+                <a class="post-category post-category-js" href="#">releases</a>
               
-                <a class="post-category post-category-js" href="#">torbutton</a>
+                <a class="post-category post-category-js" href="#">stable release</a>
               
-                <a class="post-category post-category-js" href="#">vidalia</a>
+                <a class="post-category post-category-js" href="#">tor weather</a>
+              
+                <a class="post-category post-category-js" href="#">translations</a>
+              
+                <a class="post-category post-category-js" href="#">updates</a>
                |
-              25 Jun 2008
+              22 Sep 2008
           </p>
         </header>
         <div class="post-description">
-          <p>Tor 0.2.0.26-rc (released May 13) fixes a major security vulnerability caused by a bug in Debian&#39;s OpenSSL packages. All users running any 0.2.0.x version should upgrade, whether they&#39;re running Debian or not.
- <a href="http://archives.seul.org/or/talk/May-2008/msg00048.html" title="http://archives.seul.org/or/talk/May-2008/msg00048.html">http://archives.seul.org/or/talk/May-2008/msg00048.html</a></p>
+          <p><strong>Releases</strong></p>
 
-<p>Vidalia 0.1.3 (released May 25) adds a hidden service configuration UI designed and implemented by Domenik Bork, as well as a few other bugfixes.
- <a href="http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.3/CHANGELOG" title="http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.3/CHANGELOG">http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.3/CHANG...</a></p>
+<p>Vidalia 0.1.7 (released August 2) fixes a bug that caused Vidalia to not recognize Tor&#39;s version correctly in Tor 0.2.0.x, adds an &quot;nsh2po&quot; tool that helps Pootle translate the Vidalia bundle installer strings, adds &quot;TZ=UTC&quot; to the BrowserExecutable&#39;s environment variables when launched via Vidalia, and updates the Czech, French, and German translations.
+ <a href="http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.7/CHANGELOG" title="http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.7/CHANGELOG">http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.7/CHANG...</a></p>
 
-<p>The Tor Browser Bundle 1.0.2 (released May 3) and 1.0.3 (released May 16) include upgraded versions of Tor, Vidalia, Torbutton, and Firefox.</p>
+<p>Incognito 2008.1 (released August 2) is a Gentoo-based Tor LiveCD. This new release adds a &quot;walkthrough&quot; which will launch on startup; adds language support for Arabic, Green, Hebrew, Russian, and Swedish; improves the support for Chinese and Japanese fonts; adds support for VMWare and partial support for VirtualBox; switches to Tor 0.2.0.30 and Torbutton 1.2.0; and adds some new privacy-supporting software and removes some applications that are too likely to leak private information.
+ <a href="https://svn.torproject.org/svn/incognito/trunk/ChangeLog" title="https://svn.torproject.org/svn/incognito/trunk/ChangeLog">https://svn.torproject.org/svn/incognito/trunk/ChangeLog</a></p>
 
-<p>We added three new part-time developers in May. We hired Matt Edman as a part-time employee at the beginning of May, to work on Vidalia maintenance, bugfixes, and new features. We also are funding Karsten Loesing to work on making hidden service rendezvous and interaction faster, and Peter Palfrader to work on lowering the overhead of directory requests, especially during bootstrap, which should directly improve the experience for Tor users on modems or cell phones.</p>
+<p>Tor 0.2.1.3-alpha (released August 3) implements most of the pieces to prevent infinite-length circuit attacks (see proposal 110); fixes a bug that might cause exit relays to corrupt streams they send back; allows address patterns (e.g. 255.128.0.0/16) to appear in ExcludeNodes and ExcludeExitNodes config options; and fixes a big pile of bugs.
+ <a href="http://archives.seul.org/or/talk/Aug-2008/msg00039.html" title="http://archives.seul.org/or/talk/Aug-2008/msg00039.html">http://archives.seul.org/or/talk/Aug-2008/msg00039.html</a></p>
 
-<p>Google has agreed to give us some funding to work on auto-update for Windows. Our plan is for Vidalia to look at the majority-signed network status consensus to decide when to update and to what version (Tor already lists what versions are considered safe, in each network status document). We should actually do the update via Tor if possible, for additional privacy, and we need to make sure to check package signatures to ensure package validity. Last, we need to give the user an interface for these updates, including letting her opt to migrate from one major Tor version to the next.</p>
+<p>Tor 0.2.1.4-alpha (released August 4) fixes a pair of crash bugs in 0.2.1.3-alpha.
+ <a href="http://archives.seul.org/or/talk/Aug-2008/msg00039.html" title="http://archives.seul.org/or/talk/Aug-2008/msg00039.html">http://archives.seul.org/or/talk/Aug-2008/msg00039.html</a></p>
 
-<p>We continued enhancements to the Chinese and Russian Tor website translations. Vidalia also added a Turkish translation.</p>
+<p>Tor Browser Bundle 1.1.2 (released August 9) updates Vidalia to version 0.1.6, updates Firefox to 2.0.0.16, updates Tor to 0.2.1.4-alpha, updates Torbutton to 1.2.0, and disables the TZ=UTC environment variable trick since Vidalia 0.1.7 now handles that for us.
+ <a href="https://svn.torproject.org/svn/torbrowser/trunk/README" title="https://svn.torproject.org/svn/torbrowser/trunk/README">https://svn.torproject.org/svn/torbrowser/trunk/README</a></p>
 
-<p>From the Vidalia 0.1.3 ChangeLog:
-&quot;If we&#39;re running Tor &gt;= 0.2.0.13-alpha, then check the descriptor annotations for each descriptor before deciding to do a geoip lookup on its IP address. If the annotations indicate it is a special purpose descriptor (e.g., bridges), then don&#39;t do the lookup at all.&quot;</p>
+<p>Vidalia 0.1.8 (released August 17) makes the bandwidth graph window look better for languages like Farsi, includes ssleay32.dll in the Windows packages so Vidalia won&#39;t crash when it finds an incompatible version of ssleay32.dll in the user&#39;s $PATH, makes &quot;escape&quot; and &quot;return&quot; shortcuts for the settings window, and fixes a variety of other bugs.
+ <a href="http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.8/CHANGELOG" title="http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.8/CHANGELOG">http://trac.vidalia-project.net/browser/vidalia/tags/vidalia-0.1.8/CHANG...</a></p>
 
-<p>&quot;Remove the &#39;Run Tor as a Service&#39; checkbox. Lots of people seem to be clicking it even though they don&#39;t really need to, and we end up leaving them in a broken state after a reboot.&quot;</p>
+<p>Tor 0.2.0.30 (released July 15, announced August 21) switches to a more efficient directory distribution design, adds features to make connections to the Tor network harder to block, allows Tor to act as a DNS proxy, adds separate rate limiting for relayed traffic to make it easier for clients to become relays, fixes a variety of potential anonymity problems, and includes the usual huge pile of other features and bug fixes.
+ <a href="http://archives.seul.org/or/announce/Aug-2008/msg00000.html" title="http://archives.seul.org/or/announce/Aug-2008/msg00000.html">http://archives.seul.org/or/announce/Aug-2008/msg00000.html</a></p>
 
-<p>&quot;Only display the running relays in the big list of relays to the left of the network map. Listing a big pile of unavailable relays is not particularly useful, and just clutters up the list.&quot;</p>
+<p>Tor Browser Bundle 1.1.3 (released August 22) fixes a bug in the 0.1.2 release that messed up translations in the homepage, adds &quot;small=1&quot; to the homepage URL so it doesn&#39;t show the huge green onion by default, and updates Vidalia to 0.1.8.
+ <a href="https://svn.torproject.org/svn/torbrowser/trunk/README" title="https://svn.torproject.org/svn/torbrowser/trunk/README">https://svn.torproject.org/svn/torbrowser/trunk/README</a></p>
 
-<p>We worked toward a Torbutton 1.2.0rc1 release candidate, which will include support for Firefox 3 along with a huge pile of privacy-related bugfixes.</p>
+<p>Tor 0.2.1.5-alpha (released August 31) moves us closer to handling IPv6 destinations, puts in a lot of the infrastructure for adding authorization to hidden services, lays the groundwork for having clients read their load balancing information out of the networkstatus consensus rather than the individual router descriptors, addresses two potential anonymity issues, and fixes a variety of smaller issues.
+ <a href="http://archives.seul.org/or/talk/Sep-2008/msg00072.html" title="http://archives.seul.org/or/talk/Sep-2008/msg00072.html">http://archives.seul.org/or/talk/Sep-2008/msg00072.html</a></p>
 
-<p>We spent much of the first half of May dealing with a surprise massive security vulnerability in a crypto library that comes with Debian:
- <a href="http://archives.seul.org/or/announce/May-2008/msg00000.html" title="http://archives.seul.org/or/announce/May-2008/msg00000.html">http://archives.seul.org/or/announce/May-2008/msg00000.html</a></p>
+<p><strong>Blocking resistance</strong>
+The Tor 0.2.1.3-alpha and 0.2.1.4-alpha releases include more fixes for hidden service performance and robustness, have slightly improved bootstrap status event behavior, and start hunting down a horrible bug that looks like it could leak private information:
+ <a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=779" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=779">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=779</a></p>
 
-<p>You can read a more detailed explanation of the effects of the flaw here:
- <a href="https://blog.torproject.org/blog/debian-openssl-flaw%3A-what-does-it-mean-tor-clients%3F" title="https://blog.torproject.org/blog/debian-openssl-flaw%3A-what-does-it-mean-tor-clients%3F">https://blog.torproject.org/blog/debian-openssl-flaw%3A-what-does-it-mea...</a></p>
+<p>Now that the Tor 0.2.0.30 release has been declared stable, ordinary users will finally get bridge features, the new harder-to-block network protocol, and other features by default.</p>
 
-<p>Part of dealing with the flaw meant doing some quick design work so we could let new Tor users be safe without making it so old Tor users were cut off from the network:
- <a href="https://www.torproject.org/svn/trunk/doc/spec/proposals/136-legacy-keys.txt" title="https://www.torproject.org/svn/trunk/doc/spec/proposals/136-legacy-keys.txt">https://www.torproject.org/svn/trunk/doc/spec/proposals/136-legacy-keys....</a></p>
+<p><strong>Core Development</strong>
+We&#39;re working on a draft for a new &quot;automatic software update&quot; protocol, code-named Glider, that incorporates the previous proposals 153 and 154 but is easier to extend to other packages, and is easier to implement and maintain on the server side. We hope to have this new draft out as an actual proposal document, along with some early prototypes of the server side, in September.
+ <a href="https://svn.torproject.org/svn/updater/trunk/specs/glider-spec.txt" title="https://svn.torproject.org/svn/updater/trunk/specs/glider-spec.txt">https://svn.torproject.org/svn/updater/trunk/specs/glider-spec.txt</a>
+Part of the ongoing development question is how to write the client side of this auto update engine in a convenient and easy language like Python, yet have it still be extremely compact on the client side -- since Windows doesn&#39;t include Python by default, shipping a Python interpreter with the auto updater could add 10MB to the package size.</p>
 
-<p>Sometime in late June or early July we will disable this workaround, meaning all the 0.2.0.x users who haven&#39;t upgraded yet will be cut off.</p>
+<p>Roger sent the list of &quot;research directions we should look at&quot; to or-dev, so more people could look at it:
+ <a href="http://archives.seul.org/or/dev/Aug-2008/msg00031.html" title="http://archives.seul.org/or/dev/Aug-2008/msg00031.html">http://archives.seul.org/or/dev/Aug-2008/msg00031.html</a>
+We are working these items into a more comprehensive research and development roadmap; stay tuned.</p>
 
-<p>We are preparing for the Tor gathering at the Privacy Enhancing Technologies Symposium in Leuven in July. This is looking like it will be the largest physical gathering of Tor developers ever -- main developers attending include Roger Dingledine, Nick Mathewson, Jacob Appelbaum, Mike Perry, Matt Edman, Steven Murdoch, and Karsten Loesing; Tor researchers include Paul Syverson and Ian Goldberg; and we&#39;ll have 5 of our 7 Google Summer of Code students there as well.
- <a href="https://blog.torproject.org/events/roger%2C-nick%2C-steven%2C-matt%2C-karsten%2C-paul%2C-jacob-pets" title="https://blog.torproject.org/events/roger%2C-nick%2C-steven%2C-matt%2C-karsten%2C-paul%2C-jacob-pets">https://blog.torproject.org/events/roger%2C-nick%2C-steven%2C-matt%2C-ka...</a>
- <a href="http://petsymposium.org/2008/program.php" title="http://petsymposium.org/2008/program.php">http://petsymposium.org/2008/program.php</a></p>
+<p><strong>Advocacy</strong>
+We answered a lot of press organizations about Tor and the Olympics this month. Our main goal was to explain to technical people how bridges work, what they&#39;re for, and explain that in most countries right now Tor works just fine out of the box, so bridges are the backup plan for later down the arms race. The CCC (and others) succeeded in making some good press articles, e.g.
+ <a href="http://www.rsf.org/article.php3?id_article=27991" title="http://www.rsf.org/article.php3?id\_article=27991">http://www.rsf.org/article.php3?id_article=27991</a>
+ <a href="http://www.guardian.co.uk/technology/2008/aug/07/censorship.hacking" title="http://www.guardian.co.uk/technology/2008/aug/07/censorship.hacking">http://www.guardian.co.uk/technology/2008/aug/07/censorship.hacking</a>
+ <a href="http://www.guardian.co.uk/commentisfree/2008/aug/05/china.censorship" title="http://www.guardian.co.uk/commentisfree/2008/aug/05/china.censorship">http://www.guardian.co.uk/commentisfree/2008/aug/05/china.censorship</a></p>
 
-<p>The upcoming TBB release in June will include optional instant messaging support via Pidgin + Off-The-Record Messaging; replace the startup batch script with an actual application (named RelativeLink), so TBB now has a helpful Tor icon rather than an ugly batch file icon; and optionally support using WinRAR to produce a self-extracting split bundle.</p>
+<p>Roger attended Black Hat and Defcon. His Defcon talk was:
+&quot;Attacks/Vulnerabilities on Tor: past, present, future&quot;
+Slides are at <a href="http://freehaven.net/%7Earma/slides-dc08.pdf" title="http://freehaven.net/~arma/slides-dc08.pdf">http://freehaven.net/~arma/slides-dc08.pdf</a>
+He had a packed room of 500+ people. Lucky Green summarized his take-away from the talk as &quot;we would love to work with you if you find any problems with Tor, and we have a good track record of working well with the community.&quot; That sounds like what we were aiming for. We&#39;re still waiting for the video to come out so we can link to it from the documentation page.</p>
 
-<p>We now have a more thorough set of TBB build instructions:
- <a href="https://svn.torproject.org/svn/torbrowser/trunk/build-scripts/INSTALL" title="https://svn.torproject.org/svn/torbrowser/trunk/build-scripts/INSTALL">https://svn.torproject.org/svn/torbrowser/trunk/build-scripts/INSTALL</a></p>
+<p>We also talked a lot with the Mozilla people about privacy-impacting bugs in Firefox. We have a list now:
+ <a href="https://www.torproject.org/torbutton/design/#FirefoxBugs" title="https://www.torproject.org/torbutton/design/#FirefoxBugs">https://www.torproject.org/torbutton/design/#FirefoxBugs</a>
+and should start looking for good Firefox developers to fix them and funding to incent them to do so.</p>
 
-<p>We also documented the build and deploy process for a new TBB version:
- <a href="https://svn.torproject.org/svn/torbrowser/trunk/build-scripts/DEPLOYMENT" title="https://svn.torproject.org/svn/torbrowser/trunk/build-scripts/DEPLOYMENT">https://svn.torproject.org/svn/torbrowser/trunk/build-scripts/DEPLOYMENT</a></p>
+<p>We put up our mid-August NLnet reports:
+ <a href="https://www.torproject.org/projects/hidserv#Aug08" title="https://www.torproject.org/projects/hidserv#Aug08">https://www.torproject.org/projects/hidserv#Aug08</a>
+ <a href="https://www.torproject.org/projects/lowbandwidth#Aug08" title="https://www.torproject.org/projects/lowbandwidth#Aug08">https://www.torproject.org/projects/lowbandwidth#Aug08</a></p>
 
-<p>We finished integrating a UPnP library into Vidalia. This feature allows users who want to set up a Tor relay but don&#39;t want to muck with manual port forwarding on their router/firewall to just click a button and have Vidalia interact with their router/firewall automatically. This approach won&#39;t work in all cases, but it should work in at least some. The upcoming Vidalia 0.1.4 (scheduled for June) release has folded the UPnP library and GUI changes into the main Vidalia tree, along with a &quot;test&quot; button to try speaking UPnP at the local router and tell the user whether it worked; these features will be available by default in the 0.2.0.x stable release.</p>
+<p>Jacob spent a long week of hacking in Argentina, for DebConf 8 (the yearly Debian Conference). Lots of Tor advocacy. Another box of Tor stickers applied to many many laptops. Lots of people were interested in Tor and many many people installed Tor on both laptops and servers. This advocacy resulted in at least two new high bandwidth nodes that he helped the administrators configure. The first is in Japan. The second is our first major high bandwidth node in New Zealand.</p>
 
-<p>We spent May hunting for a better online translation option, since Launchpad (intended to be used for Vidalia translation) has an ugly interface and can&#39;t handle our file formats well, and Babelzilla (intended to be used for Torbutton translation) artificially limited the number of concurrent translators we could have.</p>
+<p>Coverity (coverity.com) is now scanning Tor. It found a bunch of minor memory leaks, a few false positives, and some other miscellaneous bugs. Nick fixed almost all of the bugs in a quick afternoon, excepting some testing code that has some resource leaks. Jacob is going to work on getting other Tor related projects into Coverity.</p>
 
-<p>In early June we hit upon Pootle, which is a translation server that we host, as opposed to a shared web service that other organizations host. We&#39;ve set up a test server at <a href="http://translation.torproject.org/" title="http://translation.torproject.org/">http://translation.torproject.org/</a> and imported strings for Vidalia, Torbutton, and Torcheck. We hope to have a lot more to show here in June.</p>
+<p>Mike Perry has been working lately on publicity for moving more high-profile websites to use SSL correctly. Last year at Defcon he reported a bug in how many sites (including GMail) handle their cookies: he basically described an easy way for anybody in Starbucks to steal your GMail cookie and log into your gmail account, even if you are always very careful to only use &quot;https&quot; when logging in to your gmail account. The attack works because cookies *can* be set with an &quot;only present this cookie on an SSL connection&quot; flag when they&#39;re created, but no sites actually set this flag because they are concerned about usability. This attack is easy to perform as a Tor exit relay too. This year, Mike presented an actual tool that performs this attack on a local wireless network in an automated way. Some high-profile sites are slowly moving to use more secure login approaches.</p>
 
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/torprojectorg-blocked-gfw-china-sooner-or-later">Torproject.org Blocked by GFW in China: Sooner or Later?</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">Anonymous</a> under
-              
-                <a class="post-category post-category-js" href="#">china</a>
-              
-                <a class="post-category post-category-js" href="#">GFW</a>
-              
-                <a class="post-category post-category-js" href="#">GreatFirewall</a>
-               |
-              21 Jun 2008
-          </p>
-        </header>
-        <div class="post-description">
-          <p>We didn&#39;t expect Tor wouldn&#39;t be blocked in China for a long time before it became true days ago.  We&#39;ve got a lot of users&#39; reports on that from different regions in China about torproject.org was blocked by <a href="http://en.wikipedia.org/wiki/Internet_censorship_in_the_People%27s_Republic_of_China">Great Firewall</a> system in China.  
- <a href="http://mcfreds.blogspot.com/2008/06/torprojectorg-blocked-in-china.html">McFred&#39;s Blog</a> said:</p>
+<p>Matt Edman finished running the &quot;Vidalia logo design contest&quot;. The contest resulted in 76 entries. There were a lot of questionable submissions (Vidalia ninjas?!), but there were also a few great ones. He is tending towards this entry as his choice for the new Vidalia logo:
+ <a href="http://www.worth1000.com/view.asp?entry=479229" title="http://www.worth1000.com/view.asp?entry=479229">http://www.worth1000.com/view.asp?entry=479229</a></p>
 
-<blockquote>
-<p>torproject.org is the official Tor(The Onion Router) web site, found recently been blocked by China&#39;s national firewall, also known as Great Firewall.
-Trace route from Beijing, China shows the destination is unreachable, seems they changed the route table on the router at IP 202.97.66.37, refuse connection to Tor web site.</p>
-</blockquote>
+<p><strong>Usability</strong>
+Incognito 2008.1 (released August 2) is a Gentoo-based Tor LiveCD. This new release adds a &quot;walkthrough&quot; which will launch on startup; adds language support for Arabic, Green, Hebrew, Russian, and Swedish; improves the support for Chinese and Japanese fonts; adds support for VMWare and partial support for VirtualBox; switches to Tor 0.2.0.30 and Torbutton 1.2.0; and adds some new privacy-supporting software and removes some applications that are too likely to leak private information.
+ <a href="https://svn.torproject.org/svn/incognito/trunk/ChangeLog" title="https://svn.torproject.org/svn/incognito/trunk/ChangeLog">https://svn.torproject.org/svn/incognito/trunk/ChangeLog</a></p>
 
-<p>Jacky talked on his <a href="http://jcvenue.com/blog/gfw-2.html">Chinese blog</a>:</p>
+<p>Incognito now comes with much more thorough documentation about which software packages are included, and how they are configured:
+ <a href="http://www.browseanonymouslyanywhere.com/incognito/uploadfiles/docs.html" title="http://www.browseanonymouslyanywhere.com/incognito/uploadfiles/docs.html">http://www.browseanonymouslyanywhere.com/incognito/uploadfiles/docs.html</a></p>
 
-<blockquote>
-<p>Just there&#39;s an online survey on Tor usage in China, I found Tor official site has been &quot;harmonized&quot; when I was curious about how it said about any news...</p>
-</blockquote>
+<p>Incognito&#39;s next step is to work on a &quot;hardened&quot; option that uses a more secure kernel and other applications. The goal is to keep the same usability but be even less vulnerable to application-level and kernel-level attacks that could be used to gain access to the system and then try to unveil the user.</p>
 
-<p>Fons said on his &quot; <a href="http://www.chinaherald.net/2008/06/internet-censor-starts-blocking-proxies.html">China Herald</a>&quot; blog:</p>
+<p>Tor Browser Bundle 1.1.2 (released August 9) updates Vidalia to release 0.1.6, updates Firefox to 2.0.0.16, updates Tor to 0.2.1.4-alpha, updates Torbutton to 1.2.0, and disables the TZ=UTC environment variable trick since Vidalia 0.1.7 now handles that for us.
+ <a href="https://svn.torproject.org/svn/torbrowser/trunk/README" title="https://svn.torproject.org/svn/torbrowser/trunk/README">https://svn.torproject.org/svn/torbrowser/trunk/README</a></p>
 
-<blockquote>
-<p>Over the past year most &#39;blocks&#39; of foreign websites had disappeared and made way for more sophisticated filtering techniques. Blocking well-known proxies seems to mean the relative tightening of the censorship at a time when China had promised more openness at the internet for its foreign guests.</p>
-</blockquote>
+<p>Tor Browser Bundle 1.1.3 (released August 22) fixes a bug in the 0.1.2 release that messed up translations in the homepage, adds &quot;small=1&quot; to the homepage URL so it doesn&#39;t show the huge green onion by default, and updates Vidalia to 0.1.8.
+ <a href="https://svn.torproject.org/svn/torbrowser/trunk/README" title="https://svn.torproject.org/svn/torbrowser/trunk/README">https://svn.torproject.org/svn/torbrowser/trunk/README</a></p>
 
-<p><a href="http://www.alouz.com/">Zola(or Zuola)</a>, a famous Chinese activist blogger, could be the first one found our site blocked and published the news <a href="https://twitter.com/zuola/statuses/836998904">on twitter</a>. He also help build <a href="http://tor.zuo.la/">a mirror site</a> soon after that(We would love to publish any other Tor mirrors in China via your comments).  Thanks Zola and all volunteers supporting Tor.  Please kindly keep <a href="https://spreadsheets.google.com/viewform?key=pVaQwN7WNlsaM7U-CLgQUJQ">taking our survey</a> on Tor usage in China.
-Though Tor project official site is not as same to Tor network, this harsh action will definitely affect the future awareness of Tor as a tool to support Free Access.  It means China government is paying more attention on the technological solutions rather than merely sensitive content they care before.  The sad thing is that once a web site was put into blacklist, it&#39;s very hard to get it back.  Once again, it means how important Tor&#39;s mission is.</p>
+<p>We&#39;re working on a new branch of Vidalia that can be used in Tor Browser Bundle, for launching Firefox directly without needing the extra installer scripts called &quot;Firefox Portable&quot;. If we get this working, then we can hopefully make progress on running multiple Firefoxes at once (one used for Tor launched by TBB, and one used for non-Tor).
+ <a href="http://trac.vidalia-project.net/browser/vidalia/branches/alt-launcher" title="http://trac.vidalia-project.net/browser/vidalia/branches/alt-launcher">http://trac.vidalia-project.net/browser/vidalia/branches/alt-launcher</a></p>
 
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/nlnet-foundation-funds-two-projects">The NLnet Foundation funds two projects</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">directory services</a>
-              
-                <a class="post-category post-category-js" href="#">funding</a>
-              
-                <a class="post-category post-category-js" href="#">hidden services</a>
-              
-                <a class="post-category post-category-js" href="#">low bandwidth clients</a>
-              
-                <a class="post-category post-category-js" href="#">nlnet</a>
-              
-                <a class="post-category post-category-js" href="#">tor protocol</a>
-               |
-              07 Jun 2008
-          </p>
-        </header>
-        <div class="post-description">
-          <p>We&#39;re happy to announce the NLnet Foundation is funding two enhancements for the Tor software and network.</p>
+<p>The German CCC organization put together a version of the Tor Browser Bundle called the &quot;Freedom Stick&quot; for use in teaching the media about the Chinese firewall and the Olympics:
+ <a href="http://chinesewall.ccc.de/freedomstick-en.html" title="http://chinesewall.ccc.de/freedomstick-en.html">http://chinesewall.ccc.de/freedomstick-en.html</a></p>
 
-<p>The two projects are summarized below:</p>
+<p><strong>Scalability</strong>
+From the Tor 0.2.1.5-alpha ChangeLog:
+&quot;More progress toward proposal 141: Network status consensus documents and votes now contain bandwidth information for each router and a summary of that router&#39;s exit policy. Eventually this will be used by clients so that they do not have to download every known descriptor before building circuits.&quot;</p>
 
-<ul>
-<li><a href="http://www.torproject.org/projects/lowbandwidth">Tor for low-bandwidth clients</a>.</li>
-</ul>
+<p>We&#39;re worked on getting &quot;Tor Weather&quot; back up and working:
+ <a href="https://weather.torproject.org/" title="https://weather.torproject.org/">https://weather.torproject.org/</a>
+Weather is a service to let relay operators get notified when their relay is unreachable for an extended period of time. It&#39;s still in its early experimental stages, but it&#39;s already proved useful to its early testers. It&#39;s also using SSL as its base URL now.</p>
 
-<p>The Tor anonymity system is currently only usable by internet users who have high-bandwith connections. Upon the start of the Tor client, a large file with all Tor server descriptions is being downloaded. An evolution of the Tor protocol is aimed to reduce the initial download size. The new Tor protocol version shall change the way a client receives the information for its Tor circuit setup in a way, that the initial download can be performed over a slow modem line in less then three minutes.</p>
-
-<ul>
-<li><a href="http://www.torproject.org/projects/hidserv">Speeding up Hidden Services</a>.</li>
-</ul>
-
-<p>The Tor anonymity system contains an important function that is called Tor Hidden Services, which allows users to set up anonymous information services, like websites, that can only be accessed through the Tor network and are protected against identification of the host that runs the services. Using these function, critical political and human rights information can be published in a way that protects the publisher and users of the service from repression and identification. The most critical limitation of this function is the time it takes until a Hidden Service is registered in the network and the latency of contact establishment when accessed by a user. The aim of this project is to develop the new protocol which will change the way Tor circuits are set up between the user and the Hidden Service as well as the way a Hidden Service is registered in the Tor network.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/google-funds-auto-update-vidalia">Google funds an auto-update for Vidalia</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">auto-update</a>
-              
-                <a class="post-category post-category-js" href="#">funding</a>
-              
-                <a class="post-category post-category-js" href="#">google</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-              
-                <a class="post-category post-category-js" href="#">tor software</a>
-              
-                <a class="post-category post-category-js" href="#">vidalia</a>
-               |
-              07 Jun 2008
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Google is funding a project to create an auto-update feature in Vidalia. This <a href="https://www.torproject.org/projects/google">auto-update feature</a> will provide a better user experience for Tor users. The goal is to create a system where Vidalia can detect when a new release is available, fetch the package, verify authenticity, and assist the user in upgrading the Vidalia/Tor package. The auto-update feature preserves the user&#39;s privacy and anonymity. Over the next six months we&#39;ll develop the auto-update system for general release around November 15, 2008.</p>
-
-<p>We&#39;re excited to work with Google on this project and look forward to the collaboration.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/anonymous-publishing-and-risking-execution">Anonymous Publishing and Risking Execution</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
-              
-                <a class="post-category post-category-js" href="#">anonymous publishing</a>
-              
-                <a class="post-category post-category-js" href="#">London Review of Books</a>
-              
-                <a class="post-category post-category-js" href="#">risking execution</a>
-              
-                <a class="post-category post-category-js" href="#">Terry Eagleton</a>
-               |
-              01 Jun 2008
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Here&#39;s a timely reminder of why anonymous publishing tools like Tor
-are so critical to free expression. A recent book, <a href="http://www.gyford.com/phil/writing/2008/05/22/risking_executio.php">Anonymity: A Secret History of English Literature</a>, covers the history of anonymous publication in English literature, noting that many authors and publishers were imprisoned, tortured, or killed for expressing politically unpopular views.</p>
-
-<blockquote>
-<p>Risking execution
-In the current London Review of Books <a href="http://www.lrb.co.uk/v30/n10/eagl01_.html%20">Terry Eagleton writes</a> on the history of publishing books anonymously:</p>
-
-<p>There were … legal and political reasons for the ubiquity of Anon. There were times when the state needed to know the author or printer of a work in order to know who to prosecute for heresy or sedition. In 1579, John Stubbs had his right hand cut off for writing a work opposing the marriage of Elizabeth I to a French nobleman. Elizabeth herself urged that the printers of the anti-Anglican Marprelate tracts should be subjected to torture. In 1663, a London printer who published a pamphlet which argued that the monarch should be accountable to his subjects, and justified the people’s right to rebellion, was sentenced to be hanged, drawn and quartered. He refused, even so, to reveal the name of the pamphlet’s author, though the disclosure might have saved his life. Between the 16th and the 18th century, printers were fined, imprisoned and pilloried for publishing supposedly treasonable works whose authors remained concealed. Being Jonathan Swift’s printer was not a job for the faint-hearted.</p>
-
-<p>Looking for modern parallels, can you imagine the head of an ISP risking execution to defend the anonymity of a person publishing something via their servers when a government or company takes exception to it?</p>
-
-<p>I know, ISPs rightly try to avoid being classed as “publishers”, but they’re still the ones offended parties go to to halt online “publication” or reveal authorial identity. I guess a closer parallel would be the owner of a website risking execution to safeguard the identity of a writer whose work they’d knowingly published on their site. Actually, the closest modern day parallel is, duh, a book
-publisher, but that doesn’t seem much more likely a situation either.</p>
-</blockquote>
+<p>Jacob has also been working on a Tor network map, to visualize where our relays are. Using all of the known descriptors, it maps each node with some GeoIP code and plot it onto a map. You can interact with the data to see the IP address of each node, the node name and the city/country information if we could find it. Sadly, it *will* lock your browser up for one or two minutes, as there&#39;s a lot of data to parse:
+ <a href="http://freehaven.net/%7Eioerror/maps/v3-tormap.html" title="http://freehaven.net/~ioerror/maps/v3-tormap.html">http://freehaven.net/~ioerror/maps/v3-tormap.html</a></p>
 
         </div>
       </section>
@@ -284,7 +547,7 @@ publisher, but that doesn’t seem much more likely a situation either.</p>
       
         <a href="/blog/page129" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 130 of 134</span>
+      <span class="page_number ">Page: 130 of 137</span>
       
         <a href="/blog/page131" class="next">Next</a>
       

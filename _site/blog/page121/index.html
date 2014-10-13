@@ -53,351 +53,195 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/black-t-shirts-user-request">Black t-shirts by user request</a></h2>
+          <h2 class="post-title"> <a href="/blog/antivir-tor-browser-bundle-and-trojan-droppergen-false-positive">AntiVir, Tor Browser Bundle, and trojan Dropper.Gen false positive</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+                <a class="post-category post-category-js" href="#">anti-virus</a>
               
-                <a class="post-category post-category-js" href="#">black t-shirts</a>
+                <a class="post-category post-category-js" href="#">false positive</a>
               
-                <a class="post-category post-category-js" href="#">user request</a>
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
                |
-              17 Feb 2009
+              07 Apr 2009
           </p>
         </header>
         <div class="post-description">
-          <p>Our fine green t-shirts have been a hit over the past few years. By the sheer number of requests we&#39;ve received for another color, it appears not everyone is comfortable wearing the <a href="https://www.torproject.org/tshirt/green-tor-tshirt.png">conversation starting green</a>. We now have black t-shirts. Just like the green shirts, these are Fruit of the Loom &quot;tagless&quot; 100% cotton t-shirts. They have the Tor logo and domain name on the front, nothing on the back.</p>
+          <p>A number of people are reporting that AntiVir&#39;s latest update is reporting trojan Dropper.Gen in the Tor Browser Bundle version 1.1.11, specifically the &quot;Start Tor Browser.exe&quot; program.</p>
 
-<p>The conditions for receiving them are still the same:</p>
+<p>This appears to be a false positive from AntiVir. No one has confirmed they&#39;ve checked the pgp signature with their download of TBB. You may want to confirm you&#39;ve actually downloaded our package, <a href="https://www.torproject.org/verifying-signatures" title="https://www.torproject.org/verifying-signatures">https://www.torproject.org/verifying-signatures</a>.</p>
 
-<ol>
-<li>A large enough ($65+) <a href="https://torproject.org/donate.html.en">donation</a> to the Tor Project.</li>
-<li>Operate a fast <a href="https://torproject.org/docs/tor-doc-relay.html.en">Tor relay</a> that&#39;s been running for the past two months: you are eligible if you allow exits to port 80 and you average 100 KB/s traffic, or if you&#39;re not an exit but you average 500 KB/s traffic.</li>
-<li>Help out in <a href="https://torproject.org/volunteer.html.en">other ways</a>. <a href="https://torproject.org/translation.html.en">Maintain a translation for the website</a>. Write a good <a href="https://wiki.torproject.org/noreply/TheOnionRouter/SupportPrograms">support program and get a lot of people to use it</a>. Do research on Tor and anonymity, solve some of <a href="https://bugs.torproject.org/">our bugs</a>, or establish yourself as a Tor advocate.</li>
-</ol>
+<p>False positives occurs often enough we have a FAQ entry about it, <a href="https://www.torproject.org/faq#VirusFalsePositives" title="https://www.torproject.org/faq#VirusFalsePositives">https://www.torproject.org/faq#VirusFalsePositives</a></p>
 
-<p>The pictures just have the shirts folded in half so you can see the detail.</p>
+<p>You can read more about the trojan at <a href="http://www.avira.ro/en/threats/section/details/id_vir/3647/tr_dropper.gen.html" title="http://www.avira.ro/en/threats/section/details/id\_vir/3647/tr\_dropper.gen.html">http://www.avira.ro/en/threats/section/details/id_vir/3647/tr_dropper.ge...</a></p>
 
-<p><a href="https://www.torproject.org/images/black-tor-tshirt.png"><img src="https://www.torproject.org/images/black-tor-tshirt.png" alt="black t-shirt"></a></p>
-
-<p><a href="https://www.torproject.org/images/green-tor-tshirt.png"><img src="https://www.torproject.org/images/green-tor-tshirt.png" alt="green t-shirt"></a></p>
+<p>I&#39;m building a VM to specifically test this AntiVir version against Start Tor Browser.exe to see what inside the executable is triggering the false positive.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/overhead-directory-info%3A-past%2C-present%2C-future">Overhead from directory info: past, present, future</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">arma</a> under
-              
-                <a class="post-category post-category-js" href="#">directory</a>
-              
-                <a class="post-category post-category-js" href="#">performance</a>
-              
-                <a class="post-category post-category-js" href="#">research</a>
-               |
-              16 Feb 2009
-          </p>
-        </header>
-        <div class="post-description">
-          <p>A growing number of people want to use Tor in low-bandwidth contexts (e.g. modems or shared Internet cafes in the Middle East) and mobile contexts (start up a Tor client, use it for a short time, and then stop it again). Currently Tor is nearly unusable in these situations, because it spends too many bytes fetching directory info. This post summarizes the steps we&#39;ve taken so far to reduce directory overhead, and explains the steps that are coming next.</p>
-
-<p>First, what do I mean by &quot;directory info&quot;? Part of the Tor design is the _discovery_ component: how clients learn about the available Tor relays, along with their keys, locations, exit policies, and so on. Tor&#39;s solution so far uses a few trusted directory authorities that sign and distribute official lists of the relays that make up the Tor network.</p>
-
-<p><strong>History of v1, v2, v3 dir protocols</strong></p>
-
-<p>Over the years we&#39;ve had several different &quot;directory protocols&quot;, each more bandwidth-friendly than the last, and often providing stronger security properties as well. In Tor&#39;s <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/attic/dir-spec-v1.txt">first directory design</a> (Sept 2002), each authority created its own list of every relay descriptor, as one flat text file. A short summary of relay status at the top of the file told clients which relays were reachable. Every Tor client fetched a copy from an authority every 10 minutes.</p>
-
-<p>Tor 0.0.8 (Aug 2004) introduced &quot;directory caches&quot;, where normal relays would fetch a copy of the directory and serve it to others, to take some burden off the authorities. Tor 0.0.9 (Dec 2004) let clients download &quot;running routers&quot; status summaries separately from the main directory, so they could keep more up-to-date on reachability without needing to refetch all the descriptors. It also added zlib-style compression during transfer. At this point everybody fetched the whole directory every hour and the running-routers document every 15 minutes.</p>
-
-<p>There were two big flaws with the v1 directory scheme: a security problem and an overhead problem. The security problem was that even though there were three authorities, you just went with the most recent opinion you could find, so a single evil authority could screw everybody. The overhead problem was that clients were fetching a new directory even when very little of it had changed. In Dec 2004 there were 57 relays and the uncompressed directory was 172KB; but by May 2006 we were up to 749 relays and the full directory was almost 1MB compressed. Even though we&#39;d lowered the period for fetching new copies to 2 hours (20 minutes for caches), this was not good.</p>
-
-<p>We introduced the <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/dir-spec-v2.txt">v2 directory design</a> in Tor 0.1.1.20 in May 2006. Each authority now produced its own &quot;network status&quot; document, which listed brief summaries of each relay along with a hash of the current relay descriptor. Clients fetched all the status documents (there were 5 authorities by now) and ignored relays listed by less than half of them. Clients only fetched the relay descriptors they were missing. Once bootstrapped, clients fetched one new status document (round robin) per hour. Peter Palfrader produced a <a href="http://asteria.noreply.org/%7Eweasel/Tor/tor-client-download-stats-longterm-dl.jpg">graph of bandwidth needed to bootstrap and then keep up-to-date over a day</a>.</p>
-
-<p>All of the improvements so far were oriented toward saving bandwidth at the server side: we figured that clients had plenty of bandwidth, and we wanted to avoid overloading the authorities and caches. But if we wanted to add more directory authorities (a majority of 5 is still an uncomfortably small number), bootstrapping clients would have to fetch one more network status for every new authority. By early 2008, each status document listed 2500 relay summaries and came in around 175KB compressed, meaning you needed 875KB of status docs when starting up, and then another megabyte of descriptors after that. And we couldn&#39;t add more authorities without making the problem even worse.</p>
-
-<p>The <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/dir-spec.txt">v3 directory design</a> in Tor 0.2.0.30 (Jul 2008) solved this last problem by having the authorities coordinate and produce an hourly &quot;consensus&quot; network status document, signed by a majority of the six v3 authorities. Now clients only have to fetch one status document.</p>
-
-<p><strong>Next fixes</strong></p>
-
-<p>Based in part on sponsorship by <a href="http://www.nlnet.nl/">NLnet</a> to reduce Tor&#39;s directory overhead, there are two directions we&#39;re exploring now: reducing relay download overhead and reducing consensus networkstatus download overhead.</p>
-
-<p>We&#39;ve cut relay descriptor size by 60% by <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/104-short-descriptors.txt">moving some of the descriptor info to separate &quot;extra-info&quot; descriptors that clients don&#39;t need to fetch</a>, and we&#39;ve cut the consensus size by 40% by <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/138-remove-down-routers-from-consensus.txt">leaving out non-Running relays</a> (since clients won&#39;t fetch descriptors for them anyway).</p>
-
-<p>We spent the second half of 2008 working on a <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/141-jit-sd-downloads.txt">much more radical design change</a> where we move all the descriptor components that are used for path selection into the consensus, and then clients would download each relay descriptor &quot;just in time&quot; as part of circuit extension. This design would have two huge benefits: a) clients download zero descriptors at startup, greatly speeding bootstrapping, and b) the total number of relay descriptor downloads would be based on the number of circuits built, regardless of how many relays are in the network.</p>
-
-<p>Alas, we have backed off on this proposal: Karsten Loesing&#39;s work on hidden service performance concluded that the circuit extension is the main performance killer, and our &quot;just in time&quot; download proposal would add more round-trips and complexity into exactly that step. So we have a new plan: we&#39;re still going to move all the path-selection information into the consensus, but then we&#39;re going to put the remaining pieces into a new <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/158-microdescriptors.txt">microdescriptor</a> that will hopefully change at most weekly. That means the initial bootstrap costs will still be there (though the microdescriptor is maybe a third the size of the normal descriptor), but so long as you can keep a disk cache, descriptor maintenance will be reduced to roughly zero. We&#39;re aiming to roll this change out in Tor 0.2.3.x, in late 2010.</p>
-
-<p>We also have plans to further reduce the consensus download overhead. Since the consensus doesn&#39;t actually change that much from one hour to the next, clients should fetch <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/140-consensus-diffs.txt">consensus diffs</a> rather than fetching a whole new consensus. We could expect another 80% reduction in size here. We hope to roll this step out in mid to late 2009. Alas, this goal is stymied by the fact that <a href="http://archives.seul.org/or/dev/Jun-2008/msg00031.html">we haven&#39;t found any small portable BSD-licensed C diff libraries</a>. Anybody know one?</p>
-
-<p>So these two changes together mean an initial bootstrap cost of maybe 100KB+300KB, and then a maintenance cost of maybe 20KB/hour. But actually, once we&#39;ve gotten the maintenance level so low, we should think about updating the consensus more often than once an hour. The goal would be to get relays that change IP addresses back into action as soon as possible -- currently it takes 2 to 4 hours before a new relay (or a relay with a new location) gets noticed by clients. Since <a href="http://freehaven.net/%7Ekarsten/metrics/dirarch-2009-02-11.pdf">one-third of Tor relays run on dynamic IP addresses</a>, bringing that level down to 30 to 60 minutes could mean a lot more network capacity.</p>
-
-<p>Down the road, there are even more radical design changes to consider. One day there will be too many relays for every client to know about all of them, so we will want to partition the network (see Section 4.4 of <a href="https://svn.torproject.org/svn/projects/roadmaps/2008-12-19-roadmap-full.pdf">Tor&#39;s development roadmap</a>). When we do that, we can bound the amount of directory info that each client has to maintain. Another promising idea is to figure out ways to let clients build paths through the network while requiring less information about each relay. There&#39;s definitely a tradeoff here between centralized coordination (which is easier to design, and can more easily provide good anonymity properties) and scaling to many tens of thousands of relays. But that, as they say, is a story for another time.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-0.2.1.12-alpha-released">Tor 0.2.1.12-alpha is released</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-1111-released">Tor Browser Bundle 1.1.11 Released</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
                 <a class="post-category post-category-js" href="#">alpha release</a>
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
+                <a class="post-category post-category-js" href="#">portable tor</a>
               
-                <a class="post-category post-category-js" href="#">improvements</a>
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
               
-                <a class="post-category post-category-js" href="#">security fixes</a>
+                <a class="post-category post-category-js" href="#">torbutton</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia</a>
                |
-              10 Feb 2009
+              31 Mar 2009
           </p>
         </header>
         <div class="post-description">
-          <p>Tor 0.2.1.12-alpha features several more security-related fixes. You
-should upgrade, especially if you run an exit relay (remote crash) or
-a directory authority (remote infinite loop), or you&#39;re on an older
-(pre-XP) or not-recently-patched Windows (remote exploit). It also
-includes a big pile of minor bugfixes and cleanups.</p>
-
-<p><a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
-
-<p>Changes in version 0.2.1.12-alpha - 2009-02-08
-<strong>Security fixes:</strong></p>
+          <p>An updated Tor Browser Bundle is released to address the Firefox 3.0.7 security issues. It includes:</p>
 
 <ul>
-<li>Fix an infinite-loop bug on handling corrupt votes under certain
-circumstances. Bugfix on 0.2.0.8-alpha.</li>
-<li>Fix a temporary DoS vulnerability that could be performed by
-a directory mirror. Bugfix on 0.2.0.9-alpha; reported by lark.</li>
-<li>Avoid a potential crash on exit nodes when processing malformed
-input. Remote DoS opportunity. Bugfix on 0.2.1.7-alpha.</li>
+<li>Update Firefox to 3.0.8</li>
+<li>Add Italian language bundles</li>
+<li>Update Torbutton to 1.2.1</li>
+<li>Update Vidalia to 0.1.12</li>
 </ul>
 
-<p><strong>Minor bugfixes:</strong></p>
-
-<ul>
-<li>Let controllers actually ask for the &quot;clients_seen&quot; event for
-getting usage summaries on bridge relays. Bugfix on 0.2.1.10-alpha;
-reported by Matt Edman.</li>
-<li>Fix a compile warning on OSX Panther. Fixes bug 913; bugfix against
-0.2.1.11-alpha.</li>
-<li>Fix a bug in address parsing that was preventing bridges or hidden
-service targets from being at IPv6 addresses.</li>
-<li>Solve a bug that kept hardware crypto acceleration from getting
-enabled when accounting was turned on. Fixes bug 907. Bugfix on
-0.0.9pre6.</li>
-<li>Remove a bash-ism from configure.in to build properly on non-Linux
-platforms. Bugfix on 0.2.1.1-alpha.</li>
-<li>Fix code so authorities _actually_ send back X-Descriptor-Not-New
-headers. Bugfix on 0.2.0.10-alpha.</li>
-<li>Don&#39;t consider expiring already-closed client connections. Fixes
-bug 893. Bugfix on 0.0.2pre20.</li>
-<li>Fix another interesting corner-case of bug 891 spotted by rovv:
-Previously, if two hosts had different amounts of clock drift, and
-one of them created a new connection with just the wrong timing,
-the other might decide to deprecate the new connection erroneously.
-Bugfix on 0.1.1.13-alpha.</li>
-<li>Resolve a very rare crash bug that could occur when the user forced
-a nameserver reconfiguration during the middle of a nameserver
-probe. Fixes bug 526. Bugfix on 0.1.2.1-alpha.</li>
-<li>Support changing value of ServerDNSRandomizeCase during SIGHUP.
-Bugfix on 0.2.1.7-alpha.</li>
-<li>If we&#39;re using bridges and our network goes away, be more willing
-to forgive our bridges and try again when we get an application
-request. Bugfix on 0.2.0.x.</li>
-</ul>
-
-<p><strong>Minor features:</strong></p>
-
-<ul>
-<li>Support platforms where time_t is 64 bits long. (Congratulations,
-NetBSD!) Patch from Matthias Drochner.</li>
-<li>Add a &#39;getinfo status/clients-seen&#39; controller command, in case
-controllers want to hear clients_seen events but connect late.</li>
-</ul>
-
-<p><strong>Build changes:</strong></p>
-
-<ul>
-<li>Disable GCC&#39;s strict alias optimization by default, to avoid the
-likelihood of its introducing subtle bugs whenever our code violates
-the letter of C99&#39;s alias rules.</li>
-</ul>
-
-<p>The original announcement can be found at <a href="http://archives.seul.org/or/talk/Feb-2009/msg00054.html" title="http://archives.seul.org/or/talk/Feb-2009/msg00054.html">http://archives.seul.org/or/talk/Feb-2009/msg00054.html</a></p>
+<p>This updated TBB can be downloaded from <a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a> as the &quot;zero install bundle&quot;.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-0.2.0.34-stable-released">Tor 0.2.0.34-stable released</a></h2>
+          <h2 class="post-title"> <a href="/blog/technology-preview-marble-and-vidalia020">Technology Preview:  Marble and Vidalia-0.2.0</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
+                <a class="post-category post-category-js" href="#">drag and drop OS X install</a>
               
-                <a class="post-category post-category-js" href="#">security fixes</a>
+                <a class="post-category post-category-js" href="#">experimental</a>
               
-                <a class="post-category post-category-js" href="#">stable release</a>
+                <a class="post-category post-category-js" href="#">kde marble</a>
+              
+                <a class="post-category post-category-js" href="#">msi installer</a>
+              
+                <a class="post-category post-category-js" href="#">Qt updates</a>
+              
+                <a class="post-category post-category-js" href="#">technology preview</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia</a>
                |
-              10 Feb 2009
+              29 Mar 2009
           </p>
         </header>
         <div class="post-description">
-          <p>Tor 0.2.0.34 features several more security-related fixes. You
-should upgrade, especially if you run an exit relay (remote crash) or
-a directory authority (remote infinite loop), or you&#39;re on an older
-(pre-XP) or not-recently-patched Windows (remote exploit).</p>
+          <p>One of the most requested upgrades to <a href="https://www.torproject.org/vidalia/">Vidalia</a> is a better map of the world. We looked into a few different technologies and decided on <a href="http://edu.kde.org/marble/">KDE&#39;s Marble</a> interface. Marble enables an accurate mapping of nodes according to their geolocation, allows for future enhancements such as &quot;click a country to start or end your Tor circuit&quot;, and plugins for extra data views. This also gives us the ability to use Qt&#39;s Webkit browser to display custom information about nodes, circuits, or anything else in a pop-up window. An anonymous funder covered the costs involved in developing this feature. We thank them for their support.</p>
 
-<p>This release marks end-of-life for Tor 0.1.2.x. Those Tor versions have
-many known flaws, and nobody should be using them. You should upgrade. If
-you&#39;re using a Linux or BSD and its packages are obsolete, stop using
-those packages and upgrade anyway.</p>
+<p>I&#39;ve attached some screenshots to this blog post. You can download the relevant packages from the <a href="https://www.torproject.org/vidalia/dist/">Vidalia website</a>. If you want marble-enabled Vidalia, look for -marble- in the file name. Please report bugs on <a href="http://trac.vidalia-project.net/wiki/ReportingBugs">Vidalia&#39;s Bug Tracker</a>.</p>
 
-<p><a href="https://www.torproject.org/download.html" title="https://www.torproject.org/download.html">https://www.torproject.org/download.html</a></p>
+<p>As of this release, there are now two branches of Vidalia, stable and alpha. The first release of the alpha branch is <a href="https://www.torproject.org/vidalia/dist/">Vidalia 0.2.0</a>. The stable branch is at <a href="https://www.torproject.org/vidalia/dist/">Vidalia 0.1.12</a>.</p>
 
-<p>Changes in version 0.2.0.34 - 2009-02-08
-<strong>Security fixes:</strong></p>
+<p>One last big change for OS X users is the drag and drop installer. There is no migration of old settings to new, nor do we clean up the old installs in /Library/Tor, /Library/Vidalia, /Library/Torbutton, /Library/Privoxy, etc. Follow <a href="https://www.torproject.org/docs/tor-doc-osx#uninstall">these instructions</a> for how to remove the old vidalia-tor bundles from your computer if you want to completely test this alpha branch of Vidalia. We will figure out a better way to do this in the near future.</p>
+
+<p>Remember, this is a technology preview. However, OS X installs are migrating to drag and drop. I&#39;ve solely used Vidalia 0.2.0 and drag-and-drop installer for 3 months now. I even <a href="http://blog.torproject.org/blog/experimental-os-x-drag-and-drop-vidalia-bundle-installer">previously blogged</a> about it.</p>
+
+<p>Additional changes in alpha Vidalia 0.2.0:</p>
 
 <ul>
-<li>Fix an infinite-loop bug on handling corrupt votes under certain
-      circumstances. Bugfix on 0.2.0.8-alpha.</li>
-<li>Fix a temporary DoS vulnerability that could be performed by
-      a directory mirror. Bugfix on 0.2.0.9-alpha; reported by lark.</li>
-<li>Avoid a potential crash on exit nodes when processing malformed
-      input. Remote DoS opportunity. Bugfix on 0.2.0.33.</li>
-<li>Do not accept incomplete ipv4 addresses (like 192.168.0) as valid.
-      Spec conformance issue. Bugfix on Tor 0.0.2pre27.</li>
+<li>Qt 4.5.0 is used for Win32 and OS X Universal packages.</li>
+<li>We&#39;ve switched from the Nullsoft Installer to the Microsoft System Installer (msi) for better integration with Microsoft Windows.</li>
+<li>There are non-Marble and Marble-enabled packages for Win32 and OS X Universal. OS X PowerPC based on OS X 10.3.9 isn&#39;t supported by Qt 4.5.x, therefore Marble-enabled Vidalia is not available</li>
+<li>Add support for changing UI languages without having to restart Vidalia.</li>
+<li>Add preliminary support for using the KDE Marble widget for the network map. It&#39;s currently a compile-time option and is disabled by default.</li>
+<li>Add support for displaying Tor&#39;s plaintext port warnings. Also gives the user the option to disable future warnings.</li>
+<li>Add an interface for displaying the geographic distribution of clients who have recently used a bridge operator&#39;s relay.</li>
+<li>Add tooltips to tree items in the help browser&#39;s table of contents. Some of the help topic labels are a bit long.</li>
+<li>Switch to a simpler About dialog and move the license information to a separate HTML-formatted display.</li>
+<li>Switch to a simpler drag-and-drop installer in the OS X bundles.</li>
+<li>Switch to an MSI-based installer on Windows.</li>
+<li>Clear the list of default CA certificates used by QSslSocket before adding the only one we care about. Suggested by coderman.</li>
+<li>Support building with Visual Studio again.</li>
+<li>Add a Debian package structure from dererk.</li>
+<li>Updated Albanian, Czech, Finnish, Polish, Portuguese, Romanian, Swedish, Turkish and many other translations.</li>
 </ul>
 
-<p><strong>Minor bugfixes:</strong></p>
-
-<ul>
-<li>Fix compilation on systems where time_t is a 64-bit integer.
-      Patch from Matthias Drochner.</li>
-<li>Don&#39;t consider expiring already-closed client connections. Fixes
-      bug 893. Bugfix on 0.0.2pre20.</li>
-</ul>
-
-<p>The original announcement can be found at <a href="http://archives.seul.org/or/announce/Feb-2009/msg00000.html" title="http://archives.seul.org/or/announce/Feb-2009/msg00000.html">http://archives.seul.org/or/announce/Feb-2009/msg00000.html</a></p>
+<p><thead><tr>
+<th>Attachment</th>
+<th>Size</th> </tr></thead><tbody>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/2009-03-28-vidalia-marble-snapshot-0.png">2009-03-28-vidalia-marble-snapshot-0.png</a></td>
+<td>368.42 KB</td> </tr>
+ <tr class="even">
+<td><a href="https://blog.torproject.org/files/2009-03-28-vidalia-marble-snapshot-1.png">2009-03-28-vidalia-marble-snapshot-1.png</a></td>
+<td>231.13 KB</td> </tr>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/2009-03-28-vidalia-marble-snapshot-2.png">2009-03-28-vidalia-marble-snapshot-2.png</a></td>
+<td>723.02 KB</td> </tr>
+</tbody></p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/december-2008-progress-report">December 2008 Progress Report</a></h2>
+          <h2 class="post-title"> <a href="/blog/eff-and-tor-google-summer-code-2009">EFF and Tor in Google Summer of Code 2009</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
+              By <a class="post-author" href="#">karsten</a> under
               
-                <a class="post-category post-category-js" href="#">alpha releases</a>
+                <a class="post-category post-category-js" href="#">Google Summer of Code</a>
               
-                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
+                <a class="post-category post-category-js" href="#">gsoc</a>
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
-              
-                <a class="post-category post-category-js" href="#">progress report</a>
-              
-                <a class="post-category post-category-js" href="#">security fixes</a>
+                <a class="post-category post-category-js" href="#">gsoc 2009</a>
                |
-              02 Feb 2009
+              21 Mar 2009
           </p>
         </header>
         <div class="post-description">
-          <p><strong>Releases</strong>
-Tor 0.2.1.8-alpha (released December 8) fixes some crash bugs in earlier alpha releases, builds better on unusual platforms like Solaris and old OS X, and fixes a variety of other issues.
- <a href="http://archives.seul.org/or/talk/Dec-2008/msg00129.html" title="http://archives.seul.org/or/talk/Dec-2008/msg00129.html">http://archives.seul.org/or/talk/Dec-2008/msg00129.html</a></p>
+          <p>Great news! We have been accepted as a mentoring organization for <a href="http://socghop.appspot.com/program/home/google/gsoc2009">Google Summer of Code 2009</a> together with <a href="https://www.eff.org/">The Electronic Frontier Foundation</a>. Yay!</p>
 
-<p>Tor Browser Bundle 1.1.6 (released December 2) and 1.1.7 (released December 12) update Tor to 0.2.1.8-alpha, include a new version of Firefox, and attempt to wrestle with the &quot;AllowMultipleInstances=false&quot; design that could allow us to run Tor Browser Bundle alongside a normal Firefox.
- <a href="https://svn.torproject.org/svn/torbrowser/trunk/README" title="https://svn.torproject.org/svn/torbrowser/trunk/README">https://svn.torproject.org/svn/torbrowser/trunk/README</a></p>
+<p>This will be our third Google Summer of Code after 2007 and <a href="https://blog.torproject.org/blog/tor-project-google-summer-code-2008%21">2008</a>. In our <a href="http://code.google.com/soc/2007/eff/about.html">first year</a> we had four students working on making relays work better (and not crash) on Windows, on a library and tool to try alternative path selection algorithms, on a fuzzing library to look for parsing problems, and on scalability and privacy for hidden services. In our <a href="http://code.google.com/soc/2008/eff/about.html">second year</a> we had seven students. One of our successful students of the 2008 program wrote a nice <a href="https://blog.torproject.org/blog/google-summer-code-2008-review">blog post</a> reviewing how GSoC went for him, for the other students, and for the project in general.</p>
 
-<p>Tor 0.2.1.9-alpha (released December 25) fixes many more bugs, some of them security-related.
- <a href="http://archives.seul.org/or/talk/Jan-2009/msg00029.html" title="http://archives.seul.org/or/talk/Jan-2009/msg00029.html">http://archives.seul.org/or/talk/Jan-2009/msg00029.html</a></p>
+<p>We have made resolutions for our third GSoC participation to make it even more successful than in the past years. We have set ourselves the limit of accepting no more than 4 students (plus up to 2 students mentored by EFF). Rather than being persuaded by all those great applications, we want to focus on the most promising projects and students. We plan to assign up to 3 mentors to each student to provide optimal support. We will try harder to encourage students to interact with the community and become a part of it. It may be challenging to discuss project ideas on a mailing list or in a chat room with dozens or hundreds of unknown people listening. But communication is an important part of the GSoC experience (if not the most important).</p>
 
-<p><strong>Bug fixes</strong>
-Security fixes in the Tor 0.2.1.8-alpha release:
- - When the client is choosing entry guards, now it selects at most one guard from a given relay family. Otherwise we could end up with all of our entry points into the network run by the same operator. Suggested by Camilo Viecco. Fix on 0.1.1.11-alpha.
- - The &quot;ClientDNSRejectInternalAddresses&quot; config option wasn&#39;t being consistently obeyed: if an exit relay refuses a stream because its exit policy doesn&#39;t allow it, we would remember what IP address the relay said the destination address resolves to, even if it&#39;s an internal IP address. Bugfix on 0.2.0.7-alpha; patch by rovv.
- - The &quot;User&quot; and &quot;Group&quot; config options did not clear the supplementary group entries for the Tor process. The &quot;User&quot; option is now more robust, and we now set the groups to the specified user&#39;s primary group. The &quot;Group&quot; option is now ignored. For more detailed logging on credential switching, set CREDENTIAL_LOG_LEVEL in common/compat.c to LOG_NOTICE or higher. Patch by Jacob Appelbaum and Steven Murdoch. Bugfix on 0.0.2pre14. Fixes bug 848.</p>
+<p>It might seem that we have high expectations about our students (actually we do!), but we also have a lot to offer. Our students will work on one of the largest deployed anonymity systems with a few hundred thousand users. We encourage GSoC students to stick to The Tor Project after summer and become part of the team; did you know that two of our <a href="https://www.torproject.org/people#Core">Core people</a> are former GSoC students? Our mentors are cryptographers, researchers, and/or software developers who have published numerous papers on distinguished security and privacy conferences all over the world. We have an awesome community with a lot of people who will be interested in the students&#39; projects and their progress. Ah, and finally Google gratefully pays $4.5K to each successful GSoC student. Isn&#39;t that a fine alternative to $your_last_summer_job?</p>
 
-<p>Performance scalability fixes from the Tor 0.2.1.9-alpha ChangeLog:
- - Clip the MaxCircuitDirtiness config option to a minimum of 10 seconds. Warn the user if lower values are given in the configuration. Bugfix on 0.1.0.1-rc. Patch by Sebastian.
- - Clip the CircuitBuildTimeout to a minimum of 30 seconds. Warn the user if lower values are given in the configuration. Bugfix on 0.1.1.17-rc. Patch by Sebastian.</p>
+<p>Did we get you interested? These are your next steps: Look at Google&#39;s FAQ whether you are <a href="http://socghop.appspot.com/document/show/program/google/gsoc2009/faqs#eligibility">eligible</a> to participate. Have a look at our <a href="https://www.torproject.org/gsoc#Ideas">ideas lists</a> (one for <a href="https://www.torproject.org/volunteer.html.en#Projects">The Tor Project</a>, one for the <a href="http://switzerland.wiki.sourceforge.net/Projects">EFF&#39;s Switzerland tool</a>). Put some thoughts on the listed ideas, or make up your own. Talk to us. No, really, this step is important: Talk to us! Come to <a href="irc://irc.oftc.net/tor/">#tor on irc.oftc.net</a> or send us an <a href="mailto:tor-assistants@freehaven.net">email</a> and let us know about your project idea. Write down your application using our <a href="https://www.torproject.org/gsoc#Template">template</a> and send it in until <a href="http://socghop.appspot.com/document/show/program/google/gsoc2009/faqs#timeline">April 3, 2009, 19:00 UTC</a>. Stick around for any questions we might have to you. We are looking forward to reading your application, erm, to talking to you and discussing your project idea!</p>
 
-<p>Relay stability fixes from the Tor 0.2.1.9-alpha ChangeLog:
- - Fix a logic error that would automatically reject all but the first configured DNS server. Bugfix on 0.2.1.5-alpha. Possible fix for part of bug 813/868. Bug spotted by coderman.
- - When we can&#39;t initialize DNS because the network is down, do not automatically stop Tor from starting. Instead, retry failed dns_init() every 10 minutes, and change the exit policy to reject *:* until one succeeds. Fixes bug 691.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/why-tor-is-slow">Why Tor is slow and what we&#39;re going to do about it</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">development roadmap</a>
+              
+                <a class="post-category post-category-js" href="#">funding</a>
+              
+                <a class="post-category post-category-js" href="#">performance</a>
+               |
+              13 Mar 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>I&#39;ve just finished writing up an explanation of all the various reasons why the Tor network is slow, and what we can do about each. Part of it comes down to design flaws; some of it is that a handful of users are overloading the network; and there&#39;s also simply not enough capacity to go around.</p>
 
-<p>Karsten discovered a bug where some directory authorities would take many minutes to send out a network status, because they were rate limiting too low. The short-term fix is to get those authorities to set
- &quot;MaxAdvertisedBandwidth 10 KB&quot;
-in their torrc, so they don&#39;t spend as much of their bandwidth relaying ordinary Tor traffic.
- <a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=847" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=847">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=847</a>
-We need to consider longer-term solutions too, where clients actually recover more gracefully from this situation.</p>
+<p>Specifically, we&#39;ve identified six categories of problems to address, and laid out some steps to resolve each of them.</p>
 
-<p><strong>Advocacy</strong>
-We finally made our 3-year development roadmap public:
- <a href="https://blog.torproject.org/blog/our-three-year-development-roadmap-published" title="https://blog.torproject.org/blog/our-three-year-development-roadmap-published">https://blog.torproject.org/blog/our-three-year-development-roadmap-publ...</a></p>
+<p>You can read the pdf here:
+ <a href="https://svn.torproject.org/svn/projects/roadmaps/2009-03-11-performance.pdf">https://svn.torproject.org/svn/projects/roadmaps/2009-03-11-performance.pdf</a></p>
 
-<p>Jillian York continued blogging for us about the good uses of Tor:
- <a href="http://www.knightpulse.org/blog/tor" title="http://www.knightpulse.org/blog/tor">http://www.knightpulse.org/blog/tor</a></p>
+<p>Andrew has also put together a real live <a href="https://www.torproject.org/press/2009-03-12-performance-roadmap-press-release">press release</a> to go with it.</p>
 
-<p>&quot;Syria: Using Tor for Censorship Resistance&quot;, Dec 1
- <a href="http://www.knightpulse.org/blog/08/12/01/syria-using-tor-censorship-resistance" title="http://www.knightpulse.org/blog/08/12/01/syria-using-tor-censorship-resistance">http://www.knightpulse.org/blog/08/12/01/syria-using-tor-censorship-resi...</a></p>
+<p>Now all that remains is to do everything. So if you want to help, or especially if you know any organizations that can help with funding, please help us make this happen!</p>
 
-<p>&quot;Australia Addresses Internet Circumvention&quot;, Dec 19
- <a href="http://www.knightpulse.org/blog/08/12/19/australia-addresses-internet-circumvention" title="http://www.knightpulse.org/blog/08/12/19/australia-addresses-internet-circumvention">http://www.knightpulse.org/blog/08/12/19/australia-addresses-internet-ci...</a></p>
-
-<p>Howcast produced a quick video for the masses on how to circumvent censorship. We were technical consultants for this video. It&#39;s tough to talk about Tor, when the first question you&#39;re trying to answer is &quot;What is a proxy? And why do I care?&quot; Howcast did a great job for a high-level overview of circumvention technologies in four minutes.
- <a href="https://blog.torproject.org/blog/how-circumvent-internet-proxy-howcast" title="https://blog.torproject.org/blog/how-circumvent-internet-proxy-howcast">https://blog.torproject.org/blog/how-circumvent-internet-proxy-howcast</a></p>
-
-<p>Wendy was a panelist at a conference organized by Paul Ohm and others at Colorado U at the beginning of December on law, wiretapping, and research-oriented data collection: &quot;The Law and Ethics of Network Monitoring&quot;:
- <a href="http://www.silicon-flatirons.org/events.php?id=544" title="http://www.silicon-flatirons.org/events.php?id=544">http://www.silicon-flatirons.org/events.php?id=544</a></p>
-
-<p>Roger, Karsten, Sebastian, Steven, Jacob, Mike, Peter, Wendy, Frank, Christian, and others attended the 25C3 conference in Berlin, Dec 27-30.
-Roger gave a talk there, similar to the DC08 talk but focusing entirely on &#39;present&#39; and &#39;future&#39;: &quot;Security and anonymity vulnerabilities in Tor: past, present, and future&quot;
- <a href="http://freehaven.net/%7Earma/slides-25c3.pdf" title="http://freehaven.net/~arma/slides-25c3.pdf">http://freehaven.net/~arma/slides-25c3.pdf</a></p>
-
-<p>There was a workshop after Roger&#39;s talk on Germany and data retention. Sebastian Hahn was really great at representing Tor there, particularly because it was right after Roger&#39;s talk so he missed half of it, and because it was mostly in German. Roger tried to add the points that a) he really still does want to do Tor talks for German law enforcement (we got a few leads), and b) the major German Tor relay busts were in 2006-2007, not 2008, and maybe we&#39;re finally making progress.</p>
-
-<p>Jacob was among the presenters at 25C3 on a talk about how they had managed to forge a root SSL certificate. In short, this meant that they could pretend to be any https site on the Internet, and no browser would complain. Nick wrote up a response explaining how it works and how it can affect Tor users:
-&quot;The MD5 certificate collision attack, and what it means for Tor&quot;
- <a href="http://blog.torproject.org/blog/md5-certificate-collision-attack%2C-and-what-it-means-tor" title="http://blog.torproject.org/blog/md5-certificate-collision-attack%2C-and-what-it-means-tor">http://blog.torproject.org/blog/md5-certificate-collision-attack%2C-and-...</a></p>
-
-<p><strong>New features</strong>
-New feature from the Tor 0.2.1.8-alpha ChangeLog:
- - New DirPortFrontPage option that takes an html file and publishes it as &quot;/&quot; on the DirPort. Now relay operators can provide a disclaimer without needing to set up a separate webserver. There&#39;s a sample disclaimer in contrib/tor-exit-notice.html.</p>
-
-<p>We continued work on Thandy (our secure updater) this month.</p>
-
-<p>Thandy itself is working smoothly at this point -- it can contact the central repository, check all the keys, look in the registry and compare the currently installed version to the new choices, fetch the right packages, check all the signatures, and launch the install.</p>
-
-<p>We also now have a branch of Vidalia that has the GUI components for our updater in and working. It launches the updater to check for updates periodically, and there&#39;s a &quot;check now&quot; button. It does the update via Tor if Tor is up and running, and via direct connection otherwise.</p>
-
-<p>We had hoped to be able to get away with patching our current .nsi Windows installer, but it turns out that &quot;nsi silent (non-GUI) install&quot; and &quot;Vista&quot; are not compatible concepts: Vista only likes MSI-based silent installs, due to that whole permissions thing that Vista gets so excited about.</p>
-
-<p>So we now have a shiny new wxs-based msi installer for Tor on Windows:
- <a href="https://svn.torproject.org/svn/tor/trunk/contrib/tor.wxs.in" title="https://svn.torproject.org/svn/tor/trunk/contrib/tor.wxs.in">https://svn.torproject.org/svn/tor/trunk/contrib/tor.wxs.in</a>
-with buildbot-style output here:
- <a href="https://data.peertech.org/torbld" title="https://data.peertech.org/torbld">https://data.peertech.org/torbld</a></p>
-
-<p>The new installer has been tested for install, upgrade, repair and removal. But that&#39;s just Tor, and our recommended download bundle contains four components: Tor, Vidalia (the GUI), Torbutton (our Firefox extension), and either Privoxy or Polipo (an http proxy configured to use Tor -- we&#39;re migrating from Privoxy to Polipo).</p>
-
-<p>So, the next step is to work on MSI installer files for the other three, plus a meta-msi file for the bundle. We&#39;re aiming to have a first go of that at the beginning of January. That way we can give a simpler demo of &quot;download this bundle, then it will automatically notice that it should upgrade Tor, and it will fetch the new package and upgrade.&quot;</p>
-
-<p>In other news, Roger had a long chat with Justin Cappos in early December. Justin did his PhD thesis on security of package managers, and is now a post-doc at UW working on (among other things) auto-update frameworks. See the beginning of a thread here:
- <a href="http://archives.seul.org/or/dev/Dec-2008/msg00010.html" title="http://archives.seul.org/or/dev/Dec-2008/msg00010.html">http://archives.seul.org/or/dev/Dec-2008/msg00010.html</a></p>
-
-<p><strong>Translations</strong>
-We have our translation server up and online:
- <a href="https://translation.torproject.org/" title="https://translation.torproject.org/">https://translation.torproject.org/</a>
- <a href="https://www.torproject.org/translation-portal" title="https://www.torproject.org/translation-portal">https://www.torproject.org/translation-portal</a></p>
-
-<p>We continued enhancements to the Chinese and Russian Tor website translations. Our Farsi translation from this summer is slowly becoming obsolete; we should solve that at some point.</p>
+<p>[Edit, 19 August 2009: you can <a href="https://blog.torproject.org/har2009-video-tor-performance">watch the HAR2009 video explaining our key performance plans</a>, if you aren&#39;t a fan of 25-page pdfs.]</p>
 
         </div>
       </section>
@@ -408,7 +252,7 @@ We have our translation server up and online:
       
         <a href="/blog/page120" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 121 of 134</span>
+      <span class="page_number ">Page: 121 of 137</span>
       
         <a href="/blog/page122" class="next">Next</a>
       

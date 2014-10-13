@@ -53,70 +53,236 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/torbutton-release-125-google-captchas-and-addonsmozillaorg">Torbutton Release 1.2.5, Google Captchas, and addons.mozilla.org</a></h2>
+          <h2 class="post-title"> <a href="/blog/firefox-private-browsing-mode-torbutton-and-fingerprinting">Firefox Private Browsing Mode, Torbutton, and Fingerprinting</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">mikeperry</a> under
               
-                <a class="post-category post-category-js" href="#">captchas</a>
-              
-                <a class="post-category post-category-js" href="#">data retention</a>
+                <a class="post-category post-category-js" href="#">EFF</a>
               
                 <a class="post-category post-category-js" href="#">firefox</a>
               
-                <a class="post-category post-category-js" href="#">google</a>
+                <a class="post-category post-category-js" href="#">panopticlick</a>
               
-                <a class="post-category post-category-js" href="#">logging</a>
+                <a class="post-category post-category-js" href="#">privacy</a>
               
-                <a class="post-category post-category-js" href="#">mozilla</a>
+                <a class="post-category post-category-js" href="#">private browsing</a>
+              
+                <a class="post-category post-category-js" href="#">threat models</a>
               
                 <a class="post-category post-category-js" href="#">torbutton</a>
                |
-              10 Apr 2010
+              30 Jun 2010
           </p>
         </header>
         <div class="post-description">
-          <p>Torbutton 1.2.5 has been released. You can download it from <a href="https://www.torproject.org/torbutton/">the torbutton homepage</a>. It has also been submitted to <a href="https://addons.mozilla.org/en-US/firefox/addon/2275/">addons.mozilla.org</a>, though it may take a while for Mozilla to review the addon.</p>
+          <p>Last week, <a href="http://www.eff.org/about/staff/peter-eckersley">Peter Eckersley</a> and I met with the Mozilla team in Mountain view to discuss web fingerprinting, privacy and Torbutton. I gave <a href="https://www.torproject.org/torbutton/design/MozillaBrownBag.pdf">an updated version of my Torbutton Design talk</a>, and Peter discussed <a href="http://panopticlick.eff.org/">Panopticlick</a>. Mozilla was primarily interested in hearing about these projects in the context of their <a href="https://support.mozilla.com/en-us/kb/private+browsing">Private Browsing Mode</a>, which they unveiled in Firefox 3.5.</p>
 
-<p>In addition to the numerous bug fixes mentioned in the <a href="https://gitweb.torproject.org//torbutton.git?a=blob;hb=HEAD;f=src/CHANGELOG">changelog</a>, one of the new features of this release is to provide the ability to automatically redirect to an alternate search engine when Google presents you with a captcha. The current options are <a href="https://www.ixquick.com">IxQuick</a>, <a href="http://www.bing.com">Bing</a>, <a href="http://search.yahoo.com">Yahoo</a>, and <a href="https://ssl.scroogle.org">Scroogle</a>. Since it supports SSL, and appears to have a <a href="https://www.ixquick.com/eng/protect-privacy.html">progressive stance on user privacy</a>, IxQuick is the current default.</p>
+<p>The <a href="https://wiki.mozilla.org/PrivateBrowsing">primary goal</a> of their Private Browsing Mode is to protect against a local after-the-fact attacker - an attacker that has local access to a user&#39;s filesystem after browsing has taken place. They offer some limited protections against a network adversary, but this was not their initial goal, and is primarily a side effect of trying to protect against &quot;helpful&quot; web services, such as Google Search History, which record your activity somewhere other than your PC.</p>
 
-<p>For those unaware, Google&#39;s search engine has rate limiting features that cause it to <a href="http://googleonlinesecurity.blogspot.com/2007/07/reason-behind-were-sorry-message.html">present captchas</a> and sometimes even outright ban IP addresses that issue large numbers of search queries, especially if some of these queries appear to be searching for software vulnerabilities or unprotected comment areas.</p>
+<p>This is a significantly weaker adversary model than <a href="https://www.torproject.org/torbutton/design/#adversary">the one used in the Torbutton design.</a> As a result, from the point of view of Tor usage, Firefox Private Browsing mode suffers from a number of weaknesses that Torbutton does not.</p>
 
-<p>The Tor Project has had multiple discussions with Google over the past 2 years about potential workarounds on either Torbutton or Google&#39;s side to reduce the number of captchas and ban pages presented to Tor users while issuing normal natural language queries.</p>
+<p>In particular, Firefox does not presently concern itself with plugins, form and password autocompletion, SSL state, Live Bookmarks, external protocols and applications, or browser fingerprinting. The Applied Crypto research group at Stanford recently published a <a href="http://crypto.stanford.edu/%7Edabo/pubs/abstracts/privatebrowsing.html">comparison of the four major browser&#39;s private browsing modes</a> against a dedicated local and remote adversary which details some of these issues.</p>
 
-<p>Unfortunately, we were unable to come to a solution or any form of compromise that would reduce the number of captchas and outright bans seen by regular Tor users. We hope that this workaround will enhance the experience of Tor users while still allowing them to use Google for queries that don&#39;t result in a ban.</p>
+<p>It turns out there is some developer interest inside Mozilla in <a href="https://wiki.mozilla.org/Fingerprinting">improving resistance to fingerprinting</a>, <a href="https://wiki.mozilla.org/Thirdparty">improving privacy against third party content</a>, and hardening their Private Browsing Mode in general, despite most of these issues being outside of their original model. The current plan is to investigate what would be necessary to develop an <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing">Anonymous Browsing Mode</a> that would either take the form of a privacy setting, an enhancement to Private Browsing Mode, or an entirely independent browsing mode. The trick now is to transform this developer interest into something that motivates the Firefox Product Management team to get fully behind the proposed improvements.</p>
 
-<p>In addition, potentially identifying information (such as language, OS version, and Firefox version) will be stripped off of Google Search Box queries by default. This was a major problem for users of Debian and Ubuntu, which have decided to augment their rebranded Firefox implementations to provide an excessive amount of information to Google for some reason.</p>
+<p>As such, Peter and I have been spending some time updating the <a href="https://wiki.mozilla.org/Fingerprinting">Fingerprinting</a> and <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing">Anonymous Browsing</a> wiki pages to describe <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing#Use_Cases">who would want such privacy features</a>, and <a href="https://wiki.mozilla.org/Security/Anonymous_Browsing#Behavior">how they would behave</a>, as well as updating and adding relevant Mozilla Bugzilla entries. I&#39;ve also updated the list of <a href="https://www.torproject.org/torbutton/design/#FirefoxBugs">Torbutton Firefox Bugs</a> to reflect some of the more sophisticated unsolved fingerprinting issues that were brought up during our meeting.</p>
 
-<p>Furthermore, this release will also only update Torbutton via Tor by default to address concerns with the data retention policies of <a href="https://addons.mozilla.org/">addons.mozilla.org</a>, as well as to prevent censored users from being revealed as Tor users during the Torbutton update download, which happens over http.</p>
+<p>This July, the two of us will be doing the same thing with the Google Chrome Privacy Team in Berlin while at the <a href="https://blog.torproject.org/events/tor-privacy-enhancing-technologies-symposium-berlin-germany">Privacy Enhancing Technologies Symposium</a>. This is primarily to follow up on a meeting we had with Google in December, where we discussed <a href="https://groups.google.com/group/chromium-extensions/browse_thread/thread/ceba26ca9e2f6a78?hl=en">the barriers to the development of a Torbutton for Google Chrome</a>, and to discuss relevant fingerprinting issues and similar shortcomings of the <a href="http://www.google.com/support/chrome/bin/answer.py?answer=95464">Google Chrome Incognito Mode</a>.</p>
 
-<p>While Mozilla does have a <a href="http://www.mozilla.com/en-US/privacy-policy.html">blanket privacy policy</a> covering all of their websites, they currently do not have a clear data retention or sanitization policy on <a href="https://addons.mozilla.org/en-US/statistics/addon/2275">data that is collected and retained</a> during the use of addons.mozilla.org and during the addon update process. Mozilla has informed us that they are working hard to improve their practices and develop a good privacy and data retention policy specific to addons.mozilla.org. However, until such a policy emerges, we have decided that it is best to ensure that Tor users&#39; privacy is protected during the update process via the use of our network.</p>
+<p>Look for a future blog post in August detailing the results of that discussion.</p>
 
-<p>Data retention concerns aside, the fact that addon update downloads are performed over HTTP can allow censorship regimes to detect the Torbutton download, and to prevent it from happening. For the safety of our censored users, these updates must happen over Tor by default until Mozilla also supports SSL for its addon update downloads. The integrity of the addon is verified by downloading a SHA1 hash over SSL, so this approach should not expose users to exit node tampering.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/dear-nigerians-help-us-help-you">Dear Nigerians, help us help you.</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">data gathering</a>
+              
+                <a class="post-category post-category-js" href="#">herdict</a>
+              
+                <a class="post-category post-category-js" href="#">nigeria</a>
+              
+                <a class="post-category post-category-js" href="#">support</a>
+              
+                <a class="post-category post-category-js" href="#">tor blocked</a>
+              
+                <a class="post-category post-category-js" href="#">websites blocked</a>
+               |
+              29 Jun 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>You&#39;ve flooded the blog and tor-assistants with lots of cries for help about Tor, Freegate, Ultrasurf, and a slew of VPNs all being blocked. Sometimes this is through MTN Nigera, sometimes not.</p>
 
-<p>We have investigated having Torbutton only update via our servers, but this is infeasible for three reasons. First, censored users often cannot reach our servers, so they would be forced to use Tor anyway to safely update. Second, addons hosted on addons.mozilla.org are not permitted to provide a custom update url, so we would have to maintain two versions, or delist Torbutton from that site. Third, future versions of Firefox are expected to ping addons.mozilla.org anyway for statistics gathering purposes.</p>
+<p><a href="http://www.herdict.org/web/explore/country/NG" title="http://www.herdict.org/web/explore/country/NG">http://www.herdict.org/web/explore/country/NG</a> suggests access is a 50/50 chance for some sites.</p>
 
-<p>The unfortunate side effect is that performing these updates via Tor likely also means that the count of Torbutton users on the addons.mozilla.org site will gradually tend downward, and the Torbutton addon will be listed lower in response to searches on the site, since it will appear that we only have a number of users equal to the number of Tor exit nodes once everyone has upgraded.</p>
+<p><a href="https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/TorFAQ#IinstalledTorandPolipobutitsnotworking" title="https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/TorFAQ#IinstalledTorandPolipobutitsnotworking">https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/TorFAQ#Iins...</a>. That FAQ entry is a fine place to start. Telling us Tor doesn&#39;t work lets us know there is a problem. Sending in logs from Message Log would be a great start. We need to know what Tor records while trying to connect to the Tor Network.</p>
 
-<p>Not a lot of cheerful news, but as always, we&#39;re doing our best to work with what we have.</p>
+<p>Someone could further startup Wireshark and record the entire session of Tor starting up and ultimately failing to connect to the Tor Network.</p>
 
-<p>The complete changelog for this release is as follows:</p>
+<p>There are lots of ways ISPs in Nigeria can block Tor and your favorite websites. DNS filtering, IP blacklisting, proxy server keyword filtering, govt mandated blackbox firewalls/proxy servers, or just simply blocking the published tor relays list. The worst case is Nigeria white lists the Internet, allowing you to only visit approved sites (and probably man-in-the-middled as well).</p>
+
+<p>All we know right now is that some ISPs in Nigeria seem to be blocking many websites, tools, and Tor. More data is needed to figure out some solutions.</p>
+
+<p>Updates 2010-07-01: Two people have given us some data from <a href="https://trac.torproject.org/projects/tor/ticket/1645">MTN</a> and <a href="https://trac.torproject.org/projects/tor/ticket/1625">Etisalat</a> ISPs. It seems these two ISPs have implemented some general &quot;circumvention tool&quot; blocking.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/https-everywhere-firefox-addon-helps-you-encrypt-web-traffic">HTTPS Everywhere Firefox addon helps you encrypt web traffic</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">plaintext communications</a>
+              
+                <a class="post-category post-category-js" href="#">privacy</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              18 Jun 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Today the EFF and the Tor Project are launching a public beta of a new Firefox extension called <a href="https://eff.org/https-everywhere/">HTTPS Everywhere</a>.</p>
+
+<p>This Firefox extension was inspired by the launch of Google&#39;s encrypted search option. We wanted a way to ensure that every search our browsers sent was encrypted, including the search box and URL bar features. At the same time, we were also able to encrypt most or all of the browser&#39;s communications with other popular sites that support SSL, but don&#39;t provide it by default.</p>
+
+<p>Our approach is based on the <a href="http://hackademix.net/2009/09/23/strict-transport-security-in-noscript/">NoScript STS</a> implementation, but is more expressive in the manner in which <a href="https://www.eff.org/https-everywhere/rulesets">HTTPS-enforcing rules are written</a>.</p>
+
+<p>This tends to work more effectively than NoScript because many sites on the web offer some limited support for encryption over HTTPS, but make it difficult to use. For instance, they may not offer all pages and applications via HTTPS, or may only allow HTTPS activity via alternate subdomains that require URL rewriting and redirection. In particular, Google&#39;s SSL search and Wikipedia both require rather complex URL rewriting and exception filters to work properly.</p>
+
+<p>HTTPS Everywhere should also perform more securely than DOM-based mechanisms such as the GreaseMoney-based <a href="http://userscripts.org/scripts/show/72944">SSL Certificates Pro</a> and the Google Chrome-based <a href="https://chrome.google.com/extensions/detail/flcpelgcagfhfoegekianiofphddckof?hl=en">KB Enforcer</a>. These addons perform redirection at the DOM level, which causes many HTTP fetches to leak prior to the redirect to HTTPS.</p>
+
+<p>We currently provide rule sets for Google Search, Wikipedia, Twitter, Facebook, The New York Times, The Washington Post, IxQuick, and many more popular sites. It is also possible to <a href="https://www.eff.org/https-everywhere/rulesets">add user-defined rule files</a>, and/or to submit rules to us for inclusion in future versions.</p>
+
+<p>Note that some of these sites still include a lot of content from third party domains that are not available over HTTPS. As always, if the browser&#39;s lock icon is broken or carries an exclamation mark, you may remain vulnerable to adversaries that use active attacks or traffic analysis to compromise your privacy and security.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/may-2010-progress-report">May 2010 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">advocacy</a>
+              
+                <a class="post-category post-category-js" href="#">conferences</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">speeches</a>
+              
+                <a class="post-category post-category-js" href="#">tor releases</a>
+               |
+              16 Jun 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p><strong>New releases</strong></p>
+
+<p>On May 26, Tor Browser Bundle for Microsoft Windows is updated to include the newer Vidalia 0.2.9. This ﬁxes some issues with character set handling, and adds Vietnamese as a new language.</p>
+
+<p>On May 31, we released Tor Browser Bundle for Linux 1.0.6. It contains the following updates:</p>
 
 <ul>
-<li>bugfix: bug 1169: Fix blank popup conflict with CoolPreviews</li>
-<li>bugfix: bug 1246: Fix IST and other HH:30 timezone issues.</li>
-<li>bugfix: bug 1219: Fix the toggle warning loop issue on settings change.</li>
-<li>bugfix: bug 1321: Fix a session restore bug when closing the last window</li>
-<li>bugfix: bug 1302: Update useragent to FF3.6.3 on WinNT6.</li>
-<li>bugfix: bug 1157: Add logic to handle torbutton crashed state conflicts</li>
-<li>bugfix: bug 1235: Improve the &#39;changed-state&#39; refresh warning message</li>
-<li>bugfix: bug 1337: Bind alert windows to correct browser window</li>
-<li>bugfix: bug 1055: Make the error console the default log output location</li>
-<li>bugfix: bug 1032: Fix an exception in the localhost proxy filter</li>
-<li>misc: Always tell a website our window size is rounded even if it&#39;s not</li>
-<li>misc: Add some suggestions to warning about loading external content</li>
-<li>new: Add option to always update Torbutton via Tor. On by default</li>
-<li>new: Redirect Google queries elsewhere on captcha (default ixquick)</li>
-<li>new: Strip identifying info off of Google searchbox queries</li>
+<li>Add arch to tarball name so there&#39;s no collision</li>
+<li>Add libpng for Arch Linux</li>
+<li>Add HTTPS Everywhere extension</li>
+<li>Update Qt to 4.6.2</li>
+<li>Update Vidalia to 0.2.9</li>
+<li>Update NoScript to 1.9.9.80</li>
+</ul>
+
+<p>On June 1st, we released Tor Browser Bundle for Linux 1.0.7. It uses an older glibc for better compatibility with older linux distributions.</p>
+
+<p>On May 20, we released Vidalia 0.2.9. Fixes include Qt 4.6.2 compatibility, new cert, and some new translations. You can download it at <a href="https://www.torproject.org/vidalia/" title="https://www.torproject.org/vidalia/">https://www.torproject.org/vidalia/</a>. Packages are slowly being updated to include this version of Vidalia.
+The full changelog is:</p>
+
+<ul>
+<li>Remove the GoDaddy CA certificate bundle since we changed the certificate used to authenticate connections to geoips.vidalia-project.net for downloading GeoIP information from a commercial GoDaddy certificate to a free CACert certificate.</li>
+<li>Define -D_WIN32_WINNT=0x0501 on Windows builds so that MiniUPnPc will build with the latest versions of MinGW.</li>
+<li>Modify miniupnpc.c from MiniUPnPc&#39;s source so that it will build on Mac OS X 10.4.</li>
+<li>Work around Qt&#39;s new behavior for the QT_WA macro so that Vidalia will work correctly again on Windows with Qt &gt;= 4.6.</li>
+</ul>
+
+<p>On May 2nd, we released an updated stable version of Tor, 0.2.1.26.
+The detailed list of changes is:</p>
+
+<p>o Major bugfixes:
+ - Teach relays to defend themselves from connection overload. Relays
+ now close idle circuits early if it looks like they were intended
+ for directory fetches. Relays are also more aggressive about closing
+ TLS connections that have no circuits on them. Such circuits are
+ unlikely to be re-used, and tens of thousands of them were piling
+ up at the fast relays, causing the relays to run out of sockets
+ and memory. Bugfix on 0.2.0.22-rc (where clients started tunneling
+ their directory fetches over TLS).
+ - Fix SSL renegotiation behavior on OpenSSL versions like on Centos
+ that claim to be earlier than 0.9.8m, but which have in reality
+ backported huge swaths of 0.9.8m or 0.9.8n renegotiation
+ behavior. Possible fix for some cases of bug 1346.
+ - Directory mirrors were fetching relay descriptors only from v2
+ directory authorities, rather than v3 authorities like they should.
+ Only 2 v2 authorities remain (compared to 7 v3 authorities), leading
+ to a serious bottleneck. Bugfix on 0.2.0.9-alpha. Fixes bug 1324.</p>
+
+<p>o Minor bugfixes:
+ - Finally get rid of the deprecated and now harmful notion of &quot;clique
+ mode&quot;, where directory authorities maintain TLS connections to
+ every other relay.</p>
+
+<p>o Testsuite fixes:
+ - In the util/threads test, no longer free the test_mutex before all
+ worker threads have finished. Bugfix on 0.2.1.6-alpha.
+ - The master thread could starve the worker threads quite badly on
+ certain systems, causing them to run only partially in the allowed
+ window. This resulted in test failures. Now the master thread sleeps
+ occasionally for a few microseconds while the two worker-threads
+ compete for the mutex. Bugfix on 0.2.0.1-alpha.</p>
+
+<p>On May 19, we released an updated OrBot (Tor for Android), version 0.0.6, which contains Tor 0.2.2.13-alpha.</p>
+
+<p>On May 26, we released an updated Orbot (Tor for Android), version 0.0.7, which contains a number of usability fixes reported by users. See the bugfixes <a href="https://trac.torproject.org/projects/tor/query?status=closed&amp;component=Android+(Orbot)-Backend+/+Core&amp;order=priority&amp;col=id&amp;col=summary&amp;col=status&amp;col=type&amp;col=priority&amp;col=milestone&amp;col=component&amp;owner=">in trac</a>.</p>
+
+<p><strong>Design, develop, and implement enhancements that make Tor a better tool for users in censored countries.</strong></p>
+
+<p>On May 4, China&#39;s Great Firewall began blocking connections to the public Tor relays. They also updated their blocking to include bridge relays published via email and https websites. Further research into the blocking mechanisms from inside China show they are simply blocking IP Address and TCP port combinations. Bridge relays that have been seeded into various social networks in China continue to work well.</p>
+
+<p>Tor on the Android OS, called Orbot, continues progress. Work continues on a privacy-preserving web browser, Orweb, and other supporting applications to make Tor on Android more useful for daily users. Nathan got a Tor relay running on a Moons e-7001 “iRobot” tablet, <a href="http://guardianproject.info/2010/05/25/tor-on-a-tablet">tor on a tablet</a>.</p>
+
+<p><strong>Grow the Tor network and user base. Outreach.</strong></p>
+
+<ul>
+<li>Jacob, Roger, Runa, and Linus talked to various NorduNet and SUNET people in Sweden. As a result, we have a new directory authority and bandwidth authority located within NorduNET.</li>
+<li>Erinn and Karen attended the Global Voices Summit 2010 in Santiago, Chile. There were a number of discussions about how to use Tor safely and its usage in activism. Erinn held a detailed Tor training for 5-10 activists in Spanish. <a href="http://summit2010.globalvoicesonline.org" title="http://summit2010.globalvoicesonline.org">http://summit2010.globalvoicesonline.org</a></li>
+<li>Roger gave a few talks as AUSCERT, <a href="http://www.auscert.org.au/" title="http://www.auscert.org.au/">http://www.auscert.org.au/</a></li>
+<li>Roger was interviewed by The Australian about Internet censorship and privacy. <a href="http://www.theaustralian.com.au/australian-it/call-to-join-tor-network-to-fight-censorship/story-e6frgakx-1225870756466" title="http://www.theaustralian.com.au/australian-it/call-to-join-tor-network-to-fight-censorship/story-e6frgakx-1225870756466">http://www.theaustralian.com.au/australian-it/call-to-join-tor-network-t...</a></li>
+<li>Roger was interviewed by ComputerWorld Australia about the relationship between China and Tor. <a href="http://www.computerworld.com.au/article/347273/auscert_2010_china_set_net_blackout_tiananmen_square_anniversary/" title="http://www.computerworld.com.au/article/347273/auscert\_2010\_china\_set\_net\_blackout\_tiananmen\_square\_anniversary/">http://www.computerworld.com.au/article/347273/auscert_2010_china_set_ne...</a></li>
+<li>Jacob gave the keynote speech at CONFidence in Krakow, Poland, <a href="http://2010.confidence.org.pl/" title="http://2010.confidence.org.pl/">http://2010.confidence.org.pl/</a>.</li>
+<li>Jacob, Christian, and others attended pH neutral in Berlin, Germany. <a href="http://ph-neutral.darklab.org/" title="http://ph-neutral.darklab.org/">http://ph-neutral.darklab.org/</a></li>
+<li>Karen met with a sub-committee of the US Senate Intelligence Committee to discuss the fallacy of cyberwar.</li>
+</ul>
+
+<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong>
+Continued to work on Linux and Mac OS X tor browser bundles. The Mac version of TBB is going to use a sandboxing technology borrowed from IronFox. This should help minimize the footprint and security concerns about running TBB on OS X computers.</p>
+
+<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong>
+From the 0.2.1.26 release notes, teach relays to defend themselves from connection overload. Relays now close idle circuits early if it looks like they were intended for directory fetches. Relays are also more aggressive about closing TLS connections that have no circuits on them. Such circuits are unlikely to be re-used, and tens of thousands of them were piling up at the fast relays, causing the relays to run out of sockets and memory. Bugfix on 0.2.0.22-rc (where clients started tunneling their directory fetches over TLS).</p>
+
+<p><strong>Translation work, ultimately a browser-based approach.</strong></p>
+
+<ul>
+<li>Added the Android orbot application to the translation portal.</li>
+<li>By user request, add Serbian to the available languages.</li>
+<li>Translation updates for the following languages: Polish, Arabic, Greek, Serbian, Russian, Swedish, Chinese, Norwegian, Japanese, German, Spanish, Portugese, French, Dutch, Romanian, and Farsi.</li>
 </ul>
 
         </div>
@@ -124,155 +290,69 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/end-life-tor-020x-branch">End of Life for Tor 0.2.0.x branch</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-02126-stable-released">Tor 0.2.1.26-stable released</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">end of life</a>
+                <a class="post-category post-category-js" href="#">connection overload</a>
               
-                <a class="post-category post-category-js" href="#">old-stable</a>
+                <a class="post-category post-category-js" href="#">stable release</a>
               
-                <a class="post-category post-category-js" href="#">tor 0.2.0</a>
+                <a class="post-category post-category-js" href="#">test suite fixes</a>
+              
+                <a class="post-category post-category-js" href="#">v3 directories</a>
                |
-              31 Mar 2010
+              10 Jun 2010
           </p>
         </header>
         <div class="post-description">
-          <p>We have declared end-of-life for Tor 0.2.0.x. Those Tor versions have
-several known flaws, and nobody should be using them. You should upgrade.</p>
+          <p>Tor 0.2.1.26 addresses the recent connection and memory overload problems we&#39;ve been seeing on relays, especially relays with their DirPort open. If your relay has been crashing, or you turned it off because it used too many resources, give this release a try.</p>
 
-<p>Specifically, the big flaw in Tor &lt;= 0.2.0.35 is that its list of
-directory authorities is out of date, so you&#39;ll find it hard to learn
-about the network. We&#39;re signing the network status consensus with the
-old signatures for now, but we&#39;re going to stop doing that in a few weeks,
-which means your Tor 0.2.0.x will fail to find the current network.</p>
+<p>This release also fixes yet another instance of broken OpenSSL libraries that was causing some relays to drop out of the consensus.</p>
 
-<p>The only exception is people using Debian Lenny -- our nice Debian
-packager is trying to keep that package maintained for you.</p>
+<p>Available for download at <a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a></p>
 
-<p>As a bonus, if you move to a newer Tor you&#39;ll get significant performance
-boosts as a client, and you&#39;ll improve the performance for others as
-a relay.</p>
-
-<p>The original message is archived at <a href="http://archives.seul.org/or/announce/Mar-2010/msg00001.html" title="http://archives.seul.org/or/announce/Mar-2010/msg00001.html">http://archives.seul.org/or/announce/Mar-2010/msg00001.html</a></p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/announcing-tor-store">Announcing the Tor Store</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">ecommerce</a>
-              
-                <a class="post-category post-category-js" href="#">mugs</a>
-              
-                <a class="post-category post-category-js" href="#">printfection</a>
-              
-                <a class="post-category post-category-js" href="#">shopping</a>
-              
-                <a class="post-category post-category-js" href="#">tor logo</a>
-              
-                <a class="post-category post-category-js" href="#">tor store</a>
-              
-                <a class="post-category post-category-js" href="#">tshirts</a>
-               |
-              29 Mar 2010
-          </p>
-        </header>
-        <div class="post-description">
-          <p>We&#39;ve teamed up with Printfection to offer you a chance to support Tor, enhance your wardrobe, and get people to ask you, &quot;what&#39;s with the onion?&quot; We support many styles of mens and womens t-shirts right now, in all 31 colors Printfection offers. If you have made your own graphics, let us know and we&#39;ll add it to the store.</p>
-
-<p>Printfection will ship globally and only uses your data to ship your order.</p>
-
-<p>Casey Shorr, the CEO of Printfection, says,</p>
-
-<blockquote>
-<p>&quot;The Tor Project is leveraging Printfection&#39;s on-demand merchandise fulfillment technology to engage their supporters and generate additional revenue to help protect anonymity online. We&#39;re proud to be associated with such an important project.&quot;</p>
-</blockquote>
-
-<p>The Tor Store can be found at <a href="http://printfection.com/torprojectstore" title="http://printfection.com/torprojectstore">http://printfection.com/torprojectstore</a>. The full press release is here, <a href="https://www.torproject.org/press/2010-03-25-tor-store-press-release.html.en" title="https://www.torproject.org/press/2010-03-25-tor-store-press-release.html.en">https://www.torproject.org/press/2010-03-25-tor-store-press-release.html...</a>.</p>
-
-<p>Enjoy!</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-gnulinux">Tor Browser Bundle for GNU/Linux</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">installing and using tor</a>
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">torbrowser</a>
-               |
-              27 Mar 2010
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Tor Browser Bundle for GNU/Linux is now available for x86 and x86_64 architectures in 12 languages.</p>
-
-<p>The Tor Browser Bundle lets you use Tor without needing to install any software. It can run off a USB flash drive, comes with a pre-configured web browser and is self-contained.</p>
-
-<p>You can download it from the <a href="http://www.torproject.org/torbrowser/">Tor Browser</a> page which also has instructions about how to extract and use it.</p>
-
-<p>The bundle comes with the following software:</p>
+<p>Changes in version 0.2.1.26
+<strong>Major bugfixes:</strong></p>
 
 <ul>
-<li><a href="https://www.torproject.org/">Tor 0.2.2.10-alpha</a></li>
-<li><a href="https://www.torproject.org/vidalia/">Vidalia 0.2.7</a> -- cross-platform controller GUI for the Tor software</li>
-<li><a href="https://www.pps.jussieu.fr/%7Ejch/software/polipo/">Polipo 1.0.4.1</a> -- caching web proxy</li>
-<li><a href="http://www.mozilla.com/firefox/">Firefox 3.5.8</a> -- web browser</li>
-<li><a href="https://www.torproject.org/torbutton/">Torbutton 1.2.4</a> -- Firefox extension to enable or disable the browser&#39;s use of Tor</li>
-<li><a href="http://noscript.net/">NoScript 1.9.9.57</a> -- Firefox extension to only allow scripts from trusted sites</li>
-<li><a href="https://addons.mozilla.org/en-US/firefox/addon/6623">BetterPrivacy 1.4.7</a> -- Firefox extension to protect against supercookies</li>
+<li>Teach relays to defend themselves from connection overload. Relays
+now close idle circuits early if it looks like they were intended
+for directory fetches. Relays are also more aggressive about closing
+TLS connections that have no circuits on them. Such circuits are
+unlikely to be re-used, and tens of thousands of them were piling
+up at the fast relays, causing the relays to run out of sockets
+and memory. Bugfix on 0.2.0.22-rc (where clients started tunneling
+their directory fetches over TLS).</li>
+<li>Fix SSL renegotiation behavior on OpenSSL versions like on Centos
+that claim to be earlier than 0.9.8m, but which have in reality
+backported huge swaths of 0.9.8m or 0.9.8n renegotiation
+behavior. Possible fix for some cases of bug 1346.</li>
+<li>Directory mirrors were fetching relay descriptors only from v2
+directory authorities, rather than v3 authorities like they should.
+Only 2 v2 authorities remain (compared to 7 v3 authorities), leading
+to a serious bottleneck. Bugfix on 0.2.0.9-alpha. Fixes bug 1324.</li>
 </ul>
 
-<p>This is a beta version, so please test it and <a href="https://bugs.torproject.org/">file bugs</a>!</p>
+<p><strong>Minor bugfixes:</strong></p>
 
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/life-without-ca">Life without a CA</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">certificate authority</a>
-              
-                <a class="post-category post-category-js" href="#">certificate fingerprints</a>
-              
-                <a class="post-category post-category-js" href="#">distributed trust</a>
-              
-                <a class="post-category post-category-js" href="#">firefox</a>
-              
-                <a class="post-category post-category-js" href="#">ssl errors</a>
-               |
-              26 Mar 2010
-          </p>
-        </header>
-        <div class="post-description">
-          <p>At <a href="http://libreplanet.org/">Libreplanet 2010</a>, I was in a discussion with the <a href="https://web.monkeysphere.info/">MonkeySphere</a> and <a href="https://www.eff.org/">EFF</a> folks about how to encourage every website to offer ssl by default. The general idea is to stop local traffic snooping and provide more security by default. During the discussion, it came up that I disable all of the <a href="http://en.wikipedia.org/wiki/Certificate_authority">Certificate Authorities</a> in my systems and selectively trust the ssl certificates from individual websites. I&#39;ve been doing this for years. Apparently my admission was a shocking statement to many. The group asked me to document my Firefox setup and what life is like without any trusted CAs. Seth from the EFF has a <a href="https://www.eff.org/deeplinks/2010/03/researchers-reveal-likelihood-governments-fake-ssl">quick post</a> about possible concerns over the CAs in your browser. I used to rely on the <a href="https://addons.mozilla.org/en-US/firefox/addon/6415">Certificate Patrol</a> Firefox Extension to monitor changing certs.</p>
+<ul>
+<li>Finally get rid of the deprecated and now harmful notion of &quot;clique
+mode&quot;, where directory authorities maintain TLS connections to
+every other relay.</li>
+</ul>
 
-<p>I generally use FreeBSD and Debian-based linux distributions for my operating systems. After I install firefox, I rename libnssckbi.so to something else (like libnssckbi.so.saved). Restart Firefox (see below for option two). Firefox should no longer validate ssl certs automatically.</p>
+<p><strong>Testsuite fixes:</strong></p>
 
-<p>Browse to a secure website, like <a href="https://torproject.org/" title="https://torproject.org/">https://torproject.org/</a>. You should get the intentionally scary &quot;This Connection is Untrusted&quot; certificate error page. However, you should expect this error as there are no more CAs to validate against. Click &quot;I Understand the Risks&quot;. Click &quot;Add Exception&quot;. Firefox should retrieve the certificate. Click &quot;View&quot;. This is where it gets interesting.</p>
-
-<p>How do you validate the certificate? It depends on the other end. For sites I worry about, like my bank or favorite shopping stores, I call support and ask for the SSL fingerprint and serial number. Sometimes the support person even knows what I&#39;m talking about. I suspect they just open their browser, click on the lock icon and read me the information. Generally, it takes some work to get the information. Further, I&#39;ll compare the cert received through Tor and through non-Tor ssh tunnels on disparate hosts. However, you only have to do this checking once per cert. Once you have it, Firefox stores it as an exception and, if the cert doesn&#39;t change between visits, doesn&#39;t interrupt you with the cert error page.</p>
-
-<p>Am I too paranoid or dis-trusting of CAs? Probably. I have a few concerns about this process, too. Does the list of certs in my browser open me up to unique fingerprinting in some way? Would I notice if a <a href="http://www.wired.com/threatlevel/2010/03/packet-forensics/">Packet Forensics</a> device was used? Unless someone screwed up, I doubt it. And a seldom asked question is, have I ever caught ssl certs being faked or changed by a man-in-the-middle? Yes I have.</p>
-
-<p>What would I like to see rather than implicitly trusting centralized CAs? I very much like the model used by gpg and <a href="http://en.wikipedia.org/wiki/Web_of_trust">the web of trust</a>. I think it&#39;s completely infeasible right now for the vast majority of people using the Internet today. However, using computers was infeasible for the vast majority of people merely a decade ago. Progress happens quickly.</p>
-
-<p>(option two)
- I generally remove all of the CAs as well, even though I think it&#39;s just a display issue at this point. To do so, go into Preferences, Advanced, Encryption tab, click View Certificates. Then just manually cycle through the remaining CAs and delete them all. I started writing a script to do this automatically, but it seems to change in each version of Firefox. If someone has a better/more automatic way to do this, I&#39;d like to hear about it. Now you have no CAs.</p>
+<ul>
+<li>In the util/threads test, no longer free the test_mutex before all
+worker threads have finished. Bugfix on 0.2.1.6-alpha.</li>
+<li>The master thread could starve the worker threads quite badly on
+certain systems, causing them to run only partially in the allowed
+window. This resulted in test failures. Now the master thread sleeps
+occasionally for a few microseconds while the two worker-threads
+compete for the mutex. Bugfix on 0.2.0.1-alpha.</li>
+</ul>
 
         </div>
       </section>
@@ -283,7 +363,7 @@ a relay.</p>
       
         <a href="/blog/page96" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 97 of 134</span>
+      <span class="page_number ">Page: 97 of 137</span>
       
         <a href="/blog/page98" class="next">Next</a>
       

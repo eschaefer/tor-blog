@@ -53,231 +53,7 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-april-30th-2014">Tor Weekly News — April 30th, 2014</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">lunar</a> under
-              
-                <a class="post-category post-category-js" href="#">tor weekly news</a>
-               |
-              30 Apr 2014
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Welcome to the seventeenth issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
-
-<h1>Tor 0.2.5.4-alpha is released</h1>
-
-<p>The latest incarnation of the current development branch of Tor, dubbed 0.2.5.4-alpha, was <a href="https://lists.torproject.org/pipermail/tor-talk/2014-April/032817.html">released on April 26th</a>. This release brings mainly security and performance improvements for clients and relays.</p>
-
-<p>As a preventive measure (there being no evidence that the keys have been compromised), authority signing keys that were used while susceptible to the OpenSSL “heartbleed” bug are now blacklisted.</p>
-
-<p>Other improvements include fixing two expensive functions on busy relays, better TLS ciphersuite preference lists, support for run-time hardening on compilers that support <a href="https://code.google.com/p/address-sanitizer/">AddressSanitizer</a>, and more work on the Linux sandbox code. There are also several usability fixes for clients (especially clients that use bridges), two new TransPort protocols supported (one on OpenBSD, one on FreeBSD), and various other bugfixes.</p>
-
-<p>As Nick Mathewson wrote: “This release marks end-of-life for Tor 0.2.2.x; those Tor versions have accumulated many known flaws”.</p>
-
-<p>Source code is available at the <a href="https://www.torproject.org/dist/">usual location</a> and binary packages have already started to be updated.</p>
-
-<h1>Introducing the 2014 Google Summer of Code projects</h1>
-
-<p>As <a href="https://blog.torproject.org/blog/tor-google-summer-code-2014">announced in February</a>, Tor is once again participating in Google’s Summer of Code program, allowing students and aspiring developers the chance to work on a Tor-related project with funding from Google and expert guidance from Tor Project members. After several months of coordination and discussion, this summer’s successful proposals have now been chosen, and some of the students took to the tor-dev mailing list to introduce themselves and their upcoming work.</p>
-
-<p><a href="https://lists.torproject.org/pipermail/tor-dev/2014-April/006739.html">Juha Nurmi</a> will continue to work on the already-operational ahmia.fi hidden service search engine, while <a href="https://lists.torproject.org/pipermail/tor-dev/2014-April/006741.html">Marc Juarez</a> will be “implementing the building blocks for a future padding-based website fingerprinting countermeasure as a pluggable transport”. <a href="https://lists.torproject.org/pipermail/tor-dev/2014-April/006744.html">Daniel Martí</a> has taken up the challenge of <a href="https://gitweb.torproject.org/torspec.git/blob_plain/refs/heads/master:/proposals/140-consensus-diffs.txt">implementing proposal 140</a>, which aims to considerably reduce the size of the network consensus data that Tor clients fetch every hour, and <a href="https://lists.torproject.org/pipermail/tor-dev/2014-April/006745.html">Israel Leiva</a> plans to spruce up the neglected GetTor service, which allows users to download the Tor Browser Bundle even if the Tor website and its mirrors are inaccessible. <a href="https://lists.torproject.org/pipermail/tor-dev/2014-April/006748.html">Amogh Pradeep</a> will be contributing to the Guardian Project’s development of Orfox, a new Android web browser to be used with Orbot, while <a href="https://lists.torproject.org/pipermail/tor-dev/2014-April/006749.html">Kostas Jakeliunas</a> returns to Tor GSoC to construct a new BridgeDB distributor, serving bridge addresses to users in censored areas over Twitter, and possibly other channels as well. <a href="https://lists.torproject.org/pipermail/tor-dev/2014-April/006777.html">Quinn Jarrell</a> will be working on building a pluggable transports combiner that “will allow transports to be chained together to form more varieties of transports and make them harder to detect and block”. <a href="https://lists.torproject.org/pipermail/tor-dev/2014-April/006752.html">Sreenatha Bhatlapenumarthi</a> will pick up the effort of rewriting Tor Weather.</p>
-
-<p>You can read more about each proposal in the respective introductory messages and their replies; a full list of accepted projects is available on the <a href="https://www.google-melange.com/gsoc/org2/google/gsoc2014/tor">Google Summer of Code website</a>. As Daniel wrote, “comments are very welcome”!</p>
-
-<h1>Miscellaneous news</h1>
-
-<p>Meejah <a href="https://lists.torproject.org/pipermail/tor-dev/2014-April/006766.html">released version 0.9.2 of txtorcon</a> — the Tor controller library for the Twisted Python framework: “this release adds a few minor bug-fixes and a few API enhancements”.</p>
-
-<p>The Tails team is <a href="https://mailman.boum.org/pipermail/tails-testers/2014-April/000010.html">looking for enthusiasts equipped with a Bluetooth keyboard and mouse</a> to ensure that Tails works properly with such hardware.</p>
-
-<p>Matthew Finkel forwarded a copy of the <a href="https://lists.torproject.org/pipermail/tor-relays/2014-April/004428.html">email that was sent to bridge operators </a> to warn them about the “Heartbleed” vulnerability, and the actions that should be taken as a result. If you know any bridge operator who might not have filled in their contact information, please forward the message!</p>
-
-<p>Karsten Loesing has been working on switching Onionoo — the web service to retrieve information about the Tor network — to use the Gson library instead of plain string concatenation to format its JSON output. As the change might break some applications, client authors should <a href="https://lists.torproject.org/pipermail/tor-dev/2014-April/006772.html">test their applications</a> and see if everything still works as it should.</p>
-
-<h1>Tor help desk roundup</h1>
-
-<p>The help desk has been asked why the Tor Project’s hidden service site mirrors are offline. The sites were taken down during the fallout from the Heartbleed security vulnerability. New hidden service addresses were not generated. The sysadmin team has expressed that they <a href="https://bugs.torproject.org/11567">no longer wish to maintain these services</a>.</p>
-
-<h1>News from Tor StackExchange</h1>
-
-<p>Kristopher Ives is working on a card game using Tor. Each user accepts inbound connections through hidden services, and <a href="https://tor.stackexchange.com/q/1592/88">also needs to make outbound connections</a>. Tom Ritter acknowledged it was possible to use only one Tor daemon to do both.</p>
-
-<p>Dan <a href="https://tor.stackexchange.com/q/2012/88">gets the error message “Cannot load XPCOM” whenever Tor Browser is started</a>. Jens Kubieziel pointed to the discussion at <a href="https://bugs.torproject.org/10789">#10789</a>. The culprit is WebRoot Internet Security as it prevents the proper loading of all browser components; either <a href="https://blog.torproject.org/blog/tor-browser-352-released#comment-47052">uninstalling it or adding DLL files to the whitelist has helped other users</a>.</p>
-
-<hr>
-
-<p>This issue of Tor Weekly News has been assembled by Lunar, harmony, Matt Pagan, qbi, and Karsten Loesing.</p>
-
-<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/paypal-account-limits-now-resolved">Paypal Account Limits now resolved</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">donations</a>
-              
-                <a class="post-category post-category-js" href="#">finance</a>
-              
-                <a class="post-category post-category-js" href="#">fraud</a>
-              
-                <a class="post-category post-category-js" href="#">limitations</a>
-              
-                <a class="post-category post-category-js" href="#">paypal</a>
-               |
-              30 Apr 2014
-          </p>
-        </header>
-        <div class="post-description">
-          <p>On April 24, 2014 Paypal notified us our account was being limited due to potentially fraudulent donations. According to Paypal, donors were claiming chargebacks to their credit card companies for fraudulent donations or purchases. We solely use Paypal to receive donations and therefore rely on Paypal&#39;s systems of validation and fraud detection. As a result of the limitations, a number of donors were denied the ability to donate. We appreciate your donations. As of April 30, the limits on our account have been lifted. Please consider a <a href="https://www.torproject.org/donate/donate.html.en">donation today</a>.</p>
-
-<p>We received around $67,000 from 4,700 individuals donating through Paypal in 2013. These donations are used to keep Tor running and developers improving Tor.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-summer-2014-dev-meeting-hosted-mozilla">Tor Summer 2014 Dev Meeting Hosted by Mozilla</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">kelley</a> under
-              
-                <a class="post-category post-category-js" href="#">dev meeting</a>
-              
-                <a class="post-category post-category-js" href="#">paris</a>
-               |
-              29 Apr 2014
-          </p>
-        </header>
-        <div class="post-description">
-          <p>We are excited to announce our Summer 2014 Dev meeting will be held in Paris, France June 29 - July 4.</p>
-
-<p>Thank you to Mozilla for hosting us at their Paris offices and for their continued support of Tor!</p>
-
-<p>Further details regarding public events will be announced very soon - stay tuned!</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-browser-36-released">Tor Browser 3.6 is released</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">mikeperry</a> under
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tbb-3.6</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-               |
-              29 Apr 2014
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The Tor Browser Team is proud to announce the first stable release of the 3.6 series. Packages are available from the <a href="https://www.torproject.org/download/download-easy.html">Tor Browser Project page</a> and also from our <a href="https://www.torproject.org/dist/torbrowser/3.6/">distribution directory</a>.</p>
-
-<p>For users upgrading from Tor Browser 3.5.x, the 3.6 series features fully integrated Pluggable Transport support, including an improved Tor Launcher UI for configuring Pluggable Transport bridges. The Pluggable Transport code is also fully disabled for users who do not configure them. The 3.6 series also changes the MacOS archive format from zip to DMG, which should improve installation usability for Mac users.</p>
-
-<p>This release also includes <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox24.5">important security updates to Firefox</a>.</p>
-
-<p>Please see the <a href="https://www.torproject.org/docs/faq.html.en#TBBGeneral">TBB FAQ listing</a> for any issues you may have before contacting support or filing tickets. In particular, the <a href="https://www.torproject.org/docs/faq.html.en#TBB3.x">TBB 3.x section</a> lists common issues specific to the Tor Browser 3.x series. We also maintain a list of <a href="https://trac.torproject.org/projects/tor/query?keywords=%7Etbb-helpdesk-frequent&amp;status=!closed">frequently encountered known issues</a> in our bugtracker.</p>
-
-<p>Here is the complete changelog since TBB 3.5.4:</p>
-
-<ul>
-<li><p>All Platforms</p>
-
-<ul>
-<li>Update Firefox to 24.5.0esr</li>
-<li>Include Pluggable Transports by default:</li>
-<li>Obfsproxy3 0.2.4, Flashproxy 1.6, and FTE 0.2.13 are now included</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11586">11586</a>: Include license files for component software in Docs directory.</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/9010">9010</a>: Add Turkish language support.</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/9387">9387</a> testing: Disable JS JIT, type inference, asmjs, and ion.</li>
-<li>Update NoScript to 2.6.8.20</li>
-<li>Update Tor Launcher to 0.2.5.4</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/9665">9665</a>: Localize Tor&#39;s unreachable bridges bootstrap error</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/10418">10418</a>: Provide UI configuration for Pluggable Transports</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/10604">10604</a>: Allow Tor status &amp; error messages to be translated</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/10894">10894</a>: Make bridge UI clear that helpdesk is a last resort for bridges</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/10610">10610</a>: Clarify wizard UI text describing obstacles/blocking</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11074">11074</a>: Support Tails use case (XULRunner and optional customizations)</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11482">11482</a>: Hide bridge settings prompt if no default bridges.</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11484">11484</a>: Show help button even if no default bridges.</li>
-<li>Update Torbutton to 1.6.9.0:</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11242">11242</a>: Fix improper &quot;update needed&quot; message after in-place upgrade.</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/10398">10398</a>: Ease translation of about:tor page elements</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/9901">9901</a>: Fix browser freeze due to content type sniffing</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/10611">10611</a>: Add Swedish (sv) to extra locales to update</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/7439">7439</a>: Improve download warning dialog text.</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11384">11384</a>: Completely remove hidden toggle menu item.</li>
-<li>Backport Pending Tor Patches:</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/9665">9665</a>: Report a bootstrap error if all bridges are unreachable</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11200">11200</a>: Prevent spurious error message prior to enabling network.</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/5018">5018</a>: Don&#39;t launch Pluggable Transport helpers if not in use</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/9229">9229</a>: Eliminate 60 second stall during bootstrap with some PTs</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11069">11069</a>: Detect and report Pluggable Transport bootstrap failures</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11156">11156</a>: Prevent spurious warning about missing pluggable transports</li>
-</ul></li>
-<li><p>Mac:</p>
-
-<ul>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/4261">4261</a>: Use DMG instead of ZIP for Mac packages</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/9308">9308</a>: Prevent install path from leaking in some JS exceptions on Mac and Windows</li>
-</ul></li>
-<li><p>Linux:</p>
-
-<ul>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11190">11190</a>: Switch linux PT build process to python2</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/10383">10383</a>: Enable NIST P224 and P256 accel support for 64bit builds.</li>
-</ul></li>
-<li><p>Windows:</p>
-
-<ul>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/9308">9308</a>: Prevent install path from leaking in some JS exceptions on Mac and Windows</li>
-</ul></li>
-</ul>
-
-<p>Here is the changelog since the 3.6-beta-2:</p>
-
-<ul>
-<li><p>All Platforms</p>
-
-<ul>
-<li>Update Firefox to 24.5.0esr</li>
-<li>Update Tor Launcher to 0.2.5.4</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11482">11482</a>: Hide bridge settings prompt if no default bridges.</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11484">11484</a>: Show help button even if no default bridges.</li>
-<li>Update Torbutton to 1.6.9.0</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/7439">7439</a>: Improve download warning dialog text.</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11384">11384</a>: Completely remove hidden toggle menu item.</li>
-<li>Update NoScript to 2.6.8.20</li>
-<li>Update fte transport to 0.2.13</li>
-<li>Backport Pending Tor Patches:</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11156">11156</a>: Additional obfsproxy startup error message fixes</li>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11586">11586</a>: Include license files for component software in Docs directory.</li>
-</ul></li>
-<li><p>Windows and Mac:</p>
-
-<ul>
-<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/9308">9308</a>: Prevent install path from leaking in some JS exceptions on Mac and Windows builds</li>
-</ul></li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tails-10-out">Tails 1.0 is out</a></h2>
+          <h2 class="post-title"> <a href="/blog/tails-101-out">Tails 1.0.1 is out</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">tails</a> under
               
@@ -287,15 +63,13 @@
               
                 <a class="post-category post-category-js" href="#">tails releases</a>
                |
-              29 Apr 2014
+              10 Jun 2014
           </p>
         </header>
         <div class="post-description">
-          <p>Tails, The Amnesic Incognito Live System, version 1.0, is out.</p>
+          <p>Tails, The Amnesic Incognito Live System, version 1.0.1, is out.</p>
 
-<p>All users must <a href="https://tails.boum.org/doc/first_steps/upgrade/">upgrade</a> as soon as possible: this release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_0.23/">numerous security issues</a>.</p>
-
-<p>For more information about what the 1.0 release means for Tails, and about its future, see the <a href="https://tails.boum.org/news/version_1.0/">full announcement</a>.</p>
+<p>All users must <a href="https://tails.boum.org/doc/first_steps/upgrade/">upgrade</a> as soon as possible: this release fixes <a href="https://tails.boum.org/security/Numerous_security_holes_in_1.0/">numerous security issues</a>.</p>
 
 <p><strong>Changes</strong></p>
 
@@ -305,31 +79,16 @@
 <li><p>Security fixes</p>
 
 <ul>
-<li>Upgrade the web browser to 24.5.0esr-0+tails1~bpo60+1 (Firefox 24.5.0esr + Iceweasel patches + Torbrowser patches).</li>
-<li>Upgrade Tor to 0.2.4.21-1+tails1~d60.squeeze+1:</li>
-<li>Based on 0.2.4.21-1~d60.squeeze+1.</li>
-<li>Backport the fix for <a href="https://trac.torproject.org/projects/tor/ticket/11464">bug #11464 on Tor Project&#39;s Trac</a>. It adds client-side blacklists for all Tor directory authority keys that was vulnerable to Heartbleed. This protects clients in case attackers were able to compromise a majority of the authority signing and identity keys.</li>
-</ul></li>
-<li><p>Bugfixes</p>
-
-<ul>
-<li>Disable inbound I2P connections. Tails already restricts incoming connections, but this change tells I2P about it.</li>
-<li>Fix link to the system requirements documentation page in the Tails Upgrader error shown when too little RAM is available.</li>
+<li>Upgrade the web browser to 24.6.0esr-0+tails1~bpo60+1 (Firefox 24.6.0esr + Iceweasel patches + Torbrowser patches).</li>
+<li>Install Linux 3.14 from Debian unstable (fixes CVE-2014-3153 and others).</li>
+<li>Install openssl from Squeeze LTS (fixes CVE-2014-0076, CVE-2014-0195, CVE-2014-0221, CVE-2014-3470 and CVE-2014-0224).</li>
+<li>Install GnuTLS from Squeeze LTS (fixes CVE-2014-3466).</li>
 </ul></li>
 <li><p>Minor improvements</p>
 
 <ul>
-<li>Upgrade I2P to 0.9.12-2~deb6u+1.</li>
-<li>Import TorBrowser profile. This was forgotten in Tails 0.23 and even though we didn&#39;t explicitly set those preferences in that release they defaulted to the same values. This future-proofs us in case the defaults would ever change.</li>
-<li>Import new custom version of Tor Launcher:</li>
-<li>Based on upstream Tor Launcher 0.2.5.3.</li>
-<li>Improve how Tor Launcher handles incomplete translation. ( <a href="https://trac.torproject.org/projects/tor/ticket/11483">bug #11483 on Tor Project&#39;s Trac</a>; more future-proof fix for <a href="https://labs.riseup.net/code/issues/6885">ticket #6885</a>)</li>
-<li>Remove the bridge settings prompt. ( <a href="https://trac.torproject.org/projects/tor/ticket/11482">bug #11482 on Tor Project&#39;s Trac</a>; closes <a href="https://labs.riseup.net/code/issues/6934">ticket #6934</a>)</li>
-<li>Always show bridge help button. ( <a href="https://trac.torproject.org/projects/tor/ticket/11484">bug #11484 on Tor Project&#39;s Trac</a>)</li>
-<li>Integrate the new Tails logo into various places:</li>
-<li>The website</li>
-<li>The boot splash</li>
-<li>The &quot;About Tails&quot; dialog</li>
+<li>Upgrade Tor to 0.2.4.22-1~d60.squeeze+1.</li>
+<li>Upgrade I2P to 0.9.13-1~deb6u+1.</li>
 </ul></li>
 </ul>
 
@@ -349,15 +108,206 @@
 
 <p><strong>What&#39;s coming up?</strong></p>
 
-<p>The next Tails release is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for June 10.</p>
+<p>The next Tails release is <a href="https://tails.boum.org/contribute/calendar/">scheduled</a> for July 22.</p>
 
-<p>Have a look to our <a href="https://labs.riseup.net/code/projects/tails/roadmap/">roadmap</a> to see where we are heading to.</p>
+<p>Have a look to our <a href="https://labs.riseup.net/code/projects/tails/roadmap">roadmap</a> to see where we are heading to.</p>
 
 <p>Would you want to help? There are many ways <a href="https://tails.boum.org/contribute/"><strong>you</strong> can contribute to Tails</a>. If you want to help, come talk to us!</p>
 
-<p><strong>Support and feedback</strong></p>
+<p><strong>Support and feedback</strong>
+For support and feedback, visit the <a href="https://tails.boum.org/support/">Support section</a> on the Tails website.</p>
 
-<p>For support and feedback, visit the <a href="https://tails.boum.org/support/">Support section</a> on the Tails website.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-browser-362-released">Tor Browser 3.6.2 is released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">mikeperry</a> under
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tbb-3.6</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+               |
+              09 Jun 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The second pointfix release of the 3.6 series is available from the <a href="https://www.torproject.org/download/download-easy.html">Tor Browser Project page</a> and also from our <a href="https://www.torproject.org/dist/torbrowser/3.6.2/">distribution directory</a>.</p>
+
+<p>This release features a fix to allow the configuration of a local HTTP or SOCKS proxy with all included Pluggable Transports.</p>
+
+<p>In addition, this release also features <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefox24.6">important security updates</a> to Firefox, as well as an update to OpenSSL 1.0.1h to address the latest round of <a href="https://www.openssl.org/news/secadv_20140605.txt">OpenSSL security issues</a>.</p>
+
+<p>This release also updates the Tor client software to version 0.2.4.22, which blacklists directory authority keys that were created prior to fixing the <a href="https://blog.torproject.org/blog/openssl-bug-cve-2014-0160">Heartbleed attack</a>.</p>
+
+<ul>
+<li><p>All Platforms</p>
+
+<ul>
+<li>Update Firefox to 24.6.0esr</li>
+<li>Update OpenSSL to 1.0.1h</li>
+<li>Update NoScript to 2.6.8.28</li>
+<li>Update Tor to 0.2.4.22</li>
+<li>Update Tor Launcher to 0.2.5.5</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/10425">10425</a>: Provide geoip6 file location to Tor process</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11754">11754</a>: Remove untranslated locales that were dropped from Transifex</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11772">11772</a>: Set Proxy Type menu correctly after restart</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11699">11699</a>: Change &amp;#160 to &#160; in UI elements</li>
+<li>Update Torbutton to 1.6.10.0</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11510">11510</a>: about:tor should not report success if tor proxy is unreachable</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11783">11783</a>: Avoid b.webProgress error when double-clicking on New Identity</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11722">11722</a>: Add hidden pref to force remote Tor check</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11763">11763</a>: Fix pref dialog double-click race that caused settings to be reset</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11629">11629</a>: Support proxies with Pluggable Transports</li>
+<li>Updates FTEProxy to 0.2.15</li>
+<li>Updates obfsproxy to 0.2.9</li>
+<li>Backported Tor Patches:</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11654">11654</a>: Fix malformed log message in bug11156 patch.</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/10425">10425</a>: Add in Tor&#39;s geoip6 files to the bundle distribution</li>
+<li>Bugs <a href="https://trac.torproject.org/projects/tor/ticket/11834">11834</a> and <a href="https://trac.torproject.org/projects/tor/ticket/11835">11835</a>: Include Pluggable Transport documentation</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/9701">9701</a>: Prevent ClipBoardCache from writing to disk.</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/12146">12146</a>: Make the CONNECT Host header the same as the Request-URI.</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/12212">12212</a>: Disable deprecated webaudio API</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11253">11253</a>: Turn on TLS 1.1 and 1.2.</li>
+<li>Bug <a href="https://trac.torproject.org/projects/tor/ticket/11817">11817</a>: Don&#39;t send startup time information to Mozilla.</li>
+</ul></li>
+</ul>
+
+<p>The list of <a href="https://trac.torproject.org/projects/tor/query?keywords=%7Etbb-helpdesk-frequent&amp;status=!closed">frequently encountered known issues</a> is also available in our bug tracker.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-challenge-2014">Tor Challenge 2014</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phoul</a> under
+              
+                <a class="post-category post-category-js" href="#">EFF</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">torchallenge</a>
+               |
+              05 Jun 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We are excited to announce the <a href="https://www.eff.org/">EFF</a> has just launched the second <a href="https://www.eff.org/torchallenge">Tor Challenge</a>!</p>
+
+<p>This challenge is somewhat different from the previous edition, as there are now incentives tied to running relays for an extended period of time. The goal is to educate and encourage lots of people to setup relays, and continue to contribute throughout the year.</p>
+
+<p>EFF will be giving out a &quot;limited-edition&quot; sticker to relay operators who keep their relay running for at least 12 months. On top of that, people running a 1MB/s+ relay for 12 months will also receive a Tor t-shirt!</p>
+
+<p>The more high-bandwidth relays we have, the better off the network is as a whole and the more people we will be able to help stay safe and secure online; so please join the EFF &amp; the Tor Project for the 2014 Tor Challenge! Also, help us spread the word about this challenge by sharing this with others!</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/reset-net">Reset the Net!</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">privacy enhancing technology</a>
+              
+                <a class="post-category post-category-js" href="#">reset the net</a>
+              
+                <a class="post-category post-category-js" href="#">surveillance</a>
+               |
+              05 Jun 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We’re making the Internet more secure, by taking part in #ResetTheNet <a href="https://resetthenet.org">https://resetthenet.org</a></p>
+
+<iframe width="560" height="315" src="//www.youtube-nocookie.com/embed/qKk8MHFLNNE?rel=0" frameborder="0" allowfullscreen></iframe>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-june-4th-2014">Tor Weekly News — June 4th, 2014</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">lunar</a> under
+              
+                <a class="post-category post-category-js" href="#">tor weekly news</a>
+               |
+              04 Jun 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Welcome to the twenty-second issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+
+<h1>Tails moves to Wheezy</h1>
+
+<p>The <a href="https://tails.boum.org/">Tails live system</a> is a <a href="https://wiki.debian.org/Derivatives">Debian derivative</a> aiming at preserving the privacy and anonymity of its users.</p>
+
+<p>The first Tails releases were based on Debian <a href="https://www.debian.org/releases/lenny/">Lenny</a> (2009-2012); since version 0.7, Tails has been based on Debian <a href="https://www.debian.org/releases/squeeze/">Squeeze</a> (2011-). Meanwhile, Debian has released a new stable version dubbed <a href="https://www.debian.org/releases/wheezy/">Wheezy</a>, and the upcoming Tails 1.1 will be the first release to be based on the latter.</p>
+
+<p>The general set of features should not change much from the previous Tails release, but almost every software component has been updated. On
+May 30th, the Tails team <a href="https://tails.boum.org/news/test_1.1-beta1/">released a beta image</a>; given the number of changes, testing is even more welcome than usual.</p>
+
+<p>Testers can also try out the new UEFI support, which enables Tails to boot on recent hardware and on Macs.</p>
+
+<p><a href="https://tails.boum.org/news/test_1.1-beta1/#index3h1">Several issues</a> with the current beta image have already been identified, so be sure to have a look at the list before <a href="https://tails.boum.org/doc/first_steps/bug_reporting/">reporting</a>.</p>
+
+<p>The details of the release schedule are <a href="https://mailman.boum.org/pipermail/tails-dev/2014-May/005917.html">still being discussed</a> at the time of writing, but Tails 1.1 is likely to be out by the end of July. Please help make it a great release!</p>
+
+<h1>Stem 1.2 brings interactive interaction with the Tor daemon</h1>
+
+<p>On June 1st, Damian Johnson <a href="https://blog.torproject.org/blog/stem-release-12">announced</a> the release of <a href="https://stem.torproject.org/">Stem</a> 1.2. Stem is a Python library for interacting with the Tor daemon. It is now used by <a href="https://stem.torproject.org/tutorials/double_double_toil_and_trouble.html">several applications</a> like the <a href="https://www.atagar.com/arm/">arm</a> status monitor and Philipp Winter’s <a href="http://www.cs.kau.se/philwint/spoiled_onions/">exit scanner</a>.</p>
+
+<p>The new version brings an interactive control interpreter, “a new method for interacting with Tor’s control interface that combines an interactive python interpreter with raw access similar to telnet”. This should make Tor hackers happy by saving them from having to manually poke the control port through telnet or create complete Stem scripts.</p>
+
+<p>For the complete list of changes, head over to the <a href="https://stem.torproject.org/change_log.html#version-1-2">changelog</a>.</p>
+
+<h1>Monthly status reports for May 2014</h1>
+
+<p>The wave of regular monthly reports from Tor project members for the month of May has begun. <a href="https://lists.torproject.org/pipermail/tor-reports/2014-May/000539.html">Pearl Crescent</a> released their report first, followed by <a href="https://lists.torproject.org/pipermail/tor-reports/2014-May/000540.html">Sherief Alaa</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-June/000542.html">Damian Johnson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-June/000543.html">Nick Mathewson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-June/000544.html">Colin C.</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-June/000545.html">Georg Koppen</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-June/000546.html">Lunar</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-June/000548.html">Arlo Breault</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2014-June/000550.html">Matt Pagan</a>.</p>
+
+<p>Lunar also reported on behalf of the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-June/000541.html">help desk</a>, while Arturo Filastò did likewise for the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-June/000547.html">OONI team</a>, and Mike Perry for the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-June/000549.html">Tor Browser team</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Pups, a chat system implemented by Sherief Alaa for real-time invitation-based user support, has <a href="https://bugs.torproject.org/11657">gone live</a>, and can now be used by Tor’s support assistants when that method promises a quicker resolution of an issue.</p>
+
+<p>In response to a question about the writing of unit tests for tor, Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-dev/2014-June/006933.html">shared</a> a brief guide to identifying lines in tor’s codebase that have not yet been covered by tests.</p>
+
+<p>Nick also put out a call ( <a href="https://lists.torproject.org/pipermail/tor-relays/2014-May/004617.html">relayed</a> by Moritz Bartl) for Tor relay operators running version 0.2.5.4-alpha or later to profile their relays, in order to identify potential bottlenecks. Basic instructions for doing so on Debian and Ubuntu can be found in the comments to the <a href="https://bugs.torproject.org/11332">relevant ticket</a>.</p>
+
+<p>During a discussion on the role of JavaScript hooks in Tor Browser, Mike Perry <a href="https://lists.torproject.org/pipermail/tbb-dev/2014-June/000074.html">clarified</a> the merits of writing direct C++ Firefox patches over using such hooks, as well as the possibility of incorporating Torbutton’s privacy features into either Firefox itself or a dedicated add-on.</p>
+
+<p>Andrew Lewman <a href="https://lists.torproject.org/pipermail/tor-reports/2014-May/000538.html">reported</a> on his trip to Stockholm to address Sida and the Stockholm Internet Forum.</p>
+
+<p>Juha Nurmi sent the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-May/000537.html">second weekly report</a> for the ahmia.fi Google Summer of Code project .</p>
+
+<p>Marc Juarez is working on website fingerprinting countermeasures in the form of a pluggable transport. Marc wants to “implement a set of primitives that any link padding-based defense would benefit of” and is <a href="https://lists.torproject.org/pipermail/tor-dev/2014-May/006918.html">looking for feedback</a> on the envisaged primitives.</p>
+
+<p>Philipp Winter <a href="https://lists.torproject.org/pipermail/tor-relays/2014-May/004620.html">announced</a> that <a href="https://atlas.torproject.org">Atlas</a>, the web application to learn about currently running Tor relays, will now display information about a relay’s IPv6 exit policy, as well as the already-existing IPv4 exit summary.</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>Sometimes users with no network obstacles will email the help desk to ask how to configure their Tor Browser. Often these users will not need to configure anything, and clicking “Connect” is all that is necessary. Discussion on this problem is taking place on the <a href="https://bugs.torproject.org/12164">bug tracker</a>.</p>
+
+<h1>Easy development tasks to get involved with</h1>
+
+<p>The <a href="https://bridges.torproject.org/">bridge distributor BridgeDB</a> populates its database from the cached descriptor files copied over from the bridge authority. There’s a <a href="https://bugs.torproject.org/11216">small bug</a> in BridgeDB where a line that is included in two different cached descriptor files gets added twice to the database. The ticket says this bug is easily reproducible and even contains commands for reproducing it. If you enjoy digging into unknown Python/Twisted codebases to find the few spots that need fixing, this bug may be for you. Be sure to comment on the ticket when you have a fix!</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by harmony, Lunar, Matt Pagan and Karsten Loesing.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
 
         </div>
       </section>
@@ -368,7 +318,7 @@
       
         <a href="/blog/page8" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 9 of 134</span>
+      <span class="page_number ">Page: 9 of 137</span>
       
         <a href="/blog/page10" class="next">Next</a>
       

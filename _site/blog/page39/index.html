@@ -53,155 +53,74 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/trip-report-world-bank-and-second-muse-domestic-violence-hackathon">Trip Report: World Bank and Second Muse Domestic Violence Hackathon</a></h2>
+          <h2 class="post-title"> <a href="/blog/new-name-obfsproxy-tor-browser-bundles">New Name for Obfsproxy Tor Browser Bundles</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
+              By <a class="post-author" href="#">asn</a> under
               
-                <a class="post-category post-category-js" href="#">domestic violence</a>
+                <a class="post-category post-category-js" href="#">bundles</a>
               
-                <a class="post-category post-category-js" href="#">fuerza</a>
-              
-                <a class="post-category post-category-js" href="#">hackathon</a>
-              
-                <a class="post-category post-category-js" href="#">second muse</a>
-              
-                <a class="post-category post-category-js" href="#">world bank</a>
+                <a class="post-category post-category-js" href="#">pluggable transports</a>
                |
-              30 Jan 2013
+              22 Mar 2013
           </p>
         </header>
         <div class="post-description">
-          <p>Over the weekend, I attended the <a href="https://blog.torproject.org/blog/hacking-against-domestic-violence">Hacking against Domestic Violence</a> event in Washington DC, sponsored by the World Bank and Second Muse. I was there to help define problem statements, think about security and privacy risks of the solutions, and to help judge the solutions crafted by the attendees. A total of 10 teams congealed over the weekend. Everyone had creative solutions to the problem statements. Generally the sheer quality of output and enthusiasm was the first thing I noticed about all of the teams and their apps. Everyone in DC focused on mobile phone compatibility, even if their solution worked on the general web itself. There are plenty of <a href="https://www.flickr.com/photos/vdhackathon/">photos</a> available from the 7 involved countries.</p>
+          <p>Some days ago we released <a href="https://blog.torproject.org/blog/new-pluggable-transports-bundles-02411-alpha-flashproxy-obfsproxy">new Pluggable Transport Bundles</a> which aim to
+replace the old Pyobfsproxy/Flashproxy bundles and the even older
+Obfsproxy bundles.</p>
 
-<p>I ended up spending most of my time with the team working to <a href="http://vdhackathon.pbworks.com/w/page/62827130/Protocols%20to%20Protect%20Survivors%20from%20Surveillance">develop protocols to protect survivors from surveillance</a>. We called ourselves Team Fuerza. The <a href="https://people.torproject.org/%7Eandrew/2013-01-27-dvhackathon/2013-01-27-presentation.html">full presentation</a> is available. A volunteer <a href="https://www.youtube.com/watch?v=6x9ubvC4Ai8">recorded a video</a> of the presentation as well. Related images and videos are uploaded to my <a href="https://people.torproject.org/%7Eandrew/2013-01-27-dvhackathon/">Tor people site</a>.</p>
+<p>Users are encouraged to upgrade to the new bundles since they support
+all the currently deployed <a href="https://www.torproject.org/docs/pluggable-transports.html.en">pluggable transports</a> and the latest
+versions of Firefox and Torbutton.</p>
 
-<p>Because I was involved with a team, I volunteered to give up my voting rights on the judges panel to avoid any issues. I then ended up presenting for the team for the status update and final presentation.</p>
+<p>The new bundles also contain the latest release of the Python version
+of <a href="https://www.torproject.org/projects/obfsproxy.html.en">Obfsproxy</a>, which replaces the legacy version that was written in C.</p>
 
-<p>Overall, it was a great two days and the team made a lot of progress in a short amount of time. A big thanks to <a href="https://people.torproject.org/%7Eandrew/2013-01-27-dvhackathon/WorldBankTeamFuerza-smile.jpg">the team</a> (Sarah, Az, Cid, Adriana, Andrew, and Justin), SecondMuse, the World Bank, and all of the attendees for their efforts in holding a hackathon in 7 countries simultaneously.</p>
-
-<p>The World Bank and Second Muse should have their final press release and announcement of the results soon.</p>
-
-<p>UPDATE 2013-02-08: World Bank accounces their <a href="http://www.worldbank.org/en/news/feature/2013/01/22/domestic-violence-hackathon-smartphone-lifesaver">press release</a> about the hackathon. Team Fuerza, won the USA hackathon!</p>
+<p>Finally, from now on Obfuscated bundles will be called &quot;Pluggable
+Transport Bundles&quot; and each new version will contain all the deployed
+pluggable transports. Users need to use <a href="http://bridges.torproject.org" title="http://bridges.torproject.org">http://bridges.torproject.org</a>
+to get bridges with pluggable transports (&quot;obfuscated/obfsproxy
+bridges&quot;) for their bundles.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/visual-overview-tor-network">Visual overview of the Tor network</a></h2>
+          <h2 class="post-title"> <a href="/blog/new-pluggable-transports-bundles-02411-alpha-flashproxy-obfsproxy">New Pluggable Transports bundles 0.2.4.11-alpha (flashproxy + obfsproxy)</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">karsten</a> under
+              By <a class="post-author" href="#">asn</a> under
               
-                <a class="post-category post-category-js" href="#">introduction</a>
+                <a class="post-category post-category-js" href="#">flashproxy</a>
               
-                <a class="post-category post-category-js" href="#">network</a>
+                <a class="post-category post-category-js" href="#">obfsbundle</a>
               
-                <a class="post-category post-category-js" href="#">overview</a>
+                <a class="post-category post-category-js" href="#">obfsproxy</a>
               
-                <a class="post-category post-category-js" href="#">support</a>
+                <a class="post-category post-category-js" href="#">pluggable transports</a>
                |
-              28 Jan 2013
+              19 Mar 2013
           </p>
         </header>
         <div class="post-description">
-          <p>If you were to give a non-technical person a brief overview of the Tor network, how would you begin? And if you had a picture or diagram to assist you, how would that look like?</p>
-
-<p>We&#39;re looking for better visualizations of the Tor network as introductory material. Most people already know EFF&#39;s visualizations from <a href="https://www.torproject.org/about/overview.html.en#thesolution">Tor&#39;s Overview page</a>. Recently, an <a href="https://lists.torproject.org/pipermail/tor-talk/2013-January/027105.html">Italian hack meeting</a> came up with a fun picture of how to imagine a Tor circuit. A discussion among Tor developers brought up an ugly, but potentially useful <a href="https://people.torproject.org/%7Ekarsten/tor-network-road-traffic.jpg">analogy with road traffic</a>.</p>
-
-<p>Want to help make these visualizations better or suggest your own? Prettier drawings that we can actually show to the world are as useful as content-wise improvements what to add or leave out from these visualizations. Simply leave your ideas or links in the comments. Thanks!</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-firefox-17-and-tor-alpha-bundles">New Firefox 17 and Tor alpha bundles</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">firefox updates</a>
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-              
-                <a class="post-category post-category-js" href="#">tor alpha</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-               |
-              28 Jan 2013
-          </p>
-        </header>
-        <div class="post-description">
-          <p>We have some test Tor Browser Bundles available for testing! They contain Firefox 17.0.2esr which we&#39;re planning to switch to in February. Just as a reminder: <strong>these are alpha bundles</strong> . We&#39;re still testing them ourselves but we want to get them out for wider circulation so we can find out about any dealbreaker bugs before moving Firefox 17 into the stable bundles. For the more sophisticated users out there, we&#39;d love it if you could run Wireshark with the bundles and let us know if you see anything untoward.</p>
-
-<p>Alpha Tor Browser Bundles can be downloaded here:</p>
-
-<p><a href="https://www.torproject.org/projects/torbrowser.html.en" title="https://www.torproject.org/projects/torbrowser.html.en">https://www.torproject.org/projects/torbrowser.html.en</a></p>
-
-<p>All of the Tor packages have been updated with Tor 0.2.4.9-alpha as well.</p>
-
-<p><a href="https://www.torproject.org/download/download-easy" title="https://www.torproject.org/download/download-easy">https://www.torproject.org/download/download-easy</a></p>
-
-<p><strong>Tor Browser Bundle (2.4.9-alpha-1)</strong></p>
+          <p>We&#39;ve updated the Pluggable Transports Tor Browser Bundles with Firefox 17.0.4esr and Tor 0.2.4.11-alpha. These releases have numerous bug fixes and a new Torbutton as well.</p>
 
 <ul>
-<li>Update Firefox to 17.0.2esr</li>
-<li>Update Tor to 0.2.4.9-alpha</li>
-<li>Update Torbutton to 1.5.0pre-alpha</li>
-<li>Update NoScript to 2.6.4.3</li>
-<li>Update HTTPS-Everywhere to 4.0development.5</li>
-<li>Add Mozilla&#39;s PDF.js extension to give people the ability to read PDFs in
-TBB</li>
-<li><p>Prevent TBB from trying to access the X session manager (closes: #5261)</p>
-
-<ul>
-<li>Firefox patch changes:</li>
-<li>Isolate image cache to url bar domain (closes: #5742 and #6539)</li>
-<li>Enable DOM storage and isolate it to url bar domain (closes: #6564)</li>
-<li>Include nsIHttpChannel.redirectTo API for HTTPS-Everywhere (closes: #5477)</li>
-</ul></li>
-<li><p>Misc preference changes:</p>
-
-<ul>
-<li>Disable DOM performance timers (dom.enable_performance) (closes: #6204)</li>
-<li>Disable HTTP connection retry timeout (network.http.connection-retry-timeout) (closes: #7656)</li>
-<li>Disable full path information for plugins (plugin.expose_full_path) (closes: #6210)</li>
-<li>Disable NoScript&#39;s block of remote WebFonts (noscript.forbidFonts) (closes: #7937)</li>
-</ul></li>
+<li><a href="https://www.torproject.org/dist/torbrowser/tor-pluggable-transports-browser-2.4.11-alpha-2_en-US.exe">Windows</a> ( <a href="https://www.torproject.org/dist/torbrowser/tor-pluggable-transports-browser-2.4.11-alpha-2_en-US.exe.asc">sig</a>)</li>
+<li><a href="https://www.torproject.org/dist/torbrowser/osx/TorBrowser-Pluggable-Transports-2.4.11-alpha-2-osx-i386-en-US.zip">Mac OS X</a> ( <a href="https://www.torproject.org/dist/torbrowser/osx/TorBrowser-Pluggable-Transports-2.4.11-alpha-2-osx-i386-en-US.zip.asc">sig</a>)</li>
+<li><a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-i686-2.4.11-alpha-2-dev-en-US.tar.gz">GNU/Linux 32-bit</a> ( <a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-i686-2.4.11-alpha-2-dev-en-US.tar.gz.asc">sig</a>)</li>
+<li><a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-x86_64-2.4.11-alpha-2-dev-en-US.tar.gz">GNU/Linux 64-bit</a> ( <a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-x86_64-2.4.11-alpha-2-dev-en-US.tar.gz.asc">sig</a>)</li>
 </ul>
 
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/combined-flash-proxy-pyobfsproxy-browser-bundles">Combined flash proxy + pyobfsproxy browser bundles</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">dcf</a> under
-               |
-              14 Jan 2013
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Please help us test new experimental bundles that have flash proxy and pyobfsproxy enabled by default.</p>
+<p>Like the previous bundles, these contain Flashproxy and the Python version of Obfsproxy.</p>
 
-<ul>
-<li><a href="https://people.torproject.org/%7Edcf/flashproxy/tor-flashproxy-pyobfsproxy-browser-2.4.7-alpha-1_en-US.exe">Windows</a> ( <a href="https://people.torproject.org/%7Edcf/flashproxy/tor-flashproxy-pyobfsproxy-browser-2.4.7-alpha-1_en-US.exe.asc">sig</a>)</li>
-<li><a href="https://people.torproject.org/%7Edcf/flashproxy/TorBrowser-FlashProxy-PyObfsproxy-2.4.7-alpha-1-osx-i386-en-US.zip">Mac OS X</a> ( <a href="https://people.torproject.org/%7Edcf/flashproxy/TorBrowser-FlashProxy-PyObfsproxy-2.4.7-alpha-1-osx-i386-en-US.zip.asc">sig</a>)</li>
-<li><a href="https://people.torproject.org/%7Edcf/flashproxy/tor-flashproxy-pyobfsproxy-browser-gnu-linux-i686-2.4.7-alpha-1-dev-en-US.tar.gz">GNU/Linux 32-bit</a> ( <a href="https://people.torproject.org/%7Edcf/flashproxy/tor-flashproxy-pyobfsproxy-browser-gnu-linux-i686-2.4.7-alpha-1-dev-en-US.tar.gz.asc">sig</a>)</li>
-<li><a href="https://people.torproject.org/%7Edcf/flashproxy/tor-flashproxy-pyobfsproxy-browser-gnu-linux-x86_64-2.4.7-alpha-1-dev-en-US.tar.gz">GNU/Linux 64-bit</a> ( <a href="https://people.torproject.org/%7Edcf/flashproxy/tor-flashproxy-pyobfsproxy-browser-gnu-linux-x86_64-2.4.7-alpha-1-dev-en-US.tar.gz.asc">sig</a>)</li>
-</ul>
+<p><a href="http://crypto.stanford.edu/flashproxy/">Flash proxy</a> is a transport that uses proxies running in web browsers as access points into Tor. <a href="https://gitweb.torproject.org/pluggable-transports/pyobfsproxy.git">Obfsproxy</a> is a pluggable transport that makes network traffic look unlike normal Tor traffic. Both of these technologies make it harder to block access to Tor. If you previously used the obfsproxy bundle, please upgrade to this bundle, which in addition to flash proxy has new obfsproxy bridges.</p>
 
-<p><a href="http://crypto.stanford.edu/flashproxy/">Flash proxy</a> is a transport that uses proxies running in web browsers as access points into Tor. <a href="https://gitweb.torproject.org/user/asn/pyobfsproxy.git">pyobfsproxy</a> is a Python implementation of the <a href="https://www.torproject.org/projects/obfsproxy">obfsproxy</a> modular transport that makes network traffic look unlike normal Tor traffic. Both of these technologies make it harder to block access to Tor. If you previously used the obfsproxy bundle, please upgrade to this bundle, which in addition to flash proxy has new obfsproxy bridges.</p>
+<p><a href="https://trac.torproject.org/projects/tor/wiki/FlashProxyHowto">Flash proxy works differently</a> from other pluggable transports, and you need to take extra steps to make it work. In particular, <strong>you will probably need to configure port forwarding</strong> in order to receive connections from browser proxies. There are instructions and hints on how to do that at this page: <a href="https://trac.torproject.org/projects/tor/wiki/FlashProxyHowto">flash proxy howto</a>.</p>
 
-<p><a href="https://trac.torproject.org/projects/tor/wiki/FlashProxyHowto">Flash proxy works differently</a> than other pluggable transports, and you need to take extra steps to make it work. In particular, <strong>you will probably need to configure port forwarding</strong> in order to receive connections from browser proxies. There are instructions and hints on how to do that at this page: <a href="https://trac.torproject.org/projects/tor/wiki/FlashProxyHowto">flash proxy howto</a>.</p>
+<p>These bundles contain the same hardcoded obfs2 bridge addresses as the previous bundles which may work for some jurisdictions but you are strongly advised to get new bridge addresses from BridgeDB: <a href="https://bridges.torproject.org/?transport=obfs2" title="https://bridges.torproject.org/?transport=obfs2">https://bridges.torproject.org/?transport=obfs2</a>.</p>
 
-<p>These bundles contain fresh obfs2 bridge addresses, which may work for you if the bridges in the obfsproxy bundle are blocked. The bundles also includes an experimental obfs3 bridge—obfs3 is a new protocol designed to be harder to identify than the previous obfs2. If even these new bridges become blocked, you can <a href="https://bridges.torproject.org/?transport=obfs2">find your own obfs2 bridges</a>.</p>
-
-<p>We are looking for feedback on how the bundles work. Please leave comments on the <a href="https://trac.torproject.org/projects/tor/wiki/FlashProxyUsability">flash proxy usability wiki page</a> or <a href="https://trac.torproject.org/projects/tor/ticket/7824">ticket #7824</a> with your experience, good or bad.</p>
+<p>Furthermore, we are looking for feedback on how the bundles work. Please leave comments on the <a href="https://trac.torproject.org/projects/tor/wiki/FlashProxyUsability">flash proxy usability wiki page</a> or <a href="https://trac.torproject.org/projects/tor/ticket/7824">ticket #7824</a> with your experience, good or bad.</p>
 
 <p>There are other ways you can help beyond testing the bundles. One is to <a href="https://gitweb.torproject.org/user/asn/pyobfsproxy.git/blob/HEAD:/doc/HOWTO.txt">run a bridge with pyobfsproxy</a>. Another is to <a href="http://crypto.stanford.edu/flashproxy/#badge-howto">put the flash proxy badge</a> on your web site or blog, or <a href="https://gitweb.torproject.org/flashproxy.git/blob/HEAD:/modules/mediawiki/custom.js">add it to your Wikipedia profile</a>. If you want your browser to continue to be a proxy after a switch to an opt-in model, click the “Yes” button on <a href="http://crypto.stanford.edu/flashproxy/options.html">the options page</a>.</p>
 
@@ -210,87 +129,149 @@ TBB</li>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tails-016-out">Tails 0.16 is out!</a></h2>
+          <h2 class="post-title"> <a href="/blog/2012-annual-report">2012 Annual Report</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">tails</a> under
+              By <a class="post-author" href="#">kelley</a> under
               
-                <a class="post-category post-category-js" href="#">anonymous operating system</a>
-              
-                <a class="post-category post-category-js" href="#">tails</a>
-              
-                <a class="post-category post-category-js" href="#">tails releases</a>
+                <a class="post-category post-category-js" href="#">annual report</a>
                |
-              11 Jan 2013
+              19 Mar 2013
           </p>
         </header>
         <div class="post-description">
-          <p>Tails, The Amnesic Incognito Live System, version 0.16, is out.</p>
+          <p>We are excited to announce the Tor Project 2012 Annual Report, which highlights the activities and outstanding accomplishments by the Tor team over the past year. Also included is a glimpse at Tor&#39;s strategic initiatives for 2013.</p>
 
-<p>All users must upgrade as soon as possible.</p>
+<p>PDF version is available at:
+ <a href="https://www.torproject.org/about/findoc/2012-TorProject-Annual-Report.pdf" title="https://www.torproject.org/about/findoc/2012-TorProject-Annual-Report.pdf">https://www.torproject.org/about/findoc/2012-TorProject-Annual-Report.pd...</a></p>
 
-<p><a href="https://tails.boum.org/download/">Download it now.</a></p>
+<p>A special thank you goes out to our funders and supporters for their continued commitment to our mission.</p>
 
-<p><strong>Changes</strong></p>
+<p>Questions regarding the annual report contact <a href="mailto:execdir@torproject.org">execdir@torproject.org</a></p>
 
-<p>Notable user-visible changes include:</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/new-firefox-1704esr-and-tor-02411-alpha-bundles">New Firefox 17.0.4esr and Tor 0.2.4.11-alpha bundles</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha release</a>
+              
+                <a class="post-category post-category-js" href="#">firefox</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+               |
+              14 Mar 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We&#39;ve updated the stable and alpha Tor Browser Bundles with Firefox 17.0.4esr and Tor 0.2.4.11-alpha. These releases have numerous bug fixes and a new Torbutton as well.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Tor Browser Bundle (2.3.25-5)</strong></p>
 
 <ul>
-<li><p>Minor improvements</p>
+<li>Update Firefox to 17.0.4esr</li>
+<li>Update NoScript to 2.6.5.8</li>
+<li>Update HTTPS Everywhere to 3.1.4</li>
+<li>Fix non-English language bundles to have the correct branding (closes: #8302)</li>
+<li><p>Firefox patch changes:</p>
 
 <ul>
-<li>Replace the too-easy-to-misclick shutdown button with a better &quot;Shutdown Helper&quot; applet.</li>
-<li>Display <code>~/Persistent</code> in GNOME Places and Gtk file chooser.</li>
-<li>Install dictionaries for a few languages.</li>
-<li>Set Unsafe Browser&#39;s window title to &quot;Unsafe Browser&quot;.</li>
-<li>Install ekeyd to support the EntropyKey.</li>
-<li>Install font for Sinhala script.</li>
-<li>Update Poedit to 1.5.4.</li>
-<li>Expose Vidalia&#39;s &quot;broken onion&quot; icon less.</li>
-<li>Hide the persistence setup launchers in kiosk mode.</li>
+<li>Remove &quot;This plugin is disabled&quot; barrier</li>
+<li>This improves the user experience for HTML5 Youtube videos:
+They &quot;silently&quot; attempt to load flash first, which was not so silent
+with this barrier in place. (closes: #8312)</li>
+<li>Disable NoScript&#39;s HTML5 media click-to-play barrier (closes: #8386)</li>
+<li>Fix a New Identity hang and/or crash condition (closes: #6386)</li>
+<li>Fix crash with Drag + Drop on Windows (closes: #8324)</li>
 </ul></li>
-<li><p>Bugfixes</p>
+<li><p>Torbutton changes:</p>
 
 <ul>
-<li>Disable IPv6 on all network interfaces. This is a workaround for the IPv6 link-local multicast leak that was recently discovered.</li>
-<li>Tails may previously have been able to list GPT partitions labelled &quot;TailsData&quot; on hard drives (!) as valid persistence volumes... this is now fixed.</li>
-<li>Fix SCIM in the autostarted web browser.</li>
-<li>Talk of DVD, not of CD, in the shutdown messages.</li>
-<li>Make tordate work in bridge mode with an incorrect clock.</li>
-</ul></li>
-<li><p>Iceweasel</p>
-
-<ul>
-<li>Update iceweasel to 10.0.12esr-1+tails1.</li>
-<li>Set the homepage to the news section on the Tails website.</li>
-<li>Hide the iceweasel add-on bar by default.</li>
-<li>Don&#39;t hide the AdBlock-Plus button in the add-on bar anymore.</li>
-<li>Don&#39;t install xul-ext-monkeysphere anymore.</li>
-</ul></li>
-<li><p>Localization</p>
-
-<ul>
-<li>tails-greeter: add German translation, update Portuguese (Brasil) and Russian ones.</li>
-<li>tails-persistence-setup: update French, German and Italian translations.</li>
+<li>Fix Drag+Drop crash by using a new TBB drag observer (closes: #8324)</li>
+<li>Fix XML/E4X errors with Cookie Protections (closes: #6202)</li>
+<li>Don&#39;t clear cookies at shutdown if user wants disk history (closes: #8423)</li>
+<li>Leave IndexedDB and Offline Storage disabled. (closes: #8382)</li>
+<li>Clear DOM localStorage on New Identity. (closes: #8422)</li>
+<li>Don&#39;t strip &quot;third party&quot; HTTP auth from favicons (closes: #8335)</li>
+<li>Localize the &quot;Spoof english&quot; button strings (closes: #5183)</li>
+<li>Ask user for confirmation before enabling plugins (closes: #8313)</li>
+<li>Emit private browsing session clearing event on &quot;New Identity&quot;</li>
 </ul></li>
 </ul>
 
-<p>Plus the usual bunch of bug reports and minor improvements.</p>
+<p><strong>Tor Browser Bundle (2.4.11-alpha-1)</strong></p>
 
-<p>See the <a href="http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.16">online changelog</a> for technical details.</p>
+<ul>
+<li>Update Firefox to 17.0.4esr</li>
+<li>Update Tor to 0.2.4.11-alpha</li>
+<li>Update NoScript to 2.6.5.8</li>
+<li>Update HTTPS Everywhere to 4.0development.6</li>
+<li>Update PDF.js to 0.7.236</li>
+<li>Fix non-English language bundles to have the correct branding (closes: #8302)</li>
+<li><p>Firefox patch changes:</p>
 
-<p><strong>Want to try it or upgrade?</strong></p>
+<ul>
+<li>Remove &quot;This plugin is disabled&quot; barrier</li>
+<li>This improves the user experience for HTML5 Youtube videos:
+They &quot;silently&quot; attempt to load flash first, which was not so silent
+with this barrier in place. (closes: #8312)</li>
+<li>Disable NoScript&#39;s HTML5 media click-to-play barrier (closes: #8386)</li>
+<li>Fix a New Identity hang and/or crash condition (closes: #6386)</li>
+<li>Fix crash with Drag + Drop on Windows (closes: #8324)</li>
+</ul></li>
+<li><p>Torbutton changes:</p>
 
-<p>See the <a href="https://tails.boum.org/getting_started/">Getting started</a> page.</p>
+<ul>
+<li>Fix Drag+Drop crash by using a new TBB drag observer (closes: #8324)</li>
+<li>Fix XML/E4X errors with Cookie Protections (closes: #6202)</li>
+<li>Don&#39;t clear cookies at shutdown if user wants disk history (closes: #8423)</li>
+<li>Leave IndexedDB and Offline Storage disabled. (closes: #8382)</li>
+<li>Clear DOM localStorage on New Identity. (closes: #8422)</li>
+<li>Don&#39;t strip &quot;third party&quot; HTTP auth from favicons (closes: #8335)</li>
+<li>Localize the &quot;Spoof english&quot; button strings (closes: #5183)</li>
+<li>Ask user for confirmation before enabling plugins (closes: #8313)</li>
+<li>Emit private browsing session clearing event on &quot;New Identity&quot;</li>
+</ul></li>
+</ul>
 
-<p>As no software is ever perfect, we maintain a list of <a href="https://tails.boum.org/support/known_issues/">problems that affects the last release of Tails</a>.</p>
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/join-us-tor-project-boston-hack-day-event-march-20-2013-hosted-boston-universitys-department-co">JOIN US - Tor Project Boston Hack Day Event - March 20, 2013 - Hosted by Boston University&#39;s Department of Computer Science</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">kelley</a> under
+              
+                <a class="post-category post-category-js" href="#">boston hackfest</a>
+              
+                <a class="post-category post-category-js" href="#">hackfest</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              07 Mar 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Join us for a unique public hack day event where you will have an opportunity to work in a highly collaborative, interactive environment with Tor&#39;s team of technology and research experts. Topics for the day will be determined by the attendees; so bring your ideas, questions, projects and technical expertise with you! Continental breakfast will be provided.</p>
 
-<p><strong>What&#39;s coming up?</strong></p>
+<p>Wednesday, March 20, 2012
+9 am until 5 pm
+BU Computer Science Dept, 111 Cummington Mall, Boston, MA - ROOM 148
+Directions: http://www.bu.edu/cs/about/directions-and-contact/</p>
 
-<p>See the <a href="https://mailman.boum.org/pipermail/tails-dev/2013-January/002427.html">release schedule for Tails 0.17</a>.</p>
+<p>Hosted by Boston University&#39;s Department of Computer Science</p>
 
-<p>Have a look to our <a href="https://tails.boum.org/contribute/roadmap/">roadmap</a> to see where we are heading to.</p>
-
-<p>Would you want to help? As explained in our <a href="https://tails.boum.org/contribute/">&quot;how to contribute&quot; documentation</a>, there are many ways <strong>you</strong> can contribute to Tails. If you want to help, come talk to us!</p>
+<p>For more information or questions contact, execdir@torproject.org.</p>
 
         </div>
       </section>
@@ -301,7 +282,7 @@ TBB</li>
       
         <a href="/blog/page38" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 39 of 134</span>
+      <span class="page_number ">Page: 39 of 137</span>
       
         <a href="/blog/page40" class="next">Next</a>
       

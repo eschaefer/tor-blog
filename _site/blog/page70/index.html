@@ -53,293 +53,316 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/vidalia-0214-out">Vidalia 0.2.14 is out!</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-and-beast-ssl-attack">Tor and the BEAST SSL attack</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">chiiph</a> under
+              By <a class="post-author" href="#">nickm</a> under
               
-                <a class="post-category post-category-js" href="#">autoport</a>
+                <a class="post-category post-category-js" href="#">internals</a>
+              
+                <a class="post-category post-category-js" href="#">security</a>
+              
+                <a class="post-category post-category-js" href="#">ssl</a>
+               |
+              24 Sep 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Today, Juliano Rizzo and Thai Duong presented a new attack on TLS Ekoparty security conference in Buenos Aires. Let&#39;s talk about how it works, and how it relates to the Tor protocol.</p>
+
+<p>Short version: Don&#39;t panic. The Tor software itself is just fine, and the free-software browser vendors look like they&#39;re responding well and quickly. I&#39;ll be talking about why Tor is fine; I&#39;ll bet that the TBB folks will have more to say about browsers sometime soon.</p>
+
+<p>There is some discussion of the attack and responses to it out there already, written by <a href="http://www.schneier.com/blog/archives/2011/09/man-in-the-midd_4.html">seriously smart cryptographers</a> and <a href="http://www.imperialviolet.org/2011/09/23/chromeandbeast.html">high-test browser security people</a>. But I haven&#39;t seen anything out there yet that tries to explain what&#39;s going on for people who don&#39;t know TLS internals and CBC basics.</p>
+
+<p>So I&#39;ll do my best. This blog post also assumes that <em>I</em> understand the attack. Please bear with me if I&#39;m wrong about that.</p>
+
+<p>Thanks to the authors of the paper for letting me read it and show it to other Tor devs. Thanks also to Ralf-Philipp Weinmann for helping me figure the analysis out.</p>
+
+<h2>The attack</h2>
+
+<h3>How the attack works: Basic background</h3>
+
+<p>This writeup assumes that you know a little bit of computer stuff, and you know how xor works.</p>
+
+<p>Let&#39;s talk about block ciphers, for starters. A <a href="http://en.wikipedia.org/wiki/Block_cipher">block cipher</a> is a cryptographic tool that encrypts a small chunk of plaintext data into a same-sized chunk of encrypted data, based on a secret key.</p>
+
+<p>In practice, you want to encrypt more than just one chunk of data with your block cipher at a time. What do you do if you have a block cipher with a 16-byte block (like AES), when you need to encrypt a 256-byte message? When most folks first consider this problem, they say something like &quot;Just split the message into 16-byte chunks, and encrypt each one of those.&quot; That&#39;s an old idea (it&#39;s called ECB, or &quot; <a href="http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Electronic_codebook_.28ECB.29">electronic codebook</a>&quot;), but it has some serious problems. Most significantly, if the same 16-byte block appears multiple times in the plaintext, the ciphertext will also have identical blocks in the same position. The Wikipedia link above has a cute demonstration of this.</p>
+
+<p>Okay, so nobody reasonable uses ECB. Some people, though, do use a mode called CBC, or &quot; <a href="http://en.wikipedia.org/wiki/Block_cipher_modes_of_operation#Cipher-block_chaining_.28CBC.29">Cipher Block Chaining</a>.&quot; With CBC, when you want to encrypt a message, you start your ciphertext message with a single extra random block, or IV (&quot;initialization vector&quot;). Now, when you go to encrypt each plaintext block to get its ciphertext block, you first <a href="http://en.wikipedia.org/wiki/Xor">xor</a> the plaintext with the previous ciphertext. (So you xor the IV with the first plaintext block, encrypt that, and output it. Then you xor that ciphertext block with the second plaintext block, encrypt that, output it, and so on. The Wikipedia page has pretty good examples and illustrations here too.)</p>
+
+<p>TLS and its earlier incarnation, SSL, are the encryption protocols that many applications, including Tor, use to send streams of encrypted data. They use CBC mode for most of their block ciphers. Unfortunately, before TLS version 1.1, they made a bad mistake. Instead of using a new random IV for every TLS message they sent, they used the ciphertext of the last block of the last message as the IV for the next message.</p>
+
+<p>Here&#39;s why that&#39;s bad. The IV is not just supposed to be random-looking; it also needs to be something that an attacker cannot predict. If I know that you are going to use IV x for your next message, and I can trick you into sending a message that starts with a plaintext block of [(NOT x) xor y], then you will encrypt y for me.</p>
+
+<p>That doesn&#39;t sound too bad. But <a href="http://www.mail-archive.com/openssl-dev@openssl.org/msg10664.html">Wei Dai</a> and <a href="http://eprint.iacr.org/2004/111.pdf">Gregory V. Bard</a> both found ways to exploit this to learn whether a given ciphertext block corresponds to a given plaintext. The attacker makes the user encrypt C&#39; xor p, where p is the guessed plaintext and C&#39; is the ciphertext block right before where the attacker thinks that plaintext was. If the attacker guessed right, then the user&#39;s SSL implementation outputs the same ciphertext as it did when it first encrypted that block.</p>
+
+<p>And even <strong>that</strong> doesn&#39;t sound too bad, even in retrospect. In order to mount this attack, an adversary would need to be watching your internet connection, and be able to force you to start your next TLS record with a given string of his choice, and be able to guess something sensitive that you said earlier, and guess which part of your TLS stream might have corresponded to it.</p>
+
+<p>Nevertheless, crypto people implemented workarounds. Better safe than sorry! In version 1.1 of the TLS protocol, every record gets a fresh IV, so the attacker can&#39;t know the IV of the next message in advance. And OpenSSL implemented a fix where, whenever they&#39;re about to send a TLS record, they send an empty TLS record immediately before, and then send the record with the message in it. The empty TLS record is enough to make the CBC state change, effectively giving the real message a new IV that the attacker can&#39;t predict.</p>
+
+<p>These fixes haven&#39;t gotten very far in the web world, though. TLS 1.1 isn&#39;t widely implemented or deployed, even though the standard has been out since 2006. And
+OpenSSL&#39;s &quot;empty record&quot; trick turns out to break some non-conformant SSL implementations, so lots of folks turn it off. (The OpenSSL manual page for the option in question even says that &quot;it is usually safe&quot; to do so.)</p>
+
+<p>I suppose that, at the time, this seemed pretty reasonable. Guessing a plaintext is hard: there are something like 3.4 x 10^38 possible values. But as they say, attacks only get better.</p>
+
+<h3>How the attack works: What&#39;s new as of today</h3>
+
+<p>Juliano Rizzo and Thai Duong have two contributions, as I see it. (And please correct me if I&#39;m getting this wrong; I have not read the literature closely!) First, they came up with a scenario to implement a pretty clever variation of Dai&#39;s original attack.</p>
+
+<p>Here&#39;s a simplified version, not exactly as Rizzo and Duong present it. Let&#39;s suppose that, for some reason, the user has a secret (like a web cookie) that they send in every TLS record. And let&#39;s assume also that the attacker can trick the user into inserting any number of characters in their plaintext at the start of the record right before the secret. So the plaintext for every record is &quot;Evil | Secret&quot;, where Evil is what the attacker chooses, and Secret is the secret message. Finally, let&#39;s suppose that the attacker can make the user send as many records as he wants.</p>
+
+<p>The ability to decide where block boundaries fall turns out to be a big deal. Let&#39;s suppose that instead of filling up a full plaintext block with 16 bytes of Evil, the attacker only fills up 15 bytes... so the block will have 15 bytes the attacker controls, and one byte of the secret.</p>
+
+<p>Whoops! There are only 256 possible values for a single byte, so the attacker can guess each one in turn, and use the older guess-checking attack to see if he guessed right. And once the attacker knows the first byte, he starts sending records with 14 attacker-controlled bytes, one byte that he knows (because he made a bunch of guesses and used the older attack to confirm which was right), and one byte that he doesn&#39;t. Again, this block has only 256 possible values, and so guessing each one in turn is efficient.</p>
+
+<p>They then show how to extend this to cases where the attacker doesn&#39;t actually control the start of the block, but happens to know (or is able to guess) it, and make other extensions to the attack.</p>
+
+<p>The second neat facet of Duong and Rizzo&#39;s work is that they actually found some ways to make this attack work against web browsers. That&#39;s no mean feat! You need to find a way to trick a web client into sending requests where you control enough of the right parts of them to mount this attack, and you need to be able to do it repeatedly. It seems to have taken a lot of HTTP hackery, but it seems they managed to do it. There&#39;s more detailed information here at <a href="http://www.educatedguesswork.org/2011/09/security_impact_of_the_rizzodu.html">Eric Rescorla&#39;s blog</a>, and of course once Juliano and Thai have their paper out, there will be even more to goggle at. This is really clever stuff IMO.</p>
+
+<p>[Disclaimer: Again, I may have made mistakes above; if so, I will correct it when I wake up in the morning, or sooner. Please double-check me if you know this work better than I do.]</p>
+
+<h2>So, does this attack work on Tor?</h2>
+
+<p>Nope.</p>
+
+<p>Tor uses OpenSSL&#39;s &quot;empty fragment&quot; feature, which inserts a single empty TLS record before every record it sends. This effectively randomizes the IV of the actual records, like a low-budget TLS 1.1. So the attack is simply stopped.</p>
+
+<p>This feature has been in OpenSSL since 0.9.6d: see item 2 in <a href="http://www.openssl.org/%7Ebodo/tls-cbc.txt">Bodo Müller&#39;s good old CBC writeup</a> for full details on how it works. It makes our SSL incompatible with some standards-non-compliant TLS implementations... but we don&#39;t really care there, since all of the TLS implementations that connect to the Tor network are OpenSSL, or are compatible with it.</p>
+
+<p>Tor requires OpenSSL 0.9.7 or later, and has since 0.2.0.10-alpha. Amusingly, we were considering dropping our use of the empty fragment feature as &quot;probably unnecessary&quot; in 2008, but we never got around to it. I sure don&#39;t think we&#39;ll be doing that now!</p>
+
+<p>Now, it&#39;s possible that clients we didn&#39;t write might be using other TLS implementations, but the opportunity for plaintext injection on client-&gt;relay links is much lower than on relay-&gt;relay links; see below. As far as I know, there are no Tor server implementations compatible with the current network other than ours.</p>
+
+<p>Also, this only goes for the Tor software itself. Applications that use TLS need to watch out. Please install patches, and look for new releases if any are coming out soon.</p>
+
+<h2>But what if...</h2>
+
+<h3>Okay, but would it work if we didn&#39;t use OpenSSL&#39;s empty-fragment trick?</h3>
+
+<p>For fun, what would our situation be if we weren&#39;t using openssl&#39;s empty fragment trick?</p>
+
+<p>I&#39;m going to diverge into Tor protocol geekery here. <strong>All of the next several sections are probably irrelevant</strong> , since the OpenSSL trick above protects Tor&#39;s TLS usage already. I&#39;m just into analyzing stuff sometimes... and at the time I originally wrote this analysis, we didn&#39;t have confirmation about whether the OpenSSL empty-record trick would help or not.</p>
+
+<p>This part will probably be a little harder to follow, and will require some knowledge of Tor internals. You can find all of our documents and specifications online at our handy <a href="https://www.torproject.org/docs/documentation.html#DesignDoc">documentation page</a> if you&#39;ve got some free time and you want to come up to speed.</p>
+
+<p>The attack scenario that makes sense is for an attacker to be trying to decrypt stuff sent from one Tor node to another, or between a Tor node and a client. The attacker is not one of the parties on the TLS link, obviously: if they were, they&#39;d already know the plaintext and would not need to decrypt it.</p>
+
+<p>First, let&#39;s make some assumptions to make things as easy for the attacker as possible. Let&#39;s assume that the attacker can trivially inject chosen plaintext, and can have the TLS records carve up the plaintext stream anywhere he wants.</p>
+
+<p>(Are those assumptions reasonable? Well, it&#39;s easy to inject plaintext on a relay-&gt;relay link: sending a node an EXTEND cell will make it send any CREATE cell body that you choose, and if you have built a circuit through a node, you can cause a RELAY cell on that node to have nearly any body you want, since the body is encrypted/decrypted in counter mode. I don&#39;t see an obvious way to make a node send a chosen plaintext to a client or make a client send a chosen plaintext to a node, but let&#39;s pretend that it&#39;s easy to do that too.</p>
+
+<p>The second assumption, about how it&#39;s easy to make the boundaries of TLS records fall wherever you want, is likely to be more contentious; see &quot;More challenges for the attacker&quot; below.)</p>
+
+<p>Also let&#39;s assume that on the targeted link, traffic for only one client is sent. An active attacker might arrange this through a trickle attack or something.</p>
+
+<p>I am assuming that the attacker is observing ciphertext at a targeted node or client, but not at two targeted places that allow him to see the same traffic enter and leave the network: by our threat model, any attacker who can observe two points on a circuit is assumed to win via traffic correlation attacks.</p>
+
+<p>I am going to argue that even then, the earlier attack doesn&#39;t get the attacker anything, and the preconditions for the Duong/Rizzo attack don&#39;t exist.</p>
+
+<h3>CLAIM 1: The earlier (Dai/Bard) attacks don&#39;t get the attacker anything against the Tor protocol</h3>
+
+<p>There are no interesting guessable plaintexts sent by a well-behaved client or node[*] on a Tor TLS link: all are either random, nearly random, or boring from an attacker&#39;s POV.</p>
+
+<p>[*] What if a node or client is hostile? Then it might as well just publish its plaintext straight to the attacker.</p>
+
+<p>Argument: CREATE cell bodies contain hybrid-encrypted stuff that (except for its first bit) should be indistinguishable from random bits, or pretty close to indistinguishable from random bits. CREATED cell bodies have a DH public key and a hash: also close to indistinguishable from random. CREATE_FAST cell bodies *are* randomly generated, and CREATED_FAST cell bodies have a random value and a hash.</p>
+
+<p>RELAY and RELAY_EARLY cell bodies are encrypted with at least one layer of AES_CTR, so they shouldn&#39;t be distinguishable from random bits either.</p>
+
+<p>DESTROY, PADDING, NETINFO, and VERSIONS cells do not have interesting bodies. DESTROY and PADDING bodies are either 0s or random bytes, and NETINFO and VERSIONS provide only trivial information that you can learn just by connecting to a node (the time of day, its addresses, and which versions of the Tor link protocol it speaks).</p>
+
+<p>That&#39;s cell bodies. What about their headers? A Tor cell&#39;s header has a command and a circuit ID that take up only 3 bytes. Learning the command doesn&#39;t tell you anything you couldn&#39;t notice by observing the encrypted link in the first place and doing a little traffic analysis. The link-local 2-byte circuit ID is random, and not
+interesting per se, but possibly interesting if you could use it to demultiplex traffic sent over multiple circuits. I&#39;ll discuss that more below at the end of the next section.</p>
+
+<h3>CLAIM 2: You can&#39;t do the Duong/Rizzo attack against the Tor protocol either</h3>
+
+<p>The attack requires that some piece of sensitive information M that you want to guess be re-sent repeatedly after the attacker&#39;s chosen plaintext. That is, it isn&#39;t enough to get the target to send one TLS record containing (evil | M) -- you need to get it to send a bunch of (evil | M) records with the same M to learn much about M.</p>
+
+<p>But in Tor&#39;s link protocol, nothing sensitive is sent more than once. Tor does not retry the same CREATE or CREATE_FAST cells, or re-send CREATED or CREATED_FAST cells. RELAY cells are encrypted with at least one layer of AES_CTR, and no RELAY cell body is sent more than once. (The same applies to RELAY_EARLY.)</p>
+
+<p>PADDING cells have no interesting content to learn. VERSIONS and NETINFO cells are sent only at the start of the TLS connection (and their contents are boring too).</p>
+
+<p>What about the cell headers? They contain a command and a circuit ID. If a node is working normally, you can already predict that most of the commands will be RELAY. You can&#39;t predict that any given circuit&#39;s cells will be sent reliably after yours, so you can&#39;t be sure that you&#39;ll see the same circuitID over and over... unless if you&#39;ve done a trickle attack, in which case you already know that all the cells you&#39;re seeing are coming from the same place; or if you&#39;ve lucked out and one circuit is way louder than all the others, but you would already learn that from watching the node&#39;s network. So I think that anything that is sent frequently enough to be decryptable with this method is not in fact worth decrypting. But see the next section.</p>
+
+<h3>Hey, what if I&#39;m wrong about those cell headers?</h3>
+
+<p>Let&#39;s pretend that I flubbed the analyis above, and that the attacker can read the command and circuitID for every cell on a link. All this allows the attacker to do is to demultiplex the circuits on the link, and better separate the traffic pattern flows that the link is multiplexing for different clients... but the attacker can&#39;t really
+use this info unless the attacker can correlate it with a flow somewhere else. This requires that the attacker be watching the same traffic at two points. But if the attacker can do that, the attacker can already (we assume) do a passive correlation attack and win.</p>
+
+<h3>And what if I&#39;m wrong entirely?</h3>
+
+<p>Now let&#39;s imagine that I am totally wrong, and TLS is completely broken, providing no confidentiality whatsoever? (Assume that it&#39;s still providing authenticity.)</p>
+
+<p>Of course, this is a <em>really unlikely scenario</em>, but it&#39;s neat to speculate.</p>
+
+<p>The attacker can remove at most one layer of encryption from RELAY cells in this case, because every hop of a circuit (except sometimes the first) is created with a one-way-authenticated Diffie-Hellman handshake. (The first hop may be created with a CREATE_FAST handshake, which is not remotely secure against an attacker who can see the plaintext inside the TLS stream.) Anonymized RELAY traffic is encrypted in AES_CTR mode with keys based on at least one CREATE handshake, so the attacker can&#39;t beat it. Non-anonymized RELAY traffic (that is, tunneled directory connections) don&#39;t contain sensitive requests or information.</p>
+
+<p>So if the attacker can use this attack to completely decrypt TLS at a single hop on a Tor circuit, they still don&#39;t win. (All they can do is demultiplex circuits, about which see above.) And for them to do this attack at multiple points on the circuit, they would have to observe those points, in which case they&#39;re already winning according to our threat model.</p>
+
+<h3>More challenges for the attacker</h3>
+
+<p>It&#39;s actually even a little harder to do this attack against Tor than I&#39;ve suggested.</p>
+
+<p>First, consider bandwidth-shaping: If a node or a link is near its bandwidth limit, it will split cells in order to stay under that limit.</p>
+
+<p>Also, on a busy node, you can&#39;t really send a cell and expect it to get decrypted and put into the next output record on a given link: there are likely to be other circuits queueing other cells for that link, and by the time your cell is sent, it&#39;s likely that they&#39;ll have sent stuff too. You can get increased priority by making a very quiet
+circuit, though.</p>
+
+<p>Finally, I don&#39;t actually think it&#39;s possible to cause chosen plaintext to appear on a client-&gt;server link.</p>
+
+<h3>Recommendations</h3>
+
+<p>We dodged an interesting bullet on this one: part of it was luck, and part of it was a redundant protocol design. Nevertheless, let&#39;s &quot;close the barn doors,&quot; even though the horse is still tied up, chained down, and probably sedated too.</p>
+
+<p>First, as soon as OpenSSL 1.0.1 is out and stable, we should strongly suggest that people move to it. (It provides TLS 1.1.) We should probably build all of our packages to use it. But sadly, we&#39;ll have to think about protocol fingerprinting issues there, in case nobody else jumps onto the TLS 1.1 bandwagon with us. :/</p>
+
+<p>We should include recommended use of the OpenSSL empty-record trick in our spec as a requirement or a strong recommendation. I&#39;ll add a note to that effect.</p>
+
+<p>In future designs of replacements for the current RELAY and CREATE format, we should see if there are ways to prevent them from being used for chosen plaintext injection. This might not be the last attack of its kind, after all.</p>
+
+<p>Perhaps we should put an upper bound on the circuit priority algorithm if we haven&#39;t already, so that no circuit can achieve more than a given amount of priority for being quiet, and so that you can&#39;t reliably know that your cell will be sent next on a link. But that&#39;s pretty farfetched.</p>
+
+<h3>And in closing</h3>
+
+<p><a href="http://www.google.com/search?q=longcat&amp;hl=en&amp;prmd=imvns&amp;tbm=isch">longpost is loooooooong</a></p>
+
+<p>Thanks to everybody who followed along with me so far, thanks to Juliano and Thai for letting me read their paper ahead of time, and thanks to everybody who helped me write this up. And thanks especially to my lovely spouse for proofreading.</p>
+
+<p>Now, it&#39;s a Friday evening, and if you&#39;ll excuse me, I think I&#39;m going to go off the &#39;nets for a little while.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/academic-postdoc-phd-and-masters-positions-available-tor-related-research">Academic (Postdoc, PhD, and Master&#39;s) positions available for Tor-related research</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">ian</a> under
+              
+                <a class="post-category post-category-js" href="#">academia</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
+               |
+              24 Sep 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>As more anonymous communications and PETs researchers join the academic ranks, there is an increasing availability of Tor-related research positions at the postdoctoral, PhD, and Master&#39;s levels. (Note: we prefer the term &quot;training of Highly Qualified Personnel&quot; to &quot;pyramid scheme&quot;.)</p>
+
+<p>Steven Murdoch (at Cambridge) and I (at Waterloo) each have some such positions available. See information and links below.</p>
+
+<ul>
+<li>Ian</li>
+</ul>
+
+<dl>
+<dt><strong>PhD position at Cambridge</strong></dt>
+<dd>Funding is available for a PhD student to work at the University of Cambridge Computer Laboratory, on the topic of privacy enhancing technologies and anonymous communications, starting in April 2012.
+<p>The sponsorship is jointly provided by Microsoft Research Cambridge and under the Dorothy Hodgkin Postgraduate Awards scheme. As such, applicants must be nationals from India, China, Hong Kong, South Africa, Brazil, Russia or <a href="http://www.oecd.org/dataoecd/32/40/43540882.pdf" rel="nofollow">countries in the developing world</a> as defined by the Development Assistance Committee of the OECD.</p>
+<p>The application deadline is soon (28 October 2011), so please circulate this advertisement to anyone who you think might find it of interest.</p>
+<p>Further details can be found on the <a href="http://www.admin.cam.ac.uk/offices/hr/jobs/vacancies.cgi?job=8848" rel="nofollow">University website</a>, and enquiries should be sent to <a href="mailto:Steven.Murdoch@cl.cam.ac.uk" rel="nofollow">&lt;Steven.Murdoch@cl.cam.ac.uk&gt;</a>.</p>
+</dd>
+<dt><strong>PhD and Master's positions at Waterloo</strong></dt>
+<dd>One of the particular focuses of the Cryptography, Security, and Privacy (CrySP) group at the University of Waterloo is research into privacy-enhancing technologies and anonymous communication networks. We have much ongoing work on Tor, with an eye to improving its security, privacy, scalability, and performance.
+<p>Students interested in applying for PhD and Master's research positions in the CrySP group should email Ian Goldberg <a href="mailto:iang@cs.uwaterloo.ca" rel="nofollow">&lt;iang@cs.uwaterloo.ca&gt;</a> with "Tor research position" in the subject line.</p>
+</dd>
+<dt><strong>Postdoc position at Waterloo</strong></dt>
+<dd>The Cryptography, Security, and Privacy (CrySP) research group at the University of Waterloo is seeking applications for a postdoctoral research position in the field of privacy-enhancing technologies, preferably on the topic of privacy-preserving communications systems. This position will be held in the Cheriton School of Computer Science.
+<p>Applicants must hold a PhD in a related field, and should have a proven research record, as demonstrated by publications in top security and privacy venues (such as Oakland, CCS, USENIX Security, and NDSS) and/or top venues specific to privacy-enhancing technologies (such as PETS).</p>
+<p>The start date of the position is negotiable. The position may be for one or two years.</p>
+<p>Applicants should submit a CV, a research plan, two or three selected papers, and the names and contact information of three references.</p>
+<p>For further information about the position, or to apply, please send email to Ian Goldberg <a href="mailto:iang@cs.uwaterloo.ca" rel="nofollow">&lt;iang@cs.uwaterloo.ca&gt;</a> with "Postdoctoral position" in the subject line. Applications may be considered as they arrive.</p>
+<p>See <a href="http://crysp.uwaterloo.ca/prospective/postdoc/" rel="nofollow">http://crysp.uwaterloo.ca/prospective/postdoc/</a> for more information.</p>
+</dd>
+</dl>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/gsoc-2011-tails-greeter-boot-menu-tails">GSoC 2011: tails-greeter - boot menu for TAILS</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">max</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymous operating systems</a>
+              
+                <a class="post-category post-category-js" href="#">gsoc 2011</a>
+              
+                <a class="post-category post-category-js" href="#">tails</a>
+               |
+              16 Sep 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>This is a guest post from our 2011 Google Summer of Code student, Max:</p>
+
+<p>Throughout the summer I&#39;ve been working on &#39;tails-greeter&#39; ( <a href="https://tails.boum.org/todo/TailsGreeter/" title="https://tails.boum.org/todo/TailsGreeter/">https://tails.boum.org/todo/TailsGreeter/</a>) project for TAILS ( <a href="https://tails.boum.org" title="https://tails.boum.org">https://tails.boum.org</a>) live-cd. Essentially it&#39;s an implementation of boot-menu ( <a href="https://tails.boum.org/todo/boot_menu/" title="https://tails.boum.org/todo/boot\_menu/">https://tails.boum.org/todo/boot_menu/</a>) in a form of GDM&#39;s greeter (that little program which asks your login and password before you see your desktop).</p>
+
+<p>The initial proposal ( <a href="http://www.google-melange.com/gsoc/proposal/review/google/gsoc2011/mx/2001" title="http://www.google-melange.com/gsoc/proposal/review/google/gsoc2011/mx/2001">http://www.google-melange.com/gsoc/proposal/review/google/gsoc2011/mx/20...</a>) was adjusted as the project developed but major ideas remained the same: to implement an extensible boot menu which is easy to include into live-cd and maintain.</p>
+
+<p>This posed several challenges: limit on dependencies I can use (has to be in Debian Squeeze or in backports), mastering Debian packaging, working with git (which sometimes does things in... non-obvious ways). Last but not least, tails-greeter is actually only 3rd consumer of GDM&#39;s greeter API besides GDM&#39;s own greeter and gdm-commmunity-greeter ( <a href="https://launchpad.net/gdm-commmunity-greeter" title="https://launchpad.net/gdm-commmunity-greeter">https://launchpad.net/gdm-commmunity-greeter</a>). Because of that many things about the interaction with GDM are not very well documented.</p>
+
+<p>Nevertheless, with the help from community, tails-greeter is ready to perform its duties: request language &amp; layout information, set password for user and perform login. The project is rather easy to understand (581 source lines of code according to sloccount) so it can (and probably will) be extended in the future to request more information to adapt TAILS for user needs before login.</p>
+
+<p>There are several things which could be improved, both user-visible (data representation) and internal (login procedure). I plan to stay in touch with the community to help to make tails-greeter ready for the inclusion into TAILS.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/august-2011-progress-report">August 2011 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">anonymity research</a>
               
                 <a class="post-category post-category-js" href="#">bug fixes</a>
               
                 <a class="post-category post-category-js" href="#">feature enhancements</a>
               
-                <a class="post-category post-category-js" href="#">new features</a>
+                <a class="post-category post-category-js" href="#">obfsproxy</a>
               
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+                <a class="post-category post-category-js" href="#">progress report</a>
               
-                <a class="post-category post-category-js" href="#">vidalia</a>
+                <a class="post-category post-category-js" href="#">stable release</a>
               
-                <a class="post-category post-category-js" href="#">vidalia release</a>
+                <a class="post-category post-category-js" href="#">tor browser bundles</a>
                |
-              28 Aug 2011
+              15 Sep 2011
           </p>
         </header>
         <div class="post-description">
-          <p>Hi everybody,</p>
+          <p>The August 2011 Progress Report is here, <a href="https://blog.torproject.org/files/2011-August-Monthly-Report.pdf" title="https://blog.torproject.org/files/2011-August-Monthly-Report.pdf">https://blog.torproject.org/files/2011-August-Monthly-Report.pdf</a>. Highlights include a new Tor stable branch, many package updates, working UPnP in MS Windows, and many other updates, bug fixes, and research results.</p>
 
-<p>I&#39;m happy to announce that Vidalia-0.2.14 is out, and yes 0.2.13 is too
-(the changelog will clarify why two releases).</p>
-
-<p>If you find any bugs or have ideas on how to improve Vidalia, please
-remember to go to <a href="https://trac.torproject.org/" title="https://trac.torproject.org/">https://trac.torproject.org/</a> and file a ticket for it!</p>
-
-<p>You can find the tarball for this release here:
- <a href="https://archive.torproject.org/tor-package-archive/vidalia/vidalia-0.2.14.tar.gz" title="https://archive.torproject.org/tor-package-archive/vidalia/vidalia-0.2.14.tar.gz">https://archive.torproject.org/tor-package-archive/vidalia/vidalia-0.2.1...</a>
- <a href="https://archive.torproject.org/tor-package-archive/vidalia/vidalia-0.2.14.tar.gz.asc" title="https://archive.torproject.org/tor-package-archive/vidalia/vidalia-0.2.14.tar.gz.asc">https://archive.torproject.org/tor-package-archive/vidalia/vidalia-0.2.1...</a></p>
-
-<p>Here&#39;s what&#39;s new:</p>
-
-<p><strong>0.2.14 26-Aug-2011</strong></p>
-
-<ul>
-<li>Make the AutoPort setting default to false, so that it doesn&#39;t
-break backwards compatibility for people that aren&#39;t using Vidalia
-inside Tor Browser Bundle.</li>
-</ul>
-
-<p><strong>0.2.13 10-Aug-2011</strong></p>
-
-<ul>
-<li>Add a way to bootstrap Tor&#39;s torrc file (copy the torrc to a given
-directory before Vidalia starts) so that packages such as
-Bridge-by-default portable bundles for OSX don&#39;t violate the directory
-structure of the operating system. Fixes bug 2821.</li>
-<li>Add the proper CA Certificates so that the &quot;Find Bridges&quot; button works
-again. Fixes bug 2835.</li>
-<li>Update the useful links help page. Fixes bug 2809.</li>
-<li>Reintegrate Breakpad, and make it available in platforms other than
-Windows. Resolves bug 2105.</li>
-<li>Fix bandwidth assigned to relays on the Network Map. A lot of relays are
-displaying an erroneous bandwidth and since they are ordered by that
-value in the Network Map, it leads to confusion. Vidalia now specifies
-the bandwidth as the minimum of the three possible values (burst,
-average and observed). Fixes bug 2744.</li>
-<li>Fix layouts in the configuration panel to make them look seamlessly
-across all platforms.</li>
-<li>Add -no-remote parameter to Firefox so it allows another instance of
-non-TBB Firefox. Fixes bug 2254.</li>
-<li>Add the possibility of changing the torrc path while Tor hasn&#39;t
-started. Fixes bug 3109.</li>
-<li>Make the fact that bridges don&#39;t need a DirPort setting more clear by
-removing the content of the field when disabling it. Fixes bug 3119.</li>
-<li>Improve command line parameter handling. Resolves bug 2965.</li>
-<li>Fix layout in BandwidthGraph to display labels correctly in every
-language. Fixes bug 2500.</li>
-<li>Updates README.debs to reflect the change in the packaging now that
-Vidalia uses Git. Fixes bug 3668.</li>
-<li>Add a way to use the autoconfiguration for ControlPort and SocksPort.
-Tor can now autoconfigure Control and Socks Ports when the default ones
-are in use. This makes it easier to run several different instances of
-TBB at the same time. Resolves bug 3077.</li>
-<li>Provide the necessary fields (Control password, ControlPort) to let
-TorButton NEWNYM. Vidalia provides these in env vars when it launches
-the Firefox instance. Resolves bug 2659.</li>
-</ul>
+<p>An archive of published monthly reports is available at <a href="https://archive.torproject.org/monthly-report-archive/" title="https://archive.torproject.org/monthly-report-archive/">https://archive.torproject.org/monthly-report-archive/</a>. This includes pdf and plaintext reports for 2011.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-firefox-6">New Tor Browser Bundles with Firefox 6</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">firefox 6</a>
-              
-                <a class="post-category post-category-js" href="#">firefox updates</a>
-              
-                <a class="post-category post-category-js" href="#">package updates</a>
-              
-                <a class="post-category post-category-js" href="#">security fixes</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-               |
-              21 Aug 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>We&#39;ve updated the experimental Tor Browser Bundles to Firefox 6 and all users are <strong>strongly</strong> encouraged to upgrade, as Firefox 6 fixes some serious security issues present in Firefox 5.</p>
-
-<ul>
-<li><a href="https://archive.torproject.org/tor-package-archive/torbrowser/tor-browser-2.2.31-1-alpha_en-US.exe">Windows Tor Browser Bundle with Firefox 6</a> ( <a href="https://www.torproject.org/dist/torbrowser/tor-browser-2.2.31-1-alpha_en-US.exe.asc">sig</a>)</li>
-<li><a href="https://archive.torproject.org/tor-package-archive/torbrowser/osx/TorBrowser-2.2.31-1-alpha-osx-x86_64-en-US.zip">64-bit OS X Tor Browser Bundle with Firefox 6</a> ( <a href="https://archive.torproject.org/tor-package-archive//torbrowser/osx/TorBrowser-2.2.31-1-alpha-osx-x86_64-en-US.zip.asc">sig</a>)</li>
-<li><a href="https://archive.torproject.org/tor-package-archive//torbrowser/osx/TorBrowser-2.2.31-1-alpha-osx-i386-en-US.zip">32-bit OS X Tor Browser Bundle with Firefox 6</a> ( <a href="https://archive.torproject.org/tor-package-archive//torbrowser/osx/TorBrowser-2.2.31-1-alpha-osx-i386-en-US.zip.asc">sig</a>)</li>
-<li><a href="https://archive.torproject.org/tor-package-archive/torbrowser/linux/tor-browser-gnu-linux-i686-2.2.31-1-alpha-en-US.tar.gz">32-bit GNU/Linux Tor Browser Bundle with Firefox 6</a> ( <a href="https://archive.torproject.org/tor-package-archive/torbrowser/linux/tor-browser-gnu-linux-i686-2.2.31-1-alpha-en-US.tar.gz.asc">sig</a>)</li>
-<li><a href="https://archive.torproject.org/tor-package-archive/torbrowser/linux/tor-browser-gnu-linux-x86_64-2.2.31-2-alpha-en-US.tar.gz">64-bit GNU/Linux Tor Browser Bundle with Firefox 6</a> ( <a href="https://archive.torproject.org/tor-package-archive/torbrowser/linux/tor-browser-gnu-linux-x86_64-2.2.31-2-alpha-en-US.tar.gz.asc">sig</a>)</li>
-</ul>
-
-<p>The 64bit GNU/Linux version of the bundle is now available again.</p>
-
-<p><strong>Tor Browser Bundle (2.2.31-1) alpha; suite=all</strong></p>
-
-<ul>
-<li>Update Tor to 0.2.2.31-rc</li>
-<li>Update Firefox to 6.0</li>
-<li>Update Libevent to 2.0.13-stable</li>
-<li>Update NoScript to 2.1.2.6</li>
-<li>Update HTTPS Everywhere to 1.0.0development.5</li>
-<li>Remove BetterPrivacy until we can figure out how to make it safe in all bundles (see #3597)</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-firefox-36-tor-browser-bundles">New Firefox 3.6 Tor Browser Bundles</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">rransom</a> under
-              
-                <a class="post-category post-category-js" href="#">firefox updates</a>
-              
-                <a class="post-category post-category-js" href="#">package updates</a>
-              
-                <a class="post-category post-category-js" href="#">security fixes</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-               |
-              21 Aug 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>The stable Tor Browser Bundle for Windows and the beta Firefox 3.6 Tor Browser Bundles for Linux and OS X have been updated to Firefox 3.6.20.</p>
-
-<p>We are currently building new versions of the experimental Tor Browser Bundles, this time containing Firefox 6; we will announce them when they are ready. Firefox 5 and the experimental Firefox 5 TBBs are no longer safe to use.</p>
-
-<p><a href="https://www.torproject.org/download/download" title="https://www.torproject.org/download/download">https://www.torproject.org/download/download</a></p>
-
-<p><strong>Windows bundle</strong>
-<strong>1.3.27: Released 2011-08-19</strong></p>
-
-<ul>
-<li>Update Firefox to 3.6.20</li>
-<li>Update Libevent to 2.0.13-stable</li>
-<li>Update HTTPS-Everywhere to 1.0.0development.5</li>
-</ul>
-
-<p><strong>OS X bundle</strong>
-<strong>1.0.23: Released 2011-08-19</strong></p>
-
-<ul>
-<li>Update Tor to 0.2.2.31-rc</li>
-<li>Update Firefox to 3.6.20</li>
-<li>Update Libevent to 2.0.13-stable</li>
-<li>Update NoScript to 2.1.2.6</li>
-<li>Update HTTPS-Everywhere to 1.0.0development.5</li>
-<li>Remove BetterPrivacy until we can figure out how to make it safe in all bundles (see <a href="https://trac.torproject.org/projects/tor/ticket/3597">#3597</a>)</li>
-</ul>
-
-<p><strong>Linux bundle</strong>
-<strong>1.1.13: Released 2011-08-19</strong></p>
-
-<ul>
-<li>Update Tor to 0.2.2.31-rc</li>
-<li>Update Firefox to 3.6.20</li>
-<li>Update Libevent to 2.0.13-stable</li>
-<li>Update NoScript to 2.1.2.6</li>
-<li>Update HTTPS-Everywhere to 1.0.0development.5</li>
-<li>Remove BetterPrivacy until we can figure out how to make it safe in all bundles (see <a href="https://trac.torproject.org/projects/tor/ticket/3597">#3597</a>)</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/research-problem-better-guard-rotation-parameters">Research problem: better guard rotation parameters</a></h2>
+          <h2 class="post-title"> <a href="/blog/iran-blocks-tor-tor-releases-same-day-fix">Iran blocks Tor; Tor releases same-day fix</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">arma</a> under
               
-                <a class="post-category post-category-js" href="#">anonymity</a>
+                <a class="post-category post-category-js" href="#">internet censorship</a>
               
-                <a class="post-category post-category-js" href="#">anonymity features</a>
-              
-                <a class="post-category post-category-js" href="#">attackers</a>
-              
-                <a class="post-category post-category-js" href="#">entry guards</a>
-              
-                <a class="post-category post-category-js" href="#">guard relays</a>
-              
-                <a class="post-category post-category-js" href="#">performance</a>
-              
-                <a class="post-category post-category-js" href="#">protecting users</a>
-              
-                <a class="post-category post-category-js" href="#">research</a>
+                <a class="post-category post-category-js" href="#">iran</a>
                |
-              20 Aug 2011
+              14 Sep 2011
           </p>
         </header>
         <div class="post-description">
-          <p>Tor&#39;s <a href="https://www.torproject.org/docs/faq#EntryGuards">entry guard design</a> protects users in a variety of ways.</p>
+          <p><strong>The short version: Tor relays and bridges should upgrade to Tor 0.2.2.33 or Tor 0.2.3.4-alpha so users in Iran can reach them again.</strong></p>
 
-<p>First, they protect against the &quot; <a href="http://freehaven.net/anonbib/#Wright:2004">predecessor attack</a>&quot;: if you choose new relays for each circuit, eventually an attacker who runs a few relays will be your first and last hop. With entry guards, the risk of end-to-end correlation for any given circuit is the same, but the cumulative risk for all your circuits over time is capped.</p>
+<p>Yesterday morning (in our timezones — that evening, in Iran), Iran added a filter rule to their border routers that recognized Tor traffic and blocked it. Thanks to help from a variety of friends around the world, we quickly discovered how they were blocking it and released a <a href="http://archives.seul.org/tor/talk/Sep-2011/msg00187.html">new version of Tor</a> that isn&#39;t blocked. Fortunately, the fix is on the relay side: that means once enough <a href="https://torproject.org/docs/tor-doc-relay">relays</a> and <a href="https://www.torproject.org/docs/bridges">bridges</a> upgrade, the <a href="https://metrics.torproject.org/users.html?graph=direct-users&amp;start=2011-06-16&amp;end=2011-09-14&amp;country=ir&amp;dpi=72#direct-users">many tens of thousands of Tor users in Iran</a> will resume being able to reach the Tor network, without needing to change their software.</p>
 
-<p>Second, they help to protect against the &quot; <a href="http://freehaven.net/anonbib/#ccs07-doa">denial of service as denial of anonymity</a>&quot; attack, where an attacker who runs quite a few relays fails any circuit that he&#39;s a part of and that he can&#39;t win against, forcing Alice (the user) to generate more circuits and thus increasing the overall chance that the attacker wins. Entry guards greatly reduce the risk, since Alice will never choose outside of a few nodes for her first hop.</p>
+<p>How did the filter work technically? Tor tries to make its traffic look like a web browser talking to an https web server, but if you look carefully enough you can tell some differences. In this case, the characteristic of Tor&#39;s SSL handshake they looked at was the expiry time for our SSL session certificates: we rotate the session certificates every two hours, whereas normal SSL certificates you get from a <a href="https://blog.torproject.org/blog/detecting-certificate-authority-compromises-and-web-browser-collusion">certificate</a> <a href="https://blog.torproject.org/blog/diginotar-debacle-and-what-you-should-do-about-it">authority</a> typically last a year or more. The fix was to simply write a larger expiration time on the certificates, so our certs have <a href="https://www.eff.org/observatory">more plausible</a> expiry times.</p>
 
-<p>Third, entry guards raise the startup cost to an adversary who runs relays in order to trace users. Without entry guards, the attacker can sign up some relays and immediately start having chances to observe Alice&#39;s circuits. With them, new adversarial relays won&#39;t have the Guard flag so won&#39;t be chosen as the first hop of any circuit; and even once they earn the Guard flag, users who have already chosen guards won&#39;t switch away from their current guards for quite a while.</p>
+<p>There are plenty of interesting discussion points from the research angle around how this arms race should be played. We&#39;re working on <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/176-revising-handshake.txt">medium</a> <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/179-TLS-cert-and-parameter-normalization.txt">term</a> and <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/180-pluggable-transport.txt">longer term</a> solutions, but in the short term, there are other ways to filter Tor traffic like the one Iran used. Should we fix them all preemptively, meaning the next time they block us it will be through some more complex mechanism that&#39;s harder to figure out? Or should we leave things as they are, knowing there will be more blocking events but also knowing that we can solve them easily? Given that their last blocking attempt was in <a href="https://blog.torproject.org/blog/update-internet-censorship-iran">January 2011</a>, I think it&#39;s smartest to collect some more data points first.</p>
 
-<p>But how long exactly? The first research question here examines vulnerability due to natural churn of entry guards. Consider an adversary who runs one entry guard with advertised capacity C. Alice maintains an ordered list of guards (chosen at random, weighted by advertised speed, from the whole list of possible guards). For each circuit, she chooses her first hop (uniformly at random) from the first G guards from her list that are currently running (appending a new guard to the list as needed, but going back to earlier guards if they reappear). How long until Alice adds the adversary&#39;s node to her guard list? You can use the uptime data from the <a href="https://metrics.torproject.org/data.html">directory archives</a>, either to build a model for guard churn or just to use the churn data directly. Assuming G=3, how do the results vary by C? What&#39;s the variance?</p>
-
-<p>Research question two: consider intentional churn due to load balancing too. Alice actually discards each guard between 30 and 60 days (uniformly chosen) after she first picks it. This intentional turnover prevents long-running guards from accumulating more and more users and getting overloaded. Another way of looking at it is that it shifts load to new guards so we can make better use of them. How much does this additional churn factor impact your answer from step one above? Or asked a different way, what fraction of Alice&#39;s vulnerability to the adversary&#39;s entry guard comes from natural churn, and what fraction from the proactive expiration? How does the answer change for different expiry intervals (e.g. between 10 and 30 days, or between 60 and 90)?</p>
-
-<p>Research question three: how do these answers change as we vary G? Right now we choose from among the first three guards, to reduce the variance of expected user performance -- if we always picked the first guard on the list, and some users picked a low-capacity or highly-congested relay, none of that user&#39;s circuits would perform well. That said, if choosing G=1 is a huge win for security, we should work on other ways to reduce variance.</p>
-
-<p>Research question four: how would these answers change if we make the cutoffs for getting the Guard flag more liberal, and/or change how we choose what nodes become guards? After all, Tor&#39;s anonymity is based on the <a href="https://blog.torproject.org/blog/research-problem-measuring-safety-tor-network">diversity of entry and exit points</a>, and while it may be tough to get around exit relay scarcity, my theory is that our artificial entry point scarcity (because our requirements are overly strict) is needlessly hurting the anonymity Tor can offer.</p>
-
-<p>Our current algorithm for guard selection has three requirements:
-1) The relay needs to have first appeared longer ago than 12.5% of the relays, or 8 days ago, whichever is shorter.
-2) The relay needs to advertise at least the median bandwidth in the network, or 250KB/s, whichever is smaller.
-3) The relay needs to have at least the median weighted-fractional-uptime of relays in the network, or 98% WFU, whichever is smaller. (For WFU, the clock starts ticking when we first hear about the relay; we track the percentage of that time the relay has been up, discounting values by 95% every 12 hours.)</p>
-
-<p>Today&#39;s guard cutoffs in practice are &quot;was first sighted at least 8 days ago, advertises 100KB/s of bandwidth, and has 98% WFU.&quot;</p>
-
-<p>Consider two relays, A and B. Relay A first appeared 30 days ago, disappeared for a week, and has been consistently up since then. It has a WFU (after decay, give or take a fencepost) of 786460 seconds / 824195 = 95.4%, so it&#39;s not a guard. Relay B appeared two weeks ago and has been up since then. Its WFU is 658517 / 658517 = 100%, so it gets the Guard flag -- even though it has less uptime, and even less weighted uptime. Based on the answers to the first three research questions, which relay would serve Alice best as a guard?</p>
-
-<p>The big-picture tradeoff to explore is: what algorithm should we use to assign Guard flags such that a) we assign the flag to as many relays as possible, yet b) we minimize the chance that Alice will use the adversary&#39;s node as a guard?</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/we-need-your-good-tor-stories">We need your good Tor stories</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">anonymity advocacy</a>
-              
-                <a class="post-category post-category-js" href="#">media coverage</a>
-              
-                <a class="post-category post-category-js" href="#">tor stories</a>
-               |
-              17 Aug 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>What do you use Tor for? Why do you need it? What has Tor done for you? We need your stories.</p>
-
-<p>We have plenty of practice explaining how Tor works, from technical specifications, design documents, academic papers, and popular presentation. And of course, the code is all open-source.</p>
-
-<p>But explaining why Tor is important is more of a challenge. We can speak in the abstract about the importance of free speech and privacy on the internet, but no abstract statement is quite so persuasive as a real-world example.</p>
-
-<p>We know these examples are out there. We regularly hear from vulnerable populations and people who need to cope with surveillance. We are approached by people who need Tor to stay safe at work, whether they are going after criminals on behalf of their governments, or going after the criminals who run their governments, or just regular people trying to preserve their privacy.</p>
-
-<p>But naturally, most of these stories are ones that we don&#39;t have permission to share. After all, it would hardly be in keeping with our pro-privacy beliefs to publish tech-support requests!</p>
-
-<p>Similarly, because we don&#39;t gather sensitive data on our network, we cannot (as some networks do) publish regular reports on what kinds of uses we are seeing. (We do not collect this data because we believe that a privacy network should put privacy foremost, and that the best way to protect people&#39;s information is not to collect it in the first place.) This is fantastic when it comes to protecting users against advertisers, censors, miscellaneous snoops, and the secret police of authoritarian regimes. But it isn&#39;t working out so well when we are asked by donors and other potential allies who want to know what supporting Tor means in less technical terms.</p>
-
-<p>Furthermore, we work on Tor because everybody has the right to their own voice. So while this is on the one hand a plea for information we can use to tell the world about the importance of what we&#39;re accomplishing (and try to get donations to do more of it), it&#39;s also a request born of the notion that nobody is more qualified to tell your own story than you are.</p>
-
-<p>So, please send us your stories so we can share them with the world. If email works, you can send it to <a href="mailto:tor-assistants@torproject.org">tor-assistants@torproject.org</a>, subject line &quot;Why I Use Tor&quot;. And of course, you can just post a comment here.</p>
-
-<p>We won&#39;t use names, but if too many details can reveal who you are, please err on the side of caution. There is no point in responding to our request if it puts you in danger. That said: why do you use Tor? Whether you use it to look at <a href="http://www.ethanzuckerman.com/blog/2008/03/08/the-cute-cat-theory-talk-at-etech/">cute cats</a> or political blogs, we&#39;d like to know. And since we designed Tor with privacy in mind, we can&#39;t know unless you tell us.</p>
-
-<p>Thank you!</p>
+<p>It&#39;s too early to have cool graphs showing a drop in users and then the users coming back a day or so later. I&#39;ll plan to add these graphs once things play out more. [Update: <a href="https://metrics.torproject.org/users.html?graph=direct-users&amp;start=2011-07-01&amp;end=2011-09-18&amp;country=ir&amp;events=on&amp;dpi=72#direct-users">here is the graph as of Sept 16</a>]</p>
 
         </div>
       </section>
@@ -350,7 +373,7 @@ the Firefox instance. Resolves bug 2659.</li>
       
         <a href="/blog/page69" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 70 of 134</span>
+      <span class="page_number ">Page: 70 of 137</span>
       
         <a href="/blog/page71" class="next">Next</a>
       

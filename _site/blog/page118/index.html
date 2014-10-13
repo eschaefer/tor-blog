@@ -53,133 +53,106 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/antivir-tor-browser-bundle-and-trojan-droppergen-false-positive">AntiVir, Tor Browser Bundle, and trojan Dropper.Gen false positive</a></h2>
+          <h2 class="post-title"> <a href="/blog/torflow-node-capacity-integrity-and-reliability-measurements-hotpets">TorFlow Node Capacity, Integrity and Reliability Measurements at HotPETS</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
+              By <a class="post-author" href="#">mikeperry</a> under
               
-                <a class="post-category post-category-js" href="#">anti-virus</a>
+                <a class="post-category post-category-js" href="#">performance</a>
               
-                <a class="post-category post-category-js" href="#">false positive</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+                <a class="post-category post-category-js" href="#">research</a>
                |
-              07 Apr 2009
+              21 Jun 2009
           </p>
         </header>
         <div class="post-description">
-          <p>A number of people are reporting that AntiVir&#39;s latest update is reporting trojan Dropper.Gen in the Tor Browser Bundle version 1.1.11, specifically the &quot;Start Tor Browser.exe&quot; program.</p>
+          <p><a href="https://blog.torproject.org/blog/measuring-tor-network-public-directory-information">Like Karsten</a>, I too am presenting at <a href="http://petsymposium.org/2009/hotpets.php">HotPETS</a> in Seattle in August. My presentation will cover my work with my <a href="https://svn.torproject.org/svn/torflow/trunk/">TorFlow suite</a> - a python library and utility set to assist measuring and adjusting performance on the Tor network, and to scan the network for malfunctioning and misbehaving exits.</p>
 
-<p>This appears to be a false positive from AntiVir. No one has confirmed they&#39;ve checked the pgp signature with their download of TBB. You may want to confirm you&#39;ve actually downloaded our package, <a href="https://www.torproject.org/verifying-signatures" title="https://www.torproject.org/verifying-signatures">https://www.torproject.org/verifying-signatures</a>.</p>
+<p>One of the highlights is a system for <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/160-bandwidth-offset.txt">performance feedback</a>: a set of <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-computing-bandwidth-adjustments.txt">training wheels of sorts</a> for Tor&#39;s load balancing algorithms that once deployed, should greatly improve the performance of the network for 0.2.1 clients. I am very much excited about this and am looking forward to throwing the switch on it in the coming weeks.</p>
 
-<p>False positives occurs often enough we have a FAQ entry about it, <a href="https://www.torproject.org/faq#VirusFalsePositives" title="https://www.torproject.org/faq#VirusFalsePositives">https://www.torproject.org/faq#VirusFalsePositives</a></p>
+<p>Also of note is the discovery that nodes that use Tor&#39;s built in rate-limiting are far less likely to fail circuits than those that do not, especially for Windows nodes. So if you are a Windows node operator, please rate limit your node slightly below your connection&#39;s capacity using either the Vidalia GUI or the BandwidthRate torrc config option.. I will be emailing the contact info addresses of nodes that are most affected by this soon.</p>
 
-<p>You can read more about the trojan at <a href="http://www.avira.ro/en/threats/section/details/id_vir/3647/tr_dropper.gen.html" title="http://www.avira.ro/en/threats/section/details/id\_vir/3647/tr\_dropper.gen.html">http://www.avira.ro/en/threats/section/details/id_vir/3647/tr_dropper.ge...</a></p>
-
-<p>I&#39;m building a VM to specifically test this AntiVir version against Start Tor Browser.exe to see what inside the executable is triggering the false positive.</p>
+<p>The <a href="http://fscked.org/talks/TorFlow-HotPETS-final.pdf">paper for the presentation</a> describes the library, utilities, and their results in much further detail.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-1111-released">Tor Browser Bundle 1.1.11 Released</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-121-released">Tor Browser Bundle 1.2.1 Released</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">alpha release</a>
+                <a class="post-category post-category-js" href="#">bug fixes</a>
               
-                <a class="post-category post-category-js" href="#">portable tor</a>
+                <a class="post-category post-category-js" href="#">firefox updates</a>
+              
+                <a class="post-category post-category-js" href="#">pidgin updates</a>
               
                 <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">torbutton</a>
-              
-                <a class="post-category post-category-js" href="#">vidalia</a>
                |
-              31 Mar 2009
+              21 Jun 2009
           </p>
         </header>
         <div class="post-description">
-          <p>An updated Tor Browser Bundle is released to address the Firefox 3.0.7 security issues. It includes:</p>
+          <p><a href="https://www.torproject.org/torbrowser/">Tor Browser Bundle 1.2.1</a> is released. The major changes are:</p>
 
 <ul>
-<li>Update Firefox to 3.0.8</li>
-<li>Add Italian language bundles</li>
-<li>Update Torbutton to 1.2.1</li>
-<li>Update Vidalia to 0.1.12</li>
+<li>changes to Firefox to stop scanning for plugins such as Java, Windows Media, etc. These were disabled by torbutton, but still showed up in Firefox. More work will continue on this task</li>
+<li>Include OpenSSL dll (ssleay32.dll) so we&#39;re not relying upon the system ssl dll. This should fix Vidalia errors relating to ssl differences.</li>
 </ul>
 
-<p>This updated TBB can be downloaded from <a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a> as the &quot;zero install bundle&quot;.</p>
+<p>The official changelog is:</p>
+
+<ul>
+<li>Better updates to Firefox to stop scanning for plugins on start</li>
+<li>Update Pidgin to 2.5.6r2</li>
+<li>Update Firefox to 3.0.11</li>
+<li>Include OpenSSL 0.9.8k DLL and stop using the system ssl dll</li>
+<li>Update Tor to 0.2.1.16-rc</li>
+</ul>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/technology-preview-marble-and-vidalia020">Technology Preview:  Marble and Vidalia-0.2.0</a></h2>
+          <h2 class="post-title"> <a href="/blog/measuring-tor-and-iran">Measuring Tor and Iran</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">drag and drop OS X install</a>
+                <a class="post-category post-category-js" href="#">directory services</a>
               
-                <a class="post-category post-category-js" href="#">experimental</a>
+                <a class="post-category post-category-js" href="#">iran</a>
               
-                <a class="post-category post-category-js" href="#">kde marble</a>
-              
-                <a class="post-category post-category-js" href="#">msi installer</a>
-              
-                <a class="post-category post-category-js" href="#">Qt updates</a>
-              
-                <a class="post-category post-category-js" href="#">technology preview</a>
-              
-                <a class="post-category post-category-js" href="#">vidalia</a>
+                <a class="post-category post-category-js" href="#">tor</a>
                |
-              29 Mar 2009
+              19 Jun 2009
           </p>
         </header>
         <div class="post-description">
-          <p>One of the most requested upgrades to <a href="https://www.torproject.org/vidalia/">Vidalia</a> is a better map of the world. We looked into a few different technologies and decided on <a href="http://edu.kde.org/marble/">KDE&#39;s Marble</a> interface. Marble enables an accurate mapping of nodes according to their geolocation, allows for future enhancements such as &quot;click a country to start or end your Tor circuit&quot;, and plugins for extra data views. This also gives us the ability to use Qt&#39;s Webkit browser to display custom information about nodes, circuits, or anything else in a pop-up window. An anonymous funder covered the costs involved in developing this feature. We thank them for their support.</p>
+          <p>I&#39;ve been fielding some calls from the press about Tor and Iran. Someone quoted me as saying &quot;double the clients from Iran over the past few days&quot;. We wondered, what are the real numbers? What does our network see from Iran? Is port 443 or https:// really blocked? Here&#39;s what we&#39;ve discovered in the past day of working with the <a href="https://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network">new metrics</a> we&#39;ve developed to be safe to collect without compromising anyone&#39;s anonymity.</p>
 
-<p>I&#39;ve attached some screenshots to this blog post. You can download the relevant packages from the <a href="https://www.torproject.org/vidalia/dist/">Vidalia website</a>. If you want marble-enabled Vidalia, look for -marble- in the file name. Please report bugs on <a href="http://trac.vidalia-project.net/wiki/ReportingBugs">Vidalia&#39;s Bug Tracker</a>.</p>
+<p>This first dataset is from one of the Directory Authorities. We have six authorities, so a plausible scaling factor is 6, assuming all authorities are seeing equal requests (it could be more or less than 6, too). We don&#39;t know if the authorities are seeing equal requests, as they listen on different TCP ports, are located in different parts of the world, and clients will chose one randomly. This graph roughly shows the number of requests from new Tor clients coming from IP addresses that our geoip database reports as Iran.</p>
 
-<p>As of this release, there are now two branches of Vidalia, stable and alpha. The first release of the alpha branch is <a href="https://www.torproject.org/vidalia/dist/">Vidalia 0.2.0</a>. The stable branch is at <a href="https://www.torproject.org/vidalia/dist/">Vidalia 0.1.12</a>.</p>
+<p><center><img height="375" width="500" src="https://blog.torproject.org/files/new_tor_clients_from_iranian_ip_space.png"></center></p>
 
-<p>One last big change for OS X users is the drag and drop installer. There is no migration of old settings to new, nor do we clean up the old installs in /Library/Tor, /Library/Vidalia, /Library/Torbutton, /Library/Privoxy, etc. Follow <a href="https://www.torproject.org/docs/tor-doc-osx#uninstall">these instructions</a> for how to remove the old vidalia-tor bundles from your computer if you want to completely test this alpha branch of Vidalia. We will figure out a better way to do this in the near future.</p>
+<p>UPDATE 2009-06-24: Updated the graph with numbers through yesterday</p>
 
-<p>Remember, this is a technology preview. However, OS X installs are migrating to drag and drop. I&#39;ve solely used Vidalia 0.2.0 and drag-and-drop installer for 3 months now. I even <a href="http://blog.torproject.org/blog/experimental-os-x-drag-and-drop-vidalia-bundle-installer">previously blogged</a> about it.</p>
+<p>The second dataset is from one Directory Mirror, of which there are hundreds. This mirror is only accessible on port 443, which is rumored to be blocked in parts of Iran over the past few days.</p>
 
-<p>Additional changes in alpha Vidalia 0.2.0:</p>
+<p><center><img height="375" width="500" src="https://blog.torproject.org/files/tor_clients_from_iranian_ip_space_(port_443).png"></center></p>
 
-<ul>
-<li>Qt 4.5.0 is used for Win32 and OS X Universal packages.</li>
-<li>We&#39;ve switched from the Nullsoft Installer to the Microsoft System Installer (msi) for better integration with Microsoft Windows.</li>
-<li>There are non-Marble and Marble-enabled packages for Win32 and OS X Universal. OS X PowerPC based on OS X 10.3.9 isn&#39;t supported by Qt 4.5.x, therefore Marble-enabled Vidalia is not available</li>
-<li>Add support for changing UI languages without having to restart Vidalia.</li>
-<li>Add preliminary support for using the KDE Marble widget for the network map. It&#39;s currently a compile-time option and is disabled by default.</li>
-<li>Add support for displaying Tor&#39;s plaintext port warnings. Also gives the user the option to disable future warnings.</li>
-<li>Add an interface for displaying the geographic distribution of clients who have recently used a bridge operator&#39;s relay.</li>
-<li>Add tooltips to tree items in the help browser&#39;s table of contents. Some of the help topic labels are a bit long.</li>
-<li>Switch to a simpler About dialog and move the license information to a separate HTML-formatted display.</li>
-<li>Switch to a simpler drag-and-drop installer in the OS X bundles.</li>
-<li>Switch to an MSI-based installer on Windows.</li>
-<li>Clear the list of default CA certificates used by QSslSocket before adding the only one we care about. Suggested by coderman.</li>
-<li>Support building with Visual Studio again.</li>
-<li>Add a Debian package structure from dererk.</li>
-<li>Updated Albanian, Czech, Finnish, Polish, Portuguese, Romanian, Swedish, Turkish and many other translations.</li>
-</ul>
+<p>The data points in the second graph are very rough, since they&#39;re an estimate of the total number of Tor users in Iran based on numbers from only one relay. In addition, we looked at some other relays running on port 443, and they also didn&#39;t show anywhere near the spike that we see in the directory authority graph above. The authority isn&#39;t listening on 443 -- perhaps that means there&#39;s some truth to the rumors that port 443 has been blocked recently in Iran. We look forward to having more precise data later on.</p>
 
 <p><thead><tr>
 <th>Attachment</th>
 <th>Size</th> </tr></thead><tbody>
  <tr class="odd">
-<td><a href="https://blog.torproject.org/files/2009-03-28-vidalia-marble-snapshot-0.png">2009-03-28-vidalia-marble-snapshot-0.png</a></td>
-<td>368.42 KB</td> </tr>
+<td><a href="https://blog.torproject.org/files/tor_clients_from_iranian_ip_space_(port_443).png">tor<em>clients</em>from<em>iranian</em>ip<em>space</em>(port<em>443).png</a></td>
+<td>35.98 KB</td> </tr>
  <tr class="even">
-<td><a href="https://blog.torproject.org/files/2009-03-28-vidalia-marble-snapshot-1.png">2009-03-28-vidalia-marble-snapshot-1.png</a></td>
-<td>231.13 KB</td> </tr>
- <tr class="odd">
-<td><a href="https://blog.torproject.org/files/2009-03-28-vidalia-marble-snapshot-2.png">2009-03-28-vidalia-marble-snapshot-2.png</a></td>
-<td>723.02 KB</td> </tr>
+<td>&lt;a href=&quot;https://blog.torproject.org/files/new</em>tor<em>clients</em>from<em>iranian</em>ip<em>space.png&quot;&gt;new</em>tor<em>clients</em>from<em>iranian</em>ip_space.png</a></td>
+<td>32.92 KB</td> </tr>
 </tbody></p>
 
         </div>
@@ -187,61 +160,54 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/eff-and-tor-google-summer-code-2009">EFF and Tor in Google Summer of Code 2009</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-121-release-candidate">Tor Browser Bundle 1.2.1 release candidate</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">karsten</a> under
+              By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">Google Summer of Code</a>
+                <a class="post-category post-category-js" href="#">bug fixes</a>
               
-                <a class="post-category post-category-js" href="#">gsoc</a>
+                <a class="post-category post-category-js" href="#">release candidate</a>
               
-                <a class="post-category post-category-js" href="#">gsoc 2009</a>
+                <a class="post-category post-category-js" href="#">tor browser bundle</a>
                |
-              21 Mar 2009
+              18 Jun 2009
           </p>
         </header>
         <div class="post-description">
-          <p>Great news! We have been accepted as a mentoring organization for <a href="http://socghop.appspot.com/program/home/google/gsoc2009">Google Summer of Code 2009</a> together with <a href="https://www.eff.org/">The Electronic Frontier Foundation</a>. Yay!</p>
+          <p>In continuing to <a href="https://blog.torproject.org/blog/testing-tor-browser-bundle-121dev">improve TBB</a> for a vast array of users, here&#39;s the release candidate for Tor Browser Bundle 1.2.1.</p>
 
-<p>This will be our third Google Summer of Code after 2007 and <a href="https://blog.torproject.org/blog/tor-project-google-summer-code-2008%21">2008</a>. In our <a href="http://code.google.com/soc/2007/eff/about.html">first year</a> we had four students working on making relays work better (and not crash) on Windows, on a library and tool to try alternative path selection algorithms, on a fuzzing library to look for parsing problems, and on scalability and privacy for hidden services. In our <a href="http://code.google.com/soc/2008/eff/about.html">second year</a> we had seven students. One of our successful students of the 2008 program wrote a nice <a href="https://blog.torproject.org/blog/google-summer-code-2008-review">blog post</a> reviewing how GSoC went for him, for the other students, and for the project in general.</p>
+<p>I appreciate your feedback, comments, and bugs filed so far about TBB 1.2.1-dev.</p>
 
-<p>We have made resolutions for our third GSoC participation to make it even more successful than in the past years. We have set ourselves the limit of accepting no more than 4 students (plus up to 2 students mentored by EFF). Rather than being persuaded by all those great applications, we want to focus on the most promising projects and students. We plan to assign up to 3 mentors to each student to provide optimal support. We will try harder to encourage students to interact with the community and become a part of it. It may be challenging to discuss project ideas on a mailing list or in a chat room with dozens or hundreds of unknown people listening. But communication is an important part of the GSoC experience (if not the most important).</p>
+<p>You can find here the updated <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.1-1-dev_en-US.exe">TBB 1.2.1-1-dev</a>, <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.1-1-dev_en-US.exe.asc">sig</a>, and <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.1-1-dev_en-US.exe.sha1">sha1</a> files.</p>
 
-<p>It might seem that we have high expectations about our students (actually we do!), but we also have a lot to offer. Our students will work on one of the largest deployed anonymity systems with a few hundred thousand users. We encourage GSoC students to stick to The Tor Project after summer and become part of the team; did you know that two of our <a href="https://www.torproject.org/people#Core">Core people</a> are former GSoC students? Our mentors are cryptographers, researchers, and/or software developers who have published numerous papers on distinguished security and privacy conferences all over the world. We have an awesome community with a lot of people who will be interested in the students&#39; projects and their progress. Ah, and finally Google gratefully pays $4.5K to each successful GSoC student. Isn&#39;t that a fine alternative to $your_last_summer_job?</p>
+<p>The changes since the last test are:</p>
 
-<p>Did we get you interested? These are your next steps: Look at Google&#39;s FAQ whether you are <a href="http://socghop.appspot.com/document/show/program/google/gsoc2009/faqs#eligibility">eligible</a> to participate. Have a look at our <a href="https://www.torproject.org/gsoc#Ideas">ideas lists</a> (one for <a href="https://www.torproject.org/volunteer.html.en#Projects">The Tor Project</a>, one for the <a href="http://switzerland.wiki.sourceforge.net/Projects">EFF&#39;s Switzerland tool</a>). Put some thoughts on the listed ideas, or make up your own. Talk to us. No, really, this step is important: Talk to us! Come to <a href="irc://irc.oftc.net/tor/">#tor on irc.oftc.net</a> or send us an <a href="mailto:tor-assistants@freehaven.net">email</a> and let us know about your project idea. Write down your application using our <a href="https://www.torproject.org/gsoc#Template">template</a> and send it in until <a href="http://socghop.appspot.com/document/show/program/google/gsoc2009/faqs#timeline">April 3, 2009, 19:00 UTC</a>. Stick around for any questions we might have to you. We are looking forward to reading your application, erm, to talking to you and discussing your project idea!</p>
+<ul>
+<li>Update Pidgin to 2.5.6r2</li>
+<li>Update Firefox to 3.0.11</li>
+<li>Include OpenSSL 0.9.8k DLL and stop using the system ssl dll</li>
+</ul>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/why-tor-is-slow">Why Tor is slow and what we&#39;re going to do about it</a></h2>
+          <h2 class="post-title"> <a href="/blog/measuring-tor-network-public-directory-information">Measuring the Tor Network from Public Directory Information</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">arma</a> under
+              By <a class="post-author" href="#">karsten</a> under
               
-                <a class="post-category post-category-js" href="#">development roadmap</a>
-              
-                <a class="post-category post-category-js" href="#">funding</a>
+                <a class="post-category post-category-js" href="#">censorship circumvention</a>
               
                 <a class="post-category post-category-js" href="#">performance</a>
+              
+                <a class="post-category post-category-js" href="#">research</a>
                |
-              13 Mar 2009
+              16 Jun 2009
           </p>
         </header>
         <div class="post-description">
-          <p>I&#39;ve just finished writing up an explanation of all the various reasons why the Tor network is slow, and what we can do about each. Part of it comes down to design flaws; some of it is that a handful of users are overloading the network; and there&#39;s also simply not enough capacity to go around.</p>
-
-<p>Specifically, we&#39;ve identified six categories of problems to address, and laid out some steps to resolve each of them.</p>
-
-<p>You can read the pdf here:
- <a href="https://svn.torproject.org/svn/projects/roadmaps/2009-03-11-performance.pdf">https://svn.torproject.org/svn/projects/roadmaps/2009-03-11-performance.pdf</a></p>
-
-<p>Andrew has also put together a real live <a href="https://www.torproject.org/press/2009-03-12-performance-roadmap-press-release">press release</a> to go with it.</p>
-
-<p>Now all that remains is to do everything. So if you want to help, or especially if you know any organizations that can help with funding, please help us make this happen!</p>
-
-<p>[Edit, 19 August 2009: you can <a href="https://blog.torproject.org/har2009-video-tor-performance">watch the HAR2009 video explaining our key performance plans</a>, if you aren&#39;t a fan of 25-page pdfs.]</p>
+          <p>On this year&#39;s <a href="http://petsymposium.org/2009/hotpets.php">HotPETs workshop</a> (August 5-7 in Seattle, WA, USA) I&#39;m going to present some results on <a href="http://freehaven.net/%7Ekarsten/metrics/measuring-tor-public-dir-info-final.pdf">Measuring the Tor Network from Public Directory Information</a>. The main idea is to observe trends in the Tor network without having to measure any data other than <a href="https://git.torproject.org/checkout/tor/master/doc/spec/dir-spec.txt">public directory information</a>. These data are there anyway as they are required for clients to make good path selection decisions and build circuits. The results of this paper reveal problems in the current Tor network that need to be addressed, e.g., by <a href="https://git.torproject.org/checkout/metrics/master/report/dirarch/flagrequirements-2009-04-11.pdf">lowering requirements for assigning certain flags</a>, facilitating the upgrade process, improving support for dynamic IP addresses, possibly calculating bandwidth capacity more reliably, and clarifying legal issues for running relays in view of data retention laws. The next step in understanding the problems of the Tor network requires an <a href="https://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network">extension of network measurements</a> to improve <a href="https://blog.torproject.org/blog/why-tor-is-slow">performance</a> and blocking-resistance of Tor.</p>
 
         </div>
       </section>
@@ -252,7 +218,7 @@
       
         <a href="/blog/page117" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 118 of 134</span>
+      <span class="page_number ">Page: 118 of 137</span>
       
         <a href="/blog/page119" class="next">Next</a>
       

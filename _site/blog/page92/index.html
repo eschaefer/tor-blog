@@ -53,401 +53,324 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/trip-report-ucsd">Trip report, UCSD</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">arma</a> under
-               |
-              28 Aug 2010
-          </p>
-        </header>
-        <div class="post-description">
-          <p>On Sunday (8/22) through Wednesday (8/25), I visited the Tor research group at <a href="http://www-cse.ucsd.edu/">UCSD</a> as part of my ongoing plans to help academic research groups <a href="https://www.torproject.org/research">better understand Tor and its research problems</a>. Damon McCoy has a fellowship (postdoc) there for last year and this coming year, and he&#39;s brought Kevin Bauer in from UColorado from now until December. They have two systems profs with congestion control background (Stefan Savage and Geoff Voelker) interested in helping them work on Tor and performance.</p>
-
-<p>Kevin is planning to spend the next year on Tor performance work, as the last chapter of his thesis. He&#39;s also applied to <a href="https://blog.torproject.org/blog/tor-related-research-positions-university-waterloo">Ian Goldberg&#39;s postdoc position at Waterloo</a>. He seems like a smart and dedicated guy; I&#39;d be excited if Ian picks him.</p>
-
-<p>I spent most of my time walking Damon and Kevin through Tor&#39;s current congestion control levels -- explaining what Tor does, as well as what I think is actually resulting from each of these components. Kevin has lots of notes, and if all goes well that will seed the core of a &quot;Why else is Tor slow&quot; whitepaper over the coming months, as a sequel to <a href="https://blog.torproject.org/blog/why-tor-is-slow">the original</a>.</p>
-
-<p>Kevin wants to work on figuring out how to better tune all the knobs Tor has, but he also wants to work on a new design for an ipsec-based Tor protocol (we ruled out DTLS as not being in broad enough use; that leaves ipsec). I want both, so I&#39;d be fine with either one. The UCSD systems group has a simulation engine called <a href="https://modelnet.sysnet.ucsd.edu/">ModelNet</a> that is apparently really good at simulating actual networks. Kevin is going to try to get a separate Tor network going with modelnet as its glue, and then he&#39;ll be in a better position to do more controlled experiments.</p>
-
-<p>At the same time I think he&#39;d be in better shape thinking about Tor performance if he messes around with a live Tor relay enough to figure out where its bottlenecks are. I gave him a list of 10 or so potential problems, and each of them is probably a big problem in some contexts (e.g. under certain amounts of load) but maybe not in others. The current intuition is that Tor has grown a lot of knobs that may be orthogonal to whether we are using TCP or something else as transport, and analyzing the performance of a naive design that uses something else as transport but doesn&#39;t consider the knobs will likely result in a bad comparison. To say it differently, some of the knobs we have now (e.g. circuit priorities) would still be useful even if we change our transport, but others might no longer be needed, or might need to be different. Many fine open research questions.</p>
-
-<p>I also got a chance to explain enough of Tor to Stefan that he has a good understanding of Tor&#39;s overall design. He&#39;s still digesting what advice he might have for us, but his initial impression is that it&#39;s not clear that end-to-end TCP will perform well for our situation, nor is it clear that thousands of parallel TCP sessions between each pairwise Tor relay over UDP over some datagram link encryption ( <a href="http://freehaven.net/anonbib/#reardon-thesis">Joel Reardon&#39;s design</a>) will perform well either.</p>
-
-<p>While there, I did a CSE symposium talk that went very well:
- <a href="http://freehaven.net/%7Earma/slides-ucsd10.pdf" title="http://freehaven.net/~arma/slides-ucsd10.pdf">http://freehaven.net/~arma/slides-ucsd10.pdf</a>
-It was scheduled for an hour, but everybody stayed for 90 minutes, and the crowd was really excited. I invited Chris Davis to the talk, plus the lunch afterward, plus some of the brainstorming after that. Hopefully a better-informed Chris will come in handy in some way in the future. :)</p>
-
-<p>I also talked to Mihir Bellare, a well-known crypto prof, for a few hours. He had a postdoc and a grad student who were excited to learn more about our research problems. Maybe they will help Damon and Kevin redesign a packet-based encryption scheme (where you send an IV and checksum in every packet, to tolerate lost packets and out-of-order packets), like what <a href="http://freehaven.net/anonbib/#freedom21-security">Freedom</a> designed long ago but never shared very well with the rest of the world.</p>
-
-<p>I also had dinner with KC Claffy, one of the people from <a href="http://www.caida.org/home/">CAIDA</a>, a separate org affiliated with UCSD that focuses on Internet data measurement and the privacy/security/policy/analysis issues that go along with that. She was really interested to learn more about our <a href="http://metrics.torproject.org/papers.html">WECSR workshop paper</a>. One of the deliverables they&#39;ve promised their funders soon is a comparison of various GeoIP databases. I told her about Karsten&#39;s <a href="http://metrics.torproject.org/papers/geoipdbcomp-2009-10-23.pdf">preliminary work there</a>, and I should probably follow up.</p>
-
-<p>I met with Harsha Madhyastha, a soon-to-be-first-year-prof at UC Riverside, who wrote &quot;iPlane&quot; as his thesis. <a href="http://iplane.cs.washington.edu/">iPlane</a> is a database / set of scripts that let you (among other things) predict latency between two points on the Internet. I gave him a big pile of research questions around choosing more efficient paths through the Tor network vs the anonymity implications of even-less-uniform path selection; and the AS-level or country-level path selection questions; and <a href="http://freehaven.net/anonbib/#tissec-latency-leak">Nick Hopper&#39;s latency attack paper</a> and the questions we still have around it. Perhaps one of his grad students will pick up one of the topics.</p>
-
-<p>Overall, it was a good use of a couple of days. I&#39;ll plan to follow-up in person sometime in the next 6-12 months, either with a trip to UCSD or a trip to Colorado (where Kevin is returning after his brief stint as research staff).</p>
-
-<p>I should get my act together and answer Nick Hopper&#39;s invitation to come spend a similar couple of days at UMN, to get his research group more <a href="https://www.torproject.org/research">up to speed</a> on what needs doing.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-1010-gnulinux-released">Tor Browser Bundle 1.0.10 for GNU/Linux released</a></h2>
+          <h2 class="post-title"> <a href="/blog/mac-os-x-vidalia-bundle-02217-alpha-out">Mac OS X Vidalia Bundle with 0.2.2.17-alpha out</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">erinn</a> under
               
-                <a class="post-category post-category-js" href="#">alpha releases</a>
+                <a class="post-category post-category-js" href="#">geoip</a>
               
-                <a class="post-category post-category-js" href="#">firefox updates</a>
+                <a class="post-category post-category-js" href="#">geoip fixes</a>
               
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+                <a class="post-category post-category-js" href="#">osx</a>
               
-                <a class="post-category post-category-js" href="#">torbrowser</a>
+                <a class="post-category post-category-js" href="#">osx fixes</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia bundle</a>
+              
+                <a class="post-category post-category-js" href="#">vidalia network map</a>
                |
-              23 Aug 2010
+              28 Oct 2010
           </p>
         </header>
         <div class="post-description">
-          <p>On August 21st we released Tor Browser Bundle1.0.10 for GNU/Linux. It includes a number of updates, the largest one being a switch to Firefox 3.6.8. The rest are:</p>
+          <p>Vidalia 0.2.10 changed the way we deal with the <a href="https://blog.torproject.org/blog/vidalia-0210-released">geoip databases by dropping the remote geoip lookups</a>. This caused a lot of headaches for OS X users because of the layout of the package, but it&#39;s fixed in this version. You can download the new version <a href="https://www.torproject.org/dist/vidalia-bundles/">here</a>.</p>
 
-<ul>
-<li>Update Tor to 0.2.2.15-alpha</li>
-<li>Update Firefox to 3.6.8 (Mozilla is not doing security and stability updates for 3.5.x after August 2010)</li>
-<li>Update NoScript to 2.0.2.3</li>
-<li>Update BetterPrivacy to 1.48.3</li>
-<li>Update HTTPS Everywhere to 0.2.2</li>
-</ul>
+<p>Please let us know if you have further problems by <a href="https://trac.torproject.org/projects/tor">reporting a bug</a>.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-02215-alpha-released">Tor 0.2.2.15-alpha released</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-metrics-google-summer-code-2010">Tor Metrics - Google Summer of Code 2010</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
+              By <a class="post-author" href="#">kjbbb</a> under
               
-                <a class="post-category post-category-js" href="#">alpha releases</a>
-              
-                <a class="post-category post-category-js" href="#">hidden services</a>
-              
-                <a class="post-category post-category-js" href="#">memory leaks</a>
-              
-                <a class="post-category post-category-js" href="#">performance improvements</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-               |
-              23 Aug 2010
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Tor 0.2.2.15-alpha fixes a big bug in hidden service availability, fixes a variety of other bugs that were preventing performance experiments from moving forward, fixes several bothersome memory leaks, and generally closes a lot of smaller bugs that have been filling up trac lately.</p>
-
-<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
-
-<p><a href="https://gitweb.torproject.org/tor.git/blob_plain/eba3f37f17a2af4ff628dd5cbc653441e6dce6eb:/ChangeLog">Changes in version 0.2.2.15-alpha - 2010-08-18</a>
- o Major bugfixes:
- - Stop assigning the HSDir flag to relays that disable their
- DirPort (and thus will refuse to answer directory requests). This
- fix should dramatically improve the reachability of hidden services:
- hidden services and hidden service clients pick six HSDir relays
- to store and retrieve the hidden service descriptor, and currently
- about half of the HSDir relays will refuse to work. Bugfix on
- 0.2.0.10-alpha; fixes part of bug 1693.
- - The PerConnBWRate and Burst config options, along with the
- bwconnrate and bwconnburst consensus params, initialized each conn&#39;s
- token bucket values only when the connection is established. Now we
- update them if the config options change, and update them every time
- we get a new consensus. Otherwise we can encounter an ugly edge
- case where we initialize an OR conn to client-level bandwidth,
- but then later the relay joins the consensus and we leave it
- throttled. Bugfix on 0.2.2.7-alpha; fixes bug 1830.
- - Fix a regression that caused Tor to rebind its ports if it receives
- SIGHUP while hibernating. Bugfix in 0.1.1.6-alpha; closes bug 919.</p>
-
-<p>o Major features:
- - Lower the maximum weighted-fractional-uptime cutoff to 98%. This
- should give us approximately 40-50% more Guard-flagged nodes,
- improving the anonymity the Tor network can provide and also
- decreasing the dropoff in throughput that relays experience when
- they first get the Guard flag.
- - Allow enabling or disabling the *Statistics config options while
- Tor is running.</p>
-
-<p>o Minor features:
- - Update to the August 1 2010 Maxmind GeoLite Country database.
- - Have the controller interface give a more useful message than
- &quot;Internal Error&quot; in response to failed GETINFO requests.
- - Warn when the same option is provided more than once in a torrc
- file, on the command line, or in a single SETCONF statement, and
- the option is one that only accepts a single line. Closes bug 1384.
- - Build correctly on mingw with more recent versions of OpenSSL 0.9.8.
- Patch from mingw-san.
- - Add support for the country code &quot;{??}&quot; in torrc options like
- ExcludeNodes, to indicate all routers of unknown country. Closes
- bug 1094.
- - Relays report the number of bytes spent on answering directory
- requests in extra-info descriptors similar to {read,write}-history.
- Implements enhancement 1790.</p>
-
-<p>o Minor bugfixes (on 0.2.1.x and earlier):
- - Complain if PublishServerDescriptor is given multiple arguments that
- include 0 or 1. This configuration will be rejected in the future.
- Bugfix on 0.2.0.1-alpha; closes bug 1107.
- - Disallow BridgeRelay 1 and ORPort 0 at once in the configuration.
- Bugfix on 0.2.0.13-alpha; closes bug 928.
- - Change &quot;Application request when we&#39;re believed to be offline.&quot;
- notice to &quot;Application request when we haven&#39;t used client
- functionality lately.&quot;, to clarify that it&#39;s not an error. Bugfix
- on 0.0.9.3; fixes bug 1222.
- - Fix a bug in the controller interface where &quot;GETINFO ns/asdaskljkl&quot;
- would return &quot;551 Internal error&quot; rather than &quot;552 Unrecognized key
- ns/asdaskljkl&quot;. Bugfix on 0.1.2.3-alpha.
- - Users can&#39;t configure a regular relay to be their bridge. It didn&#39;t
- work because when Tor fetched the bridge descriptor, it found
- that it already had it, and didn&#39;t realize that the purpose of the
- descriptor had changed. Now we replace routers with a purpose other
- than bridge with bridge descriptors when fetching them. Bugfix on
- 0.1.1.9-alpha. Bug 1776 not yet fixed because now we immediately
- refetch the descriptor with router purpose &#39;general&#39;, disabling
- it as a bridge.
- - Fix a rare bug in rend_fn unit tests: we would fail a test when
- a randomly generated port is 0. Diagnosed by Matt Edman. Bugfix
- on 0.2.0.10-alpha; fixes bug 1808.
- - Exit nodes didn&#39;t recognize EHOSTUNREACH as a plausible error code,
- and so sent back END_STREAM_REASON_MISC. Clients now recognize a new
- stream ending reason for this case: END_STREAM_REASON_NOROUTE.
- Servers can start sending this code when enough clients recognize
- it. Also update the spec to reflect this new reason. Bugfix on
- 0.1.0.1-rc; fixes part of bug 1793.
- - Delay geoip stats collection by bridges for 6 hours, not 2 hours,
- when we switch from being a public relay to a bridge. Otherwise
- there will still be clients that see the relay in their consensus,
- and the stats will end up wrong. Bugfix on 0.2.1.15-rc; fixes bug
- 932 even more.
- - Instead of giving an assertion failure on an internal mismatch
- on estimated freelist size, just log a BUG warning and try later.
- Mitigates but does not fix bug 1125.
- - Fix an assertion failure that could occur in caches or bridge users
- when using a very short voting interval on a testing network.
- Diagnosed by Robert Hogan. Fixes bug 1141; bugfix on 0.2.0.8-alpha.</p>
-
-<p>o Minor bugfixes (on 0.2.2.x):
- - Alter directory authorities to always consider Exit-flagged nodes
- as potential Guard nodes in their votes. The actual decision to
- use Exits as Guards is done in the consensus bandwidth weights.
- Fixes bug 1294; bugfix on 0.2.2.10-alpha.
- - When the controller is reporting the purpose of circuits that
- didn&#39;t finish building before the circuit build timeout, it was
- printing UNKNOWN_13. Now print EXPIRED. Bugfix on 0.2.2.14-alpha.
- - Our libevent version parsing code couldn&#39;t handle versions like
- 1.4.14b-stable and incorrectly warned the user about using an
- old and broken version of libevent. Treat 1.4.14b-stable like
- 1.4.14-stable when parsing the version. Fixes bug 1731; bugfix
- on 0.2.2.1-alpha.
- - Don&#39;t use substitution references like $(VAR:MOD) when
- $(asciidoc_files) is empty -- make(1) on NetBSD transforms
- &#39;$(:x)&#39; to &#39;x&#39; rather than the empty string. This bites us in
- doc/ when configured with --disable-asciidoc. Bugfix on
- 0.2.2.9-alpha; fixes bug 1773.
- - Remove a spurious hidden service server-side log notice about
- &quot;Ancient non-dirty circuits&quot;. Bugfix on 0.2.2.14-alpha; fixes
- bug 1741.
- - Fix compilation with --with-dmalloc set. Bugfix on 0.2.2.6-alpha;
- fixes bug 1832.
- - Correctly report written bytes on linked connections. Found while
- implementing 1790. Bugfix on 0.2.2.4-alpha.
- - Fix three memory leaks: one in circuit_build_times_parse_state(),
- one in dirvote_add_signatures_to_pending_consensus(), and one every
- time we parse a v3 network consensus. Bugfixes on 0.2.2.14-alpha,
- 0.2.2.6-alpha, and 0.2.2.10-alpha respectively; fixes bug 1831.</p>
-
-<p>o Code simplifications and refactoring:
- - Take a first step towards making or.h smaller by splitting out
- function definitions for all source files in src/or/. Leave
- structures and defines in or.h for now.
- - Remove a bunch of unused function declarations as well as a block of
- #if 0&#39;d code from the unit tests. Closes bug 1824.
- - New unit tests for exit-port history statistics; refactored exit
- statistics code to be more easily tested.
- - Remove the old debian/ directory from the main Tor distribution.
- The official Tor-for-debian git repository lives at the URL
- <a href="https://git.torproject.org/debian/tor.git" title="https://git.torproject.org/debian/tor.git">https://git.torproject.org/debian/tor.git</a></p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/torbel-tor-bulk-exit-list-tools">TorBEL: The Tor Bulk Exit List Tools</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">hbock</a> under
+                <a class="post-category post-category-js" href="#">gsoc</a>
               
                 <a class="post-category post-category-js" href="#">gsoc2010</a>
               
-                <a class="post-category post-category-js" href="#">torbel</a>
+                <a class="post-category post-category-js" href="#">metrics</a>
                |
-              20 Aug 2010
+              14 Oct 2010
           </p>
         </header>
         <div class="post-description">
-          <p>We have finally crossed the point of no return: 16 August 2010, 1900 UTC. Google Summer of Code 2010 is over; it&#39;s been a lot of fun and a lot of hard work participating in GSoC this year, and I hope that I have accomplished my goal. I took up the task of redesigning <a href="https://exitlist.torproject.org">TorDNSEL</a>, a DNSBL-style interface for querying information about Tor exit nodes, to be more thorough, more usable, and more maintainable. Out of this effort came TorBEL, a set of specifications and Python tools that try to address this problem.</p>
+          <p>Although it has been a while since GSoC ended, I want to give a quick run-down of my project and how everything went over the summer. The plan was to migrate the <a href="https://metrics.torproject.org/index.html" title="tor metrics portal">Tor metrics portal</a> from the file based system to a database driven one. This allows us to have a more dynamic website and a better interface to derive our statistics and visuals from. I spent most of my time designing the database schema (which had to be carefully optimized due to the amount of data we have), and the remainder of the time working on things such as <a href="https://metrics.torproject.org/graphs.html" title="dynamic graphs">dynamic graphs</a> and migrating the website to Java Server Pages. Thankfully, I finished almost everything I had planned to do, and it seems as though my work this summer is being put to good use! A significant amount of my metrics code has been merged, which is certainly a good feeling.</p>
 
-<p>The TorBEL codebase as released today contains several important
- pieces:</p>
+<p>While I did not have any specific research questions in mind, I was able to uncover some interesting things by exploring the wealth of data in front of me. One of the things I promised to deliver was relay churn - a statistic to show the stability of the network. The Y axis, or the &quot;churn ratio&quot; is rather abstract, but it tells us the percentage of unique router fingerprints from one cohort that appear in the following cohort. Unfortunately, it requires a significant amount of database power to produce (large table scans are necessary when grouping routers by time period - the smaller the interval the longer the operation takes). However, the logic is clear and is easily accomplished from the database. The churn graphs may find their way onto the website, but the underlying processes may need to be optimized further. Either way, a database system ought to open a few doors for us in regards to some of the interesting things we can easily explore. See some of the churn graphs <a href="https://blog.torproject.org/files/relay-churn-week.png">here</a>, and <a href="https://blog.torproject.org/files/relay-churn-month.png" title="relay churn month">here</a>.</p>
 
-<ul>
-<li>A more thorough <a href="http://git.spanning-tree.org/index.cgi/torbel/tree/doc/test-spec.txt?id=torbel-0.1-gsoc">specification</a> for active testing of the Tor network to determine fine-grained reachability through exit relays</li>
-<li>A <a href="http://git.spanning-tree.org/index.cgi/torbel/tree/doc/data-spec.txt?id=torbel-0.1-gsoc">specification</a> for the export of this data in bulk to consumers, in CSV and JSON formats and via the DNSEL blocklist interface.</li>
-<li>A high-throughput implementation of the active testing scheme using the <a href="http://twistedmatrix.com/trac/">Twisted</a> framework (torbel)</li>
-<li>A Python API (torbel.query) to easily query against these exports.</li>
-<li>An implementation of a DNSEL server (torbel.dnsel) written on top of twisted.names compatible with the original tordnsel that supports more query types and uses TorBEL&#39;s export formats and query API.</li>
-</ul>
+<p>In addition to the back-end and database work, I explored <a href="http://had.co.nz/ggplot2/">ggplot2</a> and the <a href="http://www.r-project.org/">R</a> language - the tools used to generate the graphs on the metrics portal. Currently, R communicates with the database to generate graphs on demand (I settled on a <a href="http://code.google.com/p/rpostgresql/">Postgres driver</a> for R which was part of GSoC 2008). The goal was to make the graphs parametizable so a user can request a custom or unique graph. The graphs are then served from <a href="http://rosuda.org/Rserve/">Rserve</a> and Apache Tomcat. A few examples of the parametizable graphs are currently live on the metrics website which were implemented by Karsten.</p>
 
-<p>Although TorBEL is relatively stable at this point and does its job well, providing better answers where the current DNSEL is not accurate and providing an easy way for others to generate and consume exit node data, it is far from finished. Bugs need fixing and test accuracy can be improved further still, and TorBEL will need to face the test of running on a production system, used by real-world consumers like OFTC and FreeNode. I fully intend to stay with the Tor project as a volunteer developer and maintain TorBEL as long as it needs maintaining.</p>
+<p>Congratulations to the rest of the GSoC&#39;ers John, Kory, and Harry for their successful projects. I want to give a big thank you to @KarstenLoesing for being such a great guide for my foray into the Tor Project and open-source development. It has been a great learning experience. Many thanks to Tor and Google for the opportunity!</p>
 
-<p>I&#39;d like to thank Sebastian Hahn for being a fantastically helpful mentor and for sticking with me even through some frustrating late nights and my lack of regular communication. Sebastian has pushed me harder than I expected to meet my goals on time and to revise them when I could not do so. Working with me from another part of the world with a six-hour time difference made things interesting, although insomnia played a key role in keeping us in contact. I can be terribly difficult to get in touch with and it really didn&#39;t help working another part-time job for the entire coding duration. This caused a few problems, as Sebastian tried very hard to encourage me to work in the open and communicate often, which I often failed to do. I will try to improve my communications with Tor project members in the future.</p>
-
-<p>In addition to Sebastian, I&#39;d like to thank the many kind members of the Tor community for reaching out and helping me get up to speed and resolve many areas I had trouble with, including Nick Matthewson, Roger Dingledine, Mike Perry, Damian Johnson, and Ilja Hallberg. Without their unending help and resourcefulness I would have been stuck long ago.</p>
-
-<p>All in all GSoC 2010 has been a great experience and I really hope to see that TorBEL gets some real-world usage in the very near future. I very much look forward to continuing work with the Tor developer community on TorBEL and hopefully other interesting projects as well.</p>
+<p><thead><tr>
+<th>Attachment</th>
+<th>Size</th> </tr></thead><tbody>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/relay-churn-month.png">relay-churn-month.png</a></td>
+<td>18.33 KB</td> </tr>
+ <tr class="even">
+<td><a href="https://blog.torproject.org/files/relay-churn-week.png">relay-churn-week.png</a></td>
+<td>16.78 KB</td> </tr>
+</tbody></p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/july-2010-progress-report">July 2010 Progress Report</a></h2>
+          <h2 class="post-title"> <a href="/blog/september-2010-progress-report">September 2010 Progress Report</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">alpha releases</a>
-              
-                <a class="post-category post-category-js" href="#">bug fixes</a>
-              
-                <a class="post-category post-category-js" href="#">development</a>
-              
-                <a class="post-category post-category-js" href="#">enhancements</a>
-              
-                <a class="post-category post-category-js" href="#">orbot</a>
-              
-                <a class="post-category post-category-js" href="#">performance improvements</a>
-              
-                <a class="post-category post-category-js" href="#">portable bundles</a>
+                <a class="post-category post-category-js" href="#">new hires</a>
               
                 <a class="post-category post-category-js" href="#">progress report</a>
               
-                <a class="post-category post-category-js" href="#">research</a>
+                <a class="post-category post-category-js" href="#">releases</a>
               
-                <a class="post-category post-category-js" href="#">research progress</a>
-              
-                <a class="post-category post-category-js" href="#">research reports</a>
-              
-                <a class="post-category post-category-js" href="#">research results</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+                <a class="post-category post-category-js" href="#">translation</a>
                |
-              12 Aug 2010
+              11 Oct 2010
           </p>
         </header>
         <div class="post-description">
-          <p><strong>New releases</strong></p>
+          <p><strong>New Hires</strong></p>
 
 <ul>
-<li>On July 4th, we released Tor Browser Bundle 1.3.7 for Microsoft Windows. This is a security update for Firefox and Pidgin. The changes are: update to Firefox 3.5.10 and Pidgin Instant Messenger 2.7.1r2 to fix some security issues.</li>
-<li><p>On July 6th, we released Tor Browser Bundle 1.0.8 for GNU/Linux distributions. This fixes a number of security issues with included software. The updates include:</p>
-
-<ul>
-<li>Update libpng to 1.4.3 (see CVE-2010-1205)</li>
-<li>Update Firefox to 3.5.10</li>
-<li>Update HTTPS Everywhere to 0.2.1</li>
-</ul></li>
-<li><p>On July 12th, we released the Tor 0.2.2.14-alpha. This latest -alpha greatly improves client-side handling of circuit build timeouts, which are used to estimate speed and improve performance. We also move to a much better GeoIP database, port Tor to Windows CE, introduce new compile ﬂags that improve code security, add an eighth v3 directory authority, and address a lot of more minor issues. See <a href="https://blog.torproject.org/blog/tor-02214-alpha-released" title="https://blog.torproject.org/blog/tor-02214-alpha-released">https://blog.torproject.org/blog/tor-02214-alpha-released</a> for full changelog.</p></li>
-<li><p>On July 15th, we released the latest version of OrBot, tor for the Android operating system, version 0.0.8. Fixes include:</p>
-
-<ul>
-<li>Updated Settings &amp; App configuration screens</li>
-<li>Changed progress dialog display</li>
-<li>Significant application re-arch</li>
-<li>Fixed force stop crash on install</li>
-<li>Integrated Tor 0.2.2.13-alpha-dev binary</li>
-<li>Fixed su shell cmd error handling &amp; root perms issue</li>
-<li>#1570: Added new setup wizard on install to clarify root / non-root capabilities</li>
-<li>#1716: Per-app traffic routing prefs not persisted</li>
-<li>#1509: Help window is too big for the screen on android 1.6</li>
-<li>#1513: Orbot can’t be told to exit &amp; added ’Exit’ menu option</li>
-<li>#1530: Capture sh cmd stout for debugging errors &amp; updated debug log screen</li>
-<li>#1531: Don’t loop ad infinitum in Orbot fails only retries 3 times now</li>
-<li>#1272: Orbot should store Tor files in the cache</li>
-<li>#1273: Info should mention anonymity problems with ProxySurf</li>
-</ul></li>
-<li><p>On July 22nd, we released updated Tor Browser Bundles for Windows. Versions 1.3.8 and 1.3.9 are upgrades to fix security issues with Firefox and Pidgin. Firefox is updated to 3.5.11.Pidgin Instant Messenger client is updated to 2.7.2.</p></li>
+<li>Tom Heydt-Benjamin is contracted full-time to work on NSF-related research through December 2010.</li>
+<li>Erinn Clark is contracted full-time to work on improving packaging, secure updater, tor browser bundles, and continuous integration systems through December 2010. Previously, Erinn was part-time.</li>
 </ul>
 
-<p><strong>Design, develop, and implement enhancements that makeTor a better tool for users in censored countries.</strong></p>
+<p><strong>New Releases</strong></p>
 
 <ul>
-<li>We worked with some Nigerians to determine that the Nigerian government is not mandating Internet censorship. Rather, a few ISPs in Nigeria have closed loopholes that allowed some people to obtain Internet access without paying for an account. The blog post,subsequent comments, and research results are at <a href="https://blog.torproject.org/blog/dear-nigerians-help-us-help-you" title="https://blog.torproject.org/blog/dear-nigerians-help-us-help-you">https://blog.torproject.org/blog/dear-nigerians-help-us-help-you</a>.</li>
-<li>Jacob, Robert Hogan, and Damon McCoy submitted a proposal to separate streams by port or host from the Tor client. The full proposal can be read at <a href="http://archives.seul.org/or/dev/Jul-2010/msg00021.html" title="http://archives.seul.org/or/dev/Jul-2010/msg00021.html">http://archives.seul.org/or/dev/Jul-2010/msg00021.html</a>. The motivation for this proposal is as follows:
-&gt; Streams are currently attached to circuits without regard to their content, destination host,or destination port. We propose two options, IsolateStreamsByPort and IsolateStreamsByHost to change the default behavior.
-&gt;
-&gt; The contents of some streams will always have revealing plain text information; these streamsshould be treated diﬀerently than other streams that may or may not have unencrypted PII content. DNS, with the exception of DNSCurve, is always unencrypted. It is reasonable to assume that other protocols may exist that have a similar issue and may cause user concern. It is also the case that we must balance network load issues and stream privacy. The Tor network will not currently scale to one circuit per connection nor should it anytime soon.
-&gt;
-&gt; Circuits are currently created with a few constraints and are rotated within a reasonable timewindow. This allows a rogue exit nodes to correlate all streams on a given circuit.</li>
-<li>Continuing research into how the Chinese firewall is currently able to block 90% of the Tor relays and bridges. It seems the firewall is configured to block specific IP Address and TCPPort combinations, as changing combinations on individual IP addresses results in updates to the blocking scheme. The blocking updates in the firewall are possibly updated every two weeks. An interesting area of research would be to do a technical analysis of blocking methods around the world on both landline and mobile Internet connections.</li>
+<li>Tor Browser Bundle for Mac OS X is now available for the i386 architecture in 11 languages. This is an alpha release to let the community test functionality. Read more at <a href="https://blog.torproject.org/blog/tor-browser-bundle-mac-os-x" title="https://blog.torproject.org/blog/tor-browser-bundle-mac-os-x">https://blog.torproject.org/blog/tor-browser-bundle-mac-os-x</a></li>
+<li>Orbot, Tor for Android, was released into the Android Market. Android users can now officially download and install Orbot on their devices. <a href="https://guardianproject.info/apps/orbot/" title="https://guardianproject.info/apps/orbot/">https://guardianproject.info/apps/orbot/</a></li>
+<li>Version 0.2.10 of the graphical controller for tor, Vidalia, is now available. The main change is the use of Tor&#39;s native geoip database to map relay IP addresses to country. This removes the remote geoip resolution that occurred over Tor in previous versions of Vidalia. Read more at <a href="https://blog.torproject.org/blog/vidalia-0210-released" title="https://blog.torproject.org/blog/vidalia-0210-released">https://blog.torproject.org/blog/vidalia-0210-released</a></li>
+<li>Tor 0.2.2.16-alpha was released, Tor 0.2.2.16-alpha fixes a variety of old stream fairness bugs (most evident at exit relays), and also continues to resolve all the little
+bugs that have been filling up trac lately. <a href="https://blog.torproject.org/blog/tor-02216-alpha-released" title="https://blog.torproject.org/blog/tor-02216-alpha-released">https://blog.torproject.org/blog/tor-02216-alpha-released</a></li>
+<li>We released Torbutton 1.3.0-alpha. Torbutton 1.3.0-alpha is the first release of Torbutton where most of the code has come from our community members! The full announcement is available at <a href="http://archives.seul.org/or/talk/Sep-2010/msg00140.html" title="http://archives.seul.org/or/talk/Sep-2010/msg00140.html">http://archives.seul.org/or/talk/Sep-2010/msg00140.html</a>.</li>
+<li>Tor 0.2.2.17-alpha introduces a feature to make it harder for clients to use one-hop circuits (which can put the exit relays at higher risk, plus unbalance the network); fixes a big bug in bandwidth accounting for relays that want to limit their monthly bandwidth use; fixes a big pile of bugs in how clients tolerate temporary network failure; and makes our adaptive circuit build timeout feature (which improves client performance if your network is fast while not breaking things if your network is slow) better handle bad networks. <a href="https://blog.torproject.org/blog/tor-02217-alpha-out" title="https://blog.torproject.org/blog/tor-02217-alpha-out">https://blog.torproject.org/blog/tor-02217-alpha-out</a></li>
 </ul>
 
-<p><strong>Grow the Tor network and user base. Outreach.</strong></p>
+<p><strong>Design, develop, and implement enhancements that make Tor a better tool for users in censored countries.</strong>
+Mike wrote up the current state of progress on a torbutton extension for Google&#39;s Chrome web browser, <a href="https://blog.torproject.org/blog/google-chrome-incognito-mode-tor-and-fingerprinting" title="https://blog.torproject.org/blog/google-chrome-incognito-mode-tor-and-fingerprinting">https://blog.torproject.org/blog/google-chrome-incognito-mode-tor-and-fi...</a>.</p>
+
+<p><strong>Architecture and technical design docs for Tor enhancements related to blocking-resistance.</strong>
+Steven submitted a proposal to automatically promote nodes to bridges. This proposal describes how Tor clients could determine when they have sufficient bandwidth capacity and are sufficiently reliable to become either bridges or Tor relays. When they meet this criteria, they will automatically promote themselves, based on user preferences. The proposal also defines the new controller messages and options which will control this process. <a href="https://gitweb.torproject.org/tor.git/blob_plain/HEAD:/doc/spec/proposals/175-automatic-node-promotion.txt" title="https://gitweb.torproject.org/tor.git/blob\_plain/HEAD:/doc/spec/proposals/175-automatic-node-promotion.txt">https://gitweb.torproject.org/tor.git/blob_plain/HEAD:/doc/spec/proposal...</a>.</p>
+
+<p><strong>Outreach and Advocacy</strong></p>
 
 <ul>
-<li>Roger trained more Internews staﬀ on what Tor is and how to use it.</li>
-<li>Tor held its second annual developer meeting in Potsdam, Germany. 24 committed employees, contractors, and volunteers were invited to the ”un-conference”. It was held over two days at the Hasso Plattner Institute at the University of Potsdam. The developers picked the topics and led the discussions over the two days. Topics ranged from an itemization and ownership of all 40 products tor produces to fundraising and financial details of our successful A-133 compliance audit. The current list of products and owners is at <a href="https://trac.torproject.org/projects/tor/wiki/projects/ProductsandAssignments">https://trac.torproject.org/projects/tor/wiki/projects/ProductsandAssignments.</a>We also rolled out a new project management system and methodology to keep track of our growing ecosystem of software, advocacy, and related projects. See <a href="https://trac.torproject.org/projects/tor/wiki/projects/HowWeDoProjectManagement">https://trac.torproject.org/projects/tor/wiki/projects/HowWeDoProjectManagement</a>for the details.</li>
-<li><p>Andrew, Ian, Paul, Karsten, and Steven presented at the 2010 Privacy Enhancing Technologies Symposium in Berlin, Germany. <a href="http://petsymposium.org/2010/" title="http://petsymposium.org/2010/">http://petsymposium.org/2010/</a>. Proceedings of the symposium are online through Springer at <a href="http://www.springerlink.com/content/978-3-642-14526-1/" title="http://www.springerlink.com/content/978-3-642-14526-1/">http://www.springerlink.com/content/978-3-642-14526-1/</a>.</p>
-
-<ul>
-<li>Ian’s current research was presented by a co-author, Ryan Henry, on ”Making a Nymbler Nymble Using VERBS”. The abstract is available at <a href="http://www.springerlink.com/content/3818173868g05737/" title="http://www.springerlink.com/content/3818173868g05737/">http://www.springerlink.com/content/3818173868g05737/</a>.</li>
-<li>Ian’s other current research topic was presented at HotPETS as a paper in progress on speeding up the Tor handshake. This will be turned into a formal proposal to Tor in August 2010. Ian has actual code and results from live testing on the Tor network as well.</li>
-<li>Paul’s current research was presented by a co-author, Aaron Johnson, on ”Preventing Active Timing Attacks in Low-Latency Anonymous Communication”. The abstract is available at <a href="http://www.springerlink.com/content/l8r648rr30187115/" title="http://www.springerlink.com/content/l8r648rr30187115/">http://www.springerlink.com/content/l8r648rr30187115/</a>.</li>
-<li>Karsten presented on the vast quantities of data available to researchers at <a href="http://metrics.torproject.org" title="http://metrics.torproject.org">http://metrics.torproject.org</a>. We’re soon going to put all of this into a queryable database for easier access and research. This data is licensed under a Creative Commons Zero license, as defined at <a href="http://creativecommons.org/publicdomain/zero/1.0/" title="http://creativecommons.org/publicdomain/zero/1.0/">http://creativecommons.org/publicdomain/zero/1.0/</a>. This material is supported in part by the National Science Foundation under Grant No. CNS-0959138.</li>
-<li>Steven’s current research was presented by a co-author, Claudia Diaz, on ”Impact of Network Topology on Anonymity and Overhead in Low-Latency Anonymity Networks”. The abstract is available at <a href="http://www.springerlink.com/content/53535522423n2v68/" title="http://www.springerlink.com/content/53535522423n2v68/">http://www.springerlink.com/content/53535522423n2v68/</a>.</li>
-</ul></li>
-<li><p>Jacob and Seth Shoen of the EFF gave a talk about Tor and Internet Circumvention at The Next HOPE conference in New York City. Their talk is listed at <a href="http://c2047862.cdn.cloudfiles.rackspacecloud.com/tnha08.mp3" title="http://c2047862.cdn.cloudfiles.rackspacecloud.com/tnha08.mp3">http://c2047862.cdn.cloudfiles.rackspacecloud.com/tnha08.mp3</a> or the full talks from the conference are online at <a href="http://thenexthope.org/talks-list/" title="http://thenexthope.org/talks-list/">http://thenexthope.org/talks-list/</a>.</p></li>
-<li><p>Jacob gave a talk about Tor and Internet Circumvention at DEF CON 18 in Las Vegas, <a href="http://defcon.org/html/defcon-18/dc-18-index.html" title="http://defcon.org/html/defcon-18/dc-18-index.html">http://defcon.org/html/defcon-18/dc-18-index.html</a>.</p></li>
-<li><p>Roger’s advice on choosing a circumvention system was translated and published in Volume 2 of the China Rights Forum, <a href="http://www.hrichina.org/public/contents/category?cid=175033" title="http://www.hrichina.org/public/contents/category?cid=175033">http://www.hrichina.org/public/contents/category?cid=175033</a>.</p></li>
+<li>We released an article about the ``Ten Things to Look for in a Circumvention Tool&#39;&#39;. As more countries crack down on Internet use, people around the world are turning to anti-censorship software that lets them reach blocked websites. Many types of software, also known as circumvention tools, have been created to answer the threat to freedom online. These tools provide different features and levels of security, and it&#39;s important for users to understand the tradeoffs. This article lays out ten features you should consider when evaluating a circumvention tool. The goal isn&#39;t to advocate for any specific tool, but to point out what kind of tools are useful for different situations. Full details at <a href="https://www.torproject.org/press/2010-09-16-ten-things-circumvention-tools.html.en" title="https://www.torproject.org/press/2010-09-16-ten-things-circumvention-tools.html.en">https://www.torproject.org/press/2010-09-16-ten-things-circumvention-too...</a></li>
+<li>Karen attended a meeting of the United Nations Internet Governance Forum in Vilnius, Lithuania. <a href="http://igf2010.lt/" title="http://igf2010.lt/">http://igf2010.lt/</a></li>
+<li>Karen attended Ars Electronica in Linz, Austria. Tor received an Honorable Mention for Digital Communities. <a href="http://aec.at" title="http://aec.at">http://aec.at</a></li>
+<li>Karen attended Internet@Liberty in Budapest, Hungary. <a href="https://sites.google.com/a/pressatgoogle.com/internet-at-liberty-2010/" title="https://sites.google.com/a/pressatgoogle.com/internet-at-liberty-2010/">https://sites.google.com/a/pressatgoogle.com/internet-at-liberty-2010/</a> and <a href="http://jilliancyork.com/tag/ial2010/" title="http://jilliancyork.com/tag/ial2010/">http://jilliancyork.com/tag/ial2010/</a> for Jillian&#39;s summary.</li>
+<li>Sebastian gave a talk at SourceBarcelona about Anonymity, Privacy, and the real world. <a href="http://www.sourceconference.com/index.php/barcelona-2010/bcn2010-schedule#Jacob" title="http://www.sourceconference.com/index.php/barcelona-2010/bcn2010-schedule#Jacob">http://www.sourceconference.com/index.php/barcelona-2010/bcn2010-schedul...</a></li>
+<li>Nick and Andrew held a Boston Hackfest to explain Tor&#39;s internals, hack on some Tor simulator code, and generally be available for questions and help on topics relating to Tor. <a href="https://blog.torproject.org/blog/boston-tor-hackers-join-us-sunday-september-19th" title="https://blog.torproject.org/blog/boston-tor-hackers-join-us-sunday-september-19th">https://blog.torproject.org/blog/boston-tor-hackers-join-us-sunday-septe...</a>.</li>
 </ul>
 
-<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong>
-Erinn continues to work on a Tor Browser Bundle for Apple’s OS X. The Apple TBB is turning into a very tricky item to produce. Even with proper sandboxing support, the TBB leaves a large number of modified files behind due to the way Apple handles dmgs, and running binaries. Compounding progress is the way Firefox integrates into the system, resulting in code patches to the Firefox source.
-Erinn continues to improve Tor Browser Bundle for Linux with feedback from initial users and other volunteer developers.</p>
-
-<p><strong>Bridge relay and bridge authority work.</strong>
-Tor now has another developer working on bridge authority and bridge database work. The goal is to be able to work down the list of items at <a href="https://trac.torproject.org/projects/tor/wiki/projects/BridgeDB" title="https://trac.torproject.org/projects/tor/wiki/projects/BridgeDB">https://trac.torproject.org/projects/tor/wiki/projects/BridgeDB</a> over the next three months.</p>
-
-<p><strong>Scalability, load balancing, directory overhead, eﬃciency.</strong></p>
+<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong></p>
 
 <ul>
-<li>Mike continues to tune the code for Bandwidth Authorities to better measure and load-balance the Tor network.</li>
-<li>Karsten completed his research into alternative GeoIP databases to more accurately asess from where Tor clients connect. The original research started in April 2010, and was published at <a href="http://archives.seul.org/or/dev/Apr-2010/msg00021.html" title="http://archives.seul.org/or/dev/Apr-2010/msg00021.html">http://archives.seul.org/or/dev/Apr-2010/msg00021.html</a>. From the 0.2.2.14-alpha change log, we chose to move to the June 2010 Maxmind GeoLite country db (rather than the June 2009 ip-to-country GeoIP db) for our statistics that count how many users relays are seeing from each country. Now we have more accurate data for many African countries. This will be reﬂected in more accurate country graphs at <a href="http://metrics.torproject.org/" title="http://metrics.torproject.org/">http://metrics.torproject.org/</a>.</li>
-<li>Karsten is conducting research into how to more accurately count tor clients than our current methods. The goal here is to get more accurate counts per country than the current sampling method without being able to de-anonymize any individual or group of Tor users.</li>
-<li>Karsten is rolling out new passive performance metrics about Tor. The goal is to better measure the Tor performance to gather more data to make better decisions. The start of the topic is at <a href="http://archives.seul.org/or/dev/Jul-2010/msg00016.html" title="http://archives.seul.org/or/dev/Jul-2010/msg00016.html">http://archives.seul.org/or/dev/Jul-2010/msg00016.html</a>.</li>
-<li>We completed the first four of seven milestones on our National Science Foundation Grant No. CNS-0959138. The completed milestones are:
-
-<ol>
-<li>Establish a preliminary metrics website to automatically publish daily graphs of collected data. Start with a) estimated user counts for China and Iran, and b) the results of our ”torperf” performance scans.</li>
-<li>Technical report: Document our current approaches to measuring statistical data in the Tor anonymity network, and the legal/ethical/technical/social constraints around safe measurements.</li>
-<li>Publish a summary of what data and tools we have already, and what data and tools we hope to have. Then begin collaborating (ongoing) with the other researchers in the Anonymous Communications field to integrate our data and tools into their work so they can solve the problems we’re actually seeing rather than the problems they speculate we might have.</li>
-<li>Instrument Tor relays to track resource load, including queue sizes, average cell latency, and number of active connections. Safely aggregate these results, then publish ongoing snapshots in our public dataset, and integrate them into our metrics website.</li>
-</ol></li>
+<li>Erinn synchronized the Windows, OS X, and Linux tor browser bundles to use the same configurations and included software.</li>
+<li>The TAILS team continues to improve and update their LiveCD available at <a href="https://amnesia.boum.org" title="https://amnesia.boum.org">https://amnesia.boum.org</a>.</li>
+<li>Jacob began an audit of the TAILS LiveCD to help assess the safety and security of the software for users in highly-volatile situations.</li>
 </ul>
 
-<p><strong>More reliable (e.g. split) download mechanism.</strong>
-Erinn and Steven are working on an automated building system for packages. This will enable quicker, more reliable releases. The build system will also enable us to produce nightly packages of the current working codebases for Tor and related software.</p>
+<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong>
+Created Tor 0.2.3 branch and started work on integrated bufferevents and microdescriptors. Bufferevents are the proper way to manage heavy network i/o in Microsoft Windows. Microdescriptors are a way to let clients on extremely low-bandwidth connections bootstrap into the Tor network. Proposal 158, <a href="https://gitweb.torproject.org/tor.git/blob_plain/HEAD:/doc/spec/proposals/158-microdescriptors.txt" title="https://gitweb.torproject.org/tor.git/blob\_plain/HEAD:/doc/spec/proposals/158-microdescriptors.txt">https://gitweb.torproject.org/tor.git/blob_plain/HEAD:/doc/spec/proposal...</a>, defines microdescriptors.</p>
 
-<p><strong>Footprints from Tor Browser Bundle.</strong>
-Erinn continues work on footprints of the Tor Browser Bundle for Linux and Apple OS X.</p>
+<p><strong>Translation work</strong></p>
 
-<p><strong>Translation work, ultimately a browser-based approach.</strong>
-Updates to documentation and website in German, Russian, Polish, Swedish, Farsi, Turkish, Norwegian, French, Italian, Spanish, and Albanian.</p>
+<ul>
+<li>We began the migration from our Pootle-based translation portal to Transifex after a discussion with their developers. Transifex provides free hosting of their translation software for free software projects and access to thousands of translators shared between hosted projects. All of our translations will be completed through Transifex going forward. <a href="https://www.transifex.net/projects/p/torproject/" title="https://www.transifex.net/projects/p/torproject/">https://www.transifex.net/projects/p/torproject/</a>.</li>
+<li>Updated translations for Russian, Arabic, Persian, Greek, Burmese, French, Italian, Swedish, Dutch, German, Spanish, Polish, and Simplified Chinese.</li>
+</ul>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/visitor-or-script-tell-you-how-many-your-users-are-probably-tor-users">VisiTor - or: a script to tell you how many of your users are probably Tor users</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">karsten</a> under
+              
+                <a class="post-category post-category-js" href="#">metrics apache</a>
+               |
+              04 Oct 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>We have heard from web server operators who are wondering how many of
+their visitors are using Tor to do so.</p>
+
+<p>We can now answer this question. We have an exit list archive back to
+February 2010 and a tool to compare an Apache HTTP server log to these
+lists. We can further guess how many of the requests come from Torbutton
+users by looking at the user-agent string.</p>
+
+<p>There&#39;s a lot of sensitive data involved here, which is why we give out
+the archived exit lists and our tool so that web server operators can
+run the comparison themselves.</p>
+
+<p>You&#39;ll find the exit list archive and the VisiTor tool here:</p>
+
+<ul>
+<li><a href="https://metrics.torproject.org/data.html#exitlist" title="https://metrics.torproject.org/data.html#exitlist">https://metrics.torproject.org/data.html#exitlist</a></li>
+<li><a href="https://metrics.torproject.org/tools.html#visitor" title="https://metrics.torproject.org/tools.html#visitor">https://metrics.torproject.org/tools.html#visitor</a></li>
+</ul>
+
+<p>If you are running a web server and want to help us make the tool
+better, please download the sources, review the 350 lines of finest
+Java code, run the tool on your machine, and let us know how that works!</p>
+
+<p>(There will be a Python version once we&#39;re happy with the Java version.
+Want to help writing (and maintaining) a Python version?)</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-02217-alpha-out">Tor 0.2.2.17-alpha is out</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha release</a>
+              
+                <a class="post-category post-category-js" href="#">bandwidth fixes</a>
+              
+                <a class="post-category post-category-js" href="#">best tor ever</a>
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">refuse unknown exits</a>
+               |
+              04 Oct 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Tor 0.2.2.17-alpha introduces a feature to make it harder for clients to use one-hop circuits (which can put the exit relays at higher risk, plus unbalance the network); fixes a big bug in bandwidth accounting for relays that want to limit their monthly bandwidth use; fixes a big pile of bugs in how clients tolerate temporary network failure; and makes our adaptive circuit build timeout feature (which improves client performance if your network is fast while not breaking things if your network is slow) better handle bad networks.</p>
+
+<p><a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+
+<p>Packages will be appearing over the next few days.</p>
+
+<p>The original announcement is <a href="http://archives.seul.org/or/talk/Oct-2010/msg00001.html" title="http://archives.seul.org/or/talk/Oct-2010/msg00001.html">http://archives.seul.org/or/talk/Oct-2010/msg00001.html</a></p>
+
+<blockquote>
+<p>Changes in version 0.2.2.17-alpha - 2010-09-30
+o Major features:
+- Exit relays now try harder to block exit attempts from unknown
+relays, to make it harder for people to use them as one-hop proxies
+a la tortunnel. Controlled by the refuseunknownexits consensus
+parameter (currently enabled), or you can override it on your
+relay with the RefuseUnknownExits torrc option. Resolves bug 1751.</p>
+
+<p>o Major bugfixes (0.2.1.x and earlier):
+- Fix a bug in bandwidth accounting that could make us use twice
+the intended bandwidth when our interval start changes due to
+daylight saving time. Now we tolerate skew in stored vs computed
+interval starts: if the start of the period changes by no more than
+50% of the period&#39;s duration, we remember bytes that we transferred
+in the old period. Fixes bug 1511; bugfix on 0.0.9pre5.
+- Always search the Windows system directory for system DLLs, and
+nowhere else. Bugfix on 0.1.1.23; fixes bug 1954.
+- When you&#39;re using bridges and your network goes away and your
+bridges get marked as down, recover when you attempt a new socks
+connection (if the network is back), rather than waiting up to an
+hour to try fetching new descriptors for your bridges. Bugfix on
+0.2.0.3-alpha; fixes bug 1981.</p>
+
+<p>o Major bugfixes (on 0.2.2.x):
+- Fix compilation on Windows. Bugfix on 0.2.2.16-alpha; related to
+bug 1797.
+- Fix a segfault that could happen when operating a bridge relay with
+no GeoIP database set. Fixes bug 1964; bugfix on 0.2.2.15-alpha.
+- The consensus bandwidth-weights (used by clients to choose fast
+relays) entered an unexpected edge case in September where
+Exits were much scarcer than Guards, resulting in bad weight
+recommendations. Now we compute them using new constraints that
+should succeed in all cases. Also alter directory authorities to
+not include the bandwidth-weights line if they fail to produce
+valid values. Fixes bug 1952; bugfix on 0.2.2.10-alpha.
+- When weighting bridges during path selection, we used to trust
+the bandwidths they provided in their descriptor, only capping them
+at 10MB/s. This turned out to be problematic for two reasons:
+Bridges could claim to handle a lot more traffic then they
+actually would, thus making more clients pick them and have a
+pretty effective DoS attack. The other issue is that new bridges
+that might not have a good estimate for their bw capacity yet
+would not get used at all unless no other bridges are available
+to a client. Fixes bug 1912; bugfix on 0.2.2.7-alpha.</p>
+
+<p>o Major bugfixes (on the circuit build timeout feature, 0.2.2.x):
+- Ignore cannibalized circuits when recording circuit build times.
+This should provide for a minor performance improvement for hidden
+service users using 0.2.2.14-alpha, and should remove two spurious
+notice log messages. Bugfix on 0.2.2.14-alpha; fixes bug 1740.
+- Simplify the logic that causes us to decide if the network is
+unavailable for purposes of recording circuit build times. If we
+receive no cells whatsoever for the entire duration of a circuit&#39;s
+full measured lifetime, the network is probably down. Also ignore
+one-hop directory fetching circuit timeouts when calculating our
+circuit build times. These changes should hopefully reduce the
+cases where we see ridiculous circuit build timeouts for people
+with spotty wireless connections. Fixes part of bug 1772; bugfix
+on 0.2.2.2-alpha.
+- Prevent the circuit build timeout from becoming larger than
+the maximum build time we have ever seen. Also, prevent the time
+period for measurement circuits from becoming larger than twice that
+value. Fixes the other part of bug 1772; bugfix on 0.2.2.2-alpha.</p>
+
+<p>o Minor features:
+- When we run out of directory information such that we can&#39;t build
+circuits, but then get enough that we can build circuits, log when
+we actually construct a circuit, so the user has a better chance of
+knowing what&#39;s going on. Fixes bug 1362.
+- Be more generous with how much bandwidth we&#39;d use up (with
+accounting enabled) before entering &quot;soft hibernation&quot;. Previously,
+we&#39;d refuse new connections and circuits once we&#39;d used up 95% of
+our allotment. Now, we use up 95% of our allotment, AND make sure
+that we have no more than 500MB (or 3 hours of expected traffic,
+whichever is lower) remaining before we enter soft hibernation.
+- If we&#39;ve configured EntryNodes and our network goes away and/or all
+our entrynodes get marked down, optimistically retry them all when
+a new socks application request appears. Fixes bug 1882.
+- Add some more defensive programming for architectures that can&#39;t
+handle unaligned integer accesses. We don&#39;t know of any actual bugs
+right now, but that&#39;s the best time to fix them. Fixes bug 1943.
+- Support line continuations in the torrc config file. If a line
+ends with a single backslash character, the newline is ignored, and
+the configuration value is treated as continuing on the next line.
+Resolves bug 1929.</p>
+
+<p>o Minor bugfixes (on 0.2.1.x and earlier):
+- For bandwidth accounting, calculate our expected bandwidth rate
+based on the time during which we were active and not in
+soft-hibernation during the last interval. Previously, we were
+also considering the time spent in soft-hibernation. If this
+was a long time, we would wind up underestimating our bandwidth
+by a lot, and skewing our wakeup time towards the start of the
+accounting interval. Fixes bug 1789. Bugfix on 0.0.9pre5.</p>
+
+<p>o Minor bugfixes (on 0.2.2.x):
+- Resume generating CIRC FAILED REASON=TIMEOUT control port messages,
+which were disabled by the circuit build timeout changes in
+0.2.2.14-alpha. Bugfix on 0.2.2.14-alpha; fixes bug 1739.
+- Make sure we don&#39;t warn about missing bandwidth weights when
+choosing bridges or other relays not in the consensus. Bugfix on
+0.2.2.10-alpha; fixes bug 1805.
+- In our logs, do not double-report signatures from unrecognized
+authorities both as &quot;from unknown authority&quot; and &quot;not
+present&quot;. Fixes bug 1956, bugfix on 0.2.2.16-alpha.</p>
+</blockquote>
 
         </div>
       </section>
@@ -458,7 +381,7 @@ Updates to documentation and website in German, Russian, Polish, Swedish, Farsi,
       
         <a href="/blog/page91" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 92 of 134</span>
+      <span class="page_number ">Page: 92 of 137</span>
       
         <a href="/blog/page93" class="next">Next</a>
       

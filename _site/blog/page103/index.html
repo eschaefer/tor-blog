@@ -53,307 +53,341 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/november-2009-progress-report">November 2009 Progress Report</a></h2>
+          <h2 class="post-title"> <a href="/blog/apple-workaround-openssl-issues-os-x-105-and-106">Apple workaround for openssl issues on OS X 10.5 and 10.6</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">advocacy</a>
+                <a class="post-category post-category-js" href="#">10.3</a>
               
-                <a class="post-category post-category-js" href="#">censorship circumvention</a>
+                <a class="post-category post-category-js" href="#">10.4</a>
               
-                <a class="post-category post-category-js" href="#">performance</a>
+                <a class="post-category post-category-js" href="#">10.5</a>
               
-                <a class="post-category post-category-js" href="#">progress report</a>
+                <a class="post-category post-category-js" href="#">10.6</a>
               
-                <a class="post-category post-category-js" href="#">tor in java</a>
-              
-                <a class="post-category post-category-js" href="#">translation</a>
-               |
-              15 Dec 2009
-          </p>
-        </header>
-        <div class="post-description">
-          <p><strong>New releases, new hires, new funding</strong></p>
-
-<p>Bruce Leidl joins to work on developing Tor in Java. Bruce will write a fully functional Tor in Java in order to provide a solid foundation for other java-based projects; such as Tor on mobile platforms like Maemo and Android.</p>
-
-<p>On November 2nd we released Vidalia 0.2.6. <a href="https://blog.torproject.org/blog/vidalia-026-released" title="https://blog.torproject.org/blog/vidalia-026-released">https://blog.torproject.org/blog/vidalia-026-released</a></p>
-
-<p>On November 20th, we released Tor Browser Bundle 1.2.10. <a href="https://blog.torproject.org/blog/tor-browser-bundle-1210-released" title="https://blog.torproject.org/blog/tor-browser-bundle-1210-released">https://blog.torproject.org/blog/tor-browser-bundle-1210-released</a></p>
-
-<p>On November 19th, we released Tor 0.2.2.6-alpha. <a href="https://blog.torproject.org/blog/tor-0226-alpha-released" title="https://blog.torproject.org/blog/tor-0226-alpha-released">https://blog.torproject.org/blog/tor-0226-alpha-released</a></p>
-
-<p><strong>Design, develop, and implement enhancements that make
-Tor a better tool for users in censored countries.</strong></p>
-
-<p>Roger met with his class at KAIST working on bridge deployment strategies. A few teams developed some creative strategies. Roger is continuing to work with the leading teams to further refine their ideas before publishing.</p>
-
-<p>Improved our email autoresponder, get-tor, to handle non-english character sets. Implemented gettor+(language)@ addressing to allow users to request tor browser bundle packages in their native language. Added support for languages with a right to left orientation, such as farsi.</p>
-
-<p><strong>Grow the Tor network and user base. Outreach.</strong></p>
-
-<ul>
-<li>Andrew spoke at CASCON 2009 about Tor and its research. A few researchers from IBM and University of Waterloo were interested in furthering research. <a href="https://www-927.ibm.com/ibm/cas/cascon/" title="https://www-927.ibm.com/ibm/cas/cascon/">https://www-927.ibm.com/ibm/cas/cascon/</a></li>
-<li>Andrew and Roger attended Blogfest Asia 2009, HK BloggerCon, and the Privacy and Security Workshop series in Hong Kong and met with many bloggers, activists, and media people from all over Asia. Andrew wrote up his experiences at <a href="https://blog.torproject.org/blog/blogfest-asia-2009" title="https://blog.torproject.org/blog/blogfest-asia-2009">https://blog.torproject.org/blog/blogfest-asia-2009</a>.</li>
-<li>Jacob spoke at Internet Dagarna 2009 in Stockholm, Sweden. <a href="http://www.internetdagarna.se/" title="http://www.internetdagarna.se/">http://www.internetdagarna.se/</a></li>
-<li>Jacob spoke at SUNET gathering in Stockholm, Sweden.</li>
-<li>Jacob helped organize and run Hackers Conference in California. <a href="http://www.think.org/conference/" title="http://www.think.org/conference/">http://www.think.org/conference/</a></li>
-<li>Karen met with National Iranian-American Council, <a href="http://www.niacouncil.org/" title="http://www.niacouncil.org/">http://www.niacouncil.org/</a>, to discuss ways Tor can help NIAC succeed in helping improve Human Rights and Democracy in Iran.</li>
-<li>Andrew had a conversation with Freedom House which resulted in some instructional videos being produced to help users install and configure Tor. <a href="https://blog.torproject.org/blog/installing-and-using-tor" title="https://blog.torproject.org/blog/installing-and-using-tor">https://blog.torproject.org/blog/installing-and-using-tor</a></li>
-</ul>
-
-<p><strong>Bridge relay and bridge authority work.</strong>
-We distributed bridge addresses to networks of people in China and Iran to let Tor users continue to work without issues.</p>
-
-<p>Karsten worked to remove sensitive data from collected meta-data about bridges. We can publish our bridge data archives to <a href="http://archive.torproject.org" title="http://archive.torproject.org">http://archive.torproject.org</a> soon. This data could help understand bridge quantity, usage of bridges around the world, and other information from possible data analysis.</p>
-
-<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong></p>
-
-<p>Included in the Tor 0.2.2.6-alpha release is the beginning of microdescriptors.</p>
-
-<blockquote>
-<p>Directory authorities can now agree on and publish small summaries of router information that clients can use in place of regular server descriptors. This transition will eventually allow clients to use far less bandwidth for downloading information about the network. Begins the implementation of Proposal 158: ”Clients
-download consensus + microdescriptors”.</p>
-</blockquote>
-
-<p><strong>More reliable (e.g. split) download mechanism.</strong></p>
-
-<p>Continuing to update the email autoresponder, get-tor, to handle split downloads on request. Split Tor Browser Bundles work well. Creation and maintenance of Mac OS X split dmgs is due in December 2009.</p>
-
-<p><strong>Translation work, ultimately a browser-based approach.</strong></p>
-
-<ul>
-<li>Pushed live Runa’s work on integrating the website to our translation portal, <a href="https://translation.torproject.org/" title="https://translation.torproject.org/">https://translation.torproject.org/</a>.</li>
-<li>Runa fine tuned the translation portal to website scripts.</li>
-<li>Runa updated the documentation for translators to reflect these tor translation portal updates.</li>
-<li>Added our email autoresponder, get-tor, to the translation portal.</li>
-<li>Began live testing of website translations through the Tor Translation Portal.</li>
-<li>28 updated Polish website translations.</li>
-<li>15 updated Chinese website translations.</li>
-<li>11 updated Italian website translations.</li>
-<li>1 French translation of get-tor.</li>
-<li>Full Norwegian translation of tor browser bundle.</li>
-<li>Full Norwegian translation of the website.</li>
-<li>Full Burmese translation of the website.</li>
-<li>Full Burmese translation of torcheck.</li>
-<li>Updated Spanish torbutton translations.</li>
-<li>Updated Chinese torbutton translations.</li>
-<li>Updated Chinese torcheck translations.</li>
-<li>18 updated German website translations.</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/polipo-changes-maintainer">Polipo changes maintainer</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">Google Summer of Code</a>
-              
-                <a class="post-category post-category-js" href="#">maintainer</a>
-              
-                <a class="post-category post-category-js" href="#">new features</a>
-              
-                <a class="post-category post-category-js" href="#">performance</a>
-              
-                <a class="post-category post-category-js" href="#">polipo</a>
-              
-                <a class="post-category post-category-js" href="#">volunteer</a>
-               |
-              11 Dec 2009
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Congratulations to Chrisd for assuming maintainership of the Polipo codebase from Juliusz. The full announcement is available at <a href="http://sourceforge.net/mailarchive/forum.php?thread_name=87d42l7fka.fsf%40trurl.pps.jussieu.fr&amp;forum_name=polipo-users">the mailing list archives</a>.</p>
-
-<p><em>Why Chris?</em></p>
-
-<p>Chrisd was a 2009 Google Summer of Code for Tor/EFF. His project was <a href="https://blog.torproject.org/blog/polipo-portability-enhancements-summary">Polipo Portability Enhancements</a>. Chris has proven himself to be a very competent coder and able to design and implement features as needed. He even wrote a SOCKS layer fix for Firefox bugs, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=280661" title="https://bugzilla.mozilla.org/show\_bug.cgi?id=280661">https://bugzilla.mozilla.org/show_bug.cgi?id=280661</a>.</p>
-
-<p><em>What does this mean to Tor?</em></p>
-
-<p>It means we have a fantastic new coder maintaining the polipo codebase. Bugfixes, features, and more frequent releases should help improve polipo beyond where it is today.</p>
-
-<p><em>Is Tor going to control Polipo?</em></p>
-
-<p>We&#39;re not going to influence Chris on the direction of Polipo, but provide him support, volunteers, and an infrastructure to let him do what he needs to do. Juliusz created polipo and got it off to a great start. We&#39;re going to support Chris in continuing the progress. The world still wants an http proxy that&#39;s modern, fast, and flexible. Privoxy is a fine alternative to polipo, perhaps the two projects can come together.</p>
-
-<p><em>What&#39;s happening to Juliusz?</em></p>
-
-<p>Juliusz is a busy person. His free time has been concentrated on Babel, <a href="http://www.pps.jussieu.fr/%7Ejch/software/babel/" title="http://www.pps.jussieu.fr/~jch/software/babel/">http://www.pps.jussieu.fr/~jch/software/babel/</a>, over the past year. Juliusz is still a committer to polipo. We appreciate all of his help during the transition and for the years of maintenance of polipo.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-0226-alpha-released">Tor 0.2.2.6-alpha released</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">alpha release</a>
-              
-                <a class="post-category post-category-js" href="#">android</a>
-              
-                <a class="post-category post-category-js" href="#">enhancements</a>
-              
-                <a class="post-category post-category-js" href="#">new features</a>
+                <a class="post-category post-category-js" href="#">confused users</a>
               
                 <a class="post-category post-category-js" href="#">openssl</a>
+              
+                <a class="post-category post-category-js" href="#">osx</a>
+              
+                <a class="post-category post-category-js" href="#">packaging mess</a>
+              
+                <a class="post-category post-category-js" href="#">tls renegotiation</a>
                |
-              03 Dec 2009
+              01 Feb 2010
           </p>
         </header>
         <div class="post-description">
-          <p>On November 19, we released the latest in the Tor alpha series, version 0.2.2.6-alpha. This release lays the groundwork for many upcoming features:
-support for the new lower-footprint &quot;microdescriptor&quot; directory design,
-future-proofing our consensus format against new hash functions or
-other changes, and an Android port. It also makes Tor compatible with
-the upcoming OpenSSL 0.9.8l release, and fixes a variety of bugs.</p>
+          <p>Apple responded to my bug report about a broken openssl. I&#39;ve since built test packages for OS X 10.5 and 10.6 users. Their response is:</p>
 
-<p>It can be downloaded at <a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+<blockquote>
+<p>Thank you for your report of this issue with Tor.</p>
 
-<p><strong>Major features:</strong></p>
+<p>The issue you&#39;re seeing is because the current versions of the development tools were created before the OpenSSL security fix, and so do not include the &quot;SSL3_FLAGS_ALLOW_UNSAFE_LEGACY_RENEGOTIATION&quot; definition in the OpenSSL headers.</p>
 
-<ul>
-<li>Directory authorities can now create, vote on, and serve multiple
-parallel formats of directory data as part of their voting process.
-Partially implements Proposal 162: &quot;Publish the consensus in
-multiple flavors&quot;.</li>
-<li>Directory authorities can now agree on and publish small summaries
-of router information that clients can use in place of regular
-server descriptors. This transition will eventually allow clients
-to use far less bandwidth for downloading information about the
-network. Begins the implementation of Proposal 158: &quot;Clients
-download consensus + microdescriptors&quot;.</li>
-<li>The directory voting system is now extensible to use multiple hash
-algorithms for signatures and resource selection. Newer formats
-are signed with SHA256, with a possibility for moving to a better
-hash algorithm in the future.</li>
-<li>New DisableAllSwap option. If set to 1, Tor will attempt to lock all
-current and future memory pages via mlockall(). On supported
-platforms (modern Linux and probably BSD but not Windows or OS X),
-this should effectively disable any and all attempts to page out
-memory. This option requires that you start your Tor as root --
-if you use DisableAllSwap, please consider using the User option
-to properly reduce the privileges of your Tor.</li>
-<li>Numerous changes, bugfixes, and workarounds from Nathan Freitas
-to help Tor build correctly for Android phones.</li>
-</ul>
+<p>You can work around this issue by supplying the definition to Tor directly, for example by compiling Tor using</p>
 
-<p><strong>Major bugfixes:</strong></p>
+<p>CPPFLAGS=&#39;-DSSL3_FLAGS_ALLOW_UNSAFE_LEGACY_RENEGOTIATION=0x0010&#39; ./configure &amp;&amp; make</p>
 
-<ul>
-<li>Work around a security feature in OpenSSL 0.9.8l that prevents our
-handshake from working unless we explicitly tell OpenSSL that we
-are using SSL renegotiation safely. We are, but OpenSSL 0.9.8l
-won&#39;t work unless we say we are.</li>
-</ul>
+<p>This will work on both Leopard and Snow Leopard.</p>
+</blockquote>
 
-<p><strong>Minor bugfixes:</strong></p>
+<p>If you have an Intel (i386) Mac, use the normal i386 packages for Tor 0.2.2.8-alpha release at <a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a>.</p>
 
-<ul>
-<li>Fix a crash bug when trying to initialize the evdns module in
-Libevent 2. Bugfix on 0.2.1.16-rc.</li>
-<li>Stop logging at severity &#39;warn&#39; when some other Tor client tries
-to establish a circuit with us using weak DH keys. It&#39;s a protocol
-violation, but that doesn&#39;t mean ordinary users need to hear about
-it. Fixes the bug part of bug 1114. Bugfix on 0.1.0.13.</li>
-<li>Do not refuse to learn about authority certs and v2 networkstatus
-documents that are older than the latest consensus. This bug might
-have degraded client bootstrapping. Bugfix on 0.2.0.10-alpha.
-Spotted and fixed by xmux.</li>
-<li>Fix numerous small code-flaws found by Coverity Scan Rung 3.</li>
-<li>If all authorities restart at once right before a consensus vote,
-nobody will vote about &quot;Running&quot;, and clients will get a consensus
-with no usable relays. Instead, authorities refuse to build a
-consensus if this happens. Bugfix on 0.2.0.10-alpha; fixes bug 1066.</li>
-<li>If your relay can&#39;t keep up with the number of incoming create
-cells, it would log one warning per failure into your logs. Limit
-warnings to 1 per minute. Bugfix on 0.0.2pre10; fixes bug 1042.</li>
-<li>Bridges now use &quot;reject *:*&quot; as their default exit policy. Bugfix
-on 0.2.0.3-alpha; fixes bug 1113.</li>
-<li>Fix a memory leak on directory authorities during voting that was
-introduced in 0.2.2.1-alpha. Found via valgrind.</li>
-</ul>
+<p>If you have a PowerPC (ppc) Mac AND are running OS X 10.5 or 10.6, use these packages:</p>
 
-<p>The original announcement can be found at <a href="http://archives.seul.org/or/talk/Nov-2009/msg00106.html" title="http://archives.seul.org/or/talk/Nov-2009/msg00106.html">http://archives.seul.org/or/talk/Nov-2009/msg00106.html</a></p>
+<p>Tor Expert: <a href="https://www.torproject.org/dist/osx-old/Tor-0.2.2.8-alpha-i386-10.5-10.6-only-Bundle.dmg" title="https://www.torproject.org/dist/osx-old/Tor-0.2.2.8-alpha-i386-10.5-10.6-only-Bundle.dmg">https://www.torproject.org/dist/osx-old/Tor-0.2.2.8-alpha-i386-10.5-10.6...</a> and .asc.</p>
+
+<p>Vidalia Bundle: <a href="https://www.torproject.org/dist/vidalia-bundles/vidalia-bundle-0.2.2.8-alpha-0.2.7-10.5-10.6-only-ppc.dmg" title="https://www.torproject.org/dist/vidalia-bundles/vidalia-bundle-0.2.2.8-alpha-0.2.7-10.5-10.6-only-ppc.dmg">https://www.torproject.org/dist/vidalia-bundles/vidalia-bundle-0.2.2.8-a...</a> and .asc.</p>
+
+<p>If you have a PowerPC (ppc) Mac AND ARE running OS X 10.3 or 10.4, use the normal ppc packages at <a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a>.</p>
+
+<p>This can be confusing. I now maintain two different PowerPC packages. One set for pre-10.5 and one set for 10.5 and later OS X versions. This is because Apple didn&#39;t update 10.3 nor 10.4 for the openssl bug.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/conversation-european-donor">Conversation with a European Donor</a></h2>
+          <h2 class="post-title"> <a href="/blog/effs-panopticlick-and-torbutton">EFF&#39;s Panopticlick and Torbutton</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
+              By <a class="post-author" href="#">mikeperry</a> under
               
-                <a class="post-category post-category-js" href="#">anonymous donor</a>
+                <a class="post-category post-category-js" href="#">EFF</a>
               
-                <a class="post-category post-category-js" href="#">data retention</a>
+                <a class="post-category post-category-js" href="#">online anonymity</a>
               
-                <a class="post-category post-category-js" href="#">europe</a>
+                <a class="post-category post-category-js" href="#">panopticlick</a>
               
-                <a class="post-category post-category-js" href="#">internet surveillance</a>
+                <a class="post-category post-category-js" href="#">privacy</a>
               
-                <a class="post-category post-category-js" href="#">support</a>
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">torbutton</a>
                |
-              03 Dec 2009
+              29 Jan 2010
           </p>
         </header>
         <div class="post-description">
-          <p>I had a conversation with a private donor from Europe yesterday. During the discussion, I asked,</p>
+          <p>The EFF has recently released a <a href="http://panopticlick.eff.org/">browser fingerprinting test suite</a> that they call <a href="http://panopticlick.eff.org/about.php">Panopticlick</a>. The idea is that in normal operation, your browser leaks a lot of information about its configuration which <a href="https://www.eff.org/deeplinks/2010/01/tracking-by-user-agent">can be used to uniquely fingerprint you</a> independent of your cookies.</p>
 
-<blockquote>
-<p>Is there more we can do in the EU to help protect privacy and anonymity online?</p>
-</blockquote>
+<p>Because of how EFF&#39;s testing tool functions, it has created some confusion and concern among Tor users, so I wanted to make a few comments to try to clear things up.</p>
 
-<p>The answer is,</p>
+<p>First off, Torbutton has defended against <a href="https://www.torproject.org/torbutton/design/#attacks">these and other types of attacks</a> since the 1.2.0 series began. We make the User Agent of all Torbutton users uniform, we block all plugins both to prevent proxy bypass conditions and to block subtler forms of plugin tracking, we round screen resolution down to 50 pixel multiples, we set the timezone to GMT, and we clear and disable DOM Storage.</p>
 
-<blockquote>
-<p>You are already doing it as far as I am concerned: I started using TOR due to the recent coming into force of the legal requirement that UK ISPs must keep all web-browsing and e-mail connections for a year (?), and the fact that practically everyone and his cat (in government, of course) can ask to see those records without judicial review. Maybe you should stop talking about China and Tibet as places where anonymity are needed by journalists, and talk about the EU were anonymity is needed by all.</p>
-</blockquote>
+<p>In fact, based on <a href="https://www.torproject.org/torbutton/design/#id2530601">my display resolution calculations</a>, we should only be presenting just over 7 bits of information to fingerprint Tor users, and this is only in the form of window size, which for most users either changes from day to day, or is set to a common maximized display size.</p>
 
-<p>We continued to discuss the surveillance society that is the UK, and how the UK government is happy to export it to the rest of Europe. Governments are also large and complex. Many times one part of the government proposes and starts to roll out some policy or law, only to have another branch work to stop it. An unrelated, but classic example of this is,</p>
+<p>Why then does EFF&#39;s page tend to tell Tor users that they are unique amongst the hundreds of thousands of users that have been fingerprinted so far? The answer has largely to do with selection bias. The majority of visitors to EFF&#39;s site are likely not Tor users. Thus Torbutton&#39;s protection mechanisms tend to make Tor users stand out as unique amongst the rest of the web. This is not as bad as it seems. Torbutton&#39;s protection mechanisms are only meant to make all Tor users look uniform amongst themselves, not to make them look like the rest of web users. After all, Tor users are already identifiable because they appear from <a href="https://www.torproject.org/tordnsel/">easily recognizable Tor exit node IP addresses</a>.</p>
 
-<blockquote>
-<p>Anyway, you are right about your characterization of governmental organizations; just look at this link and try not to laugh too loudly:</p>
+<p>What&#39;s more is that these protections are of course not enabled while Tor is disabled. In fact, one of <a href="https://www.torproject.org/torbutton/design/#requirements">Torbutton&#39;s design requirements</a> is to not provide any evidence that you are a Tor user during normal operation.</p>
 
-<p><a href="http://news.bbc.co.uk/2/hi/uk_news/politics/8379759.stm" title="http://news.bbc.co.uk/2/hi/uk\_news/politics/8379759.stm">http://news.bbc.co.uk/2/hi/uk_news/politics/8379759.stm</a></p>
-</blockquote>
+<p>I&#39;d like to commend the EFF for bringing these web fingerprinting details to the public eye in a way that I unfortunately was unable to do when I first developed protections for them.</p>
 
-<p>It&#39;s great to hear from normal people that they are concerned about what is going on in their country. And that they are taking both tacts of supporting technological and political organizations that are working to address these laws. Not everyone has to be an activist to care about what&#39;s happening to the Internet.</p>
-
-<p>There are groups like the <a href="http://www.openrightsgroup.org/">Open Rights Group</a> and <a href="http://www.liberty-human-rights.org.uk/">Liberty</a> tackling these issues on a political level. <a href="http://effi.org/">EFFi</a> in Finland, <a href="http://bof.nl/">Bits of Freedom</a> in the Netherlands, and the <a href="http://ccc.de/">CCC</a> in Germany are other fine organizations working to stop or limit the creeping Internet surveillance.</p>
-
-<p>The quotes are published with the donor&#39;s permission.</p>
+<p>However, I wish that they also included or at least referenced <a href="http://whattheinternetknowsaboutyou.com/">url history disclosure information</a> with their tool. After all, if you have history enabled (and you haven&#39;t set Torbutton to block history reads during Non-Tor usage), each URL you visit adds <a href="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy">another bit</a> to the set that can be used to fingerprint you. Often bits that are extremely sensitive, such as which diseases and genetic conditions you have based on your <a href="http://en.wikipedia.org/wiki/Category:Diseases_and_disorders">Wikipedia</a> or <a href="https://www.google.com/health/">Google Health</a> url history. I am convinced that it is only a matter of time before the ad networks begin mining this data to provide targeted ads for over-the-counter and prescription medications and to sell this data to other marketing and insurance firms, if they don&#39;t do it already.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/thanks-shinjiru">Thanks to Shinjiru</a></h2>
+          <h2 class="post-title"> <a href="/blog/apple-broke-openssl-which-breaks-tor-os-x">Apple broke OpenSSL which breaks Tor on OS X</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">directory authority</a>
+                <a class="post-category post-category-js" href="#">apple os x</a>
               
-                <a class="post-category post-category-js" href="#">donated services</a>
+                <a class="post-category post-category-js" href="#">new packages</a>
               
-                <a class="post-category post-category-js" href="#">outside EU</a>
+                <a class="post-category post-category-js" href="#">no love from apple</a>
               
-                <a class="post-category post-category-js" href="#">outside US</a>
+                <a class="post-category post-category-js" href="#">openssl</a>
+              
+                <a class="post-category post-category-js" href="#">static compilation</a>
                |
-              29 Nov 2009
+              27 Jan 2010
           </p>
         </header>
         <div class="post-description">
-          <p>Earlier this year, we started looking for a new hosting location for a directory authority <a href="https://blog.torproject.org/blog/time-directory-authority-outside-useu">outside the US and EU</a>. After talking to a few ISPs, <a href="http://www.shinjiru.com/">Shinjiru Technology</a> donated a high-bandwidth server to us. The server has been up and running for a few months now without issues. The staff has been great to work with and we&#39;ll soon turn this into a public directory authority for the public Tor Network.
-This is a public thank you to Shinjiru for supporting online privacy and anonymity with Tor.</p>
+          <p>Apple OS X Security Update 2010-001 removes OpenSSL renegotation, <a href="http://support.apple.com/kb/HT1222" title="http://support.apple.com/kb/HT1222">http://support.apple.com/kb/HT1222</a>. We&#39;ve filed a bug report with Apple on this issue. Their standard response so far is <a href="http://support.apple.com/kb/HT4004" title="http://support.apple.com/kb/HT4004">http://support.apple.com/kb/HT4004</a>.</p>
+
+<p>In the meanwhile, we have bug #1225 open, <a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225</a>. Add yourself to the Notifications if you want updates as they happen. A fine explanation of why Tor is not affected by the TLS renegotiation bug can be found at <a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225&amp;area=comments#3804" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225&amp;area=comments#3804">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225&amp;area=c...</a></p>
+
+<p>Packages for testing are available at:
+ <a href="https://www.torproject.org/dist/testing/" title="https://www.torproject.org/dist/testing/">https://www.torproject.org/dist/testing/</a></p>
+
+<p><strong>READ THIS FINE PRINT</strong> :</p>
+
+<ol>
+<li>These will only work on OSX 10.5 and 10.6 (both i386 and powerpc). Tor fails to compile when using the 10.4 libraries and static openssl.</li>
+<li>Tor-0.2.2.8-alpha-i386-Bundle.dmg is compiled to replace the tor
+binaries in /Applications/Vidalia.app/Contents/MacOS only. If your tor
+is located elsewhere, compile your own for now.</li>
+<li>let us know if they work for you. My testing systems show it works
+for me. Update
+<a href="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225" title="https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225">https://bugs.torproject.org/flyspray/index.php?do=details&amp;id=1225</a> if it
+doesn&#39;t work or you have other issues with these testing packages.</li>
+</ol>
+
+<p>I&#39;m still working on os x 10.4 packages.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-131-released">Tor Browser Bundle 1.3.1 Released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">firefox updates</a>
+              
+                <a class="post-category post-category-js" href="#">pidgin updates</a>
+              
+                <a class="post-category post-category-js" href="#">security critical</a>
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+               |
+              23 Jan 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The latest in the Tor Browser series, version 1.3.1 is released. This includes updates to Firefox, Pidgin, and Tor.</p>
+
+<p>Tor 0.2.1.22 rotates two of the seven v3 directory authority keys and
+locations, due to a security breach of some of the Torproject servers:
+ <a href="http://archives.seul.org/or/talk/Jan-2010/msg00161.html" title="http://archives.seul.org/or/talk/Jan-2010/msg00161.html">http://archives.seul.org/or/talk/Jan-2010/msg00161.html</a></p>
+
+<p>It also fixes a privacy problem in bridge directory authorities -- it
+would tell you its whole history of bridge descriptors if you make the
+right directory request.</p>
+
+<p>Everybody should upgrade:
+ <a href="https://www.torproject.org/easy-download" title="https://www.torproject.org/easy-download">https://www.torproject.org/easy-download</a></p>
+
+<p>The changelog is:</p>
+
+<p>1.3.1: Released 2010-01-22
+ update Firefox to 3.5.7
+ update Pidgin to 2.6.5
+ update Tor to 0.2.1.22</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-0227-alpha-released">Tor 0.2.2.7-alpha released</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">deprecated features</a>
+              
+                <a class="post-category post-category-js" href="#">feature enhancements</a>
+              
+                <a class="post-category post-category-js" href="#">performance enhancements</a>
+              
+                <a class="post-category post-category-js" href="#">security critical</a>
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+               |
+              23 Jan 2010
+          </p>
+        </header>
+        <div class="post-description">
+          <p>alpha fixes a huge client-side performance bug, as well
+as laying the groundwork for further relay-side performance fixes. It
+also starts cleaning up client behavior with respect to the EntryNodes,
+ExitNodes, and StrictNodes config options.</p>
+
+<p>This release also rotates two directory authority keys, due to a security
+breach of some of the Torproject servers:
+ <a href="http://archives.seul.org/or/talk/Jan-2010/msg00161.html" title="http://archives.seul.org/or/talk/Jan-2010/msg00161.html">http://archives.seul.org/or/talk/Jan-2010/msg00161.html</a></p>
+
+<p>Everybody should upgrade:
+ <a href="https://www.torproject.org/download.html.en" title="https://www.torproject.org/download.html.en">https://www.torproject.org/download.html.en</a></p>
+
+<p>Changes in version 0.2.2.7-alpha - 2010-01-19
+ o Directory authority changes:
+ - Rotate keys (both v3 identity and relay identity) for moria1
+ and gabelmoo.</p>
+
+<p>o Major features (performance):
+ - We were selecting our guards uniformly at random, and then weighting
+ which of our guards we&#39;d use uniformly at random. This imbalance
+ meant that Tor clients were severely limited on throughput (and
+ probably latency too) by the first hop in their circuit. Now we
+ select guards weighted by currently advertised bandwidth. We also
+ automatically discard guards picked using the old algorithm. Fixes
+ bug 1217; bugfix on 0.2.1.3-alpha. Found by Mike Perry.
+ - When choosing which cells to relay first, relays can now favor
+ circuits that have been quiet recently, to provide lower latency
+ for low-volume circuits. By default, relays enable or disable this
+ feature based on a setting in the consensus. You can override
+ this default by using the new &quot;CircuitPriorityHalflife&quot; config
+ option. Design and code by Ian Goldberg, Can Tang, and Chris
+ Alexander.
+ - Add separate per-conn write limiting to go with the per-conn read
+ limiting. We added a global write limit in Tor 0.1.2.5-alpha,
+ but never per-conn write limits.
+ - New consensus params &quot;bwconnrate&quot; and &quot;bwconnburst&quot; to let us
+ rate-limit client connections as they enter the network. It&#39;s
+ controlled in the consensus so we can turn it on and off for
+ experiments. It&#39;s starting out off. Based on proposal 163.</p>
+
+<p>o Major features (relay selection options):
+ - Switch to a StrictNodes config option, rather than the previous
+ &quot;StrictEntryNodes&quot; / &quot;StrictExitNodes&quot; separation that was missing a
+ &quot;StrictExcludeNodes&quot; option.
+ - If EntryNodes, ExitNodes, ExcludeNodes, or ExcludeExitNodes
+ change during a config reload, mark and discard all our origin
+ circuits. This fix should address edge cases where we change the
+ config options and but then choose a circuit that we created before
+ the change.
+ - If EntryNodes or ExitNodes are set, be more willing to use an
+ unsuitable (e.g. slow or unstable) circuit. The user asked for it,
+ they get it.
+ - Make EntryNodes config option much more aggressive even when
+ StrictNodes is not set. Before it would prepend your requested
+ entrynodes to your list of guard nodes, but feel free to use others
+ after that. Now it chooses only from your EntryNodes if any of
+ those are available, and only falls back to others if a) they&#39;re
+ all down and b) StrictNodes is not set.
+ - Now we refresh your entry guards from EntryNodes at each consensus
+ fetch -- rather than just at startup and then they slowly rot as
+ the network changes.</p>
+
+<p>o Major bugfixes:
+ - Stop bridge directory authorities from answering dbg-stability.txt
+ directory queries, which would let people fetch a list of all
+ bridge identities they track. Bugfix on 0.2.1.6-alpha.</p>
+
+<p>o Minor features:
+ - Log a notice when we get a new control connection. Now it&#39;s easier
+ for security-conscious users to recognize when a local application
+ is knocking on their controller door. Suggested by bug 1196.
+ - New config option &quot;CircuitStreamTimeout&quot; to override our internal
+ timeout schedule for how many seconds until we detach a stream from
+ a circuit and try a new circuit. If your network is particularly
+ slow, you might want to set this to a number like 60.
+ - New controller command &quot;getinfo config-text&quot;. It returns the
+ contents that Tor would write if you send it a SAVECONF command,
+ so the controller can write the file to disk itself.
+ - New options for SafeLogging to allow scrubbing only log messages
+ generated while acting as a relay.
+ - Ship the bridges spec file in the tarball too.
+ - Avoid a mad rush at the beginning of each month when each client
+ rotates half of its guards. Instead we spread the rotation out
+ throughout the month, but we still avoid leaving a precise timestamp
+ in the state file about when we first picked the guard. Improves
+ over the behavior introduced in 0.1.2.17.</p>
+
+<p>o Minor bugfixes (compiling):
+ - Fix compilation on OS X 10.3, which has a stub mlockall() but
+ hides it. Bugfix on 0.2.2.6-alpha.
+ - Fix compilation on Solaris by removing support for the
+ DisableAllSwap config option. Solaris doesn&#39;t have an rlimit for
+ mlockall, so we cannot use it safely. Fixes bug 1198; bugfix on
+ 0.2.2.6-alpha.</p>
+
+<p>o Minor bugfixes (crashes):
+ - Do not segfault when writing buffer stats when we haven&#39;t observed
+ a single circuit to report about. Found by Fabian Lanze. Bugfix on
+ 0.2.2.1-alpha.
+ - If we&#39;re in the pathological case where there&#39;s no exit bandwidth
+ but there is non-exit bandwidth, or no guard bandwidth but there
+ is non-guard bandwidth, don&#39;t crash during path selection. Bugfix
+ on 0.2.0.3-alpha.
+ - Fix an impossible-to-actually-trigger buffer overflow in relay
+ descriptor generation. Bugfix on 0.1.0.15.</p>
+
+<p>o Minor bugfixes (privacy):
+ - Fix an instance where a Tor directory mirror might accidentally
+ log the IP address of a misbehaving Tor client. Bugfix on
+ 0.1.0.1-rc.
+ - Don&#39;t list Windows capabilities in relay descriptors. We never made
+ use of them, and maybe it&#39;s a bad idea to publish them. Bugfix
+ on 0.1.1.8-alpha.</p>
+
+<p>o Minor bugfixes (other):
+ - Resolve an edge case in path weighting that could make us misweight
+ our relay selection. Fixes bug 1203; bugfix on 0.0.8rc1.
+ - Fix statistics on client numbers by country as seen by bridges that
+ were broken in 0.2.2.1-alpha. Also switch to reporting full 24-hour
+ intervals instead of variable 12-to-48-hour intervals.
+ - After we free an internal connection structure, overwrite it
+ with a different memory value than we use for overwriting a freed
+ internal circuit structure. Should help with debugging. Suggested
+ by bug 1055.
+ - Update our OpenSSL 0.9.8l fix so that it works with OpenSSL 0.9.8m
+ too.</p>
+
+<p>o Removed features:
+ - Remove the HSAuthorityRecordStats option that version 0 hidden
+ service authorities could have used to track statistics of overall
+ hidden service usage.</p>
 
         </div>
       </section>
@@ -364,7 +398,7 @@ This is a public thank you to Shinjiru for supporting online privacy and anonymi
       
         <a href="/blog/page102" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 103 of 134</span>
+      <span class="page_number ">Page: 103 of 137</span>
       
         <a href="/blog/page104" class="next">Next</a>
       

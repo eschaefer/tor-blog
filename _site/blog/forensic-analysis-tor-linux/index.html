@@ -83,9 +83,9 @@
 
 <p>Using <em>hashdeep</em>, I compared the hashes from the tainted virtual machine against the hashes from the clean virtual machine: <a href="https://trac.torproject.org/projects/tor/attachment/ticket/8166/debian_changed_files.txt">68 files</a> had a hash that did not match any of the hashes in the clean set. The most interesting files are:</p>
 
-<p><strong>~/.local/share/gvfs-metadata/home</strong> : contains the filename of the Tor Browser Bundle tarball: <em>tor-browser-gnu-linux-x86\</em>64-2.3.25-5-dev-en-US.tar.gz_. GVFS is the virtual filesystem for the GNOME desktop, so this result will probably vary depending on the window manager used. I have created <a href="https://trac.torproject.org/projects/tor/ticket/8695">#8695</a> for this issue.</p>
+<p><strong>~/.local/share/gvfs-metadata/home</strong> : contains the filename of the Tor Browser Bundle tarball: <em>tor-browser-gnu-linux-x86_64-2.3.25-5-dev-en-US.tar.gz</em>. GVFS is the virtual filesystem for the GNOME desktop, so this result will probably vary depending on the window manager used. I have created <a href="https://trac.torproject.org/projects/tor/ticket/8695">#8695</a> for this issue.</p>
 
-<p><strong>~/.xsession-errors</strong> : contains the following string: <em>“Window manager warning: Buggy client sent a \</em>NET_ACTIVE_WINDOW message with a timestamp of 0 for 0x3800089 (Tor Browse)”<em>. It is worth noting that a file named _.xsession-errors.old</em> could also exist. I have created <a href="https://trac.torproject.org/projects/tor/ticket/8696">#8696</a> for this issue.</p>
+<p><strong>~/.xsession-errors</strong> : contains the following string: <em>“Window manager warning: Buggy client sent a _NET_ACTIVE_WINDOW message with a timestamp of 0 for 0x3800089 (Tor Browse)”</em>. It is worth noting that a file named <em>.xsession-errors.old</em> could also exist. I have created <a href="https://trac.torproject.org/projects/tor/ticket/8696">#8696</a> for this issue.</p>
 
 <p><strong>~/.bash_history</strong> : contains a record of commands typed into the terminal. I started the Tor Browser Bundle from the command line, so this file contains lines such as <em>./start-tor-browser</em>. I have created <a href="https://trac.torproject.org/projects/tor/ticket/8697">#8697</a> for this issue.</p>
 

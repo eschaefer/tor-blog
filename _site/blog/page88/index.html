@@ -53,263 +53,201 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-openssl-vulnerability-tor-not-affected">New OpenSSL vulnerability; Tor not affected</a></h2>
+          <h2 class="post-title"> <a href="/blog/new-ppc-packages-available">New PPC packages available</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">nickm</a> under
+              By <a class="post-author" href="#">erinn</a> under
               
-                <a class="post-category post-category-js" href="#">analysis</a>
+                <a class="post-category post-category-js" href="#">alpha releases</a>
               
-                <a class="post-category post-category-js" href="#">bugs</a>
+                <a class="post-category post-category-js" href="#">apple osx love</a>
               
-                <a class="post-category post-category-js" href="#">openssl</a>
+                <a class="post-category post-category-js" href="#">ppc</a>
               
-                <a class="post-category post-category-js" href="#">security</a>
+                <a class="post-category post-category-js" href="#">stable releases</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">updated packages</a>
                |
-              16 Nov 2010
+              10 Jan 2011
           </p>
         </header>
         <div class="post-description">
-          <p>There&#39;s a new buffer overflow vulnerability in versions of OpenSSL from 0.9.8f through 0.9.8o, and 1.0.0 through 1.0.0a. You can read <a href="http://openssl.org/news/secadv_20101116.txt">the security advisory</a> for the whole story.</p>
-
-<p>So far as we can tell from our current analysis, Tor is <strong>not</strong> affected. Here&#39;s why:</p>
-
-<p>The advisory says:</p>
-
-<blockquote>
-<p>Any OpenSSL based TLS server is vulnerable if it is multi-threaded and uses OpenSSL&#39;s internal caching mechanism. Servers that are multi-process and/or disable internal session caching are NOT affected.</p>
-</blockquote>
-
-<p>Tor qualifies for <strong>both</strong> of the safe cases: Tor <em>does</em> disable OpenSSL&#39;s internal session caching. This happens in the file src/common/tortls.c, when we call <tt>SSL<em>CTX</em>set<em>session</em>cache<em>mode(result-&gt;ctx,SSL</em>SESS<em>CACHE</em>OFF)</tt>. Tor has done this since since version 0.0.2pre6 back in 2003.</p>
-
-<p>Also, though Tor is multithreaded, Tor only calls SSL functionality from a single thread. Thus, no thread other than the main thread will examine or alter the TLS session cache, or any TLS session at all.</p>
-
-<p>So it would appear that Tor itself is in the clear. Nonetheless, your other applications might not be. If you&#39;re running other SSL services that might be affected, be sure to apply patches from your OS and/or your application to stay safe.</p>
+          <p>The OS X PPC packages have been updated! They are now available in <a href="https://www.torproject.org/dist/vidalia-bundles/vidalia-bundle-0.2.1.28-0.2.10-ppc.dmg">stable (0.2.1.28)</a> ( <a href="https://www.torproject.org/dist/vidalia-bundles/vidalia-bundle-0.2.1.28-0.2.10-ppc.dmg.asc">sig</a>) and <a href="https://www.torproject.org/dist/vidalia-bundles/vidalia-bundle-0.2.2.20-alpha-0.2.10-ppc.dmg">alpha (0.2.2.20-alpha)</a> ( <a href="https://www.torproject.org/dist/vidalia-bundles/vidalia-bundle-0.2.2.20-alpha-0.2.10-ppc.dmg.asc">sig</a>) versions, both with the latest <a href="https://blog.torproject.org/blog/vidalia-0210-released">Vidalia (0.2.10)</a>. As usual, if you experience any problems, please <a href="https://trac.torproject.org/">report a bug</a>.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/2009-annual-report">2009 Annual Report</a></h2>
+          <h2 class="post-title"> <a href="/blog/new-blocking-activity-iran">New Blocking Activity from Iran</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">annual report</a>
+                <a class="post-category post-category-js" href="#">censorship</a>
               
-                <a class="post-category post-category-js" href="#">data release</a>
+                <a class="post-category post-category-js" href="#">deep packet inspection</a>
               
-                <a class="post-category post-category-js" href="#">progress reports</a>
+                <a class="post-category post-category-js" href="#">great persian firewall</a>
               
-                <a class="post-category post-category-js" href="#">transparency</a>
+                <a class="post-category post-category-js" href="#">internet censorship</a>
+              
+                <a class="post-category post-category-js" href="#">iran</a>
                |
-              16 Nov 2010
+              10 Jan 2011
           </p>
         </header>
         <div class="post-description">
-          <p>Today, the Tor Project releases the first in a series of <a href="https://www.torproject.org/about/financials.html.en">annual reports</a>. Drawing on our monthly reports, blog posts, and research papers, we produced a summary of research, advocacy, and outreach efforts during the year. It is both an introduction to the Tor Project and a way to keep track of our progress. There has been a lot of that in the past couple of years, so we hope you will take a look at the 2009 report and stay tuned for 2010.</p>
+          <p>Over the past 48 hours it seems the Great Persian Firewall is updating to attempt to block a number of circumvention tools, including Tor. Iranians and their diaspora have been reporting to us that Tor, Hot Spot Shield, UltraSurf, and Freegate are all experiencing connectivity problems from inside Iran to the outside world.</p>
 
-<p>The 2009 annual report can be downloaded at
- <a href="https://www.torproject.org/about/findoc/2009-TorProject-Annual-Report.pdf" title="https://www.torproject.org/about/findoc/2009-TorProject-Annual-Report.pdf">https://www.torproject.org/about/findoc/2009-TorProject-Annual-Report.pd...</a></p>
+<p>Our research indicates that ssl-based communications are being throttled to 2 kilobit per second rates or simply blocked altogether. This is inclusive of basic ssh, ssl, vpns, and other proxy technologies. We&#39;re continuing to work on what&#39;s really happening and likely means to counter. The short answer is to <a href="https://www.torproject.org/docs/bridges.html.en">use bridges</a> that are not on port 443.</p>
+
+<p>Some graphs to show the results on Tor from our <a href="https://metrics.torproject.org">Tor metrics portal</a>.</p>
+
+<p>Bridge users from Iran:</p>
+
+<p><img src="https://blog.torproject.org/files/bridge-users-2011-01-10-ir-2010-10-12.png" alt=""></p>
+
+<p>Direct connections from Iran:</p>
+
+<p><img src="https://blog.torproject.org/files/direct-users-2011-01-10-ir-2010-10-12.png" alt=""></p>
+
+<p><thead><tr>
+<th>Attachment</th>
+<th>Size</th> </tr></thead><tbody>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/bridge-users-2011-01-10-ir-2010-10-12.png">bridge-users-2011-01-10-ir-2010-10-12.png</a></td>
+<td>11.25 KB</td> </tr>
+ <tr class="even">
+<td><a href="https://blog.torproject.org/files/direct-users-2011-01-10-ir-2010-10-12.png">direct-users-2011-01-10-ir-2010-10-12.png</a></td>
+<td>14.92 KB</td> </tr>
+</tbody></p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/october-2010-progress-report">October 2010 Progress Report</a></h2>
+          <h2 class="post-title"> <a href="/blog/arm-release-141">Arm Release 1.4.1</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
+              By <a class="post-author" href="#">atagar</a> under
               
                 <a class="post-category post-category-js" href="#">arm</a>
+               |
+              08 Jan 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Hi all. A new release of <a href="http://www.atagar.com/arm/">arm</a> is available, including enhancements targeted at performance and cross platform compatibility. In particular, this release provides...</p>
+
+<ul>
+<li>Vastly Better Resolver Performance</li>
+</ul>
+
+<p>By far the most expensive thing that arm does is ps and netstat/lsof/etc lookups. While wandering around development forums I discovered <a href="https://code.google.com/p/psutil/">psutil</a>, an awesome library for cross platform resolution of system and process information. For OSX and BSD they&#39;re using ps and lsof lookups just like arm. However, for Linux they had a very different approach, querying proc contents directly. I <a href="https://svn.torproject.org/svn/arm/trunk/src/util/procTools.py">adapted the functions for arm</a> and it cut the runtime for resource and connection resolution by 90%. Many thanks to the authors of psutil (Jay Loden, Dave Daeschler, and Giampaolo Rodola&#39;)!</p>
+
+<ul>
+<li>BSD Compatibility</li>
+</ul>
+
+<p>For a long time FreeBSD has been arm&#39;s nemesis. Its variant of netstat can&#39;t get connection pids, the ss resolving utility belongs to a spreadsheet program instead, and even pid resolution failed (breaking resource stats and numerous other things). However, thanks to patches and testing by Fabian Keil and Hans Schnehl arm now has BSD counterparts for all of these, plus autodetection for BSD Jails.</p>
+
+<ul>
+<li>Expanded Distribution</li>
+</ul>
+
+<p>Peter and I have finished revisions for the arm deb and it&#39;s now pending feedback from the <a href="http://ftp-master.debian.org/new.html">Debian FTP admins</a>. Arm is also now <a href="http://aur.archlinux.org/packages.php?ID=44172">available on ArchLinux</a> thanks to Spider.007 and Fabian mentioned that he might be interested in doing a FreeBSD port.</p>
+
+<ul>
+<li>Volunteer Recruiting</li>
+</ul>
+
+<p>Being the lone developer of arm is kinda lonely. I&#39;d love to find other people interested in hacking on the code with me. To this end, and in anticipation of GSOC 2011, I&#39;ve added a project to <a href="https://www.torproject.org/getinvolved/volunteer.html.en">Tor&#39;s volunteer page</a> (&quot;Client Mode Use Cases for Arm&quot;).</p>
+
+<p>Plus numerous other fixes and improvements (for details see the <a href="http://www.atagar.com/arm/log.php#releaseNotes">release notes</a>). As always, screenshots and downloads are available from the project&#39;s homepage:
+ <a href="http://www.atagar.com/arm/" title="http://www.atagar.com/arm/">http://www.atagar.com/arm/</a></p>
+
+<p>Cheers! -Damian</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/measuring-tunisian-tor-usage">Measuring Tunisian Tor Usage</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
+                <a class="post-category post-category-js" href="#">circumvention</a>
               
-                <a class="post-category post-category-js" href="#">https everywhere</a>
+                <a class="post-category post-category-js" href="#">internet censorship</a>
               
                 <a class="post-category post-category-js" href="#">metrics</a>
               
-                <a class="post-category post-category-js" href="#">progress report</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">translations</a>
+                <a class="post-category post-category-js" href="#">tunisia</a>
                |
-              09 Nov 2010
+              07 Jan 2011
           </p>
         </header>
         <div class="post-description">
-          <p><strong>New Releases</strong></p>
+          <p>I&#39;ve been following the crackdown on Internet freedom in Tunisia over the past few weeks. I run an unpublished <a href="https://www.torproject.org/docs/bridges.html.en">tor bridge</a> for some Tunisian activists. It&#39;s been used fairly well for the past 18 months, however it has not seen traffic for a week. Tor usage from Tunisia has never been very high, but for those who need it, it&#39;s been a lifesaver; or so I&#39;ve been told. An example of what&#39;s going on in the country: <a href="http://jilliancyork.com/2011/01/06/tunisian-blogger-slim-amamou-arrested/">Slim Amamou arrested</a>, <a href="http://globalvoicesonline.org/specialcoverage/tunisia-uprising-201011/">Global Voices&#39; coverage of Tunisia</a>, <a href="http://advocacy.globalvoicesonline.org/categories/countries/tunisia/">Global Voices Advocacy: Tunisia</a>, and <a href="http://english.aljazeera.net/indepth/features/2011/01/20111614145839362.html">Tunisia&#39;s bitter cyberwar</a>.</p>
 
-<ul>
-<li>On October 29th, we released updated Tor Browser Bundles for OS X, Linux, and Windows. This is an upgrade to Firefox 3.6.12 which fixes a critical bug and OS X users&#39; Torbutton will now show up. <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-released-take-two" title="https://blog.torproject.org/blog/new-tor-browser-bundles-released-take-two">https://blog.torproject.org/blog/new-tor-browser-bundles-released-take-t...</a></li>
-<li>On October 28th, we released new OSX Vidalia bundles which include Tor 0.2.2.17-alpha. Vidalia 0.2.10 changed the way we deal with the geoip databases by dropping the remote geoip lookups. This caused a lot of headaches for OS X users because of the layout of the package, but it&#39;s fixed in this version. <a href="https://blog.torproject.org/blog/mac-os-x-vidalia-bundle-02217-alpha-out" title="https://blog.torproject.org/blog/mac-os-x-vidalia-bundle-02217-alpha-out">https://blog.torproject.org/blog/mac-os-x-vidalia-bundle-02217-alpha-out</a></li>
-<li>On October 27th, we released a new Tor Check to fix links to documentation urls, and clarify what users should do when getting the success result. <a href="https://check.torproject.org" title="https://check.torproject.org">https://check.torproject.org</a>.</li>
-<li>On October 27th, we released new Tor Browser Bundles for OSX, Linux, and Windows. The main notable upgrades for these are Firefox 3.6.11 and Pidgin 2.7.4 in the Windows IM bundle. <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-released" title="https://blog.torproject.org/blog/new-tor-browser-bundles-released">https://blog.torproject.org/blog/new-tor-browser-bundles-released</a></li>
-<li>On October 29th, we released new Tor Browser Bundles. This is an upgrade to Firefox 3.6.12 which fixes a critical bug and OS X users&#39; Torbutton will now show up. <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-released-take-two" title="https://blog.torproject.org/blog/new-tor-browser-bundles-released-take-two">https://blog.torproject.org/blog/new-tor-browser-bundles-released-take-t...</a></li>
-<li>On October 17th, The HTTPS Everywhere Extension for Firefox version 0.2.3.development.1 was released.</li>
-<li>On October 6th, Arm 1.3.7 was released. <a href="http://www.atagar.com/arm/" title="http://www.atagar.com/arm/">http://www.atagar.com/arm/</a>. Changelog at <a href="http://www.atagar.com/arm/log.php" title="http://www.atagar.com/arm/log.php">http://www.atagar.com/arm/log.php</a></li>
-<li>On October 7th, we released a hotfix to Arm 1.3.7: fix (10/7/10, r23463): crashing from type issue in the graph panel (caught by tomb)</li>
-<li>On October 9th, we released the new <a href="https://www.torproject.org" title="https://www.torproject.org">https://www.torproject.org</a> website after 4 months of design and conversion work. It features an entirely redesigned Information Architecture, user experience design, and codebase. Andrew, Roger, Sebastian, Runa, and many volunteers contributed to this release.</li>
-</ul>
+<p>Out of interest, I wondered how Tor usage in Tunisia has fared over 2010. I wonder if Facebook, Twitter, and other social network services are seeing an increase of users logging into Tunisian social networks from Tor.</p>
 
-<p><strong>Design, develop, and implement enhancements that make Tor a better
-tool for users in censored countries.</strong>
-Nick continued to work on the codebase around microdescriptors. Microdescriptors will allow clients on very low bandwidth connections to use the tor network more quickly than waiting to download the current directory information.</p>
+<p>It appears we&#39;re having an impact in Tunisia. More help is needed.</p>
 
-<p><strong>Grow the Tor network and user base. Outreach.</strong></p>
+<p>This is graph of Tor clients directly connecting to the rest of the network:
+ <img src="https://blog.torproject.org/files/direct-users-2010-12-31-tn-2010-01-01.png" alt=""></p>
 
-<ul>
-<li>Roger speaks at Internet Dagarna in Sweden, <a href="http://www.internetdagarna.se/" title="http://www.internetdagarna.se/">http://www.internetdagarna.se/</a>. The video of his talk is provided by the Internet Foundation at
-<a href="http://www.youtube.com/watch?v=35l56KjTCb8&amp;p=5BE29144D1FD2779" title="http://www.youtube.com/watch?v=35l56KjTCb8&amp;p=5BE29144D1FD2779">http://www.youtube.com/watch?v=35l56KjTCb8&amp;p=5BE29144D1FD2779</a>.</li>
-<li>Roger, Ian, and others attended WPES2010, Workshop on Privacy in the Electronic Society, <a href="http://wpes10.csi.muohio.edu/" title="http://wpes10.csi.muohio.edu/">http://wpes10.csi.muohio.edu/</a>.</li>
-<li>Roger, Ian, and others attended 17th ACM Conference on Computer and Communications Security, <a href="http://www.sigsac.org/ccs/CCS2010/" title="http://www.sigsac.org/ccs/CCS2010/">http://www.sigsac.org/ccs/CCS2010/</a>.</li>
-<li>Roger, Paul, and Andrew attended the Information Technology Study Group (ITSG).</li>
-<li>Jacob attended Bluehat, <a href="http://technet.microsoft.com/en-us/security/cc261637.aspx" title="http://technet.microsoft.com/en-us/security/cc261637.aspx">http://technet.microsoft.com/en-us/security/cc261637.aspx</a>.</li>
-<li>Roger gave a lecture at the State University of New York -Stonybrook.</li>
-<li>Jacob attended the Workshop on Elliptic Curve Cryptography, <a href="http://2010.eccworkshop.org/" title="http://2010.eccworkshop.org/">http://2010.eccworkshop.org/</a>.</li>
-<li>Roger, Mike, Jacob, Erinn represented Tor at the Google Summer of Code Mentor Summit.</li>
-<li>Roger gave a lecture at Stanford University, <a href="http://crypto.stanford.edu/seclab/sem.html" title="http://crypto.stanford.edu/seclab/sem.html">http://crypto.stanford.edu/seclab/sem.html</a>.</li>
-<li>Andrew, Karen, and Linus met with the Swedish Foreign Ministry, Swedish International Development Agency, <a href="http://www.sida.se/" title="http://www.sida.se/">http://www.sida.se/</a>, and NORDUnet, <a href="http://www.nordu.net/" title="http://www.nordu.net/">http://www.nordu.net/</a>.</li>
-</ul>
+<p>This is a graph of Tor clients connecting through bridges to the rest of the network:
+ <img src="https://blog.torproject.org/files/bridge-users-2010-12-31-tn-2010-01-01.png" alt=""></p>
 
-<p><strong>Preconfigured privacy (circumvention) bundles for USB or LiveCD.</strong>
-Working with the TA(I)LS LiveCD/LiveUSB team to get architecture designs, specifications, and goals written down and published. The desired state is to be able to analyze the live system for a number of security and anonymity properties through security and code audits.</p>
-
-<p><strong>Bridge relay and bridge authority work.</strong></p>
-
-<p>Mike began investigating the odd reality that we only report 500 bridges available at any point in time. Hundreds to thousands of people become bridges each week, but only around 500 are reported as being available at any point in time. This seems an odd coincidence to Mike and others. Research continues.</p>
-
-<p><strong>Scalability, load balancing, directory overhead, efficiency.</strong></p>
-
-<ul>
-<li>Karsten incorporated Kevin Berry&#39;s Google Summer of Code work into the metrics portal, <a href="https://blog.torproject.org/blog/tor-metrics-google-summer-code-2010" title="https://blog.torproject.org/blog/tor-metrics-google-summer-code-2010">https://blog.torproject.org/blog/tor-metrics-google-summer-code-2010</a>. This enables all graphs to be dynamically generated with minimal load to the server.</li>
-<li>Karsten and Sebastian continue to research an alternate way to more accurately count Tor users while still preserving their anonymity by design. They expect to have a report out in December 2010.</li>
-<li>Mike fixed some bugs relating to Bandwidth and Exit Authorities. These fixes are for code stability.</li>
-<li>Update to the October 1 2010 Maxmind GeoLite Country database. This updates the mapping of IP Address to Geolocation of relays.</li>
-<li>Nick commits a huge number of bug fixes, code refactoring, and general logic corrections as discovered through code audits, buffer events integration, and volunteer reviews.</li>
-<li>Karsten extended total relay bandwidth graph, <a href="https://metrics.torproject.org/network.html#bandwidth" title="https://metrics.torproject.org/network.html#bandwidth">https://metrics.torproject.org/network.html#bandwidth</a> by bandwidth history as
-reported by relays and added new graph on directory bytes written by relays, <a href="https://metrics.torproject.org/network.html#dirbytes" title="https://metrics.torproject.org/network.html#dirbytes">https://metrics.torproject.org/network.html#dirbytes</a>.</li>
-<li>Karsten changed most servlets to JSPs, added database connection pool, made the
-Tomcat application generate CSV files upon request, etc. These changes
-are not visible to most people, but they were necessary to clean up the
-grown metrics website. As a result, it&#39;s much easier now to add new
-graphs to the website.</li>
-<li>Karsten helped a volunteer to write a Python version of the VisiTor script, <a href="https://metrics.torproject.org/tools.html#visitor" title="https://metrics.torproject.org/tools.html#visitor">https://metrics.torproject.org/tools.html#visitor</a>,
-and wrote a spec for the exit list file format, <a href="https://trac.torproject.org/projects/tor/ticket/2064#comment:1" title="https://trac.torproject.org/projects/tor/ticket/2064#comment:1">https://trac.torproject.org/projects/tor/ticket/2064#comment:1</a>.</li>
-<li>Karsten found a new approach for combining directory request statistics from multiple relays to estimate total user numbers. The result is a much more reliable metric than the one we&#39;re using right now, <a href="https://metrics.torproject.org/users.html#direct-users" title="https://metrics.torproject.org/users.html#direct-users">https://metrics.torproject.org/users.html#direct-users</a>. Asked Olaf Selke (operator of blugmagie), Teun Nijssen (operator of TORy), and a few more to turn on directory request statistics on their relays. Updated tech report on Privacy-preserving Ways to Estimate the Number of Tor Users with new results, <a href="https://gitweb.torproject.org/karsten/metrics.git/blob_plain/refs/heads/counting-users:/report/counting-users/countingusers.pdf" title="https://gitweb.torproject.org/karsten/metrics.git/blob\_plain/refs/heads/counting-users:/report/counting-users/countingusers.pdf">https://gitweb.torproject.org/karsten/metrics.git/blob_plain/refs/heads/...</a>.</li>
-</ul>
-
-<p><strong>Footprints from Tor Browser Bundle.</strong>
-Tor Browser Bundle in OS X contains sandboxing technology by Robert Malmgren AB, <a href="http://www.romab.com/" title="http://www.romab.com/">http://www.romab.com/</a>. The sandbox is designed to both protect the user from security exploits in Firefox and restrict the footprint left on a system by the Tor Browser Bundle. Currently, this solution is OS X only.</p>
-
-<p><strong>Translation work, ultimately a browser-based approach.</strong>
-Updated translations in Spanish, Ukrainian, Mandarin, Dutch, German, Greek, Urdu, Italian, and Icelandic.</p>
+<p><thead><tr>
+<th>Attachment</th>
+<th>Size</th> </tr></thead><tbody>
+ <tr class="odd">
+<td><a href="https://blog.torproject.org/files/direct-users-2010-12-31-tn-2010-01-01.png">direct-users-2010-12-31-tn-2010-01-01.png</a></td>
+<td>17.46 KB</td> </tr>
+ <tr class="even">
+<td><a href="https://blog.torproject.org/files/bridge-users-2010-12-31-tn-2010-01-01.png">bridge-users-2010-12-31-tn-2010-01-01.png</a></td>
+<td>14.54 KB</td> </tr>
+</tbody></p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-released-take-two">New Tor Browser Bundles released (take two)</a></h2>
+          <h2 class="post-title"> <a href="/blog/torbutton-alpha-131-released-testing">Torbutton-alpha 1.3.1 released for testing</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
+              By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">microsoft windows</a>
+                <a class="post-category post-category-js" href="#">alpha release</a>
               
-                <a class="post-category post-category-js" href="#">osx</a>
-              
-                <a class="post-category post-category-js" href="#">osx fixes</a>
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+                <a class="post-category post-category-js" href="#">firefox</a>
               
                 <a class="post-category post-category-js" href="#">torbutton</a>
-              
-                <a class="post-category post-category-js" href="#">windows bundles</a>
                |
-              29 Oct 2010
+              05 Jan 2011
           </p>
         </header>
         <div class="post-description">
-          <p>We have some more new Tor Browser Bundles out. This is an upgrade to Firefox 3.6.12 which fixes a critical bug and OS X users&#39; Torbutton will now show up.</p>
+          <p>Torbutton 1.3.1-alpha has been released at:
+ <a href="https://www.torproject.org/dist/torbutton/torbutton-1.3.1-alpha.xpi" title="https://www.torproject.org/dist/torbutton/torbutton-1.3.1-alpha.xpi">https://www.torproject.org/dist/torbutton/torbutton-1.3.1-alpha.xpi</a> and .asc</p>
 
-<p><strong><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle for Windows 1.3.12</a></strong></p>
+<p>This release features a fix for the nasty pref dialog issue in 1.3.0 (bug #2011), as well as Firefox 4.0 support. Thanks to new APIs in Firefox 3.5 and better privacy options in Firefox 4, Torbutton has now been simplified as well. While we still provide a number of XPCOM components, the number of native Firefox components we replace has shrunk from 5 to just one.</p>
 
-<p>1.3.12: Release 2010-10-28</p>
+<p>However, the amount of changes involved in supporting Firefox 4 were substantial, and it is likely that these changes as well as the removal of old code has introduced new bugs. We&#39;ve done our best to test out operation on Firefox 3.6 and 4.0, but we have not tested Firefox 3.0, and may have missed other issues as well. Please report any issues you notice on our bugtracker: <a href="https://trac.torproject.org/projects/tor/report/14" title="https://trac.torproject.org/projects/tor/report/14">https://trac.torproject.org/projects/tor/report/14</a></p>
 
-<ul>
-<li>Update Firefox to 3.6.12</li>
-</ul>
-
-<p><strong><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle for Mac OS X 1.0.4</a></strong></p>
-
-<p>1.0.4: Released 2010-10-28</p>
-
-<ul>
-<li>Update Firefox to 3.6.12</li>
-<li>Fix weird Torbutton location so users can tell it&#39;s installed</li>
-</ul>
-
-<p><strong><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle for GNU/Linux 1.0.15</a></strong></p>
-
-<p>1.0.15: Released 2010-10-28</p>
-
-<ul>
-<li>Update Firefox to 3.6.12</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-released">New Tor Browser Bundles released</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">microsoft windows</a>
-              
-                <a class="post-category post-category-js" href="#">osx</a>
-              
-                <a class="post-category post-category-js" href="#">osx fixes</a>
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">windows bundles</a>
-               |
-              28 Oct 2010
-          </p>
-        </header>
-        <div class="post-description">
-          <p>We have some new Tor Browser Bundles out. The main notable upgrades for these are Firefox 3.6.11 and Pidgin 2.7.4 in the Windows IM bundle.</p>
-
-<p><strong><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle for Windows 1.3.11</a></strong></p>
-
-<p>1.3.11: Release 2010-10-25</p>
-
-<ul>
-<li>Update Firefox to 3.6.11</li>
-<li>Update Pidgin to 2.7.4</li>
-</ul>
-
-<p><strong><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle for Mac OS X 1.0.3</a></strong></p>
-
-<p>1.0.3: Released 2010-10-25</p>
-
-<ul>
-<li>Update Firefox to 3.6.11</li>
-</ul>
-
-<p><strong><a href="https://www.torproject.org/projects/torbrowser.html.en">Tor Browser Bundle for GNU/Linux 1.0.14</a></strong></p>
-
-<p>1.0.14: Released 2010-10-24</p>
-
-<ul>
-<li>Update Firefox to 3.6.11</li>
-</ul>
+<p>Here is the complete changelog:
+ * bugfix: bug 1894: Amnesia is now called TAILS (patch from intrigeri)
+ * bugfix: bug 2315: Remove reference to TorVM (patch from intrigeri)
+ * bugfix: bug 2011: Fix preference dialog issues (patch from chrisdoble)
+ * bugfix: Fix some incorrect log lines in RefSpoofer
+ * new: Support Firefox 4.0 (many changes)
+ * new: Place button in the nav-bar (FF4 killed the status-bar)
+ * misc: No longer reimplement the session store, use new APIs instead
+ * misc: Simplify crash detection and startup mode settings</p>
 
         </div>
       </section>
@@ -320,7 +258,7 @@ Updated translations in Spanish, Ukrainian, Mandarin, Dutch, German, Greek, Urdu
       
         <a href="/blog/page87" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 88 of 134</span>
+      <span class="page_number ">Page: 88 of 137</span>
       
         <a href="/blog/page89" class="next">Next</a>
       

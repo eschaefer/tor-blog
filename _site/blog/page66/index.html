@@ -53,136 +53,71 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tails-live-system-version-08-released">Tails Live System version 0.8 released</a></h2>
+          <h2 class="post-title"> <a href="/blog/tails-09-released">Tails 0.9 Released</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
                 <a class="post-category post-category-js" href="#">anonymous operating system</a>
               
-                <a class="post-category post-category-js" href="#">debian</a>
-              
-                <a class="post-category post-category-js" href="#">livecd</a>
-              
-                <a class="post-category post-category-js" href="#">liveusb</a>
-              
                 <a class="post-category post-category-js" href="#">tails</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
                |
-              04 Oct 2011
+              16 Nov 2011
           </p>
         </header>
         <div class="post-description">
-          <p>On September 21, Tails anonymous live system version 0.8 was released.</p>
+          <p>The latest version of the anonymous operating system Tails is now available.</p>
 
 <p>Notable user-visible changes include:</p>
 
-<p>Tor 0.2.2.33
- I2P 0.8.8
- Linux 3.0.0
- Iceweasel 3.5.16-9
- Torbutton 1.4.3-1
- HTTPS Everywhere 1.0.1-1
- More random looking nicks in Pidgin.
- Replace the onBoard virtual keyboard with Florence.
- PiTIVi non-linear audio/video editor.
- Support arbitrary DNS queries.
- Use XZ compression to get much smaller ISO images and a bit faster boot.</p>
+<h2>Tor</h2>
 
-<p>Plus the usual bunch of minor bug reports and improvements.</p>
+<ul>
+<li>Upgrade to 0.2.2.34. This fixes CVE-2011-2768 and CVE-2011-2769 which prompted for manual updates for users of Tails 0.8.1.</li>
+<li><p>Suppress Tor&#39;s warning about applications doing their own DNS lookups. Some users have reported concerns about these warnings, but it should be noted that they are completely harmless inside Tails as its system DNS resolver is Torified.</p>
 
-<p>The original announcement is at <a href="http://tails.boum.org/news/version_0.8/" title="http://tails.boum.org/news/version\_0.8/">http://tails.boum.org/news/version_0.8/</a></p>
+<ul>
+<li>Linux 3.0.0-6, which fixed a great number of bugs and security issues.</li>
+</ul></li>
+</ul>
 
-<p>You can download it via <a href="https://archive.torproject.org/amnesia.boum.org/tails/stable/tails-i386-0.8/" title="https://archive.torproject.org/amnesia.boum.org/tails/stable/tails-i386-0.8/">https://archive.torproject.org/amnesia.boum.org/tails/stable/tails-i386-...</a>, bittorrent, or <a href="http://tails.boum.org/download/index.en.html" title="http://tails.boum.org/download/index.en.html">http://tails.boum.org/download/index.en.html</a></p>
+<h2>Iceweasel</h2>
+
+<ul>
+<li>Upgrade to 3.5.16-11 ((fixes CVE-2011-3647, CVE-2011-3648, CVE-2011-3650).</li>
+<li>Torbutton: upgrade to 1.4.4.1-1, including support for the in-browser &quot;New identity&quot; feature.</li>
+<li>FireGPG: upgrade to 0.8-1+tails2. Users are notified that the FireGPG Text Editor is the only safe place for performing cryptographic operations, and these operations has been disabled in other places. Performing them outside of the editor opens up several severe attacks through JavaScript (e.g. leaking plaintext when decrypting, signing messages written by the attacker).</li>
+<li>Replace CS Lite with Cookie Monster for cookie management. Cookie Monster has an arguably nicer interface, is being actively maintained and is packaged in Debian.</li>
+</ul>
+
+<h2>Software</h2>
+
+<ul>
+<li>Install MAT, the Metadata Anonymisation Toolkit. Its goal is to remove file metadata which otherwise could leak information about you in the documents and media files you publish. This is the result of a Tails developer&#39;s suggestion for GSoC 2011, although it ended up being mentored by The Tor Project.</li>
+<li>Upgrade WhisperBack to 1.5~rc1. Users are guided how to send their bug reports through alternative channels upon errors sending them. This will make bug reporting easier when there&#39;s no network connection available.</li>
+<li>Upgrade TrueCrypt to 7.1.</li>
+</ul>
+
+<h2>Miscellaneous</h2>
+
+<ul>
+<li>The date and time setting system was completely reworked. This should prevent time syncing issues that may prevent Tor from working properly, which some users have reported. The new system will not leave a fingerprintable network signature, like the old system did. Previously that signature could be used to identify who is using Tails (but not deanonymize them).</li>
+<li>Erase memory at shutdown: run many instances of the memory wiper. Due to architectural limitations of i386 a process cannot access all memory at the same time, and hence a single memory wipe instance cannot clear all memory.</li>
+<li>Saner keyboard layouts for Arabic and Russian.</li>
+<li>Use Plymouth text-only splash screen at boot time.</li>
+</ul>
+
+<p>Plus the usual bunch of minor bug reports and improvements. The full <a href="http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.9">technical changelog</a> is available.</p>
+
+<p>The full version of this release is available at <a href="http://tails.boum.org/news/version_0.9/" title="http://tails.boum.org/news/version\_0.9/">http://tails.boum.org/news/version_0.9/</a>.</p>
+
+<p>Download from here, <a href="http://tails.boum.org/download/index.en.html" title="http://tails.boum.org/download/index.en.html">http://tails.boum.org/download/index.en.html</a></p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-0235-alpha-out">Tor 0.2.3.5-alpha is out</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">alpha releases</a>
-              
-                <a class="post-category post-category-js" href="#">bug fixes</a>
-              
-                <a class="post-category post-category-js" href="#">security fixes</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-               |
-              01 Oct 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Tor 0.2.3.5-alpha fixes two bugs that make it possible to enumerate
- bridge relays; fixes an assertion error that many users started hitting
- today; and adds the ability to refill token buckets more often than
- once per second, allowing significant performance improvements.</p>
-
-<p><strong>Security fixes:</strong></p>
-
-<ul>
-<li>Bridge relays now do their directory fetches inside Tor TLS
-connections, like all the other clients do, rather than connecting
-directly to the DirPort like public relays do. Removes another
-avenue for enumerating bridges. Fixes bug 4115; bugfix on 0.2.0.35.</li>
-<li>Bridges relays now build circuits for themselves in a more similar
-way to how clients build them. Removes another avenue for
-enumerating bridges. Fixes bug 4124; bugfix on 0.2.0.3-alpha,
-when bridges were introduced.</li>
-</ul>
-
-<p><strong>Major bugfixes:</strong></p>
-
-<ul>
-<li>Fix an &quot;Assertion md-&gt;held_by_node == 1 failed&quot; error that could
-occur when the same microdescriptor was referenced by two node_t
-objects at once. Fix for bug 4118; bugfix on Tor 0.2.3.1-alpha.</li>
-</ul>
-
-<p><strong>Major features (networking):</strong></p>
-
-<ul>
-<li>Add a new TokenBucketRefillInterval option to refill token buckets
-more frequently than once per second. This should improve network
-performance, alleviate queueing problems, and make traffic less
-bursty. Implements proposal 183; closes ticket 3630. Design by
-Florian Tschorsch and Bj√∂rn Scheuermann; implementation by
-Florian Tschorsch.</li>
-</ul>
-
-<p><strong>Minor bugfixes:</strong></p>
-
-<ul>
-<li>Change an integer overflow check in the OpenBSD_Malloc code so
-that GCC is less likely to eliminate it as impossible. Patch
-from Mansour Moufid. Fixes bug 4059.</li>
-</ul>
-
-<p><strong>Minor bugfixes (usability):</strong></p>
-
-<ul>
-<li>Downgrade log messages about circuit timeout calibration from
-&quot;notice&quot; to &quot;info&quot;: they don&#39;t require or suggest any human
-intervention. Patch from Tom Lowenthal. Fixes bug 4063;
-bugfix on 0.2.2.14-alpha.</li>
-</ul>
-
-<p><strong>Minor features (diagnostics):</strong></p>
-
-<ul>
-<li>When the system call to create a listener socket fails, log the
-error message explaining why. This may help diagnose bug 4027.</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-7">New Tor Browser Bundles</a></h2>
+          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-9">New Tor Browser Bundles</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">erinn</a> under
               
@@ -190,40 +125,23 @@ error message explaining why. This may help diagnose bug 4027.</li>
               
                 <a class="post-category post-category-js" href="#">tbb</a>
               
-                <a class="post-category post-category-js" href="#">tor</a>
-              
                 <a class="post-category post-category-js" href="#">tor browser bundle</a>
                |
-              01 Oct 2011
+              12 Nov 2011
           </p>
         </header>
         <div class="post-description">
-          <p>The Tor Browser Bundles have been updated to Firefox 7.0.1 and Tor 0.2.2.33. The bundles were originally uploaded with Firefox 7.0, but a fix was quickly released, so the two changelogs have been merged in this post.</p>
+          <p>The Tor Browser Bundles have been updated to Firefox 8. There was a slight delay as we adjusted to their new add-on management scheme, but everything should be working normally now. Please let us know if you have any issues!</p>
 
 <p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
 
-<p><strong>Tor Browser Bundle (2.2.33-2)</strong></p>
-
-<p><strong>Windows fixes</strong></p>
+<p><strong>Tor Browser Bundle (2.2.34-2)</strong></p>
 
 <ul>
-<li>Begin building Vidalia with DEP/ASLR</li>
-</ul>
-
-<p><strong>OS X fixes</strong></p>
-
-<ul>
-<li>Stop TBB from logging so much information to the system by only allowing dyld log library loads to syslog when it is in debug mode (closes: #4093)</li>
-</ul>
-
-<p><strong>General fixes and updates</strong></p>
-
-<ul>
-<li>Update Firefox to 7.0.1</li>
-<li>Update OpenSSL to 1.0.0e (closes: #3996) (except for OS X)</li>
-<li>Update Tor to 0.2.2.33</li>
-<li>Update NoScript to 2.1.2.8</li>
-<li>Downgrade HTTPS Everywhere to 1.0.3, because we don&#39;t want stable TBBs to use development versions of extensions (closes: #4050)</li>
+<li>Update Firefox to 8.0</li>
+<li>Update Libevent to 2.0.15-stable</li>
+<li>Update NoScript to 2.1.8</li>
+<li>Add extensions.autoDisableScopes to allow TBB&#39;s Firefox to launch with its extensions enabled</li>
 </ul>
 
         </div>
@@ -231,76 +149,110 @@ error message explaining why. This may help diagnose bug 4027.</li>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/whither-website-translations">Whither website translations</a></h2>
+          <h2 class="post-title"> <a href="/blog/october-2011-progress-report">October 2011 Progress Report</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">bugs</a>
+                <a class="post-category post-category-js" href="#">advocacy</a>
               
-                <a class="post-category post-category-js" href="#">polyglot internet</a>
+                <a class="post-category post-category-js" href="#">progress report</a>
               
-                <a class="post-category post-category-js" href="#">translators</a>
+                <a class="post-category post-category-js" href="#">rejoice in your anonymity</a>
               
-                <a class="post-category post-category-js" href="#">website translations</a>
+                <a class="post-category post-category-js" href="#">tails</a>
+              
+                <a class="post-category post-category-js" href="#">tor releases</a>
                |
-              28 Sep 2011
+              10 Nov 2011
           </p>
         </header>
         <div class="post-description">
-          <p>As of <a href="https://lists.torproject.org/pipermail/tor-commits/2011-September/035605.html">svn commit 25130</a> we no longer have our web pages translated. We continue to translate tor, vidalia, aurora/firefox, our manual pages, and other documentation included with the various bundles. We&#39;re also going to create a new, simplified user manual that can be translated and included in our various packages.</p>
-
-<p>I thank our translators, both past and current, and continue to be impressed at the community we&#39;ve built up around translating all things Tor. We appreciate it, our users appreciate, and I appreciate it.</p>
-
-<p>Why did we do this?</p>
-
-<ul>
-<li>We spend a lot of time managing the translated pages on the website.</li>
-<li>The English pages are frequently updated, thereby invalidating all of the other languages.</li>
-<li>The switch to <a href="https://www.transifex.net/start/">Transifex</a> hasn&#39;t made more translators appear, especially for the languages we may care about the most.</li>
-<li>The translators for many languages that have a right-to-left orientation complain that the transifex interface is a nightmare to use and refuse to update.</li>
-<li>Lots of users simply use google translate, or read English anyway.</li>
-<li>Getting translated software into the hands of people is more important than them reading our web pages (especially if the documentation is translated and available locally)</li>
-<li>Our translations for right to left languages, such as Arabic and Farsi, were growing out of date and required far more technical skill to do than more translators are capable of handling. This involved editing the raw perl templating system we used.</li>
-<li>And, according to our webserver logs, our translated website traffic is less than 2% of total GET requests, nevermind page views.</li>
-</ul>
-
-<p>We may go back to the old model, which was svn or git commits directly to the repository for translations. It seemed this model attracted a few dedicated translators for some interesting languages. These languages were always kept current with the English pages. Another option is automated translation, such as something Bayesian that understands the difference between the snack cookie and a web browser cookie.</p>
-
-<p>If you have suggestions or other ideas how to improve our translations, feel free to respond to <a href="https://trac.torproject.org/projects/tor/ticket/4082">ticket 4082</a>.</p>
-
-<p>I still look forward to universal translators, helping me to understand the <a href="http://www.ethanzuckerman.com/blog/the-polyglot-internet/">polyglot Internet</a>. There is so much content out there that isn&#39;t in languages I understand. I hope universal translators can greatly improve in a short time.</p>
+          <p>The October 2011 Progress report is available in <a href="https://archive.torproject.org/monthly-report-archive/2011-October-Monthly-Report.pdf">PDF</a> and <a href="https://archive.torproject.org/monthly-report-archive/2011-October-Monthly-Report.txt">text</a> formats. It contains details of the six major releases, new censorship events in China, and results of a concerted effort to work on hiding Tor&#39;s network signature, amongst other progress.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/arm-release-144">Arm Release 1.4.4</a></h2>
+          <h2 class="post-title"> <a href="/blog/moving-tor-datagram-transport">Moving Tor to a datagram transport</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">atagar</a> under
+              By <a class="post-author" href="#">sjmurdoch</a> under
               
-                <a class="post-category post-category-js" href="#">arm</a>
+                <a class="post-category post-category-js" href="#">datagram</a>
+              
+                <a class="post-category post-category-js" href="#">performance improvements</a>
+              
+                <a class="post-category post-category-js" href="#">tls</a>
                |
-              26 Sep 2011
+              07 Nov 2011
           </p>
         </header>
         <div class="post-description">
-          <p>Hi all. A new release of <a href="http://www.atagar.com/arm/">arm</a> is now available. Besides the normal batch of <a href="http://www.atagar.com/arm/releaseNotes.php#1.4.4">bug fixes and minor features</a> this includes an <a href="http://www.atagar.com/arm/images/screenshot_interpretor_full.png">interactive interpretor for raw control port access</a>.</p>
+          <p>Tor currently transports data over encrypted TLS tunnels between nodes, in turn carried by TCP. This has worked reasonably well, but recent research has shown that it might not be the best option, particularly for performance.</p>
 
-<p>This is intended to be a tool for developers, highly knowledgeable operators, and anyone that would like to learn about Tor&#39;s control protocol. It provides usability improvements like tab completion and history scroll-back, along with IRC style interpretor commands...</p>
+<p>For example, when a packet gets dropped or corrupted on a link between two Tor nodes, TCP will cause the packet to be retransmitted eventually. However, in the meantime, all circuits passing through this pair of nodes will be stalled, not only the circuit corresponding to the packet which was dropped.</p>
+
+<p>Also, Tor uses two levels of congestion control; TCP for hop-by-hop links, and a custom scheme for circuits. This might not be the right approach -- maybe these schemes aren&#39;t the right ones to use or maybe there should only be one level of congestion control.</p>
+
+<p>There have been a variety of solutions proposed to fix one or both of these problems, Most end up sending data as datagrams in UDP packets, and Tor is responsible for managing congestion and recovering from packet loss, and so can (hopefully) do so in a more intelligent way. However, there are many options for what architecture to use, what building blocks to build these schemes from, and how to tweak the many parameters that result.</p>
+
+<p>To help clarify the various options, I&#39;ve written a summary of both Tor&#39;s current network stack architecture and various proposals for how it can be improved. The document discusses various tradeoffs between the approaches, including performance, security, and engineering difficulties in deploying the solution. It ends with some provisional conclusions about which options are most promising.</p>
+
+<p>The document, “ <a href="http://www.cl.cam.ac.uk/%7Esjm217/papers/tor11datagramcomparison.pdf">Comparison of Tor Datagram Designs</a>”, is now available (with source in <a href="https://gitweb.torproject.org/sjm217/torspec.git/tree/datagram_comparison:/proposals/ideas/xxx-datagram-comparison">git</a>), and I would welcome comments. Over the next few months I&#39;ll be working on building and evaluating prototypes for these schemes, and I will be incorporating feedback from the Tor community into the process.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-0237-alpha-out">Tor 0.2.3.7-alpha is out</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha releases</a>
+              
+                <a class="post-category post-category-js" href="#">bug fixes</a>
+              
+                <a class="post-category post-category-js" href="#">relays</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              31 Oct 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Tor 0.2.3.7-alpha fixes a crash bug in 0.2.3.6-alpha introduced by the new v3 handshake. It also resolves yet another bridge address enumeration issue.</p>
+
+<p>All packages are updated, with the exception of the OS X PPC packages. The build machine is down and packages will be built as soon as it is back online.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p>Changes in version 0.2.3.7-alpha - 2011-10-30
+<strong>Major bugfixes:</strong></p>
 
 <ul>
-<li><strong>/help</strong> - provides usage information for all of the tor/interpretor commands and tor&#39;s configuration options</li>
-<li><strong>/info</strong> - queries relay information via fingerprint, nickname, or IP address</li>
-<li><strong>/find</strong> - searches the backlog for the given regex</li>
-<li><strong>/events</strong> - displays any events that we&#39;ve listened for</li>
-<li><strong>/write</strong> - dumps the interpretor backlog to a file</li>
+<li>If we mark an OR connection for close based on a cell we process,
+don&#39;t process any further cells on it. We already avoid further
+reads on marked-for-close connections, but now we also discard the
+cells we&#39;d already read. Fixes bug 4299; bugfix on 0.2.0.10-alpha,
+which was the first version where we might mark a connection for
+close based on processing a cell on it.</li>
+<li>Fix a double-free bug that would occur when we received an invalid
+certificate in a CERT cell in the new v3 handshake. Fixes bug 4343;
+bugfix on 0.2.3.6-alpha.</li>
+<li>Bridges no longer include their address in NETINFO cells on outgoing
+OR connections, to allow them to blend in better with clients.
+Removes another avenue for enumerating bridges. Reported by
+&quot;troll_un&quot;. Fixes bug 4348; bugfix on 0.2.0.10-alpha, when NETINFO
+cells were introduced.</li>
 </ul>
 
-<p>This can both be used via a new page in the curses interface and as
- <a href="http://www.atagar.com/arm/images/screenshot_interpretorPrompt.png">a standalone prompt</a> by running &quot;arm --prompt&quot;.</p>
+<p><strong>Trivial fixes:</strong></p>
 
-<p>Hopefully I&#39;m not the only person that finds this to be useful! -Damian</p>
+<ul>
+<li>Fixed a typo in a hibernation-related log message. Fixes bug 4331;
+bugfix on 0.2.2.23-alpha; found by &quot;tmpname0901&quot;.</li>
+</ul>
 
         </div>
       </section>
@@ -311,7 +263,7 @@ error message explaining why. This may help diagnose bug 4027.</li>
       
         <a href="/blog/page65" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 66 of 134</span>
+      <span class="page_number ">Page: 66 of 137</span>
       
         <a href="/blog/page67" class="next">Next</a>
       

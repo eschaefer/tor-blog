@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tor 0.2.5.7-rc is out</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <meta name="robots" content="noindex" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/blog-old-ie.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <a href="/"><img class="tor-logo" src="/assets/images/tor_logo.png" alt="Tor logo" /></a>
+            <h1 class="brand-title">The Tor Project Blog</h1>
+            <h2 class="brand-tagline">News and events from Tor</h2>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="/events/">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/overview">About Tor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="https://www.torproject.org/donate/donate">Donate</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+
+            <!-- A wrapper for all the blog posts -->
+<div class="posts">
+
+  <div id="home">
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="">Tor 0.2.5.7-rc is out</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">arma</a> under
+              
+                <a class="post-category post-category-js" href="#">little-t-tor</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+              
+                <a class="post-category post-category-js" href="#">tor-releases</a>
+               |
+              11 Sep 2014
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Tor 0.2.5.7-rc fixes several regressions from earlier in the 0.2.5.x release series, and some long-standing bugs related to ORPort reachability testing and failure to send CREATE cells. It is the first release candidate for the Tor 0.2.5.x series.</p>
+
+<p>The tarball and signature file are currently available from<br>
+ <a href="https://www.torproject.org/dist/" title="https://www.torproject.org/dist/">https://www.torproject.org/dist/</a><br>
+and packages and bundles will be available soon.</p>
+
+<p>Changes in version 0.2.5.7-rc - 2014-09-11</p>
+
+<ul>
+<li><p>Major bugfixes (client, startup):</p>
+
+<ul>
+<li>Start making circuits as soon as DisabledNetwork is turned off.<br>
+When Tor started with DisabledNetwork set, it would correctly<br>
+conclude that it shouldn&#39;t build circuits, but it would mistakenly<br>
+cache this conclusion, and continue believing it even when<br>
+DisableNetwork is set to 0. Fixes the bug introduced by the fix<br>
+for bug 11200; bugfix on 0.2.5.4-alpha.</li>
+<li>Resume expanding abbreviations for command-line options. The fix<br>
+for bug 4647 accidentally removed our hack from bug 586 that<br>
+rewrote HashedControlPassword to __HashedControlSessionPassword<br>
+when it appears on the commandline (which allowed the user to set<br>
+her own HashedControlPassword in the torrc file while the<br>
+controller generates a fresh session password for each run). Fixes<br>
+bug 12948; bugfix on 0.2.5.1-alpha.</li>
+<li>Warn about attempts to run hidden services and relays in the same<br>
+process: that&#39;s probably not a good idea. Closes ticket 12908. </li>
+</ul></li>
+<li><p>Major bugfixes (relay):</p>
+
+<ul>
+<li>Avoid queuing or sending destroy cells for circuit ID zero when we<br>
+fail to send a CREATE cell. Fixes bug 12848; bugfix on 0.0.8pre1.<br>
+Found and fixed by &quot;cypherpunks&quot;.</li>
+<li>Fix ORPort reachability detection on relays running behind a<br>
+proxy, by correctly updating the &quot;local&quot; mark on the controlling<br>
+channel when changing the address of an or_connection_t after the<br>
+handshake. Fixes bug 12160; bugfix on 0.2.4.4-alpha. </li>
+</ul></li>
+<li><p>Minor features (bridge):</p>
+
+<ul>
+<li>Add an ExtORPortCookieAuthFileGroupReadable option to make the<br>
+cookie file for the ExtORPort g+r by default. </li>
+</ul></li>
+<li><p>Minor features (geoip):</p>
+
+<ul>
+<li>Update geoip and geoip6 to the August 7 2014 Maxmind GeoLite2<br>
+Country database. </li>
+</ul></li>
+<li><p>Minor bugfixes (logging):</p>
+
+<ul>
+<li>Reduce the log severity of the &quot;Pluggable transport proxy does not<br>
+provide any needed transports and will not be launched.&quot; message,<br>
+since Tor Browser includes several ClientTransportPlugin lines in<br>
+its torrc-defaults file, leading every Tor Browser user who looks<br>
+at her logs to see these notices and wonder if they&#39;re dangerous.<br>
+Resolves bug 13124; bugfix on 0.2.5.3-alpha.</li>
+<li>Downgrade &quot;Unexpected onionskin length after decryption&quot; warning<br>
+to a protocol-warn, since there&#39;s nothing relay operators can do<br>
+about a client that sends them a malformed create cell. Resolves<br>
+bug 12996; bugfix on 0.0.6rc1.</li>
+<li>Log more specific warnings when we get an ESTABLISH_RENDEZVOUS<br>
+cell on a cannibalized or non-OR circuit. Resolves ticket 12997.</li>
+<li>When logging information about an EXTEND2 or EXTENDED2 cell, log<br>
+their names correctly. Fixes part of bug 12700; bugfix<br>
+on 0.2.4.8-alpha.</li>
+<li>When logging information about a relay cell whose command we don&#39;t<br>
+recognize, log its command as an integer. Fixes part of bug 12700;<br>
+bugfix on 0.2.1.10-alpha.</li>
+<li>Escape all strings from the directory connection before logging<br>
+them. Fixes bug 13071; bugfix on 0.1.1.15. Patch from &quot;teor&quot;. </li>
+</ul></li>
+<li><p>Minor bugfixes (controller):</p>
+
+<ul>
+<li>Restore the functionality of CookieAuthFileGroupReadable. Fixes<br>
+bug 12864; bugfix on 0.2.5.1-alpha.</li>
+<li>Actually send TRANSPORT_LAUNCHED and HS_DESC events to<br>
+controllers. Fixes bug 13085; bugfix on 0.2.5.1-alpha. Patch<br>
+by &quot;teor&quot;. </li>
+</ul></li>
+<li><p>Minor bugfixes (compilation):</p>
+
+<ul>
+<li>Fix compilation of test.h with MSVC. Patch from Gisle Vanem;<br>
+bugfix on 0.2.5.5-alpha.</li>
+<li>Make the nmake make files work again. Fixes bug 13081. Bugfix on<br>
+0.2.5.1-alpha. Patch from &quot;NewEraCracker&quot;.</li>
+<li>In routerlist_assert_ok(), don&#39;t take the address of a<br>
+routerinfo&#39;s cache_info member unless that routerinfo is non-NULL.<br>
+Fixes bug 13096; bugfix on 0.1.1.9-alpha. Patch by &quot;teor&quot;.</li>
+<li>Fix a large number of false positive warnings from the clang<br>
+analyzer static analysis tool. This should make real warnings<br>
+easier for clang analyzer to find. Patch from &quot;teor&quot;. Closes<br>
+ticket 13036. </li>
+</ul></li>
+<li><p>Distribution (systemd):</p>
+
+<ul>
+<li>Verify configuration file via ExecStartPre in the systemd unit<br>
+file. Patch from intrigeri; resolves ticket 12730.</li>
+<li>Explicitly disable RunAsDaemon in the systemd unit file. Our<br>
+current systemd unit uses &quot;Type = simple&quot;, so systemd does not<br>
+expect tor to fork. If the user has &quot;RunAsDaemon 1&quot; in their<br>
+torrc, then things won&#39;t work as expected. This is e.g. the case<br>
+on Debian (and derivatives), since there we pass &quot;--defaults-torrc<br>
+/usr/share/tor/tor-service-defaults-torrc&quot; (that contains<br>
+&quot;RunAsDaemon 1&quot;) by default. Patch by intrigeri; resolves<br>
+ticket 12731. </li>
+</ul></li>
+<li><p>Documentation:</p>
+
+<ul>
+<li>Adjust the URLs in the README to refer to the new locations of<br>
+several documents on the website. Fixes bug 12830. Patch from<br>
+Matt Pagan.</li>
+<li>Document &#39;reject6&#39; and &#39;accept6&#39; ExitPolicy entries. Resolves<br>
+ticket 12878. </li>
+</ul></li>
+</ul>
+
+        </div>
+      </section>
+  </div>
+
+</div>
+
+
+
+<div class="comments clearfix">
+  <div class="comments-loading">
+  <p><em>Comments will not load without Javascript enabled</em></p>
+  </div>
+</div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var loadingSection = document.body.querySelector('.comments-loading');
+    var icon = '<p>Comments Loading...</p><img alt="loading comments" src="/assets/images/comments-loading.gif">';
+
+    loadingSection.innerHTML = loadingSection.innerHTML + icon;
+
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/tor-0257-rc-out',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+
+    (document.getElementsByTagName('head')[0] ||
+      document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
+
+})();
+</script>
+
+
+            <div class="footer">
+                <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                    <ul>
+                        <li><a href="http://purecss.io/">About</a></li>
+                        <li><a href="http://twitter.com/yuilibrary/">Twitter</a></li>
+                        <li><a href="http://github.com/yahoo/pure/">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

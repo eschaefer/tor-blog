@@ -53,125 +53,73 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/help-create-qa-site-tor">Help create a Q&amp;A site for Tor!</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">Runa</a> under
-               |
-              17 Sep 2013
-          </p>
-        </header>
-        <div class="post-description">
-          <p>A couple of months ago, we created a proposal for a Tor Q&amp;A page on Stack Exchange. The proposal moved into the commitment-phase shortly after, but we need more help to move the page into a live beta. If you would like to see a Q&amp;A site for Tor, please visit our proposal page and click the &quot;Commit!&quot;-button: <a href="http://area51.stackexchange.com/proposals/56447/tor" title="http://area51.stackexchange.com/proposals/56447/tor">http://area51.stackexchange.com/proposals/56447/tor</a></p>
-
-<p>Thanks!</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-september-11th-2013">Tor Weekly News — September, 11th 2013</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-october-23rd-2013">Tor Weekly News — October 23rd, 2013 </a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">lunar</a> under
               
                 <a class="post-category post-category-js" href="#">tor weekly news</a>
                |
-              11 Sep 2013
+              23 Oct 2013
           </p>
         </header>
         <div class="post-description">
-          <p>Welcome to the eleventh issue of Tor Weekly News, the weekly newsletter that covers what is happening in the taut Tor community.</p>
+          <p>Welcome to the seventeenth issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
 
-<h1>tor 0.2.4.17-rc is out</h1>
+<h1>Tor’s anonymity and guards parameters</h1>
 
-<p>There are now <a href="http://blog.fox-it.com/2013/09/05/large-botnet-cause-of-recent-tor-network-overload/">confirmations</a> that the sudden influx of Tor clients which <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029822.html">started mid-August</a> is indeed coming from a botnet. “I guess all that work we’ve been doing on scalability was a good idea,” wrote Roger Dingledine in a blog post about <a href="https://blog.torproject.org/blog/how-to-handle-millions-new-tor-clients">how to handle millions of new Tor clients</a>.</p>
+<p>In a <a href="https://blog.torproject.org/blog/improving-tors-anonymity-changing-guard-parameters">lengthly blog post</a>, Roger Dingledine looked back on three research papers published in the past year. Some of them have been covered and most of the time misunderstood by the press. A good recap of the research problems, what the findings mean and possible solutions hopefully will help everyone understand better.</p>
 
-<p>On September 5th, Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029857.html">announced the release of the third release candidate for the tor 0.2.4 series</a>. This is an emergency release “to help us tolerate the massive influx of users: 0.2.4 clients using the new (faster and safer) ‘NTor’ circuit-level handshakes now effectively <a href="https://bugs.torproject.org/9574">jump the queue</a> compared to the 0.2.3 clients using ‘TAP’ handshakes”.</p>
+<p><a href="https://blog.torproject.org/blog/top-changes-tor-2004-design-paper-part-2">Introduced in 2005</a>, entry guards were added to recognise that “some circuits are going to be compromised, but it’s better to increase your probability of having no compromised circuits at the expense of also increasing the proportion of your circuits that will be compromised if any of them are.” Roger “originally picked ‘one or two months’ for guard rotation” but the initial parameters called for <a href="https://blog.torproject.org/blog/research-problem-better-guard-rotation-parameters">more in-depth research</a>.</p>
 
-<p>It also contains several minor bugfixes and some new status messages for better monitoring of the current situation.</p>
+<p>That call was heard by “the <a href="http://freehaven.net/anonbib/">Tor research community</a>, and it’s great that Tor gets such attention. We get this attention because we put so much effort into making it easy  for researchers to analyze Tor.” In his writing Roger highlights the finding of three papers. Two of them published at WPES 2012 and Oakland 2013, and another upcoming at CCS 2013.</p>
 
-<p>Roger <a href="https://lists.torproject.org/pipermail/tor-relays/2013-September/002701.html">asked relay operators to upgrade</a> to 0.2.4.17-rc : “the more relays that upgrade to 0.2.4.17-rc, the more stable and fast Tor will be for 0.2.4 users, despite the huge circuit overload that the network is seeing.”</p>
+<p>These research efforts highlighted several issues in the way Tor handles entry guards. Roger details five complementary fixes: using fewer guards, keeping the same guards for longer, better handling of brief unreachability of a guard, making the network bigger, and smarter assignment of the guard flag to relays. Some will require further research to identify the best solution. There are also other aspects regarding systems which don’t currently record guards such as Tails, how pluggable transports could prevent attackers from recognising Tor users, or enhancing measurements from the bandwidth authorities…</p>
 
-<p>For relays running Debian or Ubuntu, upgrading to the development branch can be done using the <a href="https://www.torproject.org/docs/debian.html.en#development">Tor project’s package repository</a>. <a href="https://blog.torproject.org/blog/new-tor-02417-rc-packages">New versions of the beta branch of the Tor Browser Bundle</a> are also available since September 6th. The next Tails release, scheduled for <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003622.html">September 19th</a> will <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003621.html">also contain tor 0.2.4.17-rc</a>.</p>
+<p>The whole blog post is insightful and is a must read for everyone who wishes to better understand some of Tor’s risk mitigation strategies. It is also full of little and big things where you could make a difference!</p>
 
-<p>Hopefully, this will be the last release candidate. What looks missing at this point to declare the 0.2.4.x series stable is simply enough time to finish the release notes.</p>
+<h1>Hidden Service research</h1>
 
-<h1>The future of Tor cryptography</h1>
+<p>George Kadianakis posted a <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005637.html">list of items that need work in the Hidden Service area</a>. Despite not being exhaustive, the list contains many items that might help with upgrading the Hidden Service design, be it around security, performance, guard issues or “petname” systems.</p>
 
-<p>After the last round of revelations from Edward Snowden, <a href="https://www.schneier.com/blog/archives/2013/09/the_nsa_is_brea.html">described as “explosive” by Bruce Schneier</a>, several threads started on the tor-talk mailing list to discuss Tor cryptography.</p>
+<p>Help and comments are welcome!</p>
 
-<p>A lot of what has been written is speculative at this point. But some have <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029917.html">raised concerns</a> about 1024 bit <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie–Hellman key exchange</a>. This has already been addressed with the introduction of the <a href="https://gitweb.torproject.org/torspec.git/blob_plain/HEAD:/proposals/216-ntor-handshake.txt">“ntor” handshake</a> in 0.2.4 and Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029930.html">encourages everybody to upgrade</a>.</p>
+<h1>Usability issues in existing OTR clients</h1>
 
-<p><a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029927.html">Another thread</a> prompted Nick to <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029941.html">summarize</a> his views on the future of Tor cryptography. Regarding public keys, “with Tor 0.2.4, forward secrecy uses 256-bit ECC, which is certainly better, but RSA-1024 is still used in some places for signatures. I want to fix all that in 0.2.5 — see <a href="https://gitweb.torproject.org/torspec.git/blob_plain/HEAD:/proposals/220-ecc-id-keys.txt">proposal 220</a>, and George Kadianakis’ draft hidden service improvements ( <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005279.html">descriptors</a>, <a href="https://lists.torproject.org/pipermail/tor-dev/2013-August/005280.html">identity keys</a>), and so forth.” Regarding symmetric keys, Nick wrote: “We’re using AES128. I’m hoping to move to XSalsa20 or something like it.” In response to a query, Nick clarifies that he doesn’t think AES is broken: only hard to implement right, and only provided in TLS in concert with modes that are somewhat (GCM) or fairly (CBC) problematic.</p>
+<p>The consensus after the first round of discussions and research done in the prospect of providing a <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/Otter/Attentive">new secure instant-messaging Tor bundle</a> is to use Mozilla Instantbird at its core. Arlo Breault <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005616.html">sent out a draft plan</a> on how to do so.</p>
 
-<p>The effort to design better cryptography for the Tor protocols is not new. More than a year ago, Nick Mathewson presented <a href="https://gitweb.torproject.org/torspec.git/blob_plain/HEAD:/proposals/202-improved-relay-crypto.txt">proposal 202</a> outlining two possible new relay encryption protocols for Tor cells. Nick mentioned that he’s waiting for a promising paper to get finished here before implementation.</p>
+<p>Instantbird currently lacks a core feature to turn it into the Tor Messenger: support for the <a href="https://otr.cypherpunks.ca/">OTR protocol</a> for encrypted chat. Now is thus a good time to gather usability issues in existing OTR clients.</p>
 
-<p>A <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029933.html">third question was raised</a> regarding the trust in algorithms certified by the <a href="https://en.wikipedia.org/wiki/National_Institute_of_Standards_and_Technology">US NIST</a>. Nick’s speculations put aside, he also <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029937.html">emphasized</a> that several NIST algorithms were “hard to implement correctly”.</p>
+<p>Mike Perry <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005636.html">kicked off the discussion</a> by pointing out several deficiencies regarding problems with multiple clients, key management issues, and other sub-optimal behaviour.</p>
 
-<p>Nick also <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029929.html">plans to change more algorithms</a>: “Over the 0.2.5 series, I want to move even more things (including hidden services) to curve25519 and its allies for public key crypto. I also want to add more hard-to-implement-wrong protocols to our mix: Salsa20 is looking like a much better choice to me than AES nowadays, for instance.”</p>
+<p>Ian Goldberg — original author of the pervasive OTR plugin for Pidgin — <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005640.html">pointed out</a> that at least one of the behaviour singled out by Mike was “done on purpose. The thing it’s trying to prevent is that Alice and Bob are chatting, and Bob ends OTR just before Alice hits Enter on her message. If Alice’s client went to ‘Not private’ instead of ‘Finished’, Alice’s message would be sent in the clear, which is undesirable. Switching to ‘Finished’ makes Alice have to actively acknowledge that the conversation is no longer secure.”</p>
 
-<p>Nick concluded one of his emails with the words: “these are interesting times for crypto”, which sounds like a good way to put it.</p>
+<p>This tradeoff is a good example of how designing usable and secure user interfaces can be hard. Usability, in itself, is an often overlooked security feature. Now is a good time to contribute your ideas!</p>
 
-<h1>Toward a better performance measurement tool</h1>
+<h1>Tor Help Desk Roundup</h1>
 
-<p>“I just finished […] sketching out the requirements and a software design for a new Torperf implementation“ <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005386.html">announced</a> Karsten Loesing on the tor-dev mailing list.</p>
+<p>The Tor Help Desk continues to be bombarded with help requests from users behind university proxies who cannot use ORPort bridges or the Pluggable Transports Browser to circumvent their network’s firewall. Although the cases are not all the same, bridges on port 443 or port 80 do not always suffice to circumvent such proxies.</p>
 
-<p>The report begins with: “Four years ago, we presented a simple tool to measure performance of the Tor network. This tool, called Torperf, requests static files of three different sizes over the Tor network and logs timestamps of various request substeps. These data turned out to be quite useful to observe user-perceived network <a href="https://metrics.torproject.org/performance.html">performance over time</a>. However, static file downloads are not the typical use case of a user browsing the web using Tor, so absolute numbers are not very meaningful. Also, Torperf consists of a bunch of shell scripts which makes it neither very user-friendly to set up and run, nor extensible to cover new use cases.”</p>
-
-<p>The specification lays out the various requirements for the new tool, and details several experiments like visiting high profile websites with an automated graphical web browser, downloading static files, crafting a canonical web page, measuring hidden service performance, and checking on upload capacity.</p>
-
-<p>Karsten added “neither the requirements nor the software design are set in stone, and the implementation, well, does not exist yet. Plenty of options for giving feedback and helping out, and most parts don’t even require specific experience with hacking on Tor. Just in case somebody’s looking for an introductory Tor project to hack on.”</p>
-
-<p>Sathya already <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005388.html">wrote</a> that this was enough material to get the implementation started. The project needs enough work that anyone interested should get involved. Feel free to join him!</p>
-
-<h1>More monthly status reports for August 2013</h1>
-
-<p>The wave of regular monthly reports from Tor project members continued this week with <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000326.html">Sukhbir Singh</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000327.html">Matt Pagan</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000328.html">Ximin Luo</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000329.html">mrphs</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000330.html">Pearl Crescent</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000331.html">Andrew Lewman</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000332.html">Mike Perry</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000333.html">Kelley Misata</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000334.html">Nick Mathewson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000335.html">Jason Tsai</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000336.html">Tails</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000337.html">Aaron</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000338.html">Damian Johnson</a>.</p>
+<p>Ubuntu 13.10 (Saucy Salamander) was released this week. One user reported their Tor Browser Bundle behaving unusually after updating their Ubuntu operating system. This issue was resolved by switching to the Tor Browser Bundle 3. Another user asked when Tor APT repositories would have packages for Saucy Salamander. Since then, packages for the latest version of Ubuntu have been made available from the usual deb.torproject.org.</p>
 
 <h1>Miscellaneous news</h1>
 
-<p>Not all new Tor users are computer programs! According to their <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000336.html">latest report</a>, Tails is now booted twice as much as it was six months ago (from 100,865 to 190,521 connections to the security feed).</p>
+<p>Tails has issued a <a href="https://tails.boum.org/news/test_0.21-rc1/">call for testing</a> of its upcoming 0.21 release. The new version contains two security fixes regarding access to the Tor control port and <a href="https://git-tails.immerda.ch/tails/plain/wiki/src/doc/first_steps/persistence/upgrade.mdwn?h=bugfix/safer-persistence">persistent settings</a> among <a href="https://git-tails.immerda.ch/tails/plain/debian/changelog?id=0.21-rc1">other improvements and package updates</a>. “Test wildly!” as the Tails team wrote.</p>
 
-<p>Thanks to <a href="http://enn.lu/">Frenn vun der Enn</a> for setting up a <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-September/000351.html">new mirror</a> of the Tor project website.</p>
+<p>Andrew Lewman was invited to speak at <a href="http://www.secure.edu.pl/">SECURE Poland 2013</a> and sent a <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000364.html">report on his trip</a> to Warsaw.</p>
 
-<p>With the Google Summer of Code ending in two weeks, the students have sent their penultimate reports: Kostas Jakeliunas for the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005380.html">Searchable metrics archive</a>, Johannes Fürmann for <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005394.html">EvilGenius</a>, Hareesan for the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005409.html">Steganography Browser Extension</a>, and Cristian-Matei Toader for <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005412.html">Tor capabilities </a>.</p>
+<p>Tails developers are <a href="https://tails.boum.org/news/Mac_and_PC_UEFI_hardware_needed/">looking for Mac and PC hardware with UEFI</a>. If you have some spare hardware, please consider a donation!</p>
 
-<p>Damian Johnson <a href="https://lists.torproject.org/pipermail/tor-reports/2013-September/000338.html">announced</a> that he had completed the rewrite of <a href="https://gitweb.torproject.org/doctor.git">DocTor</a> in Python, “a service that pulls hourly consensus information and checks it for a host of issues (directory authority outages, expiring certificates, etc). In the case of a problem it notifies
- <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-consensus-health">tor-consensus-health@</a>, and we in turn give the authority operator a heads up.”</p>
+<p>Ximin Luo has been the first to create a <a href="https://bugs.torproject.org/10000">ticket with 5 digits</a> on Tor tracker. At the current rate, ticket #20000 should happen by the end of 2015… Or will the project’s continued growth make this happen sooner?</p>
 
-<p>Matt Pagan has <a href="https://svn.torproject.org/cgi-bin/viewvc.cgi/Tor?view=revision&amp;revision=26333">migrated</a> several <a href="https://www.torproject.org/docs/faq.html">Frequently-Asked Questions</a> from the wiki to the official Tor website. This should enable more users to find the answers they need!</p>
+<p>Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000365.html">reported</a> on his activities for September and October. Arturo Filastò also <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000366.html">reported</a> on his September.</p>
 
-<p>In his <a href="https://lists.torproject.org/pipermail/tor-relays/2013-August/002477.html">previous call for help to collect more statistics</a>, addressed to bridge operators, George Kadianakis forgot to mention that an extra line with “ExtORPort 6669” <a href="https://lists.torproject.org/pipermail/tor-relays/2013-September/002691.html">needed to be added to the tor configuration file</a>. Make sure you do have it if you are running a bridge on the tor master branch.</p>
+<p>Runa Sandvik <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005649.html">continues her work</a> on the new, more comprehensible Tor User Manual. The first draft <a href="https://bugs.torproject.org/5811">is already out</a>. Please review and contribute.</p>
 
-<p>For the upgrade of tor to the 0.2.4.x series in Tails, a tester <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003617.html">spotted a regression</a> while “playing with an ISO built from experimental, thanks to our Jenkins autobuilder”. This marks a significant milestone in the work on <a href="https://labs.riseup.net/code/issues/5324">automated builds</a> done by several members of the Tails team in the course of the last year!</p>
-
-<p>Tails’ <a href="https://mailman.boum.org/pipermail/tails-dev/2013-September/003566.html">next “low-hanging fruit” session</a> will be on September 21st at 08:00 UTC. Mark the date if you want to get involved!</p>
-
-<p>David Fifield gave some tips on <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005402.html">how to setup a test infrastructure</a> for <a href="https://crypto.stanford.edu/flashproxy/">flash proxy</a>.</p>
-
-<p>Marek Majkowski <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005403.html">reported</a> on how one can use his <a href="https://github.com/majek/fluxcapacitor.git">fluxcapacitor</a> tool to get a test Tor network started with <a href="https://gitweb.torproject.org/chutney.git">Chutney</a> ready in only 6.5 seconds. A vast improvement over the 5 minutes he <a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005413.html">initially</a> had to wait!</p>
-
-<p>Eugen Leitl <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/029856.html">drew attention</a> to a <a href="http://cryptome.org/2013/09/tor-analysis-hidden-services.pdf">new research paper</a> which aims to analyze the content and popularity of Hidden Services by Alex Biryukov, Ivan Pustogarov, and Ralf-Philipp Weinmann from the University of Luxembourg.</p>
-
-<h1>Tor Help Desk roundup</h1>
-
-<p>The Tor help desk had a number of emails this week asking about the recent stories in the New York Times, the Guardian, and ProPublica regarding NSA’s cryptographic capabilities. Some users asked whether there was a backdoor in Tor. Others asked if Tor’s crypto was broken.</p>
-
-<p>There is absolutely no backdoor in Tor. Tor project members have been <a href="https://blog.torproject.org/blog/calea-2-and-tor">vocal in the past</a> about how tremendously irresponsible it would be to backdoor our users. As it is a frequently-asked question, users have been encouraged to read <a href="http://www.torproject.org/docs/faq.html.en#Backdoor">how the project would respond to institutional pressure</a>.</p>
-
-<p>The Tor project does not have any more facts about NSA’s cryptanalysis capabilities than what has been published in newspapers. Even if there is no actual evidence that Tor encryption is actually broken, the idea is to remain on the safe side by using more trusted algorithms for the Tor protocols. See above for a more detailed write-up.</p>
-
-<h1>Help the Tor community!</h1>
-
-<p>Tor is about protecting everyone’s freedom and privacy. There are <a href="https://www.torproject.org/getinvolved/volunteer.html.en">many ways to help</a> but getting involved in such a busy community can be daunting. Here’s a selection of tasks on which one could get started:</p>
-
-<p><a href="https://bugs.torproject.org/9698">Get tor to log the source of control port connections</a>. It would help in developing controller applications or libraries (like Stem ) to know which program is responsible for a given access to the control facilities of the tor daemon. Knowledge required: C programming, basic understanding of network sockets.</p>
-
-<p><a href="https://lists.torproject.org/pipermail/tor-dev/2013-September/005417.html">Diagnose what is currently wrong with Tor Cloud images</a>. <a href="https://cloud.torproject.org/">Tor Cloud</a> is an easy way to deploy bridges and it looks like the automatic upgrade procedure caused problems. Let’s make these virtual machines useful again for censored users. Knowledge required: basic understanding of Ubuntu system administration.</p>
+<p>Aaron published a branch with his work on a <a href="https://github.com/TheTorProject/ooni-probe/tree/feature/tor_test_template">Tor exit scanner based on OONI</a>.</p>
 
 <hr>
 
-<p>This issue of Tor Weekly News has been assembled by Lunar, dope457, mttp, malaparte, harmony, Karsten Loesing, and Nick Mathewson.</p>
+<p>This issue of Tor Weekly News has been assembled by Lunar, Matt Pagan, dope457, George Kadianakis, Philipp Winter and velope.</p>
 
 <p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
 
@@ -180,44 +128,90 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-nsa-gchq-and-quick-ant-speculation">Tor, NSA, GCHQ, and QUICK ANT Speculation</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-october-16th-2013">Tor Weekly News — October 16th, 2013</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
+              By <a class="post-author" href="#">lunar</a> under
               
-                <a class="post-category post-category-js" href="#">gchq</a>
-              
-                <a class="post-category post-category-js" href="#">nsa</a>
-              
-                <a class="post-category post-category-js" href="#">quick ant</a>
-              
-                <a class="post-category post-category-js" href="#">snowden leaks</a>
-              
-                <a class="post-category post-category-js" href="#">speculation</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
+                <a class="post-category post-category-js" href="#">tor weekly news</a>
                |
-              11 Sep 2013
+              16 Oct 2013
           </p>
         </header>
         <div class="post-description">
-          <p>Many Tor users and various press organizations are asking about <a href="https://people.torproject.org/%7Eandrew/2013-09-10-quick-ant-tor-events-qfd.png">one slide in a Brazillian TV broadcast</a>. A graduate student in law and computer science at Stanford University, Jonathan Mayer, then <a href="https://twitter.com/jonathanmayer/status/377292928718499841">speculated on what this &quot;QUICK ANT&quot; could be</a>. Since then, we&#39;ve heard all sorts of theories.</p>
+          <p>Welcome to the sixteenth issue of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the venerable Tor community.</p>
 
-<p>We&#39;ve seen the same slides as you and Jonathan Mayer have seen. It&#39;s not clear what the NSA or GCHQ can or cannot do. It&#39;s not clear if they are &quot;cracking&quot; the various crypto used in Tor, or merely tracking Tor exit relays, Tor relays as a whole, or run their own private Tor network.</p>
+<h1>Making hidden services more scalable and harder to locate</h1>
 
-<p>What we do know is that if someone can watch the entire Internet all at once, they can watch traffic enter tor and exit tor. This likely de-anonymizes the Tor user. We <a href="https://www.torproject.org/docs/faq.html.en#AttacksOnOnionRouting">describe the problem as part of our FAQ</a>.</p>
+<p>Christopher Baines <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005556.html">started a discussion</a> on tor-dev on the scaling issues affecting the current design of Tor hidden services. Nick Mathewson later described Christopher’s initial proposal as “single hidden service descriptor, multiple service instances per intro point” along with three other alternatives. Nick and Christopher also teamed up to produce a set of seven goals that a new hidden service design should aim for regarding scalability.</p>
 
-<p>We think the most likely explanation here is that they have some &quot;Tor flow detector&quot; scripts that let them pick Tor flows out of a set of flows they&#39;re looking at. This is basically the same problem as the blocking-resistance problem — they could do it by IP address (&quot;that&#39;s a known Tor relay&quot;), or by traffic fingerprint (&quot;that looks like TLS but look here and here how it&#39;s different&quot;), etc.</p>
+<p>There’s probably more to discuss regarding which goals are the most desirable, and which designs are likely to address them, without — as always — harming anonymity.</p>
 
-<p>It&#39;s unlikely to have anything to do with deanonymizing Tor users, except insofar as they might have traffic flows from both sides of the circuit in their database. However, without concrete details, we can only speculate as well. We&#39;d rather spend our time developing Tor and conducting research to make a better Tor.</p>
+<p>George Kadianakis also <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005621.html">called for help</a> concerning “the guard enumeration attack that was described by the <a href="http://www.ieee-security.org/TC/SP2013/papers/4977a080.pdf">Trawling for Tor Hidden Services: Detection, Measurement, Deanonymization</a> paper (in section VII).”</p>
 
-<p>Thanks to Roger and Lunar for edits and feedback on this post.</p>
+<p>The most popular solution so far seems to be enabling a client or hidden service to reuse some parts of a circuit that cannot be completed successfully in order to connect to new nodes. This should “considerably <a href="https://bugs.torproject.org/9001">slow the attack</a>”, but “might result in unexpected attacks” as George puts it.</p>
+
+<p>These problems could benefit from everyone’s attention. Free to read the threads in full and offer your insights!</p>
+
+<h1>Detecting malicious exit nodes</h1>
+
+<p>Philipp Winter <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005593.html">asked</a> for feedback on the technical architecture of “a Python-based exit relay scanner which should detect malicious and misbehaving exits.”</p>
+
+<p>Aaron took the opportunity to <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005596.html">mention his plans</a> to leverage the work done as part of <a href="https://ooni.torproject.org/">OONI</a> to detect network interference. Aaron’s intention is to “provide Tor network tests as part of ooni-probe’s standard set of tests, so that many individuals will measure the Tor network and automatically publish their results, and so that current and future network interference tests can be easily adapted to running on the Tor network.”</p>
+
+<p>Detecting misbehaving exits so they can be <a href="https://trac.torproject.org/projects/tor/wiki/doc/badRelays">flagged “BadExit”</a> by the operators of the directory authorities is important to make every Tor user safer. Getting more users to run tests against our many exit nodes would benefit everyone — it makes it more likely that bad behavior will be caught as soon as possible.</p>
+
+<h1>Hiding location at the hardware level</h1>
+
+<p>One of Tor’s goals is to hide the location of its users, and it does a reasonably good job of this for Internet connections. But when your threat model includes an adversary that can monitor which equipment is connected to a local network, or monitor Wi-Fi network probes received by many access points, extra precautions must be taken.</p>
+
+<p>Ethernet and Wi-Fi cards ship with a factory-determined hardware address (also called a MAC address) that can uniquely identify a computer across networks. Thankfully, most devices allow their hardware address to be changed by an operating system.</p>
+
+<p>As the Tails live operating system aims to protect the privacy and anonymity of its users, it has <a href="https://labs.riseup.net/code/issues/5421">long been suggested</a> that it should automatically randomize MAC addresses. Some important progress has been made, and this week anonym <a href="https://mailman.boum.org/pipermail/tails-dev/2013-October/003835.html">requested comments</a> on a detailed analysis of why, when and how Tails should randomize MAC addresses.</p>
+
+<p>In this analysis, anonym describes a Tails user wanting to hide their geographical movement and not be identified as using Tails, but who also wants to “avoid alarming the local administrators (imagine a situation where security guards are sent to investigate an ‘alien computer’ at your workplace, or similar)” and “avoid network connection problems due to MAC address white-listing, hardware or driver issues, or similar”.</p>
+
+<p>The analysis then tries to understand when MAC address should be randomized depending on several combinations of locations and devices. The outcome is that “this feature is enabled by default, with the possibility to opt-out.” anonym then delves into user interface and implementation considerations.</p>
+
+<p>If you are interested in the analysis, or curious about how you could help with the proposed implementation, be sure to have a look!</p>
+
+<h1>Tor Help Desk Roundup</h1>
+
+<p>The Tor project wishes to expand its support channels to text-based instant messaging as part of the <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/Otter/Boisterous">Boisterous Otter</a> project. Lunar and Colin C. came up with a <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/Otter/Boisterous/WebChat">possible implementation</a> based on the XMPP protocol, <a href="https://prosody.im/">Prosody</a> for the server side, and <a href="http://forge.webpresso.net/projects/prodromus">Prodromus</a> as the basis for the web based interface.</p>
+
+<p>This week, multiple people asked if Tor worked well on the Raspberry Pi. Although the Tor Project does not have any documentation directed specifically at the Raspberry Pi (yet!), the <a href="http://tor.stackexchange.com/questions/242/how-to-run-tor-on-raspbian-on-the-raspberry-pi">issue was raised on Tor’s StackExchange page</a>. Tor relay operators are encouraged to share their experiences or ask for help on the <a href="https://lists.torproject.org/pipermail/tor-relays/">tor-relays public mailing list</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Ten years ago, on October 8th, 2003, Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-dev/2003-October/002185.html">announced</a> the first release of tor as free software on the or-dev mailing list.</p>
+
+<p>Damian Johnson <a href="https://blog.torproject.org/blog/stem-release-11">announced</a> the release of <a href="https://stem.torproject.org/change_log.html#version-1-1">Stem 1.1.0</a>. The new version of this “Python library for interacting with Tor” adds remote descriptor fetching, connection resolution and a myriad of small improvements and fixes.</p>
+
+<p>Arlo Breault sent out a <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005616.html">detailed plan on how Mozilla Instantbird could be turned into the Tor Messenger</a>. Feedback would be welcome, especially with regard to sandboxing, auditing, and internationalization for right-to-left languages.</p>
+
+<p>The Spanish and German version of the Tails website are outdated and <a href="https://mailman.boum.org/pipermail/tails-dev/2013-October/003879.html">may soon be disabled </a>. Now is a good time to <a href="https://tails.boum.org/contribute/how/translate/">help</a> if you want to keep those translations running!</p>
+
+<p>adrelanos <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030593.html">announced</a> the release of Whonix 7, an operating system “based on Tor […], Debian GNU/Linux and the principle of security by isolation.” The new version includes tor 0.2.4, Tor Browser as the system default browser and a connection wizard, among other changes.</p>
+
+<p>Lunar sent out a <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000363.html">report about the Dutch OHM2013 hacker camp</a> that took place in August.</p>
+
+<p>Philipp Winter, Justin Bull and rndm made several improvements to <a href="https://atlas.torproject.org/">Atlas</a>, the web application for learning more about currently-running Tor relays. The HSDir flag is now properly displayed ( <a href="https://bugs.torproject.org/9911">#9911</a>), full country names and flags are shown instead of two-letter codes ( <a href="https://bugs.torproject.org/9914">#9914</a>) and it’s now easier to find out how long a relay has been down ( <a href="https://bugs.torproject.org/9814">#9814</a>).</p>
+
+<p>ra, one of Tor’s former GSoC students, proposed a <a href="https://bugs.torproject.org/9934">patch</a> to add a command to the Tor control protocol asking tor to pick a completely new set of guards.</p>
+
+<p>starlight <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030607.html">shared some simple shell snippets</a> that connect to the Tor control port in order to limit the bandwidth used by a relay while running backups.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, Matt Pagan, harmony, dope457, Damian Johnson and Philipp Winter.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/lifecycle-of-a-new-relay">The lifecycle of a new relay</a></h2>
+          <h2 class="post-title"> <a href="/blog/improving-tors-anonymity-changing-guard-parameters">Improving Tor&#39;s anonymity by changing guard parameters</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">arma</a> under
               
@@ -225,109 +219,331 @@
               
                 <a class="post-category post-category-js" href="#">entry guards</a>
               
+                <a class="post-category post-category-js" href="#">hidden services</a>
+              
                 <a class="post-category post-category-js" href="#">research</a>
                |
-              11 Sep 2013
+              16 Oct 2013
           </p>
         </header>
         <div class="post-description">
-          <p>Many people set up new fast relays and then wonder why their bandwidth is not fully loaded instantly. In this post I&#39;ll walk you through the lifecycle of a new fast <a href="https://www.torproject.org/docs/faq#ExitPolicies">non-exit</a> relay, since Tor&#39;s bandwidth estimation and load balancing has gotten much more complicated in recent years. I should emphasize that the descriptions here are in part anecdotal — at the end of the post I ask some research questions that will help us make better sense of what&#39;s going on.</p>
+          <p>There are tensions in the Tor protocol design between the anonymity provided by entry guards and the performance improvements from better load balancing. This blog post walks through the research questions I raised in 2011, then summarizes answers from three recent papers written by researchers in the Tor community, and finishes by explaining what Tor design changes we need to make to provide better anonymity, and what we&#39;ll be trading off.</p>
 
-<p>I hope this summary will be useful for relay operators. It also provides background for understanding some of the anonymity analysis research papers that people have been asking me about lately. In an upcoming blog post, I&#39;ll explain why we need to raise the guard rotation period (and what that means) to improve Tor&#39;s anonymity. [Edit: <a href="https://blog.torproject.org/blog/improving-tors-anonymity-changing-guard-parameters">here is that blog post</a>]</p>
+<h1>Part one: The research questions</h1>
 
-<p>A new relay, assuming it is reliable and has plenty of bandwidth, goes through four phases: the unmeasured phase (days 0-3) where it gets roughly no use, the remote-measurement phase (days 3-8) where load starts to increase, the ramp-up guard phase (days 8-68) where load counterintuitively drops and then rises higher, and the steady-state guard phase (days 68+).</p>
+<p>In Tor, each client selects a few relays at random, and chooses only from those relays when making the first hop of each circuit. This <a href="https://www.torproject.org/docs/faq#EntryGuards">entry guard</a> design helps in three ways:</p>
 
-<p><a href="https://people.torproject.org/%7Earma/lifecycle-blog.png">
- <img src="https://people.torproject.org/%7Earma/lifecycle-blog.png" alt="The phases of a new relay"></a></p>
+<p>First, entry guards protect against the &quot; <a href="http://freehaven.net/anonbib/#Wright:2004">predecessor attack</a>&quot;: if Alice (the user) instead chose new relays for each circuit, eventually an attacker who runs a few relays would be her first and last hop. With entry guards, the risk of end-to-end correlation for any given circuit is the same, but the cumulative risk for all her circuits over time is <a href="http://freehaven.net/anonbib/#hs-attack06">capped</a>.</p>
 
-<p><strong>Phase one: unmeasured (days 0-3).</strong></p>
+<p>Second, they help to protect against the &quot; <a href="http://freehaven.net/anonbib/#ccs07-doa">denial of service as denial of anonymity</a>&quot; attack, where an attacker who runs quite a few relays fails any circuit that he&#39;s a part of and that he can&#39;t win against, forcing Alice to generate more circuits and thus increasing the overall chance that the attacker wins. Entry guards greatly reduce the risk, since Alice will never choose outside of a few nodes for her first hop.</p>
 
-<p>When your relay first starts, it does a bandwidth self-test: it builds four circuits into the Tor network and back to itself, and then sends 125KB over each circuit. This step bootstraps Tor&#39;s passive bandwidth measurement system, which estimates your bandwidth as the largest burst you&#39;ve done over a 10 second period. So if all goes well, your first self-measurement is 4*125K/10 = 50KB/s. Your relay publishes this number in your relay descriptor.</p>
+<p>Third, entry guards raise the startup cost to an adversary who runs relays in order to trace users. Without entry guards, the attacker can sign up some relays and immediately start having chances to observe Alice&#39;s circuits. With them, new adversarial relays won&#39;t have the Guard flag so won&#39;t be chosen as the first hop of any circuit; and even once they earn the Guard flag, users who have already chosen guards won&#39;t switch away from their current guards for <a href="https://blog.torproject.org/blog/lifecycle-of-a-new-relay">quite a while</a>.</p>
 
-<p>The <a href="https://www.torproject.org/docs/faq#KeyManagement">directory authorities</a> list your relay in the network consensus, and clients get good performance (and balance load across the network) by choosing relays proportional to the bandwidth number listed in the consensus.</p>
+<p>In August 2011, I posted these four <a href="https://blog.torproject.org/blog/research-problem-better-guard-rotation-parameters">open research questions around guard rotation parameters</a>:</p>
 
-<p>Originally, the directory authorities would just use whatever bandwidth estimate you claimed in your relay descriptor. As you can imagine, that approach made it <a href="http://freehaven.net/anonbib/#bauer:wpes2007">cheap</a> for even a small adversary to attract a lot of traffic by simply lying. In 2009, Mike Perry deployed the <a href="https://blog.torproject.org/blog/torflow-node-capacity-integrity-and-reliability-measurements-hotpets">&quot;bandwidth authority&quot;</a> scripts, where a group of fast computers around the Internet (called bwauths) do active measurements of each relay, and the directory authorities <a href="https://gitweb.torproject.org/torflow.git/blob/HEAD:/NetworkScanners/BwAuthority/README.BwAuthorities">adjust the consensus bandwidth up or down</a> depending on how the relay compares to other relays that advertise similar speeds. (Technically, we call the consensus number a &quot;weight&quot; rather than a bandwidth, since it&#39;s all about how your relay&#39;s number compares to the other numbers, and once we start adjusting them they aren&#39;t really bandwidths anymore.)</p>
+<ol>
+<li><strong>Natural churn</strong> : For an adversary that controls a given number of relays, if the user only replaces her guards when the current ones become unavailable, how long will it take until she&#39;s picked an adversary&#39;s guard?</li>
+<li><strong>Artificial churn</strong> : How much more risk does she introduce by intentionally switching to new guards before she has to, to load balance better?</li>
+<li><strong>Number of guards</strong> : What are the tradeoffs in performance and anonymity from picking three guards vs two or one? By default Tor picks three guards, since if we picked only one then some clients would pick a slow one and be sad forever. On the other hand, picking only one makes users safer.</li>
+<li><strong>Better Guard flag assignment</strong> : If we give the Guard flag to more or different relays, how much does it change all these answers?</li>
+</ol>
 
-<p>The bwauth approach isn&#39;t ungameable, but it&#39;s a lot better than the old design. Earlier this year we plugged another vulnerability by capping your consensus weight to 20KB until a threshold of bwauths have an opinion about your relay — otherwise there was a <a href="https://trac.torproject.org/projects/tor/ticket/2286">several-day window</a> where we would use your claimed value because we didn&#39;t have anything better to use.</p>
+<p>For reference, Tor 0.2.3&#39;s entry guard behavior is &quot;choose three guards, adding another one if two of those three go down but going back to the original ones if they come back up, and also throw out (aka rotate) a guard 4-8 weeks after you chose it.&quot; I&#39;ll discuss in &quot;Part three&quot; of this post what changes we should make to improve this policy.</p>
 
-<p>So that&#39;s phase one: your new relay gets basically no use for the first few days of its life because of the low 20KB cap, while it waits for a threshold of bwauths to measure it.</p>
+<h1>Part two: Recent research papers</h1>
 
-<p><strong>Phase two: remote measurement (days 3-8).</strong></p>
+<p>Tariq Elahi, a grad student in Ian Goldberg&#39;s group in Waterloo, began to answer the above research questions in his paper <a href="http://freehaven.net/anonbib/#wpes12-cogs">Changing of the Guards: A Framework for Understanding and Improving Entry Guard Selection in Tor</a> (published at WPES 2012). His paper used eight months of real-world historical <a href="https://metrics.torproject.org/data.html">Tor network data</a> (from April 2011 to December 2011) and simulated various guard rotation policies to see which approaches protect users better.</p>
 
-<p>Remember how I said the bwauths adjust your consensus weight based on how you compare to similarly-sized relays? At the beginning of this phase your relay hasn&#39;t seen much traffic, so your peers are the other relays who haven&#39;t seen (or can&#39;t handle) much traffic. Over time though, a few clients will build circuits through your relay and push some traffic, and the passive bandwidth measurement will provide a new larger estimate. Now the bwauths will compare you to your new (faster) peers, giving you a larger consensus weight, thus driving more clients to use you, in turn raising your bandwidth estimate, and so on.</p>
+<p>Tariq&#39;s paper considered a quite small adversary: he let all the clients pick honest guards, and then added one new small guard to the 800 or so existing guards. The question is then what fraction of clients use this new guard over time. Here&#39;s a graph from the paper, showing (assuming all users pick three guards) the vulnerability due to natural churn (&quot;without guard rotation&quot;) vs natural churn plus also intentional guard rotation:</p>
 
-<p>Tor clients generally make three-hop circuits (that is, paths that go through three relays). The first position in the path, called the guard relay, is special because it helps protect against a certain anonymity-breaking attack. Here&#39;s the attack: if you keep picking new paths at random, and the adversary runs a few relays, then over time the chance drops to zero that *every single path you&#39;ve made* is safe from the adversary. The <a href="http://freehaven.net/anonbib/#hs-attack06">defense</a> is to choose a small number of relays (called guards) and always use one of them for your first hop — either you chose wrong, and one of your guards is run by the adversary and you lose on many of your paths; or you chose right and all of your paths are safe. Read the <a href="https://www.torproject.org/docs/faq#EntryGuards">Guard FAQ</a> for more details.</p>
+<p><a href="https://people.torproject.org/%7Earma/rotation-elahi.png"><img src="https://people.torproject.org/%7Earma/rotation-elahi.png" alt="Vulnerability from natural vs intentional guard rotation"></a></p>
 
-<p>Only <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/dir-spec.txt#l1768">stable and reliable</a> relays can be used as guards, so no clients are willing to use your brand new relay as their first hop. And since in this story you chose to set up a non-exit relay (so you won&#39;t be the one actually making connections to external services like websites), no clients will use it as their third hop either. That means all of your relay&#39;s traffic is coming from being the second hop in circuits.</p>
+<p>In this graph their tiny guard node, in the &quot;without guard rotation&quot; scenario, ends up getting used by about 3% of the clients in the first few months, and gets up to 10% by the eight-month mark. The more risky scenario — which Tor uses today — sees the risk shoot up to 14% in the first few months. (Note that the y-axis in the graph only goes up to 16%, mostly because the attacking guard is so small.)</p>
 
-<p>So that&#39;s phase two: once the bwauths have measured you and the directory authorities lift the 20KB cap, you&#39;ll attract more and more traffic, but it will still be limited because you&#39;ll only ever be a middle hop.</p>
+<p>The second paper to raise the issue is from Alex Biryukov, Ivan Pustogarov, and Ralf-Philipp Weinmann in Luxembourg. Their paper <a href="http://freehaven.net/anonbib/#oakland2013-trawling">Trawling for Tor Hidden Services: Detection, Measurement, Deanonymization</a> (published at Oakland 2013) mostly focuses on other attacks (like how to censor or track popularity of hidden services), but their Section VI.C. talks about the &quot;run a relay and wait until the client picks you as her guard&quot; attack. In this case they run the numbers for a much larger adversary: if they run 13.8% of the Tor network for eight months there&#39;s more than a 90% chance of a given hidden service using their guard sometime during that period. That&#39;s a huge fraction of the network, but it&#39;s also a huge chance of success. And since hidden services in this case are basically the same as Tor clients (they choose guards and build circuits the same way), it&#39;s reasonable to conclude that their attack works against normal clients too so long as the clients use Tor often enough during that time.</p>
 
-<p><strong>Phase three: Ramping up as a guard relay (days 8-68).</strong></p>
+<p>I should clarify three points here.</p>
 
-<p>This is the point where I should introduce consensus flags. Directory authorities assign the <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/dir-spec.txt#l1685">Guard flag</a> to relays based on three characteristics: &quot;bandwidth&quot; (they need to have a large enough consensus weight), &quot;weighted fractional uptime&quot; (they need to be working most of the time), and &quot;time known&quot; (to make attacks more expensive, we don&#39;t want to give the Guard flag to relays that haven&#39;t been around a while first). This last characteristic is most relevant here: on today&#39;s Tor network, you&#39;re first eligible for the Guard flag on day eight.</p>
+<p>First clarifying point: Tariq&#39;s paper makes two simplifying assumptions when calling an attack successful if the adversary&#39;s relay *ever* gets into the user&#39;s guard set. 1) He assumes that the adversary is also either watching the user&#39;s destination (e.g. the website she&#39;s going to), or he&#39;s running enough exit relays that he&#39;ll for sure be able to see the correponding flow out of the Tor network. 2) He assumes that the end-to-end correlation attack (matching up the incoming flow to the outgoing flow) is instantaneous and perfect. Alex&#39;s paper argues pretty convincingly that these two assumptions are easier to make in the case of attacking a hidden service (since the adversary can dictate how often the hidden service makes a new circuit, as well as what the traffic pattern looks like), and the paper I describe next addresses the first assumption, but the second one (&quot;how successful is the correlation attack at scale?&quot; or maybe better, &quot;how do the false positives in the correlation attack compare to the false negatives?&quot;) remains an open research question.</p>
 
-<p>Clients will only be willing to pick you for their first hop if you have the &quot;Guard&quot; flag. But here&#39;s the catch: once you get the Guard flag, all the rest of the clients back off from using you for their middle hops, because when they see the Guard flag, they assume that you have plenty of load already from clients using you as their first hop. Now, that assumption will become true in the steady-state (that is, once enough clients have chosen you as their guard node), but counterintuitively, as soon as you get the Guard flag you&#39;ll see a dip in traffic.</p>
+<p>Researchers generally agree that given a handful of traffic flows, it&#39;s easy to match them up. But what about the millions of traffic flows we have now? What levels of false positives (algorithm says &quot;match!&quot; when it&#39;s wrong) are acceptable to this attacker? Are there some simple, not too burdensome, tricks we can do to drive up the false positives rates, even if we all agree that those tricks wouldn&#39;t work in the &quot;just looking at a handful of flows&quot; case?</p>
 
-<p>Why do clients avoid using relays with the Guard flag for their middle hop? Clients look at the scarcity of guard capacity, and the scarcity of exit capacity, and proportionally avoid using relays for positions in the path that aren&#39;t scarce. That way we <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/dir-spec.txt#l2014">allocate available resources best</a>: relays with the Exit flag are used mostly for exiting when they&#39;re scarce, and relays with the Guard flag are used mostly for entering when they&#39;re scarce.</p>
+<p>More precisely, it&#39;s possible that correlation attacks don&#39;t scale well because as the number of Tor clients grows, the chance that the exit stream actually came from a different Tor client (not the one you&#39;re watching) grows. So the confidence in your match needs to grow along with that or your false positive rate will explode. The people who say that correlation attacks don&#39;t scale use phrases like &quot; <a href="http://archives.seul.org/or/dev/Sep-2008/msg00016.html">say your correlation attack is 99.9% accurate</a>&quot; when arguing it. The folks who think it does scale use phrases like &quot;I can easily make my correlation attack arbitrarily accurate.&quot; My hope is that the reality is somewhere in between — correlation attacks in the current Tor network can probably be made plenty accurate, but perhaps with some simple design changes we can improve the situation. In any case, I&#39;m not going to try to tackle that research question here, except to point out that 1) it&#39;s actually unclear in practice whether you&#39;re done with the attack if you get your relay into the user&#39;s guard set, or if you are now faced with a challenging flow correlation problem that could produce false positives, and 2) the goal of the entry guard design is to make this issue moot: it sure would be nice to have a design where it&#39;s hard for adversaries to get into a position to see both sides, since it would make it irrelevant how good they are at traffic correlation.</p>
 
-<p>It isn&#39;t optimal to allow this temporary dip in traffic (since we&#39;re not taking advantage of resources that you&#39;re trying to contribute), but it&#39;s a short period of time overall: clients rotate their guards nodes every 4-8 weeks, so pretty soon some of them will rotate onto your relay.</p>
+<p>Second clarifying point: it&#39;s about the probabilities, and that&#39;s intentional. Some people might be scared by phrases like &quot;there&#39;s an x% chance over y months to be able to get an attacker&#39;s relay into the user&#39;s guard set.&quot; After all, they reason, shouldn&#39;t Tor provide absolute anonymity rather than probabilistic anonymity? This point is even trickier in the face of centralized anonymity services that promise <a href="https://svn.torproject.org/svn/projects/articles/circumvention-features.html#5">&quot;100% guaranteed&quot;</a> anonymity, when what they really mean is &quot;we could watch everything you do, and we might sell or give up your data in some cases, and even if we don&#39;t there&#39;s still just one point on the network where an eavesdropper can learn everything.&quot; Tor&#39;s path selection strategy distributes trust over multiple relays to avoid this centralization. The trouble here isn&#39;t that there&#39;s a chance for the adversary to win — the trouble is that our current parameters make that chance bigger than it needs to be.</p>
 
-<p>To be clear, there are two reasons why we have clients rotate their guard relays, and the reasons are two sides of the same coin: first is the above issue where new guards wouldn&#39;t see much use (since only new clients, picking their guards for the first time, would use a new guard), and second is that old established guards would accrue an ever-growing load since they&#39;d have the traffic from all the clients that ever picked them as their guard.</p>
+<p>To make it even clearer: the entry guard design is doing its job here, just not well enough. Specifically, *without* using the entry guard design, an adversary who runs some relays would very quickly find himself as the first hop of one of the user&#39;s circuits.</p>
 
-<p>One of the reasons for this blog post is to give you background so when I later explain why we need to extend the guard rotation period to many months, you&#39;ll understand why we can&#39;t just crank up the number without also <a href="https://trac.torproject.org/projects/tor/ticket/9321">changing some other parts of the system</a> to keep up. Stay tuned for more details there, or if you don&#39;t want to wait you can read the <a href="https://blog.torproject.org/blog/research-problem-better-guard-rotation-parameters">original research questions</a> and the followup research papers by <a href="http://freehaven.net/anonbib/#wpes12-cogs">Elahi et al</a> and <a href="http://freehaven.net/anonbib/#ccs2013-usersrouted">Johnson et al</a>.</p>
+<p>Third clarifying point: we&#39;re considering an attacker who wants to learn if the user *ever* goes to a given destination. There are plenty of reasonable other things an attacker might be trying to learn, like building a profile of many or all of the user&#39;s destinations, but in this case Tariq&#39;s paper counts a successful attack as one that confirms (subject to the above assumptions) that the user visited a given destination once.</p>
 
-<p><strong>Phase four: Steady-state guard relay (days 68+).</strong></p>
+<p>And that brings us to the third paper, by Aaron Johnson et al: <a href="http://freehaven.net/anonbib/#ccs2013-usersrouted">Users Get Routed: Traffic Correlation on Tor by Realistic Adversaries</a> (upcoming at CCS 2013). This paper ties together two previous series of research papers: the first is &quot;what if the attacker runs a relay?&quot; which is what the above two papers talked about, and the second is &quot;what if the attacker can watch part of the Internet?&quot;</p>
 
-<p>Once your relay has been a Guard for the full guard rotation period (up to 8 weeks in Tor 0.1.1.11-alpha through 0.2.4.11-alpha, and up to 12 weeks in Tor 0.2.4.12-alpha and later), it should reach steady-state where the number of clients dropping it from their guard list balances the number of clients adding it to their guard list.</p>
+<p>The first part of the paper should sound pretty familiar by now: they simulated running a few entry guards that together make up 10% of the guard capacity in the Tor network, and they showed that (again using historical Tor network data, but this time from October 2012 to March 2013) the chance that the user has made a circuit using the adversary&#39;s relays is more than 80% by the six month mark.</p>
 
-<p><strong>Research question: what do these phases look like with real-world data?</strong></p>
+<p>In this case their simulation includes the adversary running a fast exit relay too, and the user performs a set of sessions over time. They observe that the user&#39;s traffic passes over pretty much all the exit relays (which makes sense since Tor doesn&#39;t use an &quot;exit guard&quot; design). Or summarizing at an even higher level, the conclusion is that so long as the user uses Tor enough, this paper confirms the findings in the earlier two papers.</p>
 
-<p>All of the above explanations, including the graphs, are just based on anecdotes from relay operators and from ad hoc examination of consensus weights.</p>
+<p>Where it gets interesting is when they explain that &quot;the adversary could run a relay&quot; is not the only risk to worry about. They build on the series of papers started by <a href="http://freehaven.net/anonbib/#feamster:wpes2004">&quot;Location Diversity in Anonymity Networks&quot;</a> (WPES 2004), <a href="http://freehaven.net/anonbib/#DBLP:conf:ccs:EdmanS09">&quot;AS-awareness in Tor path selection&quot;</a> (CCS 2009), and most recently <a href="http://freehaven.net/anonbib/#ndss13-relay-selection">&quot;An Empirical Evaluation of Relay Selection in Tor&quot;</a> (NDSS 2013). These papers look at the chance that traffic from a given Tor circuit will traverse a given set of Internet links.</p>
 
-<p>Here&#39;s a great class project or thesis topic: using our publically available <a href="https://metrics.torproject.org/data.html">Tor network metrics data</a>, track the growth pattern of consensus weights and bandwidth load for new relays. Do they match the phases I&#39;ve described here? Are the changes inside a given phase linear like in the graphs above, or do they follow some other curve?</p>
+<p>Their point, which like all good ideas is obvious in retrospect, is that rather than running a guard relay and waiting for the user to switch to it, the attacker should instead monitor as many Internet links as he can, and wait for the user to use a guard such that traffic between the user and the guard passes over one of the links the adversary is watching.</p>
 
-<p>Are there trends over time, e.g. it used to take less time to ramp up? How long are the phases in reality — for example, does it really take three days before the bwauths have a measurement for new relays?</p>
+<p>This part of the paper raises as many questions as it answers. In particular, all the users they considered are in or near Germany. There are also quite a few Tor relays in Germany. How much of their results here can be explained by pecularities of Internet connectivity in Germany? Are their results predictive in any way about how users on other continents would fare? Or said another way, how can we learn whether their conclusion shouldn&#39;t instead be &quot;German Tor users are screwed, because look how Germany&#39;s Internet topology is set up&quot;? Secondly, their scenario has the adversary control the Autonomous System (AS) or Internet Exchange Point (IXP) that maximally deanonymizes the user (they exclude the AS that contains the user and the AS that contains her destinations). This &quot;best possible point to attack&quot; assumption a) doesn&#39;t consider how hard it is to compromise that particular part of the Internet, and b) seems like it will often be part of the Internet topology near the user (and thus vary greatly depending on which user you&#39;re looking at). And third, like the previous papers, they think of an AS as a single Internet location that the adversary is either monitoring or not monitoring. Some ASes, like large telecoms, are quite big and spread out.</p>
 
-<p>How does the scarcity of Guard or Exit capacity influence the curves or trends? For example, when guard capacity is less scarce, we expect the traffic dip at the beginning of phase three to be less pronounced.</p>
+<p>That said, I think it&#39;s clear from this paper that there *do* exist realistic scenarios where Tor users are at high risk from an adversary watching the nearby Internet infrastructure and/or parts of the Internet backbone. Changing the guard rotation parameters as I describe in &quot;Part three&quot; below will help in some of these cases but probably won&#39;t help in all of them. The canonical example that I&#39;ve given in talks about &quot;a person in Syria using Tor to visit a website in Syria&quot; remains a very serious worry.</p>
 
-<p>How different were things before we added the 20KB cap in the first phase, or before we did remote measurements at all?</p>
+<p>The paper also makes me think about exit traffic patterns, and how to better protect people who use Tor for only a short period of time: many websites pull in resources from all over, especially resources from centralized ad sites. This risk (that it greatly speeds the rate at which an adversary watching a few exit points — or heck, a few ad sites — will be able to observe a given user&#39;s exit traffic) provides the most compelling reason I&#39;ve heard so far to ship Tor Browser Bundle with an ad blocker — or maybe better, with something like <a href="https://www.requestpolicy.com/">Request Policy</a> that doesn&#39;t even touch the sites in the first place. On the other hand, Mike Perry still doesn&#39;t want to ship an ad blocker in TBB, since he doesn&#39;t want to pick a fight with Google and give them even more of a reason to block/drop all Tor traffic. I can see that perspective too.</p>
 
-<p>Are the phases, trends, or curves different for exit relays than for non-exit relays?</p>
+<h1>Part three: How to fix it</h1>
 
-<p>The &quot;steady-state&quot; phase assumes a constant number of Tor users: in situations where many new users appear (like the <a href="https://blog.torproject.org/blog/how-to-handle-millions-new-tor-clients">botnet invasion in August 2013</a>), current guards will get unbalanced. How quickly and smoothly does the network rebalance as clients shift guards after that?</p>
+<p>Here are five steps we should take, in rough order of how much impact I think each of them would have on the above attacks.</p>
+
+<p>If you like metaphors, think of each time you pick a new guard as a coin flip (heads you get the adversary&#39;s guard, tails you&#39;re safe this time), and the ideas here aim to reduce both the number and frequency of coin flips.</p>
+
+<p><strong>Fix 1: Tor clients should use fewer guards.</strong></p>
+
+<p>The primary benefit to moving to fewer guards is that there are fewer coin flips every time you pick your guards.</p>
+
+<p>But there&#39;s a second benefit as well: right now your choice of guards acts as a kind of fingerprint for you, since very few other users will have picked the same three guards you did. (This fingerprint is only usable by an attacker who can discover your guard list, but in some scenarios that&#39;s a realistic attack.) To be more concrete: if the adversary learns that you have a particular three guards, and later sees an anonymous user with exactly the same guards, how likely is it to be you? Moving to two guards helps the math a lot here, since you&#39;ll overlap with many more users when everybody is only picking two.</p>
+
+<p>On the other hand, the main downside is increased variation in performance. Here&#39;s Figure 10 from Tariq&#39;s paper:</p>
+
+<p><a href="https://people.torproject.org/%7Earma/1guard-performance.png"><img src="https://people.torproject.org/%7Earma/1guard-performance.png" alt="Average guard capacity for various numbers of guards"></a></p>
+
+<p>&quot;Farther to the right&quot; is better in this graph. When you pick three guards (the red line), the average speed of your guards is pretty good (and pretty predictable), since most guards are pretty fast and it&#39;s unlikely you&#39;ll pick slow ones for all three. However, when you only pick only one guard (the purple line), the odds go up a lot that you get unlucky and pick a slow one. In more concrete numbers, half of the Tor users will see up to 60% worse performance.</p>
+
+<p>The fix of course is to raise the bar for becoming a guard, so every possible guard will be acceptably fast. But then we have fewer guards total, increasing the vulnerability from other attacks! Finding the right balance (as many guards as possible, but all of them fast) is going to be an ongoing challenge. See <a href="https://trac.torproject.org/projects/tor/ticket/9273">Brainstorm tradeoffs from moving to 2 (or even 1) guards (ticket 9273)</a> for more discussion.</p>
+
+<p>Switching to just one guard will also preclude deploying <a href="http://freehaven.net/anonbib/#pets13-splitting">Conflux</a>, a recent proposal to improve Tor performance by routing traffic over multiple paths in parallel. The Conflux design is appealing because it not only lets us make better use of lower-bandwidth relays (which we&#39;ll need to do if we want to greatly grow the size of the Tor network), but it also lets us dynamically adapt to congestion by shifting traffic to less congested routes. Maybe some sort of &quot;guard family&quot; idea can work, where a single coin flip chooses a pair of guards and then we split our traffic over them. But if we want to avoid doubling the exposure to a network-level adversary, we might want to make sure that these two guards are near each other on the network — I think the analysis of the network-level adversary in Aaron&#39;s paper is the strongest argument for restricting the variety of Internet paths that traffic takes between the Tor client and the Tor network.</p>
+
+<p>This discussion about reducing the number of guards also relates to bridges: right now if you configure ten <a href="https://www.torproject.org/docs/bridges">bridges</a>, you round-robin over all of them. It seems wise for us to instead use only the first bridge in our bridge list, to cut down on the set of Internet-level adversaries that get to see the traffic flows going into the Tor network.</p>
+
+<p><strong>Fix 2: Tor clients should keep their guards for longer.</strong></p>
+
+<p>In addition to choosing fewer guards, we should also avoid switching guards so often. I originally picked &quot;one or two months&quot; for guard rotation since it seemed like a very long time. In Tor 0.2.4, we&#39;ve changed it to &quot;two or three months&quot;. But I think changing the guard rotation period to a year or more is probably much wiser, since it will slow down the curves on all the graphs in the above research papers.</p>
+
+<p>I asked Aaron to make a graph comparing the success of an attacker who runs 10% of the guard capacity, in the &quot;choose 3 guards and rotate them every 1-2 months&quot; case and the &quot;choose 1 guard and never rotate&quot; case:</p>
+
+<p><a href="https://people.torproject.org/%7Earma/room-for-improvement.png"><img src="https://people.torproject.org/%7Earma/room-for-improvement.png" alt="Vulnerability from natural vs intentional guard rotation"></a></p>
+
+<p>In the &quot;3 guard&quot; case (the blue line), the attacker&#39;s success rate rapidly grows to about 25%, and then it steadily grows to over 80% by the six month mark. The &quot;1 guard&quot; case (green line), on the other hand, grows to 10% (which makes sense since the adversary runs 10% of the guards), but then it levels off and grows only slowly as a function of network churn. By the six month mark, even this very large adversary&#39;s success rate is still under 25%.</p>
+
+<p>So the good news is that by choosing better guard rotation parameters, we can almost entirely resolve the vulnerabilities described in these three papers. Great!</p>
+
+<p>Or to phrase it more as a research question, once we get rid of this known issue, I&#39;m curious how the new graphs over time will look, especially when we have a more sophisticated analysis of the &quot;network observer&quot; adversary. I bet there are some neat other attacks that we&#39;ll need to explore and resolve, but that are being masked by the poor guard parameter issue.</p>
+
+<p>However, fixing the guard rotation period issue is alas not as simple as we might hope. The fundamental problem has to do with &quot;load balancing&quot;: allocating traffic onto the Tor network so each relay is used the right amount. If Tor clients choose a guard and stick with it for a year or more, then old guards (relays that have been around and stable for a long time) will see a lot of use, and new guards will see very little use.</p>
+
+<p>I wrote a separate blog post to provide background for this issue: &quot; <a href="https://blog.torproject.org/blog/lifecycle-of-a-new-relay">The lifecycle of a new relay</a>&quot;. Imagine if the ramp-up period in the graph from that blog post were a year long! People would set up fast relays, they would get the Guard flag, and suddenly they&#39;d see little to no traffic for months. We&#39;d be throwing away easily half of the capacity volunteered by relays.</p>
+
+<p>One approach to resolving the conflict would be for the directory authorities to track how much of the past n months each relay has had the Guard flag, and publish a fraction in the networkstatus consensus. Then we&#39;d teach clients to rebalance their path selection choices so a relay that&#39;s been a Guard for only half of the past year only counts 50% as a guard in terms of using that relay in other positions in circuits. See <a href="https://trac.torproject.org/projects/tor/ticket/9321">Load balance right when we have higher guard rotation periods (ticket 9321)</a> for more discussion, and see <a href="https://trac.torproject.org/projects/tor/ticket/8240">Raise our guard rotation period (ticket 8240)</a> for earlier discussions.</p>
+
+<p>Yet another challenge here is that sticking to the same guard for a year gives plenty of time for an attacker to identify the guard and attack it somehow. It&#39;s particularly easy to identify the guard(s) for hidden services currently (since as mentioned above, the adversary can control the rate at which hidden services make new circuits, simply by visiting the hidden service), but similar attacks can probably be made to work against normal Tor clients — see e.g. the http-level refresh tricks in <a href="http://freehaven.net/anonbib/#tissec-latency-leak">How Much Anonymity does Network Latency Leak?</a> This attack would effectively turn Tor into a network of one-hop proxies, to an attacker who can efficiently enumerate guards. That&#39;s not a complete attack, but it sure does make me nervous.</p>
+
+<p>One possible direction for a fix is to a) isolate streams by browser tab, so all the requests from a given browser tab go to the same circuit, but different browser tabs get different circuits, and then b) stick to the same three-hop circuit (i.e. same guard, middle, and exit) for the lifetime of that session (browser tab). How to slow down guard enumeration attacks is a tough and complex topic, and it&#39;s too broad for this blog post, but I raise the issue here as a reminder of how interconnected anonymity attacks and defenses are. See <a href="https://trac.torproject.org/projects/tor/ticket/9001">Slow Guard Discovery of Hidden Services and Clients (ticket 9001)</a> for more discussion.</p>
+
+<p><strong>Fix 3: The Tor code should better handle edge cases where you can&#39;t reach your guard briefly.</strong></p>
+
+<p>If a temporary network hiccup makes your guard unreachable, you switch to another one. But how long is it until you switch back? If the adversary&#39;s goal is to learn whether you ever go to a target website, then even a brief switch to a guard that the adversary can control or observe could be enough to mess up your anonymity.</p>
+
+<p>Tor clients fetch a new networkstatus consensus every 2-4 hours, and they are willing to retry non-running guards if the new consensus says they&#39;re up again.</p>
+
+<p>But I think there are a series of little bugs and edge cases where the Tor client abandons a guard more quickly than it should. For example, we mark a guard as failed if any of our circuit requests time out before finishing the handshake with the first hop. We should audit both the design and the source code with an eye towards identifying and resolving these issues.</p>
+
+<p>We should also consider whether an adversary can *induce* congestion or resource exhaustion to cause a target user to switch away from her guard. Such an attack could work very nicely coupled with the guard enumeration attacks discussed above.</p>
+
+<p>Most of these problems exist because in the early days we emphasized reachability (&quot;make sure Tor works&quot;) over anonymity (&quot;be very sure that your guard is gone before you try another one&quot;). How should we handle this tradeoff between availability and anonymity: should you simply stop working if you&#39;ve switched guards too many times recently? I imagine different users would choose different answers to that tradeoff, depending on their priorities. It sounds like we should make it easier for users to select &quot;preserve my anonymity even if it means lower availability&quot;. But at the same time, we should remember the lessons from <a href="http://freehaven.net/anonbib/#usability:weis2006">Anonymity Loves Company: Usability and the Network Effect</a> about how letting users choose different settings can make them more distinguishable.</p>
+
+<p><strong>Fix 4: We need to make the network bigger.</strong></p>
+
+<p>We&#39;ve been working hard in recent years to get more relay capacity. The result is a more than four-fold increase in network capacity since 2011:</p>
+
+<p><a href="https://people.torproject.org/%7Earma/bandwidth-since-2011.png"><img src="https://people.torproject.org/%7Earma/bandwidth-since-2011.png" alt="Vulnerability from natural vs intentional guard rotation"></a></p>
+
+<p>As the network grows, an attacker with a given set of resources will have less success at the attacks described in this blog post. To put some numbers on it, while the relay adversary in Aaron&#39;s paper (who carries 660mbit/s of Tor traffic) represented 10% of the guard capacity in October 2012, that very same attacker would have been 20% of the guard capacity in October 2011. Today that attacker is about 5% of the guard capacity. Growing the size of the network translates directly into better defense against these attacks.</p>
+
+<p>However, the analysis is more complex when it comes to a network adversary. Just adding more relays (and more relay capacity) doesn&#39;t always help. For example, adding more relay capacity in a part of the network that the adversary is already observing can actually *decrease* anonymity, because it increases the fraction the adversary can watch. We discussed many of these issues in the <a href="https://lists.torproject.org/pipermail/tor-relays/2012-July/001433.html">thread about turning funding into more exit relays</a>. For more details about the relay distribution in the current Tor network, check out <a href="https://compass.torproject.org/">Compass</a>, our tool to explore what fraction of relay capacity is run in each country or AS. Also check out Lunar&#39;s <a href="https://metrics.torproject.org/bubbles.html">relay bubble graphs</a>.</p>
+
+<p>Yet another open research question in the field of anonymous communications is how the success rate of a network adversary changes as the Tor network changes. If we were to plot the success rate of the *relay* adversary using historical Tor network data over time, it&#39;s pretty clear that the success rate would be going down over time as the network grows. But what&#39;s the trend for the success rate of the network adversary over the past few years? Nobody knows. It could be going up or down. And even if it is going down, it could be going down quickly or slowly.</p>
+
+<p>(Read more in <a href="https://blog.torproject.org/blog/research-problem-measuring-safety-tor-network">Research problem: measuring the safety of the Tor network</a> where I describe some of these issues in more detail.)</p>
+
+<p>Recent papers have gone through enormous effort to get one, very approximate, snapshot of the Internet&#39;s topology. Doing that effort retroactively and over long and dynamic time periods seems even more difficult and more likely to introduce errors.</p>
+
+<p>It may be that the realities of Internet topology centralization make it so that there are fundamental limits on how much safety Tor users can have in a given network location. On the other hand, researchers like Aaron Johnson are optimistic that &quot;network topology aware&quot; path selection can improve Tor&#39;s protection against this style of attack. Much work remains.</p>
+
+<p><strong>Fix 5: We should assign the guard flag more intelligently.</strong></p>
+
+<p>In point 1 above I talked about why we need to raise the bar for becoming a guard, so all guards can provide adequate bandwidth. On the other hand, having fewer guards is directly at odds with point 4 above.</p>
+
+<p>My <a href="https://blog.torproject.org/blog/research-problem-better-guard-rotation-parameters">original guard rotation parameters blog post</a> ends with this question: what algorithm should we use to assign Guard flags such that a) we assign the flag to as many relays as possible, yet b) we minimize the chance that Alice will use the adversary&#39;s node as a guard?</p>
+
+<p>We should use historical Tor network data to pick good values for the parameters that decide which relays become guards. This remains a great thesis topic if somebody wants to pick it up.</p>
+
+<h1>Part four: Other thoughts</h1>
+
+<p>What does all of this discussion mean for the rest of Tor? I&#39;ll close by trying to tie this blog post to the broader Tor world.</p>
+
+<p>First, all three of these papers come from the <a href="http://freehaven.net/anonbib/">Tor research community</a>, and it&#39;s great that Tor gets such attention. We get this attention because we put so much effort into <a href="https://research.torproject.org/">making it easy</a> for researchers to analyze Tor: we&#39;ve worked closely with these authors to help them understand Tor and focus on the most pressing research problems.</p>
+
+<p>In addition, don&#39;t be fooled into thinking that these attacks only apply to Tor: using Tor is still better than using any other tool, at least in quite a few of these scenarios. That said, some other attacks in the research literature might be even easier than the attacks discussed here. These are fast-moving times for anonymity research. &quot;Maybe you shouldn&#39;t use the Internet then&quot; is still the best advice for some people.</p>
+
+<p>Second, the <a href="https://tails.boum.org/">Tails</a> live CD doesn&#39;t use persistent guards. That&#39;s really bad I think, assuming the Tails users have persistent behavior (which basically all users do). See <a href="https://labs.riseup.net/code/issues/5462">their ticket 5462</a>.</p>
+
+<p>Third, the network-level adversaries rely on being able to recognize Tor flows. Does that argue that using <a href="https://www.torproject.org/docs/pluggable-transports">pluggable transports</a>, with <a href="https://www.torproject.org/docs/bridges">bridges</a>, might change the equation if it stops the attacker from recognizing Tor users?</p>
+
+<p>Fourth, I should clarify that I don&#39;t think any of these large relay-level adversaries actually exist, except as a succession of researchers showing that it can be done. (GCHQ apparently ran a small number of relays a while ago, but not in a volume or duration that would have enabled this attack.) Whereas I *do* think that the network-level attackers exist, since they already invested in being able to surveil the Internet for other reasons. So I think it&#39;s great that Aaron&#39;s paper presents the dual risks of relay adversaries and link adversaries, since most of the time when people are worrying about one of them they&#39;re forgetting the other one.</p>
+
+<p>Fifth, there are still some ways to game the <a href="https://gitweb.torproject.org/torflow.git/blob/HEAD:/NetworkScanners/BwAuthority/README.BwAuthorities">bandwidth authority</a> measurements (here&#39;s the spec <a href="https://gitweb.torproject.org/torflow.git/blob/HEAD:/NetworkScanners/BwAuthority/README.spec.txt">spec</a>) into giving you more than your fair share of traffic. Ideally we&#39;d adapt a design like <a href="https://www.usenix.org/legacy/event/iptps09/tech/full_papers/snader/snader.pdf">EigenSpeed</a> so it can measure fast relays both robustly and accurately. This question also remains a great thesis topic.</p>
+
+<p>And finally, as everybody wants to know: was this attack how &quot;they&quot; busted recent hidden services ( <a href="https://blog.torproject.org/blog/tor-security-advisory-old-tor-browser-bundles-vulnerable">Freedom Hosting</a>, <a href="https://blog.torproject.org/blog/tor-and-silk-road-takedown">Silk Road</a>, the attacks described in the latest <a href="http://www.theguardian.com/world/2013/oct/04/nsa-gchq-attack-tor-network-encryption">Guardian article</a>)? The answer is apparently no in each case, which means the techniques they *did* use were even *lower* hanging fruit. The lesson? Security is hard, and you have to get it right at many different levels.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/new-tor-02417-rc-packages">New Tor 0.2.4.17-rc packages</a></h2>
+          <h2 class="post-title"> <a href="/blog/stem-release-11">Stem Release 1.1</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
+              By <a class="post-author" href="#">atagar</a> under
               
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">updates</a>
+                <a class="post-category post-category-js" href="#">stem</a>
                |
-              06 Sep 2013
+              14 Oct 2013
           </p>
         </header>
         <div class="post-description">
-          <p>There&#39;s a new <a href="https://lists.torproject.org/pipermail/tor-talk/2013-August/029344.html">Tor 0.2.4.17-rc</a> to hopefully help mitigate some of the problems with the <a href="http://blog.fox-it.com/2013/09/05/large-botnet-cause-of-recent-tor-network-overload/">botnet</a> <a href="https://blog.torproject.org/blog/how-to-handle-millions-new-tor-clients">issues</a> Tor is experiencing. All packages, including the beta Tor Browser Bundles, have been updated. Relay operators are strongly encouraged to upgrade to the latest versions, since it mostly has server-side improvements in it, but users will hopefully benefit from upgrading too. Please try it out and let us know.</p>
+          <p>Hi all. After seven months of work I&#39;m pleased to announce Stem&#39;s 1.1.0 release!</p>
 
-<p><a href="https://www.torproject.org/projects/torbrowser.html.en#downloads" title="https://www.torproject.org/projects/torbrowser.html.en#downloads">https://www.torproject.org/projects/torbrowser.html.en#downloads</a></p>
+<p>For those who aren&#39;t familiar with it, Stem is a Python library for interacting with Tor. With it you can script against your relay, descriptor data, or even write applications similar to <a href="https://www.atagar.com/arm/">arm</a> and <a href="https://www.torproject.org/projects/vidalia.html.en">Vidalia</a>.</p>
 
-<p><strong>Tor Browser Bundle (2.4.17-beta-1)</strong></p>
+<p><strong><a href="https://stem.torproject.org/">https://stem.torproject.org/</a></strong></p>
 
-<ul>
-<li>Update Tor to 0.2.4.17-rc</li>
-<li>Update NoScript to 2.6.7.1</li>
-<li>Update HTTPS Everywhere to 4.0development.11</li>
-</ul>
+<p>So what&#39;s new in this release?</p>
+
+<hr>
+
+<h2>Remote Descriptor Fetching</h2>
+
+<p>The <a href="https://stem.torproject.org/api/descriptor/remote.html">stem.descriptor.remote</a> module allows you download current Tor descriptor data from directory authorities and mirrors, much like Tor itself does. With this you can easily check the status of the network without piggybacking on a local instance of Tor (or even having it installed).</p>
+
+<p>For example...</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">from stem.descriptor.remote import DescriptorDownloader
+
+
+downloader = DescriptorDownloader()
+
+
+try:
+  for desc in downloader.get_consensus().run():
+    print &quot;found relay %s (%s)&quot; % (desc.nickname, desc.fingerprint)
+except Exception as exc:
+  print &quot;Unable to retrieve the consensus: %s&quot; % exc
+</code></pre></div>
+<hr>
+
+<h2>Connection Resolution</h2>
+
+<p>One of arm&#39;s most popular features has been its ability to monitor Tor&#39;s connections, and stem can now do the same! Lookups are performed via seven *nix and FreeBSD resolvers, for more information and an example see <a href="https://stem.torproject.org/tutorials/east_of_the_sun.html#connection-resolution">our tutorials</a>.</p>
+
+<hr>
+
+<h2>Numerous Features and Fixes</h2>
+
+<p>For a rundown of other changes see...</p>
+
+<p><strong><a href="https://stem.torproject.org/change_log.html#version-1-1">https://stem.torproject.org/change_log.html#version-1-1</a></strong></p>
+
+<p>Cheers! -Damian</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-weekly-news-%E2%80%94-october-9th-2013">Tor Weekly News — October 9th, 2013</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">lunar</a> under
+              
+                <a class="post-category post-category-js" href="#">tor weekly news</a>
+               |
+              09 Oct 2013
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Welcome to the fifteenth issue of Tor Weekly News, the <a href="https://lists.torprojet.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what&#39;s happening in the world of Tor — <a href="http://www.theguardian.com/world/interactive/2013/oct/04/tor-high-secure-internet-anonymity">“king of high-secure, low-latency anonymity”</a>.</p>
+
+<h1>New tranche of NSA/GCHQ Tor documents released</h1>
+
+<p>After a cameo appearance in <a href="https://blog.torproject.org/blog/tor-nsa-gchq-and-quick-ant-speculation">previous leaked intelligence documents</a>, Tor found itself at the center of attention in the latest installment of the ongoing Snowden disclosures after a series of stories were published in the Guardian and the Washington Post that detailed alleged attempts by NSA, GCHQ, and their allies to defeat or circumvent the protection that Tor offers its users. A number of source materials, redacted by the newspapers, were published to accompany the articles.</p>
+
+<p>The <a href="http://media.encrypted.cc/files/nsa">documents in question</a> offer, alongside characteristically <a href="https://twitter.com/EFF/status/386291345301581825">entertaining illustrations</a>, an overview of the Tor network from the point of view of the intelligence agencies, as well as a summary of attacks against Tor users and the network as a whole that they have considered or carried out.</p>
+
+<p>Despite the understandable concern provoked among users by these disclosures, Tor developers themselves were encouraged by the often relatively basic or out-of-date nature of the attacks described. In response to one journalist&#39;s request for comment, Roger Dingledine <a href="https://blog.torproject.org/blog/yes-we-know-about-guardian-article#comment-35793">wrote</a> that “we still have a lot of work to do to make Tor both safe and usable, but we don&#39;t have any new work based on these slides”.</p>
+
+<p>Have a look at the documents yourself, and feel free to raise any questions with the community on the mailing lists or IRC channels.</p>
+
+<h1>tor 0.2.5.1-alpha is out</h1>
+
+<p>Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030269.html">announced</a> the first alpha release in the tor 0.2.5.x series, which among many other improvements introduces experimental support for syscall sandboxing on Linux, as well as statistics reporting for pluggable transports usage on compatible bridges.</p>
+
+<p>Roger warned that “this is the first alpha release in a new series, so expect there to be bugs. Users who would rather test out a more stable branch should stay with 0.2.4.x for now.” 0.2.5.1-alpha will not immediately appear on the main download pages, in order to avoid having too many versions listed at once. Please feel free to test the <a href="https://www.torproject.org/dist/">new release</a>, and report any bugs you find!</p>
+
+<h1>How did Tor achieve reproducible builds?</h1>
+
+<p>At the end of June, Mike Perry <a href="https://blog.torproject.org/blog/tor-browser-bundle-30alpha2-released">announced</a> the first release of the Tor Browser Bundle 3.0 alpha series, featuring release binaries “exactly reproducible from the source code by anyone”. In a subsequent <a href="https://blog.torproject.org/blog/deterministic-builds-part-one-cyberwar-and-global-compromise">blog post</a> published in August, he explained why it mattered.</p>
+
+<p>Mike has just published the <a href="https://blog.torproject.org/blog/deterministic-builds-part-two-technical-details">promised follow-up piece</a> describing how this feat was achieved in the new Tor Browser Bundle build process.</p>
+
+<p>He explains how <a href="http://gitian.org/howto.html">Gitian</a> is used to create a reproducible build environment, the tools used to produce cross-platform binaries for Windows and OS X from a Linux environment, and several issues that prevented the builds from being entirely deterministic. The latter range from timestamps to file ordering differences when looking up a directory, with an added 3 bytes of pure mystery.</p>
+
+<p>There is more work to be done to “prevent the adversary from compromising the (substantially weaker) Ubuntu build and packaging processes” currently used for the toolchain. Mike also wrote about making the build of the compiler and toolchain part of the build process, cross-compilation between multiple architectures, and the work being done by Linux distributions to produce deterministic builds from their packages.</p>
+
+<p>If you are interested in helping, or working on your own software project, there is a lot to be learned by reading the blog post in full.</p>
+
+<h1>Toward a new Tor Instant Messaging Bundle</h1>
+
+<p>A first meeting last week kicked-off the “ <a href="https://trac.torproject.org/projects/tor/wiki/org/sponsors/Otter/Attentive">Attentive Otter project</a>” which aims to come up with a new bundle for instant messaging. The first meeting mainly consisted in trying to enumerate the various options.</p>
+
+<p>In the end, people volunteered to research three different implementation ideas. Thijs Alkemade and Jurre van Bergen explored the <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005544.html">possibilty of using Pidgin/libpurple</a> as the core component. Jurre also prepared an <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005546.html">analysis of xmpp-client</a>, together with David Goulet, Nick Mathewson, Arlo Breault, and George Kadianakis. As a third option, Mike Perry took a <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005555.html">closer look at Instantbird/Thunderbird</a> with Sukhbir Singh.</p>
+
+<p>All the options have their pros and cons, and they will probably be discussed on the tor-dev mailing list and at the next “Attentive Otter” meeting.</p>
+
+<h1>More monthly status reports for September 2013</h1>
+
+<p>The wave of regular monthly reports from Tor project members continued this week with submissions from <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000346.html">George Kadianakis</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000347.html">Lunar</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000348.html">Sathyanarayanan Gunasekaran</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000349.html">Ximin Luo</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000350.html">Matt Pagan</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000351.html">Pearl Crescent</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000352.html">Colin C.</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000353.html">Arlo Breault</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000354.html">Karsten Loesing</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000355.html">Jason Tsai</a>, the <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000356.html">Tor help desk</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000357.html">Sukhbir Singh</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000358.html">Nick Mathewson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000359.html">Mike Perry</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000360.html">Andrew Lewman</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000361.html">Aaron G</a>, and the <a href="https://lists.torproject.org/pipermail/tor-reports/2013-October/000362.html">Tails folks</a>.</p>
+
+<h1>Tor Help Desk Roundup</h1>
+
+<p>A number of users wanted to know if Tor was still safe to use given the recent news that Tor users have been targeted by the NSA. We directed these users to the Tor Project&#39;s <a href="https://blog.torproject.org/blog/yes-we-know-about-guardian-article">official statement on the subject</a>.</p>
+
+<p>One of the most popular questions the help desk receives continues to be whether or not Tor is available on iOS devices. Currently there is no officially supported solution, although more than one project has been presented ( <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005542.html">1</a>, <a href="https://trac.torproject.org/projects/tor/ticket/8933">2</a>).</p>
+
+<p>The United Kingdom is now one of the countries where citizens request assistance circumventing a <a href="https://lists.torproject.org/pipermail/tor-talk/2013-July/029054.html">national firewall</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-September/000366.html">Grozdan</a>, <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-September/000370.html">Simon Gattner from Netzkonstrukt Berlin</a>, <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-October/000374.html">Wollomatic</a>, and <a href="https://lists.torproject.org/pipermail/tor-mirrors/2013-October/000375.html">Haskell</a> for setting up new mirrors of the Tor project website.</p>
+
+<p>Arlo Breault sent out a <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030253.html">request for comments</a> on a possible new version of the check.torproject.org page.</p>
+
+<p>Runa Sandvik <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030269.html">announced</a> that the Tor Stack Exchange page has moved from private beta to public beta. If you&#39;d like to help answer Tor-related questions (or ask them), <a href="http://tor.stackexchange.com/">get involved now</a>!</p>
+
+<p>Philipp Winter sent out a <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030252.html">call for testing</a> (and installation instructions) for the ScrambleSuit pluggable transports protocol.</p>
+
+<p>Not strictly Tor-related, but Mike Perry started an <a href="https://lists.torproject.org/pipermail/tor-talk/2013-September/030235.html">interesting discussion</a> about the “web of trust” system, as found in OpenPGP. The discussion was also held on the MonkeySphere mailing list, which prompted Daniel Kahn Gilmor to reply with many clarifications regarding the various properties and processes of the current implementation. To sum it up, Ximin Luo <a href="https://lists.riseup.net/www/arc/monkeysphere/2013-10/msg00000.html">started</a> a <a href="https://github.com/infinity0/idsec/">new documentation project</a> “to describe and explain security issues relating to identity, in (hopefully) simple and non-implementation-specific language”.</p>
+
+<p>The <em>listmaster</em> role has been <a href="https://trac.torproject.org/projects/tor/wiki/org/operations/Infrastructure/lists.torproject.org">better defined</a> and is now performed by a team consisting of Andrew Lewman, Damian Johnson, and Karsten Loesing. Thanks to them!</p>
+
+<p>Roger Dingledine released an <a href="https://blog.torproject.org/blog/tor-and-silk-road-takedown">official statement</a> on the Tor project blog regarding the takedown of the Silk Road hidden service and the arrest of its alleged operator.</p>
+
+<p>Fabio Pietrosanti <a href="https://lists.torproject.org/pipermail/tor-talk/2013-October/030405.html">asked</a> for reviews of “experimental Tor performance tuning for a Tor2web node.” Feel free to <a href="https://github.com/globaleaks/Tor2web-3.0/wiki/Performance-tuning">have a look</a> and provide feedback.</p>
+
+<p>Claudiu-Vlad Ursache <a href="https://lists.torproject.org/pipermail/tor-dev/2013-October/005545.html">announced</a> the initial release of <a href="https://github.com/ursachec/CPAProxy">CPAProxy</a>, “a thin Objective-C wrapper around Tor”. This is the first component of a project to “release a free open-source browser on the App Store that uses this wrapper and Tor to anonymize requests.” Claudiu-Vlad left several questions open, and solicited opinions on the larger goal.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, harmony, dope457 and Matt Pagan.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
 
         </div>
       </section>
@@ -338,7 +554,7 @@
       
         <a href="/blog/page24" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 25 of 134</span>
+      <span class="page_number ">Page: 25 of 137</span>
       
         <a href="/blog/page26" class="next">Next</a>
       

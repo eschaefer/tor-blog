@@ -53,161 +53,164 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/torflow-node-capacity-integrity-and-reliability-measurements-hotpets">TorFlow Node Capacity, Integrity and Reliability Measurements at HotPETS</a></h2>
+          <h2 class="post-title"> <a href="/blog/archivetorprojectorg-now-live">archive.torproject.org is now live</a></h2>
           <p class="post-meta">
-              By <a class="post-author" href="#">mikeperry</a> under
+              By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">performance</a>
+                <a class="post-category post-category-js" href="#">directory authority archives</a>
               
-                <a class="post-category post-category-js" href="#">research</a>
+                <a class="post-category post-category-js" href="#">package archives</a>
+              
+                <a class="post-category post-category-js" href="#">releases</a>
                |
-              21 Jun 2009
+              29 Jul 2009
           </p>
         </header>
         <div class="post-description">
-          <p><a href="https://blog.torproject.org/blog/measuring-tor-network-public-directory-information">Like Karsten</a>, I too am presenting at <a href="http://petsymposium.org/2009/hotpets.php">HotPETS</a> in Seattle in August. My presentation will cover my work with my <a href="https://svn.torproject.org/svn/torflow/trunk/">TorFlow suite</a> - a python library and utility set to assist measuring and adjusting performance on the Tor network, and to scan the network for malfunctioning and misbehaving exits.</p>
+          <p>By popular request, we&#39;ve created <a href="http://archive.torproject.org/" title="http://archive.torproject.org/">http://archive.torproject.org/</a>. It serves as an archive of all released versions of Tor since 2004. And as a repository of all relay descriptors and directory authority consensus files published since 2004.</p>
 
-<p>One of the highlights is a system for <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/160-bandwidth-offset.txt">performance feedback</a>: a set of <a href="https://git.torproject.org/checkout/tor/master/doc/spec/proposals/161-computing-bandwidth-adjustments.txt">training wheels of sorts</a> for Tor&#39;s load balancing algorithms that once deployed, should greatly improve the performance of the network for 0.2.1 clients. I am very much excited about this and am looking forward to throwing the switch on it in the coming weeks.</p>
+<p>This is the place to get current and past releases of:</p>
 
-<p>Also of note is the discovery that nodes that use Tor&#39;s built in rate-limiting are far less likely to fail circuits than those that do not, especially for Windows nodes. So if you are a Windows node operator, please rate limit your node slightly below your connection&#39;s capacity using either the Vidalia GUI or the BandwidthRate torrc config option.. I will be emailing the contact info addresses of nodes that are most affected by this soon.</p>
+<ul>
+<li>the Tor source code,</li>
+<li>Vidalia itself,</li>
+<li>vidalia bundles for Microsoft Windows and Apple OS X,</li>
+<li>our various rpm packages,</li>
+<li>the Tor Browser Bundle and Tor IM Browser Bundle,</li>
+<li>TorVM,</li>
+<li>published consensus files,</li>
+<li>published server descriptors,</li>
+<li>and, other Tor network related files like extra-info and statuses.</li>
+</ul>
 
-<p>The <a href="http://fscked.org/talks/TorFlow-HotPETS-final.pdf">paper for the presentation</a> describes the library, utilities, and their results in much further detail.</p>
+<p>The files are offered via <a href="http://archive.torproject.org/" title="http://archive.torproject.org/">http://archive.torproject.org/</a>, rsync (archive.torproject.org::), and hidden service, <a href="http://7ofilo7lqgiub36u.onion" title="http://7ofilo7lqgiub36u.onion">http://7ofilo7lqgiub36u.onion</a>.</p>
+
+<p>The package archive is around 20GB. The directory authority archive is around 23GB. We&#39;ll soon be listing mirrors of this site as well.</p>
+
+<p>Enjoy.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-121-released">Tor Browser Bundle 1.2.1 Released</a></h2>
+          <h2 class="post-title"> <a href="/blog/updated-packages-powerpconly-os-x">Updated packages for PowerPC-only OS X</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
+                <a class="post-category post-category-js" href="#">10.3.9</a>
               
-                <a class="post-category post-category-js" href="#">firefox updates</a>
+                <a class="post-category post-category-js" href="#">anonymous donor</a>
               
-                <a class="post-category post-category-js" href="#">pidgin updates</a>
+                <a class="post-category post-category-js" href="#">apple os x</a>
               
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+                <a class="post-category post-category-js" href="#">panther</a>
+              
+                <a class="post-category post-category-js" href="#">updated packages</a>
                |
-              21 Jun 2009
+              24 Jul 2009
           </p>
         </header>
         <div class="post-description">
-          <p><a href="https://www.torproject.org/torbrowser/">Tor Browser Bundle 1.2.1</a> is released. The major changes are:</p>
+          <p>Thanks to an anonymous donor for the working powerpc hardware, I was able to make 0.2.0.35, 0.2.1.17-rc, and Vidalia 0.1.15 packages on OS X 10.3.9 (Panther) this evening.</p>
 
-<ul>
-<li>changes to Firefox to stop scanning for plugins such as Java, Windows Media, etc. These were disabled by torbutton, but still showed up in Firefox. More work will continue on this task</li>
-<li>Include OpenSSL dll (ssleay32.dll) so we&#39;re not relying upon the system ssl dll. This should fix Vidalia errors relating to ssl differences.</li>
-</ul>
+<p>They are available in the usual places, such as <a href="https://torproject.org/download" title="https://torproject.org/download">https://torproject.org/download</a></p>
 
-<p>The official changelog is:</p>
-
-<ul>
-<li>Better updates to Firefox to stop scanning for plugins on start</li>
-<li>Update Pidgin to 2.5.6r2</li>
-<li>Update Firefox to 3.0.11</li>
-<li>Include OpenSSL 0.9.8k DLL and stop using the system ssl dll</li>
-<li>Update Tor to 0.2.1.16-rc</li>
-</ul>
+<p>Thanks for your patience.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/measuring-tor-and-iran">Measuring Tor and Iran</a></h2>
+          <h2 class="post-title"> <a href="/blog/visit-ncfta">A visit to NCFTA</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">directory services</a>
+                <a class="post-category post-category-js" href="#">cybercrime</a>
+              
+                <a class="post-category post-category-js" href="#">ncfta</a>
+              
+                <a class="post-category post-category-js" href="#">presentations</a>
+              
+                <a class="post-category post-category-js" href="#">tor talks</a>
+              
+                <a class="post-category post-category-js" href="#">training</a>
+               |
+              15 Jul 2009
+          </p>
+        </header>
+        <div class="post-description">
+          <p>I recently was invited to give a Tor talk at the <a href="http://www.ncfta.net/default2.asp">National Cyber-Forensics and Training Alliance</a>. Who is NCFTA? They are a non-profit that</p>
+
+<blockquote>
+<p>brings together local, state, and federal law enforcement, businesses, and academic institutions to functionally collaborate on cybercrime issues.</p>
+</blockquote>
+
+<p>The Tor talk was given to around 30 people who either investigate or use Tor daily as part of their role at NCFTA. The talk lasted around 2 hours with many questions. A handful of people hung out afterwards while I showed them the internals of Tor Browser Bundle (which circumvented their firewall just fine ;) and the Incognito LiveCD.</p>
+
+<p>All in all, it was a great visit to a bunch of smart people who need Tor to do their job safely.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/cimaned-panel-iran-and-new-media">CIMA/NED Panel on Iran and New Media</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">CIMA/NED</a>
               
                 <a class="post-category post-category-js" href="#">iran</a>
               
-                <a class="post-category post-category-js" href="#">tor</a>
+                <a class="post-category post-category-js" href="#">panel</a>
+              
+                <a class="post-category post-category-js" href="#">press</a>
                |
-              19 Jun 2009
+              14 Jul 2009
           </p>
         </header>
         <div class="post-description">
-          <p>I&#39;ve been fielding some calls from the press about Tor and Iran. Someone quoted me as saying &quot;double the clients from Iran over the past few days&quot;. We wondered, what are the real numbers? What does our network see from Iran? Is port 443 or https:// really blocked? Here&#39;s what we&#39;ve discovered in the past day of working with the <a href="https://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network">new metrics</a> we&#39;ve developed to be safe to collect without compromising anyone&#39;s anonymity.</p>
+          <p>I was invited to join a panel discussion on Iran and New Media hosted by the Center for International Media Assistance and the National Endowment for Democracy. The full 90 minute video is now online; as is my presentation.</p>
 
-<p>This first dataset is from one of the Directory Authorities. We have six authorities, so a plausible scaling factor is 6, assuming all authorities are seeing equal requests (it could be more or less than 6, too). We don&#39;t know if the authorities are seeing equal requests, as they listen on different TCP ports, are located in different parts of the world, and clients will chose one randomly. This graph roughly shows the number of requests from new Tor clients coming from IP addresses that our geoip database reports as Iran.</p>
+<p>The general overview of the panel is <a href="http://cima.ned.org/events/new-media-in-iran.html" title="http://cima.ned.org/events/new-media-in-iran.html">http://cima.ned.org/events/new-media-in-iran.html</a></p>
 
-<p><center><img height="375" width="500" src="https://blog.torproject.org/files/new_tor_clients_from_iranian_ip_space.png"></center></p>
+<p>The direct link to the video on Vimeo is <a href="http://www.vimeo.com/5496977" title="http://www.vimeo.com/5496977">http://www.vimeo.com/5496977</a></p>
 
-<p>UPDATE 2009-06-24: Updated the graph with numbers through yesterday</p>
+<p>A number of press people talked to me afterwards, including Al-Jazeera. There were reporters from Xinhua and China Daily in the audience as well. These reporters paid close attention to anything I said about China.</p>
 
-<p>The second dataset is from one Directory Mirror, of which there are hundreds. This mirror is only accessible on port 443, which is rumored to be blocked in parts of Iran over the past few days.</p>
+<p>I spoke about what I knew and generally tried to avoid starting international incidents. A few of my answers to questions rambled a bit.</p>
 
-<p><center><img height="375" width="500" src="https://blog.torproject.org/files/tor_clients_from_iranian_ip_space_(port_443).png"></center></p>
-
-<p>The data points in the second graph are very rough, since they&#39;re an estimate of the total number of Tor users in Iran based on numbers from only one relay. In addition, we looked at some other relays running on port 443, and they also didn&#39;t show anywhere near the spike that we see in the directory authority graph above. The authority isn&#39;t listening on 443 -- perhaps that means there&#39;s some truth to the rumors that port 443 has been blocked recently in Iran. We look forward to having more precise data later on.</p>
-
-<p><thead><tr>
-<th>Attachment</th>
-<th>Size</th> </tr></thead><tbody>
- <tr class="odd">
-<td><a href="https://blog.torproject.org/files/tor_clients_from_iranian_ip_space_(port_443).png">tor<em>clients</em>from<em>iranian</em>ip<em>space</em>(port<em>443).png</a></td>
-<td>35.98 KB</td> </tr>
- <tr class="even">
-<td>&lt;a href=&quot;https://blog.torproject.org/files/new</em>tor<em>clients</em>from<em>iranian</em>ip<em>space.png&quot;&gt;new</em>tor<em>clients</em>from<em>iranian</em>ip_space.png</a></td>
-<td>32.92 KB</td> </tr>
-</tbody></p>
+<p>All in all it was a great panel and I learned more about what goes on inside Iran from the different panelists.</p>
 
         </div>
       </section>
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-browser-bundle-121-release-candidate">Tor Browser Bundle 1.2.1 release candidate</a></h2>
+          <h2 class="post-title"> <a href="/blog/vidalia-0115-released">Vidalia 0.1.15 Released</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">phobos</a> under
               
-                <a class="post-category post-category-js" href="#">bug fixes</a>
+                <a class="post-category post-category-js" href="#">bugfixes</a>
               
-                <a class="post-category post-category-js" href="#">release candidate</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
+                <a class="post-category post-category-js" href="#">vidalia releases</a>
                |
-              18 Jun 2009
+              13 Jul 2009
           </p>
         </header>
         <div class="post-description">
-          <p>In continuing to <a href="https://blog.torproject.org/blog/testing-tor-browser-bundle-121dev">improve TBB</a> for a vast array of users, here&#39;s the release candidate for Tor Browser Bundle 1.2.1.</p>
-
-<p>I appreciate your feedback, comments, and bugs filed so far about TBB 1.2.1-dev.</p>
-
-<p>You can find here the updated <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.1-1-dev_en-US.exe">TBB 1.2.1-1-dev</a>, <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.1-1-dev_en-US.exe.asc">sig</a>, and <a href="https://www.torproject.org/torbrowser/dist/tor-im-browser-1.2.1-1-dev_en-US.exe.sha1">sha1</a> files.</p>
-
-<p>The changes since the last test are:</p>
+          <p>Vidalia 0.1.15 is released. It contains fixes for:</p>
 
 <ul>
-<li>Update Pidgin to 2.5.6r2</li>
-<li>Update Firefox to 3.0.11</li>
-<li>Include OpenSSL 0.9.8k DLL and stop using the system ssl dll</li>
+<li>Bump the minimum required Qt version to 4.3.0.</li>
+<li>Remove USE_QSSLSOCKET as a build option. If your Qt doesn&#39;t support !OpenSSL, then you don&#39;t get GeoIP lookups.</li>
+<li>Fix the TorPostFlight portion of the OS X bundle installer so it doesn&#39;t fail when installing Torbutton.</li>
+<li>Include libeay32.dll in the Windows installers.</li>
 </ul>
 
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/measuring-tor-network-public-directory-information">Measuring the Tor Network from Public Directory Information</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">karsten</a> under
-              
-                <a class="post-category post-category-js" href="#">censorship circumvention</a>
-              
-                <a class="post-category post-category-js" href="#">performance</a>
-              
-                <a class="post-category post-category-js" href="#">research</a>
-               |
-              16 Jun 2009
-          </p>
-        </header>
-        <div class="post-description">
-          <p>On this year&#39;s <a href="http://petsymposium.org/2009/hotpets.php">HotPETs workshop</a> (August 5-7 in Seattle, WA, USA) I&#39;m going to present some results on <a href="http://freehaven.net/%7Ekarsten/metrics/measuring-tor-public-dir-info-final.pdf">Measuring the Tor Network from Public Directory Information</a>. The main idea is to observe trends in the Tor network without having to measure any data other than <a href="https://git.torproject.org/checkout/tor/master/doc/spec/dir-spec.txt">public directory information</a>. These data are there anyway as they are required for clients to make good path selection decisions and build circuits. The results of this paper reveal problems in the current Tor network that need to be addressed, e.g., by <a href="https://git.torproject.org/checkout/metrics/master/report/dirarch/flagrequirements-2009-04-11.pdf">lowering requirements for assigning certain flags</a>, facilitating the upgrade process, improving support for dynamic IP addresses, possibly calculating bandwidth capacity more reliably, and clarifying legal issues for running relays in view of data retention laws. The next step in understanding the problems of the Tor network requires an <a href="https://blog.torproject.org/blog/performance-measurements-and-blockingresistance-analysis-tor-network">extension of network measurements</a> to improve <a href="https://blog.torproject.org/blog/why-tor-is-slow">performance</a> and blocking-resistance of Tor.</p>
+<p>It can be obtained at <a href="https://www.torproject.org/vidalia/" title="https://www.torproject.org/vidalia/">https://www.torproject.org/vidalia/</a></p>
 
         </div>
       </section>
@@ -218,7 +221,7 @@
       
         <a href="/blog/page114" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 115 of 134</span>
+      <span class="page_number ">Page: 115 of 137</span>
       
         <a href="/blog/page116" class="next">Next</a>
       

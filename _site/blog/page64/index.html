@@ -53,7 +53,457 @@
     
       <section class="post">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/research-problems-ten-ways-discover-tor-bridges">Research problems: Ten ways to discover Tor bridges</a></h2>
+          <h2 class="post-title"> <a href="/blog/tor-02235-released-security-patches">Tor 0.2.2.35 is released (security patches)</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">bugfixes</a>
+              
+                <a class="post-category post-category-js" href="#">end of life</a>
+              
+                <a class="post-category post-category-js" href="#">security critical</a>
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+              
+                <a class="post-category post-category-js" href="#">stable releases</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              16 Dec 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p><strong>Tor 0.2.2.35 fixes a critical heap-overflow security issue in Tor&#39;s
+ buffers code. Absolutely everybody should upgrade.</strong></p>
+
+<p>The bug relied on an incorrect calculation when making data continuous
+ in one of our IO buffers, if the first chunk of the buffer was
+ misaligned by just the wrong amount. The miscalculation would allow an
+ attacker to overflow a piece of heap-allocated memory. To mount this
+ attack, the attacker would need to either open a SOCKS connection to
+ Tor&#39;s SocksPort (usually restricted to localhost), or target a Tor
+ instance configured to make its connections through a SOCKS proxy
+ (which Tor does not do by default).</p>
+
+<p>Good security practice requires that all heap-overflow bugs should be
+ presumed to be exploitable until proven otherwise, so we are treating
+ this as a potential code execution attack. Please upgrade immediately!
+ This bug does not affect bufferevents-based builds of Tor. Special
+ thanks to &quot;Vektor&quot; for reporting this issue to us!</p>
+
+<p>Tor 0.2.2.35 also fixes several bugs in previous versions, including
+ crash bugs for unusual configurations, and a long-term bug that
+ would prevent Tor from starting on Windows machines with draconian
+ AV software.</p>
+
+<p>With this release, we remind everyone that 0.2.0.x has reached its
+ formal end-of-life. Those Tor versions have many known flaws, and
+ nobody should be using them. You should upgrade -- ideally to the
+ 0.2.2.x series. If you&#39;re using a Linux or BSD and its packages are
+ obsolete, stop using those packages and upgrade anyway.</p>
+
+<p>The Tor 0.2.1.x series is also approaching its end-of-life: it will no
+ longer receive support after some time in early 2012.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Changes in version 0.2.2.35 - 2011-12-16</strong></p>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Fix a heap overflow bug that could occur when trying to pull
+data into the first chunk of a buffer, when that chunk had
+already had some data drained from it. Fixes CVE-2011-2778;
+bugfix on 0.2.0.16-alpha. Reported by &quot;Vektor&quot;.</li>
+<li>Initialize Libevent with the EVENT_BASE_FLAG_NOLOCK flag enabled, so
+that it doesn&#39;t attempt to allocate a socketpair. This could cause
+some problems on Windows systems with overzealous firewalls. Fix for
+bug 4457; workaround for Libevent versions 2.0.1-alpha through
+2.0.15-stable.</li>
+<li>If we mark an OR connection for close based on a cell we process,
+don&#39;t process any further cells on it. We already avoid further
+reads on marked-for-close connections, but now we also discard the
+cells we&#39;d already read. Fixes bug 4299; bugfix on 0.2.0.10-alpha,
+which was the first version where we might mark a connection for
+close based on processing a cell on it.</li>
+<li>Correctly sanity-check that we don&#39;t underflow on a memory
+allocation (and then assert) for hidden service introduction
+point decryption. Bug discovered by Dan Rosenberg. Fixes bug 4410;
+bugfix on 0.2.1.5-alpha.</li>
+<li>Fix a memory leak when we check whether a hidden service
+descriptor has any usable introduction points left. Fixes bug
+
+<ol>
+<li>Bugfix on 0.2.2.25-alpha.</li>
+</ol></li>
+<li>Don&#39;t crash when we&#39;re running as a relay and don&#39;t have a GeoIP
+file. Bugfix on 0.2.2.34; fixes bug 4340. This backports a fix
+we&#39;ve had in the 0.2.3.x branch already.</li>
+<li>When running as a client, do not print a misleading (and plain
+wrong) log message that we&#39;re collecting &quot;directory request&quot;
+statistics: clients don&#39;t collect statistics. Also don&#39;t create a
+useless (because empty) stats file in the stats/ directory. Fixes
+bug 4353; bugfix on 0.2.2.34.</li>
+</ul>
+
+<p><strong>Minor bugfixes:</strong></p>
+
+<ul>
+<li>Detect failure to initialize Libevent. This fix provides better
+detection for future instances of bug 4457.</li>
+<li>Avoid frequent calls to the fairly expensive cull_wedged_cpuworkers
+function. This was eating up hideously large amounts of time on some
+busy servers. Fixes bug 4518; bugfix on 0.0.9.8.</li>
+<li>Resolve an integer overflow bug in smartlist_ensure_capacity().
+Fixes bug 4230; bugfix on Tor 0.1.0.1-rc. Based on a patch by
+Mansour Moufid.</li>
+<li>Don&#39;t warn about unused log_mutex in log.c when building with
+--disable-threads using a recent GCC. Fixes bug 4437; bugfix on
+0.1.0.6-rc which introduced --disable-threads.</li>
+<li>When configuring, starting, or stopping an NT service, stop
+immediately after the service configuration attempt has succeeded
+or failed. Fixes bug 3963; bugfix on 0.2.0.7-alpha.</li>
+<li>When sending a NETINFO cell, include the original address
+received for the other side, not its canonical address. Found
+by &quot;troll_un&quot;; fixes bug 4349; bugfix on 0.2.0.10-alpha.</li>
+<li>Fix a typo in a hibernation-related log message. Fixes bug 4331;
+bugfix on 0.2.2.23-alpha; found by &quot;tmpname0901&quot;.</li>
+<li>Fix a memory leak in launch_direct_bridge_descriptor_fetch() that
+occurred when a client tried to fetch a descriptor for a bridge
+in ExcludeNodes. Fixes bug 4383; bugfix on 0.2.2.25-alpha.</li>
+<li>Backport fixes for a pair of compilation warnings on Windows.
+Fixes bug 4521; bugfix on 0.2.2.28-beta and on 0.2.2.29-beta.</li>
+<li>If we had ever tried to call tor_addr_to_str on an address of
+unknown type, we would have done a strdup on an uninitialized
+buffer. Now we won&#39;t. Fixes bug 4529; bugfix on 0.2.1.3-alpha.
+Reported by &quot;troll_un&quot;.</li>
+<li>Correctly detect and handle transient lookup failures from
+tor_addr_lookup. Fixes bug 4530; bugfix on 0.2.1.5-alpha.
+Reported by &quot;troll_un&quot;.</li>
+<li>Fix null-pointer access that could occur if TLS allocation failed.
+Fixes bug 4531; bugfix on 0.2.0.20-rc. Found by &quot;troll_un&quot;.</li>
+<li>Use tor_socket_t type for listener argument to accept(). Fixes bug
+4535; bugfix on 0.2.2.28-beta. Found by &quot;troll_un&quot;.</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Add two new config options for directory authorities:
+AuthDirFastGuarantee sets a bandwidth threshold for guaranteeing the
+Fast flag, and AuthDirGuardBWGuarantee sets a bandwidth threshold
+that is always sufficient to satisfy the bandwidth requirement for
+the Guard flag. Now it will be easier for researchers to simulate
+Tor networks with different values. Resolves ticket 4484.</li>
+<li>When Tor ignores a hidden service specified in its configuration,
+include the hidden service&#39;s directory in the warning message.
+Previously, we would only tell the user that some hidden service
+was ignored. Bugfix on 0.0.6; fixes bug 4426.</li>
+<li>Update to the December 6 2011 Maxmind GeoLite Country database.</li>
+</ul>
+
+<p><strong>Packaging changes:</strong></p>
+
+<ul>
+<li>Make it easier to automate expert package builds on Windows,
+by removing an absolute path from makensis.exe command.</li>
+</ul>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/new-tor-browser-bundles-11">New Tor Browser Bundles</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">security critical</a>
+              
+                <a class="post-category post-category-js" href="#">security fixes</a>
+              
+                <a class="post-category post-category-js" href="#">tbb</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser</a>
+               |
+              16 Dec 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The Tor Browser Bundles have been updated to Tor 0.2.2.35 which has a fix for a security critical bug. Please see the <a href="https://blog.torproject.org/blog/tor-02235-released-security-patches">release announcement</a> for further details. <strong>All users should update immediately.</strong></p>
+
+<p>This Tor Browser Bundle release also contains new Firefox patches which improve privacy and unlinkability.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Tor Browser Bundle (2.2.35-1)</strong></p>
+
+<ul>
+<li>Update Tor to 0.2.2.35</li>
+<li>Update NoScript to 2.2.3</li>
+<li>Update Torbutton to 1.4.5</li>
+<li><p>New Firefox patches</p>
+
+<ul>
+<li>Disable SSL Session ID tracking</li>
+<li>Provide an observer event to close persistent connections</li>
+</ul></li>
+</ul>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/november-2011-progress-report">November 2011 Progress Report</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">phobos</a> under
+              
+                <a class="post-category post-category-js" href="#">hidden services</a>
+              
+                <a class="post-category post-category-js" href="#">progress report</a>
+              
+                <a class="post-category post-category-js" href="#">tails releases</a>
+              
+                <a class="post-category post-category-js" href="#">tor browser releases</a>
+              
+                <a class="post-category post-category-js" href="#">tor releases</a>
+               |
+              13 Dec 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>The progress report for November 2011 is released as <a href="https://archive.torproject.org/monthly-report-archive/2011-November-Monthly-Report.pdf">pdf</a> and <a href="https://archive.torproject.org/monthly-report-archive/2011-November-Monthly-Report.txt">plaintext</a> documents. Highlights include progress on the new Tor Check, Tor Bulk Exitlist, global media hits, Tor Cloud launch, and three new proposals to improve Tor Bridge Relay functionality in difficult environments.</p>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/tor-0239-alpha-out">Tor 0.2.3.9-alpha is out</a></h2>
+          <p class="post-meta">
+              By <a class="post-author" href="#">erinn</a> under
+              
+                <a class="post-category post-category-js" href="#">alpha release</a>
+              
+                <a class="post-category post-category-js" href="#">bridges</a>
+              
+                <a class="post-category post-category-js" href="#">hidden services</a>
+              
+                <a class="post-category post-category-js" href="#">ipv6</a>
+              
+                <a class="post-category post-category-js" href="#">pluggable transports</a>
+              
+                <a class="post-category post-category-js" href="#">tor</a>
+               |
+              09 Dec 2011
+          </p>
+        </header>
+        <div class="post-description">
+          <p>Tor 0.2.3.9-alpha introduces initial IPv6 support for bridges, adds
+ a &quot;DisableNetwork&quot; security feature that bundles can use to avoid
+ touching the network until bridges are configured, moves forward on
+ the pluggable transport design, fixes a flaw in the hidden service
+ design that unnecessarily prevented clients with wrong clocks from
+ reaching hidden services, and fixes a wide variety of other issues.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Changes in version 0.2.3.9-alpha - 2011-12-08</strong>
+<strong>Major features:</strong></p>
+
+<ul>
+<li>Clients can now connect to private bridges over IPv6. Bridges
+still need at least one IPv4 address in order to connect to
+other relays. Note that we don&#39;t yet handle the case where the
+user has two bridge lines for the same bridge (one IPv4, one
+IPv6). Implements parts of proposal 186.</li>
+<li>New &quot;DisableNetwork&quot; config option to prevent Tor from launching any
+connections or accepting any connections except on a control port.
+Bundles and controllers can set this option before letting Tor talk
+to the rest of the network, for example to prevent any connections
+to a non-bridge address. Packages like Orbot can also use this
+option to instruct Tor to save power when the network is off.</li>
+<li>Clients and bridges can now be configured to use a separate
+&quot;transport&quot; proxy. This approach makes the censorship arms race
+easier by allowing bridges to use protocol obfuscation plugins. It
+implements the &quot;managed proxy&quot; part of proposal 180 (ticket 3472).</li>
+<li>When using OpenSSL 1.0.0 or later, use OpenSSL&#39;s counter mode
+implementation. It makes AES_CTR about 7% faster than our old one
+(which was about 10% faster than the one OpenSSL used to provide).
+Resolves ticket 4526.</li>
+<li>Add a &quot;tor2web mode&quot; for clients that want to connect to hidden
+services non-anonymously (and possibly more quickly). As a safety
+measure to try to keep users from turning this on without knowing
+what they are doing, tor2web mode must be explicitly enabled at
+compile time, and a copy of Tor compiled to run in tor2web mode
+cannot be used as a normal Tor client. Implements feature 2553.</li>
+<li>Add experimental support for running on Windows with IOCP and no
+kernel-space socket buffers. This feature is controlled by a new
+&quot;UserspaceIOCPBuffers&quot; config option (off by default), which has
+no effect unless Tor has been built with support for bufferevents,
+is running on Windows, and has enabled IOCP. This may, in the long
+run, help solve or mitigate bug 98.</li>
+<li>Use a more secure consensus parameter voting algorithm. Now at
+least three directory authorities or a majority of them must
+vote on a given parameter before it will be included in the
+consensus. Implements proposal 178.</li>
+</ul>
+
+<p><strong>Major bugfixes:</strong></p>
+
+<ul>
+<li>Hidden services now ignore the timestamps on INTRODUCE2 cells.
+They used to check that the timestamp was within 30 minutes
+of their system clock, so they could cap the size of their
+replay-detection cache, but that approach unnecessarily refused
+service to clients with wrong clocks. Bugfix on 0.2.1.6-alpha, when
+the v3 intro-point protocol (the first one which sent a timestamp
+field in the INTRODUCE2 cell) was introduced; fixes bug 3460.</li>
+<li>Only use the EVP interface when AES acceleration is enabled,
+to avoid a 5-7% performance regression. Resolves issue 4525;
+bugfix on 0.2.3.8-alpha.</li>
+</ul>
+
+<p><strong>Privacy/anonymity features (bridge detection):</strong></p>
+
+<ul>
+<li>Make bridge SSL certificates a bit more stealthy by using random
+serial numbers, in the same fashion as OpenSSL when generating
+self-signed certificates. Implements ticket 4584.</li>
+<li>Introduce a new config option &quot;DynamicDHGroups&quot;, enabled by
+default, which provides each bridge with a unique prime DH modulus
+to be used during SSL handshakes. This option attempts to help
+against censors who might use the Apache DH modulus as a static
+identifier for bridges. Addresses ticket 4548.</li>
+</ul>
+
+<p><strong>Minor features (new/different config options):</strong></p>
+
+<ul>
+<li>New configuration option &quot;DisableDebuggerAttachment&quot; (on by default)
+to prevent basic debugging attachment attempts by other processes.
+Supports Mac OS X and Gnu/Linux. Resolves ticket 3313.</li>
+<li>Allow MapAddress directives to specify matches against super-domains,
+as in &quot;MapAddress *.torproject.org *.torproject.org.torserver.exit&quot;.
+Implements issue 933.</li>
+<li>Slightly change behavior of &quot;list&quot; options (that is, config
+options that can appear more than once) when they appear both in
+torrc and on the command line. Previously, the command-line options
+would be appended to the ones from torrc. Now, the command-line
+options override the torrc options entirely. This new behavior
+allows the user to override list options (like exit policies and
+ports to listen on) from the command line, rather than simply
+appending to the list.</li>
+<li>You can get the old (appending) command-line behavior for &quot;list&quot;
+options by prefixing the option name with a &quot;+&quot;.</li>
+<li>You can remove all the values for a &quot;list&quot; option from the command
+line without adding any new ones by prefixing the option name
+with a &quot;/&quot;.</li>
+<li>Add experimental support for a &quot;defaults&quot; torrc file to be parsed
+before the regular torrc. Torrc options override the defaults file&#39;s
+options in the same way that the command line overrides the torrc.
+The SAVECONF controller command saves only those options which
+differ between the current configuration and the defaults file. HUP
+reloads both files. (Note: This is an experimental feature; its
+behavior will probably be refined in future 0.2.3.x-alpha versions
+to better meet packagers&#39; needs.)</li>
+</ul>
+
+<p><strong>Minor features:</strong></p>
+
+<ul>
+<li>Try to make the introductory warning message that Tor prints on
+startup more useful for actually finding help and information.
+Resolves ticket 2474.</li>
+<li>Running &quot;make version&quot; now displays the version of Tor that
+we&#39;re about to build. Idea from katmagic; resolves issue 4400.</li>
+<li>Expire old or over-used hidden service introduction points.
+Required by fix for bug 3460.</li>
+<li>Move the replay-detection cache for the RSA-encrypted parts of
+INTRODUCE2 cells to the introduction point data structures.
+Previously, we would use one replay-detection cache per hidden
+service. Required by fix for bug 3460.</li>
+<li>Reduce the lifetime of elements of hidden services&#39; Diffie-Hellman
+public key replay-detection cache from 60 minutes to 5 minutes. This
+replay-detection cache is now used only to detect multiple
+INTRODUCE2 cells specifying the same rendezvous point, so we can
+avoid launching multiple simultaneous attempts to connect to it.</li>
+</ul>
+
+<p><strong>Minor bugfixes (on Tor 0.2.2.x and earlier):</strong></p>
+
+<ul>
+<li>Resolve an integer overflow bug in smartlist_ensure_capacity().
+Fixes bug 4230; bugfix on Tor 0.1.0.1-rc. Based on a patch by
+Mansour Moufid.</li>
+<li>Fix a minor formatting issue in one of tor-gencert&#39;s error messages.
+Fixes bug 4574.</li>
+<li>Prevent a false positive from the check-spaces script, by disabling
+the &quot;whitespace between function name and (&quot; check for functions
+named &#39;op()&#39;.</li>
+<li>Fix a log message suggesting that people contact a non-existent
+email address. Fixes bug 3448.</li>
+<li>Fix null-pointer access that could occur if TLS allocation failed.
+Fixes bug 4531; bugfix on 0.2.0.20-rc. Found by &quot;troll_un&quot;.</li>
+<li>Report a real bootstrap problem to the controller on router
+identity mismatch. Previously we just said &quot;foo&quot;, which probably
+made a lot of sense at the time. Fixes bug 4169; bugfix on
+0.2.1.1-alpha.</li>
+<li>If we had ever tried to call tor_addr_to_str() on an address of
+unknown type, we would have done a strdup() on an uninitialized
+buffer. Now we won&#39;t. Fixes bug 4529; bugfix on 0.2.1.3-alpha.
+Reported by &quot;troll_un&quot;.</li>
+<li>Correctly detect and handle transient lookup failures from
+tor_addr_lookup(). Fixes bug 4530; bugfix on 0.2.1.5-alpha.
+Reported by &quot;troll_un&quot;.</li>
+<li>Use tor_socket_t type for listener argument to accept(). Fixes bug
+4535; bugfix on 0.2.2.28-beta. Found by &quot;troll_un&quot;.</li>
+<li>Initialize conn-&gt;addr to a valid state in spawn_cpuworker(). Fixes
+bug 4532; found by &quot;troll_un&quot;.</li>
+</ul>
+
+<p><strong>Minor bugfixes (on Tor 0.2.3.x):</strong></p>
+
+<ul>
+<li>Fix a compile warning in tor_inet_pton(). Bugfix on 0.2.3.8-alpha;
+fixes bug 4554.</li>
+<li>Don&#39;t send two ESTABLISH_RENDEZVOUS cells when opening a new
+circuit for use as a hidden service client&#39;s rendezvous point.
+Fixes bugs 4641 and 4171; bugfix on 0.2.3.3-alpha. Diagnosed
+with help from wanoskarnet.</li>
+<li>Restore behavior of overriding SocksPort, ORPort, and similar
+options from the command line. Bugfix on 0.2.3.3-alpha.</li>
+</ul>
+
+<p><strong>Build fixes:</strong></p>
+
+<ul>
+<li>Properly handle the case where the build-tree is not the same
+as the source tree when generating src/common/common_sha1.i,
+src/or/micro-revision.i, and src/or/or_sha1.i. Fixes bug 3953;
+bugfix on 0.2.0.1-alpha.</li>
+</ul>
+
+<p><strong>Code simplifications, cleanups, and refactorings:</strong></p>
+
+<ul>
+<li>Remove the pure attribute from all functions that used it
+previously. In many cases we assigned it incorrectly, because the
+functions might assert or call impure functions, and we don&#39;t have
+evidence that keeping the pure attribute is worthwhile. Implements
+changes suggested in ticket 4421.</li>
+<li>Remove some dead code spotted by coverity. Fixes cid 432.
+Bugfix on 0.2.3.1-alpha, closes bug 4637.</li>
+</ul>
+
+        </div>
+      </section>
+    
+      <section class="post">
+        <header class="post-header">
+          <h2 class="post-title"> <a href="/blog/research-problem-five-ways-test-bridge-reachability">Research problem: Five ways to test bridge reachability</a></h2>
           <p class="post-meta">
               By <a class="post-author" href="#">arma</a> under
               
@@ -63,380 +513,91 @@
               
                 <a class="post-category post-category-js" href="#">research</a>
                |
-              31 Oct 2011
+              01 Dec 2011
           </p>
         </header>
         <div class="post-description">
-          <p>While we&#39;re exploring <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">smarter ways of getting more bridge addresses</a>, and while the bridge arms race hasn&#39;t heated up yet in most countries (or has surpassed the number of bridges we have, in the case of China), it&#39;s the perfect time to take stock of bridge address enumeration attacks and how well we can defend against them.</p>
+          <p>Once we get <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">more (and more diverse) bridge addresses</a>, the next research step is that we&#39;ll need to get better at telling which bridges are blocked in which jurisdictions. For example, most of the bridges we give out via https and gmail are blocked in China. But which ones exactly? How quickly do they get blocked? Do some last longer than others? Do they ever get unblocked? Is there some pattern to the blocking, either by time, by IP address or network, by user load on the bridge, or by distribution strategy? We can&#39;t evaluate <a href="https://blog.torproject.org/blog/bridge-distribution-strategies">new bridge distribution strategies</a> if we can&#39;t track whether the bridges in each strategy are being blocked.</p>
 
-<p>For background, <a href="https://www.torproject.org/docs/bridges">bridge relays</a> (aka bridges) are Tor relays that aren&#39;t listed in the main Tor directory. So even if an attacker blocks all the public relays, they still need to block all these &quot;private&quot; or &quot;dark&quot; relays too.</p>
+<p>Generally speaking, bridge reachability tests break down into two approaches: passive and active. Passive tests don&#39;t involve any new connections on the part of Tor clients or bridges, whereas active tests follow the more traditional &quot;scanning&quot; idea. None of the reachability tests we&#39;ve thought of are perfect. Instead, here we discuss how to combine imperfect tests and use feedback from the tests to balance their strengths and weaknesses.</p>
 
-<p>Here are ten classes of attacks to discover bridges, examples of them we&#39;ve seen or worry about in practice, and some ideas for how to resolve or mitigate each issue. If you&#39;re looking for a research project, please grab one and start investigating!</p>
+<p><strong>Passive approaches</strong></p>
 
-<p><strong>#1: Overwhelm the public address distribution strategies.</strong></p>
+<p>We should explore two types of passive testing approaches: reporting from bridges and reporting from clients.</p>
 
-<p>China broke our <a href="https://bridges.torproject.org/">https bridge distribution strategy</a> in September 2009 by just pretending to be enough legitimate users from enough different subnets on the Internet. They broke the <a href="https://www.torproject.org/docs/bridges#FindingMore">Gmail bridge distribution strategy</a> in March 2010. These were easy to break because we don&#39;t have enough addresses relative to the size of the attacker (at this moment we&#39;re giving out 176 bridges by https and 201 bridges by Gmail, leaving us 165 to give out through other means like social networks), but it&#39;s not just a question of scale: we need better strategies that require attackers to do more or harder work than legitimate users.</p>
+<p><strong>Passive approach 1: reporting from bridges.</strong> Right now Tor relays and bridges publish <a href="https://metrics.torproject.org/papers/wecsr10.pdf">aggregate user counts</a> — rough number of users per country per day. In theory we can look at the user counts over time to detect statistical drops in usage for a given country. That approach has produced useful results in practice for overall connections to the public Tor relays from each country: see George Danezis&#39;s <a href="https://metrics.torproject.org/papers/detector-2011-09-09.pdf">initial work</a> on a Tor censorship detector.</p>
 
-<p><strong>#2: Run a non-guard non-exit relay and look for connections from non-relays.</strong></p>
+<p>But there are two stumbling blocks when trying to apply the censorship detector model to individual bridges. First, we don&#39;t have ground truth about which bridges were <em>actually</em> blocked or not at a given time, so we have no way to validate our models. Second, while overall usage of bridges in a given country might be high, the load <em>on a given bridge</em> tends to be quite low, which in turns makes it <a href="https://metrics.torproject.org/papers/blocking-2011-09-15.pdf">difficult to achieve statistical significance</a> when looking at usage drops.</p>
 
-<p>Normal clients use <a href="https://www.torproject.org/docs/faq#EntryGuards">guard nodes</a> for the first hop of their circuits to protect them from long-term profiling attacks; but we chose to have bridge users use their bridge as a replacement for the guard hop, so we don&#39;t force them onto four-hop paths which would be less fun to use. As a result, if you run a relay that doesn&#39;t have the Guard flag, the only Tors who end up building circuits through you are relays (which you can identify from the public consensus) and bridges.</p>
+<p>Ground truth needs to be learned through active tests: we train the models with usage patterns for bridges that get blocked and bridges that don&#39;t get blocked, and the model predictions should improve. The question of statistical significance can be overcome by treating the prediction as a hint: even if our models don&#39;t give us enough confidence to answer &quot;blocked for sure&quot; or &quot;not blocked for sure&quot; about a given bridge, they should be able to give us a number reflecting likelihood that the bridge is now blocked. That number should feed back into the active tests, for example so we pay more attention to bridges that are more likely to be newly blocked.</p>
 
-<p>This attack has been floating around for a while, and is documented for example in Zhen Ling et al&#39;s <a href="http://www.cs.uml.edu/%7Exinwenfu/paper/Bridge.pdf">Extensive Analysis and Large-Scale Empirical Evaluation of Tor Bridge Discovery</a> paper.</p>
+<p><strong>Passive approach 2: reporting from clients.</strong> In addition to the usage reporting by bridges, we should also consider reachability reporting by clients. Imagine a Tor client that has ten bridges configured. It tries to connect to each of them, and finds that two work and eight don&#39;t. This client is doing our scanning for us, if only we could safely learn about its results. The first issue that comes up is that it could mistakenly report that a bridge is blocked if that bridge is instead simply down. So we would want to compare the reports to concurrent active scans from a &quot;more free&quot; jurisdiction, to pick out the bridges that are up in one place yet down in another.</p>
 
-<p>The defense we plan is to make circuits through bridges use guards too. The naive way to do it would be for the client to choose a set of guards as her possible next hops after the bridge; but then each new client using the bridge increasingly exposures the bridge. The better approach is to make use of Tor&#39;s loose source routing feature to let the bridge itself choose the guards that all of the circuits it handles will use: that is, transparently layer an extra one-hop circuit inside the client&#39;s circuit. Those familiar with <a href="http://freehaven.net/anonbib/#babel">Babel&#39;s design</a> will recognize this trick by the name &quot;inter-mix detours&quot;.</p>
+<p>From there, the questions get trickier: 1) does the set of bridges that a given user reports about create a fingerprint that lets us recognize that user later? Even if the user reports about each bridge through a separate Tor circuit, we&#39;d like to know the time of the scan, and nearby times can be used to build a statistical profile. 2) What if users submit intentionally misleading reports? It seems there&#39;s a tension between wanting to build a profile for the user (to increase our confidence in the validity of her reports) versus wanting to make sure the user doesn&#39;t develop any recognizable profile. Perhaps the <a href="http://freehaven.net/anonbib/#oakland11-formalizing">Nymble</a> design family can contribute an &quot;unlinkable reputation&quot; trick to resolve the conflict, but as we find ourselves saying so often at Tor, more research remains.</p>
 
-<p>Using a layer of guards after the bridge has two features: first, it completely removes the &quot;bridges directly touch non-guards&quot; issue, turning the attack from a deterministic one to a probabilistic one. Second, it reduces the exposure of the bridge to the rest of the network, since only a small set of relays will ever see a direct connection from it. The tradeoff, alas, is worse performance for bridge users. See <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/188-bridge-guards.txt">proposal 188</a> for details.</p>
+<p><strong>Active approaches</strong></p>
 
-<p>[Edit: a friendly researcher pointed out to me that another solution here is to run the bridge as multi-homed, meaning the address that the relay sees isn&#39;t the address that the censor should block. That solution also helps resolve issues 3-5!]</p>
+<p>The goal of active scanning is to get ground truth on whether each bridge is really blocked. There&#39;s a tradeoff here: frequent scans give us better resolution and increased confidence, but too many scan attempts draw attention to the scanners and thus to the addresses being scanned.</p>
 
-<p><strong>#3: Run a guard relay and look for protocol differences.</strong></p>
+<p>We should use the results of the passive and indirect scans to give hints about what addresses to do active scans on. In the steady-state, we should aim to limit our active scans to bridges that we think just went from unblocked to blocked or vice versa, and to a sample of others for spot checks to keep our models trained.</p>
 
-<p>Bridges are supposed to behave like relays with respect to the users using them, but like clients with respect to the relays they make connections to. Any slip-ups we introduce where the bridge acts like a relay with respect to the next hop are ways the next hop can distinguish it. Recent examples include <a href="https://trac.torproject.org/projects/tor/ticket/4115">&quot;bridges fetched directory information like relays rather than like clients&quot;</a>, <a href="https://trac.torproject.org/projects/tor/ticket/4124">&quot;bridges didn&#39;t use a CREATE_FAST cell for the first hop of their own circuits like clients would have&quot;</a>, <a href="http://archives.seul.org/tor/commits/Oct-2011/msg01037.html">&quot;bridges didn&#39;t reject CREATE and CREATE_FAST cells on connections they had initiated like clients would have&quot;</a>, and <a href="https://trac.torproject.org/projects/tor/ticket/4348">&quot;bridges distinguish themselves in their NETINFO cell&quot;</a>.</p>
+<p>There are three pieces to active scanning: direct scans, reverse scans, and indirect scans.</p>
 
-<p>There&#39;s no way that&#39;s the end of them. We could sure use some help auditing the design and code for similar issues.</p>
+<p><strong>Active approach 1: direct scans.</strong> Direct scans are what we traditionally think of when we think of scanning: get access to a computer in the target country, give it a list of bridges, and have it connect directly to each bridge on the list.</p>
 
-<p><strong>#4: Run a guard relay and do timing analysis.</strong></p>
+<p>Before I continue though, I should take an aside to discuss types of blocking. In September 2009 when China first blocked some bridges, I spent a while probing the blocked bridges from a computer in Beijing. From what I could tell, China blocked the bridges in two ways. If the bridge had no other interesting services running (like a webserver), they just blackholed the IP address, meaning no packets to or from the IP address made it through the firewall. But if there <em>was</em> an interesting service, they blocked the bridge by IP and port. (I could imagine this more fine-grained blocking was done by dropping SYN packets, or by sending TCP RST packets; but I didn&#39;t get that far in my investigation.)</p>
 
-<p>Even if we fix issues #2 and #3, it may still be possible for a guard relay to look at the &quot;clients&quot; that are connecting to it, and figure out based on latency that some of the circuits from those clients look like they&#39;re two hops away rather than one hop away.</p>
+<p>So there are two lessons to be learned here. First, the degree to which our active scans match real Tor client behavior could influence the accuracy of the scans. Second, some real-world adversaries are putting considerable effort — probably manual effort — into examining the bridges they find and choosing how best to filter them. After all, if they just blindly filtered IP addresses we list as bridges, we could add Baidu&#39;s address as a bridge and make them look foolish. (We tried that; it didn&#39;t work.)</p>
 
-<p>I bet there are active tricks to improve the attack accuracy. For example, the relay could watch round-trip latency from the circuit originator (seeing packets go towards Alice, and seeing how long until a packet shows up in response), and comparing that latency to what he sees when probing the previous hop with some cell that will get an immediate response rather than going all the way to Alice. Removing all the ways of probing round-trip latency to an adjacent Tor relay (either in-protocol or out-of-protocol) is a battle we&#39;re not going to win.</p>
+<p>These lessons leave us with two design choices to consider.</p>
 
-<p>The research question remains though: how hard is this attack in practice? It&#39;s going to come down to statistics, which means it will be a game of driving up the false positives. It&#39;s hard to know how best to solve it until somebody does the engineering work for the attack.</p>
+<p>First, how much of the Tor protocol should we use when doing the scans? The spectrum ranges from a simple TCP scan (or even just a SYN scan), to a vanilla SSL handshake, to driving a real Tor client that does a genuine Tor handshake. The less realistic the handshake, the more risk that we conclude the bridge is reachable when in fact it isn&#39;t; but the more realistic the handshake, the more we stand out to an adversary watching for Tor-like traffic.</p>
 
-<p>If the attack turns out to work well (and I expect it will), the &quot;bridges use guards&quot; design will limit the damage from the attack.</p>
+<p>The mechanism by which the adversary is <a href="https://blog.torproject.org/blog/research-problems-ten-ways-discover-tor-bridges">discovering bridges</a> also impacts which reachability tests are a smart idea. For example, it appears that China may have recently started doing deep packet inspection (DPI) for Tor-like connections over the Great Firewall and then doing active-followup SSL handshakes to confirm which addresses are Tor bridges. If that report turns out to be true, testing bridge reachability via active scans that include handshaking would be counterproductive: the act of doing the test would influence the answer. We can solve their attack by <a href="https://blog.torproject.org/blog/iran-blocks-tor-tor-releases-same-day-fix">changing our handshake</a> so they don&#39;t recognize it anymore, or by introducing <a href="https://svn.torproject.org/svn/projects/design-paper/blocking.html#tth_sEc9.3">scanning-resistance</a> measures like bridge passwords. In the shorter-term, we should confirm that simple connection scanning (without a handshake) doesn&#39;t trigger any blocks, and then restrict ourselves to that type of scanning in China until we&#39;ve deployed a better answer.</p>
 
-<p><strong>#5: Run a relay and try connecting back to likely ports on each client that connects to you.</strong></p>
+<p>Second, should we scan &quot;decoy&quot; addresses as well, to fool an observer into thinking that we&#39;re not scanning for Tor bridges in particular, and/or to drive up the work the observer needs to do to distinguish the &quot;real&quot; bridges? Whether this trick is useful depends on the level of sophistication and dedication of the adversary. For example, China has already demonstrated that they check IP addresses before blocking them, and in general I worry that the more connections you make to <em>anything</em>, the more likely you are to attract attention for further scrutiny. How would we generate the list of decoy addresses? If we choose it randomly from the space of IP addresses, a) most of them will not respond, and b) we&#39;ll invite abuse complaints from security people looking for worms. Driving up the work factor sounds like a great feature, but it could have the side effect that it encourages the adversary to invest in an automated &quot;is this a Tor bridge&quot; checker, which would be an unfortunate step for them to take if they otherwise wouldn&#39;t.</p>
 
-<p>Many bridges listen for incoming client connections on port 443 or 9001. The adversary can run a relay and actively portscan each client that connects, to see which ones are running services that speak the Tor protocol. This attack was published by Eugene Vasserman in <a href="http://freehaven.net/anonbib/#DBLP:conf/ccs/VassermanJTHK09">Membership-concealing overlay networks</a> and by Jon McLachlan in <a href="http://freehaven.net/anonbib/#wpes09-bridge-attack">On the risks of serving whenever you surf: Vulnerabilities in Tor&#39;s blocking resistance design</a>, both in 2009.</p>
+<p>Active direct scans come with a fundamental dilemma: the more we think a bridge has been blocked, the more we want to scan it; but the more likely it is to be blocked, the more the adversary might already be watching for connections to it, for example to do a <a href="https://blog.torproject.org/blog/research-problems-ten-ways-discover-tor-bridges">&quot;zig-zag&quot; bridge enumeration attack</a>. So we need to avoid scanning bridges that we think are not blocked. But we also need to explore more subtle scanning techniques such as the ones below.</p>
 
-<p>The &quot;bridges use guards&quot; design partially resolves this attack as well, since we limit the exposure of the bridge to a small group of relays that probably could have done some other above attacks as well.</p>
+<p><strong>Active approach 2: reverse scans.</strong> A bridge that gets <a href="http://en.wikipedia.org/wiki/Duplex_%28telecommunications%29">duplex</a> blackholed by a government firewall can learn that it has been filtered by trying to make a connection <em>into</em> the filtered country.</p>
 
-<p>But it does not wholly resolve the concern: clients (and therefore also bridges) don&#39;t use their entry guards for directory fetches at present. So while the bridge won&#39;t build circuits through the relay it fetches directory information from, it will still reveal its existence. That&#39;s another reason to move forward with the <a href="http://archives.seul.org/tor/relays/Apr-2010/msg00078.html">&quot;directory guard&quot;</a> design.</p>
+<p>For example, each bridge might automatically connect to baidu.com periodically, and publish the results of its reachability test in its extrainfo descriptor. We could either feed this information into the models and follow up with other active probes if the bridge thinks it&#39;s been blocked; or we could use it the other way by instructing bridges that we think have been blocked to launch a reverse scan.</p>
 
-<p><strong>#6: Scan the Internet for services that talk the Tor protocol.</strong></p>
+<p>We can actually take advantage of the flexibility of the Tor protocol to do scanning from each bridge to Baidu without changing the bridge code at all: we simply try to extend an ordinary circuit from the bridge to the target destination, and learn at what stage the &#39;extend&#39; request failed. (We should <a href="https://trac.torproject.org/projects/tor/ticket/2576">extend the Tor control protocol</a> to expose the type of failure to the Tor controller, but that&#39;s a simple matter of programming.)</p>
 
-<p>Even if we successfully hide the bridges behind guards, the adversary can still blindly scan for them and pretend to be a client. To make it more practical, he could focus on scanning likely networks, or near other bridges he&#39;s discovered. We called this topic &quot;scanning resistance&quot; in our original <a href="http://freehaven.net/anonbib/#tor-blocking">bridge design paper</a>.</p>
+<p>Note that these reverse scans can tell us that a bridge has been blocked, but it can&#39;t tell us that a bridge <em>hasn&#39;t</em> been blocked, since it could just be blocked in a more fine-grained way.</p>
 
-<p>There&#39;s a particularly insidious combination of #5 and #6 if you&#39;re a government-scale adversary: watch your government firewall for SSL flows (since Tor tries to blend in with SSL traffic), and do active followup probing to every destination you see. Whitelist sites you&#39;ve already checked if you want to trade efficiency for precision. This scale of attack requires some serious engineering work for a large country, but <a href="https://trac.torproject.org/projects/tor/ticket/4185">early indications</a> are that China might be investigating exactly this approach.</p>
+<p>Finally, how noticeable would these reverse scans be? That is, could the government firewall enumerate bridges by keeping an eye out for Tor-like connection attempts to Baidu? While teaching the bridges to do the scanning themselves would require more work, it would give us more control over how much the scans stick out.</p>
 
-<p>The answer here is to give the bridge user some secret when she learns the bridge address, and require her to prove knowledge of that secret before the bridge will admit to knowing the Tor protocol. For example, we could imagine running an Apache SSL webserver with a <a href="http://dl.dropbox.com/u/37735/index.html">pass-through module</a> that tunnels your traffic to the Tor relay once she&#39;s presented the right password. Or <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/187-allow-client-auth.txt">Tor could handle that authentication itself</a>. <a href="http://freehaven.net/anonbib/#wpes11-bridgespa">BridgeSPA: Improving Tor Bridges with Single Packet Authorization</a> offers an SPA-style approach, with the drawbacks of requiring root on both sides and being OS-specific.</p>
+<p><strong>Active approach 3: indirect scans.</strong> Indirect scans use other services as reflectors. For example, you can connect to an FTP server inside the target country, tell it that your address is the address of the bridge you want to scan, and then try to fetch a file. How it fails should tell you whether that FTP server could reach the bridge or not.</p>
 
-<p>Another avenue to explore is putting some of the bridge addresses behind a service like <a href="http://freehaven.net/anonbib/#usenix11-telex">Telex</a>, <a href="http://freehaven.net/anonbib/#foci11-decoy">Decoy Routing</a>, or <a href="http://freehaven.net/anonbib/#ccs2011-cirripede">Cirripede</a>. These designs let users privately tag a flow (e.g. an SSL handshake) in such a way that tagged flows are diverted to a Tor bridge while untagged flows continue as normal. So now we could deploy a vanilla Apache in one place and a vanilla Tor bridge in another, and not have to modify either of them. The Tor client bundle would need an extra piece of software though, and there are still some engineering and deployment details to be worked out.</p>
+<p>There are many other potential reflector protocols out there, each with their own tradeoffs. For example, can we instruct a DNS request in-country to recurse to the target bridge address, and distinguish between &quot;I couldn&#39;t reach that DNS server&quot; and &quot;that wasn&#39;t a DNS server&quot;? (DNS is probably not the right protocol to use inside China, given the amount of DNS mucking they are already known to do.)</p>
 
-<p><strong>#7: Break into the Tor Project infrastructure.</strong></p>
+<p>Another avenue is a variant on <a href="http://nmap.org/book/idlescan.html">idle scanning</a>, which takes advantage of predictable TCP IPID patterns: send a packet directly to the bridge to learn its current IPID, then instruct some computer in-country to send a packet, and then send another packet directly to find the new IPID and learn whether or not the in-country packet arrived.</p>
 
-<p>The <a href="https://svn.torproject.org/svn/projects/design-paper/blocking.html#tth_sEc5.2">bridge directory authority</a> aggregates the list of bridges and periodically sends it to the <a href="https://gitweb.torproject.org/bridgedb.git/tree">bridgedb service</a> so it can parcel addresses out by its various distribution strategies. Breaking into either of these services would give you the list of bridges.</p>
+<p>What other services can be bent to our will? Can we advertise the bridge address on a bittorrent tracker that&#39;s popular in China and see whether anybody connects? Much creative research remains here.</p>
 
-<p>We can imagine some design changes to make the risk less bad. For one, people can already run bridges that don&#39;t publish to the bridge directory authority (and then distribute their addresses themselves). Second, I had a nice chat with a Chinese NGO recently who wants to set up a bridge directory authority of their own, and distribute custom Vidalia bridge bundles to their members that are configured to publish their bridge addresses to this alternate bridge directory authority. A third option is to decentralize the bridge authority and bridgedb services, such that each component only learns about a fraction of the total bridge population — that design quickly gets messy though in terms of engineering and in terms of analyzing its security against various attacks.</p>
+<p><strong>Putting it all together</strong></p>
 
-<p><strong>#8: Just watch the bridge authority&#39;s reachability tests.</strong></p>
+<p>One of the puzzle pieces holding us back from rolling out the &quot;tens of thousands of bridge addresses offered by volunteers with spare net blocks&quot; plan is that we need better ways to get feedback on when addresses get blocked. The ideas in this blog post hopefully provide a good framework for thinking about the problem.</p>
 
-<p>You don&#39;t actually need to break in to the bridge authority. Instead, you can just monitor its network connection: it will periodically test reachability of each bridge it knows, in order to let the bridgedb service know which addresses to give out.</p>
+<p>For the short term, we should deploy a basic TCP connection scanner from inside several censoring countries (China, Iran, and Syria come to mind). Since the &quot;clients report&quot; passive strategy still has some open research questions, we should get all our hints from the &quot;bridges report&quot; passive strategy. As we&#39;re ramping up, and especially since our current bridges are either not blocked at all (outside China), or mostly blocked (inside China), we should feel free to do more thorough active scans to get a better intuition about what scanning can teach us.</p>
 
-<p>We could do these reachability tests through Tor, so watching the bridge authority doesn&#39;t tell you anything about what it&#39;s testing. But that just shifts the risk onto the rest of the relays, such that an adversary who runs or monitors a sample of relays gets to learn about a corresponding sample of bridges.</p>
+<p>In the long term, I want to use these various building blocks in a feedback loop to identify and reward successful bridge distribution strategies, as outlined in Levchenko and McCoy&#39;s <a href="http://freehaven.net/anonbib/#proximax11">FC 2011 paper</a>.</p>
 
-<p>One option is to decentralize the testing such that monitoring a single location doesn&#39;t give you the whole bridge list. But how exactly to distribute it, and onto what, is messy from both the operational and research angles. Another option would be for the bridges themselves to ramp up the frequency of their reachability tests (they currently self-test for reachability before publishing, to give quick feedback to their operator if they&#39;re misconfigured). Then the bridges can just anonymously publish an authenticated &quot;still here&quot; message once an hour, so (assuming they all tell the truth) the bridge authority never has to do any testing. But this self-testing also allows an enumeration attack, since we build a circuit to a random relay and then try to extend back to our bridge address! Maybe bridges should be asking their guards to do the self-testing — once they have guards, that is?</p>
+<p>Specifically, we need these four building blocks:</p>
 
-<p>These questions are related to the question of <a href="https://svn.torproject.org/svn/projects/design-paper/blocking.html#subsec:geoip">learning whether a bridge has been blocked in a given country</a>. More on that in a future blog post.</p>
+<p>1) A way to discover how much use a bridge is seeing from a given country. Done: see the <a href="https://metrics.torproject.org/papers/wecsr10.pdf">WECSR10 paper</a> and <a href="https://metrics.torproject.org/users.html#bridge-users">usage graphs</a>.</p>
 
-<p><strong>#9: Watch your firewall and DPI for Tor flows.</strong></p>
+<p>2) A way to get fresh bridge addresses over time. The more addresses we can churn through, the more aggressive we can be in experimenting with novel distribution approaches. See <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">the &quot;more bridge addresses&quot; blog post</a> for directions here.</p>
 
-<p>While the above attacks have to do with recognizing or inducing bridge-specific behavior, another class of attacks is just to buy some fancy Deep Packet Inspection gear and have it look for, say, characteristics of the SSL certificates or handshakes that make Tor flows stand out from &quot;normal&quot; SSL flows. <a href="https://blog.torproject.org/blog/iran-blocks-tor-tor-releases-same-day-fix">Iran has used this strategy</a> to block Tor twice, and it lets them block bridges for free. The attack is most effective if you have a large and diverse population of Tor users behind your firewall, since you&#39;ll only be able to learn about bridges that your users try to use.</p>
+<p>3) A way to discover when a bridge is blocked in a given country. That&#39;s what this blog post is about.</p>
 
-<p>We can fix the issue by <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/179-TLS-cert-and-parameter-normalization.txt">making Tor&#39;s handshake more like a normal SSL handshake</a>, but I wonder if that&#39;s really a battle we can ever win. The better answer is to encourage a proliferation of <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/180-pluggable-transport.txt">modular Tor transports</a>, like <a href="https://gitweb.torproject.org/obfsproxy.git/blob/HEAD:/doc/tor-obfs-howto.txt">obfsproxy</a>, and get the rest of the research community interested in designing tool-neutral transports that blend in better.</p>
+<p>4) Distribution strategies that rely on different mechanisms to make enumeration difficult. Beyond our &quot;https&quot; and &quot;gmail&quot; distribution strategies, we know a variety of people in censored countries, and we can think of each of these people as a distribution channel.</p>
 
-<p><strong>#10: Zig-zag between bridges and users.</strong></p>
+<p>We can define the <em>efficiency</em> of a bridge address in terms of how many people use it and how long before it gets blocked. So a bridge that gets blocked very quickly scores a low efficiency, a bridge that doesn&#39;t get blocked but doesn&#39;t see much use scores a medium efficiency, and a popular bridge that doesn&#39;t get blocked scores high. We can characterize the efficiency of a distribution channel as a function of the efficiency of the bridges it distributes. The key insight is that we then adapt how many new bridges we give to each distribution channel based on its efficiency. So channels that are working well automatically get more addresses to give out, and channels that aren&#39;t working well automatically end up with fewer addresses.</p>
 
-<p>Start with a set of known bridge addresses. Watch your firewall to see who connects to those bridges. Then watch those users, and see what other addresses they connect to. Wash, rinse, repeat.</p>
-
-<p>As above, this attack only works well when you have a large population of Tor users behind your firewall. It also requires some more engineering work to be able to trace source addresses in addition to destination addresses. But I&#39;d be surprised if some major government firewalls don&#39;t have this capability already.</p>
-
-<p>The solution here probably involves partitioning bridge addresses into <a href="http://en.wikipedia.org/wiki/Clandestine_cell_system">cells</a>, such that zig-zagging from users to bridges only gives you a bounded set of bridges (and a bounded set of users, for that matter). That approach will require some changes in our <a href="https://gitweb.torproject.org/bridgedb.git/blob/HEAD:/bridge-db-spec.txt">bridgedb design</a> though. Currently when a user requests some bridge addresses, bridgedb maps the user&#39;s &quot;address&quot; (IP address, gmail account name, or whatever) into a point in the keyspace (using <a href="http://en.wikipedia.org/wiki/Consistent_hashing">consistent hashing</a>), and the answers are the k successors of that point in the ring (using <a href="http://en.wikipedia.org/wiki/Chord_%28DHT%29">DHT</a> terminology).</p>
-
-<p>Dan Boneh suggested an alternate approach where we do <a href="http://en.wikipedia.org/wiki/HMAC">keyed hashes</a> of the user&#39;s address and all the bridge fingerprints, and return all bridges whose hashed fingerprints match the user&#39;s hash in the first b bits. The result is that users would tend to get clustered by the bridges they know. That feature limits the damage from the zig-zag attack, but does it increase the risks in some distribution strategies? I already worry that bridge distribution strategies based on social networks will result in clusters of socially related users using the same bridges, meaning the attacker can reconstruct the social network. If we isolate socially related users in the same partition, do we magnify that problem? This approach also needs more research work to make it scale such that we can always return about k results, even as the address pool grows, and without reintroducing zig-zag vulnerabilities.</p>
-
-<p><strong>#11: ...What did I miss?</strong></p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/torsocks-12-released">Torsocks 1.2 Released</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">mwenge</a> under
-              
-                <a class="post-category post-category-js" href="#">torsocks</a>
-               |
-              29 Oct 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>I&#39;m happy to announce the release of <a href="http://code.google.com/p/torsocks/downloads/list">Torsocks 1.2</a>.</p>
-
-<p>Torsocks is an application for Linux, BSD and Mac OSX that allows you to use network applications such as ssh and irssi with Tor.</p>
-
-<p>A quick guide to using Torsocks and an overview of its compatibility with a variety of popular applications is available <a href="http://code.google.com/p/torsocks/">at the project&#39;s home page</a>.</p>
-
-<p>The focus for this release was to add a test suite, clean up the source code, simplify the build, compile on more versions of BSD, and add a few new defences that make it harder for users to leak information that might compromise their anonymity.</p>
-
-<p>Full details of the changes are available <a href="http://code.google.com/p/torsocks/downloads/detail?name=torsocks-1.2.tar.gz">in the release change log</a>.</p>
-
-<p>If you don&#39;t want to wait until your distribution packages the latest version of torsocks, you can download the source from <a href="http://code.google.com/p/torsocks/downloads/list">the project home page</a>. If you find any problems with Torsocks please don&#39;t be shy about <a href="http://code.google.com/p/torsocks/issues/list">opening a bug</a>.</p>
-
-<p>Many thanks to Anthony Basile and the mysterious &#39;foobi..@gmail.com&#39; for their substantial contribution to this release.</p>
-
-<ul>
-<li>Robert</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/tor-02234-released-security-patches">Tor 0.2.2.34 is released (security patches)</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">security advisory</a>
-              
-                <a class="post-category post-category-js" href="#">security fixes</a>
-              
-                <a class="post-category post-category-js" href="#">tor</a>
-              
-                <a class="post-category post-category-js" href="#">tor stable</a>
-               |
-              28 Oct 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p><strong>Tor 0.2.2.34 fixes a critical anonymity vulnerability where an attacker
-can deanonymize Tor users. Everybody should upgrade.</strong></p>
-
-<p>The attack relies on four components:</p>
-
-<ul>
-<li>1) Clients reuse their TLS cert when talking to different relays, so relays can recognize a user by the identity key in her cert.</li>
-<li>2) An attacker who knows the client&#39;s identity key can probe each guard relay to see if that identity key is connected to that guard relay right now.</li>
-<li>3) A variety of active attacks in the literature (starting from &quot;Low-Cost Traffic Analysis of Tor&quot; by Murdoch and Danezis in 2005) allow a malicious website to discover the guard relays that a Tor user visiting the website is using.</li>
-<li>4) Clients typically pick three guards at random, so the set of guards for a given user could well be a unique fingerprint for her. This release fixes components #1 and #2, which is enough to block the attack; the other two remain as open research problems.</li>
-</ul>
-
-<p>Special thanks to &quot;frosty_un&quot; for reporting the issue to us! (As far as we know, this has nothing to do with any claimed attack currently getting attention in the media.)</p>
-
-<p><strong>Clients should upgrade so they are no longer recognizable by the TLS certs they present. Relays should upgrade so they no longer allow a remote attacker to probe them to test whether unpatched clients are currently connected to them.</strong></p>
-
-<p>This release also fixes several vulnerabilities that allow an attacker to enumerate bridge relays. Some bridge enumeration attacks still remain; see for example proposal 188.</p>
-
-<p><a href="https://torproject.org/download/download-easy" title="https://torproject.org/download/download-easy">https://torproject.org/download/download-easy</a></p>
-
-<p>Changes in version 0.2.2.34 - 2011-10-26</p>
-
-<p><strong>Privacy/anonymity fixes (clients):</strong></p>
-
-<ul>
-<li>Clients and bridges no longer send TLS certificate chains on outgoing OR
-connections. Previously, each client or bridge would use the same cert chain
-for all outgoing OR connections until its IP address changes, which allowed any
-relay that the client or bridge contacted to determine which entry guards it is
-using. Fixes CVE-2011-2768. Bugfix on 0.0.9pre5; found by &quot;frosty_un&quot;.</li>
-<li>If a relay receives a CREATE_FAST cell on a TLS connection, it no longer
-considers that connection as suitable for satisfying a circuit EXTEND request.
-Now relays can protect clients from the CVE-2011-2768 issue even if the clients
-haven&#39;t upgraded yet.</li>
-<li>Directory authorities no longer assign the Guard flag to relays that
-haven&#39;t upgraded to the above &quot;refuse EXTEND requests to client connections&quot;
-fix. Now directory authorities can protect clients from the CVE-2011-2768 issue
-even if neither the clients nor the relays have upgraded yet. There&#39;s a new
-&quot;GiveGuardFlagTo_CVE_2011_2768_VulnerableRelays&quot; config option to let us
-transition smoothly, else tomorrow there would be no guard relays.</li>
-</ul>
-
-<p><strong>Privacy/anonymity fixes (bridge enumeration):</strong></p>
-
-<ul>
-<li>Bridge relays now do their directory fetches inside Tor TLS connections,
-like all the other clients do, rather than connecting directly to the DirPort
-like public relays do. Removes another avenue for enumerating bridges. Fixes
-bug 4115; bugfix on 0.2.0.35.</li>
-<li>Bridges relays now build circuits for themselves in a more similar way to
-how clients build them. Removes another avenue for enumerating bridges. Fixes
-bug 4124; bugfix on 0.2.0.3-alpha, when bridges were introduced.</li>
-<li>Bridges now refuse CREATE or CREATE_FAST cells on OR connections that they
-initiated. Relays could distinguish incoming bridge connections from client
-connections, creating another avenue for enumerating bridges. Fixes
-CVE-2011-2769. Bugfix on 0.2.0.3-alpha. Found by &quot;frosty_un&quot;.</li>
-</ul>
-
-<p><strong>Major bugfixes:</strong></p>
-
-<ul>
-<li>Fix a crash bug when changing node restrictions while a DNS lookup is
-in-progress. Fixes bug 4259; bugfix on 0.2.2.25-alpha. Bugfix by &quot;Tey&#39;&quot;.</li>
-<li>Don&#39;t launch a useless circuit after failing to use one of a hidden
-service&#39;s introduction points. Previously, we would launch a new introduction
-circuit, but not set the hidden service which that circuit was intended to
-connect to, so it would never actually be used. A different piece of code would
-then create a new introduction circuit correctly. Bug reported by katmagic and
-found by Sebastian Hahn. Bugfix on 0.2.1.13-alpha; fixes bug 4212.</li>
-</ul>
-
-<p><strong>Minor bugfixes:</strong></p>
-
-<ul>
-<li>Change an integer overflow check in the OpenBSD_Malloc code so that GCC is
-less likely to eliminate it as impossible. Patch from Mansour Moufid. Fixes bug
-4059.</li>
-<li>When a hidden service turns an extra service-side introduction circuit into
-a general-purpose circuit, free the rend_data and intro_key fields first, so we
-won&#39;t leak memory if the circuit is cannibalized for use as another
-service-side introduction circuit. Bugfix on 0.2.1.7-alpha; fixes bug
-4251.</li>
-<li>Bridges now skip DNS self-tests, to act a little more stealthily. Fixes
-bug 4201; bugfix on 0.2.0.3-alpha, which first introduced bridges. Patch by
-&quot;warms0x&quot;.</li>
-<li>Fix internal bug-checking logic that was supposed to catch failures in
-digest generation so that it will fail more robustly if we ask for a
-nonexistent algorithm. Found by Coverity Scan. Bugfix on 0.2.2.1-alpha; fixes
-Coverity CID 479.</li>
-<li>Report any failure in init_keys() calls launched because our IP address has
-changed. Spotted by Coverity Scan. Bugfix on 0.1.1.4-alpha; fixes CID 484.</li>
-</ul>
-
-<p><strong>Minor bugfixes (log messages and documentation):</strong></p>
-
-<ul>
-<li>Remove a confusing dollar sign from the example fingerprint in the man
-page, and also make the example fingerprint a valid one. Fixes bug 4309; bugfix
-on 0.2.1.3-alpha.</li>
-<li>The next version of Windows will be called Windows 8, and it has a major
-version of 6, minor version of 2. Correctly identify that version instead of
-calling it &quot;Very recent version&quot;. Resolves ticket 4153; reported by
-funkstar.</li>
-<li>Downgrade log messages about circuit timeout calibration from &quot;notice&quot; to
-&quot;info&quot;: they don&#39;t require or suggest any human intervention. Patch from Tom
-Lowenthal. Fixes bug 4063; bugfix on 0.2.2.14-alpha.</li>
-</ul>
-
-<p><strong>Minor features:</strong></p>
-
-<ul>
-<li>Turn on directory request statistics by default and include them in
-extra-info descriptors. Don&#39;t break if we have no GeoIP database. Backported
-from 0.2.3.1-alpha; implements ticket 3951.</li>
-<li>Update to the October 4 2011 Maxmind GeoLite Country database.</li>
-</ul>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/rumors-tors-compromise-are-greatly-exaggerated">Rumors of Tor&#39;s compromise are greatly exaggerated</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">phobos</a> under
-              
-                <a class="post-category post-category-js" href="#">anonymity research</a>
-              
-                <a class="post-category post-category-js" href="#">attacks on tor</a>
-              
-                <a class="post-category post-category-js" href="#">facts</a>
-              
-                <a class="post-category post-category-js" href="#">freedom hosting</a>
-              
-                <a class="post-category post-category-js" href="#">hidden services</a>
-              
-                <a class="post-category post-category-js" href="#">research</a>
-              
-                <a class="post-category post-category-js" href="#">tor compromise</a>
-              
-                <a class="post-category post-category-js" href="#">winning the attention economy</a>
-               |
-              25 Oct 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>There are two recent stories claiming the Tor network is compromised. It seems it is easier to get press than to publish research, work with us on the details, and propose solutions. Our comments here are based upon the same stories you are reading. We have no insider information.</p>
-
-<p>The first story has been around &#39;Freedom Hosting&#39; and their hosting of child abuse materials as exposed by <a href="http://arstechnica.com/business/news/2011/10/anonymous-takes-down-darknet-child-porn-site-on-tor-network.ars">Anonymous Operation Darknet</a>. We&#39;re reading the press articles, pastebin urls, and talking to the same people as you. It appears &#39;Anonymous&#39; cracked the Apache/PHP/MySQL setup at Freedom Hosting and published some, or all, of their users in the database. These sites happened to be hosted on a <a href="https://www.torproject.org/docs/hidden-services.html.en">Tor hidden service</a>. Further, &#39;Anonymous&#39; used a somewhat recent RAM-exhaustion denial of service attack on the &#39;Freedom Hosting&#39; Apache server. It&#39;s a simple resource starvation attack that can be conducted over low bandwidth, low resource requirement connections to individual hosts. This isn&#39;t an attack on Tor, but rather an attack on some software behind a Tor hidden service. This attack was discussed in a thread on the <a href="https://lists.torproject.org/pipermail/tor-talk/2011-October/021822.html">tor-talk</a> mailing list starting October 19th.</p>
-
-<p>The second story is around Eric Filiol&#39;s claims of compromising the Tor network leading up to his Hackers to Hackers talk in Brazil in a few days. This claim was initially announced by some French websites; however, it has spread further, such as this <a href="http://thehackernews.com/2011/10/tor-anonymizing-network-compromised-by.html">Hacker News</a> story.</p>
-
-<p>Again, the <a href="https://lists.torproject.org/pipermail/tor-talk/2011-October/021722.html">tor-talk</a> mailing list had the first discussions of these attacks back on October 13th. To be clear, neither Eric nor his researchers have disclosed anything about this attack to us. They have not talked to us, nor shared any data with us — despite some mail exchanges where we reminded him about the phrase &quot;responsible disclosure&quot;.</p>
-
-<p>Here&#39;s the attack as we understand it, from reading the various press reports:</p>
-
-<p>They enumerated 6000 IP addresses that they think are Tor relays. There aren&#39;t that many Tor relays in the world — <a href="https://metrics.torproject.org/network.html">2500</a> is a more accurate number. We&#39;re not sure what caused them to overcount so much. Perhaps they watched the Tor network over a matter of weeks and collected a bunch of addresses that aren&#39;t relays anymore? The set of relays is public information, so there&#39;s no reason to collect your own list and certainly no reason to end up with a wrong list.</p>
-
-<p>One-third of the machines on those IP addresses are vulnerable to operating system or other system level attacks, meaning he can break in. That&#39;s quite a few! We wonder if that&#39;s true with the real Tor network, or just their simulated one? Even ignoring the question of what these 3500 extra IP addresses are, it&#39;s important to remember that one-third by number is not at all the same as one-third by capacity: Tor clients load-balance over relays based on the relay capacity, so any useful statement should be about how much of the <em>capacity</em> of the Tor network is vulnerable. It would indeed be shocking if one-third of the Tor network by capacity is vulnerable to external attacks.</p>
-
-<p>(There&#39;s also an aside about enumerating <a href="https://www.torproject.org/docs/bridges">bridges</a>. They say they found 181 bridges, and then there&#39;s a quote saying they &quot;now have a complete picture of the topography of Tor&quot;, which is a particularly unfortunate time for that quote since there are currently around 600 bridges running.)</p>
-
-<p>We expect the talk will include discussion about some cool Windows trick that can modify the crypto keys in a running Tor relay that you have local system access to; but it&#39;s simpler and smarter just to say that when the attacker has local system access to a Tor relay, the attacker controls the relay.</p>
-
-<p>Once they&#39;ve broken into some relays, they do congestion attacks like <a href="http://freehaven.net/anonbib/#torspinISC08">packet spinning</a> to congest the relays they couldn&#39;t compromise, to drive users toward the relays they own. It&#39;s unclear how many resources are needed to keep the rest of the relays continuously occupied long enough to keep the user from using them. There are probably some better heuristics that clients can use to distinguish between a loaded relay and an unavailable relay; we look forward to learning how well their attack here actually worked.</p>
-
-<p>From there, the attack gets vague. The only hint we have is this nonsense sentence from the article:</p>
-
-<blockquote>
-<p>The remaining flow can then be decrypted via a fully method of attack called &quot;to clear unknown&quot; based on statistical analysis.</p>
-</blockquote>
-
-<p>Do they have a new attack on AES, or on OpenSSL&#39;s implementation of it, or on our use of OpenSSL? Or are they instead doing some sort of timing attack, where if you own the client&#39;s first hop and also the destination you can use statistics to confirm that the two flows are on the same circuit? There&#39;s a history of <a href="https://blog.torproject.org/blog/one-cell-enough">confused researchers</a> proclaiming some sort of novel active attack when passive correlation attacks are much simpler and just as effective.</p>
-
-<p>So the summary of the attack might be &quot;take control of the nodes you can, then congest the other ones so your targets avoid them and use the nodes you control. Then do some unspecified magic crypto attack to defeat the layers of encryption for later hops in the circuit.&quot; But really, these are just guesses based on the same news articles you&#39;re reading. We look forwarding to finding out if there&#39;s actually an attack we can fix, or if they are just playing all the journalists to get attention.</p>
-
-<p>More generally, there are two broader lessons to remember here. First, research into anonymity-breaking attacks is how the field moves forward, and using Tor for your target is <a href="http://freehaven.net/anonbib/">common</a> because a) it&#39;s resistant to all the simpler attacks and b) we make it <a href="https://www.torproject.org/getinvolved/research.html.en">really easy</a> to do your research on. And second, remember that most other anonymity systems out there fall to these attacks so quickly and thoroughly that no researchers even talk about it anymore. For some recent examples, see the single-hop proxy discussions in <a href="http://freehaven.net/anonbib/#tissec-latency-leak">How Much Anonymity does Network Latency Leak?</a> and <a href="http://freehaven.net/anonbib/#wpes11-panchenko">Website Fingerprinting in Onion Routing Based Anonymization Networks</a>.</p>
-
-<p>I thank Roger, Nick, and Runa for helping with this post.</p>
-
-        </div>
-      </section>
-    
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="/blog/plain-vidalia-bundles-be-discontinued-dont-panic">Plain Vidalia Bundles to be Discontinued (Don&#39;t Panic!)</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">erinn</a> under
-              
-                <a class="post-category post-category-js" href="#">package updates</a>
-              
-                <a class="post-category post-category-js" href="#">tbb</a>
-              
-                <a class="post-category post-category-js" href="#">tor browser bundle</a>
-              
-                <a class="post-category post-category-js" href="#">vidalia bundle</a>
-               |
-              20 Oct 2011
-          </p>
-        </header>
-        <div class="post-description">
-          <p>Over the past few years, Tor has gotten more popular and has had to grow and change to accommodate a highly varied userbase. One aspect of this is getting the software into users&#39; hands and having it immediately do what they want it to, while also not allowing them to inadvertently deanonymize themselves because they missed a configuration step or didn&#39;t understand which applications were using Tor and which were not. As a result, we have standardized on the Tor Browser Bundle for all platforms and are currently promoting it as our only fully supported client experience.</p>
-
-<p>Since the Tor Browser Bundle offers the best current protection, we are moving to a client/server model for packages, and consequently the &quot;plain&quot; Vidalia bundles will be discontinued by the <strong>end of the year</strong> and no longer recommended for client usage. We&#39;ve started rolling out server Vidalia bundles for Windows, which you can test by going to the <a href="https://www.torproject.org/download">download page</a>.</p>
-
-<p>There are currently (and will continue to be) three types of server bundles available:</p>
-
-<ul>
-<li>Bridge-by-default Vidalia bundle</li>
-</ul>
-
-<p>This configures Tor to act as a bridge by default, so as soon as you install it and run it, you will be helping censored users reach the Tor network. You can read more about bridges <a href="https://www.torproject.org/docs/bridges">here</a>. This bundle still includes Torbutton and Polipo, but those will be removed in the next release (date to be determined).</p>
-
-<ul>
-<li>Relay-by-default Vidalia bundle</li>
-</ul>
-
-<p>This configures Tor to run as a <strong>non-exit</strong> relay by default. This means you will serve as either a guard or middle node and help grow the size of the Tor network. You can read more about Tor relay configuration <a href="https://www.torproject.org/docs/tor-doc-relay">here</a>.</p>
-
-<ul>
-<li>Exit-by-default Vidalia bundle</li>
-</ul>
-
-<p>This configures Tor to run as an <strong>exit relay</strong> by default. Exit nodes are special, as they allow traffic to exit from the Tor network to the plain internet, and anyone who has not already looked into the risks associated with running an exit relay should read our <a href="https://blog.torproject.org/running-exit-node">tips for running an exit node with minimal harassment</a></p>
-
-<p>We&#39;ve started creating a <a href="https://trac.torproject.org/projects/tor/wiki/doc/TorFAQ#TorBrowserBundle">Tor Browser Bundle FAQ</a>, but we&#39;d like to hear your concerns so we can provide answers where necessary, documentation for alternative setups, and fix the software where answers are insufficient. We have several months before Tor Browser Bundle is the only option, so please help us make it as good as possible! If you have bugs to file, please don&#39;t file them in the blog comments -- use our <a href="https://trac.torproject.org">bug tracker</a> for that.</p>
+<p>Of course, there&#39;s more to it than that. For example, we need to consider how to handle the presence of bridge enumeration attacks that work independently of which distribution channel a given bridge address was given to. We also need to consider attacks that artificially inflate the efficiency of bridges (and thus make us overreward distribution channels), or that learn about a bridge but choose not to block it. But that, as they say, is a story for another time.</p>
 
         </div>
       </section>
@@ -447,7 +608,7 @@ from 0.2.3.1-alpha; implements ticket 3951.</li>
       
         <a href="/blog/page63" class="previous">Previous</a>
       
-      <span class="page_number ">Page: 64 of 134</span>
+      <span class="page_number ">Page: 64 of 137</span>
       
         <a href="/blog/page65" class="next">Next</a>
       
