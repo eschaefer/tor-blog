@@ -3,19 +3,56 @@ layout: default
 title: Events
 ---
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/assets/js/moment.min.js"></script>
+<script src="/assets/js/fullcalendar.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+
+    var eventList = [];
+
+    $('.event').each(function() {
+      var eventItem = {};
+
+      eventItem.title = $(this).find('.eventtitle').text();
+      eventItem.start = $(this).find('.startdate').data('startdate');
+      eventItem.end = $(this).find('.enddate').data('enddate');
+      eventItem.url = $(this).find('.titleurl')[0].href;
+
+      eventList.push(eventItem);
+    });
+
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,basicWeek,basicDay'
+      },
+      defaultDate: moment(),
+      editable: false,
+      eventLimit: true, // allow "more" link when too many events
+      events: eventList
+    });
+  });
+</script>
+
+<!-- JS calendar only shows up for JS-enabled browsers -->
+<div id='calendar'></div>
+
 <!-- A wrapper for all the events -->
 <div class="posts">
 
   <h1 class="content-subhead">Events</h1>
   <div id="home">
     {% for post in site.categories.event %}
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="{{ post.url }}">{{ post.title | xml_escape }}</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="{{ post.url }}">{{ post.title | xml_escape }}</a></h2>
           <p class="post-meta">
-              {{ post.startdate | date: "%-d %B %Y" }}
+              <span class="startdate" data-startdate="{{ post.startdate }}">{{ post.startdate | date: "%-d %B %Y" }}</span>
               {% if post.enddate %}
-                to {{ post.enddate | date: "%-d %B %Y" }}
+                to <span class="enddate" data-enddate="{{ post.enddate }}">{{ post.enddate | date: "%-d %B %Y" }}</span>
               {% endif %}
           </p>
         </header>

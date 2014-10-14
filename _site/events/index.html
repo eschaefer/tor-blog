@@ -45,19 +45,56 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
 
-            <!-- A wrapper for all the events -->
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/assets/js/moment.min.js"></script>
+<script src="/assets/js/fullcalendar.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+
+    var eventList = [];
+
+    $('.event').each(function() {
+      var eventItem = {};
+
+      eventItem.title = $(this).find('.eventtitle').text();
+      eventItem.start = $(this).find('.startdate').data('startdate');
+      eventItem.end = $(this).find('.enddate').data('enddate');
+      eventItem.url = $(this).find('.titleurl')[0].href;
+
+      eventList.push(eventItem);
+    });
+
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,basicWeek,basicDay'
+      },
+      defaultDate: moment(),
+      editable: false,
+      eventLimit: true, // allow "more" link when too many events
+      events: eventList
+    });
+  });
+</script>
+
+<!-- JS calendar only shows up for JS-enabled browsers -->
+<div id='calendar'></div>
+
+<!-- A wrapper for all the events -->
 <div class="posts">
 
   <h1 class="content-subhead">Events</h1>
   <div id="home">
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-keynotes-broadband-world-forum">Andrew Keynotes Broadband World Forum</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-keynotes-broadband-world-forum">Andrew Keynotes Broadband World Forum</a></h2>
           <p class="post-meta">
-              21 October 2014
+              <span class="startdate" data-startdate="2014-10-21">21 October 2014</span>
               
-                to 23 October 2014
+                to <span class="enddate" data-enddate="2014-10-23">23 October 2014</span>
               
           </p>
         </header>
@@ -67,13 +104,13 @@
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-usenix-security-symposium-san-diego-ca">Roger @ Usenix Security Symposium, San Diego, CA</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-usenix-security-symposium-san-diego-ca">Roger @ Usenix Security Symposium, San Diego, CA</a></h2>
           <p class="post-meta">
-              20 August 2014
+              <span class="startdate" data-startdate="2014-08-20">20 August 2014</span>
               
-                to 22 August 2014
+                to <span class="enddate" data-enddate="2014-08-22">22 August 2014</span>
               
           </p>
         </header>
@@ -85,13 +122,13 @@
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-foci-%E2%80%9914-san-diego-ca">Roger @ FOCI ’14, San Diego, CA</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-foci-%E2%80%9914-san-diego-ca">Roger @ FOCI ’14, San Diego, CA</a></h2>
           <p class="post-meta">
-              18 August 2014
+              <span class="startdate" data-startdate="2014-08-18">18 August 2014</span>
               
-                to 18 August 2014
+                to <span class="enddate" data-enddate="2014-08-18">18 August 2014</span>
               
           </p>
         </header>
@@ -101,13 +138,13 @@
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-pets-2014-amsterdam">Tor @ PETS 2014, Amsterdam</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-pets-2014-amsterdam">Tor @ PETS 2014, Amsterdam</a></h2>
           <p class="post-meta">
-              16 July 2014
+              <span class="startdate" data-startdate="2014-07-16">16 July 2014</span>
               
-                to 18 July 2014
+                to <span class="enddate" data-enddate="2014-07-18">18 July 2014</span>
               
           </p>
         </header>
@@ -121,11 +158,11 @@
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/researchers-practitioners-meetup-pets-amsterdam">Researchers &amp; Practitioners Meetup @ PETS, Amsterdam</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/researchers-practitioners-meetup-pets-amsterdam">Researchers &amp; Practitioners Meetup @ PETS, Amsterdam</a></h2>
           <p class="post-meta">
-              15 July 2014
+              <span class="startdate" data-startdate="2014-07-15">15 July 2014</span>
               
           </p>
         </header>
@@ -148,13 +185,13 @@ Science Park 904
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/lunar-lsm-2014-montpellier-france">Lunar @ LSM 2014, Montpellier, France</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/lunar-lsm-2014-montpellier-france">Lunar @ LSM 2014, Montpellier, France</a></h2>
           <p class="post-meta">
-              5 July 2014
+              <span class="startdate" data-startdate="2014-07-05">5 July 2014</span>
               
-                to 11 July 2014
+                to <span class="enddate" data-enddate="2014-07-11">11 July 2014</span>
               
           </p>
         </header>
@@ -168,13 +205,13 @@ Science Park 904
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tors-summer-dev-meeting-paris-france">Tor&#39;s Summer Dev Meeting - Paris, France</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tors-summer-dev-meeting-paris-france">Tor&#39;s Summer Dev Meeting - Paris, France</a></h2>
           <p class="post-meta">
-              30 June 2014
+              <span class="startdate" data-startdate="2014-06-30">30 June 2014</span>
               
-                to 4 July 2014
+                to <span class="enddate" data-enddate="2014-07-04">4 July 2014</span>
               
           </p>
         </header>
@@ -188,13 +225,13 @@ Science Park 904
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/colin-childs-presenting-tor-cryptoparty-winnipeg-0">Colin Childs Presenting Tor @ CryptoParty, Winnipeg</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/colin-childs-presenting-tor-cryptoparty-winnipeg-0">Colin Childs Presenting Tor @ CryptoParty, Winnipeg</a></h2>
           <p class="post-meta">
-              7 June 2014
+              <span class="startdate" data-startdate="2014-06-07">7 June 2014</span>
               
-                to 7 June 2014
+                to <span class="enddate" data-enddate="2014-06-07">7 June 2014</span>
               
           </p>
         </header>
@@ -211,13 +248,13 @@ Standard Time and end time for the event is estimated)</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-stockholm-internet-forum">Tor @ Stockholm Internet Forum</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-stockholm-internet-forum">Tor @ Stockholm Internet Forum</a></h2>
           <p class="post-meta">
-              27 May 2014
+              <span class="startdate" data-startdate="2014-05-27">27 May 2014</span>
               
-                to 29 May 2014
+                to <span class="enddate" data-enddate="2014-05-29">29 May 2014</span>
               
           </p>
         </header>
@@ -227,13 +264,13 @@ Standard Time and end time for the event is estimated)</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-35th-ieee-symposium-security-and-privacy-san-josa-ca">Tor @ 35th IEEE Symposium on Security and Privacy, San Jose, CA</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-35th-ieee-symposium-security-and-privacy-san-josa-ca">Tor @ 35th IEEE Symposium on Security and Privacy, San Jose, CA</a></h2>
           <p class="post-meta">
-              18 May 2014
+              <span class="startdate" data-startdate="2014-05-18">18 May 2014</span>
               
-                to 21 May 2014
+                to <span class="enddate" data-enddate="2014-05-21">21 May 2014</span>
               
           </p>
         </header>
@@ -243,13 +280,13 @@ Standard Time and end time for the event is estimated)</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-george-mason-university-washington-dc">Roger @ George Mason University, Washington, DC</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-george-mason-university-washington-dc">Roger @ George Mason University, Washington, DC</a></h2>
           <p class="post-meta">
-              11 April 2014
+              <span class="startdate" data-startdate="2014-04-11">11 April 2014</span>
               
-                to 11 April 2014
+                to <span class="enddate" data-enddate="2014-04-11">11 April 2014</span>
               
           </p>
         </header>
@@ -261,13 +298,13 @@ Standard Time and end time for the event is estimated)</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/kelley-women-cyber-security-conference-nashville-tn">Kelley @ Women in Cyber Security Conference, Nashville, TN</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/kelley-women-cyber-security-conference-nashville-tn">Kelley @ Women in Cyber Security Conference, Nashville, TN</a></h2>
           <p class="post-meta">
-              11 April 2014
+              <span class="startdate" data-startdate="2014-04-11">11 April 2014</span>
               
-                to 12 April 2014
+                to <span class="enddate" data-enddate="2014-04-12">12 April 2014</span>
               
           </p>
         </header>
@@ -279,13 +316,13 @@ Standard Time and end time for the event is estimated)</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/civil-rights-defenders-defenders-days">Civil Rights Defenders, Defender&#39;s Days</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/civil-rights-defenders-defenders-days">Civil Rights Defenders, Defender&#39;s Days</a></h2>
           <p class="post-meta">
-              1 April 2014
+              <span class="startdate" data-startdate="2014-04-01">1 April 2014</span>
               
-                to 4 April 2014
+                to <span class="enddate" data-enddate="2014-04-04">4 April 2014</span>
               
           </p>
         </header>
@@ -297,13 +334,13 @@ Standard Time and end time for the event is estimated)</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/kelley-cerias-symposium-purdue-university">Kelley @ CERIAS Symposium, Purdue University</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/kelley-cerias-symposium-purdue-university">Kelley @ CERIAS Symposium, Purdue University</a></h2>
           <p class="post-meta">
-              25 March 2014
+              <span class="startdate" data-startdate="2014-03-25">25 March 2014</span>
               
-                to 27 March 2014
+                to <span class="enddate" data-enddate="2014-03-27">27 March 2014</span>
               
           </p>
         </header>
@@ -319,13 +356,13 @@ Standard Time and end time for the event is estimated)</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-libreplanet-2014-mit-cambridge-ma">Tor @ LibrePlanet 2014, MIT, Cambridge, MA</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-libreplanet-2014-mit-cambridge-ma">Tor @ LibrePlanet 2014, MIT, Cambridge, MA</a></h2>
           <p class="post-meta">
-              22 March 2014
+              <span class="startdate" data-startdate="2014-03-22">22 March 2014</span>
               
-                to 23 March 2014
+                to <span class="enddate" data-enddate="2014-03-23">23 March 2014</span>
               
           </p>
         </header>
@@ -337,13 +374,13 @@ Standard Time and end time for the event is estimated)</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/karen-and-kelley-sxsw-austin-tx">Karen and Kelley @ SXSW, Austin, TX</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/karen-and-kelley-sxsw-austin-tx">Karen and Kelley @ SXSW, Austin, TX</a></h2>
           <p class="post-meta">
-              7 March 2014
+              <span class="startdate" data-startdate="2014-03-07">7 March 2014</span>
               
-                to 11 March 2014
+                to <span class="enddate" data-enddate="2014-03-11">11 March 2014</span>
               
           </p>
         </header>
@@ -360,13 +397,13 @@ Tips &amp; Tools for Protected Connection on Tuesday, March 11th or visit us at 
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-boston-network-users-group-meeting">Andrew @ Boston Network Users Group Meeting</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-boston-network-users-group-meeting">Andrew @ Boston Network Users Group Meeting</a></h2>
           <p class="post-meta">
-              4 March 2014
+              <span class="startdate" data-startdate="2014-03-04">4 March 2014</span>
               
-                to 4 March 2014
+                to <span class="enddate" data-enddate="2014-03-04">4 March 2014</span>
               
           </p>
         </header>
@@ -376,11 +413,11 @@ Tips &amp; Tools for Protected Connection on Tuesday, March 11th or visit us at 
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-financial-crypto-2014-barbados">Tor @ Financial Crypto 2014, Barbados</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-financial-crypto-2014-barbados">Tor @ Financial Crypto 2014, Barbados</a></h2>
           <p class="post-meta">
-              3 March 2014
+              <span class="startdate" data-startdate="2014-03-03">3 March 2014</span>
               
           </p>
         </header>
@@ -392,13 +429,13 @@ Tips &amp; Tools for Protected Connection on Tuesday, March 11th or visit us at 
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/kelley-2014-car-conference-baltimore">Kelley @ 2014 CAR Conference, Baltimore</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/kelley-2014-car-conference-baltimore">Kelley @ 2014 CAR Conference, Baltimore</a></h2>
           <p class="post-meta">
-              1 March 2014
+              <span class="startdate" data-startdate="2014-03-01">1 March 2014</span>
               
-                to 1 March 2014
+                to <span class="enddate" data-enddate="2014-03-01">1 March 2014</span>
               
           </p>
         </header>
@@ -411,13 +448,13 @@ Tips &amp; Tools for Protected Connection on Tuesday, March 11th or visit us at 
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-bostoncambridge-countersurveillance-discotech">Andrew at Boston/Cambridge Countersurveillance DiscoTech</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-bostoncambridge-countersurveillance-discotech">Andrew at Boston/Cambridge Countersurveillance DiscoTech</a></h2>
           <p class="post-meta">
-              1 March 2014
+              <span class="startdate" data-startdate="2014-03-01">1 March 2014</span>
               
-                to 2 March 2014
+                to <span class="enddate" data-enddate="2014-03-02">2 March 2014</span>
               
           </p>
         </header>
@@ -429,13 +466,13 @@ Tips &amp; Tools for Protected Connection on Tuesday, March 11th or visit us at 
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tors-winter-2014-developers-meeting-reykjavik-iceland">Tor&#39;s Winter 2014 Developers Meeting, Reykjavik, Iceland</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tors-winter-2014-developers-meeting-reykjavik-iceland">Tor&#39;s Winter 2014 Developers Meeting, Reykjavik, Iceland</a></h2>
           <p class="post-meta">
-              17 February 2014
+              <span class="startdate" data-startdate="2014-02-17">17 February 2014</span>
               
-                to 21 February 2014
+                to <span class="enddate" data-enddate="2014-02-21">21 February 2014</span>
               
           </p>
         </header>
@@ -449,13 +486,13 @@ Tips &amp; Tools for Protected Connection on Tuesday, March 11th or visit us at 
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/privacy-sos-cryptoparty-northeastern-university-boston">Privacy SOS CryptoParty at NorthEastern University in Boston</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/privacy-sos-cryptoparty-northeastern-university-boston">Privacy SOS CryptoParty at NorthEastern University in Boston</a></h2>
           <p class="post-meta">
-              9 February 2014
+              <span class="startdate" data-startdate="2014-02-09">9 February 2014</span>
               
-                to 9 February 2014
+                to <span class="enddate" data-enddate="2014-02-09">9 February 2014</span>
               
           </p>
         </header>
@@ -473,13 +510,13 @@ Tips &amp; Tools for Protected Connection on Tuesday, March 11th or visit us at 
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-presenting-new-media-inspiration-2014-prague-czech-republic">Tor Presenting @ New Media Inspiration 2014, Prague, Czech Republic</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-presenting-new-media-inspiration-2014-prague-czech-republic">Tor Presenting @ New Media Inspiration 2014, Prague, Czech Republic</a></h2>
           <p class="post-meta">
-              8 February 2014
+              <span class="startdate" data-startdate="2014-02-08">8 February 2014</span>
               
-                to 8 February 2014
+                to <span class="enddate" data-enddate="2014-02-08">8 February 2014</span>
               
           </p>
         </header>
@@ -495,13 +532,13 @@ Abstract: Authoritarians worldwide are promoting censorship as a tool for &quot;
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/colin-childs-presenting-tor-cryptoparty-winnipeg">Colin Childs Presenting Tor @ CryptoParty, Winnipeg</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/colin-childs-presenting-tor-cryptoparty-winnipeg">Colin Childs Presenting Tor @ CryptoParty, Winnipeg</a></h2>
           <p class="post-meta">
-              8 February 2014
+              <span class="startdate" data-startdate="2014-02-08">8 February 2014</span>
               
-                to 8 February 2014
+                to <span class="enddate" data-enddate="2014-02-08">8 February 2014</span>
               
           </p>
         </header>
@@ -513,11 +550,11 @@ Abstract: Authoritarians worldwide are promoting censorship as a tool for &quot;
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-fosdem-brussels">Tor @ FOSDEM, Brussels</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-fosdem-brussels">Tor @ FOSDEM, Brussels</a></h2>
           <p class="post-meta">
-              1 February 2014
+              <span class="startdate" data-startdate="2014-02-01">1 February 2014</span>
               
           </p>
         </header>
@@ -529,13 +566,13 @@ Abstract: Authoritarians worldwide are promoting censorship as a tool for &quot;
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-nsf-watch-seminar-series-arlington-va">Roger @ NSF WATCH Seminar Series, Arlington, VA</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-nsf-watch-seminar-series-arlington-va">Roger @ NSF WATCH Seminar Series, Arlington, VA</a></h2>
           <p class="post-meta">
-              14 January 2014
+              <span class="startdate" data-startdate="2014-01-14">14 January 2014</span>
               
-                to 14 January 2014
+                to <span class="enddate" data-enddate="2014-01-14">14 January 2014</span>
               
           </p>
         </header>
@@ -547,13 +584,13 @@ Abstract: Authoritarians worldwide are promoting censorship as a tool for &quot;
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-real-world-crypto-2014-new-york-city-usa">Tor @ Real World Crypto 2014, New York City, USA</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-real-world-crypto-2014-new-york-city-usa">Tor @ Real World Crypto 2014, New York City, USA</a></h2>
           <p class="post-meta">
-              13 January 2014
+              <span class="startdate" data-startdate="2014-01-13">13 January 2014</span>
               
-                to 15 January 2014
+                to <span class="enddate" data-enddate="2014-01-15">15 January 2014</span>
               
           </p>
         </header>
@@ -563,13 +600,13 @@ Abstract: Authoritarians worldwide are promoting censorship as a tool for &quot;
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-30th-chaos-communication-congress-hamburg-germany">Tor @ 30th Chaos Communication Congress, Hamburg, Germany</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-30th-chaos-communication-congress-hamburg-germany">Tor @ 30th Chaos Communication Congress, Hamburg, Germany</a></h2>
           <p class="post-meta">
-              27 December 2013
+              <span class="startdate" data-startdate="2013-12-27">27 December 2013</span>
               
-                to 30 December 2013
+                to <span class="enddate" data-enddate="2013-12-30">30 December 2013</span>
               
           </p>
         </header>
@@ -581,13 +618,13 @@ Abstract: Authoritarians worldwide are promoting censorship as a tool for &quot;
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tors-new-cambridge-offices-open-house">Tor&#39;s New Cambridge Offices - OPEN HOUSE </a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tors-new-cambridge-offices-open-house">Tor&#39;s New Cambridge Offices - OPEN HOUSE </a></h2>
           <p class="post-meta">
-              20 November 2013
+              <span class="startdate" data-startdate="2013-11-20">20 November 2013</span>
               
-                to 20 November 2013
+                to <span class="enddate" data-enddate="2013-11-20">20 November 2013</span>
               
           </p>
         </header>
@@ -610,13 +647,13 @@ Transition House: <a href="mailto:jenny@transitionhouse.org">jenny@transitionhou
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/20th-acm-conference-computer-and-communications-security-berlin-germany">20th ACM Conference on Computer and Communications Security, Berlin, Germany</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/20th-acm-conference-computer-and-communications-security-berlin-germany">20th ACM Conference on Computer and Communications Security, Berlin, Germany</a></h2>
           <p class="post-meta">
-              4 November 2013
+              <span class="startdate" data-startdate="2013-11-04">4 November 2013</span>
               
-                to 5 November 2013
+                to <span class="enddate" data-enddate="2013-11-05">5 November 2013</span>
               
           </p>
         </header>
@@ -627,13 +664,13 @@ Transition House: <a href="mailto:jenny@transitionhouse.org">jenny@transitionhou
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/runa-digital-security-event-new-york-city-ny">Runa @ Digital Security Event, New York City, NY</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/runa-digital-security-event-new-york-city-ny">Runa @ Digital Security Event, New York City, NY</a></h2>
           <p class="post-meta">
-              28 October 2013
+              <span class="startdate" data-startdate="2013-10-28">28 October 2013</span>
               
-                to 28 October 2013
+                to <span class="enddate" data-enddate="2013-10-28">28 October 2013</span>
               
           </p>
         </header>
@@ -648,11 +685,11 @@ Transition House: <a href="mailto:jenny@transitionhouse.org">jenny@transitionhou
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-dc-cryptoparty">Tor @ DC CryptoParty</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-dc-cryptoparty">Tor @ DC CryptoParty</a></h2>
           <p class="post-meta">
-              25 October 2013
+              <span class="startdate" data-startdate="2013-10-25">25 October 2013</span>
               
           </p>
         </header>
@@ -669,13 +706,13 @@ Setuping and Using Encrypted E-mail</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/kelley-ona-conference-journalists-atlanta-ga">Kelley @ ONA Conference for Journalists, Atlanta, GA</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/kelley-ona-conference-journalists-atlanta-ga">Kelley @ ONA Conference for Journalists, Atlanta, GA</a></h2>
           <p class="post-meta">
-              17 October 2013
+              <span class="startdate" data-startdate="2013-10-17">17 October 2013</span>
               
-                to 18 October 2013
+                to <span class="enddate" data-enddate="2013-10-18">18 October 2013</span>
               
           </p>
         </header>
@@ -689,13 +726,13 @@ Setuping and Using Encrypted E-mail</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/kelley-journalist-training-event-helsiniki-finland">Kelley @ Journalist Training Event, Helsiniki, Finland</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/kelley-journalist-training-event-helsiniki-finland">Kelley @ Journalist Training Event, Helsiniki, Finland</a></h2>
           <p class="post-meta">
-              11 October 2013
+              <span class="startdate" data-startdate="2013-10-11">11 October 2013</span>
               
-                to 11 October 2013
+                to <span class="enddate" data-enddate="2013-10-11">11 October 2013</span>
               
           </p>
         </header>
@@ -707,13 +744,13 @@ Setuping and Using Encrypted E-mail</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-secure-poland">Andrew @ Secure Poland</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-secure-poland">Andrew @ Secure Poland</a></h2>
           <p class="post-meta">
-              9 October 2013
+              <span class="startdate" data-startdate="2013-10-09">9 October 2013</span>
               
-                to 10 October 2013
+                to <span class="enddate" data-enddate="2013-10-10">10 October 2013</span>
               
           </p>
         </header>
@@ -723,13 +760,13 @@ Setuping and Using Encrypted E-mail</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-circumvention-tech-summit-iv-berlin">Tor @ Circumvention Tech Summit IV, Berlin</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-circumvention-tech-summit-iv-berlin">Tor @ Circumvention Tech Summit IV, Berlin</a></h2>
           <p class="post-meta">
-              29 September 2013
+              <span class="startdate" data-startdate="2013-09-29">29 September 2013</span>
               
-                to 1 October 2013
+                to <span class="enddate" data-enddate="2013-10-01">1 October 2013</span>
               
           </p>
         </header>
@@ -741,13 +778,13 @@ Setuping and Using Encrypted E-mail</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/winnipeg-cryptoparty-talking-tor">Winnipeg CryptoParty Talking Tor</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/winnipeg-cryptoparty-talking-tor">Winnipeg CryptoParty Talking Tor</a></h2>
           <p class="post-meta">
-              28 September 2013
+              <span class="startdate" data-startdate="2013-09-28">28 September 2013</span>
               
-                to 28 September 2013
+                to <span class="enddate" data-enddate="2013-09-28">28 September 2013</span>
               
           </p>
         </header>
@@ -763,13 +800,13 @@ Setuping and Using Encrypted E-mail</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/gnu-30th-anniversary-celebration-and-hackathon">GNU 30th anniversary celebration and hackathon</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/gnu-30th-anniversary-celebration-and-hackathon">GNU 30th anniversary celebration and hackathon</a></h2>
           <p class="post-meta">
-              28 September 2013
+              <span class="startdate" data-startdate="2013-09-28">28 September 2013</span>
               
-                to 29 September 2013
+                to <span class="enddate" data-enddate="2013-09-29">29 September 2013</span>
               
           </p>
         </header>
@@ -783,13 +820,13 @@ Setuping and Using Encrypted E-mail</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/kelley-and-karen-knight-foundation-summer-challenge-event">Kelley and Karen @ Knight Foundation Summer Challenge Event</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/kelley-and-karen-knight-foundation-summer-challenge-event">Kelley and Karen @ Knight Foundation Summer Challenge Event</a></h2>
           <p class="post-meta">
-              26 August 2013
+              <span class="startdate" data-startdate="2013-08-26">26 August 2013</span>
               
-                to 27 August 2013
+                to <span class="enddate" data-enddate="2013-08-27">27 August 2013</span>
               
           </p>
         </header>
@@ -799,13 +836,13 @@ Setuping and Using Encrypted E-mail</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-usenix-security-symposium-washington-dc">Roger @ USENIX Security Symposium, Washington, DC</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-usenix-security-symposium-washington-dc">Roger @ USENIX Security Symposium, Washington, DC</a></h2>
           <p class="post-meta">
-              14 August 2013
+              <span class="startdate" data-startdate="2013-08-14">14 August 2013</span>
               
-                to 16 August 2013
+                to <span class="enddate" data-enddate="2013-08-16">16 August 2013</span>
               
           </p>
         </header>
@@ -817,13 +854,13 @@ Setuping and Using Encrypted E-mail</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-foci-13-washington-dc">Roger @ FOCI &#39;13, Washington, DC</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-foci-13-washington-dc">Roger @ FOCI &#39;13, Washington, DC</a></h2>
           <p class="post-meta">
-              13 August 2013
+              <span class="startdate" data-startdate="2013-08-13">13 August 2013</span>
               
-                to 13 August 2013
+                to <span class="enddate" data-enddate="2013-08-13">13 August 2013</span>
               
           </p>
         </header>
@@ -833,13 +870,13 @@ Setuping and Using Encrypted E-mail</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/philipp-winter-foci-13-washington-dc">Philipp Winter @ FOCI &#39;13, Washington, DC</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/philipp-winter-foci-13-washington-dc">Philipp Winter @ FOCI &#39;13, Washington, DC</a></h2>
           <p class="post-meta">
-              13 August 2013
+              <span class="startdate" data-startdate="2013-08-13">13 August 2013</span>
               
-                to 13 August 2013
+                to <span class="enddate" data-enddate="2013-08-13">13 August 2013</span>
               
           </p>
         </header>
@@ -854,13 +891,13 @@ Setuping and Using Encrypted E-mail</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tom-l-ohm-geestmerambacht-near-alkmaar-netherlands">Tom L. @ OHM, Geestmerambacht, near Alkmaar (The Netherlands)</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tom-l-ohm-geestmerambacht-near-alkmaar-netherlands">Tom L. @ OHM, Geestmerambacht, near Alkmaar (The Netherlands)</a></h2>
           <p class="post-meta">
-              31 July 2013
+              <span class="startdate" data-startdate="2013-07-31">31 July 2013</span>
               
-                to 4 August 2013
+                to <span class="enddate" data-enddate="2013-08-04">4 August 2013</span>
               
           </p>
         </header>
@@ -872,13 +909,13 @@ Setuping and Using Encrypted E-mail</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/join-us-tor-project-public-hack-day-event-munich-germany">JOIN US - Tor Project Public Hack Day Event, Munich, Germany</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/join-us-tor-project-public-hack-day-event-munich-germany">JOIN US - Tor Project Public Hack Day Event, Munich, Germany</a></h2>
           <p class="post-meta">
-              26 July 2013
+              <span class="startdate" data-startdate="2013-07-26">26 July 2013</span>
               
-                to 26 July 2013
+                to <span class="enddate" data-enddate="2013-07-26">26 July 2013</span>
               
           </p>
         </header>
@@ -899,11 +936,11 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-annual-dev-meeting">Tor Annual Dev Meeting</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-annual-dev-meeting">Tor Annual Dev Meeting</a></h2>
           <p class="post-meta">
-              22 July 2013
+              <span class="startdate" data-startdate="2013-07-22">22 July 2013</span>
               
           </p>
         </header>
@@ -913,13 +950,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-privacy-enhancing-technology-symposium-0">Tor at Privacy Enhancing Technology Symposium</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-privacy-enhancing-technology-symposium-0">Tor at Privacy Enhancing Technology Symposium</a></h2>
           <p class="post-meta">
-              10 July 2013
+              <span class="startdate" data-startdate="2013-07-10">10 July 2013</span>
               
-                to 12 July 2013
+                to <span class="enddate" data-enddate="2013-07-12">12 July 2013</span>
               
           </p>
         </header>
@@ -929,13 +966,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-pets-2013-bloomington">Roger @ PETS 2013, Bloomington, IN</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-pets-2013-bloomington">Roger @ PETS 2013, Bloomington, IN</a></h2>
           <p class="post-meta">
-              10 July 2013
+              <span class="startdate" data-startdate="2013-07-10">10 July 2013</span>
               
-                to 12 July 2013
+                to <span class="enddate" data-enddate="2013-07-12">12 July 2013</span>
               
           </p>
         </header>
@@ -947,13 +984,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-petools-workshop-privacy-enhancing-tools-bloomington">Roger @ PETools: Workshop on Privacy Enhancing Tools, Bloomington, IN</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-petools-workshop-privacy-enhancing-tools-bloomington">Roger @ PETools: Workshop on Privacy Enhancing Tools, Bloomington, IN</a></h2>
           <p class="post-meta">
-              9 July 2013
+              <span class="startdate" data-startdate="2013-07-09">9 July 2013</span>
               
-                to 9 July 2013
+                to <span class="enddate" data-enddate="2013-07-09">9 July 2013</span>
               
           </p>
         </header>
@@ -965,13 +1002,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/lunar-14th-lsm-conference-brussels">Lunar @ 14th LSM Conference, Brussels</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/lunar-14th-lsm-conference-brussels">Lunar @ 14th LSM Conference, Brussels</a></h2>
           <p class="post-meta">
-              6 July 2013
+              <span class="startdate" data-startdate="2013-07-06">6 July 2013</span>
               
-                to 11 July 2013
+                to <span class="enddate" data-enddate="2013-07-11">11 July 2013</span>
               
           </p>
         </header>
@@ -987,13 +1024,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/runa-computers-freedom-and-privacy-conference-dc">Runa @ Computers, Freedom and Privacy Conference, DC</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/runa-computers-freedom-and-privacy-conference-dc">Runa @ Computers, Freedom and Privacy Conference, DC</a></h2>
           <p class="post-meta">
-              25 June 2013
+              <span class="startdate" data-startdate="2013-06-25">25 June 2013</span>
               
-                to 26 June 2013
+                to <span class="enddate" data-enddate="2013-06-26">26 June 2013</span>
               
           </p>
         </header>
@@ -1006,13 +1043,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/karen-and-kelley-investigative-reporters-editors-conference-san-antonio-tx">Karen and Kelley @ Investigative Reporters &amp; Editors Conference, San Antonio, TX</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/karen-and-kelley-investigative-reporters-editors-conference-san-antonio-tx">Karen and Kelley @ Investigative Reporters &amp; Editors Conference, San Antonio, TX</a></h2>
           <p class="post-meta">
-              20 June 2013
+              <span class="startdate" data-startdate="2013-06-20">20 June 2013</span>
               
-                to 23 June 2013
+                to <span class="enddate" data-enddate="2013-06-23">23 June 2013</span>
               
           </p>
         </header>
@@ -1024,13 +1061,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/karen-and-kelley-virtual-economy-potential-perplexities-and-promises-washington-dc">Karen and Kelley @ The Virtual Economy: Potential, Perplexities, and Promises, Washington DC</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/karen-and-kelley-virtual-economy-potential-perplexities-and-promises-washington-dc">Karen and Kelley @ The Virtual Economy: Potential, Perplexities, and Promises, Washington DC</a></h2>
           <p class="post-meta">
-              13 June 2013
+              <span class="startdate" data-startdate="2013-06-13">13 June 2013</span>
               
-                to 13 June 2013
+                to <span class="enddate" data-enddate="2013-06-13">13 June 2013</span>
               
           </p>
         </header>
@@ -1043,11 +1080,11 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/runa-summercon-new-york-city">Runa @ SummerCon, New York City</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/runa-summercon-new-york-city">Runa @ SummerCon, New York City</a></h2>
           <p class="post-meta">
-              7 June 2013
+              <span class="startdate" data-startdate="2013-06-07">7 June 2013</span>
               
           </p>
         </header>
@@ -1060,13 +1097,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/mortiz-youth-internet-governance-forum-berlin-germany">Mortiz @ Youth Internet Governance Forum, Berlin, Germany</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/mortiz-youth-internet-governance-forum-berlin-germany">Mortiz @ Youth Internet Governance Forum, Berlin, Germany</a></h2>
           <p class="post-meta">
-              1 June 2013
+              <span class="startdate" data-startdate="2013-06-01">1 June 2013</span>
               
-                to 1 June 2013
+                to <span class="enddate" data-enddate="2013-06-01">1 June 2013</span>
               
           </p>
         </header>
@@ -1078,13 +1115,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/runa-social-media-lessons-learned-international-organizations-brussels">Runa @ Social Media Lessons Learned from International Organizations, Brussels</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/runa-social-media-lessons-learned-international-organizations-brussels">Runa @ Social Media Lessons Learned from International Organizations, Brussels</a></h2>
           <p class="post-meta">
-              30 May 2013
+              <span class="startdate" data-startdate="2013-05-30">30 May 2013</span>
               
-                to 30 May 2013
+                to <span class="enddate" data-enddate="2013-05-30">30 May 2013</span>
               
           </p>
         </header>
@@ -1097,13 +1134,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-dimacs-rutgers-university">Roger @ DIMACS, Rutgers University</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-dimacs-rutgers-university">Roger @ DIMACS, Rutgers University</a></h2>
           <p class="post-meta">
-              30 May 2013
+              <span class="startdate" data-startdate="2013-05-30">30 May 2013</span>
               
-                to 31 May 2013
+                to <span class="enddate" data-enddate="2013-05-31">31 May 2013</span>
               
           </p>
         </header>
@@ -1115,13 +1152,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jake-consilience-2013-conference-bangalore-india">Jake @ Consilience 2013 Conference, Bangalore, India</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jake-consilience-2013-conference-bangalore-india">Jake @ Consilience 2013 Conference, Bangalore, India</a></h2>
           <p class="post-meta">
-              25 May 2013
+              <span class="startdate" data-startdate="2013-05-25">25 May 2013</span>
               
-                to 26 May 2013
+                to <span class="enddate" data-enddate="2013-05-26">26 May 2013</span>
               
           </p>
         </header>
@@ -1134,11 +1171,11 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jake-stockholm-internet-forum-conference-stockholm">Jake @ Stockholm Internet Forum Conference, Stockholm</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jake-stockholm-internet-forum-conference-stockholm">Jake @ Stockholm Internet Forum Conference, Stockholm</a></h2>
           <p class="post-meta">
-              22 May 2013
+              <span class="startdate" data-startdate="2013-05-22">22 May 2013</span>
               
           </p>
         </header>
@@ -1150,13 +1187,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-ieee-symposium-san-francisco">Roger @ IEEE Symposium, San Francisco</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-ieee-symposium-san-francisco">Roger @ IEEE Symposium, San Francisco</a></h2>
           <p class="post-meta">
-              20 May 2013
+              <span class="startdate" data-startdate="2013-05-20">20 May 2013</span>
               
-                to 22 May 2013
+                to <span class="enddate" data-enddate="2013-05-22">22 May 2013</span>
               
           </p>
         </header>
@@ -1167,13 +1204,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/sebastian-cryptoparty-frankfurt-germany">Sebastian @ CryptoParty in Frankfurt, Germany</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/sebastian-cryptoparty-frankfurt-germany">Sebastian @ CryptoParty in Frankfurt, Germany</a></h2>
           <p class="post-meta">
-              19 May 2013
+              <span class="startdate" data-startdate="2013-05-19">19 May 2013</span>
               
-                to 19 May 2013
+                to <span class="enddate" data-enddate="2013-05-19">19 May 2013</span>
               
           </p>
         </header>
@@ -1185,13 +1222,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/moritz-pixelache-festival-helsinki-finland-tallinn-estonia">Moritz @ Pixelache Festival, Helsinki, Finland / Tallinn, Estonia</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/moritz-pixelache-festival-helsinki-finland-tallinn-estonia">Moritz @ Pixelache Festival, Helsinki, Finland / Tallinn, Estonia</a></h2>
           <p class="post-meta">
-              16 May 2013
+              <span class="startdate" data-startdate="2013-05-16">16 May 2013</span>
               
-                to 19 May 2013
+                to <span class="enddate" data-enddate="2013-05-19">19 May 2013</span>
               
           </p>
         </header>
@@ -1203,13 +1240,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jake-oslo-freedom-forum-oslo-norway">Jake @ Oslo Freedom Forum, Oslo, Norway</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jake-oslo-freedom-forum-oslo-norway">Jake @ Oslo Freedom Forum, Oslo, Norway</a></h2>
           <p class="post-meta">
-              13 May 2013
+              <span class="startdate" data-startdate="2013-05-13">13 May 2013</span>
               
-                to 15 May 2013
+                to <span class="enddate" data-enddate="2013-05-15">15 May 2013</span>
               
           </p>
         </header>
@@ -1221,11 +1258,11 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/runa-hackhackers-africa-digital-security-encryption-journalists-johannesburg">Runa @ Hack/Hackers Africa - Digital Security &amp; Encryption for Journalists, Johannesburg</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/runa-hackhackers-africa-digital-security-encryption-journalists-johannesburg">Runa @ Hack/Hackers Africa - Digital Security &amp; Encryption for Journalists, Johannesburg</a></h2>
           <p class="post-meta">
-              8 May 2013
+              <span class="startdate" data-startdate="2013-05-08">8 May 2013</span>
               
           </p>
         </header>
@@ -1237,13 +1274,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/runa-itweb-security-summit-johannesburg-south-africa">Runa @ ITWeb Security Summit, Johannesburg, South Africa</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/runa-itweb-security-summit-johannesburg-south-africa">Runa @ ITWeb Security Summit, Johannesburg, South Africa</a></h2>
           <p class="post-meta">
-              7 May 2013
+              <span class="startdate" data-startdate="2013-05-07">7 May 2013</span>
               
-                to 8 May 2013
+                to <span class="enddate" data-enddate="2013-05-08">8 May 2013</span>
               
           </p>
         </header>
@@ -1255,13 +1292,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jake-farmhouse-conf-4-hollywood-california">Jake @ Farmhouse Conf 4, Hollywood California</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jake-farmhouse-conf-4-hollywood-california">Jake @ Farmhouse Conf 4, Hollywood California</a></h2>
           <p class="post-meta">
-              4 May 2013
+              <span class="startdate" data-startdate="2013-05-04">4 May 2013</span>
               
-                to 4 May 2013
+                to <span class="enddate" data-enddate="2013-05-04">4 May 2013</span>
               
           </p>
         </header>
@@ -1273,13 +1310,13 @@ Germany. NOTE: the room is to the right of the main entrance.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-advisory-council-child-trafficking-symposium">Andrew @ The Advisory Council on Child Trafficking Symposium</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-advisory-council-child-trafficking-symposium">Andrew @ The Advisory Council on Child Trafficking Symposium</a></h2>
           <p class="post-meta">
-              1 May 2013
+              <span class="startdate" data-startdate="2013-05-01">1 May 2013</span>
               
-                to 1 May 2013
+                to <span class="enddate" data-enddate="2013-05-01">1 May 2013</span>
               
           </p>
         </header>
@@ -1293,13 +1330,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/damian-linuxfest-nw">Damian @ LinuxFest NW</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/damian-linuxfest-nw">Damian @ LinuxFest NW</a></h2>
           <p class="post-meta">
-              27 April 2013
+              <span class="startdate" data-startdate="2013-04-27">27 April 2013</span>
               
-                to 28 April 2013
+                to <span class="enddate" data-enddate="2013-04-28">28 April 2013</span>
               
           </p>
         </header>
@@ -1309,13 +1346,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-new-england-give-camp">Andrew @ New England Give Camp</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-new-england-give-camp">Andrew @ New England Give Camp</a></h2>
           <p class="post-meta">
-              26 April 2013
+              <span class="startdate" data-startdate="2013-04-26">26 April 2013</span>
               
-                to 28 April 2013
+                to <span class="enddate" data-enddate="2013-04-28">28 April 2013</span>
               
           </p>
         </header>
@@ -1325,13 +1362,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/privacy-enhancing-technologies-symposium-2012">Privacy Enhancing Technologies Symposium 2012</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/privacy-enhancing-technologies-symposium-2012">Privacy Enhancing Technologies Symposium 2012</a></h2>
           <p class="post-meta">
-              11 July 2012
+              <span class="startdate" data-startdate="2012-07-11">11 July 2012</span>
               
-                to 13 July 2012
+                to <span class="enddate" data-enddate="2012-07-13">13 July 2012</span>
               
           </p>
         </header>
@@ -1341,13 +1378,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/florence-hackfest">Florence Hackfest</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/florence-hackfest">Florence Hackfest</a></h2>
           <p class="post-meta">
-              5 July 2012
+              <span class="startdate" data-startdate="2012-07-05">5 July 2012</span>
               
-                to 6 July 2012
+                to <span class="enddate" data-enddate="2012-07-06">6 July 2012</span>
               
           </p>
         </header>
@@ -1359,13 +1396,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/karen-and-runa-doing-reddit-ama">Karen and Runa doing Reddit AMA</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/karen-and-runa-doing-reddit-ama">Karen and Runa doing Reddit AMA</a></h2>
           <p class="post-meta">
-              21 June 2012
+              <span class="startdate" data-startdate="2012-06-21">21 June 2012</span>
               
-                to 21 June 2012
+                to <span class="enddate" data-enddate="2012-06-21">21 June 2012</span>
               
           </p>
         </header>
@@ -1375,13 +1412,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/mit-knight-civic-media-conference">MIT-Knight Civic Media Conference</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/mit-knight-civic-media-conference">MIT-Knight Civic Media Conference</a></h2>
           <p class="post-meta">
-              17 June 2012
+              <span class="startdate" data-startdate="2012-06-17">17 June 2012</span>
               
-                to 19 June 2012
+                to <span class="enddate" data-enddate="2012-06-19">19 June 2012</span>
               
           </p>
         </header>
@@ -1391,13 +1428,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/personal-democracy-forum">Personal Democracy Forum</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/personal-democracy-forum">Personal Democracy Forum</a></h2>
           <p class="post-meta">
-              11 June 2012
+              <span class="startdate" data-startdate="2012-06-11">11 June 2012</span>
               
-                to 12 June 2012
+                to <span class="enddate" data-enddate="2012-06-12">12 June 2012</span>
               
           </p>
         </header>
@@ -1407,13 +1444,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/rights-con-rio">Rights Con Rio</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/rights-con-rio">Rights Con Rio</a></h2>
           <p class="post-meta">
-              31 May 2012
+              <span class="startdate" data-startdate="2012-05-31">31 May 2012</span>
               
-                to 1 June 2012
+                to <span class="enddate" data-enddate="2012-06-01">1 June 2012</span>
               
           </p>
         </header>
@@ -1423,13 +1460,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-speaking-montreal">Roger speaking in Montreal</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-speaking-montreal">Roger speaking in Montreal</a></h2>
           <p class="post-meta">
-              28 April 2012
+              <span class="startdate" data-startdate="2012-04-28">28 April 2012</span>
               
-                to 29 April 2012
+                to <span class="enddate" data-enddate="2012-04-29">29 April 2012</span>
               
           </p>
         </header>
@@ -1439,11 +1476,11 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-jacob-stockholm-internet-forum">Andrew &amp; Jacob at Stockholm Internet Forum</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-jacob-stockholm-internet-forum">Andrew &amp; Jacob at Stockholm Internet Forum</a></h2>
           <p class="post-meta">
-              18 April 2012
+              <span class="startdate" data-startdate="2012-04-18">18 April 2012</span>
               
           </p>
         </header>
@@ -1453,13 +1490,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/101-photos-press-freedom-25th-anniversary-reporters-without-borders">101 Photos for Press Freedom: 25th Anniversary of Reporters without Borders</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/101-photos-press-freedom-25th-anniversary-reporters-without-borders">101 Photos for Press Freedom: 25th Anniversary of Reporters without Borders</a></h2>
           <p class="post-meta">
-              28 March 2012
+              <span class="startdate" data-startdate="2012-03-28">28 March 2012</span>
               
-                to 28 March 2012
+                to <span class="enddate" data-enddate="2012-03-28">28 March 2012</span>
               
           </p>
         </header>
@@ -1469,13 +1506,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-libreplanet-2012">Andrew at LibrePlanet 2012</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-libreplanet-2012">Andrew at LibrePlanet 2012</a></h2>
           <p class="post-meta">
-              24 March 2012
+              <span class="startdate" data-startdate="2012-03-24">24 March 2012</span>
               
-                to 25 March 2012
+                to <span class="enddate" data-enddate="2012-03-25">25 March 2012</span>
               
           </p>
         </header>
@@ -1485,13 +1522,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-techcamp-bangkok">Tor at TechCamp Bangkok</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-techcamp-bangkok">Tor at TechCamp Bangkok</a></h2>
           <p class="post-meta">
-              20 March 2012
+              <span class="startdate" data-startdate="2012-03-20">20 March 2012</span>
               
-                to 22 March 2012
+                to <span class="enddate" data-enddate="2012-03-22">22 March 2012</span>
               
           </p>
         </header>
@@ -1501,13 +1538,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-speaking-ieee-boston-chapter">Andrew speaking at IEEE Boston Chapter</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-speaking-ieee-boston-chapter">Andrew speaking at IEEE Boston Chapter</a></h2>
           <p class="post-meta">
-              19 March 2012
+              <span class="startdate" data-startdate="2012-03-19">19 March 2012</span>
               
-                to 19 March 2012
+                to <span class="enddate" data-enddate="2012-03-19">19 March 2012</span>
               
           </p>
         </header>
@@ -1517,13 +1554,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-breaking-through-internet-censorship">Tor at Breaking through Internet Censorship</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-breaking-through-internet-censorship">Tor at Breaking through Internet Censorship</a></h2>
           <p class="post-meta">
-              12 March 2012
+              <span class="startdate" data-startdate="2012-03-12">12 March 2012</span>
               
-                to 12 March 2012
+                to <span class="enddate" data-enddate="2012-03-12">12 March 2012</span>
               
           </p>
         </header>
@@ -1533,13 +1570,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-bbc-radio-5-investigates">Andrew on BBC Radio 5 Investigates</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-bbc-radio-5-investigates">Andrew on BBC Radio 5 Investigates</a></h2>
           <p class="post-meta">
-              5 February 2012
+              <span class="startdate" data-startdate="2012-02-05">5 February 2012</span>
               
-                to 5 February 2012
+                to <span class="enddate" data-enddate="2012-02-05">5 February 2012</span>
               
           </p>
         </header>
@@ -1549,13 +1586,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-consent-networked">Andrew at Consent of the Networked</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-consent-networked">Andrew at Consent of the Networked</a></h2>
           <p class="post-meta">
-              2 February 2012
+              <span class="startdate" data-startdate="2012-02-02">2 February 2012</span>
               
-                to 2 February 2012
+                to <span class="enddate" data-enddate="2012-02-02">2 February 2012</span>
               
           </p>
         </header>
@@ -1565,13 +1602,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-keynote-13th-australian-linux-conference">Jacob keynote at 13th Australian Linux Conference</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-keynote-13th-australian-linux-conference">Jacob keynote at 13th Australian Linux Conference</a></h2>
           <p class="post-meta">
-              16 January 2012
+              <span class="startdate" data-startdate="2012-01-16">16 January 2012</span>
               
-                to 20 January 2012
+                to <span class="enddate" data-enddate="2012-01-20">20 January 2012</span>
               
           </p>
         </header>
@@ -1581,13 +1618,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-28c3-berlin-germany">Tor at 28C3 in Berlin, Germany</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-28c3-berlin-germany">Tor at 28C3 in Berlin, Germany</a></h2>
           <p class="post-meta">
-              27 December 2011
+              <span class="startdate" data-startdate="2011-12-27">27 December 2011</span>
               
-                to 30 December 2011
+                to <span class="enddate" data-enddate="2011-12-30">30 December 2011</span>
               
           </p>
         </header>
@@ -1597,13 +1634,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-international-institute-communications">Andrew at International Institute of Communications</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-international-institute-communications">Andrew at International Institute of Communications</a></h2>
           <p class="post-meta">
-              28 November 2011
+              <span class="startdate" data-startdate="2011-11-28">28 November 2011</span>
               
-                to 29 November 2011
+                to <span class="enddate" data-enddate="2011-11-29">29 November 2011</span>
               
           </p>
         </header>
@@ -1613,13 +1650,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-internet-and-democratic-change">Tor at Internet and Democratic Change</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-internet-and-democratic-change">Tor at Internet and Democratic Change</a></h2>
           <p class="post-meta">
-              26 October 2011
+              <span class="startdate" data-startdate="2011-10-26">26 October 2011</span>
               
-                to 26 October 2011
+                to <span class="enddate" data-enddate="2011-10-26">26 October 2011</span>
               
           </p>
         </header>
@@ -1629,13 +1666,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-silicon-valley-human-rights-conference">Tor at Silicon Valley Human Rights Conference</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-silicon-valley-human-rights-conference">Tor at Silicon Valley Human Rights Conference</a></h2>
           <p class="post-meta">
-              25 October 2011
+              <span class="startdate" data-startdate="2011-10-25">25 October 2011</span>
               
-                to 26 October 2011
+                to <span class="enddate" data-enddate="2011-10-26">26 October 2011</span>
               
           </p>
         </header>
@@ -1645,13 +1682,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-contact-summit-2011">Tor at Contact Summit 2011</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-contact-summit-2011">Tor at Contact Summit 2011</a></h2>
           <p class="post-meta">
-              20 October 2011
+              <span class="startdate" data-startdate="2011-10-20">20 October 2011</span>
               
-                to 20 October 2011
+                to <span class="enddate" data-enddate="2011-10-20">20 October 2011</span>
               
           </p>
         </header>
@@ -1661,13 +1698,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-nnedv-conference">Andrew at NNEDV Conference</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-nnedv-conference">Andrew at NNEDV Conference</a></h2>
           <p class="post-meta">
-              8 August 2011
+              <span class="startdate" data-startdate="2011-08-08">8 August 2011</span>
               
-                to 8 August 2011
+                to <span class="enddate" data-enddate="2011-08-08">8 August 2011</span>
               
           </p>
         </header>
@@ -1677,11 +1714,11 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-defcon-19">Tor at DEFCON 19</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-defcon-19">Tor at DEFCON 19</a></h2>
           <p class="post-meta">
-              4 August 2011
+              <span class="startdate" data-startdate="2011-08-04">4 August 2011</span>
               
           </p>
         </header>
@@ -1691,13 +1728,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-privacy-enhancing-technology-symposium">Tor at Privacy Enhancing Technology Symposium</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-privacy-enhancing-technology-symposium">Tor at Privacy Enhancing Technology Symposium</a></h2>
           <p class="post-meta">
-              27 July 2011
+              <span class="startdate" data-startdate="2011-07-27">27 July 2011</span>
               
-                to 31 July 2011
+                to <span class="enddate" data-enddate="2011-07-31">31 July 2011</span>
               
           </p>
         </header>
@@ -1707,13 +1744,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-recon-2011">Jacob at recon 2011</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-recon-2011">Jacob at recon 2011</a></h2>
           <p class="post-meta">
-              8 July 2011
+              <span class="startdate" data-startdate="2011-07-08">8 July 2011</span>
               
-                to 10 July 2011
+                to <span class="enddate" data-enddate="2011-07-10">10 July 2011</span>
               
           </p>
         </header>
@@ -1723,13 +1760,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-fisl-12-porto-alegre-brasil">Jacob at FISL 12 in Porto Alegre, Brasil</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-fisl-12-porto-alegre-brasil">Jacob at FISL 12 in Porto Alegre, Brasil</a></h2>
           <p class="post-meta">
-              30 June 2011
+              <span class="startdate" data-startdate="2011-06-30">30 June 2011</span>
               
-                to 30 June 2011
+                to <span class="enddate" data-enddate="2011-06-30">30 June 2011</span>
               
           </p>
         </header>
@@ -1739,13 +1776,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-allied-media-conference">Andrew at Allied Media Conference</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-allied-media-conference">Andrew at Allied Media Conference</a></h2>
           <p class="post-meta">
-              23 June 2011
+              <span class="startdate" data-startdate="2011-06-23">23 June 2011</span>
               
-                to 26 June 2011
+                to <span class="enddate" data-enddate="2011-06-26">26 June 2011</span>
               
           </p>
         </header>
@@ -1755,13 +1792,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacoblinus-nordunet-conference">Jacob/Linus at NORDUnet Conference</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacoblinus-nordunet-conference">Jacob/Linus at NORDUnet Conference</a></h2>
           <p class="post-meta">
-              7 June 2011
+              <span class="startdate" data-startdate="2011-06-07">7 June 2011</span>
               
-                to 9 June 2011
+                to <span class="enddate" data-enddate="2011-06-09">9 June 2011</span>
               
           </p>
         </header>
@@ -1771,13 +1808,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-london-cybersecurity-summit">Tor at London Cybersecurity Summit</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-london-cybersecurity-summit">Tor at London Cybersecurity Summit</a></h2>
           <p class="post-meta">
-              1 June 2011
+              <span class="startdate" data-startdate="2011-06-01">1 June 2011</span>
               
-                to 2 June 2011
+                to <span class="enddate" data-enddate="2011-06-02">2 June 2011</span>
               
           </p>
         </header>
@@ -1787,13 +1824,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-university-college-london">Andrew at University College of London</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-university-college-london">Andrew at University College of London</a></h2>
           <p class="post-meta">
-              16 May 2011
+              <span class="startdate" data-startdate="2011-05-16">16 May 2011</span>
               
-                to 16 May 2011
+                to <span class="enddate" data-enddate="2011-05-16">16 May 2011</span>
               
           </p>
         </header>
@@ -1803,13 +1840,13 @@ in partnership with ACCT &amp; Goldman Sachs 10,000 Women</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/stockholm-hackfest">Stockholm Hackfest</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/stockholm-hackfest">Stockholm Hackfest</a></h2>
           <p class="post-meta">
-              14 May 2011
+              <span class="startdate" data-startdate="2011-05-14">14 May 2011</span>
               
-                to 14 May 2011
+                to <span class="enddate" data-enddate="2011-05-14">14 May 2011</span>
               
           </p>
         </header>
@@ -1824,13 +1861,13 @@ Hope to see you on Saturday!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-talking-national-police-iceland">Andrew talking to the National Police of Iceland</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-talking-national-police-iceland">Andrew talking to the National Police of Iceland</a></h2>
           <p class="post-meta">
-              12 May 2011
+              <span class="startdate" data-startdate="2011-05-12">12 May 2011</span>
               
-                to 12 May 2011
+                to <span class="enddate" data-enddate="2011-05-12">12 May 2011</span>
               
           </p>
         </header>
@@ -1840,13 +1877,13 @@ Hope to see you on Saturday!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-hakkav%C3%A9lin">Andrew at Hakkavélin</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-hakkav%C3%A9lin">Andrew at Hakkavélin</a></h2>
           <p class="post-meta">
-              12 May 2011
+              <span class="startdate" data-startdate="2011-05-12">12 May 2011</span>
               
-                to 12 May 2011
+                to <span class="enddate" data-enddate="2011-05-12">12 May 2011</span>
               
           </p>
         </header>
@@ -1856,13 +1893,13 @@ Hope to see you on Saturday!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-talking-international-modern-media-institute">Andrew talking to International Modern Media Institute</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-talking-international-modern-media-institute">Andrew talking to International Modern Media Institute</a></h2>
           <p class="post-meta">
-              11 May 2011
+              <span class="startdate" data-startdate="2011-05-11">11 May 2011</span>
               
-                to 11 May 2011
+                to <span class="enddate" data-enddate="2011-05-11">11 May 2011</span>
               
           </p>
         </header>
@@ -1872,13 +1909,13 @@ Hope to see you on Saturday!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-google-io-san-francisco">Jacob at Google IO in San Francisco</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-google-io-san-francisco">Jacob at Google IO in San Francisco</a></h2>
           <p class="post-meta">
-              9 May 2011
+              <span class="startdate" data-startdate="2011-05-09">9 May 2011</span>
               
-                to 11 May 2011
+                to <span class="enddate" data-enddate="2011-05-11">11 May 2011</span>
               
           </p>
         </header>
@@ -1888,13 +1925,13 @@ Hope to see you on Saturday!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/world-press-freedom-day">World Press Freedom Day</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/world-press-freedom-day">World Press Freedom Day</a></h2>
           <p class="post-meta">
-              2 May 2011
+              <span class="startdate" data-startdate="2011-05-02">2 May 2011</span>
               
-                to 2 May 2011
+                to <span class="enddate" data-enddate="2011-05-02">2 May 2011</span>
               
           </p>
         </header>
@@ -1904,13 +1941,13 @@ Hope to see you on Saturday!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-linuxfest-northwest">Jacob at LinuxFest Northwest</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-linuxfest-northwest">Jacob at LinuxFest Northwest</a></h2>
           <p class="post-meta">
-              29 April 2011
+              <span class="startdate" data-startdate="2011-04-29">29 April 2011</span>
               
-                to 30 April 2011
+                to <span class="enddate" data-enddate="2011-04-30">30 April 2011</span>
               
           </p>
         </header>
@@ -1920,13 +1957,13 @@ Hope to see you on Saturday!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/internet-dissent-and-authoritarianism-control-and-resistance-era-social-media">Internet, Dissent and Authoritarianism: Control and Resistance in an Era of Social Media</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/internet-dissent-and-authoritarianism-control-and-resistance-era-social-media">Internet, Dissent and Authoritarianism: Control and Resistance in an Era of Social Media</a></h2>
           <p class="post-meta">
-              20 April 2011
+              <span class="startdate" data-startdate="2011-04-20">20 April 2011</span>
               
-                to 20 April 2011
+                to <span class="enddate" data-enddate="2011-04-20">20 April 2011</span>
               
           </p>
         </header>
@@ -1946,13 +1983,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-uc-berkeley-school-information">Roger at UC Berkeley School of Information</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-uc-berkeley-school-information">Roger at UC Berkeley School of Information</a></h2>
           <p class="post-meta">
-              18 April 2011
+              <span class="startdate" data-startdate="2011-04-18">18 April 2011</span>
               
-                to 18 April 2011
+                to <span class="enddate" data-enddate="2011-04-18">18 April 2011</span>
               
           </p>
         </header>
@@ -1962,13 +1999,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-panelist-future-internet-freedom">Jacob panelist at The Future of Internet Freedom</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-panelist-future-internet-freedom">Jacob panelist at The Future of Internet Freedom</a></h2>
           <p class="post-meta">
-              14 April 2011
+              <span class="startdate" data-startdate="2011-04-14">14 April 2011</span>
               
-                to 14 April 2011
+                to <span class="enddate" data-enddate="2011-04-14">14 April 2011</span>
               
           </p>
         </header>
@@ -1978,13 +2015,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/sausage">SAUSAGE</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/sausage">SAUSAGE</a></h2>
           <p class="post-meta">
-              5 April 2011
+              <span class="startdate" data-startdate="2011-04-05">5 April 2011</span>
               
-                to 6 April 2011
+                to <span class="enddate" data-enddate="2011-04-06">6 April 2011</span>
               
           </p>
         </header>
@@ -1994,13 +2031,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/royal-military-college-canada">Royal Military College of Canada</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/royal-military-college-canada">Royal Military College of Canada</a></h2>
           <p class="post-meta">
-              29 March 2011
+              <span class="startdate" data-startdate="2011-03-29">29 March 2011</span>
               
-                to 30 March 2011
+                to <span class="enddate" data-enddate="2011-03-30">30 March 2011</span>
               
           </p>
         </header>
@@ -2010,13 +2047,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/usenix-leet-11">Usenix LEET 11</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/usenix-leet-11">Usenix LEET 11</a></h2>
           <p class="post-meta">
-              28 March 2011
+              <span class="startdate" data-startdate="2011-03-28">28 March 2011</span>
               
-                to 29 March 2011
+                to <span class="enddate" data-enddate="2011-03-29">29 March 2011</span>
               
           </p>
         </header>
@@ -2026,13 +2063,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/libreplanet-2011">LibrePlanet 2011</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/libreplanet-2011">LibrePlanet 2011</a></h2>
           <p class="post-meta">
-              19 March 2011
+              <span class="startdate" data-startdate="2011-03-19">19 March 2011</span>
               
-                to 19 March 2011
+                to <span class="enddate" data-enddate="2011-03-19">19 March 2011</span>
               
           </p>
         </header>
@@ -2042,13 +2079,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/london-internet-security-privacy-workshop">London Internet Security &amp; Privacy Workshop</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/london-internet-security-privacy-workshop">London Internet Security &amp; Privacy Workshop</a></h2>
           <p class="post-meta">
-              7 March 2011
+              <span class="startdate" data-startdate="2011-03-07">7 March 2011</span>
               
-                to 7 March 2011
+                to <span class="enddate" data-enddate="2011-03-07">7 March 2011</span>
               
           </p>
         </header>
@@ -2058,13 +2095,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/democracy-dissent-and-digital-media-arab-world">Democracy, Dissent, and Digital Media in the Arab World</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/democracy-dissent-and-digital-media-arab-world">Democracy, Dissent, and Digital Media in the Arab World</a></h2>
           <p class="post-meta">
-              1 March 2011
+              <span class="startdate" data-startdate="2011-03-01">1 March 2011</span>
               
-                to 1 March 2011
+                to <span class="enddate" data-enddate="2011-03-01">1 March 2011</span>
               
           </p>
         </header>
@@ -2074,13 +2111,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-workshop-free-and-open-communication-internet-foci">Roger at Workshop on Free and Open Communication on the Internet (FOCI)</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-workshop-free-and-open-communication-internet-foci">Roger at Workshop on Free and Open Communication on the Internet (FOCI)</a></h2>
           <p class="post-meta">
-              24 February 2011
+              <span class="startdate" data-startdate="2011-02-24">24 February 2011</span>
               
-                to 25 February 2011
+                to <span class="enddate" data-enddate="2011-02-25">25 February 2011</span>
               
           </p>
         </header>
@@ -2090,13 +2127,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-wesleyan-university-0">Andrew at Wesleyan University</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-wesleyan-university-0">Andrew at Wesleyan University</a></h2>
           <p class="post-meta">
-              24 February 2011
+              <span class="startdate" data-startdate="2011-02-24">24 February 2011</span>
               
-                to 24 February 2011
+                to <span class="enddate" data-enddate="2011-02-24">24 February 2011</span>
               
           </p>
         </header>
@@ -2106,13 +2143,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-project-february-hackfest">Tor Project February Hackfest</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-project-february-hackfest">Tor Project February Hackfest</a></h2>
           <p class="post-meta">
-              19 February 2011
+              <span class="startdate" data-startdate="2011-02-19">19 February 2011</span>
               
-                to 19 February 2011
+                to <span class="enddate" data-enddate="2011-02-19">19 February 2011</span>
               
           </p>
         </header>
@@ -2122,13 +2159,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-hackfest-mit">Tor Hackfest at MIT</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-hackfest-mit">Tor Hackfest at MIT</a></h2>
           <p class="post-meta">
-              15 January 2011
+              <span class="startdate" data-startdate="2011-01-15">15 January 2011</span>
               
-                to 15 January 2011
+                to <span class="enddate" data-enddate="2011-01-15">15 January 2011</span>
               
           </p>
         </header>
@@ -2138,13 +2175,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-27c3">Tor at 27C3</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-27c3">Tor at 27C3</a></h2>
           <p class="post-meta">
-              27 December 2010
+              <span class="startdate" data-startdate="2010-12-27">27 December 2010</span>
               
-                to 30 December 2010
+                to <span class="enddate" data-enddate="2010-12-30">30 December 2010</span>
               
           </p>
         </header>
@@ -2154,13 +2191,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-speaks-moscow-state-university">Tor speaks at Moscow State University</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-speaks-moscow-state-university">Tor speaks at Moscow State University</a></h2>
           <p class="post-meta">
-              2 December 2010
+              <span class="startdate" data-startdate="2010-12-02">2 December 2010</span>
               
-                to 2 December 2010
+                to <span class="enddate" data-enddate="2010-12-02">2 December 2010</span>
               
           </p>
         </header>
@@ -2172,13 +2209,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-speaks-reykjav%C3%ADk-digital-freedom-conference">Tor speaks at Reykjavík Digital Freedom Conference</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-speaks-reykjav%C3%ADk-digital-freedom-conference">Tor speaks at Reykjavík Digital Freedom Conference</a></h2>
           <p class="post-meta">
-              1 December 2010
+              <span class="startdate" data-startdate="2010-12-01">1 December 2010</span>
               
-                to 1 December 2010
+                to <span class="enddate" data-enddate="2010-12-01">1 December 2010</span>
               
           </p>
         </header>
@@ -2188,13 +2225,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-codebits">Tor at CodeBits</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-codebits">Tor at CodeBits</a></h2>
           <p class="post-meta">
-              11 November 2010
+              <span class="startdate" data-startdate="2010-11-11">11 November 2010</span>
               
-                to 13 November 2010
+                to <span class="enddate" data-enddate="2010-11-13">13 November 2010</span>
               
           </p>
         </header>
@@ -2204,13 +2241,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-interview-internet-evolution">Andrew interview at Internet Evolution</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-interview-internet-evolution">Andrew interview at Internet Evolution</a></h2>
           <p class="post-meta">
-              11 November 2010
+              <span class="startdate" data-startdate="2010-11-11">11 November 2010</span>
               
-                to 11 November 2010
+                to <span class="enddate" data-enddate="2010-11-11">11 November 2010</span>
               
           </p>
         </header>
@@ -2220,11 +2257,11 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-fscons">Tor at FSCONS</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-fscons">Tor at FSCONS</a></h2>
           <p class="post-meta">
-              5 November 2010
+              <span class="startdate" data-startdate="2010-11-05">5 November 2010</span>
               
           </p>
         </header>
@@ -2234,13 +2271,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-linus-internet-dagarna">Roger, Linus at Internet Dagarna </a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-linus-internet-dagarna">Roger, Linus at Internet Dagarna </a></h2>
           <p class="post-meta">
-              25 October 2010
+              <span class="startdate" data-startdate="2010-10-25">25 October 2010</span>
               
-                to 27 October 2010
+                to <span class="enddate" data-enddate="2010-10-27">27 October 2010</span>
               
           </p>
         </header>
@@ -2250,13 +2287,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-lecturing-stanford">Roger lecturing at Stanford</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-lecturing-stanford">Roger lecturing at Stanford</a></h2>
           <p class="post-meta">
-              22 October 2010
+              <span class="startdate" data-startdate="2010-10-22">22 October 2010</span>
               
-                to 22 October 2010
+                to <span class="enddate" data-enddate="2010-10-22">22 October 2010</span>
               
           </p>
         </header>
@@ -2267,13 +2304,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/gsoc-mentors-gsoc-mentor-summit-mountain-view">GSoC mentors at GSoC mentor summit, Mountain View</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/gsoc-mentors-gsoc-mentor-summit-mountain-view">GSoC mentors at GSoC mentor summit, Mountain View</a></h2>
           <p class="post-meta">
-              22 October 2010
+              <span class="startdate" data-startdate="2010-10-22">22 October 2010</span>
               
-                to 25 October 2010
+                to <span class="enddate" data-enddate="2010-10-25">25 October 2010</span>
               
           </p>
         </header>
@@ -2283,13 +2320,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-attending-workshop-elliptic-curve-computation">Jacob attending the Workshop on Elliptic Curve Computation</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-attending-workshop-elliptic-curve-computation">Jacob attending the Workshop on Elliptic Curve Computation</a></h2>
           <p class="post-meta">
-              18 October 2010
+              <span class="startdate" data-startdate="2010-10-18">18 October 2010</span>
               
-                to 22 October 2010
+                to <span class="enddate" data-enddate="2010-10-22">22 October 2010</span>
               
           </p>
         </header>
@@ -2299,13 +2336,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-lecturing-suny-stonybrook">Roger lecturing at SUNY Stonybrook</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-lecturing-suny-stonybrook">Roger lecturing at SUNY Stonybrook</a></h2>
           <p class="post-meta">
-              17 October 2010
+              <span class="startdate" data-startdate="2010-10-17">17 October 2010</span>
               
-                to 18 October 2010
+                to <span class="enddate" data-enddate="2010-10-18">18 October 2010</span>
               
           </p>
         </header>
@@ -2315,13 +2352,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-bluehat">Jacob at Bluehat</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-bluehat">Jacob at Bluehat</a></h2>
           <p class="post-meta">
-              14 October 2010
+              <span class="startdate" data-startdate="2010-10-14">14 October 2010</span>
               
-                to 15 October 2010
+                to <span class="enddate" data-enddate="2010-10-15">15 October 2010</span>
               
           </p>
         </header>
@@ -2331,13 +2368,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-roger-and-paul-itsg">Andrew, Roger, and Paul at ITSG</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-roger-and-paul-itsg">Andrew, Roger, and Paul at ITSG</a></h2>
           <p class="post-meta">
-              12 October 2010
+              <span class="startdate" data-startdate="2010-10-12">12 October 2010</span>
               
-                to 15 October 2010
+                to <span class="enddate" data-enddate="2010-10-15">15 October 2010</span>
               
           </p>
         </header>
@@ -2347,13 +2384,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-others-wpes-and-acm-ccs-chicago">Roger, others at WPES and ACM CCS, Chicago</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-others-wpes-and-acm-ccs-chicago">Roger, others at WPES and ACM CCS, Chicago</a></h2>
           <p class="post-meta">
-              3 October 2010
+              <span class="startdate" data-startdate="2010-10-03">3 October 2010</span>
               
-                to 8 October 2010
+                to <span class="enddate" data-enddate="2010-10-08">8 October 2010</span>
               
           </p>
         </header>
@@ -2364,13 +2401,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-sourcebarcelona">Tor at SourceBarcelona</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-sourcebarcelona">Tor at SourceBarcelona</a></h2>
           <p class="post-meta">
-              21 September 2010
+              <span class="startdate" data-startdate="2010-09-21">21 September 2010</span>
               
-                to 22 September 2010
+                to <span class="enddate" data-enddate="2010-09-22">22 September 2010</span>
               
           </p>
         </header>
@@ -2380,11 +2417,11 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-igf-2010">Tor at IGF 2010</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-igf-2010">Tor at IGF 2010</a></h2>
           <p class="post-meta">
-              14 September 2010
+              <span class="startdate" data-startdate="2010-09-14">14 September 2010</span>
               
           </p>
         </header>
@@ -2394,13 +2431,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-ars-electronica-2010-festival">Tor at Ars Electronica 2010 Festival</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-ars-electronica-2010-festival">Tor at Ars Electronica 2010 Festival</a></h2>
           <p class="post-meta">
-              2 September 2010
+              <span class="startdate" data-startdate="2010-09-02">2 September 2010</span>
               
-                to 11 September 2010
+                to <span class="enddate" data-enddate="2010-09-11">11 September 2010</span>
               
           </p>
         </header>
@@ -2410,13 +2447,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/ian-others-usenix-security-dc">Ian, others at Usenix Security, DC</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/ian-others-usenix-security-dc">Ian, others at Usenix Security, DC</a></h2>
           <p class="post-meta">
-              11 August 2010
+              <span class="startdate" data-startdate="2010-08-11">11 August 2010</span>
               
-                to 13 August 2010
+                to <span class="enddate" data-enddate="2010-08-13">13 August 2010</span>
               
           </p>
         </header>
@@ -2426,13 +2463,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-international-conference-cyber-security-fordham-university">Tor at International Conference on Cyber Security - Fordham University</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-international-conference-cyber-security-fordham-university">Tor at International Conference on Cyber Security - Fordham University</a></h2>
           <p class="post-meta">
-              2 August 2010
+              <span class="startdate" data-startdate="2010-08-02">2 August 2010</span>
               
-                to 5 August 2010
+                to <span class="enddate" data-enddate="2010-08-05">5 August 2010</span>
               
           </p>
         </header>
@@ -2442,13 +2479,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-debconf-2010-nyc">Tor at DebConf 2010 in NYC</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-debconf-2010-nyc">Tor at DebConf 2010 in NYC</a></h2>
           <p class="post-meta">
-              1 August 2010
+              <span class="startdate" data-startdate="2010-08-01">1 August 2010</span>
               
-                to 7 August 2010
+                to <span class="enddate" data-enddate="2010-08-07">7 August 2010</span>
               
           </p>
         </header>
@@ -2458,13 +2495,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-speaking-def-con-18">Tor speaking at DEF CON 18</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-speaking-def-con-18">Tor speaking at DEF CON 18</a></h2>
           <p class="post-meta">
-              30 July 2010
+              <span class="startdate" data-startdate="2010-07-30">30 July 2010</span>
               
-                to 1 August 2010
+                to <span class="enddate" data-enddate="2010-08-01">1 August 2010</span>
               
           </p>
         </header>
@@ -2476,13 +2513,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-privacy-enhancing-technologies-symposium-berlin-germany">Tor at Privacy Enhancing Technologies Symposium in Berlin, Germany</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-privacy-enhancing-technologies-symposium-berlin-germany">Tor at Privacy Enhancing Technologies Symposium in Berlin, Germany</a></h2>
           <p class="post-meta">
-              17 July 2010
+              <span class="startdate" data-startdate="2010-07-17">17 July 2010</span>
               
-                to 26 July 2010
+                to <span class="enddate" data-enddate="2010-07-26">26 July 2010</span>
               
           </p>
         </header>
@@ -2492,13 +2529,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-speaking-hope-2010">Jacob speaking at HOPE 2010</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-speaking-hope-2010">Jacob speaking at HOPE 2010</a></h2>
           <p class="post-meta">
-              16 July 2010
+              <span class="startdate" data-startdate="2010-07-16">16 July 2010</span>
               
-                to 18 July 2010
+                to <span class="enddate" data-enddate="2010-07-18">18 July 2010</span>
               
           </p>
         </header>
@@ -2508,13 +2545,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-us-social-forum-2010">Tor at US Social Forum 2010</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-us-social-forum-2010">Tor at US Social Forum 2010</a></h2>
           <p class="post-meta">
-              22 June 2010
+              <span class="startdate" data-startdate="2010-06-22">22 June 2010</span>
               
-                to 26 June 2010
+                to <span class="enddate" data-enddate="2010-06-26">26 June 2010</span>
               
           </p>
         </header>
@@ -2524,13 +2561,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-wesleyan-university">Andrew at Wesleyan University</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-wesleyan-university">Andrew at Wesleyan University</a></h2>
           <p class="post-meta">
-              8 June 2010
+              <span class="startdate" data-startdate="2010-06-08">8 June 2010</span>
               
-                to 8 June 2010
+                to <span class="enddate" data-enddate="2010-06-08">8 June 2010</span>
               
           </p>
         </header>
@@ -2540,13 +2577,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-speaks-confidence-krakow">Jacob speaks at Confidence Krakow</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-speaks-confidence-krakow">Jacob speaks at Confidence Krakow</a></h2>
           <p class="post-meta">
-              25 May 2010
+              <span class="startdate" data-startdate="2010-05-25">25 May 2010</span>
               
-                to 26 May 2010
+                to <span class="enddate" data-enddate="2010-05-26">26 May 2010</span>
               
           </p>
         </header>
@@ -2556,13 +2593,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-talks-aus-cert">Roger talks at AUS-CERT</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-talks-aus-cert">Roger talks at AUS-CERT</a></h2>
           <p class="post-meta">
-              14 May 2010
+              <span class="startdate" data-startdate="2010-05-14">14 May 2010</span>
               
-                to 22 May 2010
+                to <span class="enddate" data-enddate="2010-05-22">22 May 2010</span>
               
           </p>
         </header>
@@ -2572,13 +2609,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-global-voices-summit-2010">Tor at Global Voices Summit 2010</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-global-voices-summit-2010">Tor at Global Voices Summit 2010</a></h2>
           <p class="post-meta">
-              6 May 2010
+              <span class="startdate" data-startdate="2010-05-06">6 May 2010</span>
               
-                to 7 May 2010
+                to <span class="enddate" data-enddate="2010-05-07">7 May 2010</span>
               
           </p>
         </header>
@@ -2588,13 +2625,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-source-boston-conference">Jacob at SOURCE Boston Conference</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-source-boston-conference">Jacob at SOURCE Boston Conference</a></h2>
           <p class="post-meta">
-              21 April 2010
+              <span class="startdate" data-startdate="2010-04-21">21 April 2010</span>
               
-                to 23 April 2010
+                to <span class="enddate" data-enddate="2010-04-23">23 April 2010</span>
               
           </p>
         </header>
@@ -2604,13 +2641,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-talks-eth-zurich">Roger talks at ETH Zurich</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-talks-eth-zurich">Roger talks at ETH Zurich</a></h2>
           <p class="post-meta">
-              20 April 2010
+              <span class="startdate" data-startdate="2010-04-20">20 April 2010</span>
               
-                to 21 April 2010
+                to <span class="enddate" data-enddate="2010-04-21">21 April 2010</span>
               
           </p>
         </header>
@@ -2620,13 +2657,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-talks-unm-albuquerque">Roger talks at UNM, Albuquerque</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-talks-unm-albuquerque">Roger talks at UNM, Albuquerque</a></h2>
           <p class="post-meta">
-              12 April 2010
+              <span class="startdate" data-startdate="2010-04-12">12 April 2010</span>
               
-                to 12 April 2010
+                to <span class="enddate" data-enddate="2010-04-12">12 April 2010</span>
               
           </p>
         </header>
@@ -2636,13 +2673,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-erinn-others-libreplanet-2010">Andrew, Erinn, others at LibrePlanet 2010</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-erinn-others-libreplanet-2010">Andrew, Erinn, others at LibrePlanet 2010</a></h2>
           <p class="post-meta">
-              19 March 2010
+              <span class="startdate" data-startdate="2010-03-19">19 March 2010</span>
               
-                to 21 March 2010
+                to <span class="enddate" data-enddate="2010-03-21">21 March 2010</span>
               
           </p>
         </header>
@@ -2652,11 +2689,11 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-digital-security-and-tactics-and-anti-authoritarians">Jacob at Digital Security and Tactics For (and By) Anti Authoritarians</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-digital-security-and-tactics-and-anti-authoritarians">Jacob at Digital Security and Tactics For (and By) Anti Authoritarians</a></h2>
           <p class="post-meta">
-              12 March 2010
+              <span class="startdate" data-startdate="2010-03-12">12 March 2010</span>
               
           </p>
         </header>
@@ -2666,13 +2703,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/karen-speaking-university-maryland-digital-media-conference">Karen speaking at University of Maryland Digital Media Conference</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/karen-speaking-university-maryland-digital-media-conference">Karen speaking at University of Maryland Digital Media Conference</a></h2>
           <p class="post-meta">
-              2 March 2010
+              <span class="startdate" data-startdate="2010-03-02">2 March 2010</span>
               
-                to 2 March 2010
+                to <span class="enddate" data-enddate="2010-03-02">2 March 2010</span>
               
           </p>
         </header>
@@ -2682,13 +2719,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/fosdem-2010-tor-building-growing-and-extending-online-anonymity">FOSDEM 2010:  Tor: Building, Growing, and Extending Online Anonymity</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/fosdem-2010-tor-building-growing-and-extending-online-anonymity">FOSDEM 2010:  Tor: Building, Growing, and Extending Online Anonymity</a></h2>
           <p class="post-meta">
-              6 February 2010
+              <span class="startdate" data-startdate="2010-02-06">6 February 2010</span>
               
-                to 6 February 2010
+                to <span class="enddate" data-enddate="2010-02-06">6 February 2010</span>
               
           </p>
         </header>
@@ -2700,13 +2737,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/edri-capacity-building-event">EDRI:  Capacity Building Event</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/edri-capacity-building-event">EDRI:  Capacity Building Event</a></h2>
           <p class="post-meta">
-              4 February 2010
+              <span class="startdate" data-startdate="2010-02-04">4 February 2010</span>
               
-                to 5 February 2010
+                to <span class="enddate" data-enddate="2010-02-05">5 February 2010</span>
               
           </p>
         </header>
@@ -2716,13 +2753,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-talking-philadelphia-linux-users-group">Roger talking to Philadelphia Linux Users&#39; Group</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-talking-philadelphia-linux-users-group">Roger talking to Philadelphia Linux Users&#39; Group</a></h2>
           <p class="post-meta">
-              3 February 2010
+              <span class="startdate" data-startdate="2010-02-03">3 February 2010</span>
               
-                to 3 February 2010
+                to <span class="enddate" data-enddate="2010-02-03">3 February 2010</span>
               
           </p>
         </header>
@@ -2732,13 +2769,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/paul-karsten-and-roger-financial-cryptography-and-data-security-10-conference">Paul, Karsten, and Roger at Financial Cryptography and Data Security &#39;10 Conference</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/paul-karsten-and-roger-financial-cryptography-and-data-security-10-conference">Paul, Karsten, and Roger at Financial Cryptography and Data Security &#39;10 Conference</a></h2>
           <p class="post-meta">
-              21 January 2010
+              <span class="startdate" data-startdate="2010-01-21">21 January 2010</span>
               
-                to 1 February 2010
+                to <span class="enddate" data-enddate="2010-02-01">1 February 2010</span>
               
           </p>
         </header>
@@ -2748,13 +2785,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-jacob-karsten-and-others-26c3">Roger, Jacob, Karsten, and others at 26C3 </a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-jacob-karsten-and-others-26c3">Roger, Jacob, Karsten, and others at 26C3 </a></h2>
           <p class="post-meta">
-              27 December 2009
+              <span class="startdate" data-startdate="2009-12-27">27 December 2009</span>
               
-                to 30 December 2009
+                to <span class="enddate" data-enddate="2009-12-30">30 December 2009</span>
               
           </p>
         </header>
@@ -2764,13 +2801,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-kaist-korea">Roger at Kaist in Korea</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-kaist-korea">Roger at Kaist in Korea</a></h2>
           <p class="post-meta">
-              9 November 2009
+              <span class="startdate" data-startdate="2009-11-09">9 November 2009</span>
               
-                to 13 November 2009
+                to <span class="enddate" data-enddate="2009-11-13">13 November 2009</span>
               
           </p>
         </header>
@@ -2780,13 +2817,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-blogfest-asia">Andrew at Blogfest Asia</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-blogfest-asia">Andrew at Blogfest Asia</a></h2>
           <p class="post-meta">
-              6 November 2009
+              <span class="startdate" data-startdate="2009-11-06">6 November 2009</span>
               
-                to 11 November 2009
+                to <span class="enddate" data-enddate="2009-11-11">11 November 2009</span>
               
           </p>
         </header>
@@ -2796,13 +2833,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-cascon">Andrew at CASCON</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-cascon">Andrew at CASCON</a></h2>
           <p class="post-meta">
-              2 November 2009
+              <span class="startdate" data-startdate="2009-11-02">2 November 2009</span>
               
-                to 5 November 2009
+                to <span class="enddate" data-enddate="2009-11-05">5 November 2009</span>
               
           </p>
         </header>
@@ -2812,13 +2849,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-access-and-privacy-workshop-2009">Andrew at Access and Privacy Workshop 2009</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-access-and-privacy-workshop-2009">Andrew at Access and Privacy Workshop 2009</a></h2>
           <p class="post-meta">
-              26 October 2009
+              <span class="startdate" data-startdate="2009-10-26">26 October 2009</span>
               
-                to 27 October 2009
+                to <span class="enddate" data-enddate="2009-10-27">27 October 2009</span>
               
           </p>
         </header>
@@ -2828,13 +2865,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/mentor-summit">Roger, Jake, Mike, Karsten at GSoC mentor summit</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/mentor-summit">Roger, Jake, Mike, Karsten at GSoC mentor summit</a></h2>
           <p class="post-meta">
-              23 October 2009
+              <span class="startdate" data-startdate="2009-10-23">23 October 2009</span>
               
-                to 25 October 2009
+                to <span class="enddate" data-enddate="2009-10-25">25 October 2009</span>
               
           </p>
         </header>
@@ -2844,13 +2881,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-talk-drexel">Roger does talk at Drexel University</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-talk-drexel">Roger does talk at Drexel University</a></h2>
           <p class="post-meta">
-              19 October 2009
+              <span class="startdate" data-startdate="2009-10-19">19 October 2009</span>
               
-                to 19 October 2009
+                to <span class="enddate" data-enddate="2009-10-19">19 October 2009</span>
               
           </p>
         </header>
@@ -2860,13 +2897,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-sim-initiative-2020-vision-setting-longterm-agenda-global-media-development">Andrew at SIM Initiative 2020 Vision: Setting a Long-Term Agenda for Global Media Development</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-sim-initiative-2020-vision-setting-longterm-agenda-global-media-development">Andrew at SIM Initiative 2020 Vision: Setting a Long-Term Agenda for Global Media Development</a></h2>
           <p class="post-meta">
-              3 October 2009
+              <span class="startdate" data-startdate="2009-10-03">3 October 2009</span>
               
-                to 7 October 2009
+                to <span class="enddate" data-enddate="2009-10-07">7 October 2009</span>
               
           </p>
         </header>
@@ -2876,13 +2913,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-jacob-mike-karsten-and-others-har-2009">Roger, Jacob, Mike, Karsten, and others at HAR 2009</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-jacob-mike-karsten-and-others-har-2009">Roger, Jacob, Mike, Karsten, and others at HAR 2009</a></h2>
           <p class="post-meta">
-              11 August 2009
+              <span class="startdate" data-startdate="2009-08-11">11 August 2009</span>
               
-                to 18 August 2009
+                to <span class="enddate" data-enddate="2009-08-18">18 August 2009</span>
               
           </p>
         </header>
@@ -2892,13 +2929,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger%2C-nick%2C-steven%2C-jake%2C-paul%2C-others-pets-2009">Roger, Nick, Steven, Jake, Paul, others at PETS 2009</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger%2C-nick%2C-steven%2C-jake%2C-paul%2C-others-pets-2009">Roger, Nick, Steven, Jake, Paul, others at PETS 2009</a></h2>
           <p class="post-meta">
-              3 August 2009
+              <span class="startdate" data-startdate="2009-08-03">3 August 2009</span>
               
-                to 8 August 2009
+                to <span class="enddate" data-enddate="2009-08-08">8 August 2009</span>
               
           </p>
         </header>
@@ -2908,13 +2945,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-webinno22">Andrew at WebInno22</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-webinno22">Andrew at WebInno22</a></h2>
           <p class="post-meta">
-              15 July 2009
+              <span class="startdate" data-startdate="2009-07-15">15 July 2009</span>
               
-                to 15 July 2009
+                to <span class="enddate" data-enddate="2009-07-15">15 July 2009</span>
               
           </p>
         </header>
@@ -2924,11 +2961,11 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-cimaned-panel">Andrew at CIMA/NED Panel</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-cimaned-panel">Andrew at CIMA/NED Panel</a></h2>
           <p class="post-meta">
-              7 July 2009
+              <span class="startdate" data-startdate="2009-07-07">7 July 2009</span>
               
           </p>
         </header>
@@ -2938,13 +2975,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger%2C-andrew%2C-wendy%2C-others-computers-freedom-and-privacy">Roger, Andrew, Wendy, others at Computers Freedom and Privacy</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger%2C-andrew%2C-wendy%2C-others-computers-freedom-and-privacy">Roger, Andrew, Wendy, others at Computers Freedom and Privacy</a></h2>
           <p class="post-meta">
-              1 June 2009
+              <span class="startdate" data-startdate="2009-06-01">1 June 2009</span>
               
-                to 4 June 2009
+                to <span class="enddate" data-enddate="2009-06-04">4 June 2009</span>
               
           </p>
         </header>
@@ -2954,13 +2991,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger%2C-andrew-7th-chinese-internet-research-conference">Roger, Andrew at 7th Chinese Internet Research Conference</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger%2C-andrew-7th-chinese-internet-research-conference">Roger, Andrew at 7th Chinese Internet Research Conference</a></h2>
           <p class="post-meta">
-              27 May 2009
+              <span class="startdate" data-startdate="2009-05-27">27 May 2009</span>
               
-                to 28 May 2009
+                to <span class="enddate" data-enddate="2009-05-28">28 May 2009</span>
               
           </p>
         </header>
@@ -2970,13 +3007,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-soul-new-machine-conference">Andrew at Soul of a New Machine Conference</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-soul-new-machine-conference">Andrew at Soul of a New Machine Conference</a></h2>
           <p class="post-meta">
-              4 May 2009
+              <span class="startdate" data-startdate="2009-05-04">4 May 2009</span>
               
-                to 5 May 2009
+                to <span class="enddate" data-enddate="2009-05-05">5 May 2009</span>
               
           </p>
         </header>
@@ -2988,13 +3025,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-barcamp-boston">Andrew at BarCamp Boston</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-barcamp-boston">Andrew at BarCamp Boston</a></h2>
           <p class="post-meta">
-              25 April 2009
+              <span class="startdate" data-startdate="2009-04-25">25 April 2009</span>
               
-                to 25 April 2009
+                to <span class="enddate" data-enddate="2009-04-25">25 April 2009</span>
               
           </p>
         </header>
@@ -3004,13 +3041,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger%2C-martin%2C-nick%2C-others-codecon">Roger, Martin, Nick, others at Codecon</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger%2C-martin%2C-nick%2C-others-codecon">Roger, Martin, Nick, others at Codecon</a></h2>
           <p class="post-meta">
-              17 April 2009
+              <span class="startdate" data-startdate="2009-04-17">17 April 2009</span>
               
-                to 19 April 2009
+                to <span class="enddate" data-enddate="2009-04-19">19 April 2009</span>
               
           </p>
         </header>
@@ -3020,13 +3057,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-princeton">Roger at Princeton</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-princeton">Roger at Princeton</a></h2>
           <p class="post-meta">
-              9 April 2009
+              <span class="startdate" data-startdate="2009-04-09">9 April 2009</span>
               
-                to 9 April 2009
+                to <span class="enddate" data-enddate="2009-04-09">9 April 2009</span>
               
           </p>
         </header>
@@ -3036,13 +3073,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/karsten-and-others-pet-con-2009.1">Karsten and others at PET-CON 2009.1</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/karsten-and-others-pet-con-2009.1">Karsten and others at PET-CON 2009.1</a></h2>
           <p class="post-meta">
-              24 March 2009
+              <span class="startdate" data-startdate="2009-03-24">24 March 2009</span>
               
-                to 25 March 2009
+                to <span class="enddate" data-enddate="2009-03-25">25 March 2009</span>
               
           </p>
         </header>
@@ -3052,13 +3089,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-libreplanet-2009">Andrew at LibrePlanet 2009</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-libreplanet-2009">Andrew at LibrePlanet 2009</a></h2>
           <p class="post-meta">
-              21 March 2009
+              <span class="startdate" data-startdate="2009-03-21">21 March 2009</span>
               
-                to 22 March 2009
+                to <span class="enddate" data-enddate="2009-03-22">22 March 2009</span>
               
           </p>
         </header>
@@ -3068,13 +3105,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger%2C-steven-fc09">Roger, Steven at FC09</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger%2C-steven-fc09">Roger, Steven at FC09</a></h2>
           <p class="post-meta">
-              23 February 2009
+              <span class="startdate" data-startdate="2009-02-23">23 February 2009</span>
               
-                to 27 February 2009
+                to <span class="enddate" data-enddate="2009-02-27">27 February 2009</span>
               
           </p>
         </header>
@@ -3084,13 +3121,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-mobile-4-change-barcamp">Andrew at Mobile 4 Change Barcamp</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-mobile-4-change-barcamp">Andrew at Mobile 4 Change Barcamp</a></h2>
           <p class="post-meta">
-              21 February 2009
+              <span class="startdate" data-startdate="2009-02-21">21 February 2009</span>
               
-                to 22 February 2009
+                to <span class="enddate" data-enddate="2009-02-22">22 February 2009</span>
               
           </p>
         </header>
@@ -3100,13 +3137,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-info-activism-camp-bangalore%2C-india">Jacob at Info-Activism Camp in Bangalore, India</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-info-activism-camp-bangalore%2C-india">Jacob at Info-Activism Camp in Bangalore, India</a></h2>
           <p class="post-meta">
-              16 February 2009
+              <span class="startdate" data-startdate="2009-02-16">16 February 2009</span>
               
-                to 26 February 2009
+                to <span class="enddate" data-enddate="2009-02-26">26 February 2009</span>
               
           </p>
         </header>
@@ -3116,13 +3153,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/jacob-it-defense-potsdam%2C-germany">Jacob at IT-Defense in Potsdam, Germany</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/jacob-it-defense-potsdam%2C-germany">Jacob at IT-Defense in Potsdam, Germany</a></h2>
           <p class="post-meta">
-              11 February 2009
+              <span class="startdate" data-startdate="2009-02-11">11 February 2009</span>
               
-                to 13 February 2009
+                to <span class="enddate" data-enddate="2009-02-13">13 February 2009</span>
               
           </p>
         </header>
@@ -3132,13 +3169,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger%2C-nick%2C-others-shmoocon">Roger, Nick, others at Shmoocon</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger%2C-nick%2C-others-shmoocon">Roger, Nick, others at Shmoocon</a></h2>
           <p class="post-meta">
-              6 February 2009
+              <span class="startdate" data-startdate="2009-02-06">6 February 2009</span>
               
-                to 8 February 2009
+                to <span class="enddate" data-enddate="2009-02-08">8 February 2009</span>
               
           </p>
         </header>
@@ -3148,13 +3185,13 @@ the issue of state censorship and freedom of speech.</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger%2C-jacob%2C-steven-berlin">Roger, Jacob, Steven in Berlin</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger%2C-jacob%2C-steven-berlin">Roger, Jacob, Steven in Berlin</a></h2>
           <p class="post-meta">
-              26 December 2008
+              <span class="startdate" data-startdate="2008-12-26">26 December 2008</span>
               
-                to 31 December 2008
+                to <span class="enddate" data-enddate="2008-12-31">31 December 2008</span>
               
           </p>
         </header>
@@ -3165,13 +3202,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger%2C-jacob-san-francisco">Roger, Jacob in San Francisco</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger%2C-jacob-san-francisco">Roger, Jacob in San Francisco</a></h2>
           <p class="post-meta">
-              12 November 2008
+              <span class="startdate" data-startdate="2008-11-12">12 November 2008</span>
               
-                to 15 November 2008
+                to <span class="enddate" data-enddate="2008-11-15">15 November 2008</span>
               
           </p>
         </header>
@@ -3181,13 +3218,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-new-york-city">Roger in New York City</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-new-york-city">Roger in New York City</a></h2>
           <p class="post-meta">
-              4 November 2008
+              <span class="startdate" data-startdate="2008-11-04">4 November 2008</span>
               
-                to 6 November 2008
+                to <span class="enddate" data-enddate="2008-11-06">6 November 2008</span>
               
           </p>
         </header>
@@ -3197,13 +3234,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger%2C-nick%2C-paul-washington-dc">Roger, Nick, Paul in Washington DC</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger%2C-nick%2C-paul-washington-dc">Roger, Nick, Paul in Washington DC</a></h2>
           <p class="post-meta">
-              27 October 2008
+              <span class="startdate" data-startdate="2008-10-27">27 October 2008</span>
               
-                to 30 October 2008
+                to <span class="enddate" data-enddate="2008-10-30">30 October 2008</span>
               
           </p>
         </header>
@@ -3213,13 +3250,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger%2C-jacob%2C-mike-mountain-view">Roger, Jacob, Mike in Mountain View</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger%2C-jacob%2C-mike-mountain-view">Roger, Jacob, Mike in Mountain View</a></h2>
           <p class="post-meta">
-              24 October 2008
+              <span class="startdate" data-startdate="2008-10-24">24 October 2008</span>
               
-                to 26 October 2008
+                to <span class="enddate" data-enddate="2008-10-26">26 October 2008</span>
               
           </p>
         </header>
@@ -3229,13 +3266,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-san-diego">Roger in San Diego</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-san-diego">Roger in San Diego</a></h2>
           <p class="post-meta">
-              21 October 2008
+              <span class="startdate" data-startdate="2008-10-21">21 October 2008</span>
               
-                to 24 October 2008
+                to <span class="enddate" data-enddate="2008-10-24">24 October 2008</span>
               
           </p>
         </header>
@@ -3245,13 +3282,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-nnedv">Andrew at NNEDV</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-nnedv">Andrew at NNEDV</a></h2>
           <p class="post-meta">
-              11 August 2008
+              <span class="startdate" data-startdate="2008-08-11">11 August 2008</span>
               
-                to 11 August 2008
+                to <span class="enddate" data-enddate="2008-08-11">11 August 2008</span>
               
           </p>
         </header>
@@ -3261,13 +3298,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-%2526amp%3B-mike-defcon">Roger &amp; Mike at DEFCON</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-%2526amp%3B-mike-defcon">Roger &amp; Mike at DEFCON</a></h2>
           <p class="post-meta">
-              8 August 2008
+              <span class="startdate" data-startdate="2008-08-08">8 August 2008</span>
               
-                to 11 August 2008
+                to <span class="enddate" data-enddate="2008-08-11">11 August 2008</span>
               
           </p>
         </header>
@@ -3281,13 +3318,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger%2C-nick%2C-mike%2C-steven%2C-matt%2C-karsten%2C-paul%2C-jacob-pets">Roger, Nick, Mike, Steven, Matt, Karsten, Paul, Jacob at PETS</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger%2C-nick%2C-mike%2C-steven%2C-matt%2C-karsten%2C-paul%2C-jacob-pets">Roger, Nick, Mike, Steven, Matt, Karsten, Paul, Jacob at PETS</a></h2>
           <p class="post-meta">
-              23 July 2008
+              <span class="startdate" data-startdate="2008-07-23">23 July 2008</span>
               
-                to 27 July 2008
+                to <span class="enddate" data-enddate="2008-07-27">27 July 2008</span>
               
           </p>
         </header>
@@ -3297,13 +3334,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-budapest-global-voices-summit">Roger in Budapest for Global Voices Summit</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-budapest-global-voices-summit">Roger in Budapest for Global Voices Summit</a></h2>
           <p class="post-meta">
-              25 June 2008
+              <span class="startdate" data-startdate="2008-06-25">25 June 2008</span>
               
-                to 28 June 2008
+                to <span class="enddate" data-enddate="2008-06-28">28 June 2008</span>
               
           </p>
         </header>
@@ -3314,13 +3351,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/andrew-and-nick-cfp2008">Andrew and Nick at CFP2008</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/andrew-and-nick-cfp2008">Andrew and Nick at CFP2008</a></h2>
           <p class="post-meta">
-              20 May 2008
+              <span class="startdate" data-startdate="2008-05-20">20 May 2008</span>
               
-                to 23 May 2008
+                to <span class="enddate" data-enddate="2008-05-23">23 May 2008</span>
               
           </p>
         </header>
@@ -3331,13 +3368,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/steven%2C-paul%2C-ian%2C-others-oakland">Steven, Paul, Ian, others at Oakland</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/steven%2C-paul%2C-ian%2C-others-oakland">Steven, Paul, Ian, others at Oakland</a></h2>
           <p class="post-meta">
-              18 May 2008
+              <span class="startdate" data-startdate="2008-05-18">18 May 2008</span>
               
-                to 22 May 2008
+                to <span class="enddate" data-enddate="2008-05-22">22 May 2008</span>
               
           </p>
         </header>
@@ -3347,13 +3384,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-speaks-harvard-crcs">Roger speaks at Harvard CRCS</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-speaks-harvard-crcs">Roger speaks at Harvard CRCS</a></h2>
           <p class="post-meta">
-              19 March 2008
+              <span class="startdate" data-startdate="2008-03-19">19 March 2008</span>
               
-                to 19 March 2008
+                to <span class="enddate" data-enddate="2008-03-19">19 March 2008</span>
               
           </p>
         </header>
@@ -3363,13 +3400,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-speaks-sourceboston">Roger speaks at SourceBoston</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-speaks-sourceboston">Roger speaks at SourceBoston</a></h2>
           <p class="post-meta">
-              13 March 2008
+              <span class="startdate" data-startdate="2008-03-13">13 March 2008</span>
               
-                to 13 March 2008
+                to <span class="enddate" data-enddate="2008-03-13">13 March 2008</span>
               
           </p>
         </header>
@@ -3379,13 +3416,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-and-nick-shmoocon">Roger and Nick at Shmoocon</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-and-nick-shmoocon">Roger and Nick at Shmoocon</a></h2>
           <p class="post-meta">
-              15 February 2008
+              <span class="startdate" data-startdate="2008-02-15">15 February 2008</span>
               
-                to 17 February 2008
+                to <span class="enddate" data-enddate="2008-02-17">17 February 2008</span>
               
           </p>
         </header>
@@ -3395,13 +3432,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/roger-speaks-hackcon-oslo">Roger speaks at Hackcon in Oslo</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/roger-speaks-hackcon-oslo">Roger speaks at Hackcon in Oslo</a></h2>
           <p class="post-meta">
-              7 February 2008
+              <span class="startdate" data-startdate="2008-02-07">7 February 2008</span>
               
-                to 7 February 2008
+                to <span class="enddate" data-enddate="2008-02-07">7 February 2008</span>
               
           </p>
         </header>
@@ -3411,13 +3448,13 @@ hacker gathering there is. Be there!</p>
         </div>
       </section>
     
-      <section class="post">
+      <section class="post event">
         <header class="post-header">
-          <h2 class="post-title"> <a href="/events/tor-meeting-san-francisco">Tor Meeting up San Francisco</a></h2>
+          <h2 class="post-title eventtitle"> <a class="titleurl" href="/events/tor-meeting-san-francisco">Tor Meeting up San Francisco</a></h2>
           <p class="post-meta">
-              24 January 2008
+              <span class="startdate" data-startdate="2008-01-24">24 January 2008</span>
               
-                to 24 January 2008
+                to <span class="enddate" data-enddate="2008-01-24">24 January 2008</span>
               
           </p>
         </header>
