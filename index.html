@@ -15,7 +15,7 @@ title: Tor Project
           <p class="post-meta">
               By <a class="post-author" href="#">{{ post.author }}</a> under
               {% for tag in post.tags %}
-                <a class="post-category post-category-js" href="#">{{ tag }}</a>
+                <a class="post-category post-category-js" href="/tag/{{ tag }}">{{ tag }}</a>
               {% endfor %} |
               {{ post.date | date_to_string }}
           </p>

@@ -7,6 +7,7 @@ Linked with issue [10479](https://trac.torproject.org/projects/tor/ticket/10479)
 cd ../tor-blog
 
 gem install jekyll
+bundle install
 jekyll serve
 
 ```
