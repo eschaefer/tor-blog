@@ -67,8 +67,8 @@
     }
       
     @include media-query(750px) {
-	font-size: $large-font-size * 0.45;
-	width: $nav-button-width * .45;
+	font-size: $large-font-size * 0.40;
+	width: $nav-button-width * .40;
     }
 
 	// Gaps between nav items, but not on the first one
@@ -86,7 +86,7 @@
     @include media-query($on-palm) {
         position: absolute;
         top: 9px;
-        right: 30px;
+        right: 3%;
         background-color: $background-color;
         border: 1px solid $grey-color-light;
         border-radius: 5px;
@@ -131,6 +131,15 @@
 
 a.page-link.donate {
     background-color: $purple;
+}
+
+pre {
+    overflow-x: auto;
+}
+
+pre, code {
+    font-size: 13px;
+    background-color: $orange-light;
 }
 
 /**
@@ -205,6 +214,13 @@ a.page-link.donate {
 /**
  * Page content
  */
+.wrapper {
+      @include media-query($on-palm) {
+	margin-left: 15px;
+	margin-right: 0px;
+      }
+}
+
 .page-content {
     padding: $spacing-unit 0;
     max-width: $contentWidth;
@@ -289,6 +305,11 @@ a.page-link.donate {
 	margin-right: 10px;
 	position: relative;
 	bottom: -7px;
+	
+	@include media-query($on-palm) {
+	  display: none;
+	}
+
     }
     
     &:visited {
@@ -342,6 +363,11 @@ a.page-link.donate {
     margin-top: -10px;
     text-decoration: none;
 
+    @include media-query($on-palm) {
+	font-size: 16px;
+	margin-top: -2px;
+    }
+    
     &:visited {
 	color: $green;
     }
@@ -595,6 +621,16 @@ a.page-link.donate {
 .juvia-comment .juvia-data {
 	margin-left: 0px !important;
 	line-height: 1.5 !important;
+}
+
+.juvia-field input {
+    @include media-query($on-palm) {
+	width: 100% !important;
+    }
+}
+
+.juvia-textarea-field textarea {
+	width: 100% !important;
 }
 
 .juvia-add-comment-form .juvia-metadata .juvia-field:last-child {

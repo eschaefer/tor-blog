@@ -89,6 +89,68 @@ MSI-based installers on Windows.</li>
   </div>
   <br />
 
+<!-- COMMENTS -->
+<div id="comments" class="comments clearfix">
+  <div class="comments-loading">
+  <p><em>Enable Javascript to view comments</em></p>
+  </div>
+</div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var loadingSection = document.body.querySelector('.comments-loading');
+    var icon = '<p>Comments Loading...</p><img alt="loading comments" src="/assets/images/comments-loading.gif">';
+
+    loadingSection.innerHTML = loadingSection.innerHTML + icon;
+
+    var options = {
+        container    : '.comments',
+        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        topic_key    : '/blog/vidalia-022-released',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
+            '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+
+    (document.getElementsByTagName('head')[0] ||
+      document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
+
+})();
+</script>
 </div>
 
 <!-- Include the side column --->
@@ -154,150 +216,175 @@ MSI-based installers on Windows.</li>
 	<h2>Blog Tag Cloud</h2>
 	<ul>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 57%">
         <span><a href="/tag/blog/">
             blog
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 56%">
         <span><a href="/tag/first post/">
             first post
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 171%">
         <span><a href="/tag/tor/">
             tor
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 56%">
         <span><a href="/tag/24c3/">
             24c3
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 57%">
         <span><a href="/tag/ccc/">
             ccc
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 61%">
         <span><a href="/tag/talks/">
             talks
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 59%">
         <span><a href="/tag/bugs/">
             bugs
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 57%">
         <span><a href="/tag/crashes/">
             crashes
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 64%">
         <span><a href="/tag/osx/">
             osx
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 56%">
         <span><a href="/tag/qt/">
             qt
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 86%">
         <span><a href="/tag/vidalia/">
             vidalia
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 68%">
         <span><a href="/tag/vidalia bundle/">
             vidalia bundle
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 56%">
         <span><a href="/tag/meetup/">
             meetup
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 59%">
         <span><a href="/tag/attacks/">
             attacks
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 56%">
         <span><a href="/tag/covert channels/">
             covert channels
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 57%">
         <span><a href="/tag/media coverage/">
             media coverage
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 88%">
         <span><a href="/tag/bridges/">
             bridges
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 59%">
         <span><a href="/tag/incognito/">
             incognito
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 116%">
         <span><a href="/tag/progress report/">
             progress report
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 83%">
         <span><a href="/tag/torbrowser/">
             torbrowser
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 85%">
         <span><a href="/tag/torbutton/">
             torbutton
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 65%">
         <span><a href="/tag/china/">
             china
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 56%">
         <span><a href="/tag/directors/">
             directors
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 76%">
         <span><a href="/tag/release candidate/">
             release candidate
         </a></span>
     </li>
 
+    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 74%">
         <span><a href="/tag/gsoc/">
             gsoc
@@ -311,70 +398,6 @@ MSI-based installers on Windows.</li>
 </div>
 
 <div style="clear: both;"></div>  
-
-
-<!-- COMMENTS -->
-<div id="comments" class="comments clearfix">
-  <div class="comments-loading">
-  <p><em>Enable Javascript to view comments</em></p>
-  </div>
-</div>
-
-<script type="text/javascript" class="juvia">
-(function() {
-    var loadingSection = document.body.querySelector('.comments-loading');
-    var icon = '<p>Comments Loading...</p><img alt="loading comments" src="/assets/images/comments-loading.gif">';
-
-    loadingSection.innerHTML = loadingSection.innerHTML + icon;
-
-    var options = {
-        container    : '.comments',
-        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
-        topic_key    : '/blog/vidalia-022-released',
-        topic_url    : location.href,
-        topic_title  : document.title || location.href,
-        include_base : !window.Juvia,
-        include_css  : !window.Juvia,
-        comment_order: 'latest-first'
-    };
-
-    function makeQueryString(options) {
-        var key, params = [];
-        for (key in options) {
-            params.push(
-                encodeURIComponent(key) +
-                '=' +
-                encodeURIComponent(options[key]));
-        }
-        return params.join('&');
-    }
-
-    function makeApiUrl(options) {
-        // Makes sure that each call generates a unique URL, otherwise
-        // the browser may not actually perform the request.
-        if (!('_juviaRequestCounter' in window)) {
-            window._juviaRequestCounter = 0;
-        }
-
-        var result =
-            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
-            '?_c=' + window._juviaRequestCounter +
-            '&' + makeQueryString(options);
-        window._juviaRequestCounter++;
-        return result;
-    }
-
-    var s       = document.createElement('script');
-    s.async     = true;
-    s.type      = 'text/javascript';
-    s.className = 'juvia';
-    s.src       = makeApiUrl(options);
-
-    (document.getElementsByTagName('head')[0] ||
-      document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
-
-})();
-</script>
 
       </div>
     </div>
