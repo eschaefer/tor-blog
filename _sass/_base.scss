@@ -30,7 +30,11 @@ body {
     border-left: 44px solid transparent;
     border-right: 44px solid transparent;
     border-bottom: 44px solid transparent;
-    @include border-image("../assets/images/stripes.png", 44, 44, round); 
+    -webkit-border-image: url("../assets/images/stripes.png") 44 44 round; /* Safari 3.1-5 */
+    -o-border-image: url("../assets/images/stripes.png") 44 44 round; /* Opera 11-12.1 */
+    border-image: url("../assets/images/stripes.png") 44 44 round;
+    -pie-border-image: url("./assets/images/stripes.png") 44 round; /* PIE */
+    behavior: url(./css/pie/PIE.htc);
 }
 
 
