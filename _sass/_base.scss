@@ -1,0 +1,235 @@
+/**
+ * Reset some basic elements
+ */
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/**
+ * Basic styling
+ */
+html {
+    background-color: $page-bg-color;
+}
+
+body {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    font-weight: 300;
+    color: $text-color;
+    background-color: $background-color;
+    -webkit-text-size-adjust: 100%;
+    margin: 0px auto;
+    max-width: $contentWidth;
+    border-left: 44px solid transparent;
+    border-right: 44px solid transparent;
+    border-bottom: 44px solid transparent;
+    @include border-image("../assets/images/stripes.png", 44, 44, round); 
+}
+
+
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+    margin-bottom: $spacing-unit / 2;
+}
+
+
+
+/**
+ * Images
+ */
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    margin-bottom: 15px;
+}
+
+
+
+/**
+ * Figures
+ */
+figure > img {
+    display: block;
+}
+
+figcaption {
+    font-size: $small-font-size;
+}
+
+
+
+/**
+ * Lists
+ */
+ul, ol {
+    margin-left: $spacing-unit;
+}
+
+li {
+    > ul,
+    > ol {
+         margin-bottom: 0;
+    }
+}
+
+
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+}
+
+
+
+/**
+ * Links
+ */
+a {
+    color: $side-text-01;
+    text-decoration: underline;
+
+    &:visited {
+        color: $side-text-01;
+    }
+
+    &:hover {
+        color: $side-text-01;
+        text-decoration: none;
+    }
+}
+
+
+
+/**
+ * Blockquotes
+ */
+blockquote {
+    color: $grey-color;
+    border-left: 4px solid $grey-color-light;
+    padding-left: $spacing-unit / 2;
+    font-size: 18px;
+    letter-spacing: -1px;
+    font-style: italic;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+
+/**
+ * Code formatting
+ */
+pre,
+code {
+    font-size: 15px;
+    border: 1px solid $grey-color-light;
+    border-radius: 3px;
+    background-color: #eef;
+}
+
+code {
+    padding: 1px 5px;
+}
+
+pre {
+    padding: 8px 12px;
+    overflow-x: scroll;
+
+    > code {
+        border: 0;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+
+
+/**
+ * Wrapper
+ */
+.wrapper {
+    max-width: -webkit-calc($contentWidth - (#{$spacing-unit} * 2));
+    max-width:         calc($contentWidth - (#{$spacing-unit} * 2));
+    margin-right: 25px;
+    margin-left: 45px;
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+    @extend %clearfix;
+
+    @include media-query($on-1024) {
+        max-width: -webkit-calc($contentWidth - (#{$spacing-unit} * 1.5));
+        max-width:         calc($contentWidth - (#{$spacing-unit} * 1.5));
+	margin-right: 25px / 2;
+	margin-left: 45px / 2;
+        padding-right: $spacing-unit / 1.5;
+        padding-left: $spacing-unit / 1.5;
+    }
+
+    @include media-query($on-laptop) {
+        max-width: -webkit-calc($contentWidth - (#{$spacing-unit}));
+        max-width:         calc($contentWidth - (#{$spacing-unit}));
+	margin-right: 25px / 2;
+	margin-left: 45px / 2;
+        padding-right: $spacing-unit / 2;
+        padding-left: $spacing-unit / 2;
+    }
+    
+    @include media-query($on-palm) {
+        max-width: -webkit-calc($contentWidth - (#{$spacing-unit}));
+        max-width:         calc($contentWidth - (#{$spacing-unit}));
+	margin-right: 25px / 2;
+	margin-left: 45px / 2;
+        padding-right: $spacing-unit / 2;
+        padding-left: $spacing-unit / 2;
+    }
+}
+
+
+
+/**
+ * Clearfix
+ */
+%clearfix {
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
+
+/**
+ * Icons
+ */
+.icon {
+
+    > svg {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+
+        path {
+            fill: $grey-color;
+        }
+    }
+}

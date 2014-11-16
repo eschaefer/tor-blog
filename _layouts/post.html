@@ -2,34 +2,32 @@
 layout: default
 ---
 
-<!-- A wrapper for all the blog posts -->
-<div class="posts">
+<!-- Pages with side column need a 'maincol' class -->
+<div class="post maincol">
 
-  <div id="home">
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="{{ post.url }}">{{ page.title }}</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">{{ page.author }}</a> under
-              {% for tag in page.tags %}
-                <a class="post-category post-category-js" href="#">{{ tag }}</a>
-              {% endfor %} |
-              {{ page.date | date_to_string }}
-          </p>
-        </header>
-        <div class="post-description">
-          {{ content }}
-        </div>
-      </section>
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+  </header>
+
+  <article class="post-content">
+    {{ content }}
+  </article>
+
+  <div class="post-footer">
+      <a class="post-blog" href="{{ post.author | prepend: site.baseurl }}">{{ page.author }}'s Blog</a>
   </div>
+  <br />
 
 </div>
 
+<!-- Include the side column --->
+{% include sidecol.html %}
 
-
-<div class="comments clearfix">
+<!-- COMMENTS -->
+<div id="comments" class="comments clearfix">
   <div class="comments-loading">
-  <p><em>Comments will not load without Javascript enabled</em></p>
+  <p><em>Enable Javascript to view comments</em></p>
   </div>
 </div>
 
