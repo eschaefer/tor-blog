@@ -2,6 +2,8 @@
 layout: default
 ---
 
+<!-- Pages with side column need a 'maincol' class -->
+<div class="post maincol">
 <h2>Tag: {{ page.tag }}</h2>
 
 <ul>
@@ -11,3 +13,7 @@ layout: default
   </li>
 {% endfor %}
 </ul>
+</div>
+
+<!-- Include the side column -->
+{% include sidecol.html %}

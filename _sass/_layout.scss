@@ -56,22 +56,28 @@
 	text-align: center;
 	text-decoration:none;
 
-    @include media-query(1080px) {
-	font-size: $large-font-size * 0.75;
-	width: $nav-button-width * .75;
-    }
+	@include media-query(1080px) {
+	    font-size: $large-font-size * 0.75;
+	    width: $nav-button-width * .75;
+	}
 
-    @include media-query(890px) {
-	font-size: $large-font-size * 0.55;
-	width: $nav-button-width * .55;
-    }
-      
-    @include media-query(750px) {
-	font-size: $large-font-size * 0.40;
-	width: $nav-button-width * .40;
-    }
+	@include media-query(890px) {
+	    font-size: $large-font-size * 0.55;
+	    width: $nav-button-width * .55;
+	}
+	  
+	@include media-query($on-laptop) {
+	    font-size: $large-font-size * 0.40;
+	    width: $nav-button-width * .40;
+	}
 
-	// Gaps between nav items, but not on the first one
+	@include media-query($on-palm) {
+	    font-size: 14px;
+	    width: 124px;
+	    border-bottom: 1px solid #FFF;
+	}
+    
+    // Gaps between nav items, but not on the first one
         &:not(:first-child) {
             margin-left: 0px;
         }
@@ -87,9 +93,8 @@
         position: absolute;
         top: 9px;
         right: 3%;
-        background-color: $background-color;
-        border: 1px solid $grey-color-light;
-        border-radius: 5px;
+        background-color: transparent;
+        border: none;
         text-align: right;
 
         .menu-icon {
@@ -259,7 +264,7 @@ pre, code {
 }
 
 .post-content, .post-list {
-    margin-bottom: $spacing-unit;
+    margin-bottom: 0px;
     margin-left: 0px;
     list-style: none;
     font-size: $base-font-size;
@@ -284,6 +289,10 @@ pre, code {
         margin-bottom: $spacing-unit;
     }
 
+    > li:last-child {
+	margin-bottom: 0px;
+    }
+    
     & li h2 {
 	margin-bottom: 0px;
     }
@@ -416,6 +425,10 @@ pre, code {
 	  margin-right: 5px;
 	  display: inline-block;
 	  float: left;
+	  
+	  @include media-query($on-laptop) {
+	    float: right;	  
+	  }
 	}
 	
 	& img {
@@ -427,16 +440,35 @@ pre, code {
 	  display: inline-block;
 	  float: right;
 	  margin-top: -2px;
+
+	  @include media-query($on-laptop) {
+	    margin-top: 10px;	  
+	    width: 100%;
+	    text-align: right;
+	  }
 	}
+	
 	& input.searchtext {
 	  font-size: $small-font-size;
 	  height: 12px;
 	  margin-right: 7px;
+
+	  @include media-query($on-1024) {
+	    width: 70px;	  
+	  }
 	}
 	
 	& input.searchbutton {
 	  font-size: $small-font-size;
 	  height: 20px;
+
+	  @include media-query($on-1024) {
+	    width: 54px;	  
+	  }
+	}
+
+	@include media-query($on-laptop) {
+	  height: 50px;	  
 	}
 
     }
@@ -449,6 +481,15 @@ pre, code {
 	  font-size: $large-font-size;
 	  font-weight: bold;
 	  line-height: initial;
+
+	  @include media-query($on-1024) {
+	    font-size: $large-font-size * 0.8;
+	  }
+
+	  @include media-query($on-laptop) {
+	    font-size: $large-font-size * 0.7;
+	  }
+
 	}
 
 	& span {
