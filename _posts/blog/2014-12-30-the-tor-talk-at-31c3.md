@@ -1,0 +1,20 @@
+---
+layout: post
+title: "The Tor talk at 31c3"
+permalink: blog/the-tor-talk-at-31c3
+date: 2014-12-30
+author: nickm
+category: blog
+tags: ["31c3","presentations","talks","videos"]
+---
+
+And on a more cheerful note, I heard that Jake and Roger gave a really excellent talk about Tor at this year's CCC. And the CCC people have [thoughtfully put it online](http://streaming.media.ccc.de/relive/6251/)! If you didn't see it, you might want to check it out. The talking begins at around 15:16, and the introduction is well worth watching too.
+
+I'm also going to spend a while looking at the [other presentations](http://media.ccc.de/browse/congress/2014/) too. Right now the one at the top of the page is an ECC talk by Daniel Bernstein and Tanja Lange; I'm looking forward to having a little time to watch it, and a bunch of others I see there.
+
+Happy new year, everyone!
+
+**update (1/1/15):** "State of the Onion" is available for download now. You can find torrent and direct links in various formats on [C3TV website](http://media.ccc.de/browse/congress/2014/31c3_-_6251_-_en_-_saal_1_-_201412301400_-_state_of_the_onion_-_jacob_-_arma.html).
+
+Video: [MP4 HD](http://cdn.media.ccc.de/congress/2014/h264-hd/31c3-6251-en-de-State_of_the_Onion_hd.mp4) ([torrent](http://cdn.media.ccc.de/congress/2014/h264-hd/31c3-6251-en-de-State_of_the_Onion_hd.mp4.torrent)) - [WEBM](http://cdn.media.ccc.de/congress/2014/webm-sd/31c3-6251-en-de-State_of_the_Onion_webm-sd.webm) ([torrent](http://cdn.media.ccc.de/congress/2014/webm-sd/31c3-6251-en-de-State_of_the_Onion_webm-sd.webm.torrent)) - [MP4](http://cdn.media.ccc.de/congress/2014/h264-sd/31c3-6251-en-de-State_of_the_Onion_sd.mp4) ([torrent](http://cdn.media.ccc.de/congress/2014/h264-sd/31c3-6251-en-de-State_of_the_Onion_sd.mp4.torrent))  
+ Audio: [MP3](http://cdn.media.ccc.de/congress/2014/mp3/31c3-6251-en-de-State_of_the_Onion_mp3.mp3) ([torrent](http://cdn.media.ccc.de/congress/2014/mp3/31c3-6251-en-de-State_of_the_Onion_mp3.mp3.torrent)) - [OPUS](http://cdn.media.ccc.de/congress/2014/opus/31c3-6251-en-de-State_of_the_Onion_opus.opus) ([torrent](http://cdn.media.ccc.de/congress/2014/opus/31c3-6251-en-de-State_of_the_Onion_opus.opus.torrent))

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Some thoughts on Hidden Services</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/blog/css/main.css">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/blog/some-thoughts-on-hidden-services">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/blog/">The Tor Project Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+	<a class="page-link" href="/blog/">Blog Home</a>
+        <a class="page-link" href="/blog/archive">Archives</a>
+	<a class="page-link" href="https://www.torproject.org/about/overview">About Tor</a>
+        <a class="page-link donate" href="https://www.torproject.org/donate/donate">Donate</a>
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <!-- Pages with side column need a 'maincol' class -->
+<div class="post maincol">
+
+  <header class="post-header">
+    <h1 class="post-title">Some thoughts on Hidden Services</h1>
+    <p class="post-meta">Dec 30, 2014 • nickm</p>
+  </header>
+
+  <article class="post-content">
+    <p>Hi! Nick here.</p>
+
+<p>I ought to post my own responses to that Andy Greenberg article, too. (Especially since most everybody else around here is at <a href="http://events.ccc.de/congress/2014/wiki/Static:Main_Page">31c3</a> right now, or sick with the flu, or both.)</p>
+
+<p>When I saw the coverage of the hidden services study that was presented at CCC today, I was reminded of the media fallout from that old study from the 1990s that &quot;proved&quot; that a ridiculously high fraction of the internet was pornography...by looking at <a href="http://en.wikipedia.org/wiki/Usenet">Usenet</a>*, and by counting newsgroups and bytes. (You might remember it; it was the basis of the delightful TIME Magazine <a href="http://content.time.com/time/covers/0,16641,19950703,00.html">&quot;Cyberporn&quot; cover</a>.)</p>
+
+<p>The 1990s researcher wasn&#39;t lying outright, but he and the press *were* conflating one question: &quot;What fraction of Usenet groups are &#39;alt.sex&#39; or &#39;alt.binaries&#39; (file posting) groups&quot; with two others: &quot;What fraction of internet traffic is porn?&quot; and &quot;What fraction of internet-user hours are spent on porn?&quot;</p>
+
+<p>These are quite different things.</p>
+
+<p>The presentation today focused on data about hidden service types and usage. Predictably, given the results from <a href="http://arxiv.org/pdf/1308.6768v2.pdf">Biryukov, Pustogarov, Thill, and Weinmann</a>, the researcher found that hidden services related to child abuse are only a small fraction of the total number of hidden service addresses on the network. And because of the way that hidden services work, traffic does not go through hidden service directories, but instead through <a href="https://gitweb.torproject.org/torspec.git/tree/rend-spec.txt">rendezvous points</a> (randomly chosen Tor nodes): so no relay that knows the hidden service&#39;s address will learn the actual amount of traffic transmitted. But, as previously documented, abusive services represent a disproportionate fraction of usage... if you&#39;re measuring usage with hidden service directory requests.</p>
+
+<p>Why might that be?</p>
+
+<p>First, some background. Basically, a Tor client makes a hidden service directory request the first time it visits a hidden service that it has not been to in a while. (If you spend hours at one hidden service, you make about 1 hidden service directory request. But if you spend 1 second each at 100 hidden services, you make about 100 requests.) Therefore, obsessive users who visit many sites in a session account for many more of the requests that this study measures than users who visit a smaller number of sites with equal frequency.</p>
+
+<p>There are other confounding factors as well. Due to bugs in older Tor implementations, a hidden service that is unreliable (or completely unavailable) will get many, many more hidden service directory requests than a reliable one. So if any abuse sites are unusually unreliable, we&#39;d expect their users to create a disproportionately large number of hidden service directory requests.</p>
+
+<p>Also, a very large number of hidden service directory requests are probably not made by humans! See <a href="https://trac.torproject.org/projects/tor/ticket/13287">bug 13287</a>: We don&#39;t know what&#39;s up with that. Could this be caused by some kind of anti-abuse organization running an automated scanning tool?</p>
+
+<p>In any case, a methodology that looks primarily at hidden service directory requests will over-rate services that are frequently accessed from a Tor client that hasn&#39;t been there recently, and under-rate services that are used via <a href="https://tor2web.org/">tor2web</a>, and so on. It also depends a lot on how hidden services are configured, how frequently Tor hidden service directories go up and down, and what times of day they change introduction points in comparison to what time of day their users tend to be awake.</p>
+
+<p>The greater the number of distinct hidden services a person visits, and the less reliable those sites are, the more hidden service directory requests they will trigger.</p>
+
+<p>Suppose 10 people use hidden services to look at conspiracy theories, 100 people use hidden services to buy Cuban cigars, and 1000 people use it for online chat.</p>
+
+<p>But suppose that the average cigar purchaser visits only one or two sites to make purchases, and the average chat user joins one or two networks, whereas the average conspiracy theorist needs to visit several dozen forums and wikis.</p>
+
+<p>Suppose also that the average Cuban cigar purchaser makes about two purchases a month, the average chat user logs in once a day, and the average conspiracy theorist spends 3 hours a day crawling the hidden web.</p>
+
+<p>And suppose that conspiracy theory websites come and go frequently, whereas cigar sites and chat networks are more stable.</p>
+
+<p>In this analysis, even though there are far more people buying cigars, users who use it for obsessive behavior that spans multiple unreliable hidden services will be far overrepresented in the count of hidden service directory requests than users who use it for activities done less frequently and across fewer services. So any comparison of hidden service directory request counts will say more about the behavioral differences of different types of users than about their relative numbers, or the amount of traffic they generated.</p>
+
+<p>In conclusion, let&#39;s spend a minute talking about freedom and philosophy. Any system that provides security on the Internet will inevitably see some use by bad people that we&#39;d rather not help at all. After all, cars are used for getaways, and window shades conceal all kinds of criminality. The only way to make a privacy tool that nobody abuses is to make it so weak that people aren&#39;t willing to touch it, or so unusable that nobody can figure it out.</p>
+
+<p>Up till now, many of the early adopters for Tor hidden services have been folks for whom the risk/effort calculations have been quite extreme, since--as I&#39;d certainly acknowledge--the system isn&#39;t terribly usable for the average person as it stands. Roger noted earlier that hidden services amount to less than 2% of our total traffic today. Given their privacy potential, I think that&#39;s not even close to enough. We&#39;ve got to work over the next year or more to develop hidden services to the point where their positive impact is felt by the average netizen, whether they&#39;re publishing a personal blog for their friends, using a novel communications protocol more secure than email, or reading a news article based on information that a journalist received through an anonymous submission system. Otherwise, they&#39;ll remain a target for every kind of speculation, and every misunderstanding about them will lead people to conclude the worst about privacy online. <a href="https://blog.torproject.org/blog/hidden-services-need-some-love">Come lend a hand?</a></p>
+
+<p>(Also, no offense to Andy on this: he is a fine tech reporter and apparently a fine person. And no offense to Dr. Owen, who explained his results a lot more carefully than they have been re-explained elsewhere. Now please forgive me, I&#39;m off to write some more software and get some sleep. Please direct all media inquiries to the email of &quot;press at torproject dot org&quot;.)</p>
+
+<p>* Usenet was sort of like Twitter, only you could write paragraphs on it. ;)</p>
+
+  </article>
+
+  <div class="post-footer">
+      <a class="post-blog" href="/blog">nickm's Blog</a>
+  </div>
+  <br />
+
+<!-- COMMENTS -->
+<div id="comments" class="comments clearfix">
+  <div class="comments-loading">
+  <p><em>Enable Javascript to view comments</em></p>
+  </div>
+</div>
+
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'jmttest'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+<!-- <script type="text/javascript" class="juvia">
+(function() {
+    var loadingSection = document.body.querySelector('.comments-loading');
+    var icon = '<p>Comments Loading...</p><img alt="loading comments" src="/assets/images/comments-loading.gif">';
+
+    loadingSection.innerHTML = loadingSection.innerHTML + icon;
+
+    var options = {
+        container    : '.comments',
+//        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
+        topic_key    : '/blog/some-thoughts-on-hidden-services',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+//            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
+            'http://juvia.torblog.lan/api/show_topic.js' +
+	    '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+
+    (document.getElementsByTagName('head')[0] ||
+      document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
+
+})();
+</script> -->
+</div>
+
+<!-- Include the side column -->
+<div class="sidecol">
+
+<!-- RSS FEED / SEARCH -->
+    <div class="sidefirst">
+	<a href="/blog/feed.xml"><img src="/blog/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="/blog/img/rss.png">Atom</a> -->
+	<form>
+        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
+        </form>
+    </div>
+
+<!-- EVENTS -->
+    <div class ="sidebox orangebox">
+	<h2>Upcoming Events</h2>
+	<ul>
+	    
+		    <li><span><a href="/blog/events/andrew-keynotes-broadband-world-forum">Andrew Keynotes Broadband World Forum</a></span></li>
+	    
+		    <li><span><a href="/blog/events/roger-usenix-security-symposium-san-diego-ca">Roger @ Usenix Security Symposium, San Diego, CA</a></span></li>
+	    
+		    <li><span><a href="/blog/events/roger-foci-%E2%80%9914-san-diego-ca">Roger @ FOCI ’14, San Diego, CA</a></span></li>
+	    
+		    <li><span><a href="/blog/events/tor-pets-2014-amsterdam">Tor @ PETS 2014, Amsterdam</a></span></li>
+	    
+	</ul>
+	<span><a href="/blog/events">full calendar &raquo;</a></span>
+    </div>
+    
+<!-- RECENT BLOG POSTS -->
+    <div class ="sidebox greenbox">
+	<h2>Recent Blog Posts</h2>
+	<ul>
+	  
+		    <li><span><a href="/blog/blog/tor-weekly-news-february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/blog/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
+	  
+		    <li><span><a href="/blog/blog/tor-design-proposals%3A-how-we-make-changes-to-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
+	  
+		    <li><span><a href="/blog/blog/guest-post%3A-the-library-freedom-project%3A-bringing-privacy-and-anonymity-to-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+	  
+		    <li><span><a href="/blog/blog/tor-weekly-news-february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/blog/tor-weekly-news-january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/blog/tor-weekly-news-january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/blog/tor-browser-4.5a3-is-released">Tor Browser 4.5a3 is released</a></span></li>
+	  
+		    <li><span><a href="/blog/blog/tor-weekly-news-january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/blog/tor-browser-4.0.3-is-released">Tor Browser 4.0.3 is released</a></span></li>
+	  
+	</ul>
+	<span><a href="/blog/archive">more &raquo;</a></span>
+    </div>
+    
+<!-- TAG CLOUD -->
+    <div class ="tagbox orangebox">
+	<h2>Blog Tag Cloud</h2>
+	<ul>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/analysis/">
+            analysis
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/hidden services/">
+            hidden services
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/media/">
+            media
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/philosophy/">
+            philosophy
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/31c3/">
+            31c3
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/presentations/">
+            presentations
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/talks/">
+            talks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/videos/">
+            videos
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 145%">
+        <span><a href="/blog/tag//">
+            
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/alpha/">
+            alpha
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/tor-release/">
+            tor-release
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 373%">
+        <span><a href="/blog/tag/tor weekly news/">
+            tor weekly news
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 145%">
+        <span><a href="/blog/tag/tbb/">
+            tbb
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/tbb-4_0/">
+            tbb-4_0
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 145%">
+        <span><a href="/blog/tag/tor browser/">
+            tor browser
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 145%">
+        <span><a href="/blog/tag/tor browser bundle/">
+            tor browser bundle
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/tbb-4_5/">
+            tbb-4_5
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/community/">
+            community
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/Guest Blog Post/">
+            Guest Blog Post
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/libraries/">
+            libraries
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/privacy/">
+            privacy
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 100%">
+        <span><a href="/blog/tag/usability/">
+            usability
+        </a></span>
+    </li>
+
+	</ul>
+	<span><a href="/blog/tag-cloud">more tags &raquo;</a></span>
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>  
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Tor Project Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>The Tor Project Blog</li>
+          <li><a href="mailto:contact@torproject.org">contact@torproject.org</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyllrb</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
