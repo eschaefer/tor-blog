@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Tor Weekly News — January 21st, 2015</title>
+    <title>Some thoughts on Hidden Services</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
     <meta name="viewport" content="width=device-width">
@@ -53,53 +53,57 @@
 <div class="post maincol">
 
   <header class="post-header">
-    <h1 class="post-title">Tor Weekly News — January 21st, 2015</h1>
-    <p class="post-meta">Jan 21, 2015 • harmony</p>
+    <h1 class="post-title">Some thoughts on Hidden Services</h1>
+    <p class="post-meta">Dec 30, 2014 • nickm</p>
   </header>
 
   <article class="post-content">
-    <p>Welcome to the third issue in 2015 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the <a href="https://guardianproject.info/2015/01/02/2015-is-the-year-of-bore-sec/">boring</a> Tor community.</p>
+    <p>Hi! Nick here.</p>
 
-<h1>Tor Browser 4.0.3 and 4.5a3 are out</h1>
+<p>I ought to post my own responses to that Andy Greenberg article, too. (Especially since most everybody else around here is at <a href="http://events.ccc.de/congress/2014/wiki/Static:Main_Page">31c3</a> right now, or sick with the flu, or both.)</p>
 
-<p>Georg Koppen announced two new releases by the Tor Browser team. <a href="https://blog.torproject.org/blog/tor-browser-403-released">Version 4.0.3</a> of the privacy-preserving browser is based on Firefox 31.4.0esr, and also contains updates to NoScript, meek, and Tor Launcher.</p>
+<p>When I saw the coverage of the hidden services study that was presented at CCC today, I was reminded of the media fallout from that old study from the 1990s that &quot;proved&quot; that a ridiculously high fraction of the internet was pornography...by looking at <a href="http://en.wikipedia.org/wiki/Usenet">Usenet</a>*, and by counting newsgroups and bytes. (You might remember it; it was the basis of the delightful TIME Magazine <a href="http://content.time.com/time/covers/0,16641,19950703,00.html">&quot;Cyberporn&quot; cover</a>.)</p>
 
-<p>The <a href="https://blog.torproject.org/blog/tor-browser-45a3-released">third release in the 4.5-alpha series</a> allows the secure in-browser update mechanism to handle signed update files, and will reject unsigned ones from now on. It also restores functionality for meek, which was broken in previous 4.5-alpha releases, and offers other improvements and bugfixes — please see Georg’s announcement for the full changelog.</p>
+<p>The 1990s researcher wasn&#39;t lying outright, but he and the press *were* conflating one question: &quot;What fraction of Usenet groups are &#39;alt.sex&#39; or &#39;alt.binaries&#39; (file posting) groups&quot; with two others: &quot;What fraction of internet traffic is porn?&quot; and &quot;What fraction of internet-user hours are spent on porn?&quot;</p>
 
-<p>These releases contain important security updates, so users of both the stable and alpha series should upgrade as soon as possible. Furthermore, Tor Browser 4.5a3 is signed by a new Tor Browser Developers signing key rather than the personal key of an individual developer. If you want to verify your download of the new alpha (and you should!), you will need to retrieve the new key (fingerprint EF6E 286D DA85 EA2A 4BA7 DE68 4E2C 6E87 9329 8290) from a keyserver before doing so.</p>
+<p>These are quite different things.</p>
 
-<h1>Miscellaneous news</h1>
+<p>The presentation today focused on data about hidden service types and usage. Predictably, given the results from <a href="http://arxiv.org/pdf/1308.6768v2.pdf">Biryukov, Pustogarov, Thill, and Weinmann</a>, the researcher found that hidden services related to child abuse are only a small fraction of the total number of hidden service addresses on the network. And because of the way that hidden services work, traffic does not go through hidden service directories, but instead through <a href="https://gitweb.torproject.org/torspec.git/tree/rend-spec.txt">rendezvous points</a> (randomly chosen Tor nodes): so no relay that knows the hidden service&#39;s address will learn the actual amount of traffic transmitted. But, as previously documented, abusive services represent a disproportionate fraction of usage... if you&#39;re measuring usage with hidden service directory requests.</p>
 
-<p>Anthony G. Basile <a href="https://lists.torproject.org/pipermail/tor-talk/2015-January/036526.html">announced</a> version 20150114 of Tor-ramdisk, the uClibc-based micro Linux distribution whose only purpose is to host a Tor relay in an environment that maximizes security and privacy. This release includes updates to Tor, Libevent, and other key software.</p>
+<p>Why might that be?</p>
 
-<p>Nik <a href="https://lists.torproject.org/pipermail/tor-dev/2015-January/008174.html">announced</a> oppy, an onion proxy implemented in Python: “oppy works like a regular Tor client”, though “there are a number of simplifications made, with the major ones primarily centering around circuit management/build logic and how and when network status documents are collected”. Nik also asked for suggestions on how to take the project forward: “Whether or not I continue hacking on oppy to make it a solid piece of software (rather than just a prototype) or just leave it as is as a reference depends on whether or not the Tor development community sees any real uses or future potential for the project”.</p>
+<p>First, some background. Basically, a Tor client makes a hidden service directory request the first time it visits a hidden service that it has not been to in a while. (If you spend hours at one hidden service, you make about 1 hidden service directory request. But if you spend 1 second each at 100 hidden services, you make about 100 requests.) Therefore, obsessive users who visit many sites in a session account for many more of the requests that this study measures than users who visit a smaller number of sites with equal frequency.</p>
 
-<p>meejah <a href="https://lists.torproject.org/pipermail/tor-dev/2015-January/008166.html">announced</a> a new one-to-one encrypted and anonymous voice chat feature for “<a href="https://github.com/meejah/carml.git">carml</a>”, the command-line Tor control utility: “ [It] essentially cross-connects the mic + speakers of each side via an Opus + OGG stream over a single Tor TCP connection.” As meejah warns, it is “NOT FOR REAL USE at all yet”, but if you have experience with gstreamer and/or OGG then please see meejah’s message for some unresolved questions.</p>
+<p>There are other confounding factors as well. Due to bugs in older Tor implementations, a hidden service that is unreliable (or completely unavailable) will get many, many more hidden service directory requests than a reliable one. So if any abuse sites are unusually unreliable, we&#39;d expect their users to create a disproportionately large number of hidden service directory requests.</p>
 
-<p>Following suggestions from <a href="https://lists.torproject.org/pipermail/tor-relays/2015-January/006240.html">Sebastian Urbach</a> and <a href="https://lists.torproject.org/pipermail/tor-relays/2015-January/006248.html">grarpamp</a>, Karsten Loesing <a href="https://bugs.torproject.org/14257">altered</a> the main unit of data rate measurement for the <a href="https://metrics.torproject.org/">Tor Metrics portal</a> from MiB/s (mebibytes per second) to the more common Gbit/s (gigabits per second).</p>
+<p>Also, a very large number of hidden service directory requests are probably not made by humans! See <a href="https://trac.torproject.org/projects/tor/ticket/13287">bug 13287</a>: We don&#39;t know what&#39;s up with that. Could this be caused by some kind of anti-abuse organization running an automated scanning tool?</p>
 
-<p>Philipp Winter <a href="https://lists.torproject.org/pipermail/tor-dev/2015-January/008156.html">published</a> preliminary statistics and analysis obtained by running a Go implementation of <a href="https://gitweb.torproject.org/doctor.git/">Doctor</a>’s sybil-hunting script over archived consensuses: “I’ll have a more detailed analysis at some point in the future.”</p>
+<p>In any case, a methodology that looks primarily at hidden service directory requests will over-rate services that are frequently accessed from a Tor client that hasn&#39;t been there recently, and under-rate services that are used via <a href="https://tor2web.org/">tor2web</a>, and so on. It also depends a lot on how hidden services are configured, how frequently Tor hidden service directories go up and down, and what times of day they change introduction points in comparison to what time of day their users tend to be awake.</p>
 
-<p>The Tails team <a href="https://mailman.boum.org/pipermail/tails-dev/2015-January/007919.html">published</a> instructions for running an nginx webserver as a hidden service using a copy of Tails: “Feedback is welcome!”</p>
+<p>The greater the number of distinct hidden services a person visits, and the less reliable those sites are, the more hidden service directory requests they will trigger.</p>
 
-<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2015-January/000850.html">Frédéric Cornu</a> for running a mirror of the Tor Project’s website and software!</p>
+<p>Suppose 10 people use hidden services to look at conspiracy theories, 100 people use hidden services to buy Cuban cigars, and 1000 people use it for online chat.</p>
 
-<h1>This week in Tor history</h1>
+<p>But suppose that the average cigar purchaser visits only one or two sites to make purchases, and the average chat user joins one or two networks, whereas the average conspiracy theorist needs to visit several dozen forums and wikis.</p>
 
-<p><a href="https://lists.torproject.org/pipermail/tor-news/2014-January/000029.html">A year ago this week</a>, the “<a href="http://www.cs.kau.se/philwint/spoiled_onions/">Spoiled Onions</a>” project published its preliminary technical report. The goal of the project was to monitor Tor exit relays in order to “expose, document, and thwart malicious or misconfigured relays”; the researchers turned up 65 such relays over the course of their investigation, with the culprits engaging in attacks such as “SSH and HTTPS MitM, HTML injection, SSL stripping, and traffic sniffing”, or unintentionally interfering with traffic as a result of upstream censorship.</p>
+<p>Suppose also that the average Cuban cigar purchaser makes about two purchases a month, the average chat user logs in once a day, and the average conspiracy theorist spends 3 hours a day crawling the hidden web.</p>
 
-<p>Events such as the <a href="https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">RELAY_EARLY traffic confirmation attack</a> and the <a href="https://lists.torproject.org/pipermail/tor-consensus-health/2014-December/005381.html">sybil attacks late last year</a> have only highlighted the importance of monitoring for malicious relays in the Tor network. The <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/bad-relays">bad-relays mailing list</a> serves as a reporting channel for Tor community members who believe particular relays are up to no good (messages sent to the list are not publicly visible, for <a href="https://lists.torproject.org/pipermail/tor-news/2014-August/000057.html">various reasons</a>); David Fifield has been experimenting with <a href="https://lists.torproject.org/pipermail/tor-dev/2015-January/008095.html">data visualizations of significant network events</a>; and Philipp Winter, a “Spoiled Onions” co-author, has been working on additional tools (such as the above-mentioned Go sybil hunter and “<a href="https://gitweb.torproject.org/user/phw/zoossh.git/">zoossh</a>”, a speedy Tor network document parser) to make these checks more efficient — to give only a few examples of recent work by the community on this issue.</p>
+<p>And suppose that conspiracy theory websites come and go frequently, whereas cigar sites and chat networks are more stable.</p>
 
-<hr>
+<p>In this analysis, even though there are far more people buying cigars, users who use it for obsessive behavior that spans multiple unreliable hidden services will be far overrepresented in the count of hidden service directory requests than users who use it for activities done less frequently and across fewer services. So any comparison of hidden service directory request counts will say more about the behavioral differences of different types of users than about their relative numbers, or the amount of traffic they generated.</p>
 
-<p>This issue of Tor Weekly News has been assembled by Harmony.</p>
+<p>In conclusion, let&#39;s spend a minute talking about freedom and philosophy. Any system that provides security on the Internet will inevitably see some use by bad people that we&#39;d rather not help at all. After all, cars are used for getaways, and window shades conceal all kinds of criminality. The only way to make a privacy tool that nobody abuses is to make it so weak that people aren&#39;t willing to touch it, or so unusable that nobody can figure it out.</p>
 
-<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+<p>Up till now, many of the early adopters for Tor hidden services have been folks for whom the risk/effort calculations have been quite extreme, since--as I&#39;d certainly acknowledge--the system isn&#39;t terribly usable for the average person as it stands. Roger noted earlier that hidden services amount to less than 2% of our total traffic today. Given their privacy potential, I think that&#39;s not even close to enough. We&#39;ve got to work over the next year or more to develop hidden services to the point where their positive impact is felt by the average netizen, whether they&#39;re publishing a personal blog for their friends, using a novel communications protocol more secure than email, or reading a news article based on information that a journalist received through an anonymous submission system. Otherwise, they&#39;ll remain a target for every kind of speculation, and every misunderstanding about them will lead people to conclude the worst about privacy online. <a href="https://blog.torproject.org/blog/hidden-services-need-some-love">Come lend a hand?</a></p>
+
+<p>(Also, no offense to Andy on this: he is a fine tech reporter and apparently a fine person. And no offense to Dr. Owen, who explained his results a lot more carefully than they have been re-explained elsewhere. Now please forgive me, I&#39;m off to write some more software and get some sleep. Please direct all media inquiries to the email of &quot;press at torproject dot org&quot;.)</p>
+
+<p>* Usenet was sort of like Twitter, only you could write paragraphs on it. ;)</p>
 
   </article>
 
   <div class="post-footer">
-      <a class="post-blog" href="/blog">harmony's Blog</a>
+      <a class="post-blog" href="/blog">nickm's Blog</a>
   </div>
   <br />
 
@@ -219,21 +223,21 @@
 	<h2>Recent Blog Posts</h2>
 	<ul>
 	  
-		    <li><span><a href="/blog/tor-weekly-news-—-january-14th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-browser-403-released">UX Sprint 2015 wrapup</a></span></li>
+		    <li><span><a href="/blog/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-weekly-news-—-january-7th-2015">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+		    <li><span><a href="/blog/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-0262-alpha-released">Tor design proposals: how we make changes to our protocol</a></span></li>
+		    <li><span><a href="/blog/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-weekly-news-—-december-31st-2014">Tor Weekly News — February 4th, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-talk-31c3">Tor Weekly News — January 28th, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/some-thoughts-hidden-services">Tor Weekly News — January 21st, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-80-percent-percent-1-2-percent-abusive">Tor Browser 4.5a3 is released</a></span></li>
+		    <li><span><a href="/blog/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
 	  
 		    <li><span><a href="/blog/tor-weekly-news-—-january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
 	  

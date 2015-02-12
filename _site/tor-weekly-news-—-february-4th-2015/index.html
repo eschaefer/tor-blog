@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Tor: 80 percent of ??? percent of 1-2 percent abusive.</title>
+    <title>Tor Weekly News — February 4th, 2015</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="/blog/css/main.css">
-    <link rel="canonical" href="http://tor.jmtodaro.com//blog/tor-80-percent-percent-1-2-percent-abusive">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/tor-weekly-news-—-february-4th-2015">
 </head>
 
 
@@ -53,34 +53,59 @@
 <div class="post maincol">
 
   <header class="post-header">
-    <h1 class="post-title">Tor: 80 percent of ??? percent of 1-2 percent abusive.</h1>
-    <p class="post-meta">Dec 30, 2014 • nickm</p>
+    <h1 class="post-title">Tor Weekly News — February 4th, 2015</h1>
+    <p class="post-meta">Feb 4, 2015 • harmony</p>
   </header>
 
   <article class="post-content">
-    <p>Hi, Nick here.</p>
+    <p>Welcome to the fifth issue in 2015 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the Tor community.</p>
 
-<p>Roger&#39;s at 31c3, so I&#39;ll post his statement about that article you might have seen:</p>
+<h1>Mozilla’s Tor relays go live</h1>
 
-<blockquote>
-<p>Tor hidden service traffic, which Dr. Gareth Owen discussed in his talk this afternooon, is only 1.5% of all Tor traffic. Tor gets about 2 million users per day total.<br>
- The researcher ran a set of Tor relays for a six month period, and recorded how many times somebody attempted to look up a hidden service (this lookup is one of the steps in visiting a hidden service). Then at the end of that period, he scanned the hidden services he&#39;d learned about, to find out what sort of content was on them.</p>
+<p>Late last year, Mozilla <a href="https://lists.torproject.org/pipermail/tor-news/2014-November/000071.html">announced</a> its partnership with the Tor Project in the <a href="https://blog.mozilla.org/privacy/2014/11/10/introducing-polaris-privacy-initiative-to-accelerate-user-focused-privacy-online/">Polaris Privacy Initiative</a>, a program aimed at “giving users more control, awareness and protection in their Web experiences”. One of the two Tor-related “experiments” Mozilla planned to carry out was the operation of several high-capacity middle relays, and last week Mozilla’s Network Engineering team announced that the <a href="https://globe.torproject.org/#/search/query=mozilla">new nodes</a> had been running for several weeks, in a <a href="https://blog.mozilla.org/it/2015/01/28/deploying-tor-relays/">blog post</a> that explores the technical decisions and challenges they faced in setting them up.</p>
 
-<p>Dr. Owen&#39;s data shows that there&#39;s a lot of churn in hidden services, so nearly all of the sites were gone by the time he did these scans. His graphs only show data about the sites that were still up many months later: so his data could either show a lot of people visiting abuse-related hidden services, or it could simply show that abuse-related hidden services are more long-lived than others. We can&#39;t tell from the data.</p>
+<p>The team discussed the hardware and infrastructure chosen for the relays, configuration management using Ansible (publishing their <a href="https://github.com/XioNoX/moz-tor-relays/">playbook</a> at the same time), and security practices, as well as announcing their intention to continue posting about their experiences and findings during the experiment.</p>
 
-<p>Without knowing how many sites disappeared before he got around to looking at them, it&#39;s impossible to know what percentage of fetches went to abuse sites.</p>
+<p>Thanks to Mozilla for this contribution to the Tor network!</p>
 
-<p>There are important uses for hidden services, such as when human rights activists use them to access Facebook or to blog anonymously. These uses for hidden services are new and have great potential.</p>
+<h1>Monthly status reports for January 2015</h1>
 
-<p>PS: Law enforcement agencies use Tor to stay anonymous while they catch bad guys. Law enforcement agencies use and run hidden services, too.</p>
-</blockquote>
+<p>The wave of regular monthly reports from Tor project members for the month of January has begun. <a href="https://lists.torproject.org/pipermail/tor-reports/2015-January/000748.html">Juha Nurmi</a> released his report first, followed by reports from <a href="https://lists.torproject.org/pipermail/tor-reports/2015-January/000749.html">Philipp Winter</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2015-February/000750.html">Damian Johnson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2015-February/000751.html">Sherief Alaa</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2015-February/000752.html">Georg Koppen</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2015-February/000753.html">David Goulet</a>.</p>
 
-<p>More info to follow.</p>
+<h1>Miscellaneous news</h1>
+
+<p>meejah <a href="https://lists.torproject.org/pipermail/tor-dev/2015-February/008227.html">announced</a> version 0.12.0 of txtorcon, the Tor controller client in Twisted; please see the announcement for a full list of improvements.</p>
+
+<p>Nick Mathewson submitted a draft of <a href="https://lists.torproject.org/pipermail/tor-dev/2015-February/008223.html">proposal 241</a>, which aims to protect users against adversaries who are able to attack their connectivity to the Tor network and force them to use malicious guard nodes. Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-dev/2015-February/008226.html">offered</a> some further thoughts.</p>
+
+<p>Nick also set out the schedule for the Tor 0.2.6 <a href="https://lists.torproject.org/pipermail/tor-dev/2015-January/008216.html">feature freeze</a>.</p>
+
+<p>After reports from users that Tor Browser’s default obfs4 bridges are no longer usable in China, David Fifield <a href="https://lists.torproject.org/pipermail/tor-dev/2015-February/008222.html">estimated</a> the time it takes for the “Great Firewall” to react to new circumvention systems as lying “between 2 and 10 weeks”, and asked for additional data to narrow the range further.</p>
+
+<p>Isis Lovecruft “would be super stoked if we could make it as easy and seamless as possible for the bridge operators who are still running obfs2 (!!) to move to supporting better, newer pluggable transports”, such as obfs4, and <a href="https://lists.torproject.org/pipermail/tor-relays/2015-February/006346.html">wondered</a> how to make it possible for operators running Debian stable to get the necessary dependencies onto their system without extensive backporting: “If someone has done this, or has another simple solution, would you mind writing up some short how-to on the steps you took, please?”</p>
+
+<p>The Tails team continued to <a href="https://mailman.boum.org/pipermail/tails-dev/2015-February/008003.html">discuss</a> the advantages and disadvantages of removing AdBlock Plus from Tails’ version of Tor Browser.</p>
+
+<p>Sadia Afroz compiled a timeline of Tor blocking events, and <a href="https://lists.torproject.org/pipermail/ooni-dev/2015-February/000241.html">shared</a> it with the ooni-dev mailing list, along with a request for missing data points; Collin Anderson <a href="https://lists.torproject.org/pipermail/ooni-dev/2015-February/000242.html">responded</a> with some additional information.</p>
+
+<p>Patrick Schleizer <a href="https://lists.torproject.org/pipermail/tor-talk/2015-February/036675.html">announced</a> that the Whonix team is looking for “a sponsor who is willing to donate a suitable sized virtual or root server”, and gave a list of planned requirements. If you can meet this need, please see Patrick’s message for next steps.</p>
+
+<p>Konstantin Müller <a href="https://lists.torproject.org/pipermail/tor-talk/2015-February/036709.html">shared</a> a report written as part of a Master’s degree, offering an introduction to “the past, present, and future” of Tor hidden services.</p>
+
+<h1>News from Tor StackExchange</h1>
+
+<p>Windy wanted to know <a href="https://tor.stackexchange.com/q/6087/88">how often a client fetches consensus data from a directory server</a>. Jens Kubieziel provided some information by walking through the source code, and concluded: “every minute it is checked if the consensus document is too old. If it is older than the current time a new one will be fetched.”</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by qbi and Harmony.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the project page <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews"></a>, write down your name and subscribe to the team mailing list <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team"></a> if you want to get involved!</p>
 
   </article>
 
   <div class="post-footer">
-      <a class="post-blog" href="/blog">nickm's Blog</a>
+      <a class="post-blog" href="/blog">harmony's Blog</a>
   </div>
   <br />
 
@@ -118,7 +143,7 @@
         container    : '.comments',
 //        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
         site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
-        topic_key    : '/tor-80-percent-percent-1-2-percent-abusive',
+        topic_key    : '/tor-weekly-news-—-february-4th-2015',
         topic_url    : location.href,
         topic_title  : document.title || location.href,
         include_base : !window.Juvia,

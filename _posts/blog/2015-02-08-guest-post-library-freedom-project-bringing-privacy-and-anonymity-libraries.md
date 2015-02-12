@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries"
-permalink: tor-weekly-news-—-january-7th-2015
+permalink: guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries
 date: 2015-02-08
 author: alison
 category: blog

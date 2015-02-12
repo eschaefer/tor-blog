@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Tor: 80 percent of ??? percent of 1-2 percent abusive.</title>
+    <title>Tor Weekly News — January 21st, 2015</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="/blog/css/main.css">
-    <link rel="canonical" href="http://tor.jmtodaro.com//blog/tor-80-percent-percent-1-2-percent-abusive">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/tor-weekly-news-—-january-21st-2015">
 </head>
 
 
@@ -53,34 +53,53 @@
 <div class="post maincol">
 
   <header class="post-header">
-    <h1 class="post-title">Tor: 80 percent of ??? percent of 1-2 percent abusive.</h1>
-    <p class="post-meta">Dec 30, 2014 • nickm</p>
+    <h1 class="post-title">Tor Weekly News — January 21st, 2015</h1>
+    <p class="post-meta">Jan 21, 2015 • harmony</p>
   </header>
 
   <article class="post-content">
-    <p>Hi, Nick here.</p>
+    <p>Welcome to the third issue in 2015 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the <a href="https://guardianproject.info/2015/01/02/2015-is-the-year-of-bore-sec/">boring</a> Tor community.</p>
 
-<p>Roger&#39;s at 31c3, so I&#39;ll post his statement about that article you might have seen:</p>
+<h1>Tor Browser 4.0.3 and 4.5a3 are out</h1>
 
-<blockquote>
-<p>Tor hidden service traffic, which Dr. Gareth Owen discussed in his talk this afternooon, is only 1.5% of all Tor traffic. Tor gets about 2 million users per day total.<br>
- The researcher ran a set of Tor relays for a six month period, and recorded how many times somebody attempted to look up a hidden service (this lookup is one of the steps in visiting a hidden service). Then at the end of that period, he scanned the hidden services he&#39;d learned about, to find out what sort of content was on them.</p>
+<p>Georg Koppen announced two new releases by the Tor Browser team. <a href="https://blog.torproject.org/blog/tor-browser-403-released">Version 4.0.3</a> of the privacy-preserving browser is based on Firefox 31.4.0esr, and also contains updates to NoScript, meek, and Tor Launcher.</p>
 
-<p>Dr. Owen&#39;s data shows that there&#39;s a lot of churn in hidden services, so nearly all of the sites were gone by the time he did these scans. His graphs only show data about the sites that were still up many months later: so his data could either show a lot of people visiting abuse-related hidden services, or it could simply show that abuse-related hidden services are more long-lived than others. We can&#39;t tell from the data.</p>
+<p>The <a href="https://blog.torproject.org/blog/tor-browser-45a3-released">third release in the 4.5-alpha series</a> allows the secure in-browser update mechanism to handle signed update files, and will reject unsigned ones from now on. It also restores functionality for meek, which was broken in previous 4.5-alpha releases, and offers other improvements and bugfixes — please see Georg’s announcement for the full changelog.</p>
 
-<p>Without knowing how many sites disappeared before he got around to looking at them, it&#39;s impossible to know what percentage of fetches went to abuse sites.</p>
+<p>These releases contain important security updates, so users of both the stable and alpha series should upgrade as soon as possible. Furthermore, Tor Browser 4.5a3 is signed by a new Tor Browser Developers signing key rather than the personal key of an individual developer. If you want to verify your download of the new alpha (and you should!), you will need to retrieve the new key (fingerprint EF6E 286D DA85 EA2A 4BA7 DE68 4E2C 6E87 9329 8290) from a keyserver before doing so.</p>
 
-<p>There are important uses for hidden services, such as when human rights activists use them to access Facebook or to blog anonymously. These uses for hidden services are new and have great potential.</p>
+<h1>Miscellaneous news</h1>
 
-<p>PS: Law enforcement agencies use Tor to stay anonymous while they catch bad guys. Law enforcement agencies use and run hidden services, too.</p>
-</blockquote>
+<p>Anthony G. Basile <a href="https://lists.torproject.org/pipermail/tor-talk/2015-January/036526.html">announced</a> version 20150114 of Tor-ramdisk, the uClibc-based micro Linux distribution whose only purpose is to host a Tor relay in an environment that maximizes security and privacy. This release includes updates to Tor, Libevent, and other key software.</p>
 
-<p>More info to follow.</p>
+<p>Nik <a href="https://lists.torproject.org/pipermail/tor-dev/2015-January/008174.html">announced</a> oppy, an onion proxy implemented in Python: “oppy works like a regular Tor client”, though “there are a number of simplifications made, with the major ones primarily centering around circuit management/build logic and how and when network status documents are collected”. Nik also asked for suggestions on how to take the project forward: “Whether or not I continue hacking on oppy to make it a solid piece of software (rather than just a prototype) or just leave it as is as a reference depends on whether or not the Tor development community sees any real uses or future potential for the project”.</p>
+
+<p>meejah <a href="https://lists.torproject.org/pipermail/tor-dev/2015-January/008166.html">announced</a> a new one-to-one encrypted and anonymous voice chat feature for “<a href="https://github.com/meejah/carml.git">carml</a>”, the command-line Tor control utility: “ [It] essentially cross-connects the mic + speakers of each side via an Opus + OGG stream over a single Tor TCP connection.” As meejah warns, it is “NOT FOR REAL USE at all yet”, but if you have experience with gstreamer and/or OGG then please see meejah’s message for some unresolved questions.</p>
+
+<p>Following suggestions from <a href="https://lists.torproject.org/pipermail/tor-relays/2015-January/006240.html">Sebastian Urbach</a> and <a href="https://lists.torproject.org/pipermail/tor-relays/2015-January/006248.html">grarpamp</a>, Karsten Loesing <a href="https://bugs.torproject.org/14257">altered</a> the main unit of data rate measurement for the <a href="https://metrics.torproject.org/">Tor Metrics portal</a> from MiB/s (mebibytes per second) to the more common Gbit/s (gigabits per second).</p>
+
+<p>Philipp Winter <a href="https://lists.torproject.org/pipermail/tor-dev/2015-January/008156.html">published</a> preliminary statistics and analysis obtained by running a Go implementation of <a href="https://gitweb.torproject.org/doctor.git/">Doctor</a>’s sybil-hunting script over archived consensuses: “I’ll have a more detailed analysis at some point in the future.”</p>
+
+<p>The Tails team <a href="https://mailman.boum.org/pipermail/tails-dev/2015-January/007919.html">published</a> instructions for running an nginx webserver as a hidden service using a copy of Tails: “Feedback is welcome!”</p>
+
+<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2015-January/000850.html">Frédéric Cornu</a> for running a mirror of the Tor Project’s website and software!</p>
+
+<h1>This week in Tor history</h1>
+
+<p><a href="https://lists.torproject.org/pipermail/tor-news/2014-January/000029.html">A year ago this week</a>, the “<a href="http://www.cs.kau.se/philwint/spoiled_onions/">Spoiled Onions</a>” project published its preliminary technical report. The goal of the project was to monitor Tor exit relays in order to “expose, document, and thwart malicious or misconfigured relays”; the researchers turned up 65 such relays over the course of their investigation, with the culprits engaging in attacks such as “SSH and HTTPS MitM, HTML injection, SSL stripping, and traffic sniffing”, or unintentionally interfering with traffic as a result of upstream censorship.</p>
+
+<p>Events such as the <a href="https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">RELAY_EARLY traffic confirmation attack</a> and the <a href="https://lists.torproject.org/pipermail/tor-consensus-health/2014-December/005381.html">sybil attacks late last year</a> have only highlighted the importance of monitoring for malicious relays in the Tor network. The <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/bad-relays">bad-relays mailing list</a> serves as a reporting channel for Tor community members who believe particular relays are up to no good (messages sent to the list are not publicly visible, for <a href="https://lists.torproject.org/pipermail/tor-news/2014-August/000057.html">various reasons</a>); David Fifield has been experimenting with <a href="https://lists.torproject.org/pipermail/tor-dev/2015-January/008095.html">data visualizations of significant network events</a>; and Philipp Winter, a “Spoiled Onions” co-author, has been working on additional tools (such as the above-mentioned Go sybil hunter and “<a href="https://gitweb.torproject.org/user/phw/zoossh.git/">zoossh</a>”, a speedy Tor network document parser) to make these checks more efficient — to give only a few examples of recent work by the community on this issue.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Harmony.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
 
   </article>
 
   <div class="post-footer">
-      <a class="post-blog" href="/blog">nickm's Blog</a>
+      <a class="post-blog" href="/blog">harmony's Blog</a>
   </div>
   <br />
 
@@ -118,7 +137,7 @@
         container    : '.comments',
 //        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
         site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
-        topic_key    : '/tor-80-percent-percent-1-2-percent-abusive',
+        topic_key    : '/tor-weekly-news-—-january-21st-2015',
         topic_url    : location.href,
         topic_title  : document.title || location.href,
         include_base : !window.Juvia,

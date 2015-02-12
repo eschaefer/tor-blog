@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser 4.5a3 is released"
-permalink: tor-80-percent-percent-1-2-percent-abusive
+permalink: tor-browser-45a3-released
 date: 2015-01-16
 author: gk
 category: blog

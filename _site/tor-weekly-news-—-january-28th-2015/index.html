@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Tor: 80 percent of ??? percent of 1-2 percent abusive.</title>
+    <title>Tor Weekly News — January 28th, 2015</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="/blog/css/main.css">
-    <link rel="canonical" href="http://tor.jmtodaro.com//blog/tor-80-percent-percent-1-2-percent-abusive">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/tor-weekly-news-—-january-28th-2015">
 </head>
 
 
@@ -53,34 +53,39 @@
 <div class="post maincol">
 
   <header class="post-header">
-    <h1 class="post-title">Tor: 80 percent of ??? percent of 1-2 percent abusive.</h1>
-    <p class="post-meta">Dec 30, 2014 • nickm</p>
+    <h1 class="post-title">Tor Weekly News — January 28th, 2015</h1>
+    <p class="post-meta">Jan 28, 2015 • harmony</p>
   </header>
 
   <article class="post-content">
-    <p>Hi, Nick here.</p>
+    <p>Welcome to the fourth issue in 2015 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the Tor community.</p>
 
-<p>Roger&#39;s at 31c3, so I&#39;ll post his statement about that article you might have seen:</p>
+<h1>The future of Private Browsing Mode</h1>
 
-<blockquote>
-<p>Tor hidden service traffic, which Dr. Gareth Owen discussed in his talk this afternooon, is only 1.5% of all Tor traffic. Tor gets about 2 million users per day total.<br>
- The researcher ran a set of Tor relays for a six month period, and recorded how many times somebody attempted to look up a hidden service (this lookup is one of the steps in visiting a hidden service). Then at the end of that period, he scanned the hidden services he&#39;d learned about, to find out what sort of content was on them.</p>
+<p>Mozilla Firefox, on which Tor Browser is based, offers users a “Private Browsing Mode” that aims solely to prevent browsing information from being saved locally. As Georg Koppen <a href="https://lists.torproject.org/pipermail/tbb-dev/2015-January/000217.html">pointed out</a>, “The question is now how to treat the other privacy-relevant areas like cross-origin linkability or fingerprinting?”</p>
 
-<p>Dr. Owen&#39;s data shows that there&#39;s a lot of churn in hidden services, so nearly all of the sites were gone by the time he did these scans. His graphs only show data about the sites that were still up many months later: so his data could either show a lot of people visiting abuse-related hidden services, or it could simply show that abuse-related hidden services are more long-lived than others. We can&#39;t tell from the data.</p>
+<p>Georg proposed a “Private Browsing Mode+”, which would integrate the disk-avoidance, anti-tracking, anti-fingerprinting, and location-concealing elements of a privacy-preserving browser in a more logical way.</p>
 
-<p>Without knowing how many sites disappeared before he got around to looking at them, it&#39;s impossible to know what percentage of fetches went to abuse sites.</p>
+<h1>Miscellaneous news</h1>
 
-<p>There are important uses for hidden services, such as when human rights activists use them to access Facebook or to blog anonymously. These uses for hidden services are new and have great potential.</p>
+<p>After a “<a href="https://lists.torproject.org/pipermail/tor-dev/2015-January/008211.html">pretty big overhaul</a>”, Damian Johnson announced that <a href="https://stem.torproject.org/">Stem</a>, the Tor controller library, now “lazy-loads” descriptors, resulting in a <a href="https://gitweb.torproject.org/stem.git/commit/?id=3dac7c5">considerable speed increase</a> when reading network documents. “Note that descriptor validation is now opt-in rather than opt-out, so if you’d prefer validation over performance you’ll now need to include ‘validate = True’.”</p>
 
-<p>PS: Law enforcement agencies use Tor to stay anonymous while they catch bad guys. Law enforcement agencies use and run hidden services, too.</p>
-</blockquote>
+<p>The Tails team <a href="https://mailman.boum.org/pipermail/tails-dev/2015-January/007945.html">set out</a> the release schedule for Tails 1.3, and also published its <a href="https://tails.boum.org/contribute/working_together/code_of_conduct/">Code of Conduct</a>.</p>
 
-<p>More info to follow.</p>
+<p>Arturo Filastò <a href="https://lists.torproject.org/pipermail/ooni-dev/2015-January/000238.html">reported</a> on OONI-related activities at the Nexa Center’s <a href="http://nexa.polito.it/nntools2015">NNTools2015</a> event.</p>
+
+<p>Patrick Schleizer <a href="https://lists.torproject.org/pipermail/tor-talk/2015-January/036581.html">wondered</a> how Tor Browser could be made to act more like a “system tor”, and sketched out a <a href="https://bugs.torproject.org/14121">possible plan</a>: “What do you think about this proposal in general?”</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Harmony.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
 
   </article>
 
   <div class="post-footer">
-      <a class="post-blog" href="/blog">nickm's Blog</a>
+      <a class="post-blog" href="/blog">harmony's Blog</a>
   </div>
   <br />
 
@@ -118,7 +123,7 @@
         container    : '.comments',
 //        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
         site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
-        topic_key    : '/tor-80-percent-percent-1-2-percent-abusive',
+        topic_key    : '/tor-weekly-news-—-january-28th-2015',
         topic_url    : location.href,
         topic_title  : document.title || location.href,
         include_base : !window.Juvia,

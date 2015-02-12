@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor design proposals: how we make changes to our protocol"
-permalink: tor-0262-alpha-released
+permalink: tor-design-proposals-how-we-make-changes-our-protocol
 date: 2015-02-08
 author: nickm
 category: blog

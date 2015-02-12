@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Tor: 80 percent of ??? percent of 1-2 percent abusive.</title>
+    <title>Tor Browser 4.5a3 is released</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="/blog/css/main.css">
-    <link rel="canonical" href="http://tor.jmtodaro.com//blog/tor-80-percent-percent-1-2-percent-abusive">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/tor-browser-45a3-released">
 </head>
 
 
@@ -53,34 +53,58 @@
 <div class="post maincol">
 
   <header class="post-header">
-    <h1 class="post-title">Tor: 80 percent of ??? percent of 1-2 percent abusive.</h1>
-    <p class="post-meta">Dec 30, 2014 • nickm</p>
+    <h1 class="post-title">Tor Browser 4.5a3 is released</h1>
+    <p class="post-meta">Jan 16, 2015 • gk</p>
   </header>
 
   <article class="post-content">
-    <p>Hi, Nick here.</p>
+    <p>The third alpha release of the 4.5 series is available from the <a href="https://www.torproject.org/projects/torbrowser.html.en#downloads-alpha">extended downloads page</a> and also from our <a href="https://www.torproject.org/dist/torbrowser/4.5a3/">distribution directory</a>.</p>
 
-<p>Roger&#39;s at 31c3, so I&#39;ll post his statement about that article you might have seen:</p>
+<p><strong>Note:</strong> The individual bundles of the alpha series are signed by one of the subkeys of the Tor Browser Developers signing key from now on. You can find its fingerprint on the <a href="https://www.torproject.org/docs/signing-keys.html.en">Signing Keys</a> page. It is:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> pub   4096R/0x4E2C6E8793298290 2014-12-15       Key fingerprint = EF6E 286D DA85 EA2A 4BA7                         DE68 4E2C 6E87 9329 8290 
+</code></pre></div>
+<p>Tor Browser 4.5a3 is based on Firefox ESR 31.4.0, which features <a href="https://www.mozilla.org/security/known-vulnerabilities/firefoxESR.html#firefoxesr31.4">important security updates</a> to Firefox. Its updater now contains the code for verifying signed update files and does not accept unsigned ones anymore. Moreover, this release includes an updated Tor, 0.2.6.2-alpha, an updated meek, 0.15, which is now working again, and a bunch of additional improvements and bugfixes.</p>
 
-<blockquote>
-<p>Tor hidden service traffic, which Dr. Gareth Owen discussed in his talk this afternooon, is only 1.5% of all Tor traffic. Tor gets about 2 million users per day total.<br>
- The researcher ran a set of Tor relays for a six month period, and recorded how many times somebody attempted to look up a hidden service (this lookup is one of the steps in visiting a hidden service). Then at the end of that period, he scanned the hidden services he&#39;d learned about, to find out what sort of content was on them.</p>
+<p>Here is the changelog since 4.5-alpha-2:</p>
 
-<p>Dr. Owen&#39;s data shows that there&#39;s a lot of churn in hidden services, so nearly all of the sites were gone by the time he did these scans. His graphs only show data about the sites that were still up many months later: so his data could either show a lot of people visiting abuse-related hidden services, or it could simply show that abuse-related hidden services are more long-lived than others. We can&#39;t tell from the data.</p>
+<ul>
+<li>  All Platforms
 
-<p>Without knowing how many sites disappeared before he got around to looking at them, it&#39;s impossible to know what percentage of fetches went to abuse sites.</p>
+<ul>
+<li>  Update Firefox to 31.4.0esr</li>
+<li>  Update Tor to 0.2.6.2-alpha</li>
+<li>  Update NoScript to 2.6.9.10</li>
+<li>  Update HTTPS Everywhere to 5.0developement.2</li>
+<li>  Update meek to 0.15</li>
+<li>  Update Torbutton to 1.8.1.3
 
-<p>There are important uses for hidden services, such as when human rights activists use them to access Facebook or to blog anonymously. These uses for hidden services are new and have great potential.</p>
+<ul>
+<li>  Bug 13998: Handle changes in NoScript 2.6.9.8+</li>
+<li>  Bug 14100: Option to hide NetworkSettings menuitem</li>
+<li>  Bug 13079: Option to skip control port verification</li>
+<li>  Bug 13835: Option to change default Tor Browser homepage</li>
+<li>  Bug 11449: Fix new identity error if NoScript is not enabled</li>
+<li>  Bug 13881: Localize strings for tor circuit display</li>
+<li>  Bug 9387: Incorporate user feedback</li>
+<li>  Bug 13671: Fixup for circuit display if bridges are used</li>
+<li>  Translation updates</li>
+</ul></li>
+<li>  Update Tor Launcher 0.2.7.1
 
-<p>PS: Law enforcement agencies use Tor to stay anonymous while they catch bad guys. Law enforcement agencies use and run hidden services, too.</p>
-</blockquote>
-
-<p>More info to follow.</p>
+<ul>
+<li>  Bug 14122: Hide logo if TOR_HIDE_BROWSER_LOGO set</li>
+<li>  Translation updates</li>
+</ul></li>
+<li>  Bug 13379: Sign our MAR files</li>
+<li>  Bug 13788: Fix broken meek in 4.5-alpha series</li>
+<li>  Bug 13439: No canvas prompt for content callers</li>
+</ul></li>
+</ul>
 
   </article>
 
   <div class="post-footer">
-      <a class="post-blog" href="/blog">nickm's Blog</a>
+      <a class="post-blog" href="/blog">gk's Blog</a>
   </div>
   <br />
 
@@ -118,7 +142,7 @@
         container    : '.comments',
 //        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
         site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
-        topic_key    : '/tor-80-percent-percent-1-2-percent-abusive',
+        topic_key    : '/tor-browser-45a3-released',
         topic_url    : location.href,
         topic_title  : document.title || location.href,
         include_base : !window.Juvia,

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "UX Sprint 2015 wrapup"
-permalink: tor-browser-403-released
+permalink: ux-sprint-2015-wrapup
 date: 2015-02-09
 author: dcf
 category: blog

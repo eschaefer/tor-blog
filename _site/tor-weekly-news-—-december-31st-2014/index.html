@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Tor Weekly News — February 4th, 2015</title>
+    <title>Tor Weekly News — December 31st, 2014</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
     <meta name="viewport" content="width=device-width">
@@ -53,54 +53,38 @@
 <div class="post maincol">
 
   <header class="post-header">
-    <h1 class="post-title">Tor Weekly News — February 4th, 2015</h1>
-    <p class="post-meta">Feb 4, 2015 • harmony</p>
+    <h1 class="post-title">Tor Weekly News — December 31st, 2014</h1>
+    <p class="post-meta">Dec 31, 2014 • harmony</p>
   </header>
 
   <article class="post-content">
-    <p>Welcome to the fifth issue in 2015 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the Tor community.</p>
+    <p>Welcome to the final issue in 2014 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the Tor community.</p>
 
-<h1>Mozilla’s Tor relays go live</h1>
+<h1>Attacks and rumors of attacks</h1>
 
-<p>Late last year, Mozilla <a href="https://lists.torproject.org/pipermail/tor-news/2014-November/000071.html">announced</a> its partnership with the Tor Project in the <a href="https://blog.mozilla.org/privacy/2014/11/10/introducing-polaris-privacy-initiative-to-accelerate-user-focused-privacy-online/">Polaris Privacy Initiative</a>, a program aimed at “giving users more control, awareness and protection in their Web experiences”. One of the two Tor-related “experiments” Mozilla planned to carry out was the operation of several high-capacity middle relays, and last week Mozilla’s Network Engineering team announced that the <a href="https://globe.torproject.org/#/search/query=mozilla">new nodes</a> had been running for several weeks, in a <a href="https://blog.mozilla.org/it/2015/01/28/deploying-tor-relays/">blog post</a> that explores the technical decisions and challenges they faced in setting them up.</p>
+<p>Two weeks ago, the Tor Project relayed a <a href="https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network">warning</a> from an unspecified source to the effect that someone may have been preparing to seize, attack, or otherwise disable one or more of Tor’s <a href="https://metrics.torproject.org/about.html#directory-authority">directory authorities</a> in a bid to disrupt the entire Tor network. The lack of any specific information about the threat caused understandable concern in the Tor community, and several events that followed over the next fortnight did little to dispel this.</p>
 
-<p>The team discussed the hardware and infrastructure chosen for the relays, configuration management using Ansible (publishing their <a href="https://github.com/XioNoX/moz-tor-relays/">playbook</a> at the same time), and security practices, as well as announcing their intention to continue posting about their experiences and findings during the experiment.</p>
+<p>First, the operator of a large Tor exit relay cluster <a href="https://lists.torproject.org/pipermail/tor-talk/2014-December/036067.html">reported</a> that his servers may have been physically interfered with by unknown parties a short while before his message. Later <a href="https://lists.torproject.org/pipermail/tor-talk/2014-December/036084.html">updates</a> suggested that foul play was less likely than initially thought.</p>
 
-<p>Thanks to Mozilla for this contribution to the Tor network!</p>
+<p>Several days later, a large number of small exit relays were created all at once, in what appeared to be a “<a href="https://en.wikipedia.org/wiki/Sybil_attack">Sybil attack</a>”; this was <a href="https://lists.torproject.org/pipermail/tor-consensus-health/2014-December/005381.html">detected</a> and halted almost immediately, as was a <a href="https://lists.torproject.org/pipermail/tor-consensus-health/2014-December/005414.html">second, more recent incident</a>. As the Tor Project put it in a <a href="http://www.twitlonger.com/show/n_1sjg365">response</a>, “we don’t expect any anonymity or performance effects based on what we&#39;ve seen so far”, although a side-effect of the countermeasure is that relays hosted on some IP ranges are currently being <a href="https://lists.torproject.org/pipermail/tor-relays/2014-December/006020.html">rejected</a> by dirauths.</p>
 
-<h1>Monthly status reports for January 2015</h1>
-
-<p>The wave of regular monthly reports from Tor project members for the month of January has begun. <a href="https://lists.torproject.org/pipermail/tor-reports/2015-January/000748.html">Juha Nurmi</a> released his report first, followed by reports from <a href="https://lists.torproject.org/pipermail/tor-reports/2015-January/000749.html">Philipp Winter</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2015-February/000750.html">Damian Johnson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2015-February/000751.html">Sherief Alaa</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2015-February/000752.html">Georg Koppen</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2015-February/000753.html">David Goulet</a>.</p>
+<p>As far as anyone can tell, these events are not related in any way to the initial warning. The Tor network has functioned normally throughout this period, and the appearance of a series of incidents is likely to be the result of coincidence (helped by the online rumor mill) rather than a coordinated campaign. It is never possible to say with certainty that attacks on the network will not occur, but the threat referred to in the original blog post has not yet materialized — and “no news is good news”.</p>
 
 <h1>Miscellaneous news</h1>
 
-<p>meejah <a href="https://lists.torproject.org/pipermail/tor-dev/2015-February/008227.html">announced</a> version 0.12.0 of txtorcon, the Tor controller client in Twisted; please see the announcement for a full list of improvements.</p>
+<p>Lasse Øverlier discovered that <a href="http://www.cs.kau.se/philwint/scramblesuit/">ScrambleSuit</a>’s protection against “replay attacks”, in which an adversary repeats a client authentication event to learn that the server is in fact a ScrambleSuit bridge, doesn’t work. Philipp Winter <a href="https://lists.torproject.org/pipermail/tor-dev/2014-December/008019.html">explained</a> the issue, and suggested some simple fixes.</p>
 
-<p>Nick Mathewson submitted a draft of <a href="https://lists.torproject.org/pipermail/tor-dev/2015-February/008223.html">proposal 241</a>, which aims to protect users against adversaries who are able to attack their connectivity to the Tor network and force them to use malicious guard nodes. Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-dev/2015-February/008226.html">offered</a> some further thoughts.</p>
+<p>Tom van der Woerdt asked for <a href="https://lists.torproject.org/pipermail/tor-dev/2014-December/008023.html">review</a> of a <a href="https://github.com/TvdW/tor/commit/75b5d94eb976ee4998189dc69582c62511dde9eb">patch</a> to remove the obsolete version 1 of Tor’s link protocol from the current software: “It’s a rather large patch, though not as large as the patch that will remove v2 of the protocol. However, before I write that one, can someone please check whether my patch is sane and I’m not violating any standards or policies?”</p>
 
-<p>Nick also set out the schedule for the Tor 0.2.6 <a href="https://lists.torproject.org/pipermail/tor-dev/2015-January/008216.html">feature freeze</a>.</p>
+<p>David Fifield <a href="https://bugs.torproject.org/12778#comment:5">trimmed</a> the length of <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a>’s HTTP headers from 413 to 162 bytes, reducing the bandwidth it uses by “approximately” 3%.</p>
 
-<p>After reports from users that Tor Browser’s default obfs4 bridges are no longer usable in China, David Fifield <a href="https://lists.torproject.org/pipermail/tor-dev/2015-February/008222.html">estimated</a> the time it takes for the “Great Firewall” to react to new circumvention systems as lying “between 2 and 10 weeks”, and asked for additional data to narrow the range further.</p>
-
-<p>Isis Lovecruft “would be super stoked if we could make it as easy and seamless as possible for the bridge operators who are still running obfs2 (!!) to move to supporting better, newer pluggable transports”, such as obfs4, and <a href="https://lists.torproject.org/pipermail/tor-relays/2015-February/006346.html">wondered</a> how to make it possible for operators running Debian stable to get the necessary dependencies onto their system without extensive backporting: “If someone has done this, or has another simple solution, would you mind writing up some short how-to on the steps you took, please?”</p>
-
-<p>The Tails team continued to <a href="https://mailman.boum.org/pipermail/tails-dev/2015-February/008003.html">discuss</a> the advantages and disadvantages of removing AdBlock Plus from Tails’ version of Tor Browser.</p>
-
-<p>Sadia Afroz compiled a timeline of Tor blocking events, and <a href="https://lists.torproject.org/pipermail/ooni-dev/2015-February/000241.html">shared</a> it with the ooni-dev mailing list, along with a request for missing data points; Collin Anderson <a href="https://lists.torproject.org/pipermail/ooni-dev/2015-February/000242.html">responded</a> with some additional information.</p>
-
-<p>Patrick Schleizer <a href="https://lists.torproject.org/pipermail/tor-talk/2015-February/036675.html">announced</a> that the Whonix team is looking for “a sponsor who is willing to donate a suitable sized virtual or root server”, and gave a list of planned requirements. If you can meet this need, please see Patrick’s message for next steps.</p>
-
-<p>Konstantin Müller <a href="https://lists.torproject.org/pipermail/tor-talk/2015-February/036709.html">shared</a> a report written as part of a Master’s degree, offering an introduction to “the past, present, and future” of Tor hidden services.</p>
-
-<h1>News from Tor StackExchange</h1>
-
-<p>Windy wanted to know <a href="https://tor.stackexchange.com/q/6087/88">how often a client fetches consensus data from a directory server</a>. Jens Kubieziel provided some information by walking through the source code, and concluded: “every minute it is checked if the consensus document is too old. If it is older than the current time a new one will be fetched.”</p>
+<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-December/000815.html">Kura</a> for running a mirror of the Tor Project website and software archive!</p>
 
 <hr>
 
-<p>This issue of Tor Weekly News has been assembled by qbi and Harmony.</p>
+<p>This issue of Tor Weekly News has been assembled by Harmony, David Fifield, Chuck Peters, and Roger Dingledine.</p>
 
-<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the project page <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews"></a>, write down your name and subscribe to the team mailing list <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team"></a> if you want to get involved!</p>
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
 
   </article>
 
@@ -225,21 +209,21 @@
 	<h2>Recent Blog Posts</h2>
 	<ul>
 	  
-		    <li><span><a href="/blog/tor-weekly-news-—-january-14th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-browser-403-released">UX Sprint 2015 wrapup</a></span></li>
+		    <li><span><a href="/blog/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-weekly-news-—-january-7th-2015">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+		    <li><span><a href="/blog/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-0262-alpha-released">Tor design proposals: how we make changes to our protocol</a></span></li>
+		    <li><span><a href="/blog/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-weekly-news-—-december-31st-2014">Tor Weekly News — February 4th, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-talk-31c3">Tor Weekly News — January 28th, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/some-thoughts-hidden-services">Tor Weekly News — January 21st, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-80-percent-percent-1-2-percent-abusive">Tor Browser 4.5a3 is released</a></span></li>
+		    <li><span><a href="/blog/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
 	  
 		    <li><span><a href="/blog/tor-weekly-news-—-january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
 	  

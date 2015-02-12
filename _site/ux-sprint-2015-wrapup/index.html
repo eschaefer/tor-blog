@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Tor: 80 percent of ??? percent of 1-2 percent abusive.</title>
+    <title>UX Sprint 2015 wrapup</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="/blog/css/main.css">
-    <link rel="canonical" href="http://tor.jmtodaro.com//blog/tor-80-percent-percent-1-2-percent-abusive">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/ux-sprint-2015-wrapup">
 </head>
 
 
@@ -53,34 +53,55 @@
 <div class="post maincol">
 
   <header class="post-header">
-    <h1 class="post-title">Tor: 80 percent of ??? percent of 1-2 percent abusive.</h1>
-    <p class="post-meta">Dec 30, 2014 • nickm</p>
+    <h1 class="post-title">UX Sprint 2015 wrapup</h1>
+    <p class="post-meta">Feb 9, 2015 • dcf</p>
   </header>
 
   <article class="post-content">
-    <p>Hi, Nick here.</p>
+    <p><a href="https://en.wikipedia.org/wiki/Usability">Usability</a> is critical to <a href="http://www.cc.gatech.edu/%7Ekeith/pubs/ieee-intro-usable-security.pdf">security</a>. Additionally, there has been research on &quot;<a href="https://www.petsymposium.org/2012/papers/hotpets12-1-usability.pdf">stopping points</a>,&quot; common points where people would get frustrated with Tor enough that they would stop the installation process or stop using Tor. Usability issues also can degrade user experience, cause confusion, or even cause people to accidentally deanonymize themselves.</p>
 
-<p>Roger&#39;s at 31c3, so I&#39;ll post his statement about that article you might have seen:</p>
+<p>To address usability issues broadly, we brought together Tor developers, designers, users, and researchers to discuss usability problems and how to fix them. Last weekend, there was a <a href="https://trac.torproject.org/projects/tor/wiki/org/meetings/2015UXsprint">user experience (UX) sprint</a> dedicated to improving the usability of Tor Browser.</p>
 
-<blockquote>
-<p>Tor hidden service traffic, which Dr. Gareth Owen discussed in his talk this afternooon, is only 1.5% of all Tor traffic. Tor gets about 2 million users per day total.<br>
- The researcher ran a set of Tor relays for a six month period, and recorded how many times somebody attempted to look up a hidden service (this lookup is one of the steps in visiting a hidden service). Then at the end of that period, he scanned the hidden services he&#39;d learned about, to find out what sort of content was on them.</p>
+<p>A major part of the sprint was user testing the current <a href="https://blog.torproject.org/blog/tor-browser-403-released">Tor Browser (4.0.3)</a>. We asked users—some with prior Tor experience, some without—to perform some common tasks:</p>
 
-<p>Dr. Owen&#39;s data shows that there&#39;s a lot of churn in hidden services, so nearly all of the sites were gone by the time he did these scans. His graphs only show data about the sites that were still up many months later: so his data could either show a lot of people visiting abuse-related hidden services, or it could simply show that abuse-related hidden services are more long-lived than others. We can&#39;t tell from the data.</p>
+<ul>
+<li>  Search for, download, and install Tor Browser</li>
+<li>  Do a web search</li>
+<li>  Watch a video</li>
+<li>  Use &quot;New Identity&quot;</li>
+<li>  Interact with and describe the current browser toolbar buttons</li>
+</ul>
 
-<p>Without knowing how many sites disappeared before he got around to looking at them, it&#39;s impossible to know what percentage of fetches went to abuse sites.</p>
+<p>The users performed this task in a &quot;cognitive walkthrough&quot; fashion, talking aloud while completing each of the tasks, explaining their understanding of the task and motivation for completing it in that specific way. With permission, we recorded the contents of the computer screen so developers could watch in another room. We hope to present the screen videos and other outcomes of the sprint at the upcoming <a href="https://trac.torproject.org/projects/tor/wiki/org/meetings/2015WinterDevMeeting">winter dev meeting</a>.</p>
 
-<p>There are important uses for hidden services, such as when human rights activists use them to access Facebook or to blog anonymously. These uses for hidden services are new and have great potential.</p>
+<p>Because of the limited size of the study (there were five participants), it&#39;s not possible to state with confidence what fraction of users will encounter major usability obstacles. However, it was effective at discovering and demonstrating issues that are likely to cause problems for many users. We will use our observations to guide future experiments. A few aspects stood out as deserving of further attention:</p>
 
-<p>PS: Law enforcement agencies use Tor to stay anonymous while they catch bad guys. Law enforcement agencies use and run hidden services, too.</p>
-</blockquote>
+<ul>
+<li><p>While searching for Tor Browser, users encountered various sources for the browser other than our target <a href="https://www.torproject.org/download/download-easy.html">&quot;Easy Download&quot; page</a>, and also found some odd sources for documentation. Users who found a download page other than the &quot;easy&quot; version expressed varying degrees of confusion, depending on their landing page. Ticket <a href="https://trac.torproject.org/projects/tor/ticket/14686">#14685</a> is about finding a way to consolidate or drive users to our preferred download page.</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Gatekeeper_(OS_X)">Gatekeeper</a> on OS X makes it hard to install programs that aren&#39;t signed by an <a href="https://developer.apple.com/library/mac/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html">Apple certificate</a> or don&#39;t come from the App Store. All users were at least temporarily delayed by this dialog:</p>
 
-<p>More info to follow.</p>
+<p><img src="https://people.torproject.org/%7Edcf/graphs/blogfiles/gatekeeper-yosemite.png" alt="TorBrowser can&#39;t be opened because it is from an unidentified developer."></p>
+
+<p>Even though everyone was able to get past the dialog, it was a big obstacle to installation. (If it happens to you, the trick is to Ctrl-click on the Tor Browser icon and select &quot;Open&quot;.) To solve this problem is not easy, but we can perhaps make it better by providing better documentation. Ticket <a href="https://trac.torproject.org/projects/tor/ticket/6540">#6540</a> tracks this issue.</p></li>
+<li><p>If you try to run Tor Browser from a read-only filesystem, you get a misleading error message:</p>
+
+<p><img src="https://people.torproject.org/%7Edcf/graphs/blogfiles/firefox-is-already-open.png" alt="A copy of Firefox is already open. Only one copy of Firefox can be open at a time."></p>
+
+<p>This is a known issue, tracked in ticket <a href="https://trac.torproject.org/projects/tor/ticket/4782">#4782</a>, that affected some users. It happens on OS X if you run the Tor Browser app directly from the disk image (.dmg) instead of first copying it to the Applications folder.</p></li>
+</ul>
+
+<p>Tickets created as a result of the sprint have the <a href="https://trac.torproject.org/projects/tor/query?keywords=%7Euxsprint2015">#uxsprint2015</a> tag. In addition, the new <a href="https://trac.torproject.org/projects/tor/query?keywords=%7Etbb-usability-stoppoint&amp;status=!closed">#tbb-usability-stoppoint</a> tag marks stopping points, to help track usability issues like the above, which result in users being unable or unwilling to continue using the browser.</p>
+
+<p>We hope that usability experiments and improvements will be ongoing. In the future, we&#39;d like to test other aspects of Tor Browser, such as downloading files, updating, and managing Tor and non-Tor browsers, as well as expanding the tests to larger and diverse user groups. If you are interested in helping improve the usability of Tor Browser, <a href="https://www.torproject.org/about/contact">get in touch</a> by email or IRC. We need help from a lot of different kinds of people: designers, translators, programmers, and usability experts to name a few.</p>
+
+<p>We thank the Tor Project for supporting the sprint, the participants, those who helped us recruit on short notice, and those who helped us plan and set goals and everyone who attended as a developer or observer: Arlo, Arthur, Ashkan, David, Griffin, Isis, Krishna, Linda, Mike, and Nima. We also thank the Tor help desk, whose <a href="https://trac.torproject.org/projects/tor/query?keywords=%7Etbb-helpdesk-frequent&amp;status=!closed">#tbb-helpdesk-frequent</a> tag helped us prioritize tickets. Special thanks go to Nima for suggesting the idea of a UX meeting in the first place.</p>
+
+<p>Linda Lee and David Fifield</p>
 
   </article>
 
   <div class="post-footer">
-      <a class="post-blog" href="/blog">nickm's Blog</a>
+      <a class="post-blog" href="/blog">dcf's Blog</a>
   </div>
   <br />
 
@@ -118,7 +139,7 @@
         container    : '.comments',
 //        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
         site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
-        topic_key    : '/tor-80-percent-percent-1-2-percent-abusive',
+        topic_key    : '/ux-sprint-2015-wrapup',
         topic_url    : location.href,
         topic_title  : document.title || location.href,
         include_base : !window.Juvia,

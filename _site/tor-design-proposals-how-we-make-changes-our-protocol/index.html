@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Tor: 80 percent of ??? percent of 1-2 percent abusive.</title>
+    <title>Tor design proposals: how we make changes to our protocol</title>
     <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="/blog/css/main.css">
-    <link rel="canonical" href="http://tor.jmtodaro.com//blog/tor-80-percent-percent-1-2-percent-abusive">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/tor-design-proposals-how-we-make-changes-our-protocol">
 </head>
 
 
@@ -53,29 +53,24 @@
 <div class="post maincol">
 
   <header class="post-header">
-    <h1 class="post-title">Tor: 80 percent of ??? percent of 1-2 percent abusive.</h1>
-    <p class="post-meta">Dec 30, 2014 • nickm</p>
+    <h1 class="post-title">Tor design proposals: how we make changes to our protocol</h1>
+    <p class="post-meta">Feb 8, 2015 • nickm</p>
   </header>
 
   <article class="post-content">
-    <p>Hi, Nick here.</p>
+    <p>(This post is likely to be interesting for folks who want to know how the Tor software is made.)</p>
 
-<p>Roger&#39;s at 31c3, so I&#39;ll post his statement about that article you might have seen:</p>
+<p>At the core of the Tor software lies the network protocol that Tor relays and clients use to talk to each other. We try to make sure we have a <a href="https://gitweb.torproject.org/torspec.git/tree/">good set of specification documents</a> for the protocol at all times, so that other people can write compatible software that interoperates with Tor.</p>
 
-<blockquote>
-<p>Tor hidden service traffic, which Dr. Gareth Owen discussed in his talk this afternooon, is only 1.5% of all Tor traffic. Tor gets about 2 million users per day total.<br>
- The researcher ran a set of Tor relays for a six month period, and recorded how many times somebody attempted to look up a hidden service (this lookup is one of the steps in visiting a hidden service). Then at the end of that period, he scanned the hidden services he&#39;d learned about, to find out what sort of content was on them.</p>
+<p>Once upon a time, we used to change these specification documents whenever we changed the software&#39;s behavior. That didn&#39;t go well. We would have changes in the spec that we had forgotten to make in the software, and tons of inline comments where we argued about whether a particular paragraph was a good idea.</p>
 
-<p>Dr. Owen&#39;s data shows that there&#39;s a lot of churn in hidden services, so nearly all of the sites were gone by the time he did these scans. His graphs only show data about the sites that were still up many months later: so his data could either show a lot of people visiting abuse-related hidden services, or it could simply show that abuse-related hidden services are more long-lived than others. We can&#39;t tell from the data.</p>
+<p>So back in 2007, we introduced a lightweight change-proposal process: to make a change to the Tor protocol, you write up a little design document, and send it to the tor-dev mailing list. Once it meets editorial quality, it can go into the <a href="https://gitweb.torproject.org/torspec.git/tree/proposals">proposals repository</a>. Once it&#39;s implemented, it can be merged into the spec.</p>
 
-<p>Without knowing how many sites disappeared before he got around to looking at them, it&#39;s impossible to know what percentage of fetches went to abuse sites.</p>
+<p>There are a lot of proposals to look at, though. The current set of open proposals has almost 100,000 words in it! (That&#39;s almost half again as long as the Tor specs themselves.)</p>
 
-<p>There are important uses for hidden services, such as when human rights activists use them to access Facebook or to blog anonymously. These uses for hidden services are new and have great potential.</p>
+<p>To help people navigate through this pile of design proposals, I started to write a regular &quot;proposal status&quot; email to explain what all of the open proposals are about. Last year, however, I fell out of the habit. Tonight, I&#39;ve tried to fall back in: <a href="https://gitweb.torproject.org/torspec.git/tree/proposals/proposal-status.txt">here&#39;s the latest proposal status writeup</a>.</p>
 
-<p>PS: Law enforcement agencies use Tor to stay anonymous while they catch bad guys. Law enforcement agencies use and run hidden services, too.</p>
-</blockquote>
-
-<p>More info to follow.</p>
+<p>Below the cut, my summaries of the still-open proposals that have been added in the past couple of year -- and thanks to all the busy designers who have been working to think of ways to improve Tor! <a href="https://blog.torproject.org/blog/tor-design-proposals-how-we-make-changes-our-protocol"><strong>read more »</strong></a></p>
 
   </article>
 
@@ -118,7 +113,7 @@
         container    : '.comments',
 //        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
         site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
-        topic_key    : '/tor-80-percent-percent-1-2-percent-abusive',
+        topic_key    : '/tor-design-proposals-how-we-make-changes-our-protocol',
         topic_url    : location.href,
         topic_title  : document.title || location.href,
         include_base : !window.Juvia,

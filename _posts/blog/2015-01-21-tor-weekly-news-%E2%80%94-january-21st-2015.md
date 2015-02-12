@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — January 21st, 2015"
-permalink: some-thoughts-hidden-services
+permalink: tor-weekly-news-—-january-21st-2015
 date: 2015-01-21
 author: harmony
 category: blog
