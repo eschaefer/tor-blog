@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor design proposals: how we make changes to our protocol"
-permalink: blog/tor-design-proposals%3A-how-we-make-changes-to-our-protocol
+permalink: blog/tor-design-proposals-how-we-make-changes-to-our-protocol
 date: 2015-02-08
 author: nickm
 category: blog
