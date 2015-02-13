@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>The Tor Project Blog</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/blog/css/main.css">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/blog/page46/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/blog/">The Tor Project Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+	<a class="page-link" href="/blog/">Blog Home</a>
+        <a class="page-link" href="/blog/archive">Archives</a>
+	<a class="page-link" href="https://www.torproject.org/about/overview">About Tor</a>
+        <a class="page-link donate" href="https://www.torproject.org/donate/donate">Donate</a>
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <!-- Pages with side column need a 'maincol' class -->
+<div class="home maincol">
+
+    <ul class="post-content">
+	
+	<li>
+	  <h2>
+	    <a class="post-link" href="/blog/pluggable-transports-bundles-2412-alpha-2-pt1-firefox-1706esr">Pluggable transports bundles 2.4.12-alpha-2-pt1 with Firefox 17.0.6esr</a>
+	  </h2>
+	  <span class="post-meta">Posted Jun 2, 2013 by <a class="post-author" href="/blogdcf">dcf</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/flashproxy">flashproxy</a>
+              
+		  <a class="post-category post-category-js" href="/tag/obfsbundle">obfsbundle</a>
+              
+		  <a class="post-category post-category-js" href="/tag/obfsproxy">obfsproxy</a>
+              
+		  <a class="post-category post-category-js" href="/tag/pluggable transports">pluggable transports</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>We&#39;ve updated the Pluggable Transports Tor Browser Bundles with Firefox 17.0.6esr and Tor 0.2.4.11-alpha. These correspond to the <a href="https://blog.torproject.org/blog/new-tor-browser-bundles-firefox-1706esr">Tor Browser Bundle release</a> of May 14.</p>
+
+<ul>
+<li>  <a href="https://www.torproject.org/dist/torbrowser/tor-pluggable-transports-browser-2.4.12-alpha-2-pt1_en-US.exe">Windows</a> (<a href="https://www.torproject.org/dist/torbrowser/tor-pluggable-transports-browser-2.4.12-alpha-2-pt1_en-US.exe.asc">sig</a>)</li>
+<li>  <a href="https://www.torproject.org/dist/torbrowser/osx/TorBrowser-Pluggable-Transports-2.4.12-alpha-2-pt1-osx-i386-en-US.zip">Mac OS X</a> (<a href="https://www.torproject.org/dist/torbrowser/osx/TorBrowser-Pluggable-Transports-2.4.12-alpha-2-pt1-osx-i386-en-US.zip.asc">sig</a>)</li>
+<li>  <a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-i686-2.4.12-alpha-2-pt1-dev-en-US.tar.gz">GNU/Linux 32-bit</a> (<a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-i686-2.4.12-alpha-2-pt1-dev-en-US.tar.gz.asc">sig</a>)</li>
+<li>  <a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-x86_64-2.4.12-alpha-2-pt1-dev-en-US.tar.gz">GNU/Linux 64-bit</a> (<a href="https://www.torproject.org/dist/torbrowser/linux/tor-pluggable-transports-browser-gnu-linux-x86_64-2.4.12-alpha-2-pt1-dev-en-US.tar.gz.asc">sig</a>)</li>
+</ul>
+
+<p>These bundles contain contain flash proxy and obfsproxy configured to run by default. Flash proxy has a new faster registration method, <a href="https://trac.torproject.org/projects/tor/ticket/8860">flashproxy-reg-appspot</a>. The existing flashproxy-reg-email and flashproxy-reg-http will be tried if flashproxy-reg-appspot doesn&#39;t work.</p>
+
+<p>If you want to use flash proxy, you will have to take the extra steps listed in the <a href="https://trac.torproject.org/projects/tor/wiki/FlashProxyHowto">flash proxy howto</a>.</p>
+
+<p>These bundles contain the same hardcoded obfs2 bridge addresses as the previous bundles which may work for some jurisdictions but you are strongly advised to get new bridge addresses from BridgeDB: <a href="https://bridges.torproject.org/?transport=obfs2" title="https://bridges.torproject.org/?transport=obfs2">https://bridges.torproject.org/?transport=obfs2</a> <a href="https://bridges.torproject.org/?transport=obfs3" title="https://bridges.torproject.org/?transport=obfs3">https://bridges.torproject.org/?transport=obfs3</a>.</p>
+
+<p>These bundles are signed by David Fifield (0x5CD388E5) with <a href="https://crypto.stanford.edu/flashproxy/#verify-sig">this fingerprint</a>.</p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="/blogdcf">dcf's Blog</a>
+	      <a class="post-cmtlink" href="/blog/pluggable-transports-bundles-2412-alpha-2-pt1-firefox-1706esr/#disqus_thread">Leave a comment</a>
+<!--	      <a class="post-cmtlink" href="/blog/pluggable-transports-bundles-2412-alpha-2-pt1-firefox-1706esr#comments">Leave a comment</a> -->
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/blog/tails-018-out">Tails 0.18 is out</a>
+	  </h2>
+	  <span class="post-meta">Posted May 18, 2013 by <a class="post-author" href="/blogtails">tails</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/anonymous operating system">anonymous operating system</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tails">tails</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tails releases">tails releases</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>Tails, The Amnesic Incognito Live System, version 0.18, is out.</p>
+
+<p>All users must upgrade as soon as possible.</p>
+
+<p><a href="https://tails.boum.org/download/">Download it now.</a></p>
+
+<p><strong>Changes</strong></p>
+
+<p>Notable user-visible changes include:</p>
+
+<ul>
+<li>  New features
+
+<ul>
+<li>  Support obfs3 bridges.</li>
+<li>  Automatically install a custom list of additional packages chosen by the user at the beginning of every working session, and upgrade them once a network connection is established (technology preview).</li>
+</ul></li>
+<li>  Iceweasel
+
+<ul>
+<li>  Upgrade to Iceweasel 17.0.5esr-0+tails2~bpo60+1.</li>
+<li>  Update Torbrowser patches to current maint-2.4 branch (567682b).</li>
+<li>  Torbutton 1.5.2, and various prefs hacks to fix breakage.</li>
+<li>  HTTPS Everywhere 3.2</li>
+<li>  NoScript 2.6.6.1-1</li>
+<li>  Isolate DOM storage to first party URI, and enable DOM storage.</li>
+<li>  Isolate the image cache per url bar domain.</li>
+<li>  Update prefs to match the TBB&#39;s, fix bugs, and take advantage of the latest Torbrowser patches.</li>
+<li>  Make prefs organization closer to the TBB&#39;s, and generally clean them up.</li>
+</ul></li>
+<li>  Bugfixes
+
+<ul>
+<li>  Linux 3.2.41-2+deb7u2.</li>
+<li>  All Iceweasel prefs we set are now applied.</li>
+<li>  Bring back support for proxies of type other than obfsproxy.</li>
+</ul></li>
+<li>  Minor improvements
+
+<ul>
+<li>  Set <code>kernel.dmesg_restrict=1</code>, and make <code>/proc/&lt;pid&gt;/</code> invisible and restricted for other users. It makes it slightly harder for an attacker to gather information that may allow them to escalate privileges.</li>
+<li>  Install gnome-screenshot.</li>
+<li>  Add a <em>About Tails</em> launcher in the <em>System</em> menu.</li>
+<li>  Install GNOME accessibility themes.</li>
+<li>  Use <em>Getting started...</em> as the homepage for the Tails documentation button.</li>
+<li>  Disable audio preview in Nautilus.</li>
+</ul></li>
+<li>  Localization: many translation updates all over the place.</li>
+</ul>
+
+<p>See the <a href="http://git.immerda.ch/?p=amnesia.git;a=blob_plain;f=debian/changelog;hb=refs/tags/0.18">online Changelog</a> for technical details.</p>
+
+<p><strong>Known issue</strong></p>
+
+<p>The web browser default search engine is Google, instead of the intended localized Startpage. You may select <em>Startpage HTTPS</em> in the search engine menu next to the Google icon.</p>
+
+<p><strong>I want to try it / to upgrade!</strong></p>
+
+<p>See the <a href="https://tails.boum.org/getting_started/">Getting started</a> page.</p>
+
+<p>As no software is ever perfect, we maintain a list of <a href="https://tails.boum.org/support/known_issues/">problems that affects the last release of Tails</a>.</p>
+
+<p><strong>What&#39;s coming up?</strong></p>
+
+<p>The next Tails release is scheduled for June 27.</p>
+
+<p>Have a look to our <a href="https://tails.boum.org/contribute/roadmap/">roadmap</a> to see where we are heading to.</p>
+
+<p>Would you want to help? As explained in our <a href="https://tails.boum.org/contribute/">&quot;how to contribute&quot; documentation</a>, there are many ways <strong>you</strong> can contribute to Tails. If you want to help, come talk to us!</p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="/blogtails">tails's Blog</a>
+	      <a class="post-cmtlink" href="/blog/tails-018-out/#disqus_thread">Leave a comment</a>
+<!--	      <a class="post-cmtlink" href="/blog/tails-018-out#comments">Leave a comment</a> -->
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/blog/new-tor-browser-bundles-firefox-1706esr">New Tor Browser Bundles with Firefox 17.0.6esr</a>
+	  </h2>
+	  <span class="post-meta">Posted May 14, 2013 by <a class="post-author" href="/blogerinn">erinn</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/firefox updates">firefox updates</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tbb">tbb</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor browser bundle">tor browser bundle</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>There is a new Firefox 17.0.6esr out and all of the Tor Browser Bundles (stable and alpha branches) have been updated. The new stable TBBs have a lot of new and updated Firefox patches, so those of you who were experiencing crashes should no longer be seeing that behavior. Please let us know if you do by <a href="https://trac.torproject.org/projects/tor">opening a ticket</a> with details.</p>
+
+<p>The stable Tor Browser Bundles are available at their <a href="https://www.torproject.org/download/download-easy.html.en">normal location</a>.</p>
+
+<p>The alpha Tor Browser Bundles are available <a href="https://www.torproject.org/projects/torbrowser.html.en#Download-torbrowserbundlealpha">here</a>.</p>
+
+<p><strong>Tor Browser Bundle (2.3.25-8)</strong></p>
+
+<p>Update Firefox to 17.0.6esr</p>
+
+<p>Update HTTPS Everywhere to 3.2</p>
+
+<p>Update Torbutton to 1.5.2</p>
+
+<p>Update libpng to 1.5.15</p>
+
+<p>Update NoScript to 2.6.6.1</p>
+
+<p>Firefox patch changes:</p>
+
+<ul>
+<li>  Apply font limits to @font-face local() fonts and disable fallback<br>
+ rendering for @font-face. (closes: #8455)</li>
+<li>  Use Optimistic Data SOCKS handshake (improves page load performance).<br>
+ (closes: #3875)</li>
+<li>  Honor the Windows theme for inverse text colors (without leaking those<br>
+ colors to content). (closes: #7920)</li>
+<li>  Increase pipeline randomization and try harder to batch pipelined<br>
+ requests together. (closes: #8470)</li>
+<li>  Fix an image cache isolation domain key misusage. May fix several image<br>
+ cache related crash bugs with New Identity, exit, and certain websites.<br>
+ (closes: #8628)</li>
+</ul>
+
+<p>Torbutton changes:</p>
+
+<ul>
+<li>  Allow session restore if the user allows disk actvity (closes: #8457)</li>
+<li>  Remove the Display Settings panel and associated locales (closes: #8301)</li>
+<li>  Fix &quot;Transparent Torification&quot; option. (closes: #6566)</li>
+<li>  Fix a hang on New Identity. (closes: #8642)</li>
+</ul>
+
+<p>Build changes:</p>
+
+<ul>
+<li>  Fetch our source deps from an https mirror (closes: #8286)</li>
+<li>  Create watch scripts for syncing mirror sources and monitoring mirror<br>
+ integrity (closes: #8338)</li>
+</ul>
+
+<p><strong>Tor Browser Bundle (2.4.12-alpha-2)</strong></p>
+
+<ul>
+<li>  Update Firefox to 17.0.6esr</li>
+<li>  Update NoScript to 2.6.6.1</li>
+</ul>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="/blogerinn">erinn's Blog</a>
+	      <a class="post-cmtlink" href="/blog/new-tor-browser-bundles-firefox-1706esr/#disqus_thread">Leave a comment</a>
+<!--	      <a class="post-cmtlink" href="/blog/new-tor-browser-bundles-firefox-1706esr#comments">Leave a comment</a> -->
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/blog/calea-2-and-tor">CALEA 2 and Tor</a>
+	  </h2>
+	  <span class="post-meta">Posted May 9, 2013 by <a class="post-author" href="/blogarma">arma</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/advocacy">advocacy</a>
+              
+		  <a class="post-category post-category-js" href="/tag/data retention">data retention</a>
+              
+		  <a class="post-category post-category-js" href="/tag/law enforcement">law enforcement</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>Journalists and activists have been asking me this week about the news that the Obama administration is now <a href="http://www.nytimes.com/2013/05/08/us/politics/obama-may-back-fbi-plan-to-wiretap-web-users.html">considering</a> whether to support the latest version of the FBI&#39;s <a href="https://www.eff.org/foia/foia-records-problems-electronic-surveillance">&quot;Going Dark&quot;</a> legislation. Here are some points to add to the discussion.</p>
+
+<ul>
+<li>  This is far from law currently. Nobody&#39;s even published any proposed text. Right now the White House is considering whether to back it, and now is a great time to help them understand how dangerous it would be for America.</li>
+<li>  Forcing backdoors in communication tools is a mandate for insecurity. Haven&#39;t they been paying attention to just how much these same systems are under <a href="http://googleblog.blogspot.com/2011/06/ensuring-your-information-is-safe.html">attack</a> from foreign governments and criminals? Did they not learn any lessons from the wiretapping scandals in <a href="http://en.wikipedia.org/wiki/Greek_wiretapping_case_2004%E2%80%932005">Greece</a> and <a href="http://en.wikipedia.org/wiki/SISMI-Telecom_scandal">Italy</a>, where CALEA backdoors were used to surveil politicians, without law enforcement even knowing about it? You cannot add a backdoor to a communications system without making it more vulnerable to attack, both from insiders and from the outside.</li>
+<li>  The Justice Department is being really short-sighted here by imagining that the world is black and white. We&#39;ve heard from people at the <a href="https://blog.torproject.org/blog/trip-report-october-fbi-conference">FBI</a>, DEA, NSA, etc who <a href="https://www.torproject.org/about/torusers.html.en#lawenforcement">use Tor for their job</a>. If we changed the design so we could snoop on people, those users should go use a system that isn&#39;t broken by design — such as one in another country. And if those users should, why wouldn&#39;t criminals switch too?</li>
+<li>  In any case, it seems likely that the law won&#39;t apply to The Tor Project, since we don&#39;t run the Tor network and also it&#39;s not a service. (We write free open source software, and then people run it to form a network.)</li>
+<li>  The current <a href="http://en.wikipedia.org/wiki/Communications_Assistance_for_Law_Enforcement_Act">CALEA</a> already has an ugly <a href="https://blog.torproject.org/blog/trip-report-german-foreign-office">trickle-down effect</a> on the citizens of other countries. Different governments have different standards for lawful access, but the technology doesn&#39;t distinguish. So when the Egyptian general plugs in his telco box and sees the connector labelled &quot;lawful access&quot;, he thinks to himself &quot;I *am* the law&quot; and proceeds with surveilling his citizens to stay in power. To put it bluntly, America&#39;s lawful intercept program undermines its foreign policy goals.</li>
+</ul>
+
+<p>And lastly, we should all keep in mind that they can&#39;t force us to do anything. You always have the alternative of stopping whatever it is you&#39;re doing. So for example if they try to &quot;force&quot; an individual <a href="https://www.torproject.org/docs/faq#KeyManagement">directory authority</a> operator to do something, the operator should just stop operating the authority (and then consider working with EFF and ACLU to establish precedent that such an attempt was illegal). And so on, all the way up the chain. Good thing the Internet is an international community.</p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="/blogarma">arma's Blog</a>
+	      <a class="post-cmtlink" href="/blog/calea-2-and-tor/#disqus_thread">Leave a comment</a>
+<!--	      <a class="post-cmtlink" href="/blog/calea-2-and-tor#comments">Leave a comment</a> -->
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/blog/new-tor-02412-alpha-packages-and-tor-browser-bundles">New Tor 0.2.4.12-alpha packages and Tor Browser Bundles</a>
+	  </h2>
+	  <span class="post-meta">Posted Apr 29, 2013 by <a class="post-author" href="/blogerinn">erinn</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/tbb">tbb</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor alpha">tor alpha</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor browser bundle">tor browser bundle</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor release">tor release</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>There is a new alpha-release of Tor Browser, based on tor 0.2.4.12-alpha. Alpha versions of Vidalia Bundles and Expert bundles are also updated.</p>
+
+<p>This release also includes a patch to enable <a href="https://thunk.cs.uwaterloo.ca/optimistic-data-pets2010-rump.pdf">optimistic data</a> (PDF) which should significantly speed up your browsing experience. Please give them a try and let us know how they work for you.</p>
+
+<p>You can download the alpha Tor Browser Bundles <a href="https://www.torproject.org/projects/torbrowser.html.en#Download-torbrowserbundlealpha">here</a>.</p>
+
+<p><strong>Tor Browser Bundle (2.4.12-alpha-1)</strong></p>
+
+<p>Update Tor to 0.2.4.12-alpha</p>
+
+<p>Update Torbutton to 1.5.2</p>
+
+<p>Update libpng to 1.5.15</p>
+
+<p>Update NoScript to 2.6.6</p>
+
+<p>Update PDF.js to 0.8.1</p>
+
+<p>Firefox patch changes:</p>
+
+<ul>
+<li>  Apply font limits to @font-face local() fonts and disable fallback<br>
+ rendering for @font-face. (closes: #8455)</li>
+<li>  Use Optimistic Data SOCKS handshake (improves page load performance).<br>
+ (closes: #3875)</li>
+<li>  Honor the Windows theme for inverse text colors (without leaking those<br>
+ colors to content). (closes: #7920)</li>
+<li>  Increase pipeline randomization and try harder to batch pipelined<br>
+ requests together. (closes: #8470)</li>
+<li>  Fix an image cache isolation domain key misusage. May fix several image<br>
+ cache related crash bugs with New Identity, exit, and certain websites.<br>
+ (closes: #8628)</li>
+</ul>
+
+<p>Torbutton changes:</p>
+
+<ul>
+<li>  Allow session restore if the user allows disk actvity (closes: #8457)</li>
+<li>  Remove the Display Settings panel and associated locales (closes: #8301)</li>
+<li>  Fix &quot;Transparent Torification&quot; option. (closes: #6566)</li>
+<li>  Fix a hang on New Identity. (closes: #8642)</li>
+</ul>
+
+<p>Build changes:</p>
+
+<ul>
+<li>  Fetch our source deps from an https mirror (closes: #8286)</li>
+<li>  Create watch scripts for syncing mirror sources and monitoring mirror<br>
+ integrity (closes: #8338)</li>
+</ul>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="/blogerinn">erinn's Blog</a>
+	      <a class="post-cmtlink" href="/blog/new-tor-02412-alpha-packages-and-tor-browser-bundles/#disqus_thread">Leave a comment</a>
+<!--	      <a class="post-cmtlink" href="/blog/new-tor-02412-alpha-packages-and-tor-browser-bundles#comments">Leave a comment</a> -->
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+    </ul>
+    <p class="rss-subscribe">subscribe <a href="/blog/feed.xml">via RSS</a></p>
+
+
+    <!-- Pagination links -->
+    
+    <div class="pagination">
+      <a href="/blog/index.html">&laquo; Newest</a>
+      &nbsp;
+
+      
+	<a href="/blog/blog/page45">&laquo; Prev</a>
+      
+      &nbsp;
+
+      <!-- Pagination vars -->
+      
+      
+      
+      
+      
+      
+	  
+      
+      
+      
+
+	
+	  <a href="../..//blogblog/page41">41</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page42">42</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page43">43</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page44">44</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page45">45</a>
+	
+      
+
+	
+	  46
+
+	
+      
+
+	
+	  <a href="../..//blogblog/page47">47</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page48">48</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page49">49</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page50">50</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page51">51</a>
+	
+      
+      &nbsp;
+
+      
+	<a href="/blog/blog/page47">Next &raquo;</a>
+      
+      &nbsp;
+      <a href="../..//blogblog/page147">Oldest &raquo;</a>
+    </div>
+    
+    
+    <br />
+
+  </div>
+
+<!-- Include the side column -->
+<div class="sidecol">
+
+<!-- RSS FEED / SEARCH -->
+    <div class="sidefirst">
+	<a href="/blog/feed.xml"><img src="/blog/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="/blog/img/rss.png">Atom</a> -->
+	<form>
+        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
+        </form>
+    </div>
+
+<!-- EVENTS -->
+    <div class ="sidebox orangebox">
+	<h2>Upcoming Events</h2>
+	<ul>
+	    
+		    <li><span><a href="/blog/tor-winter-dev-meeting-2015">Tor Winter Dev Meeting 2015</a></span></li>
+	    
+		    <li><span><a href="/blog/roger-and-jake-rightscon-manila">Roger and Jake at RightsCon in Manila</a></span></li>
+	    
+		    <li><span><a href="/blog/tor-booth-fosdem-2015">Tor booth at FOSDEM 2015</a></span></li>
+	    
+		    <li><span><a href="/blog/many-tor-people-pets-philadelphia">Many Tor people at PETS in Philadelphia</a></span></li>
+	    
+	</ul>
+	<span><a href="/blog/events">full calendar &raquo;</a></span>
+    </div>
+    
+<!-- RECENT BLOG POSTS -->
+    <div class ="sidebox greenbox">
+	<h2>Recent Blog Posts</h2>
+	<ul>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
+	  
+		    <li><span><a href="/blog/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
+	  
+	</ul>
+	<span><a href="/blog/archive">more &raquo;</a></span>
+    </div>
+    
+<!-- TAG CLOUD -->
+    <div class ="tagbox orangebox">
+	<h2>Blog Tag Cloud</h2>
+	<ul>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/blog/">
+            blog
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/first post/">
+            first post
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 171%">
+        <span><a href="/blog/tag/tor/">
+            tor
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/24c3/">
+            24c3
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/ccc/">
+            ccc
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/blog/tag/talks/">
+            talks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/blog/tag/bugs/">
+            bugs
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/crashes/">
+            crashes
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 64%">
+        <span><a href="/blog/tag/osx/">
+            osx
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/qt/">
+            qt
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/blog/tag/vidalia/">
+            vidalia
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 67%">
+        <span><a href="/blog/tag/vidalia bundle/">
+            vidalia bundle
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/meetup/">
+            meetup
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/blog/tag/attacks/">
+            attacks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/covert channels/">
+            covert channels
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/media coverage/">
+            media coverage
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 88%">
+        <span><a href="/blog/tag/bridges/">
+            bridges
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/blog/tag/incognito/">
+            incognito
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 113%">
+        <span><a href="/blog/tag/progress report/">
+            progress report
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/blog/tag/torbrowser/">
+            torbrowser
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 83%">
+        <span><a href="/blog/tag/torbutton/">
+            torbutton
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 65%">
+        <span><a href="/blog/tag/china/">
+            china
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/directors/">
+            directors
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 75%">
+        <span><a href="/blog/tag/release candidate/">
+            release candidate
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 74%">
+        <span><a href="/blog/tag/gsoc/">
+            gsoc
+        </a></span>
+    </li>
+
+	</ul>
+	<span><a href="/blog/tag-cloud">more tags &raquo;</a></span>
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>  
+
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Tor Project Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>The Tor Project Blog</li>
+          <li><a href="mailto:contact@torproject.org">contact@torproject.org</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyllrb</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+ <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jmttest2'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    
+  </body>
+
+</html>

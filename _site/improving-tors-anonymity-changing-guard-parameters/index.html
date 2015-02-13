@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Improving Tor&#039;s anonymity by changing guard parameters</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/blog/css/main.css">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/improving-tors-anonymity-changing-guard-parameters">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/blog/">The Tor Project Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+	<a class="page-link" href="/blog/">Blog Home</a>
+        <a class="page-link" href="/blog/archive">Archives</a>
+	<a class="page-link" href="https://www.torproject.org/about/overview">About Tor</a>
+        <a class="page-link donate" href="https://www.torproject.org/donate/donate">Donate</a>
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <!-- Pages with side column need a 'maincol' class -->
+<div class="post maincol">
+
+  <header class="post-header">
+    <h1 class="post-title">Improving Tor&#039;s anonymity by changing guard parameters</h1>
+    <p class="post-meta">Oct 16, 2013 • arma</p>
+  </header>
+
+  <article class="post-content">
+    <p>There are tensions in the Tor protocol design between the anonymity provided by entry guards and the performance improvements from better load balancing. This blog post walks through the research questions I raised in 2011, then summarizes answers from three recent papers written by researchers in the Tor community, and finishes by explaining what Tor design changes we need to make to provide better anonymity, and what we&#39;ll be trading off.</p>
+
+<h1>Part one: The research questions</h1>
+
+<p>In Tor, each client selects a few relays at random, and chooses only from those relays when making the first hop of each circuit. This <a href="https://www.torproject.org/docs/faq#EntryGuards">entry guard</a> design helps in three ways:</p>
+
+<p>First, entry guards protect against the &quot;<a href="http://freehaven.net/anonbib/#Wright:2004">predecessor attack</a>&quot;: if Alice (the user) instead chose new relays for each circuit, eventually an attacker who runs a few relays would be her first and last hop. With entry guards, the risk of end-to-end correlation for any given circuit is the same, but the cumulative risk for all her circuits over time is <a href="http://freehaven.net/anonbib/#hs-attack06">capped</a>.</p>
+
+<p>Second, they help to protect against the &quot;<a href="http://freehaven.net/anonbib/#ccs07-doa">denial of service as denial of anonymity</a>&quot; attack, where an attacker who runs quite a few relays fails any circuit that he&#39;s a part of and that he can&#39;t win against, forcing Alice to generate more circuits and thus increasing the overall chance that the attacker wins. Entry guards greatly reduce the risk, since Alice will never choose outside of a few nodes for her first hop.</p>
+
+<p>Third, entry guards raise the startup cost to an adversary who runs relays in order to trace users. Without entry guards, the attacker can sign up some relays and immediately start having chances to observe Alice&#39;s circuits. With them, new adversarial relays won&#39;t have the Guard flag so won&#39;t be chosen as the first hop of any circuit; and even once they earn the Guard flag, users who have already chosen guards won&#39;t switch away from their current guards for <a href="https://blog.torproject.org/blog/lifecycle-of-a-new-relay">quite a while</a>.</p>
+
+<p>In August 2011, I posted these four <a href="https://blog.torproject.org/blog/research-problem-better-guard-rotation-parameters">open research questions around guard rotation parameters</a>:</p>
+
+<ol>
+<li> <strong>Natural churn</strong>: For an adversary that controls a given number of relays, if the user only replaces her guards when the current ones become unavailable, how long will it take until she&#39;s picked an adversary&#39;s guard?</li>
+<li> <strong>Artificial churn</strong>: How much more risk does she introduce by intentionally switching to new guards before she has to, to load balance better?</li>
+<li> <strong>Number of guards</strong>: What are the tradeoffs in performance and anonymity from picking three guards vs two or one? By default Tor picks three guards, since if we picked only one then some clients would pick a slow one and be sad forever. On the other hand, picking only one makes users safer.</li>
+<li> <strong>Better Guard flag assignment</strong>: If we give the Guard flag to more or different relays, how much does it change all these answers?</li>
+</ol>
+
+<p>For reference, Tor 0.2.3&#39;s entry guard behavior is &quot;choose three guards, adding another one if two of those three go down but going back to the original ones if they come back up, and also throw out (aka rotate) a guard 4-8 weeks after you chose it.&quot; I&#39;ll discuss in &quot;Part three&quot; of this post what changes we should make to improve this policy.</p>
+
+<h1>Part two: Recent research papers</h1>
+
+<p>Tariq Elahi, a grad student in Ian Goldberg&#39;s group in Waterloo, began to answer the above research questions in his paper <a href="http://freehaven.net/anonbib/#wpes12-cogs">Changing of the Guards: A Framework for Understanding and Improving Entry Guard Selection in Tor</a> (published at WPES 2012). His paper used eight months of real-world historical <a href="https://metrics.torproject.org/data.html">Tor network data</a> (from April 2011 to December 2011) and simulated various guard rotation policies to see which approaches protect users better.</p>
+
+<p>Tariq&#39;s paper considered a quite small adversary: he let all the clients pick honest guards, and then added one new small guard to the 800 or so existing guards. The question is then what fraction of clients use this new guard over time. Here&#39;s a graph from the paper, showing (assuming all users pick three guards) the vulnerability due to natural churn (&quot;without guard rotation&quot;) vs natural churn plus also intentional guard rotation:</p>
+
+<p><a href="https://people.torproject.org/%7Earma/rotation-elahi.png"><img src="https://people.torproject.org/%7Earma/rotation-elahi.png" alt="Vulnerability from natural vs intentional guard rotation"></a></p>
+
+<p>In this graph their tiny guard node, in the &quot;without guard rotation&quot; scenario, ends up getting used by about 3% of the clients in the first few months, and gets up to 10% by the eight-month mark. The more risky scenario — which Tor uses today — sees the risk shoot up to 14% in the first few months. (Note that the y-axis in the graph only goes up to 16%, mostly because the attacking guard is so small.)</p>
+
+<p>The second paper to raise the issue is from Alex Biryukov, Ivan Pustogarov, and Ralf-Philipp Weinmann in Luxembourg. Their paper <a href="http://freehaven.net/anonbib/#oakland2013-trawling">Trawling for Tor Hidden Services: Detection, Measurement, Deanonymization</a> (published at Oakland 2013) mostly focuses on other attacks (like how to censor or track popularity of hidden services), but their Section VI.C. talks about the &quot;run a relay and wait until the client picks you as her guard&quot; attack. In this case they run the numbers for a much larger adversary: if they run 13.8% of the Tor network for eight months there&#39;s more than a 90% chance of a given hidden service using their guard sometime during that period. That&#39;s a huge fraction of the network, but it&#39;s also a huge chance of success. And since hidden services in this case are basically the same as Tor clients (they choose guards and build circuits the same way), it&#39;s reasonable to conclude that their attack works against normal clients too so long as the clients use Tor often enough during that time.</p>
+
+<p>I should clarify three points here.</p>
+
+<p>First clarifying point: Tariq&#39;s paper makes two simplifying assumptions when calling an attack successful if the adversary&#39;s relay *ever* gets into the user&#39;s guard set. 1) He assumes that the adversary is also either watching the user&#39;s destination (e.g. the website she&#39;s going to), or he&#39;s running enough exit relays that he&#39;ll for sure be able to see the correponding flow out of the Tor network. 2) He assumes that the end-to-end correlation attack (matching up the incoming flow to the outgoing flow) is instantaneous and perfect. Alex&#39;s paper argues pretty convincingly that these two assumptions are easier to make in the case of attacking a hidden service (since the adversary can dictate how often the hidden service makes a new circuit, as well as what the traffic pattern looks like), and the paper I describe next addresses the first assumption, but the second one (&quot;how successful is the correlation attack at scale?&quot; or maybe better, &quot;how do the false positives in the correlation attack compare to the false negatives?&quot;) remains an open research question.</p>
+
+<p>Researchers generally agree that given a handful of traffic flows, it&#39;s easy to match them up. But what about the millions of traffic flows we have now? What levels of false positives (algorithm says &quot;match!&quot; when it&#39;s wrong) are acceptable to this attacker? Are there some simple, not too burdensome, tricks we can do to drive up the false positives rates, even if we all agree that those tricks wouldn&#39;t work in the &quot;just looking at a handful of flows&quot; case?</p>
+
+<p>More precisely, it&#39;s possible that correlation attacks don&#39;t scale well because as the number of Tor clients grows, the chance that the exit stream actually came from a different Tor client (not the one you&#39;re watching) grows. So the confidence in your match needs to grow along with that or your false positive rate will explode. The people who say that correlation attacks don&#39;t scale use phrases like &quot;<a href="http://archives.seul.org/or/dev/Sep-2008/msg00016.html">say your correlation attack is 99.9% accurate</a>&quot; when arguing it. The folks who think it does scale use phrases like &quot;I can easily make my correlation attack arbitrarily accurate.&quot; My hope is that the reality is somewhere in between — correlation attacks in the current Tor network can probably be made plenty accurate, but perhaps with some simple design changes we can improve the situation. In any case, I&#39;m not going to try to tackle that research question here, except to point out that 1) it&#39;s actually unclear in practice whether you&#39;re done with the attack if you get your relay into the user&#39;s guard set, or if you are now faced with a challenging flow correlation problem that could produce false positives, and 2) the goal of the entry guard design is to make this issue moot: it sure would be nice to have a design where it&#39;s hard for adversaries to get into a position to see both sides, since it would make it irrelevant how good they are at traffic correlation.</p>
+
+<p>Second clarifying point: it&#39;s about the probabilities, and that&#39;s intentional. Some people might be scared by phrases like &quot;there&#39;s an x% chance over y months to be able to get an attacker&#39;s relay into the user&#39;s guard set.&quot; After all, they reason, shouldn&#39;t Tor provide absolute anonymity rather than probabilistic anonymity? This point is even trickier in the face of centralized anonymity services that promise <a href="https://svn.torproject.org/svn/projects/articles/circumvention-features.html#5">&quot;100% guaranteed&quot;</a> anonymity, when what they really mean is &quot;we could watch everything you do, and we might sell or give up your data in some cases, and even if we don&#39;t there&#39;s still just one point on the network where an eavesdropper can learn everything.&quot; Tor&#39;s path selection strategy distributes trust over multiple relays to avoid this centralization. The trouble here isn&#39;t that there&#39;s a chance for the adversary to win — the trouble is that our current parameters make that chance bigger than it needs to be.</p>
+
+<p>To make it even clearer: the entry guard design is doing its job here, just not well enough. Specifically, *without* using the entry guard design, an adversary who runs some relays would very quickly find himself as the first hop of one of the user&#39;s circuits.</p>
+
+<p>Third clarifying point: we&#39;re considering an attacker who wants to learn if the user *ever* goes to a given destination. There are plenty of reasonable other things an attacker might be trying to learn, like building a profile of many or all of the user&#39;s destinations, but in this case Tariq&#39;s paper counts a successful attack as one that confirms (subject to the above assumptions) that the user visited a given destination once.</p>
+
+<p>And that brings us to the third paper, by Aaron Johnson et al: <a href="http://freehaven.net/anonbib/#ccs2013-usersrouted">Users Get Routed: Traffic Correlation on Tor by Realistic Adversaries</a> (upcoming at CCS 2013). This paper ties together two previous series of research papers: the first is &quot;what if the attacker runs a relay?&quot; which is what the above two papers talked about, and the second is &quot;what if the attacker can watch part of the Internet?&quot;</p>
+
+<p>The first part of the paper should sound pretty familiar by now: they simulated running a few entry guards that together make up 10% of the guard capacity in the Tor network, and they showed that (again using historical Tor network data, but this time from October 2012 to March 2013) the chance that the user has made a circuit using the adversary&#39;s relays is more than 80% by the six month mark.</p>
+
+<p>In this case their simulation includes the adversary running a fast exit relay too, and the user performs a set of sessions over time. They observe that the user&#39;s traffic passes over pretty much all the exit relays (which makes sense since Tor doesn&#39;t use an &quot;exit guard&quot; design). Or summarizing at an even higher level, the conclusion is that so long as the user uses Tor enough, this paper confirms the findings in the earlier two papers.</p>
+
+<p>Where it gets interesting is when they explain that &quot;the adversary could run a relay&quot; is not the only risk to worry about. They build on the series of papers started by <a href="http://freehaven.net/anonbib/#feamster:wpes2004">&quot;Location Diversity in Anonymity Networks&quot;</a> (WPES 2004), <a href="http://freehaven.net/anonbib/#DBLP:conf:ccs:EdmanS09">&quot;AS-awareness in Tor path selection&quot;</a> (CCS 2009), and most recently <a href="http://freehaven.net/anonbib/#ndss13-relay-selection">&quot;An Empirical Evaluation of Relay Selection in Tor&quot;</a> (NDSS 2013). These papers look at the chance that traffic from a given Tor circuit will traverse a given set of Internet links.</p>
+
+<p>Their point, which like all good ideas is obvious in retrospect, is that rather than running a guard relay and waiting for the user to switch to it, the attacker should instead monitor as many Internet links as he can, and wait for the user to use a guard such that traffic between the user and the guard passes over one of the links the adversary is watching.</p>
+
+<p>This part of the paper raises as many questions as it answers. In particular, all the users they considered are in or near Germany. There are also quite a few Tor relays in Germany. How much of their results here can be explained by pecularities of Internet connectivity in Germany? Are their results predictive in any way about how users on other continents would fare? Or said another way, how can we learn whether their conclusion shouldn&#39;t instead be &quot;German Tor users are screwed, because look how Germany&#39;s Internet topology is set up&quot;? Secondly, their scenario has the adversary control the Autonomous System (AS) or Internet Exchange Point (IXP) that maximally deanonymizes the user (they exclude the AS that contains the user and the AS that contains her destinations). This &quot;best possible point to attack&quot; assumption a) doesn&#39;t consider how hard it is to compromise that particular part of the Internet, and b) seems like it will often be part of the Internet topology near the user (and thus vary greatly depending on which user you&#39;re looking at). And third, like the previous papers, they think of an AS as a single Internet location that the adversary is either monitoring or not monitoring. Some ASes, like large telecoms, are quite big and spread out.</p>
+
+<p>That said, I think it&#39;s clear from this paper that there *do* exist realistic scenarios where Tor users are at high risk from an adversary watching the nearby Internet infrastructure and/or parts of the Internet backbone. Changing the guard rotation parameters as I describe in &quot;Part three&quot; below will help in some of these cases but probably won&#39;t help in all of them. The canonical example that I&#39;ve given in talks about &quot;a person in Syria using Tor to visit a website in Syria&quot; remains a very serious worry.</p>
+
+<p>The paper also makes me think about exit traffic patterns, and how to better protect people who use Tor for only a short period of time: many websites pull in resources from all over, especially resources from centralized ad sites. This risk (that it greatly speeds the rate at which an adversary watching a few exit points — or heck, a few ad sites — will be able to observe a given user&#39;s exit traffic) provides the most compelling reason I&#39;ve heard so far to ship Tor Browser Bundle with an ad blocker — or maybe better, with something like <a href="https://www.requestpolicy.com/">Request Policy</a> that doesn&#39;t even touch the sites in the first place. On the other hand, Mike Perry still doesn&#39;t want to ship an ad blocker in TBB, since he doesn&#39;t want to pick a fight with Google and give them even more of a reason to block/drop all Tor traffic. I can see that perspective too.</p>
+
+<h1>Part three: How to fix it</h1>
+
+<p>Here are five steps we should take, in rough order of how much impact I think each of them would have on the above attacks.</p>
+
+<p>If you like metaphors, think of each time you pick a new guard as a coin flip (heads you get the adversary&#39;s guard, tails you&#39;re safe this time), and the ideas here aim to reduce both the number and frequency of coin flips.</p>
+
+<p><strong>Fix 1: Tor clients should use fewer guards.</strong></p>
+
+<p>The primary benefit to moving to fewer guards is that there are fewer coin flips every time you pick your guards.</p>
+
+<p>But there&#39;s a second benefit as well: right now your choice of guards acts as a kind of fingerprint for you, since very few other users will have picked the same three guards you did. (This fingerprint is only usable by an attacker who can discover your guard list, but in some scenarios that&#39;s a realistic attack.) To be more concrete: if the adversary learns that you have a particular three guards, and later sees an anonymous user with exactly the same guards, how likely is it to be you? Moving to two guards helps the math a lot here, since you&#39;ll overlap with many more users when everybody is only picking two.</p>
+
+<p>On the other hand, the main downside is increased variation in performance. Here&#39;s Figure 10 from Tariq&#39;s paper:</p>
+
+<p><a href="https://people.torproject.org/%7Earma/1guard-performance.png"><img src="https://people.torproject.org/%7Earma/1guard-performance.png" alt="Average guard capacity for various numbers of guards"></a></p>
+
+<p>&quot;Farther to the right&quot; is better in this graph. When you pick three guards (the red line), the average speed of your guards is pretty good (and pretty predictable), since most guards are pretty fast and it&#39;s unlikely you&#39;ll pick slow ones for all three. However, when you only pick only one guard (the purple line), the odds go up a lot that you get unlucky and pick a slow one. In more concrete numbers, half of the Tor users will see up to 60% worse performance.</p>
+
+<p>The fix of course is to raise the bar for becoming a guard, so every possible guard will be acceptably fast. But then we have fewer guards total, increasing the vulnerability from other attacks! Finding the right balance (as many guards as possible, but all of them fast) is going to be an ongoing challenge. See <a href="https://trac.torproject.org/projects/tor/ticket/9273">Brainstorm tradeoffs from moving to 2 (or even 1) guards (ticket 9273)</a> for more discussion.</p>
+
+<p>Switching to just one guard will also preclude deploying <a href="http://freehaven.net/anonbib/#pets13-splitting">Conflux</a>, a recent proposal to improve Tor performance by routing traffic over multiple paths in parallel. The Conflux design is appealing because it not only lets us make better use of lower-bandwidth relays (which we&#39;ll need to do if we want to greatly grow the size of the Tor network), but it also lets us dynamically adapt to congestion by shifting traffic to less congested routes. Maybe some sort of &quot;guard family&quot; idea can work, where a single coin flip chooses a pair of guards and then we split our traffic over them. But if we want to avoid doubling the exposure to a network-level adversary, we might want to make sure that these two guards are near each other on the network — I think the analysis of the network-level adversary in Aaron&#39;s paper is the strongest argument for restricting the variety of Internet paths that traffic takes between the Tor client and the Tor network.</p>
+
+<p>This discussion about reducing the number of guards also relates to bridges: right now if you configure ten <a href="https://www.torproject.org/docs/bridges">bridges</a>, you round-robin over all of them. It seems wise for us to instead use only the first bridge in our bridge list, to cut down on the set of Internet-level adversaries that get to see the traffic flows going into the Tor network.</p>
+
+<p><strong>Fix 2: Tor clients should keep their guards for longer.</strong></p>
+
+<p>In addition to choosing fewer guards, we should also avoid switching guards so often. I originally picked &quot;one or two months&quot; for guard rotation since it seemed like a very long time. In Tor 0.2.4, we&#39;ve changed it to &quot;two or three months&quot;. But I think changing the guard rotation period to a year or more is probably much wiser, since it will slow down the curves on all the graphs in the above research papers.</p>
+
+<p>I asked Aaron to make a graph comparing the success of an attacker who runs 10% of the guard capacity, in the &quot;choose 3 guards and rotate them every 1-2 months&quot; case and the &quot;choose 1 guard and never rotate&quot; case:</p>
+
+<p><a href="https://people.torproject.org/%7Earma/room-for-improvement.png"><img src="https://people.torproject.org/%7Earma/room-for-improvement.png" alt="Vulnerability from natural vs intentional guard rotation"></a></p>
+
+<p>In the &quot;3 guard&quot; case (the blue line), the attacker&#39;s success rate rapidly grows to about 25%, and then it steadily grows to over 80% by the six month mark. The &quot;1 guard&quot; case (green line), on the other hand, grows to 10% (which makes sense since the adversary runs 10% of the guards), but then it levels off and grows only slowly as a function of network churn. By the six month mark, even this very large adversary&#39;s success rate is still under 25%.</p>
+
+<p>So the good news is that by choosing better guard rotation parameters, we can almost entirely resolve the vulnerabilities described in these three papers. Great!</p>
+
+<p>Or to phrase it more as a research question, once we get rid of this known issue, I&#39;m curious how the new graphs over time will look, especially when we have a more sophisticated analysis of the &quot;network observer&quot; adversary. I bet there are some neat other attacks that we&#39;ll need to explore and resolve, but that are being masked by the poor guard parameter issue.</p>
+
+<p>However, fixing the guard rotation period issue is alas not as simple as we might hope. The fundamental problem has to do with &quot;load balancing&quot;: allocating traffic onto the Tor network so each relay is used the right amount. If Tor clients choose a guard and stick with it for a year or more, then old guards (relays that have been around and stable for a long time) will see a lot of use, and new guards will see very little use.</p>
+
+<p>I wrote a separate blog post to provide background for this issue: &quot;<a href="https://blog.torproject.org/blog/lifecycle-of-a-new-relay">The lifecycle of a new relay</a>&quot;. Imagine if the ramp-up period in the graph from that blog post were a year long! People would set up fast relays, they would get the Guard flag, and suddenly they&#39;d see little to no traffic for months. We&#39;d be throwing away easily half of the capacity volunteered by relays.</p>
+
+<p>One approach to resolving the conflict would be for the directory authorities to track how much of the past n months each relay has had the Guard flag, and publish a fraction in the networkstatus consensus. Then we&#39;d teach clients to rebalance their path selection choices so a relay that&#39;s been a Guard for only half of the past year only counts 50% as a guard in terms of using that relay in other positions in circuits. See <a href="https://trac.torproject.org/projects/tor/ticket/9321">Load balance right when we have higher guard rotation periods (ticket 9321)</a> for more discussion, and see <a href="https://trac.torproject.org/projects/tor/ticket/8240">Raise our guard rotation period (ticket 8240)</a> for earlier discussions.</p>
+
+<p>Yet another challenge here is that sticking to the same guard for a year gives plenty of time for an attacker to identify the guard and attack it somehow. It&#39;s particularly easy to identify the guard(s) for hidden services currently (since as mentioned above, the adversary can control the rate at which hidden services make new circuits, simply by visiting the hidden service), but similar attacks can probably be made to work against normal Tor clients — see e.g. the http-level refresh tricks in <a href="http://freehaven.net/anonbib/#tissec-latency-leak">How Much Anonymity does Network Latency Leak?</a> This attack would effectively turn Tor into a network of one-hop proxies, to an attacker who can efficiently enumerate guards. That&#39;s not a complete attack, but it sure does make me nervous.</p>
+
+<p>One possible direction for a fix is to a) isolate streams by browser tab, so all the requests from a given browser tab go to the same circuit, but different browser tabs get different circuits, and then b) stick to the same three-hop circuit (i.e. same guard, middle, and exit) for the lifetime of that session (browser tab). How to slow down guard enumeration attacks is a tough and complex topic, and it&#39;s too broad for this blog post, but I raise the issue here as a reminder of how interconnected anonymity attacks and defenses are. See <a href="https://trac.torproject.org/projects/tor/ticket/9001">Slow Guard Discovery of Hidden Services and Clients (ticket 9001)</a> for more discussion.</p>
+
+<p><strong>Fix 3: The Tor code should better handle edge cases where you can&#39;t reach your guard briefly.</strong></p>
+
+<p>If a temporary network hiccup makes your guard unreachable, you switch to another one. But how long is it until you switch back? If the adversary&#39;s goal is to learn whether you ever go to a target website, then even a brief switch to a guard that the adversary can control or observe could be enough to mess up your anonymity.</p>
+
+<p>Tor clients fetch a new networkstatus consensus every 2-4 hours, and they are willing to retry non-running guards if the new consensus says they&#39;re up again.</p>
+
+<p>But I think there are a series of little bugs and edge cases where the Tor client abandons a guard more quickly than it should. For example, we mark a guard as failed if any of our circuit requests time out before finishing the handshake with the first hop. We should audit both the design and the source code with an eye towards identifying and resolving these issues.</p>
+
+<p>We should also consider whether an adversary can *induce* congestion or resource exhaustion to cause a target user to switch away from her guard. Such an attack could work very nicely coupled with the guard enumeration attacks discussed above.</p>
+
+<p>Most of these problems exist because in the early days we emphasized reachability (&quot;make sure Tor works&quot;) over anonymity (&quot;be very sure that your guard is gone before you try another one&quot;). How should we handle this tradeoff between availability and anonymity: should you simply stop working if you&#39;ve switched guards too many times recently? I imagine different users would choose different answers to that tradeoff, depending on their priorities. It sounds like we should make it easier for users to select &quot;preserve my anonymity even if it means lower availability&quot;. But at the same time, we should remember the lessons from <a href="http://freehaven.net/anonbib/#usability:weis2006">Anonymity Loves Company: Usability and the Network Effect</a> about how letting users choose different settings can make them more distinguishable.</p>
+
+<p><strong>Fix 4: We need to make the network bigger.</strong></p>
+
+<p>We&#39;ve been working hard in recent years to get more relay capacity. The result is a more than four-fold increase in network capacity since 2011:</p>
+
+<p><a href="https://people.torproject.org/%7Earma/bandwidth-since-2011.png"><img src="https://people.torproject.org/%7Earma/bandwidth-since-2011.png" alt="Vulnerability from natural vs intentional guard rotation"></a></p>
+
+<p>As the network grows, an attacker with a given set of resources will have less success at the attacks described in this blog post. To put some numbers on it, while the relay adversary in Aaron&#39;s paper (who carries 660mbit/s of Tor traffic) represented 10% of the guard capacity in October 2012, that very same attacker would have been 20% of the guard capacity in October 2011. Today that attacker is about 5% of the guard capacity. Growing the size of the network translates directly into better defense against these attacks.</p>
+
+<p>However, the analysis is more complex when it comes to a network adversary. Just adding more relays (and more relay capacity) doesn&#39;t always help. For example, adding more relay capacity in a part of the network that the adversary is already observing can actually *decrease* anonymity, because it increases the fraction the adversary can watch. We discussed many of these issues in the <a href="https://lists.torproject.org/pipermail/tor-relays/2012-July/001433.html">thread about turning funding into more exit relays</a>. For more details about the relay distribution in the current Tor network, check out <a href="https://compass.torproject.org/">Compass</a>, our tool to explore what fraction of relay capacity is run in each country or AS. Also check out Lunar&#39;s <a href="https://metrics.torproject.org/bubbles.html">relay bubble graphs</a>.</p>
+
+<p>Yet another open research question in the field of anonymous communications is how the success rate of a network adversary changes as the Tor network changes. If we were to plot the success rate of the *relay* adversary using historical Tor network data over time, it&#39;s pretty clear that the success rate would be going down over time as the network grows. But what&#39;s the trend for the success rate of the network adversary over the past few years? Nobody knows. It could be going up or down. And even if it is going down, it could be going down quickly or slowly.</p>
+
+<p>(Read more in <a href="https://blog.torproject.org/blog/research-problem-measuring-safety-tor-network">Research problem: measuring the safety of the Tor network</a> where I describe some of these issues in more detail.)</p>
+
+<p>Recent papers have gone through enormous effort to get one, very approximate, snapshot of the Internet&#39;s topology. Doing that effort retroactively and over long and dynamic time periods seems even more difficult and more likely to introduce errors.</p>
+
+<p>It may be that the realities of Internet topology centralization make it so that there are fundamental limits on how much safety Tor users can have in a given network location. On the other hand, researchers like Aaron Johnson are optimistic that &quot;network topology aware&quot; path selection can improve Tor&#39;s protection against this style of attack. Much work remains.</p>
+
+<p><strong>Fix 5: We should assign the guard flag more intelligently.</strong></p>
+
+<p>In point 1 above I talked about why we need to raise the bar for becoming a guard, so all guards can provide adequate bandwidth. On the other hand, having fewer guards is directly at odds with point 4 above.</p>
+
+<p>My <a href="https://blog.torproject.org/blog/research-problem-better-guard-rotation-parameters">original guard rotation parameters blog post</a> ends with this question: what algorithm should we use to assign Guard flags such that a) we assign the flag to as many relays as possible, yet b) we minimize the chance that Alice will use the adversary&#39;s node as a guard?</p>
+
+<p>We should use historical Tor network data to pick good values for the parameters that decide which relays become guards. This remains a great thesis topic if somebody wants to pick it up.</p>
+
+<h1>Part four: Other thoughts</h1>
+
+<p>What does all of this discussion mean for the rest of Tor? I&#39;ll close by trying to tie this blog post to the broader Tor world.</p>
+
+<p>First, all three of these papers come from the <a href="http://freehaven.net/anonbib/">Tor research community</a>, and it&#39;s great that Tor gets such attention. We get this attention because we put so much effort into <a href="https://research.torproject.org/">making it easy</a> for researchers to analyze Tor: we&#39;ve worked closely with these authors to help them understand Tor and focus on the most pressing research problems.</p>
+
+<p>In addition, don&#39;t be fooled into thinking that these attacks only apply to Tor: using Tor is still better than using any other tool, at least in quite a few of these scenarios. That said, some other attacks in the research literature might be even easier than the attacks discussed here. These are fast-moving times for anonymity research. &quot;Maybe you shouldn&#39;t use the Internet then&quot; is still the best advice for some people.</p>
+
+<p>Second, the <a href="https://tails.boum.org/">Tails</a> live CD doesn&#39;t use persistent guards. That&#39;s really bad I think, assuming the Tails users have persistent behavior (which basically all users do). See <a href="https://labs.riseup.net/code/issues/5462">their ticket 5462</a>.</p>
+
+<p>Third, the network-level adversaries rely on being able to recognize Tor flows. Does that argue that using <a href="https://www.torproject.org/docs/pluggable-transports">pluggable transports</a>, with <a href="https://www.torproject.org/docs/bridges">bridges</a>, might change the equation if it stops the attacker from recognizing Tor users?</p>
+
+<p>Fourth, I should clarify that I don&#39;t think any of these large relay-level adversaries actually exist, except as a succession of researchers showing that it can be done. (GCHQ apparently ran a small number of relays a while ago, but not in a volume or duration that would have enabled this attack.) Whereas I *do* think that the network-level attackers exist, since they already invested in being able to surveil the Internet for other reasons. So I think it&#39;s great that Aaron&#39;s paper presents the dual risks of relay adversaries and link adversaries, since most of the time when people are worrying about one of them they&#39;re forgetting the other one.</p>
+
+<p>Fifth, there are still some ways to game the <a href="https://gitweb.torproject.org/torflow.git/blob/HEAD:/NetworkScanners/BwAuthority/README.BwAuthorities">bandwidth authority</a> measurements (here&#39;s the spec <a href="https://gitweb.torproject.org/torflow.git/blob/HEAD:/NetworkScanners/BwAuthority/README.spec.txt">spec</a>) into giving you more than your fair share of traffic. Ideally we&#39;d adapt a design like <a href="https://www.usenix.org/legacy/event/iptps09/tech/full_papers/snader/snader.pdf">EigenSpeed</a> so it can measure fast relays both robustly and accurately. This question also remains a great thesis topic.</p>
+
+<p>And finally, as everybody wants to know: was this attack how &quot;they&quot; busted recent hidden services (<a href="https://blog.torproject.org/blog/tor-security-advisory-old-tor-browser-bundles-vulnerable">Freedom Hosting</a>, <a href="https://blog.torproject.org/blog/tor-and-silk-road-takedown">Silk Road</a>, the attacks described in the latest <a href="http://www.theguardian.com/world/2013/oct/04/nsa-gchq-attack-tor-network-encryption">Guardian article</a>)? The answer is apparently no in each case, which means the techniques they *did* use were even *lower* hanging fruit. The lesson? Security is hard, and you have to get it right at many different levels.</p>
+
+  </article>
+
+  <div class="post-footer">
+      <a class="post-blog" href="/blog">arma's Blog</a>
+  </div>
+  <br />
+
+<!-- COMMENTS -->
+
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'jmttest2'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<!-- <div id="comments" class="comments clearfix">
+  <div class="comments-loading">
+  <p><em>Enable Javascript to view comments</em></p>
+  </div>
+</div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var loadingSection = document.body.querySelector('.comments-loading');
+    var icon = '<p>Comments Loading...</p><img alt="loading comments" src="/assets/images/comments-loading.gif">';
+
+    loadingSection.innerHTML = loadingSection.innerHTML + icon;
+
+    var options = {
+        container    : '.comments',
+//        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
+        topic_key    : '/improving-tors-anonymity-changing-guard-parameters',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+//            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
+            'http://juvia.torblog.lan/api/show_topic.js' +
+	    '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+
+    (document.getElementsByTagName('head')[0] ||
+      document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
+
+})();
+</script> -->
+</div>
+
+<!-- Include the side column -->
+<div class="sidecol">
+
+<!-- RSS FEED / SEARCH -->
+    <div class="sidefirst">
+	<a href="/blog/feed.xml"><img src="/blog/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="/blog/img/rss.png">Atom</a> -->
+	<form>
+        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
+        </form>
+    </div>
+
+<!-- EVENTS -->
+    <div class ="sidebox orangebox">
+	<h2>Upcoming Events</h2>
+	<ul>
+	    
+		    <li><span><a href="/blog/tor-winter-dev-meeting-2015">Tor Winter Dev Meeting 2015</a></span></li>
+	    
+		    <li><span><a href="/blog/roger-and-jake-rightscon-manila">Roger and Jake at RightsCon in Manila</a></span></li>
+	    
+		    <li><span><a href="/blog/tor-booth-fosdem-2015">Tor booth at FOSDEM 2015</a></span></li>
+	    
+		    <li><span><a href="/blog/many-tor-people-pets-philadelphia">Many Tor people at PETS in Philadelphia</a></span></li>
+	    
+	</ul>
+	<span><a href="/blog/events">full calendar &raquo;</a></span>
+    </div>
+    
+<!-- RECENT BLOG POSTS -->
+    <div class ="sidebox greenbox">
+	<h2>Recent Blog Posts</h2>
+	<ul>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
+	  
+		    <li><span><a href="/blog/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
+	  
+	</ul>
+	<span><a href="/blog/archive">more &raquo;</a></span>
+    </div>
+    
+<!-- TAG CLOUD -->
+    <div class ="tagbox orangebox">
+	<h2>Blog Tag Cloud</h2>
+	<ul>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/blog/">
+            blog
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/first post/">
+            first post
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 171%">
+        <span><a href="/blog/tag/tor/">
+            tor
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/24c3/">
+            24c3
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/ccc/">
+            ccc
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/blog/tag/talks/">
+            talks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/blog/tag/bugs/">
+            bugs
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/crashes/">
+            crashes
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 64%">
+        <span><a href="/blog/tag/osx/">
+            osx
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/qt/">
+            qt
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/blog/tag/vidalia/">
+            vidalia
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 67%">
+        <span><a href="/blog/tag/vidalia bundle/">
+            vidalia bundle
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/meetup/">
+            meetup
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/blog/tag/attacks/">
+            attacks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/covert channels/">
+            covert channels
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/media coverage/">
+            media coverage
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 88%">
+        <span><a href="/blog/tag/bridges/">
+            bridges
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/blog/tag/incognito/">
+            incognito
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 113%">
+        <span><a href="/blog/tag/progress report/">
+            progress report
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/blog/tag/torbrowser/">
+            torbrowser
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 83%">
+        <span><a href="/blog/tag/torbutton/">
+            torbutton
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 65%">
+        <span><a href="/blog/tag/china/">
+            china
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/directors/">
+            directors
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 75%">
+        <span><a href="/blog/tag/release candidate/">
+            release candidate
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 74%">
+        <span><a href="/blog/tag/gsoc/">
+            gsoc
+        </a></span>
+    </li>
+
+	</ul>
+	<span><a href="/blog/tag-cloud">more tags &raquo;</a></span>
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>  
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Tor Project Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>The Tor Project Blog</li>
+          <li><a href="mailto:contact@torproject.org">contact@torproject.org</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyllrb</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+ <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jmttest2'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    
+  </body>
+
+</html>

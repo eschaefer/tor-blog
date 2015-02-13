@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Tor Weekly News — August 6th, 2014</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/blog/css/main.css">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/tor-weekly-news--august-6th-2014">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/blog/">The Tor Project Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+	<a class="page-link" href="/blog/">Blog Home</a>
+        <a class="page-link" href="/blog/archive">Archives</a>
+	<a class="page-link" href="https://www.torproject.org/about/overview">About Tor</a>
+        <a class="page-link donate" href="https://www.torproject.org/donate/donate">Donate</a>
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <!-- Pages with side column need a 'maincol' class -->
+<div class="post maincol">
+
+  <header class="post-header">
+    <h1 class="post-title">Tor Weekly News — August 6th, 2014</h1>
+    <p class="post-meta">Aug 6, 2014 • lunar</p>
+  </header>
+
+  <article class="post-content">
+    <p>Welcome to the thirty-first issue of Tor Weekly News in 2014, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what is happening in the Tor community.</p>
+
+<h1>Tor and the RELAY_EARLY traffic confirmation attack</h1>
+
+<p>Roger Dingledine ended several months of concern and speculation in the Tor community with a security advisory posted to the <a href="https://lists.torproject.org/pipermail/tor-announce/2014-July/000094.html">tor-announce mailing list</a> and the <a href="https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack">Tor blog</a>.</p>
+
+<p>In it, he gave details of a five-month-long active attack on operators and users of Tor hidden services that involved a variant of the so-called “Sybil attack”: the attacker signed up “around 115 fast non-exit relays” (now removed from the Tor network), and configured them to inject a traffic header signal consisting of RELAY_EARLY cells to “tag” any hidden service descriptor requests received by malicious relays — a tag which could then be picked up by other bad nodes acting as <a href="https://www.torproject.org/docs/faq#EntryGuards">entry guards</a>, in the process identifying clients which requested information about a particular hidden service.</p>
+
+<p>The attack is suspected to be linked to a <a href="https://blog.torproject.org/blog/recent-black-hat-2014-talk-cancellation">now-cancelled talk that was due to be delivered at the BlackHat security conference</a>. There have been several fruitful and positive research projects involving theoretical attacks on Tor’s security, but this was not among them. Not only were there problems with the process of responsible disclosure, but, as Roger wrote, “the attacker encoded the name of the hidden service in the injected signal (as opposed to, say, sending a random number and keeping a local list mapping random number to hidden service name)”, thereby “[putting] users at risk indefinitely into the future”.</p>
+
+<p>On the other hand, it is important to note that “while this particular variant of the traffic confirmation attack allows high-confidence and efficient correlation, the general class of passive (statistical) traffic confirmation attacks remains unsolved and would likely have worked just fine here”. In other words, the tagging mechanism used in this case is the innovation; the other element of the attack is a known weakness of low-latency anonymity systems, and defending against it is a much harder problem.</p>
+
+<p>“Users who operated or accessed hidden services from early February through July 4 should assume they were affected” and act accordingly; in the case of hidden service operators, this may mean changing the location of the service. Accompanying the advisory were two new releases for both the stable and alpha tor branches (0.2.4.23 and 0.2.5.6-alpha); both include a fix for the signal-injection issue that causes tor to drop circuits and give a warning if RELAY_EARLY cells are detected going in the wrong direction (towards the client), and both prepare the ground for clients to move to single entry guards (rather than sets of three) in the near future. Relay operators should be sure to upgrade; a point-release of the Tor Browser will offer the same fixes to ordinary users. Nusenu <a href="https://lists.torproject.org/pipermail/tor-relays/2014-August/005046.html">suggested</a> that relay operators regularly check their logs for the new warning, “even if the attack origin is not directly attributable from a relay’s point of view”. Be sure to read the full security advisory for a fuller explanation of the attack and its implications.</p>
+
+<h1>Why is bad-relays a closed mailing list?</h1>
+
+<p>Damian Johnson and Philipp Winter have been working on improving the process of <a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays">reporting bad relays</a>. The process starts by having users report odd behaviors to the bad-relays mailing list.</p>
+
+<p>Only a few trusted volunteers receive and review these reports. Nusenu <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/034198.html">started a discussion on tor-talk</a> advocating for more transparency. Nusenu argues that an open list would “likely get more confirm/can’t confirm feedback for a given badexit candidate”, and that it would allow worried users to act faster than operators of directory authorities.</p>
+
+<p>Despite being “usually on the side of transparency”, Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/034219.html">described</a> being “stuck” on the issue, “because the arms race is so lopsidedly against us”.</p>
+
+<p>Roger explains: “we can scan for whether exit relays handle certain websites poorly, but if the list that we scan for is public, then exit relays can mess with other websites and know they’ll get away with it. We can scan for incorrect behavior on various ports, but if the list of ports and the set of behavior we do is public, then again relays are free to mess with things we don’t look for.”</p>
+
+<p>A better future and more transparency probably lies in adaptive test systems run by multiple volunteer groups. Until they come to existence, as a small improvement, Philipp Winter <a href="https://lists.torproject.org/pipermail/tor-talk/2014-July/034216.html">wrote</a> it was probably safe to publish why relays were disabled, through “short sentence along the lines of ‘running HTTPS MitM’ or ‘running sslstrip’”.</p>
+
+<h1>Monthly status reports for July 2014</h1>
+
+<p>Time for monthly reports from Tor project members. The July 2014 round was opened by <a href="https://lists.torproject.org/pipermail/tor-reports/2014-July/000598.html">Georg Koppen</a>, followed by <a href="https://lists.torproject.org/pipermail/tor-reports/2014-July/000599.html">Philipp Winter</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000601.html">Sherief Alaa</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000603.html">Lunar</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000604.html">Nick Mathewson</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000605.html">Pearl Crescent</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000608.html">George Kadianakis</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000609.html">Matt Pagan</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000610.html">Isis Lovecruft</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000611.html">Griffin Boyce</a>, <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000612.html">Arthur Edelstein</a>, and <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000614.html">Karsten Loesing</a>.</p>
+
+<p>Lunar reported on behalf of the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000602.html">help desk</a> and Mike Perry for the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000607.html">Tor Browser team</a>.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Anthony G. Basile announced a new release of tor-ramdisk, an i686 or x86_64 uClibc-based micro Linux distribution whose only purpose is to host a Tor server. <a href="http://opensource.dyc.edu/pipermail/tor-ramdisk/2014-August/000132.html">Version 20140801</a> updates Tor to version 0.2.4.23, and the kernel to 3.15.7 with Gentoo’s hardened patches.</p>
+
+<p>meejah has <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007295.html">announced</a> a new command-line application. <a href="https://github.com/meejah/carml">carml</a> is a versatile set of tools to “query and control a running Tor”. It can do things like “list and remove streams and circuits; monitor stream, circuit and address-map events; watch for any Tor event and print it (or many) out; monitor bandwidth; run any Tor control-protocol command; pipe through common Unix tools like grep, less, cut, etcetera; download TBB through Tor, with pinned certs and signature checking; and even spit out and run xplanet configs (with router/circuit markers)!” The application is written in Python and uses the <a href="https://txtorcon.readthedocs.org/">txtorcon library</a>. meejah describes it as early-alpha and warns that it might contain “serious, anonymity-destroying bugs”. Watch out!</p>
+
+<p>Only two weeks left for the Google Summer of Code students, and the last round of reports but one: Juha Nurmi on the <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000600.html">ahmia.fi project</a>, Marc Juarez on <a href="https://lists.torproject.org/pipermail/tor-reports/2014-August/000606.html">website fingerprinting defenses</a>, Amogh Pradeep on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007282.html">Orbot and Orfox improvements</a>, Zack Mullaly on the <a href="https://lists.eff.org/pipermail/https-everywhere/2014-August/002199.html">HTTPS Everywhere secure ruleset update mechanism</a>, Israel Leiva on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007284.html">GetTor revamp</a>, Quinn Jarrell on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007285.html">pluggable transport combiner</a>, Daniel Martí on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007287.html">incremental updates to consensus documents</a>, Noah Rahman on <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007288.html">Stegotorus enhancements</a>, and Sreenatha Bhatlapenumarthi on the <a href="https://lists.torproject.org/pipermail/tor-dev/2014-August/007293.html">Tor Weather rewrite</a>.</p>
+
+<p>The Tails team is looking for testers to solve a possible incompatibility in one of the recommended installation procedures. If you have a running Tails system, a spare USB stick and some time, <a href="https://mailman.boum.org/pipermail/tails-testers/2014-July/000059.html">please help</a>. Don’t miss the <a href="https://mailman.boum.org/pipermail/tails-testers/2014-July/000060.html">recommended command-line options</a>!</p>
+
+<p>The <a href="https://citizenlab.org/summerinstitute/2014.html">Citizen Lab Summer Institute</a> took place at the University of Toronto from July 28 to 31. The event brought together policy and technology researchers who focus on Internet censorship and measurement. A lot of great work was presented including but not limited to a proposal to measure the chilling effect, ongoing work to deploy <a href="http://freehaven.net/anonbib/cache/usenix11-telex.pdf">Telex</a>, and several projects to measure censorship in different countries. Some Tor-related work was also presented: Researchers are working on understanding how the Tor network is used for political purposes. Another project makes use of TCP/IP side channels to <a href="https://arxiv.org/pdf/1312.5739.pdf">measure the reachability of Tor relays from within China</a>.</p>
+
+<p>The Electronic Frontier Foundation wrote two blog posts to show why Tor is important for universities and how universities can help the Tor network. The <a href="https://www.eff.org/deeplinks/2014/08/tor-campus-part-i-its-been-done-and-should-happen-again">first part</a> explains why Tor matters, gives several examples of universities already contributing to the Tor network, and outlines a few reasons for hosting new Tor nodes. The <a href="https://www.eff.org/deeplinks/2014/08/tor-campus-part-ii-icebreakers-and-risk-mitigation-strategies">second part</a> gives actual tips on where to start, and how to do it best.</p>
+
+<h1>Tor help desk roundup</h1>
+
+<p>Users occasionally ask if there is any way to set Tor Browser as the default browser on their system. Currently this is not possible, although it <a href="https://bugs.torproject.org/12763">may be possible</a> in a future Tor Browser release. In the mean time, Tails provides another way to prevent accidentally opening hyperlinks in a non-Tor browser.</p>
+
+<h1>Easy development tasks to get involved with</h1>
+
+<p>Tor Launcher is the Tor controller shipped with Tor Browser written in JavaScript. Starting with Firefox 14 the “nsILocalFile” interface has been <a href="https://bugs.torproject.org/10573">deprecated and replaced with the “nsIFile” interface</a>. What we should do is replace all instances of “nsILocalFile” with “nsIFile” and see if anything else needs fixing to make Tor Launcher still work as expected. If you know a little bit about Firefox extensions and want to give this a try, clone the <a href="https://gitweb.torproject.org/tor-launcher.git">repository</a>, make the necessary changes, run “make package”, and tell us whether something broke in interesting ways.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, harmony, Matt Pagan, Philipp Winter, David Fifield, Karsten Loesing, and Roger Dingledine.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+
+  </article>
+
+  <div class="post-footer">
+      <a class="post-blog" href="/blog">lunar's Blog</a>
+  </div>
+  <br />
+
+<!-- COMMENTS -->
+
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'jmttest2'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<!-- <div id="comments" class="comments clearfix">
+  <div class="comments-loading">
+  <p><em>Enable Javascript to view comments</em></p>
+  </div>
+</div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var loadingSection = document.body.querySelector('.comments-loading');
+    var icon = '<p>Comments Loading...</p><img alt="loading comments" src="/assets/images/comments-loading.gif">';
+
+    loadingSection.innerHTML = loadingSection.innerHTML + icon;
+
+    var options = {
+        container    : '.comments',
+//        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
+        topic_key    : '/tor-weekly-news--august-6th-2014',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+//            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
+            'http://juvia.torblog.lan/api/show_topic.js' +
+	    '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+
+    (document.getElementsByTagName('head')[0] ||
+      document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
+
+})();
+</script> -->
+</div>
+
+<!-- Include the side column -->
+<div class="sidecol">
+
+<!-- RSS FEED / SEARCH -->
+    <div class="sidefirst">
+	<a href="/blog/feed.xml"><img src="/blog/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="/blog/img/rss.png">Atom</a> -->
+	<form>
+        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
+        </form>
+    </div>
+
+<!-- EVENTS -->
+    <div class ="sidebox orangebox">
+	<h2>Upcoming Events</h2>
+	<ul>
+	    
+		    <li><span><a href="/blog/tor-winter-dev-meeting-2015">Tor Winter Dev Meeting 2015</a></span></li>
+	    
+		    <li><span><a href="/blog/roger-and-jake-rightscon-manila">Roger and Jake at RightsCon in Manila</a></span></li>
+	    
+		    <li><span><a href="/blog/tor-booth-fosdem-2015">Tor booth at FOSDEM 2015</a></span></li>
+	    
+		    <li><span><a href="/blog/many-tor-people-pets-philadelphia">Many Tor people at PETS in Philadelphia</a></span></li>
+	    
+	</ul>
+	<span><a href="/blog/events">full calendar &raquo;</a></span>
+    </div>
+    
+<!-- RECENT BLOG POSTS -->
+    <div class ="sidebox greenbox">
+	<h2>Recent Blog Posts</h2>
+	<ul>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
+	  
+		    <li><span><a href="/blog/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
+	  
+	</ul>
+	<span><a href="/blog/archive">more &raquo;</a></span>
+    </div>
+    
+<!-- TAG CLOUD -->
+    <div class ="tagbox orangebox">
+	<h2>Blog Tag Cloud</h2>
+	<ul>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/blog/">
+            blog
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/first post/">
+            first post
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 171%">
+        <span><a href="/blog/tag/tor/">
+            tor
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/24c3/">
+            24c3
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/ccc/">
+            ccc
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/blog/tag/talks/">
+            talks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/blog/tag/bugs/">
+            bugs
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/crashes/">
+            crashes
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 64%">
+        <span><a href="/blog/tag/osx/">
+            osx
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/qt/">
+            qt
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/blog/tag/vidalia/">
+            vidalia
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 67%">
+        <span><a href="/blog/tag/vidalia bundle/">
+            vidalia bundle
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/meetup/">
+            meetup
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/blog/tag/attacks/">
+            attacks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/covert channels/">
+            covert channels
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/media coverage/">
+            media coverage
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 88%">
+        <span><a href="/blog/tag/bridges/">
+            bridges
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/blog/tag/incognito/">
+            incognito
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 113%">
+        <span><a href="/blog/tag/progress report/">
+            progress report
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/blog/tag/torbrowser/">
+            torbrowser
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 83%">
+        <span><a href="/blog/tag/torbutton/">
+            torbutton
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 65%">
+        <span><a href="/blog/tag/china/">
+            china
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/directors/">
+            directors
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 75%">
+        <span><a href="/blog/tag/release candidate/">
+            release candidate
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 74%">
+        <span><a href="/blog/tag/gsoc/">
+            gsoc
+        </a></span>
+    </li>
+
+	</ul>
+	<span><a href="/blog/tag-cloud">more tags &raquo;</a></span>
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>  
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Tor Project Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>The Tor Project Blog</li>
+          <li><a href="mailto:contact@torproject.org">contact@torproject.org</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyllrb</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+ <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jmttest2'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    
+  </body>
+
+</html>

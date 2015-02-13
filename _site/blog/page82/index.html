@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>The Tor Project Blog</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/blog/css/main.css">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/blog/page82/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/blog/">The Tor Project Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+	<a class="page-link" href="/blog/">Blog Home</a>
+        <a class="page-link" href="/blog/archive">Archives</a>
+	<a class="page-link" href="https://www.torproject.org/about/overview">About Tor</a>
+        <a class="page-link donate" href="https://www.torproject.org/donate/donate">Donate</a>
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <!-- Pages with side column need a 'maincol' class -->
+<div class="home maincol">
+
+    <ul class="post-content">
+	
+	<li>
+	  <h2>
+	    <a class="post-link" href="/blog/new-tor-browser-bundles-4">New Tor Browser Bundles</a>
+	  </h2>
+	  <span class="post-meta">Posted Aug 31, 2011 by <a class="post-author" href="/blogerinn">erinn</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/ohdiginotaryoudidnt">ohdiginotaryoudidnt</a>
+              
+		  <a class="post-category post-category-js" href="/tag/package updates">package updates</a>
+              
+		  <a class="post-category post-category-js" href="/tag/security fixes">security fixes</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tbb torbrowser">tbb torbrowser</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>We have updated the stable Tor Browser Bundles to Firefox 6.</p>
+
+<p><strong>There are no longer any stable Tor Browser Bundles with the 3.6.x series of Firefox.</strong> We were using pre-built binaries on some platforms and owing to the recent <a href="https://blog.torproject.org/blog/diginotar-debacle-and-what-you-should-do-about-it">DigiNotar debacle</a>, we no longer felt comfortable shipping versions of Firefox that we were unable to patch. We build all Firefox 6 binaries from source, with our own <a href="https://gitweb.torproject.org/torbrowser.git/tree/refs/heads/maint-2.2:/src/current-patches">set of patches</a>, including some <a href="https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f603a3bf3716f6165caa1">specific to the DigiNotar issue</a>.</p>
+
+<p>We&#39;d originally planned to drop support for Firefox 3.6 bundles on September 10th, but this moved up the date a bit. The new Tor Browser Bundles are much more feature-rich than the previous bundles, but users may still experience unexpected behavior. Please report all bugs to <a href="https://trac.torproject.org/" title="https://trac.torproject.org/">https://trac.torproject.org/</a>.</p>
+
+<p>Windows users will see the biggest difference between the old stable bundle and the new stable bundle. In addition to upgrading Firefox, it includes the latest stable release of <a href="http://blog.torproject.org/blog/tor-02232-released">Tor 0.2.2.32</a>,<a href="http://blog.torproject.org/blog/vidalia-0214-out">Vidalia 0.2.14</a> and <a href="http://blog.torproject.org/blog/torbutton-141-released">Torbutton 1.4.1</a>. These three upgrades together allow you to run the Tor Browser Bundle at the same time as a system Tor, or even multiple copies of the Tor Browser Bundle in different directories, by <a href="https://trac.torproject.org/projects/tor/ticket/2264">dynamically choosing available ports</a>.</p>
+
+<p><a href="https://www.torproject.org/download" title="https://www.torproject.org/download">https://www.torproject.org/download</a></p>
+
+<p><strong>Tor Browser Bundle (2.2.32-2)</strong></p>
+
+<ul>
+<li>  Update Firefox to 6.0.1, with an additional patch to exclude DigiNotar completely
+
+<ul>
+<li>  <a href="https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f603a3bf3716f6165caa1" title="https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f603a3bf3716f6165caa1">https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f...</a></li>
+<li>  <a href="http://blog.mozilla.com/security/2011/08/29/fraudulent-google-com-certificate/" title="http://blog.mozilla.com/security/2011/08/29/fraudulent-google-com-certificate/">http://blog.mozilla.com/security/2011/08/29/fraudulent-google-com-certif...</a></li>
+<li>  <a href="http://googleonlinesecurity.blogspot.com/2011/08/update-on-attempted-man-in-middle.html" title="http://googleonlinesecurity.blogspot.com/2011/08/update-on-attempted-man-in-middle.html">http://googleonlinesecurity.blogspot.com/2011/08/update-on-attempted-man...</a></li>
+</ul></li>
+<li>  <strong>OS X specific:</strong> Rebuild 32-bit binaries with backwards compatibility options so TBB works on OSX 10.5 (closes: #3671)</li>
+<li>  Update Libevent to 2.0.14-stable</li>
+<li>  Update torbrowser.version string in prefs.js to have more information (see #3504)</li>
+<li>  Enable internationalized bundles by adding and changing the<br>
+ general.useragent.locale pref in prefs.js</li>
+</ul>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="/blogerinn">erinn's Blog</a>
+	      <a class="post-cmtlink" href="/blog/new-tor-browser-bundles-4/#disqus_thread">Leave a comment</a>
+<!--	      <a class="post-cmtlink" href="/blog/new-tor-browser-bundles-4#comments">Leave a comment</a> -->
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/blog/diginotar-debacle-and-what-you-should-do-about-it">The DigiNotar Debacle, and what you should do about it</a>
+	  </h2>
+	  <span class="post-meta">Posted Aug 31, 2011 by <a class="post-author" href="/blogioerror">ioerror</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/ca certificates">ca certificates</a>
+              
+		  <a class="post-category post-category-js" href="/tag/https">https</a>
+              
+		  <a class="post-category post-category-js" href="/tag/ohdiginotaryoudidnt">ohdiginotaryoudidnt</a>
+              
+		  <a class="post-category post-category-js" href="/tag/ssl certifications">ssl certifications</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor client safety">tor client safety</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor network safety">tor network safety</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor project website">tor project website</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>Recently it has come to the attention of, well, nearly the entire world that the Dutch Certificate Authority DigiNotar incorrectly issued certificates to a malicious party or parties. Even more recently, it&#39;s come to light that they were apparently compromised months ago or <a href="http://www.f-secure.com/weblog/archives/00002228.html">perhaps even in May of 2009</a> if not earlier.</p>
+
+<p>This is pretty unfortunate, since correctly issuing certificates is exactly the function that a certificate authority (CA) is supposed to perform. By comparison, <a href="https://blog.torproject.org/blog/detecting-certificate-authority-compromises-and-web-browser-collusion">ComodoGate</a> looks fairly minor.</p>
+
+<p><strong>This incident doesn&#39;t affect the functionality of Tor clients or the Tor Network itself, since Tor doesn&#39;t use the flawed CA system.</strong> The Tor network uses a much simpler and flatter <a href="https://www.torproject.org/docs/faq#KeyManagement">trust design</a> that protects us from many of these CA issues. Further, Tor&#39;s <a href="https://www.torproject.org/images/htw2.png">distributed-trust</a> design limits the damage from compromise of any given network component.</p>
+
+<p>But the incident <em>does</em> affect users that are attempting to reach The Tor Project&#39;s infrastructure: with one of these bogus certificates, an attacker could convince your browser that you were talking to The Tor Project website, when really you were talking to the attacker.</p>
+
+<p>We have taken direct action in an attempt to stop this kind of attack in the future with two major browser vendors and we hope to integrate a fix with all other willing browsers. Please contact us if you ship a browser and you&#39;d like to help your users to be proactively secure when visiting our sites. TorBrowser users should upgrade to our latest release and <a href="https://www.torproject.org/docs/verifying-signatures.html.en">verify signatures</a> for all downloaded files. All Tor Browser Bundles have been updated to Firefox 6 with a patch to stop trusting the offending CA, and users are encouraged to upgrade. Below, we describe what we found out, what we&#39;re doing about it, and what you should do to keep yourself safe.</p>
+
+<p><strong>The attack</strong></p>
+
+<p>In the last seventy-two hours we were working to find positive confirmation that The Tor Project was one of the targeted groups. It was originally disclosed that at least <a href="http://pastebin.com/ff7Yg663">one</a> <a href="https://blog.torproject.org/files/google.com_.crt_.txt">certificate</a> was issued for &#39;*.google.com&#39; and that it was being used <a href="https://www.google.com/support/forum/p/gmail/thread?tid=2da6158b094b225a&amp;hl=en">to actively Man-In-The-Middle</a> SSL and TLS connections. Quite quickly we found a similar pattern to the <a href="https://blog.torproject.org/blog/detecting-certificate-authority-compromises-and-web-browser-collusion">ComodoGate fiasco</a>. It appears likely that the Mozilla Addons site, Yahoo, Facebook, Twitter, and a few other major players were targeted. We do not have an authoritative list but I personally believe those targets to be accurate; time will tell. Additionally, we heard rumors that <a href="http://www.nu.nl/internet/2603449/mogelijk-nepsoftware-verspreid-naast-aftappen-gmail.html">we had graduated to the big leagues</a> and we had also heard that DigiNotar had reached out to the major browser vendors. We did not receive any proactive contact from DigiNotar as a browser vendor and this worried us greatly when compounded with the rumor of being one of the targets as well.</p>
+
+<p>We ship a <a href="https://www.torproject.org/projects/torbrowser.html">rather specific and special browser</a> and it appeared that all of our sites are specifically in the attacker&#39;s target list. Having received no contact from DigiNotar, we reached out to DigiNotar by email and by telephone.</p>
+
+<p>I spoke on the telephone with a rather nice but obviously overworked DigiNotar point of contact who will remain anonymous. He was guarded and careful in what he said but was clearly sympathetic to the severity of the matter at hand. It seemed quite clear that he repeated similar information to other impacted callers:</p>
+
+<p>&quot;What I can say is the following &quot; ... &quot;Any fraudulent torproject.org certificate that has been requested has been revoked. Any serial numbers that we know about have been revoked. All serial numbers have been communicated to the major browsers vendors.&quot; ... &quot;Any certificate that we know of is revoked by OCSP server.&quot;</p>
+
+<p>We emailed quite a bit back and forth after the phone call. A few hours later that same point of contact from DigiNotar sent <a href="https://blog.torproject.org/files/DigiNotar-Tor-serial-list.xls">a list of all of the certificates in a spreadsheet</a>. It appears that the attackers requested twelve certificates, and each certificate was for &#39;*.torproject.org&#39;. The first batch of six certificates was issued on July 18th and the second batch of six certificates was issued on July 20th. According to the spreadsheet, the first six of the certificates expired on August 17th, 2011 and second batch of six certificates expired on August 19th, 2011. According to the information disclosed by DigiNotar the certificates in question should all have expired. The contact at DigiNotar stressed that there was no confirmation about the attacker(s) receiving the certificates. I have no reason to believe that these certificates would have any more trouble reaching the requesting party than the Google certificate used in the wild.</p>
+
+<p>This is the current list of serial numbers for all twelve Tor Project certificates as disclosed to us by DigiNotar:</p>
+
+<p>899AE120CD44FCEC0FFCD62F6FC4BB81<br>
+ 7DD16C03DF0438B2BE5FC1D3E19F138B<br>
+ 5432FC98141883F780897BC829EB9080<br>
+ 73024E7C998B3DDD244CFD313D5E43B6<br>
+ B01D8C6F2D5373EABF0C00319E92AE95<br>
+ FF789632B8D4AECD94A0AAB33074A058<br>
+ 86633B957280BC65A5ADFD1D153BDE52<br>
+ E7F58683066112DC5EB244FCF208E850<br>
+ 1A07D8D6DDC7E623E71205074A05CEA2<br>
+ 79C8E8B7DE36539FFC4B2B5825305324<br>
+ 06CBB1CC51156C6D465F14829453DD68<br>
+ ED1A1008190A5D1654D138EB8FD1154A</p>
+
+<p>DigiNotar has not provided us with a copy of any of the certificates that they issued. We are not sure that they have copies nor if they are willing to disclose any copies they may or may not have. This point is extremely disconcerting as the CRL/OCSP revocation process is essentially worthless. Mere serial numbers are simply not enough in some cases — especially when a full list of all likely compromised serial numbers has not been disclosed as happens to currently be the case.</p>
+
+<p>To the best of our knowledge and by analyzing the CRLs for DigiNotar, we do not believe that any of the fraudulently issued &#39;*.torproject.org&#39; certificates have been revoked at the time of this writing. It may be the case that they are simply not in the business of revoking certificates after they have expired. There is no evidence to support revocation during the time that these certificates were perfectly valid.</p>
+
+<p>I believe that you can clearly see the <a href="http://pastebin.com/rqwnJvn4">MITM attack in action</a> around the tenth hop of <a href="https://blog.torproject.org/files/traceroutes-inside-iran.txt">this traceroute</a> thanks to an anonymous person in Iran:</p>
+
+<p>1 3 ms 14 ms 2 ms 192.168.1.1<br>
+ 2 67 ms 67 ms 65 ms 91.99.***.***.parsonline.net [91.99.***.***]<br>
+ 3 65 ms 67 ms 93 ms 10.220.1.2<br>
+ 4 67 ms 72 ms 66 ms 2.180.2.1<br>
+ 5 66 ms 64 ms 64 ms 217.219.64.115<br>
+ ############### [ MORE Nodes ] #################<br>
+ 6 451 ms 195 ms 154 ms 78.38.245.6<br>
+ 7 626 ms 231 ms 88 ms 78.38.245.5<br>
+ 8 93 ms 91 ms 96 ms 78.38.244.242<br>
+ 9 88 ms 94 ms 120 ms 78.38.244.241<br>
+ ################### [ MORE ] ###################<br>
+ 10 88 ms 88 ms 88 ms 10.10.53.33 ####DIfferent IP (0.0.0.33)</p>
+
+<p>#### [ OUT OF IRAN ] ####<br>
+ 11 340 ms * * pos3-1.palermo5.pal.seabone.net [195.22.198.77]</p>
+
+<p>To quote someone I respect greatly: &quot;That&#39;s not dodgy at all!&quot;</p>
+
+<p>Early statements By DigiNotar translated <a href="http://pastebin.com/JTpA1tJ6">by</a> <a href="https://blog.torproject.org/files/translation-of-press-release.txt">someone</a> and <a href="https://twitter.com/#!/rop_g/status/108643861697531904">mentioned by a friendly Dutch man</a> lead us to believe that DigiNotar and their parent company are in damage-control mode. It would be unsurprising to hear that the Dutch Government is similarly in the dark about the scope of the compromise, as it appears DigiNotar does not control a canonical list for all certificates issued. While some Browser vendors have received a list, I do not have confidence that this list actually contains all malicious certificates that have been issued: rather it appears to be a subset that did not even include the Google certificate that was being used in the wild. We hope that DigiNotar will fully disclose whatever information they have and explain what information they honestly lack.</p>
+
+<p><strong>The defense</strong></p>
+
+<p>Modern versions of Chrome (13) were able to <a href="https://blog.torproject.org/files/gmail_certificate_error.jpg">prevent MITM attacks</a> against most, if not all of the Google sites where they had <a href="http://www.imperialviolet.org/2011/05/04/pinning.html">certificate pinning</a> and where <a href="https://secure.wikimedia.org/wikipedia/en/wiki/HTTP_Strict_Transport_Security">HSTS was enabled</a>. Google has also <a href="http://googleonlinesecurity.blogspot.com/2011/08/update-on-attempted-man-in-middle.html">announced the attacks</a> and updated information about it. Additionally, they have <a href="http://codereview.chromium.org/7795014">distrusted DigiNotar in Chrome</a>.</p>
+
+<p>We&#39;ve sent a request to Google that they enable HSTS and pin certificates for some of the critical Tor sites and that <a href="http://codereview.chromium.org/7818002">patch</a> <a href="http://codereview.chromium.org/7818002/patch/1/3">is</a> <a href="http://codereview.chromium.org/7818002/patch/1/2">pending</a>. Google has been very good about all of this and I can&#39;t thank them enough for their help.</p>
+
+<p>As it stands, Chrome appears to have shipped a fix that distrusts DigiNotar and it appears to treat <a href="http://codereview.chromium.org/7791032/diff/2001/net/base/x509_certificate.cc">hundreds of certificates</a> as if they are specifically known to be malicious or hostile. Mozilla and others have shipped a fix as well. Sadly, it appears that the Dutch Government asked various browser vendors to create an exemption for certain trust chains as some kind of compromise. However, we were not party to any of the discussions, and we don&#39;t understand the core concerns for such a compromise. We&#39;re not willing to take a leap of faith for a Certificate Authority that did not contact us when they first noticed this problem. Right now, if we found a DigiNotar-issued certificate certifying that water was wet, we wouldn&#39;t believe it without checking for ourselves. Twice.</p>
+
+<p>We have <a href="https://gitweb.torproject.org/torbrowser.git/commit/0be3b043afa0e54d207f603a3bf3716f6165caa1">proactively given</a> DigiNotar an &quot;Internet Death Sentence&quot; in the Tor Browser. The direct impact of removing DigiNotar should be on the order of around seven hundred certificates according to some <a href="https://twitter.com/#!/nocombat/status/108951156377661441">cursory queries</a> run against the EFF&#39;s <a href="https://www.eff.org/observatory">SSL Observatory</a>. I believe that the number of certificates revoked is nearing parity with the number of possibly legitimate still-valid certificates issued by DigiNotar. That&#39;s a sad state of affairs.</p>
+
+<p>We do not currently have evidence of any tampering with Tor downloads, but we&#39;re looking. If an attacker can successfully perform a MITM attack, there is nothing to prevent them from giving you a bogus package instead of the software you were actually looking for — if you&#39;re not checking package signatures, there&#39;s no easy way to tell good software from bad.</p>
+
+<p><strong>What you should do</strong></p>
+
+<p><strong>First of all, upgrade your browser(s).</strong> See <a href="http://blog.torproject.org/blog/new-tor-browser-bundles-4">this blog post</a> announcing the new Tor Browser Bundles with Firefox 6.</p>
+
+<p>Note that verifying the signatures on Tor packages prevents attackers like this from causing you to install a possibly backdoored version of Tor. You should always verify the signature of any software you download. We encourage you to <a href="https://www.torproject.org/docs/verifying-signatures.html.en">learn more about secure signature verification</a>.</p>
+
+<p>If you have downloaded copies of any Tor software in the past few months, and you did it over any network that you don&#39;t trust, please help us check to see whether there was any attempt to alter them. We don&#39;t expect you&#39;ll find anything, but if you do, we really want to know about it. In any case, it will be good practice for checking signatures.</p>
+
+<p>If you have any information about certificates that you believe to be false, please do send us the certificates and we&#39;ll take a look.</p>
+
+<p>The Certificate Authority system as it stands today is a house of cards and we&#39;re witnessing in public what many have known for years in private. The entire system is soaked in petrol and waiting for a light. There are some new directions for trust in the works such as <a href="http://convergence.io/details.html">Convergence</a> and various ways to do <a href="http://www.imperialviolet.org/2011/06/16/dnssecchrome.html">DNSSEC authenticated HTTPS</a> as well as other hacks. Still, nothing is set in stone or standardized and this is why we need to remain vigilant. We&#39;re hoping to detect these kinds of attacks in the future with our <a href="https://trac.torproject.org/projects/tor/wiki/doc/HTTPSEverywhere/SSLObservatorySubmission">distributed SSL Observatory</a> and we hope that you&#39;ll join us.</p>
+
+<p>I&#39;d like to end on a <a href="http://www.crypto.com/blog/spycerts/">positive note</a> and quote a personal hero and friend, Matt Blaze: &quot;A decade ago, I observed that commercial certificate authorities protect you from anyone from whom they are unwilling to take money. That turns out to be wrong; they don&#39;t even do that much.&quot;</p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="/blogioerror">ioerror's Blog</a>
+	      <a class="post-cmtlink" href="/blog/diginotar-debacle-and-what-you-should-do-about-it/#disqus_thread">Leave a comment</a>
+<!--	      <a class="post-cmtlink" href="/blog/diginotar-debacle-and-what-you-should-do-about-it#comments">Leave a comment</a> -->
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/blog/gsoc-2011-metadata-anonymisation-toolkit">GSoC 2011: Metadata Anonymisation Toolkit</a>
+	  </h2>
+	  <span class="post-meta">Posted Aug 30, 2011 by <a class="post-author" href="/blogjvoisin">jvoisin</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/gsoc">gsoc</a>
+              
+		  <a class="post-category post-category-js" href="/tag/metadata">metadata</a>
+              
+		  <a class="post-category post-category-js" href="/tag/privacy">privacy</a>
+              
+		  <a class="post-category post-category-js" href="/tag/python">python</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>This is a guest blog from one of our 2011 Google summer of code students, jvoisin.</p>
+
+<p>It&#39;s the end of the <a href="https://code.google.com/soc/">GSoC</a>. It was a really nice experience, I learned a lot, met a lot of nice people on irc, and earned some money.</p>
+
+<p>My project was to create a <a href="https://gitweb.torproject.org/user/jvoisin/mat.git">Metadata Anonymisation Toolkit</a> (MAT), to improve privacy of online file publications. First, I heavily based my code on <a href="https://bitbucket.org/haypo/hachoir/wiki/Home">hachoir</a> (a nice, but a slightly complex library), but now, must of the formats that the MAT supports do not use hachoir.<br>
+ Despite several code restructuring and re-factorizations, silly ideas, re-implementations, and re-writing/... the MAT is living !</p>
+
+<p>I made two big mistakes. The first being using python2.7, and <a href="https://live.gnome.org/PyGObject">pygobject</a>. Neither of these were in Debian stable/tails, so I had to rewrite those parts.</p>
+
+<p>MAP consists of a modular API (feel free to add support for other formats !), a command line interface, and a graphic user interface (powered by pygtk).</p>
+
+<p>It was my first &quot;serious&quot; project in python, and I was the first surprised about the ~3000 lines of code I produced. I&#39;m pretty proud of the &quot;pdf processing part&quot;, and I&#39;m sad about the setup.py/packaging part (that are the most ugly/dirty/painful things that I ever touched/coded ).</p>
+
+<p>I&#39;m still unhappy with my code/piece of software, so I&#39;ll continue to improve it, so expect great work in the future, such as an <a href="http://www.sno.phy.queensu.ca/%7Ephil/exiftool/">exiftool</a> binding, watermark counter-measures, ..</p>
+
+<p>Thank you mikeperry for being my mentor, thank you google for the amazing GSoC project, thank to every user that gave me feedback (and even more stuff to fix!), and special thanks to haypo, Mc2`, Kiri, intrigeri, bertagaz, Lunar^ and all #tails/#tor-dev !</p>
+
+<p>Hope to see you next year.</p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="/blogjvoisin">jvoisin's Blog</a>
+	      <a class="post-cmtlink" href="/blog/gsoc-2011-metadata-anonymisation-toolkit/#disqus_thread">Leave a comment</a>
+<!--	      <a class="post-cmtlink" href="/blog/gsoc-2011-metadata-anonymisation-toolkit#comments">Leave a comment</a> -->
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/blog/tor-02232-released">Tor 0.2.2.32 is released</a>
+	  </h2>
+	  <span class="post-meta">Posted Aug 29, 2011 by <a class="post-author" href="/blogerinn">erinn</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/android">android</a>
+              
+		  <a class="post-category post-category-js" href="/tag/anonymity enhancements">anonymity enhancements</a>
+              
+		  <a class="post-category post-category-js" href="/tag/anonymity fixes">anonymity fixes</a>
+              
+		  <a class="post-category post-category-js" href="/tag/best tor ever">best tor ever</a>
+              
+		  <a class="post-category post-category-js" href="/tag/bug fixes">bug fixes</a>
+              
+		  <a class="post-category post-category-js" href="/tag/dedication">dedication</a>
+              
+		  <a class="post-category post-category-js" href="/tag/feature enhancements">feature enhancements</a>
+              
+		  <a class="post-category post-category-js" href="/tag/hidden services">hidden services</a>
+              
+		  <a class="post-category post-category-js" href="/tag/new features">new features</a>
+              
+		  <a class="post-category post-category-js" href="/tag/performance improvements">performance improvements</a>
+              
+		  <a class="post-category post-category-js" href="/tag/stable release">stable release</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor releases">tor releases</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>The Tor 0.2.2 release series is dedicated to the memory of Andreas<br>
+ Pfitzmann (1958-2010), a pioneer in anonymity and privacy research,<br>
+ a founder of the PETS community, a leader in our field, a mentor,<br>
+ and a friend. He left us with these words: &quot;I had the possibility<br>
+ to contribute to this world that is not as it should be. I hope I<br>
+ could help in some areas to make the world a better place, and that<br>
+ I could also encourage other people to be engaged in improving the<br>
+ world. Please, stay engaged. This world needs you, your love, your<br>
+ initiative -- now I cannot be part of that anymore.&quot;</p>
+
+<p>Tor 0.2.2.32, the first stable release in the 0.2.2 branch, is finally<br>
+ ready. More than two years in the making, this release features improved<br>
+ client performance and hidden service reliability, better compatibility<br>
+ for Android, correct behavior for bridges that listen on more than<br>
+ one address, more extensible and flexible directory object handling,<br>
+ better reporting of network statistics, improved code security, and<br>
+ many many other features and bugfixes.</p>
+
+<p><a href="https://www.torproject.org/download/download" title="https://www.torproject.org/download/download">https://www.torproject.org/download/download</a></p>
+
+<p>Changes in version 0.2.2.32 - 2011-08-27<br>
+ <strong>Major features (client performance):</strong></p>
+
+<ul>
+<li>  When choosing which cells to relay first, relays now favor circuits<br>
+ that have been quiet recently, to provide lower latency for<br>
+ low-volume circuits. By default, relays enable or disable this<br>
+ feature based on a setting in the consensus. They can override<br>
+ this default by using the new &quot;CircuitPriorityHalflife&quot; config<br>
+ option. Design and code by Ian Goldberg, Can Tang, and Chris<br>
+ Alexander.</li>
+<li>  Directory authorities now compute consensus weightings that instruct<br>
+ clients how to weight relays flagged as Guard, Exit, Guard+Exit,<br>
+ and no flag. Clients use these weightings to distribute network load<br>
+ more evenly across these different relay types. The weightings are<br>
+ in the consensus so we can change them globally in the future. Extra<br>
+ thanks to &quot;outofwords&quot; for finding some nasty security bugs in<br>
+ the first implementation of this feature.</li>
+</ul>
+
+<p><strong>Major features (client performance, circuit build timeout):</strong></p>
+
+<ul>
+<li>  Tor now tracks how long it takes to build client-side circuits<br>
+ over time, and adapts its timeout to local network performance.<br>
+ Since a circuit that takes a long time to build will also provide<br>
+ bad performance, we get significant latency improvements by<br>
+ discarding the slowest 20% of circuits. Specifically, Tor creates<br>
+ circuits more aggressively than usual until it has enough data<br>
+ points for a good timeout estimate. Implements proposal 151.</li>
+<li>  Circuit build timeout constants can be controlled by consensus<br>
+ parameters. We set good defaults for these parameters based on<br>
+ experimentation on broadband and simulated high-latency links.</li>
+<li>  Circuit build time learning can be disabled via consensus parameter<br>
+ or by the client via a LearnCircuitBuildTimeout config option. We<br>
+ also automatically disable circuit build time calculation if either<br>
+ AuthoritativeDirectory is set, or if we fail to write our state<br>
+ file. Implements ticket 1296.</li>
+</ul>
+
+<p><strong>Major features (relays use their capacity better):</strong></p>
+
+<ul>
+<li>  Set SO_REUSEADDR socket option on all sockets, not just<br>
+ listeners. This should help busy exit nodes avoid running out of<br>
+ useable ports just because all the ports have been used in the<br>
+ near past. Resolves issue 2850.</li>
+<li>  Relays now save observed peak bandwidth throughput rates to their<br>
+ state file (along with total usage, which was already saved),<br>
+ so that they can determine their correct estimated bandwidth on<br>
+ restart. Resolves bug 1863, where Tor relays would reset their<br>
+ estimated bandwidth to 0 after restarting.</li>
+<li>  Lower the maximum weighted-fractional-uptime cutoff to 98%. This<br>
+ should give us approximately 40-50% more Guard-flagged nodes,<br>
+ improving the anonymity the Tor network can provide and also<br>
+ decreasing the dropoff in throughput that relays experience when<br>
+ they first get the Guard flag.</li>
+<li>  Directory authorities now take changes in router IP address and<br>
+ ORPort into account when determining router stability. Previously,<br>
+ if a router changed its IP or ORPort, the authorities would not<br>
+ treat it as having any downtime for the purposes of stability<br>
+ calculation, whereas clients would experience downtime since the<br>
+ change would take a while to propagate to them. Resolves issue 1035.</li>
+<li>  New AccelName and AccelDir options add support for dynamic OpenSSL<br>
+ hardware crypto acceleration engines.</li>
+</ul>
+
+<p><strong>Major features (relays control their load better):</strong></p>
+
+<ul>
+<li>  Exit relays now try harder to block exit attempts from unknown<br>
+ relays, to make it harder for people to use them as one-hop proxies<br>
+ a la tortunnel. Controlled by the refuseunknownexits consensus<br>
+ parameter (currently enabled), or you can override it on your<br>
+ relay with the RefuseUnknownExits torrc option. Resolves bug 1751;<br>
+ based on a variant of proposal 163.</li>
+<li>  Add separate per-conn write limiting to go with the per-conn read<br>
+ limiting. We added a global write limit in Tor 0.1.2.5-alpha,<br>
+ but never per-conn write limits.</li>
+<li>  New consensus params &quot;bwconnrate&quot; and &quot;bwconnburst&quot; to let us<br>
+ rate-limit client connections as they enter the network. It&#39;s<br>
+ controlled in the consensus so we can turn it on and off for<br>
+ experiments. It&#39;s starting out off. Based on proposal 163.</li>
+</ul>
+
+<p><strong>Major features (controllers):</strong></p>
+
+<ul>
+<li>  Export GeoIP information on bridge usage to controllers even if we<br>
+ have not yet been running for 24 hours. Now Vidalia bridge operators<br>
+ can get more accurate and immediate feedback about their<br>
+ contributions to the network.</li>
+<li>  Add an __OwningControllerProcess configuration option and a<br>
+ TAKEOWNERSHIP control-port command. Now a Tor controller can ensure<br>
+ that when it exits, Tor will shut down. Implements feature 3049.</li>
+</ul>
+
+<p><strong>Major features (directory authorities):</strong></p>
+
+<ul>
+<li>  Directory authorities now create, vote on, and serve multiple<br>
+ parallel formats of directory data as part of their voting process.<br>
+ Partially implements Proposal 162: &quot;Publish the consensus in<br>
+ multiple flavors&quot;.</li>
+<li>  Directory authorities now agree on and publish small summaries<br>
+ of router information that clients can use in place of regular<br>
+ server descriptors. This transition will allow Tor 0.2.3 clients<br>
+ to use far less bandwidth for downloading information about the<br>
+ network. Begins the implementation of Proposal 158: &quot;Clients<br>
+ download consensus + microdescriptors&quot;.</li>
+<li>  The directory voting system is now extensible to use multiple hash<br>
+ algorithms for signatures and resource selection. Newer formats<br>
+ are signed with SHA256, with a possibility for moving to a better<br>
+ hash algorithm in the future.</li>
+<li>  Directory authorities can now vote on arbitary integer values as<br>
+ part of the consensus process. This is designed to help set<br>
+ network-wide parameters. Implements proposal 167.</li>
+</ul>
+
+<p><strong>Major features and bugfixes (node selection):</strong></p>
+
+<ul>
+<li><p>Revise and reconcile the meaning of the ExitNodes, EntryNodes,<br>
+ ExcludeEntryNodes, ExcludeExitNodes, ExcludeNodes, and Strict*Nodes<br>
+ options. Previously, we had been ambiguous in describing what<br>
+ counted as an &quot;exit&quot; node, and what operations exactly &quot;StrictNodes<br>
+ 0&quot; would permit. This created confusion when people saw nodes built<br>
+ through unexpected circuits, and made it hard to tell real bugs from<br>
+ surprises. Now the intended behavior is:</p>
+
+<ul>
+<li>  &quot;Exit&quot;, in the context of ExitNodes and ExcludeExitNodes, means<br>
+ a node that delivers user traffic outside the Tor network.</li>
+<li>  &quot;Entry&quot;, in the context of EntryNodes, means a node used as the<br>
+ first hop of a multihop circuit. It doesn&#39;t include direct<br>
+ connections to directory servers.</li>
+<li>  &quot;ExcludeNodes&quot; applies to all nodes.</li>
+<li>  &quot;StrictNodes&quot; changes the behavior of ExcludeNodes only. When<br>
+ StrictNodes is set, Tor should avoid all nodes listed in<br>
+ ExcludeNodes, even when it will make user requests fail. When<br>
+ StrictNodes is *not* set, then Tor should follow ExcludeNodes<br>
+ whenever it can, except when it must use an excluded node to<br>
+ perform self-tests, connect to a hidden service, provide a<br>
+ hidden service, fulfill a .exit request, upload directory<br>
+ information, or fetch directory information.</li>
+</ul>
+
+<p>Collectively, the changes to implement the behavior fix bug 1090.</p></li>
+<li><p>If EntryNodes, ExitNodes, ExcludeNodes, or ExcludeExitNodes<br>
+ change during a config reload, mark and discard all our origin<br>
+ circuits. This fix should address edge cases where we change the<br>
+ config options and but then choose a circuit that we created before<br>
+ the change.</p></li>
+<li><p>Make EntryNodes config option much more aggressive even when<br>
+ StrictNodes is not set. Before it would prepend your requested<br>
+ entrynodes to your list of guard nodes, but feel free to use others<br>
+ after that. Now it chooses only from your EntryNodes if any of<br>
+ those are available, and only falls back to others if a) they&#39;re<br>
+ all down and b) StrictNodes is not set.</p></li>
+<li><p>Now we refresh your entry guards from EntryNodes at each consensus<br>
+ fetch -- rather than just at startup and then they slowly rot as<br>
+ the network changes.</p></li>
+<li><p>Add support for the country code &quot;{??}&quot; in torrc options like<br>
+ ExcludeNodes, to indicate all routers of unknown country. Closes<br>
+ bug 1094.</p></li>
+<li><p>ExcludeNodes now takes precedence over EntryNodes and ExitNodes: if<br>
+ a node is listed in both, it&#39;s treated as excluded.</p></li>
+<li><p>ExcludeNodes now applies to directory nodes -- as a preference if<br>
+ StrictNodes is 0, or an absolute requirement if StrictNodes is 1.<br>
+ Don&#39;t exclude all the directory authorities and set StrictNodes to 1<br>
+ unless you really want your Tor to break.</p></li>
+<li><p>ExcludeNodes and ExcludeExitNodes now override exit enclaving.</p></li>
+<li><p>ExcludeExitNodes now overrides .exit requests.</p></li>
+<li><p>We don&#39;t use bridges listed in ExcludeNodes.</p></li>
+<li><p>When StrictNodes is 1:</p>
+
+<ul>
+<li>  We now apply ExcludeNodes to hidden service introduction points<br>
+ and to rendezvous points selected by hidden service users. This<br>
+ can make your hidden service less reliable: use it with caution!</li>
+<li>  If we have used ExcludeNodes on ourself, do not try relay<br>
+ reachability self-tests.</li>
+<li>  If we have excluded all the directory authorities, we will not<br>
+ even try to upload our descriptor if we&#39;re a relay.</li>
+<li>  Do not honor .exit requests to an excluded node.</li>
+</ul></li>
+<li><p>When the set of permitted nodes changes, we now remove any mappings<br>
+ introduced via TrackExitHosts to now-excluded nodes. Bugfix on<br>
+ 0.1.0.1-rc.</p></li>
+<li><p>We never cannibalize a circuit that had excluded nodes on it, even<br>
+ if StrictNodes is 0. Bugfix on 0.1.0.1-rc.</p></li>
+<li><p>Improve log messages related to excluded nodes.</p></li>
+</ul>
+
+<p><strong>Major features (misc):</strong></p>
+
+<ul>
+<li>  Numerous changes, bugfixes, and workarounds from Nathan Freitas<br>
+ to help Tor build correctly for Android phones.</li>
+<li>  The options SocksPort, ControlPort, and so on now all accept a<br>
+ value &quot;auto&quot; that opens a socket on an OS-selected port. A<br>
+ new ControlPortWriteToFile option tells Tor to write its<br>
+ actual control port or ports to a chosen file. If the option<br>
+ ControlPortFileGroupReadable is set, the file is created as<br>
+ group-readable. Now users can run two Tor clients on the same<br>
+ system without needing to manually mess with parameters. Resolves<br>
+ part of ticket 3076.</li>
+<li>  Tor now supports tunneling all of its outgoing connections over<br>
+ a SOCKS proxy, using the SOCKS4Proxy and/or SOCKS5Proxy<br>
+ configuration options. Code by Christopher Davis.</li>
+</ul>
+
+<p><strong>Code security improvements:</strong></p>
+
+<ul>
+<li>  Replace all potentially sensitive memory comparison operations<br>
+ with versions whose runtime does not depend on the data being<br>
+ compared. This will help resist a class of attacks where an<br>
+ adversary can use variations in timing information to learn<br>
+ sensitive data. Fix for one case of bug 3122. (Safe memcmp<br>
+ implementation by Robert Ransom based partially on code by DJB.)</li>
+<li>  Enable Address Space Layout Randomization (ASLR) and Data Execution<br>
+ Prevention (DEP) by default on Windows to make it harder for<br>
+ attackers to exploit vulnerabilities. Patch from John Brooks.</li>
+<li>  New &quot;--enable-gcc-hardening&quot; ./configure flag (off by default)<br>
+ to turn on gcc compile time hardening options. It ensures<br>
+ that signed ints have defined behavior (-fwrapv), enables<br>
+ -D_FORTIFY_SOURCE=2 (requiring -O2), adds stack smashing protection<br>
+ with canaries (-fstack-protector-all), turns on ASLR protection if<br>
+ supported by the kernel (-fPIE, -pie), and adds additional security<br>
+ related warnings. Verified to work on Mac OS X and Debian Lenny.</li>
+<li>  New &quot;--enable-linker-hardening&quot; ./configure flag (off by default)<br>
+ to turn on ELF specific hardening features (relro, now). This does<br>
+ not work with Mac OS X or any other non-ELF binary format.</li>
+<li>  Always search the Windows system directory for system DLLs, and<br>
+ nowhere else. Bugfix on 0.1.1.23; fixes bug 1954.</li>
+<li>  New DisableAllSwap option. If set to 1, Tor will attempt to lock all<br>
+ current and future memory pages via mlockall(). On supported<br>
+ platforms (modern Linux and probably BSD but not Windows or OS X),<br>
+ this should effectively disable any and all attempts to page out<br>
+ memory. This option requires that you start your Tor as root --<br>
+ if you use DisableAllSwap, please consider using the User option<br>
+ to properly reduce the privileges of your Tor.</li>
+</ul>
+
+<p><strong>Major bugfixes (crashes):</strong></p>
+
+<ul>
+<li>  Fix crash bug on platforms where gmtime and localtime can return<br>
+ NULL. Windows 7 users were running into this one. Fixes part of bug<br>
+
+<ol>
+<li>Bugfix on all versions of Tor. Found by boboper.</li>
+</ol></li>
+<li>  Introduce minimum/maximum values that clients will believe<br>
+ from the consensus. Now we&#39;ll have a better chance to avoid crashes<br>
+ or worse when a consensus param has a weird value.</li>
+<li>  Fix a rare crash bug that could occur when a client was configured<br>
+ with a large number of bridges. Fixes bug 2629; bugfix on<br>
+ 0.2.1.2-alpha. Bugfix by trac user &quot;shitlei&quot;.</li>
+<li>  Do not crash when our configuration file becomes unreadable, for<br>
+ example due to a permissions change, between when we start up<br>
+ and when a controller calls SAVECONF. Fixes bug 3135; bugfix<br>
+ on 0.0.9pre6.</li>
+<li>  If we&#39;re in the pathological case where there&#39;s no exit bandwidth<br>
+ but there is non-exit bandwidth, or no guard bandwidth but there<br>
+ is non-guard bandwidth, don&#39;t crash during path selection. Bugfix<br>
+ on 0.2.0.3-alpha.</li>
+<li>  Fix a crash bug when trying to initialize the evdns module in<br>
+ Libevent 2. Bugfix on 0.2.1.16-rc.</li>
+</ul>
+
+<p><strong>Major bugfixes (stability):</strong></p>
+
+<ul>
+<li>  Fix an assert in parsing router descriptors containing IPv6<br>
+ addresses. This one took down the directory authorities when<br>
+ somebody tried some experimental code. Bugfix on 0.2.1.3-alpha.</li>
+<li>  Fix an uncommon assertion failure when running with DNSPort under<br>
+ heavy load. Fixes bug 2933; bugfix on 0.2.0.1-alpha.</li>
+<li>  Treat an unset \$HOME like an empty \$HOME rather than triggering an<br>
+ assert. Bugfix on 0.0.8pre1; fixes bug 1522.</li>
+<li>  More gracefully handle corrupt state files, removing asserts<br>
+ in favor of saving a backup and resetting state.</li>
+<li>  Instead of giving an assertion failure on an internal mismatch<br>
+ on estimated freelist size, just log a BUG warning and try later.<br>
+ Mitigates but does not fix bug 1125.</li>
+<li>  Fix an assert that got triggered when using the TestingTorNetwork<br>
+ configuration option and then issuing a GETINFO config-text control<br>
+ command. Fixes bug 2250; bugfix on 0.2.1.2-alpha.</li>
+<li>  If the cached cert file is unparseable, warn but don&#39;t exit.</li>
+</ul>
+
+<p><strong>Privacy fixes (relays/bridges):</strong></p>
+
+<ul>
+<li>  Don&#39;t list Windows capabilities in relay descriptors. We never made<br>
+ use of them, and maybe it&#39;s a bad idea to publish them. Bugfix<br>
+ on 0.1.1.8-alpha.</li>
+<li>  If the Nickname configuration option isn&#39;t given, Tor would pick a<br>
+ nickname based on the local hostname as the nickname for a relay.<br>
+ Because nicknames are not very important in today&#39;s Tor and the<br>
+ &quot;Unnamed&quot; nickname has been implemented, this is now problematic<br>
+ behavior: It leaks information about the hostname without being<br>
+ useful at all. Fixes bug 2979; bugfix on 0.1.2.2-alpha, which<br>
+ introduced the Unnamed nickname. Reported by tagnaq.</li>
+<li>  Maintain separate TLS contexts and certificates for incoming and<br>
+ outgoing connections in bridge relays. Previously we would use the<br>
+ same TLS contexts and certs for incoming and outgoing connections.<br>
+ Bugfix on 0.2.0.3-alpha; addresses bug 988.</li>
+<li>  Maintain separate identity keys for incoming and outgoing TLS<br>
+ contexts in bridge relays. Previously we would use the same<br>
+ identity keys for incoming and outgoing TLS contexts. Bugfix on<br>
+ 0.2.0.3-alpha; addresses the other half of bug 988.</li>
+<li>  Make the bridge directory authority refuse to answer directory<br>
+ requests for &quot;all descriptors&quot;. It used to include bridge<br>
+ descriptors in its answer, which was a major information leak.<br>
+ Found by &quot;piebeer&quot;. Bugfix on 0.2.0.3-alpha.</li>
+</ul>
+
+<p><strong>Privacy fixes (clients):</strong></p>
+
+<ul>
+<li>  When receiving a hidden service descriptor, check that it is for<br>
+ the hidden service we wanted. Previously, Tor would store any<br>
+ hidden service descriptors that a directory gave it, whether it<br>
+ wanted them or not. This wouldn&#39;t have let an attacker impersonate<br>
+ a hidden service, but it did let directories pre-seed a client<br>
+ with descriptors that it didn&#39;t want. Bugfix on 0.0.6.</li>
+<li>  Start the process of disabling &quot;.exit&quot; address notation, since it<br>
+ can be used for a variety of esoteric application-level attacks<br>
+ on users. To reenable it, set &quot;AllowDotExit 1&quot; in your torrc. Fix<br>
+ on 0.0.9rc5.</li>
+<li>  Reject attempts at the client side to open connections to private<br>
+ IP addresses (like 127.0.0.1, 10.0.0.1, and so on) with<br>
+ a randomly chosen exit node. Attempts to do so are always<br>
+ ill-defined, generally prevented by exit policies, and usually<br>
+ in error. This will also help to detect loops in transparent<br>
+ proxy configurations. You can disable this feature by setting<br>
+ &quot;ClientRejectInternalAddresses 0&quot; in your torrc.</li>
+<li>  Log a notice when we get a new control connection. Now it&#39;s easier<br>
+ for security-conscious users to recognize when a local application<br>
+ is knocking on their controller door. Suggested by bug 1196.</li>
+</ul>
+
+<p><strong>Privacy fixes (newnym):</strong></p>
+
+<ul>
+<li>  Avoid linkability based on cached hidden service descriptors: forget<br>
+ all hidden service descriptors cached as a client when processing a<br>
+ SIGNAL NEWNYM command. Fixes bug 3000; bugfix on 0.0.6.</li>
+<li>  On SIGHUP, do not clear out all TrackHostExits mappings, client<br>
+ DNS cache entries, and virtual address mappings: that&#39;s what<br>
+ NEWNYM is for. Fixes bug 1345; bugfix on 0.1.0.1-rc.</li>
+<li>  Don&#39;t attach new streams to old rendezvous circuits after SIGNAL<br>
+ NEWNYM. Previously, we would keep using an existing rendezvous<br>
+ circuit if it remained open (i.e. if it were kept open by a<br>
+ long-lived stream, or if a new stream were attached to it before<br>
+ Tor could notice that it was old and no longer in use). Bugfix on<br>
+ 0.1.1.15-rc; fixes bug 3375.</li>
+</ul>
+
+<p><strong>Major bugfixes (relay bandwidth accounting):</strong></p>
+
+<ul>
+<li>  Fix a bug that could break accounting on 64-bit systems with large<br>
+ time_t values, making them hibernate for impossibly long intervals.<br>
+ Fixes bug 2146. Bugfix on 0.0.9pre6; fix by boboper.</li>
+<li>  Fix a bug in bandwidth accounting that could make us use twice<br>
+ the intended bandwidth when our interval start changes due to<br>
+ daylight saving time. Now we tolerate skew in stored vs computed<br>
+ interval starts: if the start of the period changes by no more than<br>
+ 50% of the period&#39;s duration, we remember bytes that we transferred<br>
+ in the old period. Fixes bug 1511; bugfix on 0.0.9pre5.</li>
+</ul>
+
+<p><strong>Major bugfixes (bridges):</strong></p>
+
+<ul>
+<li>  Bridges now use &quot;reject *:*&quot; as their default exit policy. Bugfix<br>
+ on 0.2.0.3-alpha. Fixes bug 1113.</li>
+<li>  If you configure your bridge with a known identity fingerprint,<br>
+ and the bridge authority is unreachable (as it is in at least<br>
+ one country now), fall back to directly requesting the descriptor<br>
+ from the bridge. Finishes the feature started in 0.2.0.10-alpha;<br>
+ closes bug 1138.</li>
+<li>  Fix a bug where bridge users who configure the non-canonical<br>
+ address of a bridge automatically switch to its canonical<br>
+ address. If a bridge listens at more than one address, it<br>
+ should be able to advertise those addresses independently and<br>
+ any non-blocked addresses should continue to work. Bugfix on Tor<br>
+ 0.2.0.3-alpha. Fixes bug 2510.</li>
+<li>  If you configure Tor to use bridge A, and then quit and<br>
+ configure Tor to use bridge B instead (or if you change Tor<br>
+ to use bridge B via the controller), it would happily continue<br>
+ to use bridge A if it&#39;s still reachable. While this behavior is<br>
+ a feature if your goal is connectivity, in some scenarios it&#39;s a<br>
+ dangerous bug. Bugfix on Tor 0.2.0.1-alpha; fixes bug 2511.</li>
+<li>  When the controller configures a new bridge, don&#39;t wait 10 to 60<br>
+ seconds before trying to fetch its descriptor. Bugfix on<br>
+ 0.2.0.3-alpha; fixes bug 3198 (suggested by 2355).</li>
+</ul>
+
+<p><strong>Major bugfixes (directory authorities):</strong></p>
+
+<ul>
+<li>  Many relays have been falling out of the consensus lately because<br>
+ not enough authorities know about their descriptor for them to get<br>
+ a majority of votes. When we deprecated the v2 directory protocol,<br>
+ we got rid of the only way that v3 authorities can hear from each<br>
+ other about other descriptors. Now authorities examine every v3<br>
+ vote for new descriptors, and fetch them from that authority. Bugfix<br>
+ on 0.2.1.23.</li>
+<li>  Authorities could be tricked into giving out the Exit flag to relays<br>
+ that didn&#39;t allow exiting to any ports. This bug could screw<br>
+ with load balancing and stats. Bugfix on 0.1.1.6-alpha; fixes bug<br>
+
+<ol>
+<li>Bug discovered by Martin Kowalczyk.</li>
+</ol></li>
+<li>  If all authorities restart at once right before a consensus vote,<br>
+ nobody will vote about &quot;Running&quot;, and clients will get a consensus<br>
+ with no usable relays. Instead, authorities refuse to build a<br>
+ consensus if this happens. Bugfix on 0.2.0.10-alpha; fixes bug 1066.</li>
+</ul>
+
+<p><strong>Major bugfixes (stream-level fairness):</strong></p>
+
+<ul>
+<li>  When receiving a circuit-level SENDME for a blocked circuit, try<br>
+ to package cells fairly from all the streams that had previously<br>
+ been blocked on that circuit. Previously, we had started with the<br>
+ oldest stream, and allowed each stream to potentially exhaust<br>
+ the circuit&#39;s package window. This gave older streams on any<br>
+ given circuit priority over newer ones. Fixes bug 1937. Detected<br>
+ originally by Camilo Viecco. This bug was introduced before the<br>
+ first Tor release, in svn commit r152: it is the new winner of<br>
+ the longest-lived bug prize.</li>
+<li>  Fix a stream fairness bug that would cause newer streams on a given<br>
+ circuit to get preference when reading bytes from the origin or<br>
+ destination. Fixes bug 2210. Fix by Mashael AlSabah. This bug was<br>
+ introduced before the first Tor release, in svn revision r152.</li>
+<li>  When the exit relay got a circuit-level sendme cell, it started<br>
+ reading on the exit streams, even if had 500 cells queued in the<br>
+ circuit queue already, so the circuit queue just grew and grew in<br>
+ some cases. We fix this by not re-enabling reading on receipt of a<br>
+ sendme cell when the cell queue is blocked. Fixes bug 1653. Bugfix<br>
+ on 0.2.0.1-alpha. Detected by Mashael AlSabah. Original patch by<br>
+ &quot;yetonetime&quot;.</li>
+<li>  Newly created streams were allowed to read cells onto circuits,<br>
+ even if the circuit&#39;s cell queue was blocked and waiting to drain.<br>
+ This created potential unfairness, as older streams would be<br>
+ blocked, but newer streams would gladly fill the queue completely.<br>
+ We add code to detect this situation and prevent any stream from<br>
+ getting more than one free cell. Bugfix on 0.2.0.1-alpha. Partially<br>
+ fixes bug 1298.</li>
+</ul>
+
+<p><strong>Major bugfixes (hidden services):</strong></p>
+
+<ul>
+<li>  Apply circuit timeouts to opened hidden-service-related circuits<br>
+ based on the correct start time. Previously, we would apply the<br>
+ circuit build timeout based on time since the circuit&#39;s creation;<br>
+ it was supposed to be applied based on time since the circuit<br>
+ entered its current state. Bugfix on 0.0.6; fixes part of bug 1297.</li>
+<li>  Improve hidden service robustness: When we find that we have<br>
+ extended a hidden service&#39;s introduction circuit to a relay not<br>
+ listed as an introduction point in the HS descriptor we currently<br>
+ have, retry with an introduction point from the current<br>
+ descriptor. Previously we would just give up. Fixes bugs 1024 and<br>
+ 1930; bugfix on 0.2.0.10-alpha.</li>
+<li>  Directory authorities now use data collected from their own<br>
+ uptime observations when choosing whether to assign the HSDir flag<br>
+ to relays, instead of trusting the uptime value the relay reports in<br>
+ its descriptor. This change helps prevent an attack where a small<br>
+ set of nodes with frequently-changing identity keys can blackhole<br>
+ a hidden service. (Only authorities need upgrade; others will be<br>
+ fine once they do.) Bugfix on 0.2.0.10-alpha; fixes bug 2709.</li>
+<li>  Stop assigning the HSDir flag to relays that disable their<br>
+ DirPort (and thus will refuse to answer directory requests). This<br>
+ fix should dramatically improve the reachability of hidden services:<br>
+ hidden services and hidden service clients pick six HSDir relays<br>
+ to store and retrieve the hidden service descriptor, and currently<br>
+ about half of the HSDir relays will refuse to work. Bugfix on<br>
+ 0.2.0.10-alpha; fixes part of bug 1693.</li>
+</ul>
+
+<p><strong>Major bugfixes (misc):</strong></p>
+
+<ul>
+<li>  Clients now stop trying to use an exit node associated with a given<br>
+ destination by TrackHostExits if they fail to reach that exit node.<br>
+ Fixes bug 2999. Bugfix on 0.2.0.20-rc.</li>
+<li>  Fix a regression that caused Tor to rebind its ports if it receives<br>
+ SIGHUP while hibernating. Bugfix in 0.1.1.6-alpha; closes bug 919.</li>
+<li>  Remove an extra pair of quotation marks around the error<br>
+ message in control-port STATUS_GENERAL BUG events. Bugfix on<br>
+ 0.1.2.6-alpha; fixes bug 3732.</li>
+</ul>
+
+<p><strong>Minor features (relays):</strong></p>
+
+<ul>
+<li>  Ensure that no empty <a href="read%7Cwrite">dirreq-</a>-history lines are added<br>
+ to an extrainfo document. Implements ticket 2497.</li>
+<li>  When bandwidth accounting is enabled, be more generous with how<br>
+ much bandwidth we&#39;ll use up before entering &quot;soft hibernation&quot;.<br>
+ Previously, we&#39;d refuse new connections and circuits once we&#39;d<br>
+ used up 95% of our allotment. Now, we use up 95% of our allotment,<br>
+ AND make sure that we have no more than 500MB (or 3 hours of<br>
+ expected traffic, whichever is lower) remaining before we enter<br>
+ soft hibernation.</li>
+<li>  Relays now log the reason for publishing a new relay descriptor,<br>
+ so we have a better chance of hunting down instances of bug 1810.<br>
+ Resolves ticket 3252.</li>
+<li>  Log a little more clearly about the times at which we&#39;re no longer<br>
+ accepting new connections (e.g. due to hibernating). Resolves<br>
+ bug 2181.</li>
+<li>  When AllowSingleHopExits is set, print a warning to explain to the<br>
+ relay operator why most clients are avoiding her relay.</li>
+<li>  Send END_STREAM_REASON_NOROUTE in response to EHOSTUNREACH errors.<br>
+ Clients before 0.2.1.27 didn&#39;t handle NOROUTE correctly, but such<br>
+ clients are already deprecated because of security bugs.</li>
+</ul>
+
+<p><strong>Minor features (network statistics):</strong></p>
+
+<ul>
+<li>  Directory mirrors that set &quot;DirReqStatistics 1&quot; write statistics<br>
+ about directory requests to disk every 24 hours. As compared to the<br>
+ &quot;--enable-geoip-stats&quot; ./configure flag in 0.2.1.x, there are a few<br>
+ improvements: 1) stats are written to disk exactly every 24 hours;<br>
+ 2) estimated shares of v2 and v3 requests are determined as mean<br>
+ values, not at the end of a measurement period; 3) unresolved<br>
+ requests are listed with country code &#39;??&#39;; 4) directories also<br>
+ measure download times.</li>
+<li>  Exit nodes that set &quot;ExitPortStatistics 1&quot; write statistics on the<br>
+ number of exit streams and transferred bytes per port to disk every<br>
+ 24 hours.</li>
+<li>  Relays that set &quot;CellStatistics 1&quot; write statistics on how long<br>
+ cells spend in their circuit queues to disk every 24 hours.</li>
+<li>  Entry nodes that set &quot;EntryStatistics 1&quot; write statistics on the<br>
+ rough number and origins of connecting clients to disk every 24<br>
+ hours.</li>
+<li>  Relays that write any of the above statistics to disk and set<br>
+ &quot;ExtraInfoStatistics 1&quot; include the past 24 hours of statistics in<br>
+ their extra-info documents. Implements proposal 166.</li>
+</ul>
+
+<p><strong>Minor features (GeoIP and statistics):</strong></p>
+
+<ul>
+<li>  Provide a log message stating which geoip file we&#39;re parsing<br>
+ instead of just stating that we&#39;re parsing the geoip file.<br>
+ Implements ticket 2432.</li>
+<li>  Make sure every relay writes a state file at least every 12 hours.<br>
+ Previously, a relay could go for weeks without writing its state<br>
+ file, and on a crash could lose its bandwidth history, capacity<br>
+ estimates, client country statistics, and so on. Addresses bug 3012.</li>
+<li>  Relays report the number of bytes spent on answering directory<br>
+ requests in extra-info descriptors similar to {read,write}-history.<br>
+ Implements enhancement 1790.</li>
+<li>  Report only the top 10 ports in exit-port stats in order not to<br>
+ exceed the maximum extra-info descriptor length of 50 KB. Implements<br>
+ task 2196.</li>
+<li>  If writing the state file to disk fails, wait up to an hour before<br>
+ retrying again, rather than trying again each second. Fixes bug<br>
+ 2346; bugfix on Tor 0.1.1.3-alpha.</li>
+<li>  Delay geoip stats collection by bridges for 6 hours, not 2 hours,<br>
+ when we switch from being a public relay to a bridge. Otherwise<br>
+ there will still be clients that see the relay in their consensus,<br>
+ and the stats will end up wrong. Bugfix on 0.2.1.15-rc; fixes<br>
+ bug 932.</li>
+<li>  Update to the August 2 2011 Maxmind GeoLite Country database.</li>
+</ul>
+
+<p><strong>Minor features (clients):</strong></p>
+
+<ul>
+<li>  When expiring circuits, use microsecond timers rather than<br>
+ one-second timers. This can avoid an unpleasant situation where a<br>
+ circuit is launched near the end of one second and expired right<br>
+ near the beginning of the next, and prevent fluctuations in circuit<br>
+ timeout values.</li>
+<li>  If we&#39;ve configured EntryNodes and our network goes away and/or all<br>
+ our entrynodes get marked down, optimistically retry them all when<br>
+ a new socks application request appears. Fixes bug 1882.</li>
+<li>  Always perform router selections using weighted relay bandwidth,<br>
+ even if we don&#39;t need a high capacity circuit at the time. Non-fast<br>
+ circuits now only differ from fast ones in that they can use relays<br>
+ not marked with the Fast flag. This &quot;feature&quot; could turn out to<br>
+ be a horrible bug; we should investigate more before it goes into<br>
+ a stable release.</li>
+<li>  When we run out of directory information such that we can&#39;t build<br>
+ circuits, but then get enough that we can build circuits, log when<br>
+ we actually construct a circuit, so the user has a better chance of<br>
+ knowing what&#39;s going on. Fixes bug 1362.</li>
+<li>  Log SSL state transitions at debug level during handshake, and<br>
+ include SSL states in error messages. This may help debug future<br>
+ SSL handshake issues.</li>
+</ul>
+
+<p><strong>Minor features (directory authorities):</strong></p>
+
+<ul>
+<li>  When a router changes IP address or port, authorities now launch<br>
+ a new reachability test for it. Implements ticket 1899.</li>
+<li>  Directory authorities now reject relays running any versions of<br>
+ Tor between 0.2.1.3-alpha and 0.2.1.18 inclusive; they have<br>
+ known bugs that keep RELAY_EARLY cells from working on rendezvous<br>
+ circuits. Followup to fix for bug 2081.</li>
+<li>  Directory authorities now reject relays running any version of Tor<br>
+ older than 0.2.0.26-rc. That version is the earliest that fetches<br>
+ current directory information correctly. Fixes bug 2156.</li>
+<li>  Directory authorities now do an immediate reachability check as soon<br>
+ as they hear about a new relay. This change should slightly reduce<br>
+ the time between setting up a relay and getting listed as running<br>
+ in the consensus. It should also improve the time between setting<br>
+ up a bridge and seeing use by bridge users.</li>
+<li>  Directory authorities no longer launch a TLS connection to every<br>
+ relay as they startup. Now that we have 2k+ descriptors cached,<br>
+ the resulting network hiccup is becoming a burden. Besides,<br>
+ authorities already avoid voting about Running for the first half<br>
+ hour of their uptime.</li>
+<li>  Directory authorities now log the source of a rejected POSTed v3<br>
+ networkstatus vote, so we can track failures better.</li>
+<li>  Backport code from 0.2.3.x that allows directory authorities to<br>
+ clean their microdescriptor caches. Needed to resolve bug 2230.</li>
+</ul>
+
+<p><strong>Minor features (hidden services):</strong></p>
+
+<ul>
+<li>  Use computed circuit-build timeouts to decide when to launch<br>
+ parallel introduction circuits for hidden services. (Previously,<br>
+ we would retry after 15 seconds.)</li>
+<li>  Don&#39;t allow v0 hidden service authorities to act as clients.<br>
+ Required by fix for bug 3000.</li>
+<li>  Ignore SIGNAL NEWNYM commands on relay-only Tor instances. Required<br>
+ by fix for bug 3000.</li>
+<li>  Make hidden services work better in private Tor networks by not<br>
+ requiring any uptime to join the hidden service descriptor<br>
+ DHT. Implements ticket 2088.</li>
+<li>  Log (at info level) when purging pieces of hidden-service-client<br>
+ state because of SIGNAL NEWNYM.</li>
+</ul>
+
+<p><strong>Minor features (controller interface):</strong></p>
+
+<ul>
+<li>  New &quot;GETINFO net/listeners/(type)&quot; controller command to return<br>
+ a list of addresses and ports that are bound for listeners for a<br>
+ given connection type. This is useful when the user has configured<br>
+ &quot;SocksPort auto&quot; and the controller needs to know which port got<br>
+ chosen. Resolves another part of ticket 3076.</li>
+<li>  Have the controller interface give a more useful message than<br>
+ &quot;Internal Error&quot; in response to failed GETINFO requests.</li>
+<li>  Add a TIMEOUT_RATE keyword to the BUILDTIMEOUT_SET control port<br>
+ event, to give information on the current rate of circuit timeouts<br>
+ over our stored history.</li>
+<li>  The &#39;EXTENDCIRCUIT&#39; control port command can now be used with<br>
+ a circ id of 0 and no path. This feature will cause Tor to build<br>
+ a new &#39;fast&#39; general purpose circuit using its own path selection<br>
+ algorithms.</li>
+<li>  Added a BUILDTIMEOUT_SET controller event to describe changes<br>
+ to the circuit build timeout.</li>
+<li>  New controller command &quot;getinfo config-text&quot;. It returns the<br>
+ contents that Tor would write if you send it a SAVECONF command,<br>
+ so the controller can write the file to disk itself.</li>
+</ul>
+
+<p><strong>Minor features (controller protocol):</strong></p>
+
+<ul>
+<li>  Add a new ControlSocketsGroupWritable configuration option: when<br>
+ it is turned on, ControlSockets are group-writeable by the default<br>
+ group of the current user. Patch by J√©r√©my Bobbio; implements<br>
+ ticket 2972.</li>
+<li>  Tor now refuses to create a ControlSocket in a directory that is<br>
+ world-readable (or group-readable if ControlSocketsGroupWritable<br>
+ is 0). This is necessary because some operating systems do not<br>
+ enforce permissions on an AF_UNIX sockets. Permissions on the<br>
+ directory holding the socket, however, seems to work everywhere.</li>
+<li>  Warn when CookieAuthFileGroupReadable is set but CookieAuthFile is<br>
+ not. This would lead to a cookie that is still not group readable.<br>
+ Closes bug 1843. Suggested by katmagic.</li>
+<li>  Future-proof the controller protocol a bit by ignoring keyword<br>
+ arguments we do not recognize.</li>
+</ul>
+
+<p><strong>Minor features (more useful logging):</strong></p>
+
+<ul>
+<li>  Revise most log messages that refer to nodes by nickname to<br>
+ instead use the &quot;\$key=nickname at address&quot; format. This should be<br>
+ more useful, especially since nicknames are less and less likely<br>
+ to be unique. Resolves ticket 3045.</li>
+<li>  When an HTTPS proxy reports &quot;403 Forbidden&quot;, we now explain<br>
+ what it means rather than calling it an unexpected status code.<br>
+ Closes bug 2503. Patch from Michael Yakubovich.</li>
+<li>  Rate-limit a warning about failures to download v2 networkstatus<br>
+ documents. Resolves part of bug 1352.</li>
+<li>  Rate-limit the &quot;your application is giving Tor only an IP address&quot;<br>
+ warning. Addresses bug 2000; bugfix on 0.0.8pre2.</li>
+<li>  Rate-limit &quot;Failed to hand off onionskin&quot; warnings.</li>
+<li>  When logging a rate-limited warning, we now mention how many messages<br>
+ got suppressed since the last warning.</li>
+<li>  Make the formerly ugly &quot;2 unknown, 7 missing key, 0 good, 0 bad,<br>
+ 2 no signature, 4 required&quot; messages about consensus signatures<br>
+ easier to read, and make sure they get logged at the same severity<br>
+ as the messages explaining which keys are which. Fixes bug 1290.</li>
+<li>  Don&#39;t warn when we have a consensus that we can&#39;t verify because<br>
+ of missing certificates, unless those certificates are ones<br>
+ that we have been trying and failing to download. Fixes bug 1145.</li>
+</ul>
+
+<p><strong>Minor features (log domains):</strong></p>
+
+<ul>
+<li>  Add documentation for configuring logging at different severities in<br>
+ different log domains. We&#39;ve had this feature since 0.2.1.1-alpha,<br>
+ but for some reason it never made it into the manpage. Fixes<br>
+ bug 2215.</li>
+<li>  Make it simpler to specify &quot;All log domains except for A and B&quot;.<br>
+ Previously you needed to say &quot;[*,~A,~B]&quot;. Now you can just say<br>
+ &quot;[~A,~B]&quot;.</li>
+<li>  Add a &quot;LogMessageDomains 1&quot; option to include the domains of log<br>
+ messages along with the messages. Without this, there&#39;s no way<br>
+ to use log domains without reading the source or doing a lot<br>
+ of guessing.</li>
+<li>  Add a new &quot;Handshake&quot; log domain for activities that happen<br>
+ during the TLS handshake.</li>
+</ul>
+
+<p><strong>Minor features (build process):</strong></p>
+
+<ul>
+<li>  Make compilation with clang possible when using<br>
+ &quot;--enable-gcc-warnings&quot; by removing two warning options that clang<br>
+ hasn&#39;t implemented yet and by fixing a few warnings. Resolves<br>
+ ticket 2696.</li>
+<li>  Detect platforms that brokenly use a signed size_t, and refuse to<br>
+ build there. Found and analyzed by doorss and rransom.</li>
+<li>  Fix a bunch of compile warnings revealed by mingw with gcc 4.5.<br>
+ Resolves bug 2314.</li>
+<li>  Add support for statically linking zlib by specifying<br>
+ &quot;--enable-static-zlib&quot;, to go with our support for statically<br>
+ linking openssl and libevent. Resolves bug 1358.</li>
+<li>  Instead of adding the svn revision to the Tor version string, report<br>
+ the git commit (when we&#39;re building from a git checkout).</li>
+<li>  Rename the &quot;log.h&quot; header to &quot;torlog.h&quot; so as to conflict with fewer<br>
+ system headers.</li>
+<li>  New --digests command-line switch to output the digests of the<br>
+ source files Tor was built with.</li>
+<li>  Generate our manpage and HTML documentation using Asciidoc. This<br>
+ change should make it easier to maintain the documentation, and<br>
+ produce nicer HTML. The build process fails if asciidoc cannot<br>
+ be found and building with asciidoc isn&#39;t disabled (via the<br>
+ &quot;--disable-asciidoc&quot; argument to ./configure. Skipping the manpage<br>
+ speeds up the build considerably.</li>
+</ul>
+
+<p><strong>Minor features (options / torrc):</strong></p>
+
+<ul>
+<li>  Warn when the same option is provided more than once in a torrc<br>
+ file, on the command line, or in a single SETCONF statement, and<br>
+ the option is one that only accepts a single line. Closes bug 1384.</li>
+<li>  Warn when the user configures two HiddenServiceDir lines that point<br>
+ to the same directory. Bugfix on 0.0.6 (the version introducing<br>
+ HiddenServiceDir); fixes bug 3289.</li>
+<li>  Add new &quot;perconnbwrate&quot; and &quot;perconnbwburst&quot; consensus params to<br>
+ do individual connection-level rate limiting of clients. The torrc<br>
+ config options with the same names trump the consensus params, if<br>
+ both are present. Replaces the old &quot;bwconnrate&quot; and &quot;bwconnburst&quot;<br>
+ consensus params which were broken from 0.2.2.7-alpha through<br>
+ 0.2.2.14-alpha. Closes bug 1947.</li>
+<li>  New config option &quot;WarnUnsafeSocks 0&quot; disables the warning that<br>
+ occurs whenever Tor receives a socks handshake using a version of<br>
+ the socks protocol that can only provide an IP address (rather<br>
+ than a hostname). Setups that do DNS locally over Tor are fine,<br>
+ and we shouldn&#39;t spam the logs in that case.</li>
+<li>  New config option &quot;CircuitStreamTimeout&quot; to override our internal<br>
+ timeout schedule for how many seconds until we detach a stream from<br>
+ a circuit and try a new circuit. If your network is particularly<br>
+ slow, you might want to set this to a number like 60.</li>
+<li>  New options for SafeLogging to allow scrubbing only log messages<br>
+ generated while acting as a relay. Specify &quot;SafeLogging relay&quot; if<br>
+ you want to ensure that only messages known to originate from<br>
+ client use of the Tor process will be logged unsafely.</li>
+<li>  Time and memory units in the configuration file can now be set to<br>
+ fractional units. For example, &quot;2.5 GB&quot; is now a valid value for<br>
+ AccountingMax.</li>
+<li>  Support line continuations in the torrc config file. If a line<br>
+ ends with a single backslash character, the newline is ignored, and<br>
+ the configuration value is treated as continuing on the next line.<br>
+ Resolves bug 1929.</li>
+</ul>
+
+<p><strong>Minor features (unit tests):</strong></p>
+
+<ul>
+<li>  Revise our unit tests to use the &quot;tinytest&quot; framework, so we<br>
+ can run tests in their own processes, have smarter setup/teardown<br>
+ code, and so on. The unit test code has moved to its own<br>
+ subdirectory, and has been split into multiple modules.</li>
+<li>  Add a unit test for cross-platform directory-listing code.</li>
+<li>  Add some forgotten return value checks during unit tests. Found<br>
+ by coverity.</li>
+<li>  Use GetTempDir to find the proper temporary directory location on<br>
+ Windows when generating temporary files for the unit tests. Patch<br>
+ by Gisle Vanem.</li>
+</ul>
+
+<p><strong>Minor features (misc):</strong></p>
+
+<ul>
+<li>  The &quot;torify&quot; script now uses torsocks where available.</li>
+<li>  Make Libevent log messages get delivered to controllers later,<br>
+ and not from inside the Libevent log handler. This prevents unsafe<br>
+ reentrant Libevent calls while still letting the log messages<br>
+ get through.</li>
+<li>  Certain Tor clients (such as those behind check.torproject.org) may<br>
+ want to fetch the consensus in an extra early manner. To enable this<br>
+ a user may now set FetchDirInfoExtraEarly to 1. This also depends on<br>
+ setting FetchDirInfoEarly to 1. Previous behavior will stay the same<br>
+ as only certain clients who must have this information sooner should<br>
+ set this option.</li>
+<li>  Expand homedirs passed to tor-checkkey. This should silence a<br>
+ coverity complaint about passing a user-supplied string into<br>
+ open() without checking it.</li>
+<li>  Make sure to disable DirPort if running as a bridge. DirPorts aren&#39;t<br>
+ used on bridges, and it makes bridge scanning somewhat easier.</li>
+<li>  Create the /var/run/tor directory on startup on OpenSUSE if it is<br>
+ not already created. Patch from Andreas Stieger. Fixes bug 2573.</li>
+</ul>
+
+<p><strong>Minor bugfixes (relays):</strong></p>
+
+<ul>
+<li>  When a relay decides that its DNS is too broken for it to serve<br>
+ as an exit server, it advertised itself as a non-exit, but<br>
+ continued to act as an exit. This could create accidental<br>
+ partitioning opportunities for users. Instead, if a relay is<br>
+ going to advertise reject *:* as its exit policy, it should<br>
+ really act with exit policy &quot;reject *:*&quot;. Fixes bug 2366.<br>
+ Bugfix on Tor 0.1.2.5-alpha. Bugfix by user &quot;postman&quot; on trac.</li>
+<li>  Publish a router descriptor even if generating an extra-info<br>
+ descriptor fails. Previously we would not publish a router<br>
+ descriptor without an extra-info descriptor; this can cause fast<br>
+ exit relays collecting exit-port statistics to drop from the<br>
+ consensus. Bugfix on 0.1.2.9-rc; fixes bug 2195.</li>
+<li>  When we&#39;re trying to guess whether we know our IP address as<br>
+ a relay, we would log various ways that we failed to guess<br>
+ our address, but never log that we ended up guessing it<br>
+ successfully. Now add a log line to help confused and anxious<br>
+ relay operators. Bugfix on 0.1.2.1-alpha; fixes bug 1534.</li>
+<li>  For bandwidth accounting, calculate our expected bandwidth rate<br>
+ based on the time during which we were active and not in<br>
+ soft-hibernation during the last interval. Previously, we were<br>
+ also considering the time spent in soft-hibernation. If this<br>
+ was a long time, we would wind up underestimating our bandwidth<br>
+ by a lot, and skewing our wakeup time towards the start of the<br>
+ accounting interval. Fixes bug 1789. Bugfix on 0.0.9pre5.</li>
+<li>  Demote a confusing TLS warning that relay operators might get when<br>
+ someone tries to talk to their ORPort. It is not the operator&#39;s<br>
+ fault, nor can they do anything about it. Fixes bug 1364; bugfix<br>
+ on 0.2.0.14-alpha.</li>
+<li>  Change &quot;Application request when we&#39;re believed to be offline.&quot;<br>
+ notice to &quot;Application request when we haven&#39;t used client<br>
+ functionality lately.&quot;, to clarify that it&#39;s not an error. Bugfix<br>
+ on 0.0.9.3; fixes bug 1222.</li>
+</ul>
+
+<p><strong>Minor bugfixes (bridges):</strong></p>
+
+<ul>
+<li>  When a client starts or stops using bridges, never use a circuit<br>
+ that was built before the configuration change. This behavior could<br>
+ put at risk a user who uses bridges to ensure that her traffic<br>
+ only goes to the chosen addresses. Bugfix on 0.2.0.3-alpha; fixes<br>
+ bug 3200.</li>
+<li>  Do not reset the bridge descriptor download status every time we<br>
+ re-parse our configuration or get a configuration change. Fixes<br>
+ bug 3019; bugfix on 0.2.0.3-alpha.</li>
+<li>  Users couldn&#39;t configure a regular relay to be their bridge. It<br>
+ didn&#39;t work because when Tor fetched the bridge descriptor, it found<br>
+ that it already had it, and didn&#39;t realize that the purpose of the<br>
+ descriptor had changed. Now we replace routers with a purpose other<br>
+ than bridge with bridge descriptors when fetching them. Bugfix on<br>
+ 0.1.1.9-alpha. Fixes bug 1776.</li>
+<li>  In the special case where you configure a public exit relay as your<br>
+ bridge, Tor would be willing to use that exit relay as the last<br>
+ hop in your circuit as well. Now we fail that circuit instead.<br>
+ Bugfix on 0.2.0.12-alpha. Fixes bug 2403. Reported by &quot;piebeer&quot;.</li>
+</ul>
+
+<p><strong>Minor bugfixes (clients):</strong></p>
+
+<ul>
+<li>  We now ask the other side of a stream (the client or the exit)<br>
+ for more data on that stream when the amount of queued data on<br>
+ that stream dips low enough. Previously, we wouldn&#39;t ask the<br>
+ other side for more data until either it sent us more data (which<br>
+ it wasn&#39;t supposed to do if it had exhausted its window!) or we<br>
+ had completely flushed all our queued data. This flow control fix<br>
+ should improve throughput. Fixes bug 2756; bugfix on the earliest<br>
+ released versions of Tor (svn commit r152).</li>
+<li>  When a client finds that an origin circuit has run out of 16-bit<br>
+ stream IDs, we now mark it as unusable for new streams. Previously,<br>
+ we would try to close the entire circuit. Bugfix on 0.0.6.</li>
+<li>  Make it explicit that we don&#39;t cannibalize one-hop circuits. This<br>
+ happens in the wild, but doesn&#39;t turn out to be a problem because<br>
+ we fortunately don&#39;t use those circuits. Many thanks to outofwords<br>
+ for the initial analysis and to swissknife who confirmed that<br>
+ two-hop circuits are actually created.</li>
+<li>  Resolve an edge case in path weighting that could make us misweight<br>
+ our relay selection. Fixes bug 1203; bugfix on 0.0.8rc1.</li>
+<li>  Make the DNSPort option work with libevent 2.x. Don&#39;t alter the<br>
+ behaviour for libevent 1.x. Fixes bug 1143. Found by SwissTorExit.</li>
+</ul>
+
+<p><strong>Minor bugfixes (directory authorities):</strong></p>
+
+<ul>
+<li>  Make directory authorities more accurate at recording when<br>
+ relays that have failed several reachability tests became<br>
+ unreachable, so we can provide more accuracy at assigning Stable,<br>
+ Guard, HSDir, etc flags. Bugfix on 0.2.0.6-alpha. Resolves bug 2716.</li>
+<li>  Directory authorities are now more robust to hops back in time<br>
+ when calculating router stability. Previously, if a run of uptime<br>
+ or downtime appeared to be negative, the calculation could give<br>
+ incorrect results. Bugfix on 0.2.0.6-alpha; noticed when fixing<br>
+ bug 1035.</li>
+<li>  Directory authorities will now attempt to download consensuses<br>
+ if their own efforts to make a live consensus have failed. This<br>
+ change means authorities that restart will fetch a valid<br>
+ consensus, and it means authorities that didn&#39;t agree with the<br>
+ current consensus will still fetch and serve it if it has enough<br>
+ signatures. Bugfix on 0.2.0.9-alpha; fixes bug 1300.</li>
+<li>  Never vote for a server as &quot;Running&quot; if we have a descriptor for<br>
+ it claiming to be hibernating, and that descriptor was published<br>
+ more recently than our last contact with the server. Bugfix on<br>
+ 0.2.0.3-alpha; fixes bug 911.</li>
+<li>  Directory authorities no longer change their opinion of, or vote on,<br>
+ whether a router is Running, unless they have themselves been<br>
+ online long enough to have some idea. Bugfix on 0.2.0.6-alpha.<br>
+ Fixes bug 1023.</li>
+</ul>
+
+<p><strong>Minor bugfixes (hidden services):</strong></p>
+
+<ul>
+<li>  Log malformed requests for rendezvous descriptors as protocol<br>
+ warnings, not warnings. Also, use a more informative log message<br>
+ in case someone sees it at log level warning without prior<br>
+ info-level messages. Fixes bug 2748; bugfix on 0.2.0.10-alpha.</li>
+<li>  Accept hidden service descriptors if we think we might be a hidden<br>
+ service directory, regardless of what our consensus says. This<br>
+ helps robustness, since clients and hidden services can sometimes<br>
+ have a more up-to-date view of the network consensus than we do,<br>
+ and if they think that the directory authorities list us a HSDir,<br>
+ we might actually be one. Related to bug 2732; bugfix on<br>
+ 0.2.0.10-alpha.</li>
+<li>  Correct the warning displayed when a rendezvous descriptor exceeds<br>
+ the maximum size. Fixes bug 2750; bugfix on 0.2.1.5-alpha. Found by<br>
+ John Brooks.</li>
+<li>  Clients and hidden services now use HSDir-flagged relays for hidden<br>
+ service descriptor downloads and uploads even if the relays have no<br>
+ DirPort set and the client has disabled TunnelDirConns. This will<br>
+ eventually allow us to give the HSDir flag to relays with no<br>
+ DirPort. Fixes bug 2722; bugfix on 0.2.1.6-alpha.</li>
+<li>  Only limit the lengths of single HS descriptors, even when multiple<br>
+ HS descriptors are published to an HSDir relay in a single POST<br>
+ operation. Fixes bug 2948; bugfix on 0.2.1.5-alpha. Found by hsdir.</li>
+</ul>
+
+<p><strong>Minor bugfixes (controllers):</strong></p>
+
+<ul>
+<li>  Allow GETINFO fingerprint to return a fingerprint even when<br>
+ we have not yet built a router descriptor. Fixes bug 3577;<br>
+ bugfix on 0.2.0.1-alpha.</li>
+<li>  Send a SUCCEEDED stream event to the controller when a reverse<br>
+ resolve succeeded. Fixes bug 3536; bugfix on 0.0.8pre1. Issue<br>
+ discovered by katmagic.</li>
+<li>  Remove a trailing asterisk from &quot;exit-policy/default&quot; in the<br>
+ output of the control port command &quot;GETINFO info/names&quot;. Bugfix<br>
+ on 0.1.2.5-alpha.</li>
+<li>  Make the SIGNAL DUMP controller command work on FreeBSD. Fixes bug<br>
+
+<ol>
+<li>Bugfix on 0.1.1.1-alpha.</li>
+</ol></li>
+<li>  When we restart our relay, we might get a successful connection<br>
+ from the outside before we&#39;ve started our reachability tests,<br>
+ triggering a warning: &quot;ORPort found reachable, but I have no<br>
+ routerinfo yet. Failing to inform controller of success.&quot; This<br>
+ bug was harmless unless Tor is running under a controller<br>
+ like Vidalia, in which case the controller would never get a<br>
+ REACHABILITY_SUCCEEDED status event. Bugfix on 0.1.2.6-alpha;<br>
+ fixes bug 1172.</li>
+<li>  When a controller changes TrackHostExits, remove mappings for<br>
+ hosts that should no longer have their exits tracked. Bugfix on<br>
+ 0.1.0.1-rc.</li>
+<li>  When a controller changes VirtualAddrNetwork, remove any mappings<br>
+ for hosts that were automapped to the old network. Bugfix on<br>
+ 0.1.1.19-rc.</li>
+<li>  When a controller changes one of the AutomapHosts* options, remove<br>
+ any mappings for hosts that should no longer be automapped. Bugfix<br>
+ on 0.2.0.1-alpha.</li>
+<li>  Fix an off-by-one error in calculating some controller command<br>
+ argument lengths. Fortunately, this mistake is harmless since<br>
+ the controller code does redundant NUL termination too. Found by<br>
+ boboper. Bugfix on 0.1.1.1-alpha.</li>
+<li>  Fix a bug in the controller interface where &quot;GETINFO ns/asdaskljkl&quot;<br>
+ would return &quot;551 Internal error&quot; rather than &quot;552 Unrecognized key<br>
+ ns/asdaskljkl&quot;. Bugfix on 0.1.2.3-alpha.</li>
+<li>  Don&#39;t spam the controller with events when we have no file<br>
+ descriptors available. Bugfix on 0.2.1.5-alpha. (Rate-limiting<br>
+ for log messages was already solved from bug 748.)</li>
+<li>  Emit a GUARD DROPPED controller event for a case we missed.</li>
+<li>  Ensure DNS requests launched by &quot;RESOLVE&quot; commands from the<br>
+ controller respect the __LeaveStreamsUnattached setconf options. The<br>
+ same goes for requests launched via DNSPort or transparent<br>
+ proxying. Bugfix on 0.2.0.1-alpha; fixes bug 1525.</li>
+</ul>
+
+<p><strong>Minor bugfixes (config options):</strong></p>
+
+<ul>
+<li>  Tor used to limit HttpProxyAuthenticator values to 48 characters.<br>
+ Change the limit to 512 characters by removing base64 newlines.<br>
+ Fixes bug 2752. Fix by Michael Yakubovich.</li>
+<li>  Complain if PublishServerDescriptor is given multiple arguments that<br>
+ include 0 or 1. This configuration will be rejected in the future.<br>
+ Bugfix on 0.2.0.1-alpha; closes bug 1107.</li>
+<li>  Disallow BridgeRelay 1 and ORPort 0 at once in the configuration.<br>
+ Bugfix on 0.2.0.13-alpha; closes bug 928.</li>
+</ul>
+
+<p><strong>Minor bugfixes (log subsystem fixes):</strong></p>
+
+<ul>
+<li>  When unable to format an address as a string, report its value<br>
+ as &quot;???&quot; rather than reusing the last formatted address. Bugfix<br>
+ on 0.2.1.5-alpha.</li>
+<li>  Be more consistent in our treatment of file system paths. &quot;~&quot; should<br>
+ get expanded to the user&#39;s home directory in the Log config option.<br>
+ Fixes bug 2971; bugfix on 0.2.0.1-alpha, which introduced the<br>
+ feature for the -f and --DataDirectory options.</li>
+</ul>
+
+<p><strong>Minor bugfixes (memory management):</strong></p>
+
+<ul>
+<li>  Don&#39;t stack-allocate the list of supplementary GIDs when we&#39;re<br>
+ about to log them. Stack-allocating NGROUPS_MAX gid_t elements<br>
+ could take up to 256K, which is way too much stack. Found by<br>
+ Coverity; CID #450. Bugfix on 0.2.1.7-alpha.</li>
+<li>  Save a couple bytes in memory allocation every time we escape<br>
+ certain characters in a string. Patch from Florian Zumbiehl.</li>
+</ul>
+
+<p><strong>Minor bugfixes (protocol correctness):</strong></p>
+
+<ul>
+<li>  When checking for 1024-bit keys, check for 1024 bits, not 128<br>
+ bytes. This allows Tor to correctly discard keys of length 1017<br>
+ through 1023. Bugfix on 0.0.9pre5.</li>
+<li>  Require that introduction point keys and onion handshake keys<br>
+ have a public exponent of 65537. Starts to fix bug 3207; bugfix<br>
+ on 0.2.0.10-alpha.</li>
+<li>  Handle SOCKS messages longer than 128 bytes long correctly, rather<br>
+ than waiting forever for them to finish. Fixes bug 2330; bugfix<br>
+ on 0.2.0.16-alpha. Found by doorss.</li>
+<li>  Never relay a cell for a circuit we have already destroyed.<br>
+ Between marking a circuit as closeable and finally closing it,<br>
+ it may have been possible for a few queued cells to get relayed,<br>
+ even though they would have been immediately dropped by the next<br>
+ OR in the circuit. Fixes bug 1184; bugfix on 0.2.0.1-alpha.</li>
+<li>  Never queue a cell for a circuit that&#39;s already been marked<br>
+ for close.</li>
+<li>  Fix a spec conformance issue: the network-status-version token<br>
+ must be the first token in a v3 consensus or vote. Discovered by<br>
+ &quot;parakeep&quot;. Bugfix on 0.2.0.3-alpha.</li>
+<li>  A networkstatus vote must contain exactly one signature. Spec<br>
+ conformance issue. Bugfix on 0.2.0.3-alpha.</li>
+<li>  When asked about a DNS record type we don&#39;t support via a<br>
+ client DNSPort, reply with NOTIMPL rather than an empty<br>
+ reply. Patch by intrigeri. Fixes bug 3369; bugfix on 2.0.1-alpha.</li>
+<li>  Make more fields in the controller protocol case-insensitive, since<br>
+ control-spec.txt said they were.</li>
+</ul>
+
+<p><strong>Minor bugfixes (log messages):</strong></p>
+
+<ul>
+<li>  Fix a log message that said &quot;bits&quot; while displaying a value in<br>
+ bytes. Found by wanoskarnet. Fixes bug 3318; bugfix on<br>
+ 0.2.0.1-alpha.</li>
+<li>  Downgrade &quot;no current certificates known for authority&quot; message from<br>
+ Notice to Info. Fixes bug 2899; bugfix on 0.2.0.10-alpha.</li>
+<li>  Correctly describe errors that occur when generating a TLS object.<br>
+ Previously we would attribute them to a failure while generating a<br>
+ TLS context. Patch by Robert Ransom. Bugfix on 0.1.0.4-rc; fixes<br>
+ bug 1994.</li>
+<li>  Fix an instance where a Tor directory mirror might accidentally<br>
+ log the IP address of a misbehaving Tor client. Bugfix on<br>
+ 0.1.0.1-rc.</li>
+<li>  Stop logging at severity &#39;warn&#39; when some other Tor client tries<br>
+ to establish a circuit with us using weak DH keys. It&#39;s a protocol<br>
+ violation, but that doesn&#39;t mean ordinary users need to hear about<br>
+ it. Fixes the bug part of bug 1114. Bugfix on 0.1.0.13.</li>
+<li>  If your relay can&#39;t keep up with the number of incoming create<br>
+ cells, it would log one warning per failure into your logs. Limit<br>
+ warnings to 1 per minute. Bugfix on 0.0.2pre10; fixes bug 1042.</li>
+</ul>
+
+<p><strong>Minor bugfixes (build fixes):</strong></p>
+
+<ul>
+<li>  Fix warnings from GCC 4.6&#39;s &quot;-Wunused-but-set-variable&quot; option.</li>
+<li>  When warning about missing zlib development packages during compile,<br>
+ give the correct package names. Bugfix on 0.2.0.1-alpha.</li>
+<li>  Fix warnings that newer versions of autoconf produce during<br>
+ ./autogen.sh. These warnings appear to be harmless in our case,<br>
+ but they were extremely verbose. Fixes bug 2020.</li>
+<li>  Squash a compile warning on OpenBSD. Reported by Tas; fixes<br>
+ bug 1848.</li>
+</ul>
+
+<p><strong>Minor bugfixes (portability):</strong></p>
+
+<ul>
+<li>  Write several files in text mode, on OSes that distinguish text<br>
+ mode from binary mode (namely, Windows). These files are:<br>
+ &#39;buffer-stats&#39;, &#39;dirreq-stats&#39;, and &#39;entry-stats&#39; on relays<br>
+ that collect those statistics; &#39;client_keys&#39; and &#39;hostname&#39; for<br>
+ hidden services that use authentication; and (in the tor-gencert<br>
+ utility) newly generated identity and signing keys. Previously,<br>
+ we wouldn&#39;t specify text mode or binary mode, leading to an<br>
+ assertion failure. Fixes bug 3607. Bugfix on 0.2.1.1-alpha (when<br>
+ the DirRecordUsageByCountry option which would have triggered<br>
+ the assertion failure was added), although this assertion failure<br>
+ would have occurred in tor-gencert on Windows in 0.2.0.1-alpha.</li>
+<li>  Selectively disable deprecation warnings on OS X because Lion<br>
+ started deprecating the shipped copy of openssl. Fixes bug 3643.</li>
+<li>  Use a wide type to hold sockets when built for 64-bit Windows.<br>
+ Fixes bug 3270.</li>
+<li>  Fix an issue that prevented static linking of libevent on<br>
+ some platforms (notably Linux). Fixes bug 2698; bugfix on 0.2.1.23,<br>
+ where we introduced the &quot;--with-static-libevent&quot; configure option.</li>
+<li>  Fix a bug with our locking implementation on Windows that couldn&#39;t<br>
+ correctly detect when a file was already locked. Fixes bug 2504,<br>
+ bugfix on 0.2.1.6-alpha.</li>
+<li>  Build correctly on OSX with zlib 1.2.4 and higher with all warnings<br>
+ enabled.</li>
+<li>  Fix IPv6-related connect() failures on some platforms (BSD, OS X).<br>
+ Bugfix on 0.2.0.3-alpha; fixes first part of bug 2660. Patch by<br>
+ &quot;piebeer&quot;.</li>
+</ul>
+
+<p><strong>Minor bugfixes (code correctness):</strong></p>
+
+<ul>
+<li>  Always NUL-terminate the sun_path field of a sockaddr_un before<br>
+ passing it to the kernel. (Not a security issue: kernels are<br>
+ smart enough to reject bad sockaddr_uns.) Found by Coverity;<br>
+ CID #428. Bugfix on Tor 0.2.0.3-alpha.</li>
+<li>  Make connection_printf_to_buf()&#39;s behaviour sane. Its callers<br>
+ expect it to emit a CRLF iff the format string ends with CRLF;<br>
+ it actually emitted a CRLF iff (a) the format string ended with<br>
+ CRLF or (b) the resulting string was over 1023 characters long or<br>
+ (c) the format string did not end with CRLF *and* the resulting<br>
+ string was 1021 characters long or longer. Bugfix on 0.1.1.9-alpha;<br>
+ fixes part of bug 3407.</li>
+<li>  Make send_control_event_impl()&#39;s behaviour sane. Its callers<br>
+ expect it to always emit a CRLF at the end of the string; it<br>
+ might have emitted extra control characters as well. Bugfix on<br>
+ 0.1.1.9-alpha; fixes another part of bug 3407.</li>
+<li>  Make crypto_rand_int() check the value of its input correctly.<br>
+ Previously, it accepted values up to UINT_MAX, but could return a<br>
+ negative number if given a value above INT_MAX+1. Found by George<br>
+ Kadianakis. Fixes bug 3306; bugfix on 0.2.2pre14.</li>
+<li>  Fix a potential null-pointer dereference while computing a<br>
+ consensus. Bugfix on tor-0.2.0.3-alpha, found with the help of<br>
+ clang&#39;s analyzer.</li>
+<li>  If we fail to compute the identity digest of a v3 legacy keypair,<br>
+ warn, and don&#39;t use a buffer-full of junk instead. Bugfix on<br>
+ 0.2.1.1-alpha; fixes bug 3106.</li>
+<li>  Resolve an untriggerable issue in smartlist_string_num_isin(),<br>
+ where if the function had ever in the future been used to check<br>
+ for the presence of a too-large number, it would have given an<br>
+ incorrect result. (Fortunately, we only used it for 16-bit<br>
+ values.) Fixes bug 3175; bugfix on 0.1.0.1-rc.</li>
+<li>  Be more careful about reporting the correct error from a failed<br>
+ connect() system call. Under some circumstances, it was possible to<br>
+ look at an incorrect value for errno when sending the end reason.<br>
+ Bugfix on 0.1.0.1-rc.</li>
+<li>  Correctly handle an &quot;impossible&quot; overflow cases in connection byte<br>
+ counting, where we write or read more than 4GB on an edge connection<br>
+ in a single second. Bugfix on 0.1.2.8-beta.</li>
+<li>  Avoid a double mark-for-free warning when failing to attach a<br>
+ transparent proxy connection. Bugfix on 0.1.2.1-alpha. Fixes<br>
+ bug 2279.</li>
+<li>  Correctly detect failure to allocate an OpenSSL BIO. Fixes bug 2378;<br>
+ found by &quot;cypherpunks&quot;. This bug was introduced before the first<br>
+ Tor release, in svn commit r110.</li>
+<li>  Fix a bug in bandwidth history state parsing that could have been<br>
+ triggered if a future version of Tor ever changed the timing<br>
+ granularity at which bandwidth history is measured. Bugfix on<br>
+ Tor 0.1.1.11-alpha.</li>
+<li>  Add assertions to check for overflow in arguments to<br>
+ base32_encode() and base32_decode(); fix a signed-unsigned<br>
+ comparison there too. These bugs are not actually reachable in Tor,<br>
+ but it&#39;s good to prevent future errors too. Found by doorss.</li>
+<li>  Avoid a bogus overlapped memcpy in tor_addr_copy(). Reported by<br>
+ &quot;memcpyfail&quot;.</li>
+<li>  Set target port in get_interface_address6() correctly. Bugfix<br>
+ on 0.1.1.4-alpha and 0.2.0.3-alpha; fixes second part of bug 2660.</li>
+<li>  Fix an impossible-to-actually-trigger buffer overflow in relay<br>
+ descriptor generation. Bugfix on 0.1.0.15.</li>
+<li>  Fix numerous small code-flaws found by Coverity Scan Rung 3.</li>
+</ul>
+
+<p><strong>Minor bugfixes (code improvements):</strong></p>
+
+<ul>
+<li>  After we free an internal connection structure, overwrite it<br>
+ with a different memory value than we use for overwriting a freed<br>
+ internal circuit structure. Should help with debugging. Suggested<br>
+ by bug 1055.</li>
+<li>  If OpenSSL fails to make a duplicate of a private or public key, log<br>
+ an error message and try to exit cleanly. May help with debugging<br>
+ if bug 1209 ever remanifests.</li>
+<li>  Some options used different conventions for uppercasing of acronyms<br>
+ when comparing manpage and source. Fix those in favor of the<br>
+ manpage, as it makes sense to capitalize acronyms.</li>
+<li>  Take a first step towards making or.h smaller by splitting out<br>
+ function definitions for all source files in src/or/. Leave<br>
+ structures and defines in or.h for now.</li>
+<li>  Remove a few dead assignments during router parsing. Found by<br>
+ coverity.</li>
+<li>  Don&#39;t use 1-bit wide signed bit fields. Found by coverity.</li>
+<li>  Avoid signed/unsigned comparisons by making SIZE_T_CEILING unsigned.<br>
+ None of the cases where we did this before were wrong, but by making<br>
+ this change we avoid warnings. Fixes bug 2475; bugfix on 0.2.1.28.</li>
+<li>  The memarea code now uses a sentinel value at the end of each area<br>
+ to make sure nothing writes beyond the end of an area. This might<br>
+ help debug some conceivable causes of bug 930.</li>
+<li>  Always treat failure to allocate an RSA key as an unrecoverable<br>
+ allocation error.</li>
+<li>  Add some more defensive programming for architectures that can&#39;t<br>
+ handle unaligned integer accesses. We don&#39;t know of any actual bugs<br>
+ right now, but that&#39;s the best time to fix them. Fixes bug 1943.</li>
+</ul>
+
+<p><strong>Minor bugfixes (misc):</strong></p>
+
+<ul>
+<li>  Fix a rare bug in rend_fn unit tests: we would fail a test when<br>
+ a randomly generated port is 0. Diagnosed by Matt Edman. Bugfix<br>
+ on 0.2.0.10-alpha; fixes bug 1808.</li>
+<li>  Where available, use Libevent 2.0&#39;s periodic timers so that our<br>
+ once-per-second cleanup code gets called even more closely to<br>
+ once per second than it would otherwise. Fixes bug 943.</li>
+<li>  Ignore OutboundBindAddress when connecting to localhost.<br>
+ Connections to localhost need to come _from_ localhost, or else<br>
+ local servers (like DNS and outgoing HTTP/SOCKS proxies) will often<br>
+ refuse to listen.</li>
+<li>  Update our OpenSSL 0.9.8l fix so that it works with OpenSSL 0.9.8m<br>
+ too.</li>
+<li>  If any of the v3 certs we download are unparseable, we should<br>
+ actually notice the failure so we don&#39;t retry indefinitely. Bugfix<br>
+ on 0.2.0.x; reported by &quot;rotator&quot;.</li>
+<li>  When Tor fails to parse a descriptor of any kind, dump it to disk.<br>
+ Might help diagnosing bug 1051.</li>
+<li>  Make our &#39;torify&#39; script more portable; if we have only one of<br>
+ &#39;torsocks&#39; or &#39;tsocks&#39; installed, don&#39;t complain to the user;<br>
+ and explain our warning about tsocks better.</li>
+<li>  Fix some urls in the exit notice file and make it XHTML1.1 strict<br>
+ compliant. Based on a patch from Christian Kujau.</li>
+</ul>
+
+<p><strong>Documentation changes:</strong></p>
+
+<ul>
+<li>  Modernize the doxygen configuration file slightly. Fixes bug 2707.</li>
+<li>  Resolve all doxygen warnings except those for missing documentation.<br>
+ Fixes bug 2705.</li>
+<li>  Add doxygen documentation for more functions, fields, and types.</li>
+<li>  Convert the HACKING file to asciidoc, and add a few new sections<br>
+ to it, explaining how we use Git, how we make changelogs, and<br>
+ what should go in a patch.</li>
+<li>  Document the default socks host and port (127.0.0.1:9050) for<br>
+ tor-resolve.</li>
+<li>  Removed some unnecessary files from the source distribution. The<br>
+ AUTHORS file has now been merged into the people page on the<br>
+ website. The roadmaps and design doc can now be found in the<br>
+ projects directory in svn.</li>
+</ul>
+
+<p><strong>Deprecated and removed features (config):</strong></p>
+
+<ul>
+<li>  Remove the torrc.complete file. It hasn&#39;t been kept up to date<br>
+ and users will have better luck checking out the manpage.</li>
+<li>  Remove the HSAuthorityRecordStats option that version 0 hidden<br>
+ service authorities could use to track statistics of overall v0<br>
+ hidden service usage.</li>
+<li>  Remove the obsolete &quot;NoPublish&quot; option; it has been flagged<br>
+ as obsolete and has produced a warning since 0.1.1.18-rc.</li>
+<li>  Caches no longer download and serve v2 networkstatus documents<br>
+ unless FetchV2Networkstatus flag is set: these documents haven&#39;t<br>
+ haven&#39;t been used by clients or relays since 0.2.0.x. Resolves<br>
+ bug 3022.</li>
+</ul>
+
+<p><strong>Deprecated and removed features (controller):</strong></p>
+
+<ul>
+<li>  The controller no longer accepts the old obsolete &quot;addr-mappings/&quot;<br>
+ or &quot;unregistered-servers-&quot; GETINFO values.</li>
+<li>  The EXTENDED_EVENTS and VERBOSE_NAMES controller features are now<br>
+ always on; using them is necessary for correct forward-compatible<br>
+ controllers.</li>
+</ul>
+
+<p><strong>Deprecated and removed features (misc):</strong></p>
+
+<ul>
+<li>  Hidden services no longer publish version 0 descriptors, and clients<br>
+ do not request or use version 0 descriptors. However, the old hidden<br>
+ service authorities still accept and serve version 0 descriptors<br>
+ when contacted by older hidden services/clients.</li>
+<li>  Remove undocumented option &quot;-F&quot; from tor-resolve: it hasn&#39;t done<br>
+ anything since 0.2.1.16-rc.</li>
+<li>  Remove everything related to building the expert bundle for OS X.<br>
+ It has confused many users, doesn&#39;t work right on OS X 10.6,<br>
+ and is hard to get rid of once installed. Resolves bug 1274.</li>
+<li>  Remove support for .noconnect style addresses. Nobody was using<br>
+ them, and they provided another avenue for detecting Tor users<br>
+ via application-level web tricks.</li>
+<li>  When we fixed bug 1038 we had to put in a restriction not to send<br>
+ RELAY_EARLY cells on rend circuits. This was necessary as long<br>
+ as relays using Tor 0.2.1.3-alpha through 0.2.1.18-alpha were<br>
+ active. Now remove this obsolete check. Resolves bug 2081.</li>
+<li>  Remove workaround code to handle directory responses from servers<br>
+ that had bug 539 (they would send HTTP status 503 responses _and_<br>
+ send a body too). Since only server versions before<br>
+ 0.2.0.16-alpha/0.1.2.19 were affected, there is no longer reason to<br>
+ keep the workaround in place.</li>
+<li>  Remove the old &#39;fuzzy time&#39; logic. It was supposed to be used for<br>
+ handling calculations where we have a known amount of clock skew and<br>
+ an allowed amount of unknown skew. But we only used it in three<br>
+ places, and we never adjusted the known/unknown skew values. This is<br>
+ still something we might want to do someday, but if we do, we&#39;ll<br>
+ want to do it differently.</li>
+<li>  Remove the &quot;--enable-iphone&quot; option to ./configure. According to<br>
+ reports from Marco Bonetti, Tor builds fine without any special<br>
+ tweaking on recent iPhone SDK versions.</li>
+</ul>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="/blogerinn">erinn's Blog</a>
+	      <a class="post-cmtlink" href="/blog/tor-02232-released/#disqus_thread">Leave a comment</a>
+<!--	      <a class="post-cmtlink" href="/blog/tor-02232-released#comments">Leave a comment</a> -->
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/blog/new-pythondjango-based-torstatus">New Python/Django-based TorStatus</a>
+	  </h2>
+	  <span class="post-meta">Posted Aug 28, 2011 by <a class="post-author" href="/blogkarsten">karsten</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/django">django</a>
+              
+		  <a class="post-category post-category-js" href="/tag/get involved">get involved</a>
+              
+		  <a class="post-category post-category-js" href="/tag/python">python</a>
+              
+		  <a class="post-category post-category-js" href="/tag/relay information">relay information</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor network">tor network</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor status">tor status</a>
+              
+		  <a class="post-category post-category-js" href="/tag/wesleyan hfoss">wesleyan hfoss</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>We&#39;re excited to announce that a group of students from Wesleyan has created a new <a href="http://www.torstatusbeta.org/">TorStatus</a> website written in Python. Their new website is a fine addition to Kasimir Gabert&#39;s <a href="http://torstatus.blutmagie.de/">Tor Network Status</a> page. Kasimir&#39;s page is currently the most popular website to learn about running Tor relays.</p>
+
+<p>We&#39;re glad that we now have a new Python/Django-based TorStatus, as many developers in the Tor community have been working on complementary Tor Python libraries.</p>
+
+<p>The new TorStatus started out as a rewrite of the old PHP-based TorStatus, so we&#39;re building from Kasimir&#39;s great ideas. The new TorStatus adds a new landing page, paged results that decrease latency, and carefully crafted graphs with a focus on aesthetics. But it&#39;s not only the features that make this code so great. We believe that many more developers will be interested in modifying and extending the codebase! At least that&#39;s much simpler now with the move to Python/Django.</p>
+
+<p>The new TorStatus project was done by <a href="http://ndanner.web.wesleyan.edu/">Norman Danner</a>&#39;s students during their summer <a href="http://hfoss.wesleyan.edu/summer-institute-2011">The Humanitarian Free and Open Source Software at Wesleyan University</a> course. Thanks to Jeremy, Diego, and Vlad for designing, coding, and testing this new TorStatus! Thanks to Damian for co-mentoring the students on Tor&#39;s side.</p>
+
+<p>What&#39;s next? Want to help out with coding on the new TorStatus? You should start by looking at the <a href="https://gitweb.torproject.org/torstatus.git">codebase</a> and the list of open <a href="https://trac.torproject.org/projects/tor/query?component=TorStatus&amp;status=!closed">tickets</a>. Feel free to leave a comment here or drop by <a href="irc://irc.oftc.net/tor">#tor-dev</a> if you have suggestions or are interested in helping out!</p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="/blogkarsten">karsten's Blog</a>
+	      <a class="post-cmtlink" href="/blog/new-pythondjango-based-torstatus/#disqus_thread">Leave a comment</a>
+<!--	      <a class="post-cmtlink" href="/blog/new-pythondjango-based-torstatus#comments">Leave a comment</a> -->
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+    </ul>
+    <p class="rss-subscribe">subscribe <a href="/blog/feed.xml">via RSS</a></p>
+
+
+    <!-- Pagination links -->
+    
+    <div class="pagination">
+      <a href="/blog/index.html">&laquo; Newest</a>
+      &nbsp;
+
+      
+	<a href="/blog/blog/page81">&laquo; Prev</a>
+      
+      &nbsp;
+
+      <!-- Pagination vars -->
+      
+      
+      
+      
+      
+      
+	  
+      
+      
+      
+
+	
+	  <a href="../..//blogblog/page77">77</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page78">78</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page79">79</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page80">80</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page81">81</a>
+	
+      
+
+	
+	  82
+
+	
+      
+
+	
+	  <a href="../..//blogblog/page83">83</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page84">84</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page85">85</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page86">86</a>
+	
+      
+
+	
+	  <a href="../..//blogblog/page87">87</a>
+	
+      
+      &nbsp;
+
+      
+	<a href="/blog/blog/page83">Next &raquo;</a>
+      
+      &nbsp;
+      <a href="../..//blogblog/page147">Oldest &raquo;</a>
+    </div>
+    
+    
+    <br />
+
+  </div>
+
+<!-- Include the side column -->
+<div class="sidecol">
+
+<!-- RSS FEED / SEARCH -->
+    <div class="sidefirst">
+	<a href="/blog/feed.xml"><img src="/blog/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="/blog/img/rss.png">Atom</a> -->
+	<form>
+        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
+        </form>
+    </div>
+
+<!-- EVENTS -->
+    <div class ="sidebox orangebox">
+	<h2>Upcoming Events</h2>
+	<ul>
+	    
+		    <li><span><a href="/blog/tor-winter-dev-meeting-2015">Tor Winter Dev Meeting 2015</a></span></li>
+	    
+		    <li><span><a href="/blog/roger-and-jake-rightscon-manila">Roger and Jake at RightsCon in Manila</a></span></li>
+	    
+		    <li><span><a href="/blog/tor-booth-fosdem-2015">Tor booth at FOSDEM 2015</a></span></li>
+	    
+		    <li><span><a href="/blog/many-tor-people-pets-philadelphia">Many Tor people at PETS in Philadelphia</a></span></li>
+	    
+	</ul>
+	<span><a href="/blog/events">full calendar &raquo;</a></span>
+    </div>
+    
+<!-- RECENT BLOG POSTS -->
+    <div class ="sidebox greenbox">
+	<h2>Recent Blog Posts</h2>
+	<ul>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
+	  
+		    <li><span><a href="/blog/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
+	  
+	</ul>
+	<span><a href="/blog/archive">more &raquo;</a></span>
+    </div>
+    
+<!-- TAG CLOUD -->
+    <div class ="tagbox orangebox">
+	<h2>Blog Tag Cloud</h2>
+	<ul>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/blog/">
+            blog
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/first post/">
+            first post
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 171%">
+        <span><a href="/blog/tag/tor/">
+            tor
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/24c3/">
+            24c3
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/ccc/">
+            ccc
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/blog/tag/talks/">
+            talks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/blog/tag/bugs/">
+            bugs
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/crashes/">
+            crashes
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 64%">
+        <span><a href="/blog/tag/osx/">
+            osx
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/qt/">
+            qt
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/blog/tag/vidalia/">
+            vidalia
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 67%">
+        <span><a href="/blog/tag/vidalia bundle/">
+            vidalia bundle
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/meetup/">
+            meetup
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/blog/tag/attacks/">
+            attacks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/covert channels/">
+            covert channels
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/media coverage/">
+            media coverage
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 88%">
+        <span><a href="/blog/tag/bridges/">
+            bridges
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/blog/tag/incognito/">
+            incognito
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 113%">
+        <span><a href="/blog/tag/progress report/">
+            progress report
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/blog/tag/torbrowser/">
+            torbrowser
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 83%">
+        <span><a href="/blog/tag/torbutton/">
+            torbutton
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 65%">
+        <span><a href="/blog/tag/china/">
+            china
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/directors/">
+            directors
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 75%">
+        <span><a href="/blog/tag/release candidate/">
+            release candidate
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 74%">
+        <span><a href="/blog/tag/gsoc/">
+            gsoc
+        </a></span>
+    </li>
+
+	</ul>
+	<span><a href="/blog/tag-cloud">more tags &raquo;</a></span>
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>  
+
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Tor Project Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>The Tor Project Blog</li>
+          <li><a href="mailto:contact@torproject.org">contact@torproject.org</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyllrb</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+ <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jmttest2'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    
+  </body>
+
+</html>

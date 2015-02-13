@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Research problems: Ten ways to discover Tor bridges</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/blog/css/main.css">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/research-problems-ten-ways-discover-tor-bridges">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/blog/">The Tor Project Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+	<a class="page-link" href="/blog/">Blog Home</a>
+        <a class="page-link" href="/blog/archive">Archives</a>
+	<a class="page-link" href="https://www.torproject.org/about/overview">About Tor</a>
+        <a class="page-link donate" href="https://www.torproject.org/donate/donate">Donate</a>
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <!-- Pages with side column need a 'maincol' class -->
+<div class="post maincol">
+
+  <header class="post-header">
+    <h1 class="post-title">Research problems: Ten ways to discover Tor bridges</h1>
+    <p class="post-meta">Oct 31, 2011 • arma</p>
+  </header>
+
+  <article class="post-content">
+    <p>While we&#39;re exploring <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">smarter ways of getting more bridge addresses</a>, and while the bridge arms race hasn&#39;t heated up yet in most countries (or has surpassed the number of bridges we have, in the case of China), it&#39;s the perfect time to take stock of bridge address enumeration attacks and how well we can defend against them.</p>
+
+<p>For background, <a href="https://www.torproject.org/docs/bridges">bridge relays</a> (aka bridges) are Tor relays that aren&#39;t listed in the main Tor directory. So even if an attacker blocks all the public relays, they still need to block all these &quot;private&quot; or &quot;dark&quot; relays too.</p>
+
+<p>Here are ten classes of attacks to discover bridges, examples of them we&#39;ve seen or worry about in practice, and some ideas for how to resolve or mitigate each issue. If you&#39;re looking for a research project, please grab one and start investigating!</p>
+
+<p><strong>#1: Overwhelm the public address distribution strategies.</strong></p>
+
+<p>China broke our <a href="https://bridges.torproject.org/">https bridge distribution strategy</a> in September 2009 by just pretending to be enough legitimate users from enough different subnets on the Internet. They broke the <a href="https://www.torproject.org/docs/bridges#FindingMore">Gmail bridge distribution strategy</a> in March 2010. These were easy to break because we don&#39;t have enough addresses relative to the size of the attacker (at this moment we&#39;re giving out 176 bridges by https and 201 bridges by Gmail, leaving us 165 to give out through other means like social networks), but it&#39;s not just a question of scale: we need better strategies that require attackers to do more or harder work than legitimate users.</p>
+
+<p><strong>#2: Run a non-guard non-exit relay and look for connections from non-relays.</strong></p>
+
+<p>Normal clients use <a href="https://www.torproject.org/docs/faq#EntryGuards">guard nodes</a> for the first hop of their circuits to protect them from long-term profiling attacks; but we chose to have bridge users use their bridge as a replacement for the guard hop, so we don&#39;t force them onto four-hop paths which would be less fun to use. As a result, if you run a relay that doesn&#39;t have the Guard flag, the only Tors who end up building circuits through you are relays (which you can identify from the public consensus) and bridges.</p>
+
+<p>This attack has been floating around for a while, and is documented for example in Zhen Ling et al&#39;s <a href="http://www.cs.uml.edu/%7Exinwenfu/paper/Bridge.pdf">Extensive Analysis and Large-Scale Empirical Evaluation of Tor Bridge Discovery</a> paper.</p>
+
+<p>The defense we plan is to make circuits through bridges use guards too. The naive way to do it would be for the client to choose a set of guards as her possible next hops after the bridge; but then each new client using the bridge increasingly exposures the bridge. The better approach is to make use of Tor&#39;s loose source routing feature to let the bridge itself choose the guards that all of the circuits it handles will use: that is, transparently layer an extra one-hop circuit inside the client&#39;s circuit. Those familiar with <a href="http://freehaven.net/anonbib/#babel">Babel&#39;s design</a> will recognize this trick by the name &quot;inter-mix detours&quot;.</p>
+
+<p>Using a layer of guards after the bridge has two features: first, it completely removes the &quot;bridges directly touch non-guards&quot; issue, turning the attack from a deterministic one to a probabilistic one. Second, it reduces the exposure of the bridge to the rest of the network, since only a small set of relays will ever see a direct connection from it. The tradeoff, alas, is worse performance for bridge users. See <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/188-bridge-guards.txt">proposal 188</a> for details.</p>
+
+<p>[Edit: a friendly researcher pointed out to me that another solution here is to run the bridge as multi-homed, meaning the address that the relay sees isn&#39;t the address that the censor should block. That solution also helps resolve issues 3-5!]</p>
+
+<p><strong>#3: Run a guard relay and look for protocol differences.</strong></p>
+
+<p>Bridges are supposed to behave like relays with respect to the users using them, but like clients with respect to the relays they make connections to. Any slip-ups we introduce where the bridge acts like a relay with respect to the next hop are ways the next hop can distinguish it. Recent examples include <a href="https://trac.torproject.org/projects/tor/ticket/4115">&quot;bridges fetched directory information like relays rather than like clients&quot;</a>, <a href="https://trac.torproject.org/projects/tor/ticket/4124">&quot;bridges didn&#39;t use a CREATE_FAST cell for the first hop of their own circuits like clients would have&quot;</a>, <a href="http://archives.seul.org/tor/commits/Oct-2011/msg01037.html">&quot;bridges didn&#39;t reject CREATE and CREATE_FAST cells on connections they had initiated like clients would have&quot;</a>, and <a href="https://trac.torproject.org/projects/tor/ticket/4348">&quot;bridges distinguish themselves in their NETINFO cell&quot;</a>.</p>
+
+<p>There&#39;s no way that&#39;s the end of them. We could sure use some help auditing the design and code for similar issues.</p>
+
+<p><strong>#4: Run a guard relay and do timing analysis.</strong></p>
+
+<p>Even if we fix issues #2 and #3, it may still be possible for a guard relay to look at the &quot;clients&quot; that are connecting to it, and figure out based on latency that some of the circuits from those clients look like they&#39;re two hops away rather than one hop away.</p>
+
+<p>I bet there are active tricks to improve the attack accuracy. For example, the relay could watch round-trip latency from the circuit originator (seeing packets go towards Alice, and seeing how long until a packet shows up in response), and comparing that latency to what he sees when probing the previous hop with some cell that will get an immediate response rather than going all the way to Alice. Removing all the ways of probing round-trip latency to an adjacent Tor relay (either in-protocol or out-of-protocol) is a battle we&#39;re not going to win.</p>
+
+<p>The research question remains though: how hard is this attack in practice? It&#39;s going to come down to statistics, which means it will be a game of driving up the false positives. It&#39;s hard to know how best to solve it until somebody does the engineering work for the attack.</p>
+
+<p>If the attack turns out to work well (and I expect it will), the &quot;bridges use guards&quot; design will limit the damage from the attack.</p>
+
+<p><strong>#5: Run a relay and try connecting back to likely ports on each client that connects to you.</strong></p>
+
+<p>Many bridges listen for incoming client connections on port 443 or 9001. The adversary can run a relay and actively portscan each client that connects, to see which ones are running services that speak the Tor protocol. This attack was published by Eugene Vasserman in <a href="http://freehaven.net/anonbib/#DBLP:conf/ccs/VassermanJTHK09">Membership-concealing overlay networks</a> and by Jon McLachlan in <a href="http://freehaven.net/anonbib/#wpes09-bridge-attack">On the risks of serving whenever you surf: Vulnerabilities in Tor&#39;s blocking resistance design</a>, both in 2009.</p>
+
+<p>The &quot;bridges use guards&quot; design partially resolves this attack as well, since we limit the exposure of the bridge to a small group of relays that probably could have done some other above attacks as well.</p>
+
+<p>But it does not wholly resolve the concern: clients (and therefore also bridges) don&#39;t use their entry guards for directory fetches at present. So while the bridge won&#39;t build circuits through the relay it fetches directory information from, it will still reveal its existence. That&#39;s another reason to move forward with the <a href="http://archives.seul.org/tor/relays/Apr-2010/msg00078.html">&quot;directory guard&quot;</a> design.</p>
+
+<p><strong>#6: Scan the Internet for services that talk the Tor protocol.</strong></p>
+
+<p>Even if we successfully hide the bridges behind guards, the adversary can still blindly scan for them and pretend to be a client. To make it more practical, he could focus on scanning likely networks, or near other bridges he&#39;s discovered. We called this topic &quot;scanning resistance&quot; in our original <a href="http://freehaven.net/anonbib/#tor-blocking">bridge design paper</a>.</p>
+
+<p>There&#39;s a particularly insidious combination of #5 and #6 if you&#39;re a government-scale adversary: watch your government firewall for SSL flows (since Tor tries to blend in with SSL traffic), and do active followup probing to every destination you see. Whitelist sites you&#39;ve already checked if you want to trade efficiency for precision. This scale of attack requires some serious engineering work for a large country, but <a href="https://trac.torproject.org/projects/tor/ticket/4185">early indications</a> are that China might be investigating exactly this approach.</p>
+
+<p>The answer here is to give the bridge user some secret when she learns the bridge address, and require her to prove knowledge of that secret before the bridge will admit to knowing the Tor protocol. For example, we could imagine running an Apache SSL webserver with a <a href="http://dl.dropbox.com/u/37735/index.html">pass-through module</a> that tunnels your traffic to the Tor relay once she&#39;s presented the right password. Or <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/187-allow-client-auth.txt">Tor could handle that authentication itself</a>. <a href="http://freehaven.net/anonbib/#wpes11-bridgespa">BridgeSPA: Improving Tor Bridges with Single Packet Authorization</a> offers an SPA-style approach, with the drawbacks of requiring root on both sides and being OS-specific.</p>
+
+<p>Another avenue to explore is putting some of the bridge addresses behind a service like <a href="http://freehaven.net/anonbib/#usenix11-telex">Telex</a>, <a href="http://freehaven.net/anonbib/#foci11-decoy">Decoy Routing</a>, or <a href="http://freehaven.net/anonbib/#ccs2011-cirripede">Cirripede</a>. These designs let users privately tag a flow (e.g. an SSL handshake) in such a way that tagged flows are diverted to a Tor bridge while untagged flows continue as normal. So now we could deploy a vanilla Apache in one place and a vanilla Tor bridge in another, and not have to modify either of them. The Tor client bundle would need an extra piece of software though, and there are still some engineering and deployment details to be worked out.</p>
+
+<p><strong>#7: Break into the Tor Project infrastructure.</strong></p>
+
+<p>The <a href="https://svn.torproject.org/svn/projects/design-paper/blocking.html#tth_sEc5.2">bridge directory authority</a> aggregates the list of bridges and periodically sends it to the <a href="https://gitweb.torproject.org/bridgedb.git/tree">bridgedb service</a> so it can parcel addresses out by its various distribution strategies. Breaking into either of these services would give you the list of bridges.</p>
+
+<p>We can imagine some design changes to make the risk less bad. For one, people can already run bridges that don&#39;t publish to the bridge directory authority (and then distribute their addresses themselves). Second, I had a nice chat with a Chinese NGO recently who wants to set up a bridge directory authority of their own, and distribute custom Vidalia bridge bundles to their members that are configured to publish their bridge addresses to this alternate bridge directory authority. A third option is to decentralize the bridge authority and bridgedb services, such that each component only learns about a fraction of the total bridge population — that design quickly gets messy though in terms of engineering and in terms of analyzing its security against various attacks.</p>
+
+<p><strong>#8: Just watch the bridge authority&#39;s reachability tests.</strong></p>
+
+<p>You don&#39;t actually need to break in to the bridge authority. Instead, you can just monitor its network connection: it will periodically test reachability of each bridge it knows, in order to let the bridgedb service know which addresses to give out.</p>
+
+<p>We could do these reachability tests through Tor, so watching the bridge authority doesn&#39;t tell you anything about what it&#39;s testing. But that just shifts the risk onto the rest of the relays, such that an adversary who runs or monitors a sample of relays gets to learn about a corresponding sample of bridges.</p>
+
+<p>One option is to decentralize the testing such that monitoring a single location doesn&#39;t give you the whole bridge list. But how exactly to distribute it, and onto what, is messy from both the operational and research angles. Another option would be for the bridges themselves to ramp up the frequency of their reachability tests (they currently self-test for reachability before publishing, to give quick feedback to their operator if they&#39;re misconfigured). Then the bridges can just anonymously publish an authenticated &quot;still here&quot; message once an hour, so (assuming they all tell the truth) the bridge authority never has to do any testing. But this self-testing also allows an enumeration attack, since we build a circuit to a random relay and then try to extend back to our bridge address! Maybe bridges should be asking their guards to do the self-testing — once they have guards, that is?</p>
+
+<p>These questions are related to the question of <a href="https://svn.torproject.org/svn/projects/design-paper/blocking.html#subsec:geoip">learning whether a bridge has been blocked in a given country</a>. More on that in a future blog post.</p>
+
+<p><strong>#9: Watch your firewall and DPI for Tor flows.</strong></p>
+
+<p>While the above attacks have to do with recognizing or inducing bridge-specific behavior, another class of attacks is just to buy some fancy Deep Packet Inspection gear and have it look for, say, characteristics of the SSL certificates or handshakes that make Tor flows stand out from &quot;normal&quot; SSL flows. <a href="https://blog.torproject.org/blog/iran-blocks-tor-tor-releases-same-day-fix">Iran has used this strategy</a> to block Tor twice, and it lets them block bridges for free. The attack is most effective if you have a large and diverse population of Tor users behind your firewall, since you&#39;ll only be able to learn about bridges that your users try to use.</p>
+
+<p>We can fix the issue by <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/179-TLS-cert-and-parameter-normalization.txt">making Tor&#39;s handshake more like a normal SSL handshake</a>, but I wonder if that&#39;s really a battle we can ever win. The better answer is to encourage a proliferation of <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/180-pluggable-transport.txt">modular Tor transports</a>, like <a href="https://gitweb.torproject.org/obfsproxy.git/blob/HEAD:/doc/tor-obfs-howto.txt">obfsproxy</a>, and get the rest of the research community interested in designing tool-neutral transports that blend in better.</p>
+
+<p><strong>#10: Zig-zag between bridges and users.</strong></p>
+
+<p>Start with a set of known bridge addresses. Watch your firewall to see who connects to those bridges. Then watch those users, and see what other addresses they connect to. Wash, rinse, repeat.</p>
+
+<p>As above, this attack only works well when you have a large population of Tor users behind your firewall. It also requires some more engineering work to be able to trace source addresses in addition to destination addresses. But I&#39;d be surprised if some major government firewalls don&#39;t have this capability already.</p>
+
+<p>The solution here probably involves partitioning bridge addresses into <a href="http://en.wikipedia.org/wiki/Clandestine_cell_system">cells</a>, such that zig-zagging from users to bridges only gives you a bounded set of bridges (and a bounded set of users, for that matter). That approach will require some changes in our <a href="https://gitweb.torproject.org/bridgedb.git/blob/HEAD:/bridge-db-spec.txt">bridgedb design</a> though. Currently when a user requests some bridge addresses, bridgedb maps the user&#39;s &quot;address&quot; (IP address, gmail account name, or whatever) into a point in the keyspace (using <a href="http://en.wikipedia.org/wiki/Consistent_hashing">consistent hashing</a>), and the answers are the k successors of that point in the ring (using <a href="http://en.wikipedia.org/wiki/Chord_%28DHT%29">DHT</a> terminology).</p>
+
+<p>Dan Boneh suggested an alternate approach where we do <a href="http://en.wikipedia.org/wiki/HMAC">keyed hashes</a> of the user&#39;s address and all the bridge fingerprints, and return all bridges whose hashed fingerprints match the user&#39;s hash in the first b bits. The result is that users would tend to get clustered by the bridges they know. That feature limits the damage from the zig-zag attack, but does it increase the risks in some distribution strategies? I already worry that bridge distribution strategies based on social networks will result in clusters of socially related users using the same bridges, meaning the attacker can reconstruct the social network. If we isolate socially related users in the same partition, do we magnify that problem? This approach also needs more research work to make it scale such that we can always return about k results, even as the address pool grows, and without reintroducing zig-zag vulnerabilities.</p>
+
+<p><strong>#11: ...What did I miss?</strong></p>
+
+  </article>
+
+  <div class="post-footer">
+      <a class="post-blog" href="/blog">arma's Blog</a>
+  </div>
+  <br />
+
+<!-- COMMENTS -->
+
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'jmttest2'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<!-- <div id="comments" class="comments clearfix">
+  <div class="comments-loading">
+  <p><em>Enable Javascript to view comments</em></p>
+  </div>
+</div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var loadingSection = document.body.querySelector('.comments-loading');
+    var icon = '<p>Comments Loading...</p><img alt="loading comments" src="/assets/images/comments-loading.gif">';
+
+    loadingSection.innerHTML = loadingSection.innerHTML + icon;
+
+    var options = {
+        container    : '.comments',
+//        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
+        topic_key    : '/research-problems-ten-ways-discover-tor-bridges',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+//            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
+            'http://juvia.torblog.lan/api/show_topic.js' +
+	    '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+
+    (document.getElementsByTagName('head')[0] ||
+      document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
+
+})();
+</script> -->
+</div>
+
+<!-- Include the side column -->
+<div class="sidecol">
+
+<!-- RSS FEED / SEARCH -->
+    <div class="sidefirst">
+	<a href="/blog/feed.xml"><img src="/blog/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="/blog/img/rss.png">Atom</a> -->
+	<form>
+        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
+        </form>
+    </div>
+
+<!-- EVENTS -->
+    <div class ="sidebox orangebox">
+	<h2>Upcoming Events</h2>
+	<ul>
+	    
+		    <li><span><a href="/blog/tor-winter-dev-meeting-2015">Tor Winter Dev Meeting 2015</a></span></li>
+	    
+		    <li><span><a href="/blog/roger-and-jake-rightscon-manila">Roger and Jake at RightsCon in Manila</a></span></li>
+	    
+		    <li><span><a href="/blog/tor-booth-fosdem-2015">Tor booth at FOSDEM 2015</a></span></li>
+	    
+		    <li><span><a href="/blog/many-tor-people-pets-philadelphia">Many Tor people at PETS in Philadelphia</a></span></li>
+	    
+	</ul>
+	<span><a href="/blog/events">full calendar &raquo;</a></span>
+    </div>
+    
+<!-- RECENT BLOG POSTS -->
+    <div class ="sidebox greenbox">
+	<h2>Recent Blog Posts</h2>
+	<ul>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
+	  
+		    <li><span><a href="/blog/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
+	  
+	</ul>
+	<span><a href="/blog/archive">more &raquo;</a></span>
+    </div>
+    
+<!-- TAG CLOUD -->
+    <div class ="tagbox orangebox">
+	<h2>Blog Tag Cloud</h2>
+	<ul>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/blog/">
+            blog
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/first post/">
+            first post
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 171%">
+        <span><a href="/blog/tag/tor/">
+            tor
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/24c3/">
+            24c3
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/ccc/">
+            ccc
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/blog/tag/talks/">
+            talks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/blog/tag/bugs/">
+            bugs
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/crashes/">
+            crashes
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 64%">
+        <span><a href="/blog/tag/osx/">
+            osx
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/qt/">
+            qt
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/blog/tag/vidalia/">
+            vidalia
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 67%">
+        <span><a href="/blog/tag/vidalia bundle/">
+            vidalia bundle
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/meetup/">
+            meetup
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/blog/tag/attacks/">
+            attacks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/covert channels/">
+            covert channels
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/media coverage/">
+            media coverage
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 88%">
+        <span><a href="/blog/tag/bridges/">
+            bridges
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/blog/tag/incognito/">
+            incognito
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 113%">
+        <span><a href="/blog/tag/progress report/">
+            progress report
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/blog/tag/torbrowser/">
+            torbrowser
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 83%">
+        <span><a href="/blog/tag/torbutton/">
+            torbutton
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 65%">
+        <span><a href="/blog/tag/china/">
+            china
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/directors/">
+            directors
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 75%">
+        <span><a href="/blog/tag/release candidate/">
+            release candidate
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 74%">
+        <span><a href="/blog/tag/gsoc/">
+            gsoc
+        </a></span>
+    </li>
+
+	</ul>
+	<span><a href="/blog/tag-cloud">more tags &raquo;</a></span>
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>  
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Tor Project Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>The Tor Project Blog</li>
+          <li><a href="mailto:contact@torproject.org">contact@torproject.org</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyllrb</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+ <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jmttest2'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    
+  </body>
+
+</html>

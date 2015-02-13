@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>New Tor Denial of Service Attacks and Defenses</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/blog/css/main.css">
+    <link rel="canonical" href="http://tor.jmtodaro.com//blog/new-tor-denial-service-attacks-and-defenses">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/blog/">The Tor Project Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+	<a class="page-link" href="/blog/">Blog Home</a>
+        <a class="page-link" href="/blog/archive">Archives</a>
+	<a class="page-link" href="https://www.torproject.org/about/overview">About Tor</a>
+        <a class="page-link donate" href="https://www.torproject.org/donate/donate">Donate</a>
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <!-- Pages with side column need a 'maincol' class -->
+<div class="post maincol">
+
+  <header class="post-header">
+    <h1 class="post-title">New Tor Denial of Service Attacks and Defenses</h1>
+    <p class="post-meta">Jan 24, 2014 • robgjansen</p>
+  </header>
+
+  <article class="post-content">
+    <p>New work on denial of service in Tor will be presented at <a href="http://www.internetsociety.org/ndss2014/programme#session5">NDSS &#39;14 on Tuesday, February 25th, 2014</a>:</p>
+
+<p><strong>The Sniper Attack: Anonymously Deanonymizing and Disabling the Tor Network</strong><br>
+ by Rob Jansen, Florian Tschorsch, Aaron Johnson, and Björn Scheuermann<br>
+ To appear at the 21st Symposium on Network and Distributed System Security  </p>
+
+<p><a href="https://www-users.cs.umn.edu/%7Ejansen/publications/sniper-ndss2014.pdf">A copy of the published paper is now available</a>, as are my slides explaining the attacks in both <a href="https://www-users.cs.umn.edu/%7Ejansen/talks/sniper-dcaps-20131011.pptx">PPTX</a> and <a href="https://www-users.cs.umn.edu/%7Ejansen/talks/sniper-dcaps-20131011.pdf">PDF</a> formats.</p>
+
+<p>We found a new vulnerability in the design of Tor&#39;s flow control algorithm that can be exploited to remotely crash Tor relays. The attack is an extremely <strong>low resource</strong> attack in which an adversary&#39;s bandwidth may be traded for a target relay&#39;s memory (RAM) at an amplification rate of one to two orders of magnitude. Ironically, the adversary can use Tor to protect it&#39;s identity while attacking Tor without significantly reducing the effectiveness of the attack.</p>
+
+<p>We studied <strong>relay availability</strong> under the attack using <a href="https://shadow.github.io/">Shadow</a>, a discrete-event network simulator that runs the real Tor software in a safe, private testing environment, and found that we could disable each of the fastest guard and the fastest exit relay in a range of 1-18 minutes (depending on relay RAM capacity). We also found that the entire group of the top 20 exit relays, representing roughly 35% of Tor bandwidth capacity at the time of the analysis, could be disabled in a range of 29 minutes to 3 hours and 50 minutes. We also analyzed how the attack could potentially be used to <strong>deanonymize</strong> hidden services, and found that it would take between 4 and 278 hours before the attack would succeed (again depending on relay RAM capacity, as well as the bandwidth resources used to launch the attack).</p>
+
+<p>Due to our devastating findings, we also designed three defenses that mitigate our attacks, one of which provably renders the attack ineffective. Defenses have been implemented and deployed into the Tor software to ensure that <strong>the Tor network is no longer vulnerable as of Tor version 0.2.4.18-rc and later</strong>. Some of that work can be found in Trac tickets <a href="https://trac.torproject.org/projects/tor/ticket/9063">#9063</a>, <a href="https://trac.torproject.org/projects/tor/ticket/9072">#9072</a>, <a href="https://trac.torproject.org/projects/tor/ticket/9093">#9093</a>, and <a href="https://trac.torproject.org/projects/tor/ticket/10169">#10169</a>.</p>
+
+<p>In the remainder of this post I will detail the attacks and defenses we analyzed, noting again that this information is presented more completely (and more elegantly) in <a href="https://www-users.cs.umn.edu/%7Ejansen/publications/sniper-ndss2014.pdf">our paper</a>.</p>
+
+<hr>
+
+<h1>The Tor Network Infrastructure</h1>
+
+<p>The Tor network is a distributed system made up of thousands of computers running the Tor software that contribute their bandwidth, memory, and computational resources for the greater good. These machines are called Tor <strong>relays</strong>, because their main task is to forward or relay network traffic to another entity after performing some cryptographic operations. When a Tor user wants to download some data using Tor, the user&#39;s Tor client software will choose three relays from those available (an <strong>entry</strong>, <strong>middle</strong>, and <strong>exit</strong>), form a path or <strong>circuit</strong> between these relays, and then instruct the third relay (the exit) to fetch the data and send it back through the circuit. The data will get transferred from its source to the exit, from the exit to the middle, and from the middle to the entry before finally making its way to the client.</p>
+
+<h1>Flow Control</h1>
+
+<p>The client may request the exit to fetch large amounts of data, and so Tor uses a window-based <a href="http://en.wikipedia.org/wiki/Flow_control_%28data%29">flow control</a> scheme in order to limit the amount of data each relay needs to buffer in memory at once. When a circuit is created, the exit will initialize its circuit <strong>package</strong> counter to 1000 cells, indicating that it is willing to send 1000 cells into the circuit. The exit decrements the package counter by one for every data cell it sends into the circuit (to the middle relay), and stops sending data when the package counter reaches 0. The client at the other end of the circuit keeps a <strong>delivery</strong> counter, and initializes it to 0 upon circuit creation. The client increments the delivery counter by 1 for every data cell it receives on that circuit. When the client&#39;s delivery counter reaches 100, it sends a special Tor control cell, called a SENDME cell, to the exit to signal that it received 100 cells. Upon receiving the SENDME, the exit adds 100 to its package counter and continues sending data into the circuit.</p>
+
+<p>This flow control scheme limits the amount of outstanding data that may be in flight at any time (between the exit and the client) to 1000 cells, or about 500 KiB, per circuit. The same mechanism is used when data is flowing in the opposite direction (up from the client, through the entry and middle, and to the exit).</p>
+
+<h1>The Sniper Attack</h1>
+
+<p>The new Denial of Service (DoS) attack, which we call <strong>&quot;The Sniper Attack&quot;</strong>, exploits the flow control algorithm to remotely crash a victim Tor relay by depleting its memory resources. The paper presents three attacks that rely on the following two techniques:</p>
+
+<ol>
+<li> the attacker <strong>stops reading from the TCP connection containing the attack circuit</strong>, which causes the TCP window on the victim&#39;s outgoing connection to close and the victim to buffer up to 1000 cells; and</li>
+<li> the attacker causes cells to be continuously sent to the victim (exceeding the 1000 cell limit and consuming the victim&#39;s memory resources) either by <strong>ignoring the package window at packaging end</strong> of the circuit, or by <strong>continuously sending SENDMEs from the delivery end</strong> to the packaging end even though no cells have been read by the delivery end.</li>
+</ol>
+
+<p>I&#39;ll outline the attacks here, but remember that the <a href="https://www-users.cs.umn.edu/%7Ejansen/publications/sniper-ndss2014.pdf">paper</a> and <a href="https://www-users.cs.umn.edu/%7Ejansen/talks/sniper-dcaps-20131011.pdf">slides</a> provide more details and useful illustrations of each of the three versions of the attack.</p>
+
+<h2>Basic Version 1 (attacking an entry relay)</h2>
+
+<p>In basic version 1, the adversary controls the client and the exit relay, and chooses a victim for the entry relay position. The adversary builds a circuit through the victim to her own exit, and then the exit continuously generates and sends arbitrary data through the circuit toward the client while ignoring the package window limit. The client stops reading from the TCP connection to the entry relay, and the entry relay buffers all data being sent by the exit relay until it is killed by its OS out-of-memory killer.</p>
+
+<h2>Basic Version 2 (attacking an exit relay)</h2>
+
+<p>In basic version 2, the adversary controls the client and an Internet destination server (e.g. website), and chooses a victim for the exit relay position. The adversary builds a circuit through the victim exit relay, and then the client continuously generates and sends arbitrary data through the circuit toward the exit relay while ignoring the package window limit. The destination server stops reading from the TCP connection to the exit relay, and the exit relay buffers all data being sent by the client until it is killed by its OS out-of-memory killer.</p>
+
+<h2>Efficient Version</h2>
+
+<p>Both of the basic versions of the attack above require the adversary to generate and send data, consuming roughly the same amount of upstream bandwidth as the victim&#39;s available memory. The efficient version reduces this cost by one to two orders of magnitude.</p>
+
+<p>In the efficient version, the adversary controls <strong>only a client</strong>. She creates a circuit, choosing the victim for the entry position, and then instructs the exit relay to download a large file from some external Internet server. The client stops reading on the TCP connection to the entry relay, causing it to buffer 1000 cells.</p>
+
+<p>At this point, the adversary may &quot;trick&quot; the exit relay into sending more cells by sending it a SENDME cell, even though the client has not actually received any cells from the entry. As long as this SENDME does not increase the exit relay&#39;s package counter to greater than 1000 cells, the exit relay will continue to package data from the server and send it into the circuit toward the victim. If the SENDME does cause the exit relay&#39;s package window to exceed the 1000 cell limit, it will stop responding on that circuit. However, the entry and middle node will hold the circuit open until the client issues another command, meaning its resources will not be freed.</p>
+
+<p>The bandwidth cost of the attack after circuit creation is simply the bandwidth cost of occasionally sending a SENDME to the exit. The memory consumption speed depends on the bandwidth and congestion of non-victim circuit relays. We describe how to parallelize the attack using multiple circuits and multiple paths with diverse relays in order to draw upon Tor&#39;s inherent resources. We found that with roughly 50 KiB/s of upstream bandwidth, an attacker could consume the victim&#39;s memory at roughly 1 MiB/s. This is highly dependent on the victim&#39;s bandwidth capabilities: relays that use token buckets to restrict bandwidth usage will of course bound the attack&#39;s consumption rate.</p>
+
+<p>Rather than connecting directly to the victim, the adversary may instead launch the attack through a separate Tor circuit using a second client instance and the &quot;Socks4Proxy&quot; or &quot;Socks5Proxy&quot; option. In this case, she may benefit from the anonymity that Tor itself provides in order to evade detection. We found that there is not a significant increase in bandwidth usage when anonymizing the attack in this way.</p>
+
+<h1>Defenses</h1>
+
+<p>A simple but naive defense against the Sniper Attack is to have the guard node watch its queue length, and if it ever fills to over 1000 cells, kill the circuit. This defense does not prevent the adversary from parallelizing the attack by using multiple circuits (and then consuming 1000 cells on each), which we have shown to be extremely effective.</p>
+
+<p>Another defense, called &quot;authenticated SENDMEs&quot;, tries to protect against receiving a SENDME from a node that didn&#39;t actually receive 100 cells. In this approach, a 1 byte nonce is placed in every 100th cell by the packaging end, and that nonce must be included by the delivery end in the SENDME (otherwise the packaging end rejects the SENDME as inauthentic). As above, this does not protect against the parallel attack. It also doesn&#39;t defend against either of the basic attacks where the adversary controls the packaging end and ignores the SENDMEs anyway.</p>
+
+<p>The best defense, as we suggested to the Tor developers, is to implement a custom, adaptive out-of-memory circuit killer in application space (i.e. inside Tor). The circuit killer is only activated when memory becomes scarce, and then it chooses the circuit with the oldest front-most cell in its circuit queue. This will prevent the Sniper Attack by killing off all of the attack circuits.</p>
+
+<p>With this new defense in place, the next game is for the adversary to try to cause Tor to kill an honest circuit. In order for an adversary to cause an honest circuit to get killed, it must ensure that the front-most cell on its malicious circuit queue is at least slightly &quot;younger&quot; than the oldest cell on any honest queue. We show that the Sniper Attack is impractical with this defense: due to fairness mechanisms in Tor, the adversary must spend an extraordinary amount of bandwidth keeping its cells young — bandwidth that would likely be better served in a more traditional brute-force DoS attack.</p>
+
+<p>Tor has implemented a version of the out-of-memory killer for circuits, and is currently working on <a href="https://trac.torproject.org/projects/tor/ticket/10169">expanding this to channel and connection buffers</a> as well.</p>
+
+<h1>Hidden Service Attack and Countermeasures</h1>
+
+<p>The paper also shows how the Sniper Attack can be used to deanonymize hidden services:</p>
+
+<ol>
+<li> run a malicious entry guard relay;</li>
+<li> run <a href="http://freehaven.net/anonbib/#oakland2013-trawling">the attack from Oakland 2013</a> to learn the current guard relay of the target hidden service;</li>
+<li> run the Sniper Attack on the guard from step 2, knocking it offline and causing the hidden service to choose a new guard;</li>
+<li> repeat, until the hidden service chooses the relay from step 1 as its new entry guard.</li>
+</ol>
+
+<p>The technique to verify that the hidden service is using a malicious guard in step 4 is the same technique used in step 2.</p>
+
+<p>In the paper, we compute the expected time to succeed in this attack while running malicious relays of various capacities. It takes longer to succeed against relays that have more RAM, since it relies on the Sniper Attack to consume enough RAM to kill the relay (which itself depends on the bandwidth capacity of the victim relay). For the malicious relay bandwidth capacities and honest relay RAM amounts used in their estimate, we found that deanonymization would involve between 18 and 132 Sniper Attacks and take between ~4 and ~278 hours.</p>
+
+<p>This attack becomes much more difficult if the relay is rebooted soon after it crashes, and the attack is ineffective when Tor relays are properly defending against the Sniper Attack (see the &quot;Defenses&quot; section above).</p>
+
+<p>Strategies to defend hidden services in particular go beyond <a href="https://blog.torproject.org/blog/improving-tors-anonymity-changing-guard-parameters">those suggested here</a> to include <strong>entry guard rate-limiting</strong>, where you stop building circuits if you notice that your new guards keep going down (failing closed), and <strong>middle guards</strong>, guard nodes for your guard nodes. Both of these strategies attempt to make it harder to coerce the hidden service into building new circuits or exposing itself to new relays, since that is precisely what is needed for deanonymization.</p>
+
+<h1>Open Problems</h1>
+
+<p>The main defense implemented in Tor will start killing circuits when memory gets low. Currently, Tor uses a configuration option (MaxMemInCellQueues) that allows a relay operator to configure when the circuit-killer should be activated. There is likely not one single value that makes sense here: if it is too high, then relays with lower memory will not be protected; if it is too low, then there may be more false positives resulting in honest circuits being killed. Can Tor determine this setting in an OS-independent way that allows relays to automatically find the right value for MaxMemInCellQueues?</p>
+
+<p>The defenses against the Sniper Attack prevent the adversary from crashing the victim relay, but the adversary may still consume a relay&#39;s bandwidth (and memory resources, to a critical level) at relatively low cost. This means that even though the Sniper Attack can no longer kill a relay, it can still consume a large amount of its bandwidth at a relatively low cost (similar to more traditional bandwidth amplification attacks). More analysis of <strong>general bandwidth consumption attacks and defenses</strong> remains a useful research problem.</p>
+
+<p>Finally, <a href="https://blog.torproject.org/blog/hidden-services-need-some-love">hidden services also need some love</a>. More work is needed to redesign them in a way that does not allow a client to cause the hidden service to choose new relays on demand.</p>
+
+  </article>
+
+  <div class="post-footer">
+      <a class="post-blog" href="/blog">robgjansen's Blog</a>
+  </div>
+  <br />
+
+<!-- COMMENTS -->
+
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'jmttest2'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<!-- <div id="comments" class="comments clearfix">
+  <div class="comments-loading">
+  <p><em>Enable Javascript to view comments</em></p>
+  </div>
+</div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var loadingSection = document.body.querySelector('.comments-loading');
+    var icon = '<p>Comments Loading...</p><img alt="loading comments" src="/assets/images/comments-loading.gif">';
+
+    loadingSection.innerHTML = loadingSection.innerHTML + icon;
+
+    var options = {
+        container    : '.comments',
+//        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
+        topic_key    : '/new-tor-denial-service-attacks-and-defenses',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+//            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
+            'http://juvia.torblog.lan/api/show_topic.js' +
+	    '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+
+    (document.getElementsByTagName('head')[0] ||
+      document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
+
+})();
+</script> -->
+</div>
+
+<!-- Include the side column -->
+<div class="sidecol">
+
+<!-- RSS FEED / SEARCH -->
+    <div class="sidefirst">
+	<a href="/blog/feed.xml"><img src="/blog/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="/blog/img/rss.png">Atom</a> -->
+	<form>
+        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
+        </form>
+    </div>
+
+<!-- EVENTS -->
+    <div class ="sidebox orangebox">
+	<h2>Upcoming Events</h2>
+	<ul>
+	    
+		    <li><span><a href="/blog/tor-winter-dev-meeting-2015">Tor Winter Dev Meeting 2015</a></span></li>
+	    
+		    <li><span><a href="/blog/roger-and-jake-rightscon-manila">Roger and Jake at RightsCon in Manila</a></span></li>
+	    
+		    <li><span><a href="/blog/tor-booth-fosdem-2015">Tor booth at FOSDEM 2015</a></span></li>
+	    
+		    <li><span><a href="/blog/many-tor-people-pets-philadelphia">Many Tor people at PETS in Philadelphia</a></span></li>
+	    
+	</ul>
+	<span><a href="/blog/events">full calendar &raquo;</a></span>
+    </div>
+    
+<!-- RECENT BLOG POSTS -->
+    <div class ="sidebox greenbox">
+	<h2>Recent Blog Posts</h2>
+	<ul>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
+	  
+		    <li><span><a href="/blog/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-weekly-news--january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+	  
+		    <li><span><a href="/blog/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
+	  
+	</ul>
+	<span><a href="/blog/archive">more &raquo;</a></span>
+    </div>
+    
+<!-- TAG CLOUD -->
+    <div class ="tagbox orangebox">
+	<h2>Blog Tag Cloud</h2>
+	<ul>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/blog/">
+            blog
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/first post/">
+            first post
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 171%">
+        <span><a href="/blog/tag/tor/">
+            tor
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/24c3/">
+            24c3
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/ccc/">
+            ccc
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/blog/tag/talks/">
+            talks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/blog/tag/bugs/">
+            bugs
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/crashes/">
+            crashes
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 64%">
+        <span><a href="/blog/tag/osx/">
+            osx
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/qt/">
+            qt
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/blog/tag/vidalia/">
+            vidalia
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 67%">
+        <span><a href="/blog/tag/vidalia bundle/">
+            vidalia bundle
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/meetup/">
+            meetup
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/blog/tag/attacks/">
+            attacks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/covert channels/">
+            covert channels
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/blog/tag/media coverage/">
+            media coverage
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 88%">
+        <span><a href="/blog/tag/bridges/">
+            bridges
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/blog/tag/incognito/">
+            incognito
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 113%">
+        <span><a href="/blog/tag/progress report/">
+            progress report
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/blog/tag/torbrowser/">
+            torbrowser
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 83%">
+        <span><a href="/blog/tag/torbutton/">
+            torbutton
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 65%">
+        <span><a href="/blog/tag/china/">
+            china
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/blog/tag/directors/">
+            directors
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 75%">
+        <span><a href="/blog/tag/release candidate/">
+            release candidate
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 74%">
+        <span><a href="/blog/tag/gsoc/">
+            gsoc
+        </a></span>
+    </li>
+
+	</ul>
+	<span><a href="/blog/tag-cloud">more tags &raquo;</a></span>
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>  
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Tor Project Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>The Tor Project Blog</li>
+          <li><a href="mailto:contact@torproject.org">contact@torproject.org</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyllrb</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+ <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jmttest2'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    
+  </body>
+
+</html>
