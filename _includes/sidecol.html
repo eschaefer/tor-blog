@@ -1,0 +1,52 @@
+<div class="sidecol">
+
+<!-- RSS FEED / SEARCH -->
+    <div class="sidefirst">
+	<a href="{{ "/feed.xml" | prepend: site.baseurl }}"><img src="{{site.baseurl}}/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="{{site.baseurl}}/img/rss.png">Atom</a> -->
+	<form>
+        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
+        </form>
+    </div>
+
+<!-- EVENTS -->
+    <div class ="sidebox orangebox">
+	<h2>Upcoming Events</h2>
+	<ul>
+	    {% for post in site.categories.event limit:4 %}
+		    <li><span><a href="{{ post.url | prepend: site.baseurl}}">{{ post.title | xml_escape }}</a></span></li>
+	    {% endfor %}
+	</ul>
+	<span><a href="{{site.baseurl}}/events">full calendar &raquo;</a></span>
+    </div>
+    
+<!-- RECENT BLOG POSTS -->
+    <div class ="sidebox greenbox">
+	<h2>Recent Blog Posts</h2>
+	<ul>
+	  {% for post in site.categories.blog limit:10 %}
+		    <li><span><a href="{{ post.url | prepend: site.baseurl}}">{{ post.title | xml_escape }}</a></span></li>
+	  {% endfor %}
+	</ul>
+	<span><a href="{{site.baseurl}}/archive">more &raquo;</a></span>
+    </div>
+    
+<!-- TAG CLOUD -->
+    <div class ="tagbox orangebox">
+	<h2>Blog Tag Cloud</h2>
+	<ul>
+{% for tag in site.tags limit: 25 %}
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: {{ tag | last | size | times: 1000 | divided_by: site.tags.size | plus: 55 }}%">
+        <span><a href="{{site.baseurl}}/tag/{{ tag | first | slugize }}/">
+            {{ tag | first }}
+        </a></span>
+    </li>
+{% endfor %}
+	</ul>
+	<span><a href="{{site.baseurl}}/tag-cloud">more tags &raquo;</a></span>
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>  
