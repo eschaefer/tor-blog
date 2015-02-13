@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>The Tor Project Blog</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://torblog.lan//blog/page9/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">The Tor Project Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+	<a class="page-link" href="/">Blog Home</a>
+        <a class="page-link" href="/archive">Archives</a>
+	<a class="page-link" href="https://www.torproject.org/about/overview">About Tor</a>
+        <a class="page-link donate" href="https://www.torproject.org/donate/donate">Donate</a>
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <!-- Pages with side column need a 'maincol' class -->
+<div class="home maincol">
+
+    <ul class="post-content">
+	
+	<li>
+	  <h2>
+	    <a class="post-link" href="/new-alpha-series-begins-tor-0261-alpha-released">A new alpha series begins: Tor 0.2.6.1-alpha is released</a>
+	  </h2>
+	  <span class="post-meta">Posted Oct 30, 2014 by <a class="post-author" href="nickm">nickm</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/026">026</a>
+              
+		  <a class="post-category post-category-js" href="/tag/0261">0261</a>
+              
+		  <a class="post-category post-category-js" href="/tag/alpha">alpha</a>
+              
+		  <a class="post-category post-category-js" href="/tag/release">release</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor">tor</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>Tor 0.2.6.1-alpha is the first release in the Tor 0.2.6.x series. It includes numerous code cleanups and new tests, and fixes a large number of annoying bugs. Out-of-memory conditions are handled better than in 0.2.5, pluggable transports have improved proxy support, and clients now use optimistic data for contacting hidden services. Also, we are now more robust to changes in what we consider a parseable directory object, so that tightening restrictions does not have a risk of introducing infinite download loops.</p>
+
+<p>This is the first alpha release in a new series, so expect there to be bugs. Users who would rather test out a more stable branch should stay with 0.2.5.x for now.</p>
+
+<p>This announcement is for the source release only; I&#39;d expect that compiled packages for several platforms should be available over the next several days.</p>
+
+<p>Changes in version 0.2.6.1-alpha - 2014-10-30</p>
+
+<ul>
+<li><p>New compiler and system requirements:</p>
+
+<ul>
+<li><p>Tor 0.2.6.x requires that your compiler support more of the C99 language standard than before. The &#39;configure&#39; script now detects whether your compiler supports C99 mid-block declarations and designated initializers. If it does not, Tor will not compile.</p>
+
+<p>We may revisit this requirement if it turns out that a significant number of people need to build Tor with compilers that don&#39;t bother implementing a 15-year-old standard. Closes ticket 13233.</p></li>
+<li><p>Tor no longer supports systems without threading support. When we began working on Tor, there were several systems that didn&#39;t have threads, or where the thread support wasn&#39;t able to run the threads of a single process on multiple CPUs. That no longer holds: every system where Tor needs to run well now has threading support. Resolves ticket 12439.</p></li>
+</ul></li>
+</ul>
+
+<p>  <a href="https://blog.torproject.org/blog/new-alpha-series-begins-tor-0261-alpha-released"><strong>read more »</strong></a></p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="nickm">nickm's Blog</a>
+<!--	      <a class="post-cmtlink" href="/new-alpha-series-begins-tor-0261-alpha-released/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/new-alpha-series-begins-tor-0261-alpha-released#comments">Leave a comment</a>
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/tor-weekly-news--october-29th-2014">Tor Weekly News — October 29th, 2014</a>
+	  </h2>
+	  <span class="post-meta">Posted Oct 29, 2014 by <a class="post-author" href="harmony">harmony</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/tor weekly news">tor weekly news</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>Welcome to the forty-third issue in 2014 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the Tor community.</p>
+
+<h1>Tor 0.2.5.10 is out</h1>
+
+<p>The 0.2.5.x branch of the core Tor software hit stable, with the release of 0.2.5.10. As Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-announce/2014-October/000096.html">explained</a>, there have been no changes since last week’s 0.2.5.9-rc release, and the new features will be familiar to readers of Tor Weekly News over the past year of development, but highlights include “improved denial-of-service resistance for relays, new compiler hardening options, and a system-call sandbox for hardened installations on Linux”, as well as improvements to transparent proxying, building and testing, pluggable transport usability, and much more.</p>
+
+<p>This release means that Tor versions in the 0.2.3.x series, which has “received no patches or attention for some while” and “accumulated many known flaws”, <a href="https://lists.torproject.org/pipermail/tor-relays/2014-October/005590.html">are now deprecated</a>. Relay operators running these versions must upgrade as soon as possible, or risk having their relays rejected from the network in the near future.</p>
+
+<p>Please see Nick’s release announcement for the full changelog, and download your copy of the 0.2.5.10 source code from the <a href="https://dist.torproject.org/">distribution directory</a> or a prebuilt package from your usual repositories.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Jacob Appelbaum <a href="https://lists.torproject.org/pipermail/tor-talk/2014-October/035326.html">announced</a> version 0.1.3 of TorBirdy, a torifying extension for the Thunderbird email client. Among other things, this release fixes the recently-reported <a href="https://bugs.torproject.org/13480">“wrote:” bug</a>, disables the automatic downloading of messages from POP3 accounts, and ensures that draft messages for IMAP accounts are stored on the local system rather than sent over the network. However, as Jacob wrote, “it’s still experimental”, so “use at your own risk”. See the release announcement for a full changelog.</p>
+
+<p>Anthony G. Basile <a href="http://opensource.dyc.edu/pipermail/tor-ramdisk/2014-October/000134.html">announced</a> version 20141022 of tor-ramdisk, the micro Linux distribution whose only purpose is to host a Tor server in an environment that maximizes security and privacy. This release addresses the recent <a href="https://blog.torproject.org/blog/new-sslv3-attack-found-disable-sslv3-torbrowser">POODLE attack</a> with updates to Tor and OpenSSL, and also upgrades the Linux kernel.</p>
+
+<p>Yawning Angel <a href="https://lists.torproject.org/pipermail/tor-dev/2014-October/007670.html">called for testing</a> of the revamped tor-fw-helper, a tool that automates the port forwarding required (for example) by the <a href="https://crypto.stanford.edu/flashproxy/">flash proxy</a> pluggable transport. Please see Yawning’s message for full testing instructions and other important information: “Questions, Comments, Feedback appreciated”.</p>
+
+<p>On the Tor blog, Andrew Lewman <a href="https://blog.torproject.org/blog/tor-misused-criminals">responded</a> to the abuse of Tor by creators of so-called “ransomware”, or malware that tries to restrict access to users’ files unless a ransom is paid; these extortionists sometimes ask their victims to install Tor software in order to communicate with them over a hidden service, leading users to the mistaken belief that The Tor Project is somehow involved. As Andrew wrote, this software “is unrelated to The Tor Project. We didn’t produce it, and we didn’t ask to be included in the criminal infection of any computer.” Users may find the information provided by the <a href="https://www.bbc.com/news/technology-28661463">BBC</a> and <a href="http://www.bleepingcomputer.com/virus-removal/cryptolocker-ransomware-information">Bleeping Computer</a> to be helpful in resolving the problem.</p>
+
+<p>Josh Pitts posted an <a href="http://www.leviathansecurity.com/blog/the-case-of-the-modified-binaries/">analysis</a> of apparently malicious behavior by a Tor relay that was modifying binary files downloaded over Tor circuits in which it was the exit node. As Roger Dingledine <a href="https://lists.torproject.org/pipermail/tor-talk/2014-October/035340.html">responded</a>, “we’ve now set the BadExit flag on this relay, so others won’t accidentally run across it”.</p>
+
+<p>David Fifield <a href="https://lists.torproject.org/pipermail/tor-dev/2014-October/007659.html">pointed out</a> “an apparent negative correlation between obfs3 users and vanilla users” in the Tor Metrics portal’s <a href="https://metrics.torproject.org/users.html?graph=userstats-bridge-transport&amp;transport=%3COR%3E&amp;transport=obfs3#userstats-bridge-transport">bridge user graphs</a> and wondered what might be causing it.</p>
+
+<h1>News from Tor StackExchange</h1>
+
+<p>Dodo wants to run several hidden services (HTTP, XMPP, SSH etc.), but use <a href="https://tor.stackexchange.com/q/4437/88">just one onion address</a>. Jobiwan explained that one can forward each port to a different service. Further information can be found at the <a href="https://www.torproject.org/docs/tor-hidden-service.html.en#three">configuration page for hidden services</a>.</p>
+
+<p>Rodney Hester proxies the DirPort of his relay and saw lots of requests to nonexistent URLs, of which the most prominent is the URL <a href="https://tor.stackexchange.com/q/4452/88">/tor/status/all.z</a>, and asks where they are coming from. Do you have an answer? If so, please share it at Tor’s StackExchange site.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, qbi, Roger Dingledine, and Harmony.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="harmony">harmony's Blog</a>
+<!--	      <a class="post-cmtlink" href="/tor-weekly-news--october-29th-2014/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/tor-weekly-news--october-29th-2014#comments">Leave a comment</a>
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/tor-02510-released-and-tor-023x-deprecated">Tor 0.2.5.10 is released! (and Tor 0.2.3.x is deprecated)</a>
+	  </h2>
+	  <span class="post-meta">Posted Oct 27, 2014 by <a class="post-author" href="nickm">nickm</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/deprecation">deprecation</a>
+              
+		  <a class="post-category post-category-js" href="/tag/release">release</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor">tor</a>
+              
+		  <a class="post-category post-category-js" href="/tag/tor-025">tor-025</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>Tor 0.2.5.10 is the first stable release in the 0.2.5 series.</p>
+
+<p>It adds several new security features, including improved denial-of-service resistance for relays, new compiler hardening options, and a system-call sandbox for hardened installations on Linux (requires seccomp2). The controller protocol has several new features, resolving IPv6 addresses should work better than before, and relays should be a little more CPU-efficient. We&#39;ve added support for more OpenBSD and FreeBSD transparent proxy types. We&#39;ve improved the build system and testing infrastructure to allow unit testing of more parts of the Tor codebase. Finally, we&#39;ve addressed several nagging pluggable transport usability issues, and included numerous other small bugfixes and features mentioned below.</p>
+
+<p>This release marks end-of-life for Tor 0.2.3.x; those Tor versions have accumulated many known flaws; everyone should upgrade.</p>
+
+<p>Below we list all changes in 0.2.5.10 since the 0.2.4.x series; for a list of changes in individual alpha releases, <a href="https://gitweb.torproject.org/tor.git/blob_plain/refs/heads/release-0.2.5:/ChangeLog">see the ChangeLog</a>. <a href="https://blog.torproject.org/blog/tor-02510-released-and-tor-023x-deprecated"><strong>read more »</strong></a></p>
+
+<h2>Changes in version 0.2.5.10 - 2014-10-24</h2>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="nickm">nickm's Blog</a>
+<!--	      <a class="post-cmtlink" href="/tor-02510-released-and-tor-023x-deprecated/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/tor-02510-released-and-tor-023x-deprecated#comments">Leave a comment</a>
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/torbirdy-013-our-fourth-beta-release">TorBirdy 0.1.3 -- Our fourth beta release!</a>
+	  </h2>
+	  <span class="post-meta">Posted Oct 23, 2014 by <a class="post-author" href="sukhbir">sukhbir</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/email">email</a>
+              
+		  <a class="post-category post-category-js" href="/tag/icedove">icedove</a>
+              
+		  <a class="post-category post-category-js" href="/tag/Thunderbird">Thunderbird</a>
+              
+		  <a class="post-category post-category-js" href="/tag/TorBirdy">TorBirdy</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>We are happy to announce the fourth beta release of TorBirdy: 0.1.3. All users are encouraged to upgrade as soon as possible, especially if you are using Thunderbird 31.</p>
+
+<p>Notable changes in this release include:</p>
+
+<blockquote>
+<p>0.1.3, 23 Oct 2014</p>
+
+<p>* The default keyserver (hidden service) has been updated:<br>
+ - hkp://<a href="http://qdigse2yzvuglcix.onion">qdigse2yzvuglcix.onion</a><br>
+ * Show the Sender header in message pane (closes #10226)<br>
+ * Draft messages on IMAP accounts are now saved locally (closes #10309)<br>
+ * Restore preferences to the user&#39;s own defaults instead of Thunderbird&#39;s<br>
+ (closes #10588)<br>
+ * network.proxy.no_proxies_on is no longer set to &quot;localhost, 127.0.0.1&quot;<br>
+ (thanks to Carsten N.)<br>
+ * Disable automatic downloading of new messages for POP3 accounts<br>
+ (closes #11188)<br>
+ * Update the reply_header author behaviour (closes #13480)<br>
+ * TorBirdy is now available in 31 languages:<br>
+ - Arabic<br>
+ - Catalan<br>
+ - Czech<br>
+ - Danish<br>
+ - German<br>
+ - Greek<br>
+ - English (US)<br>
+ - English (Great Britain)<br>
+ - Spanish<br>
+ - Basque<br>
+ - French<br>
+ - Hebrew<br>
+ - Hungarian<br>
+ - Indonesian<br>
+ - Italian<br>
+ - Korean<br>
+ - Latvian<br>
+ - Norwegian Bokmål<br>
+ - Norwegian Nynorsk<br>
+ - Punjabi<br>
+ - Polish<br>
+ - Portuguese<br>
+ - Portuguese (Brazil)<br>
+ - Romanian<br>
+ - Russian<br>
+ - Slovak<br>
+ - Slovenian<br>
+ - Serbian<br>
+ - Swedish<br>
+ - Turkish<br>
+ - Ukrainian</p>
+</blockquote>
+
+<p>We offer two ways of installing TorBirdy -- either by visiting our <a href="https://dist.torproject.org/torbirdy/torbirdy-0.1.3.xpi">website</a> (<a href="https://dist.torproject.org/torbirdy/torbirdy-0.1.3.xpi.asc">sig</a>) or by visiting the <a href="https://addons.mozilla.org/en-us/thunderbird/addon/torbirdy/">Mozilla Add-ons page for TorBirdy</a>. Please note that there may be a delay -- which can range from a few hours to days -- before the extension is reviewed by Mozilla and updated on the Add-ons page.</p>
+
+<p>As a general anonymity and security note: we are still working on <a href="https://trac.torproject.org/projects/tor/wiki/torbirdy#InfoLeaks">two known anonymity issues</a> with Mozilla. Please make sure that you read the <a href="https://trac.torproject.org/projects/tor/wiki/torbirdy#BeforeusingTorBirdy">Before Using TorBirdy</a> and <a href="https://trac.torproject.org/projects/tor/wiki/torbirdy#KnownTorBirdyIssues">Known TorBirdy Issues</a> sections on the wiki before using TorBirdy.</p>
+
+<p>We had love help with getting our patches accepted, or anything that you think will help improve TorBirdy!</p>
+
+<p>Feel free to follow along with the release on <a href="https://lists.torproject.org/pipermail/tor-talk/2014-October/035326.html">the tor-talk mailing list</a>.</p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="sukhbir">sukhbir's Blog</a>
+<!--	      <a class="post-cmtlink" href="/torbirdy-013-our-fourth-beta-release/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/torbirdy-013-our-fourth-beta-release#comments">Leave a comment</a>
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/tor-weekly-news--october-22nd-2014">Tor Weekly News — October 22nd, 2014</a>
+	  </h2>
+	  <span class="post-meta">Posted Oct 22, 2014 by <a class="post-author" href="harmony">harmony</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/tor weekly news">tor weekly news</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>Welcome to the forty-second issue in 2014 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the Tor community.</p>
+
+<h1>Tor 0.2.5.9-rc is out</h1>
+
+<p>Nick Mathewson <a href="https://lists.torproject.org/pipermail/tor-talk/2014-October/035302.html">announced</a> what is hopefully the final release candidate in the Tor 0.2.5 series. It contains two enhancements in response to the recent <a href="https://blog.torproject.org/blog/new-sslv3-attack-found-disable-sslv3-torbrowser">POODLE attack on OpenSSL</a>, “even though POODLE does not affect Tor”, as well as a number of other miscellaneous improvements.</p>
+
+<p>Upgrading is especially important for relay operators, as a <a href="https://blog.torproject.org/blog/advisory-remote-dos-when-using-tor-recent-openssl-versions-built-no-ssl3-option">remote crash is possible</a> when older Tor versions are used with a version of OpenSSL released last week that was built with the “no-ssl3” flag.</p>
+
+<p>As ever, you can download the source code from the <a href="https://www.torproject.org/dist/">distribution directory</a> and packages should follow shortly.</p>
+
+<h1>Tor Browser 4.0 is out</h1>
+
+<p>Mike Perry <a href="https://blog.torproject.org/blog/tor-browser-40-released">announced</a> a major release by the Tor Browser team. Version 4.0 of the secure and anonymous web browser brings several exciting new features to the stable series, including the <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a> censorship-circumvention tool, the secure updater, and a simplified Javascript enabling/disabling process in NoScript, all based on a customized Firefox ESR31. SSLv3 is also disabled, in response to the recent POODLE attack.</p>
+
+<p>This release contains important security fixes, and all users should upgrade as soon as possible. Please note that the new directory structure means users cannot simply extract the new Tor Browser over their existing 3.6.6 directory, and must instead delete the old version entirely. The secure updater still requires manual activation in the “About Tor Browser” menu option, as its security will depend “on the specific CA that issued the <a href="http://www.torproject.org" title="www.torproject.org">www.torproject.org</a> HTTPS certificate (Digicert)” until <a href="https://bugs.torproject.org/11955">site-specific certificate pinning</a> and <a href="https://bugs.torproject.org/13379">signed update files</a> are implemented. Furthermore, “we still need to improve meek’s performance to match other transports”, wrote Mike, “so adjust your expectations accordingly”.</p>
+
+<p>See Mike’s post for further details and a full changelog, and get your copy of Tor Browser 4.0 from the <a href="https://www.torproject.org/dist/torbrowser/4.0/">distribution directory</a> or the <a href="https://www.torproject.org/download/download-easy">download page</a>.</p>
+
+<h1>Tails 1.2 is out</h1>
+
+<p>The Tails team put out <a href="https://tails.boum.org/news/version_1.2/">version 1.2</a> of the anonymizing live operating system. This release replaces the Iceweasel browser with “most of” the regular Tor Browser, and confines several important applications with AppArmor.</p>
+
+<p>I2P will now, like Tor, be started upon network connection if activated with the “i2p” boot parameter, and must be used with the new dedicated I2P Browser. This is also the last Tails release to ship with the now-unmaintained TrueCrypt tool, but the Tails team has already documented the method for <a href="https://tails.boum.org/doc/encryption_and_privacy/truecrypt/index#cryptsetup">opening TrueCrypt volumes with cryptsetup</a>. See the team’s announcement for a full list of changes in the new version.</p>
+
+<p>This is an important security release and all users should upgrade as soon as possible. If you have a running Tails, you should be able to use the incremental updater; if your Tails drive was manually created, or you are a new user, head to the <a href="https://tails.boum.org/download/">download page</a> for more information.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>tagnaq <a href="https://lists.torproject.org/pipermail/tor-talk/2014-October/035285.html">warned</a> users of <a href="https://trac.torproject.org/projects/tor/wiki/torbirdy">TorBirdy</a>, the torifying extension for the Thunderbird mail client, that a change in Thunderbird 31’s handling of the “reply_header_authorwrote” header means that the word “wrote”, translated into the user’s system language, may be inserted before quoted text when replying to emails, leaking the system language to recipients of replies if not removed. Jacob Appelbaum <a href="https://lists.torproject.org/pipermail/tor-talk/2014-October/035305.html">responded</a> that a new release of TorBirdy addressing this and other issues was imminent.</p>
+
+<p>Arturo Filastò <a href="https://lists.torproject.org/pipermail/ooni-dev/2014-October/000177.html">announced</a> the release of ooniprobe 1.1.2, containing “two new report entry keys, test_start_time and test_runtime”, and a fix for a bug that “led to ooniresources not working properly”.</p>
+
+<p>evilaliv3 <a href="https://lists.torproject.org/pipermail/tor-dev/2014-October/007641.html">announced</a> version 3.1.20 of tor2web, an HTTP proxy that enables access to hidden services without a Tor client, for users who do not require strong anonymity. As well as “some networking bugfixing and optimizations”, this release adds a “replace” mode for remotely-fetched blocklists in addition to “merge”, and a feature that allows different hostnames to be mapped to specific hidden services.</p>
+
+<p>Karsten Loesing gave users of Onionoo a “<a href="https://lists.torproject.org/pipermail/onionoo-announce/2014/000001.html">one-month heads-up</a>” that on or after November 15th, a change to the protocol will let the search parameter “accept base64-encoded fingerprints in addition to hex-encoded fingerprints, nicknames, and IP addresses.” These searches will also return relays whose base64-encoded fingerprints are a partial match for the search string. “If you’re fine with that, feel free to ignore this message and do nothing”, but if not, “you’ll have to filter out those relays locally”.</p>
+
+<p>Following updates to the Tor Project’s website, Sebastian Hahn <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-October/000727.html">drew attention</a> to a change in the steps necessary to <a href="https://www.torproject.org/docs/running-a-mirror">run a website mirror</a>. “Please ask if you run into any trouble, and thanks for providing a mirror!”</p>
+
+<p>Inspired by “the Directory Authorities, the crappy experiment leading up to Black Hat, and the promise that one can recreate the Tor network in the event of some catastrophe”, Tom Ritter sent out a <a href="https://lists.torproject.org/pipermail/tor-dev/2014-October/007613.html">detailed report</a> of issues he encountered while setting up his own Tor network using “full-featured independent tor daemons”, rather than a <a href="https://www.torproject.org/docs/faq#PrivateTorNetwork">network simulator</a> like Shadow or Chutney.</p>
+
+<p>Cthulhu asked for assistance in overhauling the <a href="https://bugs.torproject.org/13421">GoodBadISP page</a>, which is the starting point for many relay operators around the world. If you have some time to spare, or know some ISPs not yet on the list, it would be greatly appreciated if they could be added to the page. This new effort to reach out to hosting providers could be of great value after years of what Roger Dingledine has <a href="https://lists.torproject.org/pipermail/tor-relays/2014-October/005495.html">described</a> as a “slash and burn” agriculture model of operating Tor nodes.</p>
+
+<p>Vladimir Martyanov started a <a href="https://lists.torproject.org/pipermail/tor-dev/2014-October/007619.html">discussion</a> on the question of whether Tor developers should ensure that tor can still be built using compilers that do not support the C99 programming language standard, such as older versions of Microsoft Visual Studio.</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Lunar, Cthulhu, Roger Dingledine, Karsten Loesing, and Harmony.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="harmony">harmony's Blog</a>
+<!--	      <a class="post-cmtlink" href="/tor-weekly-news--october-22nd-2014/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/tor-weekly-news--october-22nd-2014#comments">Leave a comment</a>
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+    </ul>
+    <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+
+
+    <!-- Pagination links -->
+    
+    <div class="pagination">
+      <a href="/index.html">&laquo; Newest</a>
+      &nbsp;
+
+      
+	<a href="/blog/page8">&laquo; Prev</a>
+      
+      &nbsp;
+
+      <!-- Pagination vars -->
+      
+      
+      
+      
+      
+      
+	  
+      
+      
+      
+
+	
+	  <a href="../../blog/page4">4</a>
+	
+      
+
+	
+	  <a href="../../blog/page5">5</a>
+	
+      
+
+	
+	  <a href="../../blog/page6">6</a>
+	
+      
+
+	
+	  <a href="../../blog/page7">7</a>
+	
+      
+
+	
+	  <a href="../../blog/page8">8</a>
+	
+      
+
+	
+	  9
+
+	
+      
+
+	
+	  <a href="../../blog/page10">10</a>
+	
+      
+
+	
+	  <a href="../../blog/page11">11</a>
+	
+      
+
+	
+	  <a href="../../blog/page12">12</a>
+	
+      
+
+	
+	  <a href="../../blog/page13">13</a>
+	
+      
+
+	
+	  <a href="../../blog/page14">14</a>
+	
+      
+      &nbsp;
+
+      
+	<a href="/blog/page10">Next &raquo;</a>
+      
+      &nbsp;
+      <a href="../../blog/page147">Oldest &raquo;</a>
+    </div>
+    
+    
+    <br />
+
+  </div>
+
+<!-- Include the side column -->
+<div class="sidecol">
+
+<!-- RSS FEED / SEARCH -->
+    <div class="sidefirst">
+	<a href="/feed.xml"><img src="/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="/img/rss.png">Atom</a> -->
+	<form>
+        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
+        </form>
+    </div>
+
+<!-- EVENTS -->
+    <div class ="sidebox orangebox">
+	<h2>Upcoming Events</h2>
+	<ul>
+	    
+		    <li><span><a href="/tor-winter-dev-meeting-2015">Tor Winter Dev Meeting 2015</a></span></li>
+	    
+		    <li><span><a href="/roger-and-jake-rightscon-manila">Roger and Jake at RightsCon in Manila</a></span></li>
+	    
+		    <li><span><a href="/tor-booth-fosdem-2015">Tor booth at FOSDEM 2015</a></span></li>
+	    
+		    <li><span><a href="/many-tor-people-pets-philadelphia">Many Tor people at PETS in Philadelphia</a></span></li>
+	    
+	</ul>
+	<span><a href="/events">full calendar &raquo;</a></span>
+    </div>
+    
+<!-- RECENT BLOG POSTS -->
+    <div class ="sidebox greenbox">
+	<h2>Recent Blog Posts</h2>
+	<ul>
+	  
+		    <li><span><a href="/tor-weekly-news--february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+	  
+		    <li><span><a href="/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
+	  
+		    <li><span><a href="/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+	  
+		    <li><span><a href="/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
+	  
+	</ul>
+	<span><a href="/archive">more &raquo;</a></span>
+    </div>
+    
+<!-- TAG CLOUD -->
+    <div class ="tagbox orangebox">
+	<h2>Blog Tag Cloud</h2>
+	<ul>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/blog/">
+            blog
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/first post/">
+            first post
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 171%">
+        <span><a href="/tag/tor/">
+            tor
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/24c3/">
+            24c3
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/ccc/">
+            ccc
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/tag/talks/">
+            talks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/tag/bugs/">
+            bugs
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/crashes/">
+            crashes
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 64%">
+        <span><a href="/tag/osx/">
+            osx
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/qt/">
+            qt
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/tag/vidalia/">
+            vidalia
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 67%">
+        <span><a href="/tag/vidalia bundle/">
+            vidalia bundle
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/meetup/">
+            meetup
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/tag/attacks/">
+            attacks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/covert channels/">
+            covert channels
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/media coverage/">
+            media coverage
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 88%">
+        <span><a href="/tag/bridges/">
+            bridges
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/tag/incognito/">
+            incognito
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 113%">
+        <span><a href="/tag/progress report/">
+            progress report
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/tag/torbrowser/">
+            torbrowser
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 83%">
+        <span><a href="/tag/torbutton/">
+            torbutton
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 65%">
+        <span><a href="/tag/china/">
+            china
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/directors/">
+            directors
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 75%">
+        <span><a href="/tag/release candidate/">
+            release candidate
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 74%">
+        <span><a href="/tag/gsoc/">
+            gsoc
+        </a></span>
+    </li>
+
+	</ul>
+	<span><a href="/tag-cloud">more tags &raquo;</a></span>
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>  
+
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Tor Project Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>The Tor Project Blog</li>
+          <li><a href="mailto:contact@torproject.org">contact@torproject.org</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyllrb</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+ <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jmttest'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    
+  </body>
+
+</html>

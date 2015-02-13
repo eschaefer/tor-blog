@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Hidden Services need some love</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://torblog.lan//hidden-services-need-some-love">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">The Tor Project Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+	<a class="page-link" href="/">Blog Home</a>
+        <a class="page-link" href="/archive">Archives</a>
+	<a class="page-link" href="https://www.torproject.org/about/overview">About Tor</a>
+        <a class="page-link donate" href="https://www.torproject.org/donate/donate">Donate</a>
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <!-- Pages with side column need a 'maincol' class -->
+<div class="post maincol">
+
+  <header class="post-header">
+    <h1 class="post-title">Hidden Services need some love</h1>
+    <p class="post-meta">Apr 22, 2013 • asn</p>
+  </header>
+
+  <article class="post-content">
+    <p>Hidden Services are in a peculiar situation. While they see a loyal fan-base, there are no dedicated Tor developers to take care of them. This results in a big pile of features that need to be researched, implemented and deployed to make Hidden Services more secure and effective.</p>
+
+<p>The purpose of this blog post is threefold:</p>
+
+<ol>
+<li> Introduce Hidden Service operators to various shortcomings of the Hidden Service architecture.</li>
+<li> Introduce researchers to various research questions regarding Hidden Services.</li>
+<li> Introduce developers to the plethora of coding tasks left to be done in the hidden Service ecosystem.</li>
+</ol>
+
+<p>Note that not every idea listed in the blog post is going to turn out to be a great idea. This post is more of a brain-dump than a solid fully-analyzed agenda.</p>
+
+<p>In any case, let&#39;s get down to the issues:</p>
+
+<hr>
+
+<h3>Hidden Service Scaling</h3>
+
+<p>The current Hidden Services architecture does not scale well. Ideally, big websites should have the option to completely migrate to Tor Hidden Services, but this is not possible with their current architecture.</p>
+
+<p>One of the main problems with a busy Hidden Service is that its Introduction Points will get hammered by clients. Since Introduction Points are regular Tor relays, they are not intended to handle such load.</p>
+
+<p>Therefore, one of the first steps for improving Hidden Services scalability is increasing the durability of its Introduction Points. Currently, a Hidden Service selects the number of its Introduction Points (between one and ten) based on a self-estimation of its own popularity. Whether <a href="https://gitweb.torproject.org/tor.git/tree/src/or/rendservice.c?id=42b42605f8d8eac25361be229354f6393967df4f#n1032">the formula currently used</a> is the best such formula is an open research question.</p>
+
+<p>Another problem with Hidden Services is the lack of load balancing options. While you can load-balance a Hidden Service using TCP/HTTP load balancers (like <a href="https://en.wikipedia.org/wiki/HAProxy">HAProxy</a>), there is no load-balancing option similar to DNS round-robin, where load balancing happens by sending clients to different server IP addresses. Such load-balancing could be achieved by allowing a Hidden Service to have multiple &quot;subservices&quot;. Such an architecture, although appealing, introduces multiple problems, like the intercommunication between subservices, where the long-term keypair is stored, how introduction points are assigned, etc.</p>
+
+<h3>Defense against Denial of Service of Introduction Points</h3>
+
+<p>The adversarial version of the previous section involves attackers intentionally hammering the Introduction Points of a Hidden Service to make it unreachable by honest clients. This means that an attacker can temporarily bring down a Hidden Service by DoSing a small number of Tor relays.</p>
+
+<p>To defend against such attacks, Syverson and Øverlier introduced <em>Valet nodes</em> in their PETS 2006 paper: <a href="http://freehaven.net/anonbib/#valet:pet2006"><em>&quot;Valet Services: Improving Hidden Servers with a Personal Touch&quot;</em></a>. <em>Valet nodes</em> stand in front of Introduction Points and act as a protection layer. This allows Hidden Services to maintain a limited number of Introduction Points, but many more contact points, without clients learning the actual addresses of the Introduction Points.</p>
+
+<p>Valet nodes are not implemented yet, mainly because of the big implementation and deployment effort they require.</p>
+
+<h3>Key Length</h3>
+
+<p>The long-term keypair of a Hidden Service is an RSA-1024 keypair which nowadays is considered weak. This means that in the future, Hidden Services will need to migrate to a different keysize and/or asymmetric cryptographic algorithm.</p>
+
+<p>A side effect of such migration is that Hidden Services will get a different onion address, which might be troublesome for Hidden Services that have a well-established onion address. To make the transition smoother, Hidden Services should be able to use both old and new keypairs for a while to be able to point their clients to the new address.</p>
+
+<p>Unfortunately, while design work has started on <a href="https://gitweb.torproject.org/torspec.git/tree/proposals/ideas/xxx-crypto-migration.txt">strengthening some</a> <a href="https://gitweb.torproject.org/torspec.git/tree/proposals/ideas/xxx-new-crypto-sketch.txt">parts of Tor&#39;s cryptography</a>, there are no proposals on improving the cryptography of Hidden Services yet.</p>
+
+<h3>Attacks by Hidden Service Directory Servers</h3>
+
+<p>Hidden Services upload their descriptor to Tor nodes called <em>Hidden Service Directory Servers</em> (HSDirs). Clients then fetch that descriptor and use it to connect to the Hidden Service.</p>
+
+<p>In the current system, HSDirs are in an interesting position which allows them to perform the following actions:</p>
+
+<ul>
+<li>  Learn the .onion address of a Hidden Service and connect to it</li>
+<li>  Evaluate the popularity of a Hidden Service by tracking the number of clients who do a lookup for that Hidden Service</li>
+<li>  Refuse to answer a client, and if enough HSDirs do this then the Hidden Service is temporarily unreachable</li>
+</ul>
+
+<p>These scenarios are explored in the upcoming IEEE S&amp;P paper titled <em>&quot;Trawling for Tor Hidden Services: Detection, Measurement, Deanonymization&quot;</em> from Alex Biryukov, Ivan Pustogarov and Ralf-Philipp Weinmann. Be sure to check it out (once they publish it)!</p>
+
+<p>Let&#39;s look at some suggested fixes for the attacks that Hidden Service Directory Servers can perform:</p>
+
+<h4>Defences against enumeration of onion addresses</h4>
+
+<p>Hidden Services use a <a href="http://www.martinbroadhurst.com/Consistent-Hash-Ring.html">hash ring</a> to choose which HSDirs will host their descriptor; this means that HSDirs can just wait to get picked by Hidden Services and then collect their descriptors and onion addresses. Also, since the hash ring is rotating, HSDirs get new Hidden Service descriptors in every rotation period.</p>
+
+<p>One possible solution to this issue would be to append a symmetric key to the onion address and use it to encrypt the descriptor before sending it to HSDirs (similar to how <a href="https://gitweb.torproject.org/torspec.git/tree/proposals/121-hidden-service-authentication.txt">descriptor-cookie authentication</a> works currently). A client that knows the onion address can decrypt the descriptor, but an HSDir who doesn&#39;t know the onion address can&#39;t derive the Hidden Service name. The drawback of this scheme is that the size of onion addresses will increase without increasing the security of their <a href="https://trac.torproject.org/projects/tor/wiki/doc/HiddenServiceNames#Whyare.onionnamescreatedthatway">self-authentication property</a>. Furthermore, HSDirs will still be able to extract the Hidden Service public key from the descriptor, which allows HSDirs to track the descriptors of specific Hidden Services.</p>
+
+<p>A <a href="https://trac.torproject.org/projects/tor/ticket/8106#comment:1">different solution</a> was proposed by Robert Ransom:</p>
+
+<p>Robert&#39;s scheme uses the long-term keypair of a Hidden Service to derive (in a one-way fashion) a second keypair, which is used to encrypt and sign the descriptor that is uploaded to the HSDirs. This construction allows the HSDir, without knowing the long-term keypair of the Hidden Service or the contents of its descriptor, to validate that the entity who uploaded the descriptor had possession of the long-term private key of the Hidden Service. A client who knows the long-term public key of the Hidden Service can fetch the descriptor from the HSDir and verify that it was created by the Hidden Service itself. See the <a href="https://trac.torproject.org/projects/tor/ticket/8106">relevant trac ticket</a> for a more robust analysis of the idea.</p>
+
+<p>Robert&#39;s idea increases the size of onion addresses, but also makes them more resistant to impersonation attacks (the current 80-bit security of onion addresses does not inspire confidence against impresonation attacks). Furthermore, his idea does not allow HSDirs to track Hidden Service descriptors across time.</p>
+
+<p>While Robert&#39;s scheme is fairly straightforward, a proper security evaluation is in order and a Tor proposal needs to be written. For extra fun, his idea requires the long-term keypair of the Hidden Service to use a discrete-log cryptosystem, which means that a keypair migration will be needed if we want to proceed with this plan.</p>
+
+<h4>Block tracking of popularity of Hidden Services</h4>
+
+<p>HSDirs can track the number of users who do a lookup for a Hidden Service, thereby learning how popular they are. We can make it harder for HSDirs to track the popularity of a Hidden Service, by utilizing a <a href="https://en.wikipedia.org/wiki/Private_information_retrieval">Private Information Retrieval (PIR) protocol</a> for Hidden Service descriptor fetches. Of course, this won&#39;t stop the Introduction Points of a Hidden Service from doing the tracking, but since the Introduction Points were picked by the Hidden Service itself, the threat is smaller.</p>
+
+<p>If we wanted to block Introduction Points from tracking the popularity of Hidden Services, we could attempt hiding the identity of the Hidden Service from its Introduction Points by using a cookie scheme, similar to how the Rendezvous is currently done, or by using Robert&#39;s keypair derivation trick and signing the introduction establishment with the new keypair. A careful security evaluation of these ideas is required.</p>
+
+<h4>Make it harder to become an adversarial HSDir</h4>
+
+<p>Because of the security implications that HSDirs have for a Hidden Services, <a href="https://trac.torproject.org/projects/tor/ticket/8243">we started working</a> on making it harder for a Tor relay to become an HSDir node.</p>
+
+<p>Also, currently, an adversary can predict the identity keys it will need in the future to target a <em>specific</em> Hidden Service. <a href="https://trac.torproject.org/projects/tor/ticket/8244">We started thinking of ways</a> to avoid this attack.</p>
+
+<h3>Performance improvements</h3>
+
+<p>Hidden services are slooooowwww and we don&#39;t even understand why. They might be slow because of the expensive setup process of creating a Hidden Service circuit, or because Hidden Service circuits have 6 hops, or because of something else. Many suggestions have been proposed to reduce the latency of Hidden Services, ranging from <a href="https://gitweb.torproject.org/torspec.git/tree/proposals/155-four-hidden-service-improvements.txt">Hidden Service protocol hacks</a> to <a href="https://github.com/hellais/latenza.js">Javascript hacks</a>, and to radically changing how the Hidden Service circuit is formed.</p>
+
+<p>Let&#39;s investigate some of these proposals:</p>
+
+<h4>Reducing Hidden Service Circuit Setup complexity</h4>
+
+<p>During PETS 2007 Syverson and Øverlier presented &quot;<em>Improving Efficiency and Simplicity of Tor circuit establishment and hidden services</em>&quot; which simplifies Hidden Service circuit establishmentby eliminating the need of a separate rendezvous connection.</p>
+
+<p>They noticed that by using <em>Valet nodes</em>, the concept of Rendezvous Points is redundant and that a Hidden Service circuit can be formed by just using <em>Valet nodes</em> and Introduction Points. Karsten Loesing <a href="https://gitweb.torproject.org/torspec.git/tree/proposals/142-combine-intro-and-rend-points.txt">wrote a Tor proposal</a> for a variant of this idea.</p>
+
+<p>The reason this scheme is not implemented is that the security trade-offs introduced are not well understood, and there are also some technical obstacles (like the fact that sharing of circuits between multiple clients is not currently supported).</p>
+
+<h4>Analyze Hidden Service Circuit Establishment Timing With Torperf</h4>
+
+<p>Establishing a connection to a hidden service currently involves two Tor relays, the introduction and rendezvous point, and 10 more relays distributed over four circuits to connect to them. No one has really researched how much time Tor spends in each step of that complicated process. It wouldn&#39;t be surprising if a large amount of time is spent in an unexpected part of the process.</p>
+
+<p>To investigate this properly, one should use <a href="https://gitweb.torproject.org/torperf.git">Torperf</a> to analyze the timing delta between the steps of the process. Unfortunately, Torperf uses controller events to distinguish between Tor protocol phases but not all steps of the Hidden Service circuit setup have controller events assigned to them. Implementing this involves <a href="https://trac.torproject.org/projects/tor/ticket/8510">adding the control port triggers</a> to the Tor codebase, running Torperf and then collecting and analyzing the results.</p>
+
+<h4>Hidden Services should reuse old Introduction Points</h4>
+
+<p>Currently, Hidden Services stop establishing circuits to old Introduction Points after they break. While this behavior makes sense, it means that clients who have old hidden service descriptors will keep introducing themselves to the wrong introduction points. This is especially painful in roaming situations where users frequently change networks (and lose existing circuits).</p>
+
+<p><a href="https://trac.torproject.org/projects/tor/ticket/8239">A solution to this</a> would be for Hidden Services to reestablish failed circuits to old Introduction Points (if the circuits were destroyed because of network failures). We should explore the security consequences of such a move, and also what&#39;s the exact time period that Introduction Points are considered &quot;old&quot; but still &quot;worth reestablishing circuits to&quot;.</p>
+
+<h3>Encrypted Services</h3>
+
+<p><a href="https://gitweb.torproject.org/torspec.git/tree/proposals/ideas/xxx-encrypted-services.txt">Encrypted Services</a> is the correct way of implementing the now-defunct <a href="https://trac.torproject.org/projects/tor/wiki/doc/ExitEnclave">Exit Enclaves</a>.</p>
+
+<p>Encrypted Services allow you to run a non-anonymous Hidden Service where the server-side rendezvous circuit is only one hop. This makes sense in scenarios where the Hidden Service doesn&#39;t care about its anonymity, but still wants to allow its clients to access it anonymously (and with all the other features that self-authenticating names provide). See Roger&#39;s <a href="https://gitweb.torproject.org/torspec.git/tree/proposals/ideas/xxx-encrypted-services.txt">original proposal</a> for more use cases and information.</p>
+
+<p>On this topic, <a href="https://lists.torproject.org/pipermail/tor-dev/2012-March/003434.html">Robert Ransom proposed</a> to implement Encrypted Services as a program separate from Tor, since it serves a quite different threat model. Furthermore, if done this way, its users won&#39;t overload the Tor network and it will also allow greater versatility and easier deployment.</p>
+
+<h3>Human Memorable onion addresses</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/Zooko%27s_triangle">Zooko&#39;s triangle</a> characterizes onion addresses as <em>secure</em> and <em>global</em>, but not <em>human memorable</em>. By now <a href="https://gitweb.torproject.org/torspec.git/tree/proposals/ideas/xxx-onion-nyms.txt">a couple</a> <a href="http://archives.seul.org/or/dev/Dec-2011/msg00034.html">of schemes</a> have been proposed to make hidden services addresses memorable, but for <a href="https://lists.torproject.org/pipermail/tor-dev/2012-March/003434.html">various reasons</a> none of them has been particularly successful.</p>
+
+<hr>
+
+<p>These were just some of the things that must be done in the Hidden Services realm. If you are interested in helping around, please read the links and trac tickets, and hit us back with <a href="https://gitweb.torproject.org/torspec.git/tree/proposals/001-process.txt">proposals</a>, patches and suggestions. Use the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-dev/">[tor-dev] mailing list</a>, or our <a href="https://www.torproject.org/about/contact#irc">IRC channels</a> for development-related communication.</p>
+
+<p>Finally, note that this blog post only touched issues that involve Tor&#39;s codebase or the Hidden Service protocol and its cryptography. However, if we want Hidden Services to be truly successful and influential, it&#39;s also important to build a vibrant ecosystem around them. For example, we need privacy-preserving archiving systems and search engines (and technologies and rules on how they should work), we need easy-to-use publishing platforms, Internet service daemons and protocols optimized for high-latency connections, anonymous file sharing, chat systems and social networks.</p>
+
+<p>Thanks go to Roger, Robert and other people for the helpful comments and suggestions on this blog post.</p>
+
+<p>PS: Don&#39;t forget to use <a href="http://freehaven.net/anonbib/">anonbib</a> to find and download any research papers mentioned in this blog post.</p>
+
+  </article>
+
+  <div class="post-footer">
+      <a class="post-blog" href="">asn's Blog</a>
+  </div>
+  <br />
+
+<!-- COMMENTS -->
+
+<!--  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'jmttest'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+
+<div id="comments" class="comments clearfix">
+  <div class="comments-loading">
+  <p><em>Enable Javascript to view comments</em></p>
+  </div>
+</div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var loadingSection = document.body.querySelector('.comments-loading');
+    var icon = '<p>Comments Loading...</p><img alt="loading comments" src="/assets/images/comments-loading.gif">';
+
+    loadingSection.innerHTML = loadingSection.innerHTML + icon;
+
+    var options = {
+        container    : '.comments',
+//        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
+        topic_key    : '/hidden-services-need-some-love',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+//            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
+            'http://juvia.torblog.lan/api/show_topic.js' +
+	    '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+
+    (document.getElementsByTagName('head')[0] ||
+      document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
+
+})();
+</script>
+</div>
+
+<!-- Include the side column -->
+<div class="sidecol">
+
+<!-- RSS FEED / SEARCH -->
+    <div class="sidefirst">
+	<a href="/feed.xml"><img src="/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="/img/rss.png">Atom</a> -->
+	<form>
+        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
+        </form>
+    </div>
+
+<!-- EVENTS -->
+    <div class ="sidebox orangebox">
+	<h2>Upcoming Events</h2>
+	<ul>
+	    
+		    <li><span><a href="/tor-winter-dev-meeting-2015">Tor Winter Dev Meeting 2015</a></span></li>
+	    
+		    <li><span><a href="/roger-and-jake-rightscon-manila">Roger and Jake at RightsCon in Manila</a></span></li>
+	    
+		    <li><span><a href="/tor-booth-fosdem-2015">Tor booth at FOSDEM 2015</a></span></li>
+	    
+		    <li><span><a href="/many-tor-people-pets-philadelphia">Many Tor people at PETS in Philadelphia</a></span></li>
+	    
+	</ul>
+	<span><a href="/events">full calendar &raquo;</a></span>
+    </div>
+    
+<!-- RECENT BLOG POSTS -->
+    <div class ="sidebox greenbox">
+	<h2>Recent Blog Posts</h2>
+	<ul>
+	  
+		    <li><span><a href="/tor-weekly-news--february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+	  
+		    <li><span><a href="/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
+	  
+		    <li><span><a href="/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+	  
+		    <li><span><a href="/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
+	  
+	</ul>
+	<span><a href="/archive">more &raquo;</a></span>
+    </div>
+    
+<!-- TAG CLOUD -->
+    <div class ="tagbox orangebox">
+	<h2>Blog Tag Cloud</h2>
+	<ul>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/blog/">
+            blog
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/first post/">
+            first post
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 171%">
+        <span><a href="/tag/tor/">
+            tor
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/24c3/">
+            24c3
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/ccc/">
+            ccc
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/tag/talks/">
+            talks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/tag/bugs/">
+            bugs
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/crashes/">
+            crashes
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 64%">
+        <span><a href="/tag/osx/">
+            osx
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/qt/">
+            qt
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/tag/vidalia/">
+            vidalia
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 67%">
+        <span><a href="/tag/vidalia bundle/">
+            vidalia bundle
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/meetup/">
+            meetup
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/tag/attacks/">
+            attacks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/covert channels/">
+            covert channels
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/media coverage/">
+            media coverage
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 88%">
+        <span><a href="/tag/bridges/">
+            bridges
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/tag/incognito/">
+            incognito
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 113%">
+        <span><a href="/tag/progress report/">
+            progress report
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/tag/torbrowser/">
+            torbrowser
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 83%">
+        <span><a href="/tag/torbutton/">
+            torbutton
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 65%">
+        <span><a href="/tag/china/">
+            china
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/directors/">
+            directors
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 75%">
+        <span><a href="/tag/release candidate/">
+            release candidate
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 74%">
+        <span><a href="/tag/gsoc/">
+            gsoc
+        </a></span>
+    </li>
+
+	</ul>
+	<span><a href="/tag-cloud">more tags &raquo;</a></span>
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>  
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Tor Project Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>The Tor Project Blog</li>
+          <li><a href="mailto:contact@torproject.org">contact@torproject.org</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyllrb</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+ <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jmttest'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    
+  </body>
+
+</html>

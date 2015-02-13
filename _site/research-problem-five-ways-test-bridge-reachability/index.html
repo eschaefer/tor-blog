@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Research problem: Five ways to test bridge reachability</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://torblog.lan//research-problem-five-ways-test-bridge-reachability">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">The Tor Project Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+	<a class="page-link" href="/">Blog Home</a>
+        <a class="page-link" href="/archive">Archives</a>
+	<a class="page-link" href="https://www.torproject.org/about/overview">About Tor</a>
+        <a class="page-link donate" href="https://www.torproject.org/donate/donate">Donate</a>
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <!-- Pages with side column need a 'maincol' class -->
+<div class="post maincol">
+
+  <header class="post-header">
+    <h1 class="post-title">Research problem: Five ways to test bridge reachability</h1>
+    <p class="post-meta">Dec 1, 2011 • arma</p>
+  </header>
+
+  <article class="post-content">
+    <p>Once we get <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">more (and more diverse) bridge addresses</a>, the next research step is that we&#39;ll need to get better at telling which bridges are blocked in which jurisdictions. For example, most of the bridges we give out via https and gmail are blocked in China. But which ones exactly? How quickly do they get blocked? Do some last longer than others? Do they ever get unblocked? Is there some pattern to the blocking, either by time, by IP address or network, by user load on the bridge, or by distribution strategy? We can&#39;t evaluate <a href="https://blog.torproject.org/blog/bridge-distribution-strategies">new bridge distribution strategies</a> if we can&#39;t track whether the bridges in each strategy are being blocked.</p>
+
+<p>Generally speaking, bridge reachability tests break down into two approaches: passive and active. Passive tests don&#39;t involve any new connections on the part of Tor clients or bridges, whereas active tests follow the more traditional &quot;scanning&quot; idea. None of the reachability tests we&#39;ve thought of are perfect. Instead, here we discuss how to combine imperfect tests and use feedback from the tests to balance their strengths and weaknesses.</p>
+
+<p><strong>Passive approaches</strong></p>
+
+<p>We should explore two types of passive testing approaches: reporting from bridges and reporting from clients.</p>
+
+<p><strong>Passive approach 1: reporting from bridges.</strong> Right now Tor relays and bridges publish <a href="https://metrics.torproject.org/papers/wecsr10.pdf">aggregate user counts</a> — rough number of users per country per day. In theory we can look at the user counts over time to detect statistical drops in usage for a given country. That approach has produced useful results in practice for overall connections to the public Tor relays from each country: see George Danezis&#39;s <a href="https://metrics.torproject.org/papers/detector-2011-09-09.pdf">initial work</a> on a Tor censorship detector.</p>
+
+<p>But there are two stumbling blocks when trying to apply the censorship detector model to individual bridges. First, we don&#39;t have ground truth about which bridges were <em>actually</em> blocked or not at a given time, so we have no way to validate our models. Second, while overall usage of bridges in a given country might be high, the load <em>on a given bridge</em> tends to be quite low, which in turns makes it <a href="https://metrics.torproject.org/papers/blocking-2011-09-15.pdf">difficult to achieve statistical significance</a> when looking at usage drops.</p>
+
+<p>Ground truth needs to be learned through active tests: we train the models with usage patterns for bridges that get blocked and bridges that don&#39;t get blocked, and the model predictions should improve. The question of statistical significance can be overcome by treating the prediction as a hint: even if our models don&#39;t give us enough confidence to answer &quot;blocked for sure&quot; or &quot;not blocked for sure&quot; about a given bridge, they should be able to give us a number reflecting likelihood that the bridge is now blocked. That number should feed back into the active tests, for example so we pay more attention to bridges that are more likely to be newly blocked.</p>
+
+<p><strong>Passive approach 2: reporting from clients.</strong> In addition to the usage reporting by bridges, we should also consider reachability reporting by clients. Imagine a Tor client that has ten bridges configured. It tries to connect to each of them, and finds that two work and eight don&#39;t. This client is doing our scanning for us, if only we could safely learn about its results. The first issue that comes up is that it could mistakenly report that a bridge is blocked if that bridge is instead simply down. So we would want to compare the reports to concurrent active scans from a &quot;more free&quot; jurisdiction, to pick out the bridges that are up in one place yet down in another.</p>
+
+<p>From there, the questions get trickier: 1) does the set of bridges that a given user reports about create a fingerprint that lets us recognize that user later? Even if the user reports about each bridge through a separate Tor circuit, we&#39;d like to know the time of the scan, and nearby times can be used to build a statistical profile. 2) What if users submit intentionally misleading reports? It seems there&#39;s a tension between wanting to build a profile for the user (to increase our confidence in the validity of her reports) versus wanting to make sure the user doesn&#39;t develop any recognizable profile. Perhaps the <a href="http://freehaven.net/anonbib/#oakland11-formalizing">Nymble</a> design family can contribute an &quot;unlinkable reputation&quot; trick to resolve the conflict, but as we find ourselves saying so often at Tor, more research remains.</p>
+
+<p><strong>Active approaches</strong></p>
+
+<p>The goal of active scanning is to get ground truth on whether each bridge is really blocked. There&#39;s a tradeoff here: frequent scans give us better resolution and increased confidence, but too many scan attempts draw attention to the scanners and thus to the addresses being scanned.</p>
+
+<p>We should use the results of the passive and indirect scans to give hints about what addresses to do active scans on. In the steady-state, we should aim to limit our active scans to bridges that we think just went from unblocked to blocked or vice versa, and to a sample of others for spot checks to keep our models trained.</p>
+
+<p>There are three pieces to active scanning: direct scans, reverse scans, and indirect scans.</p>
+
+<p><strong>Active approach 1: direct scans.</strong> Direct scans are what we traditionally think of when we think of scanning: get access to a computer in the target country, give it a list of bridges, and have it connect directly to each bridge on the list.</p>
+
+<p>Before I continue though, I should take an aside to discuss types of blocking. In September 2009 when China first blocked some bridges, I spent a while probing the blocked bridges from a computer in Beijing. From what I could tell, China blocked the bridges in two ways. If the bridge had no other interesting services running (like a webserver), they just blackholed the IP address, meaning no packets to or from the IP address made it through the firewall. But if there <em>was</em> an interesting service, they blocked the bridge by IP and port. (I could imagine this more fine-grained blocking was done by dropping SYN packets, or by sending TCP RST packets; but I didn&#39;t get that far in my investigation.)</p>
+
+<p>So there are two lessons to be learned here. First, the degree to which our active scans match real Tor client behavior could influence the accuracy of the scans. Second, some real-world adversaries are putting considerable effort — probably manual effort — into examining the bridges they find and choosing how best to filter them. After all, if they just blindly filtered IP addresses we list as bridges, we could add Baidu&#39;s address as a bridge and make them look foolish. (We tried that; it didn&#39;t work.)</p>
+
+<p>These lessons leave us with two design choices to consider.</p>
+
+<p>First, how much of the Tor protocol should we use when doing the scans? The spectrum ranges from a simple TCP scan (or even just a SYN scan), to a vanilla SSL handshake, to driving a real Tor client that does a genuine Tor handshake. The less realistic the handshake, the more risk that we conclude the bridge is reachable when in fact it isn&#39;t; but the more realistic the handshake, the more we stand out to an adversary watching for Tor-like traffic.</p>
+
+<p>The mechanism by which the adversary is <a href="https://blog.torproject.org/blog/research-problems-ten-ways-discover-tor-bridges">discovering bridges</a> also impacts which reachability tests are a smart idea. For example, it appears that China may have recently started doing deep packet inspection (DPI) for Tor-like connections over the Great Firewall and then doing active-followup SSL handshakes to confirm which addresses are Tor bridges. If that report turns out to be true, testing bridge reachability via active scans that include handshaking would be counterproductive: the act of doing the test would influence the answer. We can solve their attack by <a href="https://blog.torproject.org/blog/iran-blocks-tor-tor-releases-same-day-fix">changing our handshake</a> so they don&#39;t recognize it anymore, or by introducing <a href="https://svn.torproject.org/svn/projects/design-paper/blocking.html#tth_sEc9.3">scanning-resistance</a> measures like bridge passwords. In the shorter-term, we should confirm that simple connection scanning (without a handshake) doesn&#39;t trigger any blocks, and then restrict ourselves to that type of scanning in China until we&#39;ve deployed a better answer.</p>
+
+<p>Second, should we scan &quot;decoy&quot; addresses as well, to fool an observer into thinking that we&#39;re not scanning for Tor bridges in particular, and/or to drive up the work the observer needs to do to distinguish the &quot;real&quot; bridges? Whether this trick is useful depends on the level of sophistication and dedication of the adversary. For example, China has already demonstrated that they check IP addresses before blocking them, and in general I worry that the more connections you make to <em>anything</em>, the more likely you are to attract attention for further scrutiny. How would we generate the list of decoy addresses? If we choose it randomly from the space of IP addresses, a) most of them will not respond, and b) we&#39;ll invite abuse complaints from security people looking for worms. Driving up the work factor sounds like a great feature, but it could have the side effect that it encourages the adversary to invest in an automated &quot;is this a Tor bridge&quot; checker, which would be an unfortunate step for them to take if they otherwise wouldn&#39;t.</p>
+
+<p>Active direct scans come with a fundamental dilemma: the more we think a bridge has been blocked, the more we want to scan it; but the more likely it is to be blocked, the more the adversary might already be watching for connections to it, for example to do a <a href="https://blog.torproject.org/blog/research-problems-ten-ways-discover-tor-bridges">&quot;zig-zag&quot; bridge enumeration attack</a>. So we need to avoid scanning bridges that we think are not blocked. But we also need to explore more subtle scanning techniques such as the ones below.</p>
+
+<p><strong>Active approach 2: reverse scans.</strong> A bridge that gets <a href="http://en.wikipedia.org/wiki/Duplex_%28telecommunications%29">duplex</a> blackholed by a government firewall can learn that it has been filtered by trying to make a connection <em>into</em> the filtered country.</p>
+
+<p>For example, each bridge might automatically connect to baidu.com periodically, and publish the results of its reachability test in its extrainfo descriptor. We could either feed this information into the models and follow up with other active probes if the bridge thinks it&#39;s been blocked; or we could use it the other way by instructing bridges that we think have been blocked to launch a reverse scan.</p>
+
+<p>We can actually take advantage of the flexibility of the Tor protocol to do scanning from each bridge to Baidu without changing the bridge code at all: we simply try to extend an ordinary circuit from the bridge to the target destination, and learn at what stage the &#39;extend&#39; request failed. (We should <a href="https://trac.torproject.org/projects/tor/ticket/2576">extend the Tor control protocol</a> to expose the type of failure to the Tor controller, but that&#39;s a simple matter of programming.)</p>
+
+<p>Note that these reverse scans can tell us that a bridge has been blocked, but it can&#39;t tell us that a bridge <em>hasn&#39;t</em> been blocked, since it could just be blocked in a more fine-grained way.</p>
+
+<p>Finally, how noticeable would these reverse scans be? That is, could the government firewall enumerate bridges by keeping an eye out for Tor-like connection attempts to Baidu? While teaching the bridges to do the scanning themselves would require more work, it would give us more control over how much the scans stick out.</p>
+
+<p><strong>Active approach 3: indirect scans.</strong> Indirect scans use other services as reflectors. For example, you can connect to an FTP server inside the target country, tell it that your address is the address of the bridge you want to scan, and then try to fetch a file. How it fails should tell you whether that FTP server could reach the bridge or not.</p>
+
+<p>There are many other potential reflector protocols out there, each with their own tradeoffs. For example, can we instruct a DNS request in-country to recurse to the target bridge address, and distinguish between &quot;I couldn&#39;t reach that DNS server&quot; and &quot;that wasn&#39;t a DNS server&quot;? (DNS is probably not the right protocol to use inside China, given the amount of DNS mucking they are already known to do.)</p>
+
+<p>Another avenue is a variant on <a href="http://nmap.org/book/idlescan.html">idle scanning</a>, which takes advantage of predictable TCP IPID patterns: send a packet directly to the bridge to learn its current IPID, then instruct some computer in-country to send a packet, and then send another packet directly to find the new IPID and learn whether or not the in-country packet arrived.</p>
+
+<p>What other services can be bent to our will? Can we advertise the bridge address on a bittorrent tracker that&#39;s popular in China and see whether anybody connects? Much creative research remains here.</p>
+
+<p><strong>Putting it all together</strong></p>
+
+<p>One of the puzzle pieces holding us back from rolling out the &quot;tens of thousands of bridge addresses offered by volunteers with spare net blocks&quot; plan is that we need better ways to get feedback on when addresses get blocked. The ideas in this blog post hopefully provide a good framework for thinking about the problem.</p>
+
+<p>For the short term, we should deploy a basic TCP connection scanner from inside several censoring countries (China, Iran, and Syria come to mind). Since the &quot;clients report&quot; passive strategy still has some open research questions, we should get all our hints from the &quot;bridges report&quot; passive strategy. As we&#39;re ramping up, and especially since our current bridges are either not blocked at all (outside China), or mostly blocked (inside China), we should feel free to do more thorough active scans to get a better intuition about what scanning can teach us.</p>
+
+<p>In the long term, I want to use these various building blocks in a feedback loop to identify and reward successful bridge distribution strategies, as outlined in Levchenko and McCoy&#39;s <a href="http://freehaven.net/anonbib/#proximax11">FC 2011 paper</a>.</p>
+
+<p>Specifically, we need these four building blocks:</p>
+
+<p>1) A way to discover how much use a bridge is seeing from a given country. Done: see the <a href="https://metrics.torproject.org/papers/wecsr10.pdf">WECSR10 paper</a> and <a href="https://metrics.torproject.org/users.html#bridge-users">usage graphs</a>.</p>
+
+<p>2) A way to get fresh bridge addresses over time. The more addresses we can churn through, the more aggressive we can be in experimenting with novel distribution approaches. See <a href="https://blog.torproject.org/blog/strategies-getting-more-bridge-addresses">the &quot;more bridge addresses&quot; blog post</a> for directions here.</p>
+
+<p>3) A way to discover when a bridge is blocked in a given country. That&#39;s what this blog post is about.</p>
+
+<p>4) Distribution strategies that rely on different mechanisms to make enumeration difficult. Beyond our &quot;https&quot; and &quot;gmail&quot; distribution strategies, we know a variety of people in censored countries, and we can think of each of these people as a distribution channel.</p>
+
+<p>We can define the <em>efficiency</em> of a bridge address in terms of how many people use it and how long before it gets blocked. So a bridge that gets blocked very quickly scores a low efficiency, a bridge that doesn&#39;t get blocked but doesn&#39;t see much use scores a medium efficiency, and a popular bridge that doesn&#39;t get blocked scores high. We can characterize the efficiency of a distribution channel as a function of the efficiency of the bridges it distributes. The key insight is that we then adapt how many new bridges we give to each distribution channel based on its efficiency. So channels that are working well automatically get more addresses to give out, and channels that aren&#39;t working well automatically end up with fewer addresses.</p>
+
+<p>Of course, there&#39;s more to it than that. For example, we need to consider how to handle the presence of bridge enumeration attacks that work independently of which distribution channel a given bridge address was given to. We also need to consider attacks that artificially inflate the efficiency of bridges (and thus make us overreward distribution channels), or that learn about a bridge but choose not to block it. But that, as they say, is a story for another time.</p>
+
+  </article>
+
+  <div class="post-footer">
+      <a class="post-blog" href="">arma's Blog</a>
+  </div>
+  <br />
+
+<!-- COMMENTS -->
+
+<!--  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'jmttest'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+
+<div id="comments" class="comments clearfix">
+  <div class="comments-loading">
+  <p><em>Enable Javascript to view comments</em></p>
+  </div>
+</div>
+
+<script type="text/javascript" class="juvia">
+(function() {
+    var loadingSection = document.body.querySelector('.comments-loading');
+    var icon = '<p>Comments Loading...</p><img alt="loading comments" src="/assets/images/comments-loading.gif">';
+
+    loadingSection.innerHTML = loadingSection.innerHTML + icon;
+
+    var options = {
+        container    : '.comments',
+//        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
+        site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
+        topic_key    : '/research-problem-five-ways-test-bridge-reachability',
+        topic_url    : location.href,
+        topic_title  : document.title || location.href,
+        include_base : !window.Juvia,
+        include_css  : !window.Juvia,
+        comment_order: 'latest-first'
+    };
+
+    function makeQueryString(options) {
+        var key, params = [];
+        for (key in options) {
+            params.push(
+                encodeURIComponent(key) +
+                '=' +
+                encodeURIComponent(options[key]));
+        }
+        return params.join('&');
+    }
+
+    function makeApiUrl(options) {
+        // Makes sure that each call generates a unique URL, otherwise
+        // the browser may not actually perform the request.
+        if (!('_juviaRequestCounter' in window)) {
+            window._juviaRequestCounter = 0;
+        }
+
+        var result =
+//            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
+            'http://juvia.torblog.lan/api/show_topic.js' +
+	    '?_c=' + window._juviaRequestCounter +
+            '&' + makeQueryString(options);
+        window._juviaRequestCounter++;
+        return result;
+    }
+
+    var s       = document.createElement('script');
+    s.async     = true;
+    s.type      = 'text/javascript';
+    s.className = 'juvia';
+    s.src       = makeApiUrl(options);
+
+    (document.getElementsByTagName('head')[0] ||
+      document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
+
+})();
+</script>
+</div>
+
+<!-- Include the side column -->
+<div class="sidecol">
+
+<!-- RSS FEED / SEARCH -->
+    <div class="sidefirst">
+	<a href="/feed.xml"><img src="/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="/img/rss.png">Atom</a> -->
+	<form>
+        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
+        </form>
+    </div>
+
+<!-- EVENTS -->
+    <div class ="sidebox orangebox">
+	<h2>Upcoming Events</h2>
+	<ul>
+	    
+		    <li><span><a href="/tor-winter-dev-meeting-2015">Tor Winter Dev Meeting 2015</a></span></li>
+	    
+		    <li><span><a href="/roger-and-jake-rightscon-manila">Roger and Jake at RightsCon in Manila</a></span></li>
+	    
+		    <li><span><a href="/tor-booth-fosdem-2015">Tor booth at FOSDEM 2015</a></span></li>
+	    
+		    <li><span><a href="/many-tor-people-pets-philadelphia">Many Tor people at PETS in Philadelphia</a></span></li>
+	    
+	</ul>
+	<span><a href="/events">full calendar &raquo;</a></span>
+    </div>
+    
+<!-- RECENT BLOG POSTS -->
+    <div class ="sidebox greenbox">
+	<h2>Recent Blog Posts</h2>
+	<ul>
+	  
+		    <li><span><a href="/tor-weekly-news--february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+	  
+		    <li><span><a href="/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
+	  
+		    <li><span><a href="/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+	  
+		    <li><span><a href="/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
+	  
+	</ul>
+	<span><a href="/archive">more &raquo;</a></span>
+    </div>
+    
+<!-- TAG CLOUD -->
+    <div class ="tagbox orangebox">
+	<h2>Blog Tag Cloud</h2>
+	<ul>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/blog/">
+            blog
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/first post/">
+            first post
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 171%">
+        <span><a href="/tag/tor/">
+            tor
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/24c3/">
+            24c3
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/ccc/">
+            ccc
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/tag/talks/">
+            talks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/tag/bugs/">
+            bugs
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/crashes/">
+            crashes
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 64%">
+        <span><a href="/tag/osx/">
+            osx
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/qt/">
+            qt
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/tag/vidalia/">
+            vidalia
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 67%">
+        <span><a href="/tag/vidalia bundle/">
+            vidalia bundle
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/meetup/">
+            meetup
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/tag/attacks/">
+            attacks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/covert channels/">
+            covert channels
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/media coverage/">
+            media coverage
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 88%">
+        <span><a href="/tag/bridges/">
+            bridges
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/tag/incognito/">
+            incognito
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 113%">
+        <span><a href="/tag/progress report/">
+            progress report
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/tag/torbrowser/">
+            torbrowser
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 83%">
+        <span><a href="/tag/torbutton/">
+            torbutton
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 65%">
+        <span><a href="/tag/china/">
+            china
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/directors/">
+            directors
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 75%">
+        <span><a href="/tag/release candidate/">
+            release candidate
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 74%">
+        <span><a href="/tag/gsoc/">
+            gsoc
+        </a></span>
+    </li>
+
+	</ul>
+	<span><a href="/tag-cloud">more tags &raquo;</a></span>
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>  
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Tor Project Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>The Tor Project Blog</li>
+          <li><a href="mailto:contact@torproject.org">contact@torproject.org</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyllrb</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+ <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jmttest'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    
+  </body>
+
+</html>

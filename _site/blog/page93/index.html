@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>The Tor Project Blog</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://torblog.lan//blog/page93/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">The Tor Project Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+	<a class="page-link" href="/">Blog Home</a>
+        <a class="page-link" href="/archive">Archives</a>
+	<a class="page-link" href="https://www.torproject.org/about/overview">About Tor</a>
+        <a class="page-link donate" href="https://www.torproject.org/donate/donate">Donate</a>
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <!-- Pages with side column need a 'maincol' class -->
+<div class="home maincol">
+
+    <ul class="post-content">
+	
+	<li>
+	  <h2>
+	    <a class="post-link" href="/tor-project-receives-fsf-award">The Tor Project receives FSF Award</a>
+	  </h2>
+	  <span class="post-meta">Posted Mar 23, 2011 by <a class="post-author" href="phobos">phobos</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/award">award</a>
+              
+		  <a class="post-category post-category-js" href="/tag/free society">free society</a>
+              
+		  <a class="post-category post-category-js" href="/tag/free software">free software</a>
+              
+		  <a class="post-category post-category-js" href="/tag/free software foundation">free software foundation</a>
+              
+		  <a class="post-category post-category-js" href="/tag/social benefit">social benefit</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>We have received the 2010 FSF/GNU Project Award for Project of Social Benefit, <a href="http://www.fsf.org/news/2010-free-software-awards-announced" title="http://www.fsf.org/news/2010-free-software-awards-announced">http://www.fsf.org/news/2010-free-software-awards-announced</a>. Thank you to the FSF and the membership who voted for us to win this award. From the FSF announcement,</p>
+
+<p>&quot;The Award for Projects of Social Benefit recognizes a project that intentionally and significantly benefits society through collaboration to accomplish an important social task.</p>
+
+<p>This year, the award went to the Tor Project. Using free software, Tor has enabled roughly 36 million people around the world to experience freedom of access and expression on the Internet while keeping them in control of their privacy and anonymity. Its network has proved pivotal in dissident movements in both Iran and more recently Egypt.&quot;</p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="phobos">phobos's Blog</a>
+<!--	      <a class="post-cmtlink" href="/tor-project-receives-fsf-award/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/tor-project-receives-fsf-award#comments">Leave a comment</a>
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/detecting-certificate-authority-compromises-and-web-browser-collusion">Detecting Certificate Authority compromises and web browser collusion</a>
+	  </h2>
+	  <span class="post-meta">Posted Mar 22, 2011 by <a class="post-author" href="ioerror">ioerror</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/ssl tls ca tor certificates torbrowser">ssl tls ca tor certificates torbrowser</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p><em>Thanks to Ian Gallagher, Seth Schoen, Jesse Burns, Chris Palmer, and other anonymous birds for their invaluable feedback on this writeup.</em></p>
+
+<p>The Tor Project has long understood that the <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Certificate_authority">certification authority</a> (CA) model of trust on the internet is susceptible to various methods of compromise. Without strong anonymity, the ability to perform targeted attacks with the blessing of a CA key is serious. In the past, I’ve worked on <a href="http://www.win.tue.nl/hashclash/rogue-ca/">attacks relating to SSL/TLS trust models</a> and for quite some time, I’ve hunted for evidence of non-academic CA compromise in the wild.</p>
+
+<p>I’ve also looked for special kinds of cooperation between CAs and browsers. Proof of collusion will give us facts. It will also give us a real understanding of the faith placed in the strength of the underlying systems.</p>
+
+<p>Does certificate revocation really work? <a href="http://www.imperialviolet.org/2011/03/18/revocation.html"><strong>No, it does not</strong></a>. How much faith does a vendor actually put into revocation, when verifiable evidence of malice is detected or known? Not much, and that’s the subject of this writing.</p>
+
+<p>Last week, a smoking gun came into sight: A Certification Authority appeared to be compromised in some capacity, and the attacker issued themselves valid HTTPS certificates for high-value web sites. With these certificates, the attacker could impersonate the identities of the victim web sites or other related systems, probably undetectably for the majority of users on the internet.</p>
+
+<p>I watch the Chromium and Mozilla Firefox projects carefully, because they are so important to the internet infrastructure. On the evening of 16 March, I noticed a very interesting code change to Chromium: <a href="http://src.chromium.org/viewvc/chrome/trunk/src/net/base/x509_certificate.cc?view=markup&amp;pathrev=78478">revision 78478, Thu Mar 17 00:48:21 2011 UTC</a>.</p>
+
+<p>In this revision, the developers added X509Certificate::IsBlacklisted, which returns true if a HTTPS certificate has one of these particular serial numbers:</p>
+
+<ul>
+<li>  047ecbe9fca55f7bd09eae36e10cae1e</li>
+<li>  d8f35f4eb7872b2dab0692e315382fb0</li>
+<li>  b0b7133ed096f9b56fae91c874bd3ac0</li>
+<li>  9239d5348f40d1695a745470e1f23f43</li>
+<li>  d7558fdaf5f1105bb213282b707729a3</li>
+<li>  f5c86af36162f13a64f54f6dc9587c06</li>
+</ul>
+
+<p>A comment marks the first as &quot;Not a real certificate. For testing only.&quot; but we don’t know if this means the other certificates are or are not also for testing.</p>
+
+<p>With just these serial numbers, we are not able to learn much about the certificates that Chromium now blocks. To get more information, I started the <a href="https://github.com/ioerror/crlwatch">crlwatch</a> project. Nearly every certificate contains a reference to a <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Revocation_list">Certificate Revocation List</a> (CRL). A CRL is a list of certificates that the CA has revoked for whatever reason. In theory, this means that an attacker is unable to tamper with the certificate to prevent revocation as the browser will check the CRL it finds in a certificate. In practice the attacker simply needs to tamper with the network - this is something they’re already able to do if they are performing a SSL/TLS Machine-In-The-Middle attack. Even if an attacker has a certificate, they generally are unable to modify the certificate without breaking the digital signature issued by the CA. That CA signature is what gives the certificate value to an attacker and tampering takes the attacker back to square zero. So while investigating these serials, we clearly lack the CRL distribution point in the Chrome source. However, the project that I announced on March 17th, crlwatch, was specifically written to assist in finding who issued, and potentially revoked the serial numbers in question. By matching the serial numbers found in the source for Chrome with the serial numbers of revoked certificates, we’re able to link specific serials to specific CA issuers. The more serial numbers we match in revocation lists, the higher our probability of having found the CA that issued the certificates.</p>
+
+<p>About twelve hours (Thursday, March 17, 2011 | 13:00) after the above patch was pushed into source control - Google announced <a href="http://googlechromereleases.blogspot.com/2011/03/stable-and-beta-channel-updates_17.html">an important Chrome Update that involved HTTPS certificate issues</a>.</p>
+
+<p>This also is mostly uninteresting until we notice that this is not isolated to Google. Mozilla pushed out two patches of interest:</p>
+
+<ul>
+<li>  <a href="http://hg.mozilla.org/mozilla-central/rev/f6215eef2276">rev-f6215eef2276</a></li>
+<li>  <a href="http://hg.mozilla.org/mozilla-central/rev/55f344578932">rev-55f344578932</a></li>
+</ul>
+
+<p>The <a href="http://hg.mozilla.org/mozilla-central/rev/f6215eef2276">complete changeset</a> is semi-informative. Mozilla references a private bug in that fix that Mozilla will hopefully disclose. Similar to Chromium, the Mozilla patches create a list of certificate serial numbers that will be treated as invalid. However, the serial numbers from the Mozilla patches are different:</p>
+
+<ul>
+<li>  009239d5348f40d1695a745470e1f23f43</li>
+<li>  00d8f35f4eb7872b2dab0692e315382fb0</li>
+<li>  72032105c50c08573d8ea5304efee8b0</li>
+<li>  00b0b7133ed096f9b56fae91c874bd3ac0</li>
+<li>  00e9028b9578e415dc1a710a2b88154447</li>
+<li>  00d7558fdaf5f1105bb213282b707729a3</li>
+<li>  047ecbe9fca55f7bd09eae36e10cae1e</li>
+<li>  00f5c86af36162f13a64f54f6dc9587c06</li>
+<li>  392a434f0e07df1f8aa305de34e0c229</li>
+<li>  3e75ced46b693021218830ae86a82a71</li>
+</ul>
+
+<p>Thus, both Mozilla and Google shipped similar patches to their code at roughly the same time. The two browsers now have partially overlapping certificate blocklists. Here is the union of the two lists:</p>
+
+<ul>
+<li>  009239d5348f40d1695a745470e1f23f43</li>
+<li>  00b0b7133ed096f9b56fae91c874bd3ac0</li>
+<li>  00d7558fdaf5f1105bb213282b707729a3</li>
+<li>  00d8f35f4eb7872b2dab0692e315382fb0</li>
+<li>  00e9028b9578e415dc1a710a2b88154447</li>
+<li>  00f5c86af36162f13a64f54f6dc9587c06</li>
+<li>  047ecbe9fca55f7bd09eae36e10cae1e</li>
+<li>  392a434f0e07df1f8aa305de34e0c229</li>
+<li>  3e75ced46b693021218830ae86a82a71</li>
+<li>  72032105c50c08573d8ea5304efee8b0</li>
+<li>  9239d5348f40d1695a745470e1f23f43</li>
+<li>  b0b7133ed096f9b56fae91c874bd3ac0</li>
+<li>  d7558fdaf5f1105bb213282b707729a3</li>
+<li>  d8f35f4eb7872b2dab0692e315382fb0</li>
+<li>  f5c86af36162f13a64f54f6dc9587c06</li>
+</ul>
+
+<p>Why do the browsers have these blocklists, and why don’t they have the same blocklists?</p>
+
+<p>This returns me to the reason for creating crlwatch last week - I wanted to find the someones who knowingly revoked the above listed special certificates. Anyone looking from the same starting point as I did, obviously lacks the leaf certificates in question and as a result, I had to look in a rather round about manner. Thanks to the <a href="https://www.eff.org/observatory">EFF’s SSL Observatory</a>, I was able to populate the base list for crlwatch. Armed with a nearly canonical list of all CRLs, I fetched them over <a href="https://www.torproject.org/">Tor</a> and parsed the CRL data into human readable text. The goal was to search for the above serial numbers and to find something linkable.</p>
+
+<p>This is the result from searching the crlwatch data:</p>
+
+<p><code>Looking for 009239d5348f40d1695a745470e1f23f43 in parsed CRLs... Looking for 00b0b7133ed096f9b56fae91c874bd3ac0 in parsed CRLs... Looking for 00d7558fdaf5f1105bb213282b707729a3 in parsed CRLs... Looking for 00d8f35f4eb7872b2dab0692e315382fb0 in parsed CRLs... Looking for 00e9028b9578e415dc1a710a2b88154447 in parsed CRLs... Looking for 00f5c86af36162f13a64f54f6dc9587c06 in parsed CRLs... Looking for 047ecbe9fca55f7bd09eae36e10cae1e in parsed CRLs... Match! Serial Number: 047ECBE9FCA55F7BD09EAE36E10CAE1E Match! Serial Number: 047ECBE9FCA55F7BD09EAE36E10CAE1E Match! Serial Number: 047ECBE9FCA55F7BD09EAE36E10CAE1E Looking for 392a434f0e07df1f8aa305de34e0c229 in parsed CRLs... Match! Serial Number: 392A434F0E07DF1F8AA305DE34E0C229 Match! Serial Number: 392A434F0E07DF1F8AA305DE34E0C229 Match! Serial Number: 392A434F0E07DF1F8AA305DE34E0C229 Looking for 3e75ced46b693021218830ae86a82a71 in parsed CRLs... Match! Serial Number: 3E75CED46B693021218830AE86A82A71 Match! Serial Number: 3E75CED46B693021218830AE86A82A71 Match! Serial Number: 3E75CED46B693021218830AE86A82A71 Looking for 72032105c50c08573d8ea5304efee8b0 in parsed CRLs... Looking for 9239d5348f40d1695a745470e1f23f43 in parsed CRLs... Match! Serial Number: 9239D5348F40D1695A745470E1F23F43 Match! Serial Number: 9239D5348F40D1695A745470E1F23F43 Match! Serial Number: 9239D5348F40D1695A745470E1F23F43 Looking for b0b7133ed096f9b56fae91c874bd3ac0 in parsed CRLs... Match! Serial Number: B0B7133ED096F9B56FAE91C874BD3AC0 Match! Serial Number: B0B7133ED096F9B56FAE91C874BD3AC0 Match! Serial Number: B0B7133ED096F9B56FAE91C874BD3AC0 Looking for d7558fdaf5f1105bb213282b707729a3 in parsed CRLs... Match! Serial Number: D7558FDAF5F1105BB213282B707729A3 Match! Serial Number: D7558FDAF5F1105BB213282B707729A3 Match! Serial Number: D7558FDAF5F1105BB213282B707729A3 Looking for d8f35f4eb7872b2dab0692e315382fb0 in parsed CRLs... Match! Serial Number: D8F35F4EB7872B2DAB0692E315382FB0 Match! Serial Number: D8F35F4EB7872B2DAB0692E315382FB0 Match! Serial Number: D8F35F4EB7872B2DAB0692E315382FB0 Looking for f5c86af36162f13a64f54f6dc9587c06 in parsed CRLs... Match! Serial Number: F5C86AF36162F13A64F54F6DC9587C06 Match! Serial Number: F5C86AF36162F13A64F54F6DC9587C06 Match! Serial Number: F5C86AF36162F13A64F54F6DC9587C06</code></p>
+
+<p>Huzzah! It appears that we&#39;ve found a few matches!</p>
+
+<p>Here are the three matching files in human readable format:</p>
+
+<ul>
+<li>  <a href="https://github.com/ioerror/crlwatch/blob/master/crl-parsed/2208d196b567691ff77bee6ed97ac6aea7825aa0.crl2txt">7825aa0.crl2txt</a></li>
+<li>  <a href="https://github.com/ioerror/crlwatch/blob/master/crl-parsed/2454652aa76e0dcf0c7531a2ed9dbeda5c0f5dd5.crl2txt">c0f5dd5.crl2txt</a></li>
+<li>  <a href="https://github.com/ioerror/crlwatch/blob/master/crl-parsed/5a65d440090271759080e6d0eaae0b6ccae2ff50.crl2txt">ae2ff50.crl2txt</a></li>
+</ul>
+
+<p>Matching entries in the list look like this:</p>
+
+<p><code>Serial Number: 392A434F0E07DF1F8AA305DE34E0C229         Revocation Date: Mar 15 20:15:38 2011 GMT</code></p>
+
+<p>An interesting note is that this date is a bit earlier than the above patches. The CA knew to revoke it on March 15th and the above patches were worked into software a few days later. If the attacker was targeting specific users, the damage to those users may have already been inflicted.</p>
+
+<p>All three of the CRLs in question belong to <a href="http://www.usertrust.com/about.html">the same CA</a>:</p>
+
+<p><code>issuer=/C=US/ST=UT/L=Salt Lake City/O=The USERTRUST Network/OU=http://www.usertrust.com/CN=UTN-USERFirst-Hardware</code></p>
+
+<p>This appears to be a reseller or something similar for the <a href="http://www.comodo.com/">Comodo CA company</a> when the trust chain for USERTRUST is inspected:</p>
+
+<p><code>CN = COMODO High Assurance Secure Server CA</code></p>
+
+<p>We appear to have no initial matches for the following Mozilla specific serials from the data that I gathered during the initial crlwatch data population run:</p>
+
+<ul>
+<li>  009239d5348f40d1695a745470e1f23f43</li>
+<li>  00b0b7133ed096f9b56fae91c874bd3ac0</li>
+<li>  00d7558fdaf5f1105bb213282b707729a3</li>
+<li>  00d8f35f4eb7872b2dab0692e315382fb0</li>
+<li>  00e9028b9578e415dc1a710a2b88154447</li>
+<li>  00f5c86af36162f13a64f54f6dc9587c06</li>
+</ul>
+
+<p>Those serial numbers appear to not match, right? Nope. Mozilla appears<br>
+ to deal with certificate serial numbers in a slightly different manner - Chrome does the same internally but Mozilla exposes a weird quirk of certificate encoding directly in the source. The human readable data does not contain this quirk. Thus if you remove the prefix of ‘00’ from those serial numbers and search for the sixteen byte values, we find what we&#39;d expect:</p>
+
+<p><code>Looking for 9239d5348f40d1695a745470e1f23f43 in parsed CRLs... Match! Serial Number: 9239D5348F40D1695A745470E1F23F43 Match! Serial Number: 9239D5348F40D1695A745470E1F23F43 Match! Serial Number: 9239D5348F40D1695A745470E1F23F43 Looking for b0b7133ed096f9b56fae91c874bd3ac0 in parsed CRLs... Match! Serial Number: B0B7133ED096F9B56FAE91C874BD3AC0 Match! Serial Number: B0B7133ED096F9B56FAE91C874BD3AC0 Match! Serial Number: B0B7133ED096F9B56FAE91C874BD3AC0 Looking for d7558fdaf5f1105bb213282b707729a3 in parsed CRLs... Match! Serial Number: D7558FDAF5F1105BB213282B707729A3 Match! Serial Number: D7558FDAF5F1105BB213282B707729A3 Match! Serial Number: D7558FDAF5F1105BB213282B707729A3 Looking for d8f35f4eb7872b2dab0692e315382fb0 in parsed CRLs... Match! Serial Number: D8F35F4EB7872B2DAB0692E315382FB0 Match! Serial Number: D8F35F4EB7872B2DAB0692E315382FB0 Match! Serial Number: D8F35F4EB7872B2DAB0692E315382FB0 Looking for e9028b9578e415dc1a710a2b88154447 in parsed CRLs... Match! Serial Number: E9028B9578E415DC1A710A2B88154447 Match! Serial Number: E9028B9578E415DC1A710A2B88154447 Match! Serial Number: E9028B9578E415DC1A710A2B88154447 Looking for f5c86af36162f13a64f54f6dc9587c06 in parsed CRLs... Match! Serial Number: F5C86AF36162F13A64F54F6DC9587C06 Match! Serial Number: F5C86AF36162F13A64F54F6DC9587C06 Match! Serial Number: F5C86AF36162F13A64F54F6DC9587C06</code></p>
+
+<p>Here&#39;s sample from one of those CRLs:</p>
+
+<p><code>Serial Number: D7558FDAF5F1105BB213282B707729A3         Revocation Date: Mar 15 20:15:26 2011 GMT</code></p>
+
+<p>Ironically, after all of this work, the Mozilla <a href="http://hg.mozilla.org/mozilla-central/rev/f6215eef2276#l1.57">patch also leaks the CA name</a> and confirmed my suspicions without question.</p>
+
+<p>In the end, when the lists are merged, we find eleven certificates with two certificates probably acting as testing certificates for the two vendors involved:</p>
+
+<ul>
+<li>  077a59bcd53459601ca6907267a6dd1c</li>
+<li>  047ecbe9fca55f7bd09eae36e10cae1e</li>
+<li>  392a434f0e07df1f8aa305de34e0c229</li>
+<li>  3e75ced46b693021218830ae86a82a71</li>
+<li>  72032105c50c08573d8ea5304efee8b0</li>
+<li>  9239d5348f40d1695a745470e1f23f43</li>
+<li>  b0b7133ed096f9b56fae91c874bd3ac0</li>
+<li>  d7558fdaf5f1105bb213282b707729a3</li>
+<li>  d8f35f4eb7872b2dab0692e315382fb0</li>
+<li>  e9028b9578e415dc1a710a2b88154447</li>
+<li>  f5c86af36162f13a64f54f6dc9587c06</li>
+</ul>
+
+<p>This is evidence of a rather serious event and one that cannot be ignored. If I had to make a bet, I&#39;d wager that an attacker was able to issue high value certificates, probably by compromising USERTRUST in some manner, this was discovered sometime before the revocation date, each certificate was revoked, the vendors notified, the patches were written, and binary builds kicked off - end users are probably still updating and thus many people are vulnerable to the failure that is the CRL and OCSP method for revocation. Even after users update, I&#39;m guessing they may be unequally protected. Mozilla and other browsers should force OCSP verification by default as part of their next release and remove CAs that are unable to handle this requirement. Users of Mozilla Firefox that are concerned about this issue should enable security.OCSP.require in the about:config dialog. The surveillance concerns of enabling OCSP are serious - a CA learns what sites you’re visiting. However, they are nullified by the fact that OCSP checking is enabled by default on Firefox at least; it simply doesn’t provide any security gains for the end user because when it fails, it fails open!</p>
+
+<p>I contacted both Google and Mozilla (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=643056">bug #643056</a>) for comment after discovering the above data. Mozilla expressed some concern about disclosure and I offered to embargo this document until Tuesday March 22nd, the launch day for Firefox 4. They agreed and I kept this under my hat. After discussions between Comodo and Microsoft, passed on to me by Mozilla, the embargo was to be extended until Wednesday, March 23rd. This extension was ostensibly to ensure that Microsoft would be able to ship their Internet Explorer mitigation pack. After further discussion, Mozilla <a href="https://blog.mozilla.com/security/2011/03/22/firefox-blocking-fraudulent-certificates/">pushed their blog post about the issue</a> and I now consider the embargo lifted. Google has already shipped a fix to users. Install the latest Firefox to get a patch, if you haven&#39;t already. A Tor Browser update is in the works and will be available soon.</p>
+
+<p>Mozilla offered some additional information and disclosed that <a href="https://addons.mozilla.org/">addons.mozilla.org</a> was one of the certificates acquired by the attacker. In total, nine certificates were acquired. Seven were uniquely named. Two of the certificates were re-issued for a previously issued host name. One certificate was issued for &quot;global trustee&quot; rather than a valid host name. With testing certificates in the list, we have a good accounting of the certificates found in the source code of each browser. Google clarified their discrepancy with the list, acknowledged the duplicate serial mistake and issued subsequent patches. Saving for test hosts, the lists are now identical.</p>
+
+<p>If I had to guess at sites, I&#39;d speculate that Facebook, Skype, Google, Microsoft, Mozilla, and others are worthy of targeting. Comodo should disclose this information and clear up this speculation with very clear information about who was targeted.</p>
+
+<p>Both vendors expressed that the CA in question had done something quite remarkable by disclosing this compromise. The incentives may not be in the favor of the CA for disclosure. Many CAs may fall to similar attacks and simply refuse to disclose. Hopefully crlwatch will provide us with meaningful data regarding revocation events. The EFF and The Tor Project are <a href="https://trac.torproject.org/projects/tor/wiki/HTTPSEverywhere/SSLObservatorySubmission">working on solutions for detecting anomalies in certificates</a> found in the wild. Still, some CAs may simply be unaware of compromises or unwilling to revoke for fear of detection.</p>
+
+<p>Are all other browsers deploying similar countermeasures? Thanks to the free software nature of Firefox and Chrome, we have an answer for at least two projects. I wish that we could say the same for the rest of the browser world. One may assume that the CA in question did their best to contact all impacted vendors and targets.</p>
+
+<p>Comodo has not yet revealed the extent of the compromise to the public - were their signing keys in a hardware security module? How many certificates in total were ever issued by this specific signing key? Wouldn&#39;t it be best to remove the specific signing keys from all trust roots to be extra careful given the stakes? Who exactly did they deem important enough for disclosure? The Tor Project, which ships the Tor Browser Bundle was not notified. Clearly some groups are being left out of the loop and this is where even a single attack really causes the entire CA trust model to fall apart.</p>
+
+<p>Comodo should release the full certificates to the internet as well as all of the details relating to the attack. Mozilla and other browsers should open their bug reports, explain their process and lay out a path forward where we won&#39;t have to repeat this entire process again.</p>
+
+<p>There is some suspicion that this action was taken by a state level adversary and there are some specific states that have been named. I’ll leave further speculation about which nation states may be involved to others. The mere fact that the web’s system of trust relies on an all or nothing property should be enough of a cause for alarm. It’s obvious that this has been and will continue to be exploited.</p>
+
+<p>The impact on other cryptographic systems, such as S/MIME signatures and other cryptographic systems secured by CAs is entirely un-discussed. Quite seriously, when a CA is compromised, it will impact a great deal more than the web; users of email systems (SMTP, IMAP, POP,etc), Jabber servers, and any other SSL/TLS enabled systems are all at risk. Blocking specific serial numbers or relying on flawed, <a href="http://www.imperialviolet.org/2011/03/18/revocation.html">provably broken methods of revocation</a> will simply not cut it anymore. When the actual protection mechanisms are not enforced, there is little hope of end users being protected.</p>
+
+<p>This should serve as a wake up call to the internet. We need to research, build, and share new methods for ensuring trust, identity, authenticity, and confidentiality on the internet. Proposals such as <a href="http://www.ietf.org/id/draft-ietf-dane-protocol-06.txt">DANE</a>, <a href="http://tools.ietf.org/html/draft-hallambaker-donotissue-03">CAA</a>, <a href="http://tools.ietf.org/html/draft-hoffman-server-has-tls-04">HASTLS</a>, and <a href="http://web.monkeysphere.info/">Monkeysphere</a> are steps in the right direction but they face an uphill battle from entrenched economic interests.</p>
+
+<p>Certification Authorities may continue to provide a piece of the puzzle but it’s high time we ensure that they’re not the alpha and the omega, anymore.</p>
+
+<p><strong>Update:</strong><br>
+ Comodo has issued <a href="http://www.comodo.com/Comodo-Fraud-Incident-2011-03-23.html">a statement confirming everything</a> that I&#39;ve said and more. They believe that this was a targeted attack by a state level actor and they have named Iran as the country they suspect. Mozilla has now opened the bug reports about the issue to the public. Microsoft has now <a href="http://www.microsoft.com/technet/security/advisory/2524375.mspx">disclosed their report</a> as well.</p>
+
+<p>In the details of their statement we have a confirmation that they have the ability to monitor and thus surveille people who wish to know if certificates are valid.</p>
+
+<p>Comodo also clearly demonstrate a mis-understanding - they believe that checks for revocation are proof positive that certificates are being used. They need to <strong><a href="http://www.imperialviolet.org/2011/03/18/revocation.html">read and understand why this is not true</a></strong>.</p>
+
+<p>The browsers have dropped the ball and they have chosen to fail open in nearly every single case; an attacker who is able to MITM SSL/TLS will also MITM the OCSP/CRL requests. Moxie&#39;s <a href="http://www.thoughtcrime.org/software/sslstrip/">sslstrip</a> demonstrated that an attacker would do this automatically and his software has done this for OCSP in public since 2009. Mozilla did not fix this issue at the time and they have once again punted on the issue. An even <a href="http://www.imperialviolet.org/2011/03/18/revocation.html">lower tech attack is possible and it&#39;s why revocation does not work</a>: <strong>By returning a HTTP 500 error, the browser will the continue on as if revocation checks showed the certificate to be perfectly fine</strong>.</p>
+
+<p>The browsers chose a user privacy invasive stance without the user protecting security properties. They did this because they claim that CAs are unable to provide working OCSP/CRL systems for request handling. This is a fair claim if true but it must not stand any longer. If the CA cannot provide even a basic level of revocation, it&#39;s clearly <strong>irresponsible</strong> to ship that CA root in a browser. <strong>Browsers should give insecure CA keys an Internet Death Sentence</strong> rather than expose the users of the browsers to known problems.</p>
+
+<p>It&#39;s probably the case that Mozilla and other browsers should write a secure, caching OCSP server for use when a CA has a failure. It should probably be run by a neutral third party such as the EFF with a strong user privacy stance. This would only serve as a temporary fix and until Browsers get their act together, users are doomed anyway.</p>
+
+<p>OCSP stapling does not fix this issue. The browsers treat revocation errors as soft errors and a MITM is deadly for revocation. The browsers believe they have to treat them as soft errors because the CAs are failing to do their job properly and are almost entirely unaccountable. The browsers are failing users by refusing to hold CAs to account. If OCSP and CRL failures mean the internet doesn&#39;t work, we need to create alternatives and not simply sweep these issues under the rug for later analysis. <strong>Browsers should hard fail on certificate revocation errors.</strong></p>
+
+<p>Comodo has further failed by:</p>
+
+<ul>
+<li>  Failing to produce further information about those certificates</li>
+<li>  Selective disclosure to &quot;<em>principal browsers and domain owners</em>&quot;</li>
+<li>  Failing to disclose what sub-CA/intermediate root actually did the signing</li>
+<li>  Believing that the attacker must control DNS for these attacks to succeed</li>
+<li>  Waiting <strong>eight days</strong> to disclose evidence of a specific targeted attack</li>
+</ul>
+
+<p>I believe that the browsers, such as Mozilla, are doing the best that they can in some ways but the lack of immediate full disclosure is a major failure.</p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="ioerror">ioerror's Blog</a>
+<!--	      <a class="post-cmtlink" href="/detecting-certificate-authority-compromises-and-web-browser-collusion/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/detecting-certificate-authority-compromises-and-web-browser-collusion#comments">Leave a comment</a>
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/reading-links-21-march-2011-edition">Reading links, 21 March 2011 edition</a>
+	  </h2>
+	  <span class="post-meta">Posted Mar 21, 2011 by <a class="post-author" href="phobos">phobos</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/china">china</a>
+              
+		  <a class="post-category post-category-js" href="/tag/edrigram">edrigram</a>
+              
+		  <a class="post-category post-category-js" href="/tag/gmail">gmail</a>
+              
+		  <a class="post-category post-category-js" href="/tag/interesting links">interesting links</a>
+              
+		  <a class="post-category post-category-js" href="/tag/interesting reading">interesting reading</a>
+              
+		  <a class="post-category post-category-js" href="/tag/internet censorship">internet censorship</a>
+              
+		  <a class="post-category post-category-js" href="/tag/mandated content blocking">mandated content blocking</a>
+              
+		  <a class="post-category post-category-js" href="/tag/reading links">reading links</a>
+              
+		  <a class="post-category post-category-js" href="/tag/vpns">vpns</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <ul>
+<li>  The ramped up censorship of the Internet by China continues while the world is distracted by the Middle East and Japan. <a href="http://advocacy.globalvoicesonline.org/2011/03/20/china-pptp-and-l2tp-vpn-protocols-blocked/" title="http://advocacy.globalvoicesonline.org/2011/03/20/china-pptp-and-l2tp-vpn-protocols-blocked/">http://advocacy.globalvoicesonline.org/2011/03/20/china-pptp-and-l2tp-vp...</a></li>
+<li>  GMail blockage in China, or not. <a href="http://techcrunch.com/2011/03/21/google-and-china-at-it-again-with-government-gmail-block/" title="http://techcrunch.com/2011/03/21/google-and-china-at-it-again-with-government-gmail-block/">http://techcrunch.com/2011/03/21/google-and-china-at-it-again-with-gover...</a></li>
+<li>  On Mandated Content Blocking in the Domain Name System, <a href="http://www.circleid.com/posts/20110318_on_mandated_content_blocking_in_the_domain_name_system/" title="http://www.circleid.com/posts/20110318_on_mandated_content_blocking_in_the_domain_name_system/">http://www.circleid.com/posts/20110318_on_mandated_content_blocking_in_t...</a></li>
+<li>  The always excellent EDRi-gram is out for March 2011, <a href="http://www.edri.org/edrigram/number9.5" title="http://www.edri.org/edrigram/number9.5">http://www.edri.org/edrigram/number9.5</a></li>
+</ul>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="phobos">phobos's Blog</a>
+<!--	      <a class="post-cmtlink" href="/reading-links-21-march-2011-edition/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/reading-links-21-march-2011-edition#comments">Leave a comment</a>
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/february-2011-progress-report">February 2011 Progress Report</a>
+	  </h2>
+	  <span class="post-meta">Posted Mar 15, 2011 by <a class="post-author" href="phobos">phobos</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/bug fixes">bug fixes</a>
+              
+		  <a class="post-category post-category-js" href="/tag/censosrhip circumvention">censosrhip circumvention</a>
+              
+		  <a class="post-category post-category-js" href="/tag/downloads">downloads</a>
+              
+		  <a class="post-category post-category-js" href="/tag/improvements">improvements</a>
+              
+		  <a class="post-category post-category-js" href="/tag/incentives">incentives</a>
+              
+		  <a class="post-category post-category-js" href="/tag/progress report">progress report</a>
+              
+		  <a class="post-category post-category-js" href="/tag/research">research</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p><strong>New hires</strong><br>
+ We contracted Runa Sandvik to work on moving the torouter project forward, <a href="https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/Torouter" title="https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/Torouter">https://trac.torproject.org/projects/tor/wiki/TheOnionRouter/Torouter</a>, translations, and integration of tor web server log analysis and publication.</p>
+
+<p><strong>New Releases</strong><br>
+ On February 23rd, we released an updated Tor -stable. Tor 0.2.1.30 fixes a<br>
+ variety of less critical bugs. The main other change is a slight tweak to Tor&#39;s TLS handshake that makes relays and bridges that run this new version reachable from Iran again. We don&#39;t expect this tweak will win the arms race long-term, but it<br>
+ buys us time until we roll out a better solution. Full announcement at<br>
+ <a href="https://lists.torproject.org/pipermail/tor-announce/2011-February/000000.html" title="https://lists.torproject.org/pipermail/tor-announce/2011-February/000000.html">https://lists.torproject.org/pipermail/tor-announce/2011-February/000000...</a></p>
+
+<p><strong>Censorship resistance</strong></p>
+
+<ul>
+<li>  Arm development has stayed relatively on track, with the revised<br>
+ connection panel very nearly achieving parity with its predecessor<br>
+ (and in most respects surpassing it). Most of what remains are<br>
+ refinements and tasty new features. Arm has also been added to Debian<br>
+ (Sid) and Ubuntu (Natty) with backports pending. Many thanks to Peter<br>
+ for his help.</li>
+<li>  Tom spent some time assisting Jacob with a satellite test. The test wound<br>
+ up breaking due to flaky hardware, however they were able to collect some usable<br>
+ data.</li>
+<li>  Created the trac ticket around hidden service improvements,<br>
+ <a href="https://trac.torproject.org/projects/tor/ticket/2552" title="https://trac.torproject.org/projects/tor/ticket/2552">https://trac.torproject.org/projects/tor/ticket/2552</a>. We need to focus on<br>
+ improving hidden services and fixing some of the performance and reliability<br>
+ issues within.</li>
+<li>  Mike fixed a bunch of torbutton bugs. His summary iteration results are<br>
+ at <a href="https://trac.torproject.org/projects/tor/ticket/2591" title="https://trac.torproject.org/projects/tor/ticket/2591">https://trac.torproject.org/projects/tor/ticket/2591</a>.</li>
+<li>  Mike helped fix the bandwidth authority on salsa that exploded due to a<br>
+ reinstall.</li>
+</ul>
+
+<p><strong>Architecture and Design Docs for better censorship resistance</strong></p>
+
+<ul>
+<li>  Karsten and Sebastian tried to improve the database schema in metrics-db<br>
+ to speed up relay search performance. Unfortunately, the required updates<br>
+ from the old schema took forever, so we don&#39;t just need a better schema, but<br>
+ also a better migration strategy to go from one schema to the next.</li>
+<li>  Karsten started moving code from metrics-db to metrics-web to make the<br>
+ metrics website a self-contained unit that&#39;s independent of<br>
+ aggregating descriptors. The idea is that people can take the metrics-web<br>
+ code and improve it or replace it with a better metrics website written in<br>
+ the web language of their choice.</li>
+<li>  Karsten started working on better visualizations of Tor data using the<br>
+ Thematic Mapping API together with Rachel Binx.</li>
+</ul>
+
+<p><strong>Hide Tor&#39;s network signature.</strong></p>
+
+<ul>
+<li>  Collaborated with George K on obfsproxy, a generic protocol<br>
+ obfuscator. It seems to work ok but needs more testing.</li>
+<li>  Nick worked on improving the pluggable-transport design.</li>
+<li>  Jacob did another revision on what is now prop 179,<br>
+ <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/179-TLS-cert-and-parameter-normalization.txt" title="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/179-TLS-cert-and-parameter-normalization.txt">https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/179-TLS-c...</a></li>
+<li>  Jacob looked at the EFF SSL data and have some improvements for how we can<br>
+ get better data for future research questions.</li>
+</ul>
+
+<p><strong>Outreach and Advocacy</strong></p>
+
+<ul>
+<li>  Jacob continued working on Egypt related issues.</li>
+<li>  Jacob did a training for people in Bahrain.</li>
+<li>  Tor, the ACLU and the OPC launched our privacy challenge:<br>
+ <a href="http://www.develop4privacy.org/" title="http://www.develop4privacy.org/">http://www.develop4privacy.org/</a>.</li>
+<li>  Jacob did a bit of looking at the Libyan Internet.</li>
+<li>  Jacob gave the keynote speech at the Ctrl-X-Ethics Workshop in Toronto on<br>
+ ethics of security research.</li>
+<li>  We ran a successful hackfest with the help of MITs Center for Future Civic<br>
+ Media, <a href="https://blog.torproject.org/blog/tor-open-hackfest-february-19-2011" title="https://blog.torproject.org/blog/tor-open-hackfest-february-19-2011">https://blog.torproject.org/blog/tor-open-hackfest-february-19-2011</a><br>
+ and the followup at <a href="https://blog.torproject.org/blog/hackfest-thanks" title="https://blog.torproject.org/blog/hackfest-thanks">https://blog.torproject.org/blog/hackfest-thanks</a>.</li>
+<li>  Roger was the keynote speaker for Workshop on Free and Open Communication<br>
+ on the Internet (FOCI), <a href="http://www.gtisc.gatech.edu/foci.html" title="http://www.gtisc.gatech.edu/foci.html">http://www.gtisc.gatech.edu/foci.html</a>.</li>
+<li>  Andrew talked to the Wesleyan HFOSS team about Tor and classwork for their<br>
+ Summer 2011 session. <a href="http://hfoss.org/" title="http://hfoss.org/">http://hfoss.org/</a>.</li>
+<li>  Roger and Steven presented at Financial Crypto and the Workshop on the<br>
+ Ethics of Computer Security Research.</li>
+<li>  Andrew spoke at a few panels under Chatham House Rules. He published his<br>
+ speech notes as a blog post,<br>
+ <a href="https://blog.torproject.org/blog/five-minutes-speak" title="https://blog.torproject.org/blog/five-minutes-speak">https://blog.torproject.org/blog/five-minutes-speak</a>.</li>
+<li>  Roger wrote a blog post about using our data archive as input to new<br>
+ safety metrics:<br>
+ <a href="https://blog.torproject.org/blog/research-problem-measuring-safety-tor-" title="https://blog.torproject.org/blog/research-problem-measuring-safety-tor-">https://blog.torproject.org/blog/research-problem-measuring-safety-tor-</a><br>
+ network.</li>
+<li>  Roger talked to the Philly FBI for the Philadelphia Infragard chapter<br>
+ about Tor and anonymity online.</li>
+<li>  Roger taught a Tor lecture for Drexel&#39;s security class.</li>
+<li>  Andrew was interviewed by Discovery News about Tor&#39;s role in the unrest in<br>
+ Tunisia and Egypt,<br>
+ <a href="http://news.discovery.com/tech/egypt-internet-online-protesters-110201.html" title="http://news.discovery.com/tech/egypt-internet-online-protesters-110201.html">http://news.discovery.com/tech/egypt-internet-online-protesters-110201.h...</a></li>
+<li>  Andrew was interviewed by the Walpole Times about Tor and what we do,<br>
+ <a href="http://www.wickedlocal.com/walpole/news/x95296113/Tor-Project-a-Walpole-" title="http://www.wickedlocal.com/walpole/news/x95296113/Tor-Project-a-Walpole-">http://www.wickedlocal.com/walpole/news/x95296113/Tor-Project-a-Walpole-</a><br>
+ based-company-helps-Egyptians-avoid-Internet-censorship-during-protests.</li>
+</ul>
+
+<p><strong>Preconfigured privacy bundles</strong></p>
+
+<ul>
+<li>  Jacob did some testing of Gibberbot&#39;s Tor and OTR integration. Gibberbot<br>
+ is an XMPP chat client for Android designed to work over Tor.</li>
+<li>  Jacob did a bunch of work on ttdnsd - some important (but not critical)<br>
+ bug fixes and he&#39;s planning on pushing out a release in the future. Jacob and<br>
+ Robert did some work on torsocks integration and in the process hammered out a<br>
+ reasonable torsocks API for people who want to have auto-magically Torified<br>
+ sockets without understanding Tor internals.</li>
+<li>  Jacob worked on OpenWRT packaging issues - as well as other work on the<br>
+ Torouter project.</li>
+<li>  Jacob worked on Tahoe (<a href="http://tahoe-lafs.org/trac/tahoe-lafs" title="http://tahoe-lafs.org/trac/tahoe-lafs">http://tahoe-lafs.org/trac/tahoe-lafs</a>) and<br>
+ Tor related Hidden Service documentation; after moderate amount of Tor testing<br>
+ with Tahoe now and it seems to be partially functional.</li>
+</ul>
+
+<p><strong>Bridge work</strong></p>
+
+<ul>
+<li>  Karsten prepared a patch for BridgeDB to export bridge pool assignments to<br>
+ a local file. This patch needs some cleanup before being deployed on<br>
+ BridgeDB.</li>
+<li>  Karsten wrote a first draft of a BridgeDB specification that Nick<br>
+ commented on. The next step is to include Nick&#39;s comments and change the<br>
+ writing style, so that the specification describes what the current BridgeDB<br>
+ code does, not what a generic BridgeDB implemention should do.</li>
+<li>  Karsten extended the bridge descriptor sanitizing algorithm to include IP<br>
+ address hashes in the sanitized descriptors. Sanitized all existing<br>
+ bridge descriptors using this new algorithm. Instead of 127.0.0.1,<br>
+ bridges now have 10.x.y.z addresses with x.y.z being stable for a given<br>
+ bridge fingerprint in a given month. This allows analyses of how often<br>
+ bridges change their IP addresses in a given month.</li>
+<li>  Christian deployed a new version of BridgeDB, the one that&#39;s i18n enabled<br>
+ (#1613) and also can dump bridge pool assignments to files. We can now<br>
+ assign an amount of unassigned bridges to someone/something and dump<br>
+ them to file buckets. See #1612 for more infos. In theory, we can now<br>
+ have an amount of Twitter assigned bridges that we pump out over<br>
+ Twitter.</li>
+<li>  Christian also started writing a python script that is able to dump<br>
+ stuff to Twitter.</li>
+<li>  After deployment of the new BridgeDB, some issues came up that were fixed<br>
+ (#2556 and others). It seems to run smoothly now. We&#39;ll be even more<br>
+ happy about it when we have important (read: Chinese and Farsi)<br>
+ translations ready and deployed.</li>
+<li>  Christian and Karsten discussed about whether his planned &quot;dump bridge<br>
+ pool<br>
+ assignments to files&quot; feature can use the bucket mechanism of #1612.<br>
+ Turns out it can&#39;t since both have a different set of goals and would<br>
+ be to painful to sync with every change.</li>
+<li>  Mike helped Karsten with improving the output of Torperf for future<br>
+ experiments involving circuit build timeouts.</li>
+</ul>
+
+<p><strong>Scalability</strong></p>
+
+<ul>
+<li>  Improved Torperf and finally deployed it to collect data about used<br>
+ paths and to measure performance with custom guard node selections.<br>
+ This is still work in progress together with Mike and Tom as part of<br>
+ our first Scrum iteration that ends on March 5.</li>
+<li>  Worked on Florian&#39;s and Björn&#39;s token bucket patch some more together<br>
+ with Sebastian. The current state of the patch is that it needs some<br>
+ more love before it can be merged into 0.2.3.x.</li>
+<li>  Nick collaborated a little with two volunteers on what we<br>
+ think at this point must be the 5th generation of a &quot;launch a private<br>
+ network&quot; tool. This one is called &quot;chutney&quot;.</li>
+<li>  Nick reviewed a bunch of patches, reviewed a bunch of bugs, fixed a<br>
+ bunch of bugs, merged many people&#39;s code, got 0.2.2.x closer to done.</li>
+<li>  Sebastian wrote a proposal for a safer voting process for consensus<br>
+ parameters, and wrote an implementation for it.<br>
+ <a href="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/178-param-" title="https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/178-param-">https://gitweb.torproject.org/torspec.git/blob/HEAD:/proposals/178-param...</a><br>
+ voting.txt</li>
+<li>  Damian started thinking about our various projects in a more streamlined<br>
+ and easy-to-understand way. The results are at<br>
+ <a href="https://www.torproject.org/getinvolved/volunteer.html.en#Projects" title="https://www.torproject.org/getinvolved/volunteer.html.en#Projects">https://www.torproject.org/getinvolved/volunteer.html.en#Projects</a>.</li>
+</ul>
+
+<p><strong>Incentives</strong></p>
+
+<ul>
+<li>  Christian cleaned up the rather hackish installation of Weather on bahri.<br>
+ The stable installation now lives under `/home/weather/opt/current&#39; and actually<br>
+ is update-able through `git pull&#39;. There&#39;s also a testing installation to test<br>
+ stuff and play around at <a href="https://weather2.torproject.org/" title="https://weather2.torproject.org/">https://weather2.torproject.org/</a>. He&#39;s tried to<br>
+ update the documentation with all the stuff that is necessary to install and run<br>
+ Weather.</li>
+<li>  Christian tried looking into #2467. Some people complained that Weather<br>
+ didn&#39;t know their relay fingerprint. On Sebastian&#39;s and Mike&#39;s idea, Christian<br>
+ changed the torrc to include `FetchDirInfoEarly 1&#39; and `FetchUselessDescriptors<br>
+ 1&#39;. Since that no one complained again about Weather not knowing a certain relay<br>
+ (except for one time, when the Weather process had silently crashed and<br>
+ therefore the database wasn&#39;t updated for a day).</li>
+<li>  After Tor 0.2.1.30 was tagged and made it to the recommended versions&#39;,<br>
+ people running 0.2.1.29 started complaining about getting &quot;Node out of date!&quot;<br>
+ emails from Weather. It turned out that Weather was actually doing the right<br>
+ thing, namely mailing them that they were not running the latest recommended<br>
+ stable version anymore. No one seemed to have read the text near the checkbox in<br>
+ the signup process. After discussing this intensely with Sebastian, we decided<br>
+ to go for a more simple solution: People now get email when they don&#39;t run one<br>
+ of the recommended versions or a more recent dev version of Tor.</li>
+</ul>
+
+<p><strong>More reliable downloads</strong></p>
+
+<ul>
+<li>  Christian did a rather large GetTor overhaul. The way GetTor manages its<br>
+ packages is now much easier to understand and enhance. GetTor moved from a<br>
+ ini-style configuration file and parser to a more BridgeDB-like configuration<br>
+ management. Also, packages are now configured rather than hard coded. In<br>
+ addition, he cleaned up the i18n management of GetTor to something similar to<br>
+ what we use in BridgeDB. Not only are the translation strings cleaner now, but<br>
+ the translation and installation is smoother. Also, the logging was simplified<br>
+ because it had too many features that no one used and generally was polluting<br>
+ the log file with too much useless information. Furthermore, the MakeStat.py<br>
+ script that<br>
+ creates GetTor&#39;s package statistics was simplified a lot.</li>
+<li>  Christian fixed #1586, users requesting non-existent split packages now<br>
+ are informed about that fact.</li>
+<li>  Nick worked on a thandy packaging spec with Erinn.</li>
+</ul>
+
+<p><strong>Translations</strong></p>
+
+<ul>
+<li>  Sebastian Started figuring out a way how translations can be pulled from<br>
+ transifex and used in their respective products in a more automated<br>
+ fashion.</li>
+<li>  New or updated website translations in French, Russian, Italian, Japanese,<br>
+ Spanish, Mandarin Chinese, and Greek.</li>
+</ul>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="phobos">phobos's Blog</a>
+<!--	      <a class="post-cmtlink" href="/february-2011-progress-report/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/february-2011-progress-report#comments">Leave a comment</a>
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/reading-links-11-march-2011">Reading links for 11 March 2011</a>
+	  </h2>
+	  <span class="post-meta">Posted Mar 11, 2011 by <a class="post-author" href="phobos">phobos</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/interesting topics">interesting topics</a>
+              
+		  <a class="post-category post-category-js" href="/tag/reading links">reading links</a>
+              
+		  <a class="post-category post-category-js" href="/tag/thoughts">thoughts</a>
+              
+		  <a class="post-category post-category-js" href="/tag/what we&#039;re reading">what we&#039;re reading</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <ul>
+<li>  Woah, &quot;France Goes Overboard In Data Retention: Wants User Passwords Retained&quot;, <a href="http://www.techdirt.com/articles/20110303/03520213350/france-goes-overboard-data-retention-wants-user-passwords-retained.shtml" title="http://www.techdirt.com/articles/20110303/03520213350/france-goes-overboard-data-retention-wants-user-passwords-retained.shtml">http://www.techdirt.com/articles/20110303/03520213350/france-goes-overbo...</a></li>
+<li>  Tor is a finalist in &quot;Free Expression Awards 2011: New Media&quot;, <a href="http://www.indexoncensorship.org/2011/03/free-expression-awards-2011-new-media/" title="http://www.indexoncensorship.org/2011/03/free-expression-awards-2011-new-media/">http://www.indexoncensorship.org/2011/03/free-expression-awards-2011-new...</a></li>
+<li>  &quot;Svenska biståndspengar till Facebookrevolutionen&quot;, <a href="http://www.nyteknik.se/nyheter/it_telekom/internet/article3123594.ece" title="http://www.nyteknik.se/nyheter/it_telekom/internet/article3123594.ece">http://www.nyteknik.se/nyheter/it_telekom/internet/article3123594.ece</a></li>
+<li>  Secret proposals to destroy privacy on earth, <a href="http://www.techdirt.com/articles/20110311/00104713434/us-proposals-secret-tpp-son-acta-treaty-leaked-chock-full-awful-ideas.shtml" title="http://www.techdirt.com/articles/20110311/00104713434/us-proposals-secret-tpp-son-acta-treaty-leaked-chock-full-awful-ideas.shtml">http://www.techdirt.com/articles/20110311/00104713434/us-proposals-secre...</a></li>
+<li>  Internet censorship in America, <a href="http://www.techdirt.com/articles/20110304/01390113359/rep-lofgren-challenges-ip-czar-legality-domain-seizures.shtml" title="http://www.techdirt.com/articles/20110304/01390113359/rep-lofgren-challenges-ip-czar-legality-domain-seizures.shtml">http://www.techdirt.com/articles/20110304/01390113359/rep-lofgren-challe...</a></li>
+<li>  New net rules set to make cookies crumble, <a href="http://www.bbc.co.uk/news/technology-12668552" title="http://www.bbc.co.uk/news/technology-12668552">http://www.bbc.co.uk/news/technology-12668552</a></li>
+</ul>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="phobos">phobos's Blog</a>
+<!--	      <a class="post-cmtlink" href="/reading-links-11-march-2011/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/reading-links-11-march-2011#comments">Leave a comment</a>
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+    </ul>
+    <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+
+
+    <!-- Pagination links -->
+    
+    <div class="pagination">
+      <a href="/index.html">&laquo; Newest</a>
+      &nbsp;
+
+      
+	<a href="/blog/page92">&laquo; Prev</a>
+      
+      &nbsp;
+
+      <!-- Pagination vars -->
+      
+      
+      
+      
+      
+      
+	  
+      
+      
+      
+
+	
+	  <a href="../../blog/page88">88</a>
+	
+      
+
+	
+	  <a href="../../blog/page89">89</a>
+	
+      
+
+	
+	  <a href="../../blog/page90">90</a>
+	
+      
+
+	
+	  <a href="../../blog/page91">91</a>
+	
+      
+
+	
+	  <a href="../../blog/page92">92</a>
+	
+      
+
+	
+	  93
+
+	
+      
+
+	
+	  <a href="../../blog/page94">94</a>
+	
+      
+
+	
+	  <a href="../../blog/page95">95</a>
+	
+      
+
+	
+	  <a href="../../blog/page96">96</a>
+	
+      
+
+	
+	  <a href="../../blog/page97">97</a>
+	
+      
+
+	
+	  <a href="../../blog/page98">98</a>
+	
+      
+      &nbsp;
+
+      
+	<a href="/blog/page94">Next &raquo;</a>
+      
+      &nbsp;
+      <a href="../../blog/page147">Oldest &raquo;</a>
+    </div>
+    
+    
+    <br />
+
+  </div>
+
+<!-- Include the side column -->
+<div class="sidecol">
+
+<!-- RSS FEED / SEARCH -->
+    <div class="sidefirst">
+	<a href="/feed.xml"><img src="/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="/img/rss.png">Atom</a> -->
+	<form>
+        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
+        </form>
+    </div>
+
+<!-- EVENTS -->
+    <div class ="sidebox orangebox">
+	<h2>Upcoming Events</h2>
+	<ul>
+	    
+		    <li><span><a href="/tor-winter-dev-meeting-2015">Tor Winter Dev Meeting 2015</a></span></li>
+	    
+		    <li><span><a href="/roger-and-jake-rightscon-manila">Roger and Jake at RightsCon in Manila</a></span></li>
+	    
+		    <li><span><a href="/tor-booth-fosdem-2015">Tor booth at FOSDEM 2015</a></span></li>
+	    
+		    <li><span><a href="/many-tor-people-pets-philadelphia">Many Tor people at PETS in Philadelphia</a></span></li>
+	    
+	</ul>
+	<span><a href="/events">full calendar &raquo;</a></span>
+    </div>
+    
+<!-- RECENT BLOG POSTS -->
+    <div class ="sidebox greenbox">
+	<h2>Recent Blog Posts</h2>
+	<ul>
+	  
+		    <li><span><a href="/tor-weekly-news--february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+	  
+		    <li><span><a href="/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
+	  
+		    <li><span><a href="/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+	  
+		    <li><span><a href="/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
+	  
+		    <li><span><a href="/tor-weekly-news--january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+	  
+		    <li><span><a href="/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
+	  
+	</ul>
+	<span><a href="/archive">more &raquo;</a></span>
+    </div>
+    
+<!-- TAG CLOUD -->
+    <div class ="tagbox orangebox">
+	<h2>Blog Tag Cloud</h2>
+	<ul>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/blog/">
+            blog
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/first post/">
+            first post
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 171%">
+        <span><a href="/tag/tor/">
+            tor
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/24c3/">
+            24c3
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/ccc/">
+            ccc
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/tag/talks/">
+            talks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/tag/bugs/">
+            bugs
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/crashes/">
+            crashes
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 64%">
+        <span><a href="/tag/osx/">
+            osx
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/qt/">
+            qt
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/tag/vidalia/">
+            vidalia
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 67%">
+        <span><a href="/tag/vidalia bundle/">
+            vidalia bundle
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/meetup/">
+            meetup
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 61%">
+        <span><a href="/tag/attacks/">
+            attacks
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/covert channels/">
+            covert channels
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 57%">
+        <span><a href="/tag/media coverage/">
+            media coverage
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 88%">
+        <span><a href="/tag/bridges/">
+            bridges
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 59%">
+        <span><a href="/tag/incognito/">
+            incognito
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 113%">
+        <span><a href="/tag/progress report/">
+            progress report
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 84%">
+        <span><a href="/tag/torbrowser/">
+            torbrowser
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 83%">
+        <span><a href="/tag/torbutton/">
+            torbutton
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 65%">
+        <span><a href="/tag/china/">
+            china
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/directors/">
+            directors
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 75%">
+        <span><a href="/tag/release candidate/">
+            release candidate
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 74%">
+        <span><a href="/tag/gsoc/">
+            gsoc
+        </a></span>
+    </li>
+
+	</ul>
+	<span><a href="/tag-cloud">more tags &raquo;</a></span>
+    </div>
+
+</div>
+
+<div style="clear: both;"></div>  
+
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Tor Project Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>The Tor Project Blog</li>
+          <li><a href="mailto:contact@torproject.org">contact@torproject.org</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyllrb</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+ <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jmttest'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    
+  </body>
+
+</html>

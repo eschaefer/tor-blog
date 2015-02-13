@@ -2,9 +2,10 @@
 layout: post
 title: "Tor Browser 4.5a3 is released"
 permalink: tor-browser-45a3-released
-date: 2015-01-16
+date: 2015-01-16 10:37:44
 author: gk
 category: blog
+status: open
 tags: ["tbb", "tbb-4.5", "tor browser", "tor browser bundle"]
 ---
 

@@ -2,9 +2,10 @@
 layout: post
 title: "Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries"
 permalink: guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries
-date: 2015-02-08
+date: 2015-02-08 16:43:41
 author: alison
 category: blog
+status: open
 tags: ["community", "Guest Blog Post", "libraries", "privacy"]
 ---
 

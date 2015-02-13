@@ -11,8 +11,8 @@
 ">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="/blog/css/main.css">
-    <link rel="canonical" href="http://tor.jmtodaro.com//blog/blog/page3/">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://torblog.lan//blog/page3/">
 </head>
 
 
@@ -22,7 +22,7 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="/blog/">The Tor Project Blog</a>
+    <a class="site-title" href="/">The Tor Project Blog</a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -34,8 +34,8 @@
       </a>
 
       <div class="trigger">
-	<a class="page-link" href="/blog/">Blog Home</a>
-        <a class="page-link" href="/blog/archive">Archives</a>
+	<a class="page-link" href="/">Blog Home</a>
+        <a class="page-link" href="/archive">Archives</a>
 	<a class="page-link" href="https://www.torproject.org/about/overview">About Tor</a>
         <a class="page-link donate" href="https://www.torproject.org/donate/donate">Donate</a>
 
@@ -56,9 +56,9 @@
 	
 	<li>
 	  <h2>
-	    <a class="post-link" href="/blog/tor-weekly-news-—-january-7th-2015">Tor Weekly News — January 7th, 2015</a>
+	    <a class="post-link" href="/tor-weekly-news--january-7th-2015">Tor Weekly News — January 7th, 2015</a>
 	  </h2>
-	  <span class="post-meta">Posted Jan 7, 2015 by <a class="post-author" href="/blogharmony">harmony</a> in 
+	  <span class="post-meta">Posted Jan 7, 2015 by <a class="post-author" href="harmony">harmony</a> in 
 	      
 		  <a class="post-category post-category-js" href="/tag/tor weekly news">tor weekly news</a>
               
@@ -114,9 +114,9 @@
 	  </div>
 	  	  
 	  <div class="post-footer">
-	      <a class="post-blog" href="/blogharmony">harmony's Blog</a>
-	      <a class="post-cmtlink" href="/blog/tor-weekly-news-—-january-7th-2015/#disqus_thread">Leave a comment</a>
-<!--	      <a class="post-cmtlink" href="/blog/tor-weekly-news-—-january-7th-2015#comments">Leave a comment</a> -->
+	      <a class="post-blog" href="harmony">harmony's Blog</a>
+<!--	      <a class="post-cmtlink" href="/tor-weekly-news--january-7th-2015/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/tor-weekly-news--january-7th-2015#comments">Leave a comment</a>
 	  </div>
 	  <br />
 	  <br />
@@ -124,59 +124,9 @@
       
 	<li>
 	  <h2>
-	    <a class="post-link" href="/blog/tor-weekly-news-—-december-31st-2014">Tor Weekly News — December 31st, 2014</a>
+	    <a class="post-link" href="/tor-0262-alpha-released">Tor 0.2.6.2-alpha is released</a>
 	  </h2>
-	  <span class="post-meta">Posted Dec 31, 2014 by <a class="post-author" href="/blogharmony">harmony</a> in 
-	      
-		  <a class="post-category post-category-js" href="/tag/tor weekly news">tor weekly news</a>
-              
-          </span>
-
-          <div class="post-description">
-	      <p>Welcome to the final issue in 2014 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the Tor community.</p>
-
-<h1>Attacks and rumors of attacks</h1>
-
-<p>Two weeks ago, the Tor Project relayed a <a href="https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network">warning</a> from an unspecified source to the effect that someone may have been preparing to seize, attack, or otherwise disable one or more of Tor’s <a href="https://metrics.torproject.org/about.html#directory-authority">directory authorities</a> in a bid to disrupt the entire Tor network. The lack of any specific information about the threat caused understandable concern in the Tor community, and several events that followed over the next fortnight did little to dispel this.</p>
-
-<p>First, the operator of a large Tor exit relay cluster <a href="https://lists.torproject.org/pipermail/tor-talk/2014-December/036067.html">reported</a> that his servers may have been physically interfered with by unknown parties a short while before his message. Later <a href="https://lists.torproject.org/pipermail/tor-talk/2014-December/036084.html">updates</a> suggested that foul play was less likely than initially thought.</p>
-
-<p>Several days later, a large number of small exit relays were created all at once, in what appeared to be a “<a href="https://en.wikipedia.org/wiki/Sybil_attack">Sybil attack</a>”; this was <a href="https://lists.torproject.org/pipermail/tor-consensus-health/2014-December/005381.html">detected</a> and halted almost immediately, as was a <a href="https://lists.torproject.org/pipermail/tor-consensus-health/2014-December/005414.html">second, more recent incident</a>. As the Tor Project put it in a <a href="http://www.twitlonger.com/show/n_1sjg365">response</a>, “we don’t expect any anonymity or performance effects based on what we&#39;ve seen so far”, although a side-effect of the countermeasure is that relays hosted on some IP ranges are currently being <a href="https://lists.torproject.org/pipermail/tor-relays/2014-December/006020.html">rejected</a> by dirauths.</p>
-
-<p>As far as anyone can tell, these events are not related in any way to the initial warning. The Tor network has functioned normally throughout this period, and the appearance of a series of incidents is likely to be the result of coincidence (helped by the online rumor mill) rather than a coordinated campaign. It is never possible to say with certainty that attacks on the network will not occur, but the threat referred to in the original blog post has not yet materialized — and “no news is good news”.</p>
-
-<h1>Miscellaneous news</h1>
-
-<p>Lasse Øverlier discovered that <a href="http://www.cs.kau.se/philwint/scramblesuit/">ScrambleSuit</a>’s protection against “replay attacks”, in which an adversary repeats a client authentication event to learn that the server is in fact a ScrambleSuit bridge, doesn’t work. Philipp Winter <a href="https://lists.torproject.org/pipermail/tor-dev/2014-December/008019.html">explained</a> the issue, and suggested some simple fixes.</p>
-
-<p>Tom van der Woerdt asked for <a href="https://lists.torproject.org/pipermail/tor-dev/2014-December/008023.html">review</a> of a <a href="https://github.com/TvdW/tor/commit/75b5d94eb976ee4998189dc69582c62511dde9eb">patch</a> to remove the obsolete version 1 of Tor’s link protocol from the current software: “It’s a rather large patch, though not as large as the patch that will remove v2 of the protocol. However, before I write that one, can someone please check whether my patch is sane and I’m not violating any standards or policies?”</p>
-
-<p>David Fifield <a href="https://bugs.torproject.org/12778#comment:5">trimmed</a> the length of <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a>’s HTTP headers from 413 to 162 bytes, reducing the bandwidth it uses by “approximately” 3%.</p>
-
-<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-December/000815.html">Kura</a> for running a mirror of the Tor Project website and software archive!</p>
-
-<hr>
-
-<p>This issue of Tor Weekly News has been assembled by Harmony, David Fifield, Chuck Peters, and Roger Dingledine.</p>
-
-<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
-	    
-	  </div>
-	  	  
-	  <div class="post-footer">
-	      <a class="post-blog" href="/blogharmony">harmony's Blog</a>
-	      <a class="post-cmtlink" href="/blog/tor-weekly-news-—-december-31st-2014/#disqus_thread">Leave a comment</a>
-<!--	      <a class="post-cmtlink" href="/blog/tor-weekly-news-—-december-31st-2014#comments">Leave a comment</a> -->
-	  </div>
-	  <br />
-	  <br />
-	</li>
-      
-	<li>
-	  <h2>
-	    <a class="post-link" href="/blog/tor-0262-alpha-released">Tor 0.2.6.2-alpha is released</a>
-	  </h2>
-	  <span class="post-meta">Posted Dec 31, 2014 by <a class="post-author" href="/blognickm">nickm</a> in 
+	  <span class="post-meta">Posted Dec 31, 2014 by <a class="post-author" href="nickm">nickm</a> in 
 	      
 		  <a class="post-category post-category-js" href="/tag/alpha">alpha</a>
               
@@ -216,9 +166,9 @@
 	  </div>
 	  	  
 	  <div class="post-footer">
-	      <a class="post-blog" href="/blognickm">nickm's Blog</a>
-	      <a class="post-cmtlink" href="/blog/tor-0262-alpha-released/#disqus_thread">Leave a comment</a>
-<!--	      <a class="post-cmtlink" href="/blog/tor-0262-alpha-released#comments">Leave a comment</a> -->
+	      <a class="post-blog" href="nickm">nickm's Blog</a>
+<!--	      <a class="post-cmtlink" href="/tor-0262-alpha-released/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/tor-0262-alpha-released#comments">Leave a comment</a>
 	  </div>
 	  <br />
 	  <br />
@@ -226,9 +176,59 @@
       
 	<li>
 	  <h2>
-	    <a class="post-link" href="/blog/tor-talk-31c3">The Tor talk at 31c3</a>
+	    <a class="post-link" href="/tor-weekly-news--december-31st-2014">Tor Weekly News — December 31st, 2014</a>
 	  </h2>
-	  <span class="post-meta">Posted Dec 30, 2014 by <a class="post-author" href="/blognickm">nickm</a> in 
+	  <span class="post-meta">Posted Dec 31, 2014 by <a class="post-author" href="harmony">harmony</a> in 
+	      
+		  <a class="post-category post-category-js" href="/tag/tor weekly news">tor weekly news</a>
+              
+          </span>
+
+          <div class="post-description">
+	      <p>Welcome to the final issue in 2014 of Tor Weekly News, the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-news">weekly newsletter</a> that covers what’s happening in the Tor community.</p>
+
+<h1>Attacks and rumors of attacks</h1>
+
+<p>Two weeks ago, the Tor Project relayed a <a href="https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network">warning</a> from an unspecified source to the effect that someone may have been preparing to seize, attack, or otherwise disable one or more of Tor’s <a href="https://metrics.torproject.org/about.html#directory-authority">directory authorities</a> in a bid to disrupt the entire Tor network. The lack of any specific information about the threat caused understandable concern in the Tor community, and several events that followed over the next fortnight did little to dispel this.</p>
+
+<p>First, the operator of a large Tor exit relay cluster <a href="https://lists.torproject.org/pipermail/tor-talk/2014-December/036067.html">reported</a> that his servers may have been physically interfered with by unknown parties a short while before his message. Later <a href="https://lists.torproject.org/pipermail/tor-talk/2014-December/036084.html">updates</a> suggested that foul play was less likely than initially thought.</p>
+
+<p>Several days later, a large number of small exit relays were created all at once, in what appeared to be a “<a href="https://en.wikipedia.org/wiki/Sybil_attack">Sybil attack</a>”; this was <a href="https://lists.torproject.org/pipermail/tor-consensus-health/2014-December/005381.html">detected</a> and halted almost immediately, as was a <a href="https://lists.torproject.org/pipermail/tor-consensus-health/2014-December/005414.html">second, more recent incident</a>. As the Tor Project put it in a <a href="http://www.twitlonger.com/show/n_1sjg365">response</a>, “we don’t expect any anonymity or performance effects based on what we&#39;ve seen so far”, although a side-effect of the countermeasure is that relays hosted on some IP ranges are currently being <a href="https://lists.torproject.org/pipermail/tor-relays/2014-December/006020.html">rejected</a> by dirauths.</p>
+
+<p>As far as anyone can tell, these events are not related in any way to the initial warning. The Tor network has functioned normally throughout this period, and the appearance of a series of incidents is likely to be the result of coincidence (helped by the online rumor mill) rather than a coordinated campaign. It is never possible to say with certainty that attacks on the network will not occur, but the threat referred to in the original blog post has not yet materialized — and “no news is good news”.</p>
+
+<h1>Miscellaneous news</h1>
+
+<p>Lasse Øverlier discovered that <a href="http://www.cs.kau.se/philwint/scramblesuit/">ScrambleSuit</a>’s protection against “replay attacks”, in which an adversary repeats a client authentication event to learn that the server is in fact a ScrambleSuit bridge, doesn’t work. Philipp Winter <a href="https://lists.torproject.org/pipermail/tor-dev/2014-December/008019.html">explained</a> the issue, and suggested some simple fixes.</p>
+
+<p>Tom van der Woerdt asked for <a href="https://lists.torproject.org/pipermail/tor-dev/2014-December/008023.html">review</a> of a <a href="https://github.com/TvdW/tor/commit/75b5d94eb976ee4998189dc69582c62511dde9eb">patch</a> to remove the obsolete version 1 of Tor’s link protocol from the current software: “It’s a rather large patch, though not as large as the patch that will remove v2 of the protocol. However, before I write that one, can someone please check whether my patch is sane and I’m not violating any standards or policies?”</p>
+
+<p>David Fifield <a href="https://bugs.torproject.org/12778#comment:5">trimmed</a> the length of <a href="https://trac.torproject.org/projects/tor/wiki/doc/meek">meek</a>’s HTTP headers from 413 to 162 bytes, reducing the bandwidth it uses by “approximately” 3%.</p>
+
+<p>Thanks to <a href="https://lists.torproject.org/pipermail/tor-mirrors/2014-December/000815.html">Kura</a> for running a mirror of the Tor Project website and software archive!</p>
+
+<hr>
+
+<p>This issue of Tor Weekly News has been assembled by Harmony, David Fifield, Chuck Peters, and Roger Dingledine.</p>
+
+<p>Want to continue reading TWN? Please help us create this newsletter. We still need more volunteers to watch the Tor community and report important news. Please see the <a href="https://trac.torproject.org/projects/tor/wiki/TorWeeklyNews">project page</a>, write down your name and subscribe to the <a href="https://lists.torproject.org/cgi-bin/mailman/listinfo/news-team">team mailing list</a> if you want to get involved!</p>
+	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="harmony">harmony's Blog</a>
+<!--	      <a class="post-cmtlink" href="/tor-weekly-news--december-31st-2014/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/tor-weekly-news--december-31st-2014#comments">Leave a comment</a>
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      
+	<li>
+	  <h2>
+	    <a class="post-link" href="/tor-talk-31c3">The Tor talk at 31c3</a>
+	  </h2>
+	  <span class="post-meta">Posted Dec 30, 2014 by <a class="post-author" href="nickm">nickm</a> in 
 	      
 		  <a class="post-category post-category-js" href="/tag/31c3">31c3</a>
               
@@ -255,9 +255,9 @@
 	  </div>
 	  	  
 	  <div class="post-footer">
-	      <a class="post-blog" href="/blognickm">nickm's Blog</a>
-	      <a class="post-cmtlink" href="/blog/tor-talk-31c3/#disqus_thread">Leave a comment</a>
-<!--	      <a class="post-cmtlink" href="/blog/tor-talk-31c3#comments">Leave a comment</a> -->
+	      <a class="post-blog" href="nickm">nickm's Blog</a>
+<!--	      <a class="post-cmtlink" href="/tor-talk-31c3/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/tor-talk-31c3#comments">Leave a comment</a>
 	  </div>
 	  <br />
 	  <br />
@@ -265,57 +265,86 @@
       
 	<li>
 	  <h2>
-	    <a class="post-link" href="/blog/tor-80-percent-percent-1-2-percent-abusive">Tor: 80 percent of ??? percent of 1-2 percent abusive.</a>
+	    <a class="post-link" href="/some-thoughts-hidden-services">Some thoughts on Hidden Services</a>
 	  </h2>
-	  <span class="post-meta">Posted Dec 30, 2014 by <a class="post-author" href="/blognickm">nickm</a> in 
+	  <span class="post-meta">Posted Dec 30, 2014 by <a class="post-author" href="nickm">nickm</a> in 
 	      
-		  <a class="post-category post-category-js" href="/tag/"></a>
+		  <a class="post-category post-category-js" href="/tag/analysis">analysis</a>
+              
+		  <a class="post-category post-category-js" href="/tag/hidden services">hidden services</a>
+              
+		  <a class="post-category post-category-js" href="/tag/media">media</a>
+              
+		  <a class="post-category post-category-js" href="/tag/philosophy">philosophy</a>
               
           </span>
 
           <div class="post-description">
-	      <p>Hi, Nick here.</p>
+	      <p>Hi! Nick here.</p>
 
-<p>Roger&#39;s at 31c3, so I&#39;ll post his statement about that article you might have seen:</p>
+<p>I ought to post my own responses to that Andy Greenberg article, too. (Especially since most everybody else around here is at <a href="http://events.ccc.de/congress/2014/wiki/Static:Main_Page">31c3</a> right now, or sick with the flu, or both.)</p>
 
-<blockquote>
-<p>Tor hidden service traffic, which Dr. Gareth Owen discussed in his talk this afternooon, is only 1.5% of all Tor traffic. Tor gets about 2 million users per day total.<br>
- The researcher ran a set of Tor relays for a six month period, and recorded how many times somebody attempted to look up a hidden service (this lookup is one of the steps in visiting a hidden service). Then at the end of that period, he scanned the hidden services he&#39;d learned about, to find out what sort of content was on them.</p>
+<p>When I saw the coverage of the hidden services study that was presented at CCC today, I was reminded of the media fallout from that old study from the 1990s that &quot;proved&quot; that a ridiculously high fraction of the internet was pornography...by looking at <a href="http://en.wikipedia.org/wiki/Usenet">Usenet</a>*, and by counting newsgroups and bytes. (You might remember it; it was the basis of the delightful TIME Magazine <a href="http://content.time.com/time/covers/0,16641,19950703,00.html">&quot;Cyberporn&quot; cover</a>.)</p>
 
-<p>Dr. Owen&#39;s data shows that there&#39;s a lot of churn in hidden services, so nearly all of the sites were gone by the time he did these scans. His graphs only show data about the sites that were still up many months later: so his data could either show a lot of people visiting abuse-related hidden services, or it could simply show that abuse-related hidden services are more long-lived than others. We can&#39;t tell from the data.</p>
+<p>The 1990s researcher wasn&#39;t lying outright, but he and the press *were* conflating one question: &quot;What fraction of Usenet groups are &#39;alt.sex&#39; or &#39;alt.binaries&#39; (file posting) groups&quot; with two others: &quot;What fraction of internet traffic is porn?&quot; and &quot;What fraction of internet-user hours are spent on porn?&quot;</p>
 
-<p>Without knowing how many sites disappeared before he got around to looking at them, it&#39;s impossible to know what percentage of fetches went to abuse sites.</p>
+<p>These are quite different things.</p>
 
-<p>There are important uses for hidden services, such as when human rights activists use them to access Facebook or to blog anonymously. These uses for hidden services are new and have great potential.</p>
+<p>The presentation today focused on data about hidden service types and usage. Predictably, given the results from <a href="http://arxiv.org/pdf/1308.6768v2.pdf">Biryukov, Pustogarov, Thill, and Weinmann</a>, the researcher found that hidden services related to child abuse are only a small fraction of the total number of hidden service addresses on the network. And because of the way that hidden services work, traffic does not go through hidden service directories, but instead through <a href="https://gitweb.torproject.org/torspec.git/tree/rend-spec.txt">rendezvous points</a> (randomly chosen Tor nodes): so no relay that knows the hidden service&#39;s address will learn the actual amount of traffic transmitted. But, as previously documented, abusive services represent a disproportionate fraction of usage... if you&#39;re measuring usage with hidden service directory requests.</p>
 
-<p>PS: Law enforcement agencies use Tor to stay anonymous while they catch bad guys. Law enforcement agencies use and run hidden services, too.</p>
-</blockquote>
+<p>Why might that be?</p>
 
-<p>More info to follow.</p>
+<p>First, some background. Basically, a Tor client makes a hidden service directory request the first time it visits a hidden service that it has not been to in a while. (If you spend hours at one hidden service, you make about 1 hidden service directory request. But if you spend 1 second each at 100 hidden services, you make about 100 requests.) Therefore, obsessive users who visit many sites in a session account for many more of the requests that this study measures than users who visit a smaller number of sites with equal frequency.</p>
+
+<p>There are other confounding factors as well. Due to bugs in older Tor implementations, a hidden service that is unreliable (or completely unavailable) will get many, many more hidden service directory requests than a reliable one. So if any abuse sites are unusually unreliable, we&#39;d expect their users to create a disproportionately large number of hidden service directory requests.</p>
+
+<p>Also, a very large number of hidden service directory requests are probably not made by humans! See <a href="https://trac.torproject.org/projects/tor/ticket/13287">bug 13287</a>: We don&#39;t know what&#39;s up with that. Could this be caused by some kind of anti-abuse organization running an automated scanning tool?</p>
+
+<p>In any case, a methodology that looks primarily at hidden service directory requests will over-rate services that are frequently accessed from a Tor client that hasn&#39;t been there recently, and under-rate services that are used via <a href="https://tor2web.org/">tor2web</a>, and so on. It also depends a lot on how hidden services are configured, how frequently Tor hidden service directories go up and down, and what times of day they change introduction points in comparison to what time of day their users tend to be awake.</p>
+
+<p>The greater the number of distinct hidden services a person visits, and the less reliable those sites are, the more hidden service directory requests they will trigger.</p>
+
+<p>Suppose 10 people use hidden services to look at conspiracy theories, 100 people use hidden services to buy Cuban cigars, and 1000 people use it for online chat.</p>
+
+<p>But suppose that the average cigar purchaser visits only one or two sites to make purchases, and the average chat user joins one or two networks, whereas the average conspiracy theorist needs to visit several dozen forums and wikis.</p>
+
+<p>Suppose also that the average Cuban cigar purchaser makes about two purchases a month, the average chat user logs in once a day, and the average conspiracy theorist spends 3 hours a day crawling the hidden web.</p>
+
+<p>And suppose that conspiracy theory websites come and go frequently, whereas cigar sites and chat networks are more stable.</p>
+
+<p>In this analysis, even though there are far more people buying cigars, users who use it for obsessive behavior that spans multiple unreliable hidden services will be far overrepresented in the count of hidden service directory requests than users who use it for activities done less frequently and across fewer services. So any comparison of hidden service directory request counts will say more about the behavioral differences of different types of users than about their relative numbers, or the amount of traffic they generated.</p>
+
+<p>In conclusion, let&#39;s spend a minute talking about freedom and philosophy. Any system that provides security on the Internet will inevitably see some use by bad people that we&#39;d rather not help at all. After all, cars are used for getaways, and window shades conceal all kinds of criminality. The only way to make a privacy tool that nobody abuses is to make it so weak that people aren&#39;t willing to touch it, or so unusable that nobody can figure it out.</p>
+
+<p>Up till now, many of the early adopters for Tor hidden services have been folks for whom the risk/effort calculations have been quite extreme, since--as I&#39;d certainly acknowledge--the system isn&#39;t terribly usable for the average person as it stands. Roger noted earlier that hidden services amount to less than 2% of our total traffic today. Given their privacy potential, I think that&#39;s not even close to enough. We&#39;ve got to work over the next year or more to develop hidden services to the point where their positive impact is felt by the average netizen, whether they&#39;re publishing a personal blog for their friends, using a novel communications protocol more secure than email, or reading a news article based on information that a journalist received through an anonymous submission system. Otherwise, they&#39;ll remain a target for every kind of speculation, and every misunderstanding about them will lead people to conclude the worst about privacy online. <a href="https://blog.torproject.org/blog/hidden-services-need-some-love">Come lend a hand?</a></p>
+
+<p>(Also, no offense to Andy on this: he is a fine tech reporter and apparently a fine person. And no offense to Dr. Owen, who explained his results a lot more carefully than they have been re-explained elsewhere. Now please forgive me, I&#39;m off to write some more software and get some sleep. Please direct all media inquiries to the email of &quot;press at torproject dot org&quot;.)</p>
+
+<p>* Usenet was sort of like Twitter, only you could write paragraphs on it. ;)</p>
 	    
 	  </div>
 	  	  
 	  <div class="post-footer">
-	      <a class="post-blog" href="/blognickm">nickm's Blog</a>
-	      <a class="post-cmtlink" href="/blog/tor-80-percent-percent-1-2-percent-abusive/#disqus_thread">Leave a comment</a>
-<!--	      <a class="post-cmtlink" href="/blog/tor-80-percent-percent-1-2-percent-abusive#comments">Leave a comment</a> -->
+	      <a class="post-blog" href="nickm">nickm's Blog</a>
+<!--	      <a class="post-cmtlink" href="/some-thoughts-hidden-services/#disqus_thread">Leave a comment</a> -->
+	      <a class="post-cmtlink" href="/some-thoughts-hidden-services#comments">Leave a comment</a>
 	  </div>
 	  <br />
 	  <br />
 	</li>
       
     </ul>
-    <p class="rss-subscribe">subscribe <a href="/blog/feed.xml">via RSS</a></p>
+    <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
 
 
     <!-- Pagination links -->
     
     <div class="pagination">
-      <a href="/blog/index.html">&laquo; Newest</a>
+      <a href="/index.html">&laquo; Newest</a>
       &nbsp;
 
       
-	<a href="/blog/blog/page2">&laquo; Prev</a>
+	<a href="/blog/page2">&laquo; Prev</a>
       
       &nbsp;
 
@@ -332,33 +361,67 @@
       
 
 	
-	  <a href="/blog/index.html">1</a>
-	  
-	
-      
-
-	
-	  <a href="../..//blogblog/page2">2</a>
-	
-      
-
-	
 	  3
 
 	
       
 
 	
-	  <a href="../..//blogblog/page4">4</a>
+	  <a href="../../blog/page4">4</a>
+	
+      
+
+	
+	  <a href="../../blog/page5">5</a>
+	
+      
+
+	
+	  <a href="../../blog/page6">6</a>
+	
+      
+
+	
+	  <a href="../../blog/page7">7</a>
+	
+      
+
+	
+	  <a href="../../blog/page8">8</a>
+	
+      
+
+	
+	  <a href="../../blog/page9">9</a>
+	
+      
+
+	
+	  <a href="../../blog/page10">10</a>
+	
+      
+
+	
+	  <a href="../../blog/page11">11</a>
+	
+      
+
+	
+	  <a href="../../blog/page12">12</a>
+	
+      
+
+	
+	  <a href="../../blog/page13">13</a>
 	
       
       &nbsp;
 
       
-	<a href="/blog/blog/page4">Next &raquo;</a>
+	<a href="/blog/page4">Next &raquo;</a>
       
       &nbsp;
-      <a href="../..//blogblog/page4">Oldest &raquo;</a>
+      <a href="../../blog/page147">Oldest &raquo;</a>
     </div>
     
     
@@ -371,8 +434,8 @@
 
 <!-- RSS FEED / SEARCH -->
     <div class="sidefirst">
-	<a href="/blog/feed.xml"><img src="/blog/assets/images/rss.png" alt="RSS logo">RSS</a>
-	<!-- <a href="#"><img src="/blog/img/rss.png">Atom</a> -->
+	<a href="/feed.xml"><img src="/assets/images/rss.png" alt="RSS logo">RSS</a>
+	<!-- <a href="#"><img src="/img/rss.png">Atom</a> -->
 	<form>
         <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
         </form>
@@ -383,16 +446,16 @@
 	<h2>Upcoming Events</h2>
 	<ul>
 	    
-		    <li><span><a href="/blog/events/andrew-keynotes-broadband-world-forum">Andrew Keynotes Broadband World Forum</a></span></li>
+		    <li><span><a href="/tor-winter-dev-meeting-2015">Tor Winter Dev Meeting 2015</a></span></li>
 	    
-		    <li><span><a href="/blog/events/roger-usenix-security-symposium-san-diego-ca">Roger @ Usenix Security Symposium, San Diego, CA</a></span></li>
+		    <li><span><a href="/roger-and-jake-rightscon-manila">Roger and Jake at RightsCon in Manila</a></span></li>
 	    
-		    <li><span><a href="/blog/events/roger-foci-%E2%80%9914-san-diego-ca">Roger @ FOCI ’14, San Diego, CA</a></span></li>
+		    <li><span><a href="/tor-booth-fosdem-2015">Tor booth at FOSDEM 2015</a></span></li>
 	    
-		    <li><span><a href="/blog/events/tor-pets-2014-amsterdam">Tor @ PETS 2014, Amsterdam</a></span></li>
+		    <li><span><a href="/many-tor-people-pets-philadelphia">Many Tor people at PETS in Philadelphia</a></span></li>
 	    
 	</ul>
-	<span><a href="/blog/events">full calendar &raquo;</a></span>
+	<span><a href="/events">full calendar &raquo;</a></span>
     </div>
     
 <!-- RECENT BLOG POSTS -->
@@ -400,28 +463,28 @@
 	<h2>Recent Blog Posts</h2>
 	<ul>
 	  
-		    <li><span><a href="/blog/tor-weekly-news-—-february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+		    <li><span><a href="/tor-weekly-news--february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
+		    <li><span><a href="/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
+		    <li><span><a href="/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
 	  
-		    <li><span><a href="/blog/guest-post-library-freedom-project-bringing-privacy-and-anonymity-libraries">Guest Post: The Library Freedom Project: Bringing privacy and anonymity to libraries</a></span></li>
+		    <li><span><a href="/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-weekly-news-—-february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+		    <li><span><a href="/tor-weekly-news--february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-weekly-news-—-january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+		    <li><span><a href="/tor-weekly-news--january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-weekly-news-—-january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+		    <li><span><a href="/tor-weekly-news--january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
+		    <li><span><a href="/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-weekly-news-—-january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+		    <li><span><a href="/tor-weekly-news--january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
+		    <li><span><a href="/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
 	  
 	</ul>
-	<span><a href="/blog/archive">more &raquo;</a></span>
+	<span><a href="/archive">more &raquo;</a></span>
     </div>
     
 <!-- TAG CLOUD -->
@@ -430,161 +493,182 @@
 	<ul>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/analysis/">
-            analysis
+    <li style="font-size: 57%">
+        <span><a href="/tag/blog/">
+            blog
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/hidden services/">
-            hidden services
+    <li style="font-size: 56%">
+        <span><a href="/tag/first post/">
+            first post
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/media/">
-            media
+    <li style="font-size: 171%">
+        <span><a href="/tag/tor/">
+            tor
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/philosophy/">
-            philosophy
+    <li style="font-size: 56%">
+        <span><a href="/tag/24c3/">
+            24c3
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 145%">
-        <span><a href="/blog/tag//">
-            
+    <li style="font-size: 57%">
+        <span><a href="/tag/ccc/">
+            ccc
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/31c3/">
-            31c3
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/presentations/">
-            presentations
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/talks/">
+    <li style="font-size: 61%">
+        <span><a href="/tag/talks/">
             talks
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/videos/">
-            videos
+    <li style="font-size: 59%">
+        <span><a href="/tag/bugs/">
+            bugs
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/alpha/">
-            alpha
+    <li style="font-size: 57%">
+        <span><a href="/tag/crashes/">
+            crashes
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/tor-release/">
-            tor-release
+    <li style="font-size: 64%">
+        <span><a href="/tag/osx/">
+            osx
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 373%">
-        <span><a href="/blog/tag/tor weekly news/">
-            tor weekly news
+    <li style="font-size: 56%">
+        <span><a href="/tag/qt/">
+            qt
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 145%">
-        <span><a href="/blog/tag/tbb/">
-            tbb
+    <li style="font-size: 84%">
+        <span><a href="/tag/vidalia/">
+            vidalia
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/tbb-4.0/">
-            tbb-4.0
+    <li style="font-size: 67%">
+        <span><a href="/tag/vidalia bundle/">
+            vidalia bundle
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 145%">
-        <span><a href="/blog/tag/tor browser/">
-            tor browser
+    <li style="font-size: 56%">
+        <span><a href="/tag/meetup/">
+            meetup
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 145%">
-        <span><a href="/blog/tag/tor browser bundle/">
-            tor browser bundle
+    <li style="font-size: 61%">
+        <span><a href="/tag/attacks/">
+            attacks
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/tbb-4.5/">
-            tbb-4.5
+    <li style="font-size: 56%">
+        <span><a href="/tag/covert channels/">
+            covert channels
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/community/">
-            community
+    <li style="font-size: 57%">
+        <span><a href="/tag/media coverage/">
+            media coverage
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/Guest Blog Post/">
-            Guest Blog Post
+    <li style="font-size: 88%">
+        <span><a href="/tag/bridges/">
+            bridges
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/libraries/">
-            libraries
+    <li style="font-size: 59%">
+        <span><a href="/tag/incognito/">
+            incognito
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/privacy/">
-            privacy
+    <li style="font-size: 113%">
+        <span><a href="/tag/progress report/">
+            progress report
         </a></span>
     </li>
 
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 100%">
-        <span><a href="/blog/tag/usability/">
-            usability
+    <li style="font-size: 84%">
+        <span><a href="/tag/torbrowser/">
+            torbrowser
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 83%">
+        <span><a href="/tag/torbutton/">
+            torbutton
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 65%">
+        <span><a href="/tag/china/">
+            china
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 56%">
+        <span><a href="/tag/directors/">
+            directors
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 75%">
+        <span><a href="/tag/release candidate/">
+            release candidate
+        </a></span>
+    </li>
+
+    <!-- this is wack - be careful adjusting these values -->
+    <li style="font-size: 74%">
+        <span><a href="/tag/gsoc/">
+            gsoc
         </a></span>
     </li>
 
 	</ul>
-	<span><a href="/blog/tag-cloud">more tags &raquo;</a></span>
+	<span><a href="/tag-cloud">more tags &raquo;</a></span>
     </div>
 
 </div>
