@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Kelley @ CERIAS Symposium, Purdue University"
-permalink: kelley-cerias-symposium-purdue-university
+permalink: events/kelley-cerias-symposium-purdue-university
 date: 2014-03-24 11:10:35
 startdate: 2014-03-25 06:00:00
 enddate: 2014-03-27 06:59:00

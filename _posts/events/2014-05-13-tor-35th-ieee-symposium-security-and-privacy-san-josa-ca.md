@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor @ 35th IEEE Symposium on Security and Privacy, San Jose, CA"
-permalink: tor-35th-ieee-symposium-security-and-privacy-san-josa-ca
+permalink: events/tor-35th-ieee-symposium-security-and-privacy-san-josa-ca
 date: 2014-05-13 05:34:21
 startdate: 2014-05-18 16:00:00
 enddate: 2014-05-21 19:30:00

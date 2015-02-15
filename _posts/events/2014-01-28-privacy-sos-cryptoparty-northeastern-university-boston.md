@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Privacy SOS CryptoParty at NorthEastern University in Boston"
-permalink: privacy-sos-cryptoparty-northeastern-university-boston
+permalink: events/privacy-sos-cryptoparty-northeastern-university-boston
 date: 2014-01-28 11:42:53
 startdate: 2014-02-09 06:00:00
 enddate: 2014-02-09 06:59:00

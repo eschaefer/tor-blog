@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Tor @ Real World Crypto 2014, New York City, USA"
-permalink: tor-real-world-crypto-2014-new-york-city-usa
+permalink: events/tor-real-world-crypto-2014-new-york-city-usa
 date: 2013-12-20 18:38:11
 startdate: 2014-01-13 09:00:00
 enddate: 2014-01-15 18:00:00

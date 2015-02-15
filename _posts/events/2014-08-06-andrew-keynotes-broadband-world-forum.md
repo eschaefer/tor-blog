@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew Keynotes Broadband World Forum"
-permalink: andrew-keynotes-broadband-world-forum
+permalink: events/andrew-keynotes-broadband-world-forum
 date: 2014-08-06 20:59:08
 startdate: 2014-10-21 15:00:00
 enddate: 2014-10-23 15:59:00

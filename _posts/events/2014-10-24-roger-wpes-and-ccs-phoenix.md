@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Roger at WPES and CCS in Phoenix"
-permalink: roger-wpes-and-ccs-phoenix
+permalink: events/roger-wpes-and-ccs-phoenix
 date: 2014-10-24 21:33:11
 startdate: 2014-11-03 04:33:00
 enddate: 2014-11-07 16:33:00

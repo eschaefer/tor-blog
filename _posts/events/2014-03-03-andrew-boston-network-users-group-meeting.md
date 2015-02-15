@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Andrew @ Boston Network Users Group Meeting"
-permalink: andrew-boston-network-users-group-meeting
+permalink: events/andrew-boston-network-users-group-meeting
 date: 2014-03-03 10:14:38
 startdate: 2014-03-04 19:00:00
 enddate: 2014-03-04 21:00:00
