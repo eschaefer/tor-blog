@@ -35,7 +35,7 @@ layout: default
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 -->
-
+{% if page.comments != "disabled" %}
 <div id="comments" class="comments clearfix">
   <div class="comments-loading">
   <p><em>Enable Javascript to view comments</em></p>
@@ -51,8 +51,9 @@ layout: default
 
     var options = {
         container    : '.comments',
-//        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
-        site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
+//        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g', // eschafer
+//        site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl', // mysql
+        site_key     : '82v01xe0yatfihjbfuebl0c9g876ee5', // postgres
         topic_key    : '/{{ page.permalink }}',
         topic_url    : location.href,
         topic_title  : document.title || location.href,
@@ -99,6 +100,7 @@ layout: default
 
 })();
 </script>
+{% endif %}
 </div>
 
 <!-- Include the side column -->

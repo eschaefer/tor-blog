@@ -5,7 +5,7 @@ permalink: some-thoughts-hidden-services
 date: 2014-12-30 21:05:35
 author: nickm
 category: blog
-status: open
+comments: open
 tags: ["analysis", "hidden services", "media", "philosophy"]
 ---
 

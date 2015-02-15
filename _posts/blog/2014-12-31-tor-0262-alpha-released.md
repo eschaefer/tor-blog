@@ -5,7 +5,7 @@ permalink: tor-0262-alpha-released
 date: 2014-12-31 13:28:53
 author: nickm
 category: blog
-status: open
+comments: open
 tags: ["alpha", "tor-release"]
 ---
 

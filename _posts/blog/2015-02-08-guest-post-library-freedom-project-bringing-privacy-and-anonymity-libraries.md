@@ -5,7 +5,7 @@ permalink: guest-post-library-freedom-project-bringing-privacy-and-anonymity-lib
 date: 2015-02-08 16:43:41
 author: alison
 category: blog
-status: open
+comments: open
 tags: ["community", "Guest Blog Post", "libraries", "privacy"]
 ---
 

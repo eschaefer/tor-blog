@@ -5,7 +5,7 @@ permalink: tor-browser-403-released
 date: 2015-01-13 12:43:49
 author: gk
 category: blog
-status: open
+comments: open
 tags: ["tbb", "tbb-4.0", "tor browser", "tor browser bundle"]
 ---
 
