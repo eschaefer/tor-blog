@@ -5,7 +5,7 @@ permalink: tor-browser-402-released
 date: 2014-12-03 09:05:36
 author: gk
 category: blog
-status: closed
+comments: closed
 tags: ["tbb", "tbb-4.0", "tor browser", "tor browser bundle"]
 ---
 

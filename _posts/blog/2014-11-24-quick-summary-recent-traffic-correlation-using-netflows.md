@@ -5,7 +5,7 @@ permalink: quick-summary-recent-traffic-correlation-using-netflows
 date: 2014-11-24 11:58:11
 author: phobos
 category: blog
-status: closed
+comments: closed
 tags: ["netflows", "summary", "tor research", "traffic correlation"]
 ---
 

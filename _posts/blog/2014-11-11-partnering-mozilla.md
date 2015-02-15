@@ -5,7 +5,7 @@ permalink: partnering-mozilla
 date: 2014-11-11 12:17:15
 author: phobos
 category: blog
-status: closed
+comments: closed
 tags: ["cdt", "mozilla", "mozilla polaris program", "polaris", "privacy enhancing technology", "tor improvements"]
 ---
 

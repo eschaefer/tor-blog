@@ -5,7 +5,7 @@ permalink: end-life-plan-tor-browser-32-bit-macs
 date: 2014-11-17 19:18:41
 author: mikeperry
 category: blog
-status: closed
+comments: closed
 tags: [""]
 ---
 

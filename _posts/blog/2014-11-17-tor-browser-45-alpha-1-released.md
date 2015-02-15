@@ -5,7 +5,7 @@ permalink: tor-browser-45-alpha-1-released
 date: 2014-11-17 22:15:53
 author: mikeperry
 category: blog
-status: closed
+comments: closed
 tags: ["tbb", "tbb-4.5", "tor browser", "tor browser bundle"]
 ---
 

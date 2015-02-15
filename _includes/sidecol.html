@@ -4,9 +4,10 @@
     <div class="sidefirst">
 	<a href="{{ "/feed.xml" | prepend: site.baseurl }}"><img src="{{site.baseurl}}/assets/images/rss.png" alt="RSS logo">RSS</a>
 	<!-- <a href="#"><img src="{{site.baseurl}}/img/rss.png">Atom</a> -->
-	<form>
-        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
-        </form>
+	<form method="get" action="/search" data-search-form>
+	  <input class="searchtext" type="search" size="12" maxlength="10" name="q" id="q" placeholder="Search..." data-search-input />
+	  <input class="searchbutton" type="submit" value="Search" />
+	</form>
     </div>
 
 <!-- EVENTS -->
@@ -35,9 +36,10 @@
     <div class ="tagbox orangebox">
 	<h2>Blog Tag Cloud</h2>
 	<ul>
-{% for tag in site.tags limit: 25 %}
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: {{ tag | last | size | times: 1000 | divided_by: site.tags.size | plus: 55 }}%">
+<!--    <li style="font-size: {{ tag | last | size | times: 1000 | divided_by: site.tags.size | plus: 55 }}%"> -->
+{% for tag in site.tags limit: 25 %}
+    <li style="font-size: {{ tag | last | size | times: 400 | divided_by: site.tags.size | plus: 75 }}%">
         <span><a href="{{site.baseurl}}/tag/{{ tag | first | slugize }}/">
             {{ tag | first }}
         </a></span>

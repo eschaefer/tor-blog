@@ -5,7 +5,7 @@ permalink: facebook-hidden-services-and-https-certs
 date: 2014-10-31 20:09:20
 author: arma
 category: blog
-status: closed
+comments: closed
 tags: ["advocacy", "hidden services", "research"]
 ---
 

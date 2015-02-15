@@ -5,7 +5,7 @@ permalink: ooni-bridge-reachability-study-and-hackfest
 date: 2014-11-10 06:05:33
 author: art
 category: blog
-status: closed
+comments: closed
 tags: ["bridges", "censorship", "circumvention", "events", "ooni", "pluggable transports"]
 ---
 

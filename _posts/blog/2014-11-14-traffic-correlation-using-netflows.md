@@ -5,7 +5,7 @@ permalink: traffic-correlation-using-netflows
 date: 2014-11-14 19:14:41
 author: arma
 category: blog
-status: closed
+comments: closed
 tags: ["attacks", "research", "traffic confirmation"]
 ---
 

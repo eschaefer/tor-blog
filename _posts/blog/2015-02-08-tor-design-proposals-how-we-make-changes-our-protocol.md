@@ -5,7 +5,7 @@ permalink: tor-design-proposals-how-we-make-changes-our-protocol
 date: 2015-02-08 01:22:58
 author: nickm
 category: blog
-status: open
+comments: open
 tags: [""]
 ---
 

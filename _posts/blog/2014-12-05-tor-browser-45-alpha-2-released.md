@@ -5,7 +5,7 @@ permalink: tor-browser-45-alpha-2-released
 date: 2014-12-05 02:03:01
 author: gk
 category: blog
-status: open
+comments: open
 tags: ["tbb", "tbb-4.5", "tor browser", "tor browser bundle"]
 ---
 

@@ -5,7 +5,7 @@ permalink: solidarity-against-online-harassment
 date: 2014-12-11 14:47:50
 author: arma
 category: blog
-status: open
+comments: open
 tags: ["anti-harassment", "community", "feminism", "outreach"]
 ---
 

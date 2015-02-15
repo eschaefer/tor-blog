@@ -5,7 +5,7 @@ permalink: possible-upcoming-attempts-disable-tor-network
 date: 2014-12-19 16:09:10
 author: arma
 category: blog
-status: open
+comments: open
 tags: ["anonymity", "attacks", "denial of service", "directory authorities"]
 ---
 

@@ -5,7 +5,7 @@ permalink: ux-sprint-2015-wrapup
 date: 2015-02-09 14:21:28
 author: dcf
 category: blog
-status: open
+comments: open
 tags: ["usability"]
 ---
 

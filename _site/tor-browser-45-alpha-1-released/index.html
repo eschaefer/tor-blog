@@ -121,10 +121,10 @@
 
 <!-- COMMENTS -->
 
-  <div id="disqus_thread"></div>
+<!--  <div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'jmttest2'; // required: replace example with your forum shortname
+        var disqus_shortname = 'jmttest'; // required: replace example with your forum shortname
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -134,9 +134,10 @@
         })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
 
 
-<!-- <div id="comments" class="comments clearfix">
+<div id="comments" class="comments clearfix">
   <div class="comments-loading">
   <p><em>Enable Javascript to view comments</em></p>
   </div>
@@ -151,8 +152,9 @@
 
     var options = {
         container    : '.comments',
-//        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g',
-        site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl',
+//        site_key     : 'im3x57usjcg72fkm6lyqzwzt7vaoi4g', // eschafer
+//        site_key     : '44vvejwwbxje75ke0zv308dpvsf8pvl', // mysql
+        site_key     : '82v01xe0yatfihjbfuebl0c9g876ee5', // postgres
         topic_key    : '/tor-browser-45-alpha-1-released',
         topic_url    : location.href,
         topic_title  : document.title || location.href,
@@ -181,7 +183,7 @@
 
         var result =
 //            'http://torblog-juvia-4525.herokuapp.com/api/show_topic.js' +
-            'http://juvia.torblog.lan/api/show_topic.js' +
+            'http://aqueous-plains-8472.herokuapp.com/api/show_topic.js' +
 	    '?_c=' + window._juviaRequestCounter +
             '&' + makeQueryString(options);
         window._juviaRequestCounter++;
@@ -198,7 +200,8 @@
       document.getElementsByTagName('body')[0] && commentsLoaded).appendChild(s);
 
 })();
-</script> -->
+</script>
+
 </div>
 
 <!-- Include the side column -->
@@ -208,9 +211,10 @@
     <div class="sidefirst">
 	<a href="/blog/feed.xml"><img src="/blog/assets/images/rss.png" alt="RSS logo">RSS</a>
 	<!-- <a href="#"><img src="/blog/img/rss.png">Atom</a> -->
-	<form>
-        <input class="searchtext" type="text" size="10" maxlength="10"><input class="searchbutton" type="submit" value="Search">
-        </form>
+	<form method="get" action="/search" data-search-form>
+	  <input class="searchtext" type="search" size="12" maxlength="10" name="q" id="q" placeholder="Search..." data-search-input />
+	  <input class="searchbutton" type="submit" value="Search" />
+	</form>
     </div>
 
 <!-- EVENTS -->
@@ -235,7 +239,7 @@
 	<h2>Recent Blog Posts</h2>
 	<ul>
 	  
-		    <li><span><a href="/blog/tor-weekly-news--february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-february-11th-2015">Tor Weekly News — February 11th, 2015</a></span></li>
 	  
 		    <li><span><a href="/blog/ux-sprint-2015-wrapup">UX Sprint 2015 wrapup</a></span></li>
 	  
@@ -243,15 +247,15 @@
 	  
 		    <li><span><a href="/blog/tor-design-proposals-how-we-make-changes-our-protocol">Tor design proposals: how we make changes to our protocol</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-weekly-news--february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-february-4th-2015">Tor Weekly News — February 4th, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-weekly-news--january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-january-28th-2015">Tor Weekly News — January 28th, 2015</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-weekly-news--january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-january-21st-2015">Tor Weekly News — January 21st, 2015</a></span></li>
 	  
 		    <li><span><a href="/blog/tor-browser-45a3-released">Tor Browser 4.5a3 is released</a></span></li>
 	  
-		    <li><span><a href="/blog/tor-weekly-news--january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
+		    <li><span><a href="/blog/tor-weekly-news-—-january-14th-2015">Tor Weekly News — January 14th, 2015</a></span></li>
 	  
 		    <li><span><a href="/blog/tor-browser-403-released">Tor Browser 4.0.3 is released</a></span></li>
 	  
@@ -263,179 +267,156 @@
     <div class ="tagbox orangebox">
 	<h2>Blog Tag Cloud</h2>
 	<ul>
-
     <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 57%">
-        <span><a href="/blog/tag/blog/">
-            blog
+<!--    <li style="font-size: 55%"> -->
+
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/advocacy/">
+            advocacy
         </a></span>
     </li>
 
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 56%">
-        <span><a href="/blog/tag/first post/">
-            first post
+    <li style="font-size: 94%">
+        <span><a href="/blog/tag/hidden services/">
+            hidden services
         </a></span>
     </li>
 
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 171%">
-        <span><a href="/blog/tag/tor/">
-            tor
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 56%">
-        <span><a href="/blog/tag/24c3/">
-            24c3
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 57%">
-        <span><a href="/blog/tag/ccc/">
-            ccc
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 61%">
-        <span><a href="/blog/tag/talks/">
-            talks
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 59%">
-        <span><a href="/blog/tag/bugs/">
-            bugs
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 57%">
-        <span><a href="/blog/tag/crashes/">
-            crashes
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 64%">
-        <span><a href="/blog/tag/osx/">
-            osx
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 56%">
-        <span><a href="/blog/tag/qt/">
-            qt
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 84%">
-        <span><a href="/blog/tag/vidalia/">
-            vidalia
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 67%">
-        <span><a href="/blog/tag/vidalia bundle/">
-            vidalia bundle
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 56%">
-        <span><a href="/blog/tag/meetup/">
-            meetup
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 61%">
-        <span><a href="/blog/tag/attacks/">
-            attacks
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 56%">
-        <span><a href="/blog/tag/covert channels/">
-            covert channels
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 57%">
-        <span><a href="/blog/tag/media coverage/">
-            media coverage
-        </a></span>
-    </li>
-
-    <!-- this is wack - be careful adjusting these values -->
     <li style="font-size: 88%">
+        <span><a href="/blog/tag/research/">
+            research
+        </a></span>
+    </li>
+
+    <li style="font-size: 114%">
+        <span><a href="/blog/tag/tbb/">
+            tbb
+        </a></span>
+    </li>
+
+    <li style="font-size: 94%">
+        <span><a href="/blog/tag/tbb-4.0/">
+            tbb-4.0
+        </a></span>
+    </li>
+
+    <li style="font-size: 114%">
+        <span><a href="/blog/tag/tor browser/">
+            tor browser
+        </a></span>
+    </li>
+
+    <li style="font-size: 114%">
+        <span><a href="/blog/tag/tor browser bundle/">
+            tor browser bundle
+        </a></span>
+    </li>
+
+    <li style="font-size: 173%">
+        <span><a href="/blog/tag/tor weekly news/">
+            tor weekly news
+        </a></span>
+    </li>
+
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/operation onymous/">
+            operation onymous
+        </a></span>
+    </li>
+
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/seizures/">
+            seizures
+        </a></span>
+    </li>
+
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/tor project/">
+            tor project
+        </a></span>
+    </li>
+
+    <li style="font-size: 81%">
         <span><a href="/blog/tag/bridges/">
             bridges
         </a></span>
     </li>
 
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 59%">
-        <span><a href="/blog/tag/incognito/">
-            incognito
+    <li style="font-size: 88%">
+        <span><a href="/blog/tag/censorship/">
+            censorship
         </a></span>
     </li>
 
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 113%">
-        <span><a href="/blog/tag/progress report/">
-            progress report
+    <li style="font-size: 88%">
+        <span><a href="/blog/tag/circumvention/">
+            circumvention
         </a></span>
     </li>
 
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 84%">
-        <span><a href="/blog/tag/torbrowser/">
-            torbrowser
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/events/">
+            events
         </a></span>
     </li>
 
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 83%">
-        <span><a href="/blog/tag/torbutton/">
-            torbutton
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/ooni/">
+            ooni
         </a></span>
     </li>
 
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 65%">
-        <span><a href="/blog/tag/china/">
-            china
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/pluggable transports/">
+            pluggable transports
         </a></span>
     </li>
 
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 56%">
-        <span><a href="/blog/tag/directors/">
-            directors
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/cdt/">
+            cdt
         </a></span>
     </li>
 
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 75%">
-        <span><a href="/blog/tag/release candidate/">
-            release candidate
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/mozilla/">
+            mozilla
         </a></span>
     </li>
 
-    <!-- this is wack - be careful adjusting these values -->
-    <li style="font-size: 74%">
-        <span><a href="/blog/tag/gsoc/">
-            gsoc
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/mozilla polaris program/">
+            mozilla polaris program
+        </a></span>
+    </li>
+
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/polaris/">
+            polaris
+        </a></span>
+    </li>
+
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/privacy enhancing technology/">
+            privacy enhancing technology
+        </a></span>
+    </li>
+
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/tor improvements/">
+            tor improvements
+        </a></span>
+    </li>
+
+    <li style="font-size: 88%">
+        <span><a href="/blog/tag/attacks/">
+            attacks
+        </a></span>
+    </li>
+
+    <li style="font-size: 81%">
+        <span><a href="/blog/tag/traffic confirmation/">
+            traffic confirmation
         </a></span>
     </li>
 
@@ -508,7 +489,7 @@
 </footer>
 
 
- <script type="text/javascript">
+ <!--<script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'jmttest2'; // required: replace example with your forum shortname
 
@@ -519,7 +500,7 @@
         s.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
-    </script>
+    </script> -->
     
   </body>
 

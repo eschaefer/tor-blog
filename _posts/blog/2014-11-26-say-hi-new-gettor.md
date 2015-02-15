@@ -5,7 +5,7 @@ permalink: say-hi-new-gettor
 date: 2014-11-26 12:22:42
 author: ilv
 category: blog
-status: open
+comments: open
 tags: ["censorship", "circumvention", "gettor", "gsoc", "gsoc14", "revamp", "torbrowser", "torproject websites"]
 ---
 

@@ -5,7 +5,7 @@ permalink: tor-browser-401-released
 date: 2014-10-31 20:42:00
 author: gk
 category: blog
-status: closed
+comments: closed
 tags: ["tbb", "tbb-4.0", "tor browser", "tor browser bundle"]
 ---
 

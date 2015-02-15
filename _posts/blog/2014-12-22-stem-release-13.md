@@ -5,7 +5,7 @@ permalink: stem-release-13
 date: 2014-12-22 17:12:55
 author: atagar
 category: blog
-status: open
+comments: open
 tags: ["stem"]
 ---
 
