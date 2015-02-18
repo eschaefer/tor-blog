@@ -1,45 +1,103 @@
 ---
 layout: default
-title: Tor Project
 ---
 
-<!-- A wrapper for all the blog posts -->
-<div class="posts">
 
-  <h1 class="content-subhead">Recent Posts</h1>
-  <div id="home">
-    {% for post in paginator.posts %}
-      <section class="post">
-        <header class="post-header">
-          <h2 class="post-title"> <a href="{{ post.url }}">{{ post.title | xml_escape }}</a></h2>
-          <p class="post-meta">
-              By <a class="post-author" href="#">{{ post.author }}</a> under
-              {% for tag in post.tags %}
-                <a class="post-category post-category-js" href="/tag/{{ tag }}">{{ tag }}</a>
-              {% endfor %} |
-              {{ post.date | date_to_string }}
-          </p>
-        </header>
-        <div class="post-description">
-          {{ post.content }}
-        </div>
-      </section>
-    {% endfor %}
+<!-- Pages with side column need a 'maincol' class -->
+<div class="home maincol">
 
-     <!-- Pagination links -->
+    <ul class="post-content">
+	{% for post in paginator.posts %}
+	<li>
+	  <h2>
+	    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+	  </h2>
+	  <span class="post-meta">Posted {{ post.date | date: "%b %-d, %Y" }} by <a class="post-author" href="{{ post.author | prepend: site.baseurl }}">{{ post.author }}</a> in 
+	      {% for tag in post.tags %}
+		  <a class="post-category post-category-js" href="/tag/{{ tag }}">{{ tag }}</a>
+              {% endfor %}
+          </span>
+
+          <div class="post-description">
+	      {{ post.content }}	    
+	  </div>
+	  	  
+	  <div class="post-footer">
+	      <a class="post-blog" href="{{ post.author | prepend: site.baseurl }}">{{ post.author }}'s Blog</a>
+
+<!--	      <a class="post-cmtlink" href="{{ post.url | prepend: site.baseurl }}/#disqus_thread">Leave a comment</a> -->
+{% if post.comments == "disabled" %}
+{% else %}
+	      <a class="post-cmtlink" href="{{ post.url | prepend: site.baseurl }}#comments">Leave a comment</a>
+{% endif %}
+	  </div>
+	  <br />
+	  <br />
+	</li>
+      {% endfor %}
+    </ul>
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+
+    <!-- Pagination links -->
+    {% if paginator.total_pages > 1 %}
     <div class="pagination">
+      <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Newest</a>
+      &nbsp;
+
       {% if paginator.previous_page %}
-        <a href="/blog/page{{ paginator.previous_page }}" class="previous">Previous</a>
+	<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
       {% else %}
-        <span class="previous">Previous</span>
+	<span>&laquo; Prev</span>
       {% endif %}
-      <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+      &nbsp;
+
+      <!-- Pagination vars -->
+      {% assign pageLimit = 11 %}
+      {% assign pageOffset = 5 %}
+      {% assign lastPage = paginator.total_pages | minus: pageLimit %}
+
+      {% if paginator.total_pages <= pageLimit %}
+	  {% assign pageOffsetLimit = 1 %}
+      {% elsif paginator.page == 1 %}
+	  {% assign pageOffsetLimit = paginator.page %}
+      {% elsif paginator.page <= pageOffset %}
+	  {% assign firstPageLimit = paginator.page | minus: 1 %}
+	  {% assign pageOffsetLimit = paginator.page | minus: firstPageLimit %}
+      {% elsif paginator.page > lastPage %}
+	  {% assign lastPageLimit = paginator.total_pages | minus: pageLimit %}
+	  {% assign pageOffsetLimit = lastPageLimit | plus: 1 %}
+      {% else %}
+	  {% assign pageOffsetLimit = paginator.page | minus: pageOffset %}
+      {% endif %}
+      
+      {% for page in (pageOffsetLimit..paginator.total_pages) limit: pageLimit %}
+
+	{% if page == paginator.page %}
+	  {{ page }}
+
+	{% elsif page == 1 %}
+	  <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+	  
+	{% else %}
+	  <a href="/blog/{{ site.paginate_path | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+	{% endif %}
+      {% endfor %}
+      &nbsp;
+
       {% if paginator.next_page %}
-        <a href="/blog/page{{ paginator.next_page }}" class="next">Next</a>
+	<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
       {% else %}
-        <span class="next ">Next</span>
+	<span>Next &raquo;</span>
       {% endif %}
+      &nbsp;
+      <a href="/blog/{{ site.paginate_path  | replace: '//', '/' | replace: ':num', paginator.total_pages }}">Oldest &raquo;</a>
     </div>
+    {% endif %}
+    
+    <br />
+
   </div>
 
-</div>
+<!-- Include the side column -->
+{% include sidecol.html %}

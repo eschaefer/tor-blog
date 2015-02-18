@@ -1,0 +1,70 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+
+
+// Our variables
+$base-font-family: FreeSans, Helvetica, Arial, sans-serif;
+$base-font-size:   13px;
+$small-font-size:  $base-font-size * 0.875;
+$large-font-size:  22px;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+// Main container width
+$contentWidth:     1074px;
+
+$nav-button-width: 165px;
+
+$orange :          #f8a428;
+$orange-light:     #fef6ea;
+$green:            #a3c941;
+$green-light:      #f6f9eb;
+$purple:           #7d4896;
+$grey-color:       #a4a1a0;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  #494342;
+
+$text-color:       $grey-color-dark;
+$background-color: #fdfdfd;
+$brand-color:      $purple;
+$page-bg-color:    $grey-color-dark;
+$nav-text:         #fff;
+$nav-button:       $green;
+$nav-toggle:       $orange;
+$side-box-01:      $orange-light;
+$side-text-01:     $orange;
+$side-box-02:      $green-light;
+$side-text-02:     $green;
+
+$on-palm:          640px;
+$on-laptop:        800px;
+$on-1024:          1024px;
+
+
+
+// Using media queries with like this:
+// @include media-query($palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+        "base",
+        "layout",
+        "syntax-highlighting",
+	"calendar"
+;
