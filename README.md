@@ -1,5 +1,5 @@
 Development repo - [https://blog.torproject.org/](https://blog.torproject.org)
-Linked with issue [10479](https://trac.torproject.org/projects/tor/ticket/10479)
+Linked with issue [10022](https://trac.torproject.org/projects/tor/ticket/10022)
 
 A live copy of this repo can be found [here](http://tor.jmtodaro.com/blog/).
 
