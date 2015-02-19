@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Thoughts and Concerns about Operation Onymous"
-permalink: thoughts-and-concerns-about-operation-onymous
+permalink: blog/thoughts-and-concerns-about-operation-onymous
 date: 2014-11-09 09:54:45
 author: phobos
 category: blog

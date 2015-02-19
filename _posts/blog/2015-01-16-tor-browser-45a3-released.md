@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser 4.5a3 is released"
-permalink: tor-browser-45a3-released
+permalink: blog/tor-browser-45a3-released
 date: 2015-01-16 10:37:44
 author: gk
 category: blog

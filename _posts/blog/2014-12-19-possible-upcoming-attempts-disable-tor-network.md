@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Possible upcoming attempts to disable the Tor network"
-permalink: possible-upcoming-attempts-disable-tor-network
+permalink: blog/possible-upcoming-attempts-disable-tor-network
 date: 2014-12-19 16:09:10
 author: arma
 category: blog

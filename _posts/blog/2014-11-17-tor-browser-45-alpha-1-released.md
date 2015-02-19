@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser 4.5-alpha-1 is released"
-permalink: tor-browser-45-alpha-1-released
+permalink: blog/tor-browser-45-alpha-1-released
 date: 2014-11-17 22:15:53
 author: mikeperry
 category: blog

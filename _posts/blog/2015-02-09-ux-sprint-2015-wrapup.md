@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "UX Sprint 2015 wrapup"
-permalink: ux-sprint-2015-wrapup
+permalink: blog/ux-sprint-2015-wrapup
 date: 2015-02-09 14:21:28
 author: dcf
 category: blog

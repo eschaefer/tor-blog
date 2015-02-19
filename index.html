@@ -80,7 +80,7 @@ layout: default
 	  <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
 	  
 	{% else %}
-	  <a href="/blog/{{ site.paginate_path | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+	  <a href="/{{ site.paginate_path | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
 	{% endif %}
       {% endfor %}
       &nbsp;
@@ -91,7 +91,7 @@ layout: default
 	<span>Next &raquo;</span>
       {% endif %}
       &nbsp;
-      <a href="/blog/{{ site.paginate_path  | replace: '//', '/' | replace: ':num', paginator.total_pages }}">Oldest &raquo;</a>
+      <a href="/{{ site.paginate_path  | replace: '//', '/' | replace: ':num', paginator.total_pages }}">Oldest &raquo;</a>
     </div>
     {% endif %}
     

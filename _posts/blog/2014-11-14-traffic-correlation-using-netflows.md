@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Traffic correlation using netflows"
-permalink: traffic-correlation-using-netflows
+permalink: blog/traffic-correlation-using-netflows
 date: 2014-11-14 19:14:41
 author: arma
 category: blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Partnering with Mozilla"
-permalink: partnering-mozilla
+permalink: blog/partnering-mozilla
 date: 2014-11-11 12:17:15
 author: phobos
 category: blog

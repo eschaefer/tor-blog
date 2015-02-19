@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Quick Summary of recent traffic correlation using netflows"
-permalink: quick-summary-recent-traffic-correlation-using-netflows
+permalink: blog/quick-summary-recent-traffic-correlation-using-netflows
 date: 2014-11-24 11:58:11
 author: phobos
 category: blog

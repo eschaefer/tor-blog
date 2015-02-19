@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — January 21st, 2015"
-permalink: tor-weekly-news-—-january-21st-2015
+permalink: blog/tor-weekly-news-—-january-21st-2015
 date: 2015-01-21 07:00:00
 author: harmony
 category: blog

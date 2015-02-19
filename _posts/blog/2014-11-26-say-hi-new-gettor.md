@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Say hi to the new GetTor"
-permalink: say-hi-new-gettor
+permalink: blog/say-hi-new-gettor
 date: 2014-11-26 12:22:42
 author: ilv
 category: blog
