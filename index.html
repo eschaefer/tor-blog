@@ -42,7 +42,7 @@ layout: default
     <!-- Pagination links -->
     {% if paginator.total_pages > 1 %}
     <div class="pagination">
-      <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Newest</a>
+      <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Newest</a>
       &nbsp;
 
       {% if paginator.previous_page %}
@@ -77,7 +77,7 @@ layout: default
 	  {{ page }}
 
 	{% elsif page == 1 %}
-	  <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+	  <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
 
 	{% else %}
 	  <a href="/{{ site.paginate_path | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
