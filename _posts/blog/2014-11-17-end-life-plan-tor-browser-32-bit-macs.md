@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "End of life plan for Tor Browser on 32 bit Macs"
-permalink: blog/end-life-plan-tor-browser-32-bit-macs
+permalink: end-life-plan-tor-browser-32-bit-macs
 date: 2014-11-17 19:18:41
 author: mikeperry
 category: blog

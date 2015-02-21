@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Weekly News — February 4th, 2015"
-permalink: blog/tor-weekly-news-—-february-4th-2015
+permalink: tor-weekly-news-—-february-4th-2015
 date: 2015-02-04 07:00:00
 author: harmony
 category: blog

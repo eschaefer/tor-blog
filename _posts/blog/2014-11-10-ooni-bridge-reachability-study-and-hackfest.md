@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "OONI Bridge reachability study and hackfest"
-permalink: blog/ooni-bridge-reachability-study-and-hackfest
+permalink: ooni-bridge-reachability-study-and-hackfest
 date: 2014-11-10 06:05:33
 author: art
 category: blog

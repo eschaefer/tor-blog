@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor Browser 4.0.2 is released"
-permalink: blog/tor-browser-402-released
+permalink: tor-browser-402-released
 date: 2014-12-03 09:05:36
 author: gk
 category: blog

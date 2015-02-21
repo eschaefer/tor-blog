@@ -6,7 +6,7 @@ description: > # this means to ignore newlines until "baseurl:"
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 baseurl: ""
-url: "http://tor.jmtodaro.com/"
+url: "http://torblog.lan/"
 twitter_username: jekyllrb
 github_username:  jekyll
 
@@ -25,3 +25,27 @@ sass:
 tag_page_layout: tag_page
 tag_page_dir: tag
 tag_permalink_style: pretty
+
+jekyll-archives:
+  layout: 'archive'
+  enabled:
+  - year
+  - month
+  - day
+  - tags
+  - categories
+  layouts:
+    year: 'archive-year'
+    month: 'archive-month'
+    day: 'archive-day'
+    tag: 'archive-tag-and-category'
+    category: 'archive-tag-and-category'
+  permalinks:
+    year: '/archive/:year/'
+    month: '/archive/:year/:month/'
+    day: '/archive/:year/:month/:day/'
+    tag: '/archive/tag/:name/'
+    category: '/archive/category/:name/'
+
+gems:
+  - jekyll-archives

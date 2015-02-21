@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tor 0.2.6.2-alpha is released"
-permalink: blog/tor-0262-alpha-released
+permalink: tor-0262-alpha-released
 date: 2014-12-31 13:28:53
 author: nickm
 category: blog

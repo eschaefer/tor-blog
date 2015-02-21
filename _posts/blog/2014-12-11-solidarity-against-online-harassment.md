@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Solidarity against online harassment"
-permalink: blog/solidarity-against-online-harassment
+permalink: solidarity-against-online-harassment
 date: 2014-12-11 14:47:50
 author: arma
 category: blog
