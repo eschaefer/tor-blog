@@ -5,8 +5,8 @@ description: > # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
-baseurl: "/blog"
-url: "http://tor.jmtodaro.com/"
+baseurl: ""
+url: "http://torblog.lan/"
 twitter_username: jekyllrb
 github_username:  jekyll
 
@@ -22,13 +22,26 @@ sass:
   sass_dir: _sass
   style: :compressed
 
+jekyll-archives:
+  layout: 'archive'
+  enabled:
+  - year
+  - month
+  - day
+  - tags
+  - categories
+  layouts:
+    year: 'archive-year'
+    month: 'archive-month'
+    day: 'archive-day'
+    tag: 'archive-tag-and-category'
+    category: 'archive-tag-and-category'
+  permalinks:
+    year: '/archive/:year/'
+    month: '/archive/:year/:month/'
+    day: '/archive/:year/:month/:day/'
+    tag: '/archive/tag/:name/'
+    category: '/archive/category/:name/'
+
 gems:
   - jekyll-archives
-
-jekyll-archives:
-  enabled:
-    - tags
-  layouts:
-    tag: tag_page
-  permalinks:
-    tag: '/tag/:name/'

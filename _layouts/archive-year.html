@@ -1,12 +1,11 @@
 ---
 layout: default
-title: Archives
 ---
 
 <!-- Pages with side column need a 'maincol' class -->
 <div class="post maincol">
 
-<h1>Archive of posts from {{ page.title | date: "%Y" }}</h1>
+<h1>Archive of posts from {{ page.date | date: "%Y" }}</h1>
 
 <ul class="posts">
 {% for post in page.posts %}
@@ -21,3 +20,6 @@ title: Archives
 
 <!-- Include the side column -->
 {% include sidecol.html %}
+
+
+
